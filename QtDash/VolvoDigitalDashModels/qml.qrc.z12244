@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Page1.qml</file>
+        <file>qtquickcontrols2.conf</file>
+    </qresource>
+    <qresource prefix="/mainCluster">
+        <file>85black120.png</file>
+        <file>arrow_off.png</file>
+        <file>arrow_on.png</file>
+        <file>early120mphspeedolo.png</file>
+        <file>earlyset130lo.png</file>
+        <file>origset81-85black120.png</file>
+        <file>tacho.png</file>
+        <file>temp_coolant.png</file>
+        <file>temp_coolant_overlay.png</file>
+        <file>temp_coolant_overlay_small.png</file>
+    </qresource>
+    <qresource prefix="/accCluster"/>
+</RCC>
