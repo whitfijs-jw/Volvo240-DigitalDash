@@ -54,6 +54,8 @@ rm -rf "${GENIMAGE_TMP}"
 echo "${BOARD_DIR} here"
 echo "${BINARIES_DIR} here"
 echo "${BOARD_NAME} here"
+echo "${BUILD_DIR} here"
+echo "${GENIMAGE_CFG} here" 
 
 genimage \
 	--rootpath "${ROOTPATH_TMP}"   \
