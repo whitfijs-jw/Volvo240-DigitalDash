@@ -7,6 +7,7 @@ BOARD_NAME="$(basename ${BOARD_DIR})"
 GENIMAGE_CFG="${BOARD_DIR}/genimage-${BOARD_NAME}.cfg"
 GENIMAGE_TMP="${BUILD_DIR}/genimage.tmp"
 
+
 for arg in "$@"
 do
 	case "${arg}" in
@@ -49,6 +50,10 @@ trap 'rm -rf "${ROOTPATH_TMP}"' EXIT
 ROOTPATH_TMP="$(mktemp -d)"
 
 rm -rf "${GENIMAGE_TMP}"
+
+echo "${BOARD_DIR} here"
+echo "${BINARIES_DIR} here"
+echo "${BOARD_NAME} here"
 
 genimage \
 	--rootpath "${ROOTPATH_TMP}"   \
