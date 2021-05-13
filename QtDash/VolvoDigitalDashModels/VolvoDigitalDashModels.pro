@@ -36,3 +36,8 @@ HEADERS += \
     accessory_gauge_model.h \
     speedometer_model.h \
     temp_and_fuel_gauge_model.h
+
+RPI {
+    message("rpi is selected")
+    DEFINES += RASPBERRY_PI
+}

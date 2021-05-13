@@ -12,7 +12,7 @@
 #include <speedometer_model.h>
 #include <temp_and_fuel_gauge_model.h>
 
-#define RASPBERRY_PI
+//#define RASPBERRY_PI
 
 static TachometerModel tachModel;
 static SpeedometerModel speedoModel;
