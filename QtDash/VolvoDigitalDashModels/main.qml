@@ -175,17 +175,23 @@ ApplicationWindow {
         }
 
         Keys.onPressed: {
-                if (event.key === Qt.Key_Right) {
-                   if(swipeView.currentIndex + 1 < swipeView.count) {
+                switch (event.key) {
+                case Qt.Key_Right:
+                    if(swipeView.currentIndex + 1 < swipeView.count) {
                         swipeView.incrementCurrentIndex();
-                   } else if (event.key === Qt.Key_Escape) {
-                        rootWindow.close();
-                   }else {
-                       swipeView.setCurrentIndex(0);
-                   }
+                    } else {
+                        swipeView.setCurrentIndex(0);
+                    }
 
-                    event.accepted = true;
+                    break;
+                case Qt.Key_Escape:
+                    rootWindow.close();
+                    break;
+                default:
+                    swipeView.setCurrentIndex(0);
+                    break;
                 }
+                event.accepted = true;
             }
 
         Page {
