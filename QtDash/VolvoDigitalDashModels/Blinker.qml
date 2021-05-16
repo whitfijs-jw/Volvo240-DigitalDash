@@ -3,42 +3,23 @@ import QtQuick 2.0
 Item {
     id: blinker
 
-    function startBlinker() {
-        blinkTimer.running = true;
-    }
-
-    function stopBlinker() {
-        blinkTimer.running = false;
-        blinkerOnImage.visible = false;
-    }
-
-    Timer {
-        id: blinkTimer
-        interval: 500
-        running: false
-        repeat: true
-
-        onTriggered: {
-            if( blinkerOnImage.visible ){
-                blinkerOnImage.visible = false;
-            }else{
-                blinkerOnImage.visible = true;
-            }
-        }
-    }
+    property bool on
+    property bool flipped
 
     Image{
         id: blinkerOnImage
-        z:1
+        z:2
         source: "qrc:mainCluster/arrow_on.png"
         anchors.fill: parent
-        visible: false
+        visible: blinker.on
+        rotation: (blinker.flipped) ? 180 : 0
     }
 
     Image{
         id: blinkerOffImage
-        z:-1
+        z:1
         source: "qrc:mainCluster/arrow_off.png"
         anchors.fill: parent
+        rotation: (blinker.flipped) ? 180 : 0
     }
 }

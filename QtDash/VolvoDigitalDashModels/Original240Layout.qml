@@ -55,5 +55,31 @@ Item {
             }
 
         }
+
+        Rectangle {
+            id: leftBlinker
+            width: blinkerSize * 2
+            anchors.top: speedoContainer.top
+            anchors.left: speedoContainer.left
+            color: "transparent"
+
+            ListView {
+                model: leftBlinkerModel
+                delegate: leftBlinkerDelegate
+            }
+        }
+
+        Rectangle {
+            id: rightBlinker
+            width: blinkerSize * 2
+            anchors.top: speedoContainer.top
+            anchors.right: speedoContainer.right
+            color: "transparent"
+
+            ListView {
+                model: rightBlinkerModel
+                delegate: rightBlinkerDelegate
+            }
+        }
     }
 }
