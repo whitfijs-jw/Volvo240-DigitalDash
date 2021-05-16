@@ -62,7 +62,7 @@ Item {
             anchors.top: speedoContainer.top
             anchors.topMargin: 10
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: -parent.width / 6
+            anchors.horizontalCenterOffset: -parent.width / 8
             color: "transparent"
 
             ListView {
