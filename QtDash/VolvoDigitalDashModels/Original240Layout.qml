@@ -60,7 +60,9 @@ Item {
             id: leftBlinker
             width: blinkerSize * 2
             anchors.top: speedoContainer.top
-            anchors.left: speedoContainer.left
+            anchors.topMargin: 10
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset: -parent.width / 6
             color: "transparent"
 
             ListView {
@@ -73,7 +75,9 @@ Item {
             id: rightBlinker
             width: blinkerSize * 2
             anchors.top: speedoContainer.top
-            anchors.right: speedoContainer.right
+            anchors.topMargin: 10
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset: parent.width / 6
             color: "transparent"
 
             ListView {
