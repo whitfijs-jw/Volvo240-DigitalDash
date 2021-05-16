@@ -11,6 +11,7 @@
 #include <accessory_gauge_model.h>
 #include <speedometer_model.h>
 #include <temp_and_fuel_gauge_model.h>
+#include <indicator_model.h>
 
 //#define RASPBERRY_PI
 
@@ -22,7 +23,8 @@ static AccessoryGaugeModel oilTemperatureModel;
 static AccessoryGaugeModel ambientTemperatureModel;
 static AccessoryGaugeModel boostModel;
 static AccessoryGaugeModel voltMeterModel;
-
+static IndicatorModel leftBlinkerModel;
+static IndicatorModel rightBlinkerModel;
 
 
 void initializeModels()
@@ -75,6 +77,10 @@ void initializeModels()
     voltMeterModel.setCurrentValue(0.0);
     voltMeterModel.setLowAlarm(11.0);
     voltMeterModel.setHighAlarm(15.0);
+
+    /** Init blinkers */
+    leftBlinkerModel.setOn(false);
+    rightBlinkerModel.setOn(false);
 }
 
 void updateGaugesRPi()
@@ -190,7 +196,7 @@ void updateGauges() {
     {
         QString rpmString = rpmStream.readLine();
         int rpm = rpmString.toInt();
-        tachModel.setRpm(rpm * 1.5f);
+        tachModel.setRpm(rpm);
         boostModel.setCurrentValue( ((float)rpm/1000.0)*5.75 );
         oilPressureModel.setCurrentValue( ((float)rpm / 1000.0) );
     }
@@ -228,6 +234,15 @@ void updateGauges() {
     speedFile.close();
 }
 
+void blink() {
+    static bool on = false;
+
+    leftBlinkerModel.setOn(on);
+    rightBlinkerModel.setOn(on);
+
+    on = !on;
+}
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -258,6 +273,8 @@ int main(int argc, char *argv[])
     ctxt->setContextProperty("outsideTempModel", &ambientTemperatureModel);
     ctxt->setContextProperty("boostModel", &boostModel);
     ctxt->setContextProperty("voltMeterModel", &voltMeterModel);
+    ctxt->setContextProperty("leftBlinkerModel", &leftBlinkerModel);
+    ctxt->setContextProperty("rightBlinkerModel", &rightBlinkerModel);
 
     initializeModels();
 
@@ -272,6 +289,11 @@ int main(int argc, char *argv[])
     QObject::connect(&rpmTimer, &QTimer::timeout, &app, &updateGaugesRPi);
     rpmTimer.start();
 #endif
+
+    QTimer blinkerTimer;
+    blinkerTimer.setInterval(500);
+    QObject::connect(&blinkerTimer, &QTimer::timeout, &app, &blink);
+    blinkerTimer.start();
 
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())

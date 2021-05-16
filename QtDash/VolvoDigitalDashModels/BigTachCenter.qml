@@ -110,5 +110,31 @@ Item {
                 delegate: voltMeterDelegate
             }
         }
+
+        Rectangle {
+            id: leftBlinker
+            width: blinkerSize * 2
+            anchors.top: tachContainer.top
+            anchors.left: tachContainer.left
+            color: "transparent"
+
+            ListView {
+                model: leftBlinkerModel
+                delegate: leftBlinkerDelegate
+            }
+        }
+
+        Rectangle {
+            id: rightBlinker
+            width: blinkerSize * 2
+            anchors.top: tachContainer.top
+            anchors.right: tachContainer.right
+            color: "transparent"
+
+            ListView {
+                model: rightBlinkerModel
+                delegate: rightBlinkerDelegate
+            }
+        }
     }
 }

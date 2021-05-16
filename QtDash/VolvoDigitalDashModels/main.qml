@@ -13,6 +13,7 @@ ApplicationWindow {
     property int tachSize: 440
     property int speedoSize: tachSize - smallGaugeSize - 10
     property int tempFuelSize: tachSize - smallGaugeSize - 10
+    property int blinkerSize: 50;
 
     function setSmallGaugeSize(size) {
         smallGaugeSize = size;
@@ -139,6 +140,28 @@ ApplicationWindow {
         }
     }
 
+    Component {
+        id: leftBlinkerDelegate
+        Blinker {
+            on: indicatorOn
+            flipped: false
+
+            width: blinkerSize
+            height: 3 * blinkerSize / 4
+        }
+    }
+
+    Component {
+        id: rightBlinkerDelegate
+        Blinker {
+            on: indicatorOn
+            flipped: true
+
+            width: blinkerSize
+            height: 3 * blinkerSize / 4
+        }
+    }
+
     SwipeView {
         id: swipeView
         anchors.fill: parent
@@ -186,6 +209,10 @@ ApplicationWindow {
                     break;
                 case Qt.Key_Escape:
                     rootWindow.close();
+                    break;
+                case Qt.Key_L:
+                    break;
+                case Qt.Key_R:
                     break;
                 default:
                     swipeView.setCurrentIndex(0);
