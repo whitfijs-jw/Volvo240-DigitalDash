@@ -7,6 +7,7 @@ Item {
     property int warningLightWideWidth: 100;
     property int warningLightVerticalMargin: 5;
     property int warningLightHorizontalMargin: 8
+    property int deadSpaceMiddle: 100;
 
     Rectangle {
         width: 1280
@@ -14,10 +15,130 @@ Item {
         color: "transparent"
 
         Rectangle {
-            id: parkingBrakeWarningLight
+            id: serviceLight
+            anchors.right: checkEngineLight.left
+            anchors.top: checkEngineLight.top
+            height: warningLightHeight
+            width: warningLightWidth
+            anchors.bottomMargin: warningLightVerticalMargin
+            anchors.rightMargin: warningLightHorizontalMargin
+            color: "transparent"
+
+            ListView {
+                model: serviceLightModel
+                delegate: serviceLightDelegate
+                anchors.fill: parent
+            }
+        }
+
+        Rectangle {
+            id: checkEngineLight
+            anchors.right: absWarningLight.left
+            anchors.top: absWarningLight.top
+            height: warningLightHeight
+            width: warningLightWidth
+            anchors.bottomMargin: warningLightVerticalMargin
+            anchors.rightMargin: warningLightHorizontalMargin
+            color: "transparent"
+
+            ListView {
+                model: checkEngineLightModel
+                delegate: checkEngineLightDelegate
+                anchors.fill: parent
+            }
+        }
+
+        Rectangle {
+            id: absWarningLight
+            anchors.right: batteryWarningLight.left
+            anchors.top: batteryWarningLight.top
+            height: warningLightHeight
+            width: warningLightWidth
+            anchors.bottomMargin: warningLightVerticalMargin
+            anchors.rightMargin: warningLightHorizontalMargin
+            color: "transparent"
+
+            ListView {
+                model: absWarningLightModel
+                delegate: absWarningLightDelegate
+                anchors.fill: parent
+            }
+        }
+
+        Rectangle {
+            id: batteryWarningLight
+            anchors.right: oilWarningLight.left
+            anchors.top: oilWarningLight.top
+            height: warningLightHeight
+            width: warningLightWidth
+            anchors.bottomMargin: warningLightVerticalMargin
+            anchors.rightMargin: warningLightHorizontalMargin
+            color: "transparent"
+
+            ListView {
+                model: batteryWarningLightModel
+                delegate: batteryWarningLightDelegate
+                anchors.fill: parent
+            }
+        }
+
+        Rectangle {
+            id: oilWarningLight
+            anchors.right: srsWarningLight.left
+            anchors.top: srsWarningLight.top
+            height: warningLightHeight
+            width: warningLightWidth
+            anchors.bottomMargin: warningLightVerticalMargin
+            anchors.rightMargin: warningLightHorizontalMargin
+            color: "transparent"
+
+            ListView {
+                model: oilWarningLightModel
+                delegate: oilWarningLightDelegate
+                anchors.fill: parent
+            }
+        }
+
+        Rectangle {
+            id: srsWarningLight
             anchors.bottom: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: 180
+            anchors.horizontalCenterOffset: -deadSpaceMiddle
+            height: warningLightHeight
+            width: warningLightWidth
+            anchors.bottomMargin: warningLightVerticalMargin
+            anchors.rightMargin: warningLightHorizontalMargin
+            color: "transparent"
+
+            ListView {
+                model: srsWarningLightModel
+                delegate: srsWarningLightDelegate
+                anchors.fill: parent
+            }
+        }
+
+        Rectangle {
+            id: highBeamLight
+            anchors.bottom: parent.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset: deadSpaceMiddle
+            height: warningLightHeight
+            width: warningLightWidth
+            anchors.bottomMargin: warningLightVerticalMargin
+            anchors.rightMargin: warningLightHorizontalMargin
+            color: "transparent"
+
+            ListView {
+                model: highBeamLightModel
+                delegate: highBeamLightDelegate
+                anchors.fill: parent
+            }
+        }
+
+        Rectangle {
+            id: parkingBrakeWarningLight
+            anchors.left: highBeamLight.right
+            anchors.top: highBeamLight.top
             height: warningLightHeight
             width: warningLightWideWidth
             anchors.bottomMargin: warningLightVerticalMargin
@@ -78,23 +199,6 @@ Item {
             ListView {
                 model: shiftUpLightModel
                 delegate: shiftUpLightDelegate
-                anchors.fill: parent
-            }
-        }
-
-        Rectangle {
-            id: highBeamLight
-            anchors.right: parkingBrakeWarningLight.left
-            anchors.top: parkingBrakeWarningLight.top
-            height: warningLightHeight
-            width: warningLightWidth
-            anchors.bottomMargin: warningLightVerticalMargin
-            anchors.rightMargin: warningLightHorizontalMargin
-            color: "transparent"
-
-            ListView {
-                model: highBeamLightModel
-                delegate: highBeamLightDelegate
                 anchors.fill: parent
             }
         }
