@@ -32,6 +32,12 @@ static WarningLightModel brakeFailureLightModel;
 static WarningLightModel bulbFailureLightModel;
 static WarningLightModel shiftUpLightModel;
 static WarningLightModel highBeamLightModel;
+static WarningLightModel srsWarningLightModel;
+static WarningLightModel oilWarningLightModel;
+static WarningLightModel batteryWarningLightModel;
+static WarningLightModel absWarningLightModel;
+static WarningLightModel checkEngineLightModel;
+static WarningLightModel serviceLightModel;
 
 
 void initializeModels()
@@ -91,12 +97,16 @@ void initializeModels()
 
     /** Init Warning Lights **/
     parkingBrakeLightModel.setText("PARKING\nBRAKE");
-    parkingBrakeLightModel.setLightColor(QColor(Qt::GlobalColor::red));
-
     brakeFailureLightModel.setText("BRAKE\nFAILURE");
     bulbFailureLightModel.setText("BULB\nFAILURE");
     shiftUpLightModel.setText("SHIFT\nUP");
     highBeamLightModel.setText("HIGH\nBEAM");
+    srsWarningLightModel.setText("SRS");
+    oilWarningLightModel.setText("LOW\nOIL");
+    batteryWarningLightModel.setText("BATTERY");
+    absWarningLightModel.setText("ABS");
+    checkEngineLightModel.setText("CHECK\nENGINE");
+    serviceLightModel.setText("SER-\nVICE");
 }
 
 void updateGaugesRPi()
@@ -176,8 +186,8 @@ void updateGaugesRPi()
 }
 
 void updateGauges() {
-    QString tempPath = "/sys/class/hwmon/hwmon2/temp2_input";
-    QString rpmPath = "/sys/class/hwmon/hwmon3/fan1_input";
+    QString tempPath = "//sys/class/thermal/thermal_zone1/temp";
+    QString rpmPath = "/sys/class/hwmon/hwmon2/fan1_input";
     QString battPath = "/sys/class/power_supply/BAT0/voltage_now";
     QString fuelLevelPath = "/sys/class/power_supply/BAT0/capacity";
     QString speedPath = "/proc/cpuinfo";
@@ -240,7 +250,8 @@ void updateGauges() {
         }
         cpuSpeed = cpuSpeed.right(cpuSpeed.indexOf(": "));
         qreal speed = cpuSpeed.toFloat();
-        speedoModel.setCurrentValue(speed/2800.0 * 120.0);
+        speedoModel.setCurrentValue(speed / 3400.0 * 120.0);
+        voltMeterModel.setCurrentValue(speed / 3400.0 * 16.0);
     }
 
     tempFile.close();
@@ -251,17 +262,24 @@ void updateGauges() {
 }
 
 void blink() {
-    static bool on = false;
+    static int cnt = -1;
+    leftBlinkerModel.setOn(cnt >= 0);
+    rightBlinkerModel.setOn(cnt >= 1);
+    highBeamLightModel.setOn(cnt >= 2);
+    parkingBrakeLightModel.setOn(cnt >= 3);
+    brakeFailureLightModel.setOn(cnt >= 4);
+    bulbFailureLightModel.setOn(cnt >= 5);
+    shiftUpLightModel.setOn(cnt >= 6);
+    srsWarningLightModel.setOn(cnt >= 7);
+    oilWarningLightModel.setOn(cnt >= 8);
+    batteryWarningLightModel.setOn(cnt >= 9);
+    absWarningLightModel.setOn(cnt >= 10);
+    checkEngineLightModel.setOn(cnt >= 11);
+    serviceLightModel.setOn(cnt >= 12);
 
-    leftBlinkerModel.setOn(on);
-    rightBlinkerModel.setOn(on);
-    parkingBrakeLightModel.setOn(on);
-    brakeFailureLightModel.setOn(on);
-    bulbFailureLightModel.setOn(on);
-    shiftUpLightModel.setOn(on);
-    highBeamLightModel.setOn(on);
-
-    on = !on;
+    if (cnt++ >= 12) {
+        cnt = -1;
+    }
 }
 
 int main(int argc, char *argv[])
@@ -301,6 +319,12 @@ int main(int argc, char *argv[])
     ctxt->setContextProperty("bulbFailureLightModel", &bulbFailureLightModel);
     ctxt->setContextProperty("shiftUpLightModel", &shiftUpLightModel);
     ctxt->setContextProperty("highBeamLightModel", &highBeamLightModel);
+    ctxt->setContextProperty("srsWarningLightModel", &srsWarningLightModel);
+    ctxt->setContextProperty("oilWarningLightModel", &oilWarningLightModel);
+    ctxt->setContextProperty("batteryWarningLightModel", &batteryWarningLightModel);
+    ctxt->setContextProperty("absWarningLightModel", &absWarningLightModel);
+    ctxt->setContextProperty("checkEngineLightModel", &checkEngineLightModel);
+    ctxt->setContextProperty("serviceLightModel", &serviceLightModel);
 
     initializeModels();
 
@@ -317,7 +341,7 @@ int main(int argc, char *argv[])
 #endif
 
     QTimer blinkerTimer;
-    blinkerTimer.setInterval(500);
+    blinkerTimer.setInterval(200);
     QObject::connect(&blinkerTimer, &QTimer::timeout, &app, &blink);
     blinkerTimer.start();
 

@@ -230,6 +230,78 @@ ApplicationWindow {
         }
     }
 
+    Component {
+        id: srsWarningLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "red"
+
+            width: warningLightWidth
+        }
+    }
+
+    Component {
+        id: oilWarningLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "red"
+
+            width: warningLightWidth
+        }
+    }
+
+    Component {
+        id: batteryWarningLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "red"
+
+            width: warningLightWidth
+        }
+    }
+
+    Component {
+        id: absWarningLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "red"
+
+            width: warningLightWidth
+        }
+    }
+
+    Component {
+        id: checkEngineLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "orange"
+
+            width: warningLightWidth
+        }
+    }
+
+    Component {
+        id: serviceLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "orange"
+
+            width: warningLightWidth
+        }
+    }
+
     SwipeView {
         id: swipeView
         anchors.fill: parent

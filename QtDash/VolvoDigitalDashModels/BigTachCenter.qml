@@ -132,7 +132,7 @@ Item {
             anchors.top: tachContainer.top
             anchors.topMargin: 10
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: parent.width / 6
+            anchors.horizontalCenterOffset: parent.width / 6.75
             color: "transparent"
 
             ListView {
