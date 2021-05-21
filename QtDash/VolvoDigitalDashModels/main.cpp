@@ -29,6 +29,7 @@ static IndicatorModel leftBlinkerModel;
 static IndicatorModel rightBlinkerModel;
 static WarningLightModel parkingBrakeLightModel;
 static WarningLightModel brakeFailureLightModel;
+static WarningLightModel bulbFailureLightModel;
 
 
 void initializeModels()
@@ -91,6 +92,7 @@ void initializeModels()
     parkingBrakeLightModel.setLightColor(QColor(Qt::GlobalColor::red));
 
     brakeFailureLightModel.setText("BRAKE\nFAILURE");
+    bulbFailureLightModel.setText("BULB\nFAILURE");
 }
 
 void updateGaugesRPi()
@@ -251,6 +253,7 @@ void blink() {
     rightBlinkerModel.setOn(on);
     parkingBrakeLightModel.setOn(on);
     brakeFailureLightModel.setOn(on);
+    bulbFailureLightModel.setOn(on);
 
     on = !on;
 }
@@ -289,6 +292,7 @@ int main(int argc, char *argv[])
     ctxt->setContextProperty("rightBlinkerModel", &rightBlinkerModel);
     ctxt->setContextProperty("parkingBrakeLightModel", &parkingBrakeLightModel);
     ctxt->setContextProperty("brakeFailureLightModel", &brakeFailureLightModel);
+    ctxt->setContextProperty("bulbFailureLightModel", &bulbFailureLightModel);
 
     initializeModels();
 

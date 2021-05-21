@@ -16,7 +16,7 @@ ApplicationWindow {
     property int tempFuelSize: tachSize - smallGaugeSize - 10
     property int blinkerSize: 50;
     property int warningLightHeight: 50;
-    property int warningLightWidth: 60;
+    property int warningLightWidth: 70;
     property int warningLightWideWidth: 100;
     property int warningLightVerticalMargin: 5;
     property int warningLightHorizontalMargin: 8
@@ -176,6 +176,8 @@ ApplicationWindow {
             on: warningLightOn
             warningText: warningLightText
             lightColor: "red"
+
+            width: warningLightWideWidth
         }
     }
 
@@ -186,6 +188,20 @@ ApplicationWindow {
             on: warningLightOn
             warningText: warningLightText
             lightColor: "red"
+
+            width: warningLightWideWidth
+        }
+    }
+
+    Component {
+        id: bulbFailureLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "orange"
+
+            width: warningLightWidth
         }
     }
 
