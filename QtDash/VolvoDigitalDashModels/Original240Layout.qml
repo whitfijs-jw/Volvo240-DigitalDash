@@ -91,7 +91,7 @@ Item {
             anchors.bottom: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.horizontalCenterOffset: 200
-            height: warningLightWidth
+            height: warningLightHeight
             width: warningLightWideWidth
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.leftMargin: warningLightHorizontalMargin
@@ -108,7 +108,7 @@ Item {
             id: brakeFailureWarningLight
             anchors.left: parkingBrakeWarningLight.right
             anchors.top: parkingBrakeWarningLight.top
-            height: warningLightWidth
+            height: warningLightHeight
             width: warningLightWideWidth
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.leftMargin: warningLightHorizontalMargin
@@ -117,6 +117,23 @@ Item {
             ListView {
                 model: brakeFailureLightModel
                 delegate: brakeFailureLightDelegate
+                anchors.fill: parent
+            }
+        }
+
+        Rectangle {
+            id: bulbFailureWarningLight
+            anchors.left: brakeFailureWarningLight.right
+            anchors.top: brakeFailureWarningLight.top
+            height: warningLightHeight
+            width: warningLightWidth
+            anchors.bottomMargin: warningLightVerticalMargin
+            anchors.leftMargin: warningLightHorizontalMargin
+            color: "transparent"
+
+            ListView {
+                model: bulbFailureLightModel
+                delegate: bulbFailureLightDelegate
                 anchors.fill: parent
             }
         }

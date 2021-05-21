@@ -9,7 +9,7 @@ Item {
     property color lightColor
 
     height: warningLightHeight
-    width: warningLightWideWidth
+    //width: warningLightWideWidth
     visible: on
 
     Label {
