@@ -4,6 +4,7 @@
 #include <QTimer>
 #include <QFont>
 #include <QFile>
+#include <QColor>
 #include <QTextStream>
 #include <QFontDatabase>
 
@@ -12,6 +13,7 @@
 #include <speedometer_model.h>
 #include <temp_and_fuel_gauge_model.h>
 #include <indicator_model.h>
+#include <warning_light_model.h>
 
 //#define RASPBERRY_PI
 
@@ -25,6 +27,8 @@ static AccessoryGaugeModel boostModel;
 static AccessoryGaugeModel voltMeterModel;
 static IndicatorModel leftBlinkerModel;
 static IndicatorModel rightBlinkerModel;
+static WarningLightModel parkingBrakeLightModel;
+static WarningLightModel brakeFailureLightModel;
 
 
 void initializeModels()
@@ -81,6 +85,12 @@ void initializeModels()
     /** Init blinkers */
     leftBlinkerModel.setOn(false);
     rightBlinkerModel.setOn(false);
+
+    /** Init Warning Lights **/
+    parkingBrakeLightModel.setText("PARKING\nBRAKE");
+    parkingBrakeLightModel.setLightColor(QColor(Qt::GlobalColor::red));
+
+    brakeFailureLightModel.setText("BRAKE\nFAILURE");
 }
 
 void updateGaugesRPi()
@@ -239,6 +249,8 @@ void blink() {
 
     leftBlinkerModel.setOn(on);
     rightBlinkerModel.setOn(on);
+    parkingBrakeLightModel.setOn(on);
+    brakeFailureLightModel.setOn(on);
 
     on = !on;
 }
@@ -275,6 +287,8 @@ int main(int argc, char *argv[])
     ctxt->setContextProperty("voltMeterModel", &voltMeterModel);
     ctxt->setContextProperty("leftBlinkerModel", &leftBlinkerModel);
     ctxt->setContextProperty("rightBlinkerModel", &rightBlinkerModel);
+    ctxt->setContextProperty("parkingBrakeLightModel", &parkingBrakeLightModel);
+    ctxt->setContextProperty("brakeFailureLightModel", &brakeFailureLightModel);
 
     initializeModels();
 

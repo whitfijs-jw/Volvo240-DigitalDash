@@ -1,6 +1,7 @@
-import QtQuick 2.7
-import QtQuick.Controls 2.0
+import QtQuick 2.12
+import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.3
+import QtQml 2.12
 
 ApplicationWindow {
     id: rootWindow
@@ -14,6 +15,12 @@ ApplicationWindow {
     property int speedoSize: tachSize - smallGaugeSize - 10
     property int tempFuelSize: tachSize - smallGaugeSize - 10
     property int blinkerSize: 50;
+    property int warningLightHeight: 50;
+    property int warningLightWidth: 60;
+    property int warningLightWideWidth: 100;
+    property int warningLightVerticalMargin: 5;
+    property int warningLightHorizontalMargin: 8
+
 
     function setSmallGaugeSize(size) {
         smallGaugeSize = size;
@@ -159,6 +166,26 @@ ApplicationWindow {
 
             width: blinkerSize
             height: 3 * blinkerSize / 4
+        }
+    }
+
+    Component {
+        id: parkingBrakeLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "red"
+        }
+    }
+
+    Component {
+        id: brakeFailureLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "red"
         }
     }
 
