@@ -30,6 +30,8 @@ static IndicatorModel rightBlinkerModel;
 static WarningLightModel parkingBrakeLightModel;
 static WarningLightModel brakeFailureLightModel;
 static WarningLightModel bulbFailureLightModel;
+static WarningLightModel shiftUpLightModel;
+static WarningLightModel highBeamLightModel;
 
 
 void initializeModels()
@@ -93,6 +95,8 @@ void initializeModels()
 
     brakeFailureLightModel.setText("BRAKE\nFAILURE");
     bulbFailureLightModel.setText("BULB\nFAILURE");
+    shiftUpLightModel.setText("SHIFT\nUP");
+    highBeamLightModel.setText("HIGH\nBEAM");
 }
 
 void updateGaugesRPi()
@@ -254,6 +258,8 @@ void blink() {
     parkingBrakeLightModel.setOn(on);
     brakeFailureLightModel.setOn(on);
     bulbFailureLightModel.setOn(on);
+    shiftUpLightModel.setOn(on);
+    highBeamLightModel.setOn(on);
 
     on = !on;
 }
@@ -293,6 +299,8 @@ int main(int argc, char *argv[])
     ctxt->setContextProperty("parkingBrakeLightModel", &parkingBrakeLightModel);
     ctxt->setContextProperty("brakeFailureLightModel", &brakeFailureLightModel);
     ctxt->setContextProperty("bulbFailureLightModel", &bulbFailureLightModel);
+    ctxt->setContextProperty("shiftUpLightModel", &shiftUpLightModel);
+    ctxt->setContextProperty("highBeamLightModel", &highBeamLightModel);
 
     initializeModels();
 
