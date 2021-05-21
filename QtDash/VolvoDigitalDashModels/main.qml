@@ -15,6 +15,7 @@ ApplicationWindow {
     property int speedoSize: tachSize - smallGaugeSize - 10
     property int tempFuelSize: tachSize - smallGaugeSize - 10
     property int blinkerSize: 50;
+
     property int warningLightHeight: 50;
     property int warningLightWidth: 70;
     property int warningLightWideWidth: 100;
@@ -205,6 +206,30 @@ ApplicationWindow {
         }
     }
 
+    Component {
+        id: shiftUpLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "orange"
+
+            width: warningLightWidth
+        }
+    }
+
+    Component {
+        id: highBeamLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "lightcyan"
+
+            width: warningLightWidth
+        }
+    }
+
     SwipeView {
         id: swipeView
         anchors.fill: parent
@@ -266,11 +291,15 @@ ApplicationWindow {
 
         Page {
             BigTachLeft {
+                id: bigTach
                 Component.onCompleted: {
                     setSmallGaugeSize(140);
                     setTachSize(440);
                     setSpeedoSize(tachSize - smallGaugeSize - 10);
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
+                }
+
+                WarningLightBar {
                 }
             }
         }
@@ -284,6 +313,9 @@ ApplicationWindow {
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
                 }
             }
+
+            WarningLightBar {
+            }
         }
 
         Page {
@@ -294,6 +326,9 @@ ApplicationWindow {
                     setSpeedoSize(440);
                     setTempFuelSize(400);
                 }
+            }
+
+            WarningLightBar {
             }
         }
     }

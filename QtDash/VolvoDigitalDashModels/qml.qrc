@@ -18,6 +18,7 @@
         <file>BigTachCenter.qml</file>
         <file>Original240Layout.qml</file>
         <file>WarningLight.qml</file>
+        <file>WarningLightBar.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
