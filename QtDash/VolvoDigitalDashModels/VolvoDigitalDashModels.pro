@@ -17,7 +17,8 @@ SOURCES += main.cpp \
     tachometer_model.cpp \
     accessory_gauge_model.cpp \
     speedometer_model.cpp \
-    temp_and_fuel_gauge_model.cpp
+    temp_and_fuel_gauge_model.cpp \
+    warning_light_model.cpp
 
 RESOURCES += qml.qrc
 
@@ -37,7 +38,8 @@ HEADERS += \
     tachometer_model.h \
     accessory_gauge_model.h \
     speedometer_model.h \
-    temp_and_fuel_gauge_model.h
+    temp_and_fuel_gauge_model.h \
+    warning_light_model.h
 
 RPI {
     message("rpi is selected")

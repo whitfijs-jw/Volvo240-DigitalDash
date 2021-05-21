@@ -85,5 +85,40 @@ Item {
                 delegate: rightBlinkerDelegate
             }
         }
+
+        Rectangle {
+            id: parkingBrakeWarningLight
+            anchors.bottom: parent.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset: 200
+            height: warningLightWidth
+            width: warningLightWideWidth
+            anchors.bottomMargin: warningLightVerticalMargin
+            anchors.leftMargin: warningLightHorizontalMargin
+            color: "transparent"
+
+            ListView {
+                model: parkingBrakeLightModel
+                delegate: parkingBrakeLightDelegate
+                anchors.fill: parent
+            }
+        }
+
+        Rectangle {
+            id: brakeFailureWarningLight
+            anchors.left: parkingBrakeWarningLight.right
+            anchors.top: parkingBrakeWarningLight.top
+            height: warningLightWidth
+            width: warningLightWideWidth
+            anchors.bottomMargin: warningLightVerticalMargin
+            anchors.leftMargin: warningLightHorizontalMargin
+            color: "transparent"
+
+            ListView {
+                model: brakeFailureLightModel
+                delegate: brakeFailureLightDelegate
+                anchors.fill: parent
+            }
+        }
     }
 }
