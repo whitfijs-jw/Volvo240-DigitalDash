@@ -1,5 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.0
+import QtGraphicalEffects 1.0
+
 Item {
     id: warning_light
 
@@ -37,9 +39,18 @@ Item {
     }
 
     Rectangle {
+        id: backLight
         anchors.fill: parent
         color: warning_light.lightColor
-        z: 2
+        border.color: Qt.rgba(0, 0, 0, 0.01)
+        border.width: 1
+        layer.enabled: true
+        layer.effect: InnerShadow {
+            color: "black"
+            samples: 20
+            radius: 5
+            spread: 0.01
+        }
     }
 
     onWidthChanged: {
