@@ -98,12 +98,12 @@ void initializeModels()
     /** Init Warning Lights **/
     parkingBrakeLightModel.setText("PARKING\nBRAKE");
     brakeFailureLightModel.setText("BRAKE\nFAILURE");
-    bulbFailureLightModel.setText("BULB\nFAILURE");
+    bulbFailureLightModel.setText("");
     shiftUpLightModel.setText("SHIFT\nUP");
-    highBeamLightModel.setText("HIGH\nBEAM");
+    highBeamLightModel.setText("");
     srsWarningLightModel.setText("SRS");
-    oilWarningLightModel.setText("LOW\nOIL");
-    batteryWarningLightModel.setText("BATTERY");
+    oilWarningLightModel.setText("");
+    batteryWarningLightModel.setText("");
     absWarningLightModel.setText("ABS");
     checkEngineLightModel.setText("CHECK\nENGINE");
     serviceLightModel.setText("SER-\nVICE");
@@ -187,7 +187,7 @@ void updateGaugesRPi()
 
 void updateGauges() {
     QString tempPath = "//sys/class/thermal/thermal_zone1/temp";
-    QString rpmPath = "/sys/class/hwmon/hwmon2/fan1_input";
+    QString rpmPath = "/sys/class/hwmon/hwmon3/fan1_input";
     QString battPath = "/sys/class/power_supply/BAT0/voltage_now";
     QString fuelLevelPath = "/sys/class/power_supply/BAT0/capacity";
     QString speedPath = "/proc/cpuinfo";
@@ -251,7 +251,7 @@ void updateGauges() {
         cpuSpeed = cpuSpeed.right(cpuSpeed.indexOf(": "));
         qreal speed = cpuSpeed.toFloat();
         speedoModel.setCurrentValue(speed / 3400.0 * 120.0);
-        voltMeterModel.setCurrentValue(speed / 3400.0 * 16.0);
+        //voltMeterModel.setCurrentValue(speed / 3400.0 * 16.0);
     }
 
     tempFile.close();

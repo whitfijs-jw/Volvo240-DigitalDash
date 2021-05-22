@@ -44,4 +44,15 @@
     <qresource prefix="/fonts">
         <file>ariblk.ttf</file>
     </qresource>
+    <qresource prefix="/warningLights">
+        <file>battery_charge_icon.png</file>
+        <file>battery_charge_icon_no_background.png</file>
+        <file>Bulb_failure_icon.png</file>
+        <file>glow_plug_icon.svg</file>
+        <file>high_beam_icon.svg</file>
+        <file>oil_icon.svg</file>
+        <file>oil_icon_no_background.png</file>
+        <file>high_beam_icon.png</file>
+        <file>Bulb_failure_icon_no_background.png</file>
+    </qresource>
 </RCC>

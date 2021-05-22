@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.12
 import QtQuick.Controls 2.0
 Item {
     id: warning_light
@@ -7,9 +7,9 @@ Item {
     property bool flipped
     property string warningText
     property color lightColor
+    property url imageSource
 
     height: warningLightHeight
-    //width: warningLightWideWidth
     visible: on
 
     Label {
@@ -24,6 +24,16 @@ Item {
         verticalAlignment: Text.AlignVCenter
 
         font.bold: true
+    }
+
+    Image {
+        id: warning_symbol
+        source: warning_light.imageSource
+        smooth: true
+        mipmap: true
+
+        anchors.fill: parent
+        z: 3
     }
 
     Rectangle {
