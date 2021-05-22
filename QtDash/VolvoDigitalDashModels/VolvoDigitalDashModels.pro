@@ -13,10 +13,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += main.cpp \
+    indicator_model.cpp \
     tachometer_model.cpp \
     accessory_gauge_model.cpp \
     speedometer_model.cpp \
-    temp_and_fuel_gauge_model.cpp
+    temp_and_fuel_gauge_model.cpp \
+    warning_light_model.cpp
 
 RESOURCES += qml.qrc
 
@@ -32,7 +34,14 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    indicator_model.h \
     tachometer_model.h \
     accessory_gauge_model.h \
     speedometer_model.h \
-    temp_and_fuel_gauge_model.h
+    temp_and_fuel_gauge_model.h \
+    warning_light_model.h
+
+RPI {
+    message("rpi is selected")
+    DEFINES += RASPBERRY_PI
+}
