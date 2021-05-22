@@ -1,6 +1,7 @@
-import QtQuick 2.7
-import QtQuick.Controls 2.0
+import QtQuick 2.12
+import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.3
+import QtQml 2.12
 
 ApplicationWindow {
     id: rootWindow
@@ -13,6 +14,14 @@ ApplicationWindow {
     property int tachSize: 440
     property int speedoSize: tachSize - smallGaugeSize - 10
     property int tempFuelSize: tachSize - smallGaugeSize - 10
+    property int blinkerSize: 50;
+
+    property int warningLightHeight: 50;
+    property int warningLightWidth: 70;
+    property int warningLightWideWidth: 100;
+    property int warningLightVerticalMargin: 5;
+    property int warningLightHorizontalMargin: 8
+
 
     function setSmallGaugeSize(size) {
         smallGaugeSize = size;
@@ -139,6 +148,164 @@ ApplicationWindow {
         }
     }
 
+    Component {
+        id: leftBlinkerDelegate
+        Blinker {
+            on: indicatorOn
+            flipped: false
+
+            width: blinkerSize
+            height: 3 * blinkerSize / 4
+        }
+    }
+
+    Component {
+        id: rightBlinkerDelegate
+        Blinker {
+            on: indicatorOn
+            flipped: true
+
+            width: blinkerSize
+            height: 3 * blinkerSize / 4
+        }
+    }
+
+    Component {
+        id: parkingBrakeLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "red"
+
+            width: warningLightWideWidth
+        }
+    }
+
+    Component {
+        id: brakeFailureLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "red"
+
+            width: warningLightWideWidth
+        }
+    }
+
+    Component {
+        id: bulbFailureLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "orange"
+            imageSource: "qrc:/warningLights/Bulb_failure_icon_no_background.png"
+
+            width: warningLightWidth
+        }
+    }
+
+    Component {
+        id: shiftUpLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "orange"
+
+            width: warningLightWidth
+        }
+    }
+
+    Component {
+        id: highBeamLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "lightcyan"
+            imageSource: "qrc:/warningLights/high_beam_icon.png"
+
+            width: warningLightWidth
+        }
+    }
+
+    Component {
+        id: srsWarningLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "red"
+
+            width: warningLightWidth
+        }
+    }
+
+    Component {
+        id: oilWarningLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "red"
+            imageSource: "qrc:warningLights/oil_icon_no_background.png"
+
+            width: warningLightWidth
+        }
+    }
+
+    Component {
+        id: batteryWarningLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "red"
+            imageSource: "qrc:warningLights/battery_charge_icon_no_background.png"
+
+            width: warningLightWidth
+        }
+    }
+
+    Component {
+        id: absWarningLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "red"
+
+            width: warningLightWidth
+        }
+    }
+
+    Component {
+        id: checkEngineLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "orange"
+
+            width: warningLightWidth
+        }
+    }
+
+    Component {
+        id: serviceLightDelegate
+
+        WarningLight {
+            on: warningLightOn
+            warningText: warningLightText
+            lightColor: "orange"
+
+            width: warningLightWidth
+        }
+    }
+
     SwipeView {
         id: swipeView
         anchors.fill: parent
@@ -175,26 +342,40 @@ ApplicationWindow {
         }
 
         Keys.onPressed: {
-                if (event.key === Qt.Key_Right) {
-                   if(swipeView.currentIndex + 1 < swipeView.count) {
+                switch (event.key) {
+                case Qt.Key_Right:
+                    if(swipeView.currentIndex + 1 < swipeView.count) {
                         swipeView.incrementCurrentIndex();
-                   } else if (event.key === Qt.Key_Escape) {
-                        rootWindow.close();
-                   }else {
-                       swipeView.setCurrentIndex(0);
-                   }
+                    } else {
+                        swipeView.setCurrentIndex(0);
+                    }
 
-                    event.accepted = true;
+                    break;
+                case Qt.Key_Escape:
+                    rootWindow.close();
+                    break;
+                case Qt.Key_L:
+                    break;
+                case Qt.Key_R:
+                    break;
+                default:
+                    swipeView.setCurrentIndex(0);
+                    break;
                 }
+                event.accepted = true;
             }
 
         Page {
             BigTachLeft {
+                id: bigTach
                 Component.onCompleted: {
                     setSmallGaugeSize(140);
                     setTachSize(440);
                     setSpeedoSize(tachSize - smallGaugeSize - 10);
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
+                }
+
+                WarningLightBar {
                 }
             }
         }
@@ -208,6 +389,9 @@ ApplicationWindow {
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
                 }
             }
+
+            WarningLightBar {
+            }
         }
 
         Page {
@@ -218,6 +402,9 @@ ApplicationWindow {
                     setSpeedoSize(440);
                     setTempFuelSize(400);
                 }
+            }
+
+            WarningLightBar {
             }
         }
     }
