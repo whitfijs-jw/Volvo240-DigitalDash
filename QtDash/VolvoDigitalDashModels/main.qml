@@ -201,6 +201,7 @@ ApplicationWindow {
             on: warningLightOn
             warningText: warningLightText
             lightColor: "orange"
+            imageSource: "qrc:/warningLights/Bulb_failure_icon_no_background.png"
 
             width: warningLightWidth
         }
@@ -225,6 +226,7 @@ ApplicationWindow {
             on: warningLightOn
             warningText: warningLightText
             lightColor: "lightcyan"
+            imageSource: "qrc:/warningLights/high_beam_icon.png"
 
             width: warningLightWidth
         }
@@ -249,6 +251,7 @@ ApplicationWindow {
             on: warningLightOn
             warningText: warningLightText
             lightColor: "red"
+            imageSource: "qrc:warningLights/oil_icon_no_background.png"
 
             width: warningLightWidth
         }
@@ -261,6 +264,7 @@ ApplicationWindow {
             on: warningLightOn
             warningText: warningLightText
             lightColor: "red"
+            imageSource: "qrc:warningLights/battery_charge_icon_no_background.png"
 
             width: warningLightWidth
         }
