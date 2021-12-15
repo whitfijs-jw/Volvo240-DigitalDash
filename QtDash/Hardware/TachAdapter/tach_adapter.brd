@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.1.0">
+<eagle version="7.7.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.025" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.025" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.0125" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
@@ -140,10 +140,10 @@
 </layers>
 <board>
 <plain>
-<wire x1="0" y1="0" x2="43.485" y2="0" width="0" layer="20"/>
-<wire x1="43.485" y1="0" x2="43.485" y2="13.96" width="0" layer="20"/>
-<wire x1="43.485" y1="13.96" x2="0" y2="13.96" width="0" layer="20"/>
-<wire x1="0" y1="13.96" x2="0" y2="0" width="0" layer="20"/>
+<wire x1="0" y1="-1.27" x2="43.485" y2="-1.27" width="0" layer="20"/>
+<wire x1="43.485" y1="-1.27" x2="43.485" y2="12.69" width="0" layer="20"/>
+<wire x1="43.485" y1="12.69" x2="0" y2="12.69" width="0" layer="20"/>
+<wire x1="0" y1="12.69" x2="0" y2="-1.27" width="0" layer="20"/>
 </plain>
 <libraries>
 <library name="SparkFun-DiscreteSemi">
@@ -196,18 +196,22 @@ Basic SMA packaged diode. Good for reverse polarization protection. Common part 
 </library>
 <library name="tach_adapter">
 <packages>
-<package name="SO4">
-<smd name="1" x="-3.15" y="0.635" dx="1.2" dy="0.8" layer="1"/>
-<smd name="2" x="-3.15" y="-0.635" dx="1.2" dy="0.8" layer="1"/>
-<smd name="4" x="3.15" y="0.635" dx="1.2" dy="0.8" layer="1"/>
-<smd name="3" x="3.15" y="-0.635" dx="1.2" dy="0.8" layer="1"/>
-<wire x1="-2.275" y1="1.3" x2="-2.275" y2="-1.3" width="0.127" layer="21"/>
-<wire x1="-2.275" y1="-1.3" x2="2.275" y2="-1.3" width="0.127" layer="21"/>
-<wire x1="2.275" y1="-1.3" x2="2.275" y2="1.3" width="0.127" layer="21"/>
-<wire x1="2.275" y1="1.3" x2="-2.275" y2="1.3" width="0.127" layer="21"/>
-<circle x="-1.75" y="0.7" radius="0.22360625" width="0.127" layer="21"/>
-<text x="-2.54" y="1.905" size="1.27" layer="21">&gt;VALUE</text>
-<text x="-2.54" y="-3.175" size="1.27" layer="21">&gt;NAME</text>
+<package name="4-SMD">
+<smd name="1" x="-3.125" y="1.27" dx="1.45" dy="0.8" layer="1"/>
+<smd name="2" x="-3.125" y="-1.27" dx="1.45" dy="0.8" layer="1"/>
+<smd name="3" x="3.125" y="-1.27" dx="1.45" dy="0.8" layer="1"/>
+<smd name="4" x="3.125" y="1.27" dx="1.45" dy="0.8" layer="1"/>
+<wire x1="-2.2" y1="2" x2="2.2" y2="2" width="0.127" layer="21"/>
+<wire x1="2.2" y1="2" x2="2.2" y2="-2" width="0.127" layer="21"/>
+<wire x1="2.2" y1="-2" x2="-2.2" y2="-2" width="0.127" layer="21"/>
+<wire x1="-2.2" y1="-2" x2="-2.2" y2="2" width="0.127" layer="21"/>
+<rectangle x1="-3.5" y1="1.07" x2="-2.2" y2="1.47" layer="51"/>
+<rectangle x1="-3.5" y1="-1.47" x2="-2.2" y2="-1.07" layer="51"/>
+<rectangle x1="2.2" y1="1.07" x2="3.5" y2="1.47" layer="51"/>
+<rectangle x1="2.2" y1="-1.47" x2="3.5" y2="-1.07" layer="51"/>
+<text x="2.032" y="-2.286" size="1.016" layer="21" rot="R180">&gt;NAME</text>
+<text x="-2.794" y="2.286" size="1.016" layer="21">&gt;VALUE</text>
+<rectangle x1="-2.286" y1="-2.032" x2="-1.524" y2="2.032" layer="21"/>
 </package>
 </packages>
 </library>
@@ -463,64 +467,100 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 </pass>
 </autorouter>
 <elements>
-<element name="D1" library="SparkFun-DiscreteSemi" package="SMB-DIODE" value="DIODE-ZENERSMB" x="9.525" y="5.08"/>
-<element name="D2" library="SparkFun-DiscreteSemi" package="SMB-DIODE" value="DIODE-ZENERSMB" x="15.24" y="10.795"/>
-<element name="D3" library="SparkFun-DiscreteSemi" package="SMA-DIODE" value="" x="7.62" y="10.16"/>
-<element name="D4" library="SparkFun-DiscreteSemi" package="SMB-DIODE" value="DIODE-ZENERSMB" x="23.495" y="5.08"/>
-<element name="IC1" library="tach_adapter" package="SO4" value="TLP293" x="29.21" y="9.525"/>
+<element name="D1" library="SparkFun-DiscreteSemi" package="SMB-DIODE" value="82V" x="9.525" y="3.175" smashed="yes">
+<attribute name="NAME" x="7.874" y="1.016" size="1.27" layer="25" rot="R180"/>
+<attribute name="VALUE" x="12.7" y="0.889" size="1.27" layer="27" rot="R180"/>
+</element>
+<element name="D2" library="SparkFun-DiscreteSemi" package="SMB-DIODE" value="82V" x="16.1925" y="10.16" smashed="yes">
+<attribute name="NAME" x="12.319" y="11.811" size="1.27" layer="25" rot="R180"/>
+<attribute name="VALUE" x="17.4625" y="7.874" size="1.27" layer="27" rot="R180"/>
+</element>
+<element name="D3" library="SparkFun-DiscreteSemi" package="SMA-DIODE" value="" x="8.255" y="8.255" smashed="yes">
+<attribute name="NAME" x="5.969" y="9.906" size="0.4064" layer="25"/>
+<attribute name="VALUE" x="8.509" y="9.906" size="0.4064" layer="27"/>
+</element>
+<element name="D4" library="SparkFun-DiscreteSemi" package="SMB-DIODE" value="13V" x="22.86" y="3.175" smashed="yes">
+<attribute name="NAME" x="21.209" y="1.016" size="1.27" layer="25" rot="R180"/>
+<attribute name="VALUE" x="26.035" y="0.889" size="1.27" layer="27" rot="R180"/>
+</element>
+<element name="IC1" library="tach_adapter" package="4-SMD" value="PS2701-1" x="29.21" y="9.525" smashed="yes">
+<attribute name="NAME" x="31.242" y="7.239" size="1.016" layer="21" rot="R180"/>
+<attribute name="VALUE" x="26.416" y="11.811" size="1.016" layer="51"/>
+</element>
 <element name="J1" library="SparkFun-Connectors" package="1X02_LONGPADS" value="" x="2.54" y="5.715" rot="R90"/>
 <element name="J2" library="SparkFun-Connectors" package="1X03_LONGPADS" value="" x="39.37" y="9.525" rot="R270"/>
-<element name="R1" library="SparkFun-Passives" package="1206" value="2k" x="15.24" y="5.715" rot="R270"/>
-<element name="R2" library="SparkFun-Passives" package="1206" value="0" x="17.78" y="5.715" rot="R90"/>
+<element name="R1" library="SparkFun-Passives" package="1206" value="2k" x="14.605" y="3.81" smashed="yes" rot="R270">
+<attribute name="NAME" x="15.5575" y="5.9055" size="0.4064" layer="25"/>
+<attribute name="VALUE" x="15.748" y="5.461" size="0.4064" layer="27"/>
+</element>
+<element name="R2" library="SparkFun-Passives" package="1206" value="220" x="17.78" y="3.81" smashed="yes" rot="R90">
+<attribute name="NAME" x="17.018" y="1.27" size="0.4064" layer="25" rot="R270"/>
+<attribute name="VALUE" x="17.526" y="1.397" size="0.4064" layer="27" rot="R270"/>
+</element>
 <element name="R3" library="SparkFun-Passives" package="0603-RES" value="1k" x="35.56" y="10.16"/>
+<element name="R4" library="SparkFun-Passives" package="1206" value="220" x="23.495" y="6.35" smashed="yes" rot="R180">
+<attribute name="NAME" x="23.495" y="7.747" size="0.4064" layer="25" rot="R180"/>
+<attribute name="VALUE" x="24.892" y="7.874" size="0.4064" layer="27" rot="R180"/>
+</element>
 </elements>
 <signals>
 <signal name="N$1">
 <contactref element="D1" pad="C"/>
 <contactref element="D3" pad="C"/>
-<wire x1="9.77" y1="10.16" x2="9.77" y2="9.135" width="1.016" layer="1"/>
-<wire x1="9.77" y1="9.135" x2="7.325" y2="6.69" width="1.016" layer="1"/>
-<wire x1="7.325" y1="6.69" x2="7.325" y2="5.08" width="1.016" layer="1"/>
+<wire x1="10.405" y1="8.255" x2="10.795" y2="7.865" width="1.016" layer="1"/>
+<wire x1="10.795" y1="7.865" x2="10.795" y2="6.985" width="1.016" layer="1"/>
+<wire x1="10.795" y1="6.985" x2="9.525" y2="5.715" width="1.016" layer="1"/>
+<wire x1="9.525" y1="5.715" x2="8.255" y2="5.715" width="1.016" layer="1"/>
+<wire x1="8.255" y1="5.715" x2="7.325" y2="4.785" width="1.016" layer="1"/>
+<wire x1="7.325" y1="4.785" x2="7.325" y2="3.175" width="1.016" layer="1"/>
 </signal>
 <signal name="N$2">
 <contactref element="D1" pad="A"/>
 <contactref element="D2" pad="C"/>
-<wire x1="11.725" y1="5.08" x2="13.04" y2="6.395" width="1.016" layer="1"/>
-<wire x1="13.04" y1="6.395" x2="13.04" y2="10.795" width="1.016" layer="1"/>
+<wire x1="11.725" y1="3.175" x2="12.7" y2="4.15" width="1.016" layer="1"/>
+<wire x1="12.7" y1="4.15" x2="12.7" y2="8.89" width="1.016" layer="1"/>
+<wire x1="12.7" y1="8.89" x2="13.97" y2="10.16" width="1.016" layer="1"/>
+<wire x1="13.97" y1="10.16" x2="13.9925" y2="10.16" width="1.016" layer="1"/>
 </signal>
 <signal name="N$3">
 <contactref element="D2" pad="A"/>
 <contactref element="R1" pad="1"/>
-<wire x1="17.44" y1="10.795" x2="15.24" y2="7.96" width="1.016" layer="1"/>
-<wire x1="15.24" y1="7.96" x2="15.24" y2="7.115" width="1.016" layer="1"/>
+<wire x1="14.605" y1="5.21" x2="14.605" y2="6.985" width="1.016" layer="1"/>
+<wire x1="14.605" y1="6.985" x2="15.24" y2="7.62" width="1.016" layer="1"/>
+<wire x1="15.24" y1="7.62" x2="17.145" y2="7.62" width="1.016" layer="1"/>
+<wire x1="17.145" y1="7.62" x2="18.415" y2="8.89" width="1.016" layer="1"/>
+<wire x1="18.415" y1="8.89" x2="18.415" y2="9.525" width="1.016" layer="1"/>
+<wire x1="18.415" y1="9.525" x2="18.3925" y2="9.5475" width="1.016" layer="1"/>
+<wire x1="18.3925" y1="9.5475" x2="18.3925" y2="10.16" width="1.016" layer="1"/>
 </signal>
 <signal name="N$4">
 <contactref element="R1" pad="2"/>
 <contactref element="R2" pad="1"/>
 <contactref element="D4" pad="C"/>
-<wire x1="15.24" y1="4.315" x2="17.78" y2="4.315" width="1.016" layer="1"/>
-<wire x1="17.78" y1="4.315" x2="17.91" y2="4.445" width="1.016" layer="1"/>
-<wire x1="17.91" y1="4.445" x2="19.685" y2="4.445" width="1.016" layer="1"/>
-<wire x1="19.685" y1="4.445" x2="20.32" y2="5.08" width="1.016" layer="1"/>
-<wire x1="20.32" y1="5.08" x2="21.295" y2="5.08" width="1.016" layer="1"/>
+<wire x1="14.605" y1="2.41" x2="17.78" y2="2.41" width="1.016" layer="1"/>
+<wire x1="17.78" y1="2.41" x2="17.91" y2="2.54" width="1.016" layer="1"/>
+<wire x1="17.91" y1="2.54" x2="19.685" y2="2.54" width="1.016" layer="1"/>
+<wire x1="19.685" y1="2.54" x2="20.32" y2="3.175" width="1.016" layer="1"/>
+<wire x1="20.32" y1="3.175" x2="20.66" y2="3.175" width="1.016" layer="1"/>
 </signal>
 <signal name="N$5">
 <contactref element="R2" pad="2"/>
 <contactref element="IC1" pad="1"/>
-<wire x1="17.78" y1="7.115" x2="18.285" y2="7.62" width="1.016" layer="1"/>
-<wire x1="18.285" y1="7.62" x2="19.05" y2="7.62" width="1.016" layer="1"/>
-<wire x1="19.05" y1="7.62" x2="21.59" y2="10.16" width="1.016" layer="1"/>
-<wire x1="21.59" y1="10.16" x2="26.06" y2="10.16" width="1.016" layer="1"/>
+<wire x1="22.86" y1="10.795" x2="26.085" y2="10.795" width="1.016" layer="1"/>
+<wire x1="22.86" y1="10.795" x2="17.78" y2="5.715" width="1.016" layer="1"/>
+<wire x1="17.78" y1="5.715" x2="17.78" y2="5.21" width="1.016" layer="1"/>
 </signal>
 <signal name="N$7">
 <contactref element="IC1" pad="4"/>
 <contactref element="R3" pad="1"/>
 <contactref element="J2" pad="2"/>
-<wire x1="32.36" y1="10.16" x2="34.71" y2="10.16" width="0.4064" layer="1"/>
 <wire x1="34.71" y1="10.16" x2="34.925" y2="9.945" width="0.4064" layer="1"/>
 <wire x1="34.925" y1="9.945" x2="34.925" y2="8.255" width="0.4064" layer="1"/>
 <wire x1="34.925" y1="8.255" x2="36.195" y2="6.985" width="0.4064" layer="1"/>
 <wire x1="36.195" y1="6.985" x2="39.37" y2="6.985" width="0.4064" layer="1"/>
+<wire x1="32.335" y1="10.795" x2="33.655" y2="10.795" width="0.4064" layer="1"/>
+<wire x1="33.655" y1="10.795" x2="34.29" y2="10.16" width="0.4064" layer="1"/>
+<wire x1="34.29" y1="10.16" x2="34.71" y2="10.16" width="0.4064" layer="1"/>
 </signal>
 <signal name="3.3V">
 <contactref element="R3" pad="2"/>
@@ -532,28 +572,34 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <contactref element="IC1" pad="3"/>
 <contactref element="J2" pad="3"/>
 <polygon width="0.4064" layer="1" isolate="0.3048">
-<vertex x="31.75" y="13.97"/>
-<vertex x="31.75" y="0"/>
-<vertex x="43.815" y="0"/>
-<vertex x="43.815" y="13.97"/>
+<vertex x="31.75" y="12.7"/>
+<vertex x="31.75" y="-1.27"/>
+<vertex x="43.815" y="-1.27"/>
+<vertex x="43.815" y="12.7"/>
 </polygon>
 </signal>
 <signal name="GND-ISO">
-<contactref element="IC1" pad="2"/>
 <contactref element="D4" pad="A"/>
 <contactref element="J1" pad="1"/>
 <polygon width="0.4064" layer="1" isolate="0.3048">
-<vertex x="0" y="13.97"/>
-<vertex x="26.67" y="13.97"/>
-<vertex x="26.67" y="0"/>
-<vertex x="0" y="0"/>
+<vertex x="0" y="12.7"/>
+<vertex x="26.67" y="12.7"/>
+<vertex x="26.67" y="-1.27"/>
+<vertex x="0" y="-1.27"/>
 </polygon>
+<contactref element="R4" pad="1"/>
 </signal>
 <signal name="N$8">
 <contactref element="D3" pad="A"/>
 <contactref element="J1" pad="2"/>
-<wire x1="2.54" y1="8.255" x2="4.445" y2="10.16" width="1.016" layer="1"/>
-<wire x1="4.445" y1="10.16" x2="5.47" y2="10.16" width="1.016" layer="1"/>
+<wire x1="2.54" y1="8.255" x2="6.105" y2="8.255" width="1.016" layer="1"/>
+</signal>
+<signal name="N$6">
+<contactref element="IC1" pad="2"/>
+<contactref element="R4" pad="2"/>
+<wire x1="26.085" y1="8.255" x2="22.86" y2="8.255" width="0.8128" layer="1"/>
+<wire x1="22.86" y1="8.255" x2="22.095" y2="7.49" width="0.8128" layer="1"/>
+<wire x1="22.095" y1="7.49" x2="22.095" y2="6.35" width="0.8128" layer="1"/>
 </signal>
 </signals>
 </board>
