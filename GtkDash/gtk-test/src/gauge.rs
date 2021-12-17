@@ -1,8 +1,6 @@
 use gtk::prelude::*;
 use glib::SignalHandlerId;
-use gtk::{Application, ApplicationWindow, Button, DrawingArea};
 use std::rc::Rc;
-use std::cell::RefCell;
 
 pub trait Draw<T> {
     fn draw(
