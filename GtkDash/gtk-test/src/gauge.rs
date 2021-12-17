@@ -21,13 +21,13 @@ pub struct Gauge {
     min: f64,
     max: f64,
     pub val: f64,
-    dial_diameter: f64,
+    needle_center_diameter: f64,
 }
 impl Gauge {
 
     pub fn new(
         radius: f64,
-        dial_diameter: f64,
+        needle_center_diameter: f64,
         xc: f64,
         yc: f64,
         start_angle: isize,
@@ -49,7 +49,7 @@ impl Gauge {
             min: min,
             max: max, 
             val: 0.0, 
-            dial_diameter: dial_diameter
+            needle_center_diameter: needle_center_diameter
         };
     }
 
@@ -63,26 +63,21 @@ impl Gauge {
         }
     }
 
-    fn draw_internal(&self, c: &cairo::Context) {
+
+    fn draw_background(&self, c: &cairo::Context) {
         c.set_source_rgb(1.0, 1.0, 1.0);
         c.paint();
+    }
 
-        c.arc(self.xc, self.yc, self.dial_diameter, 0.0, 2.0 * std::f64::consts::PI);
+    fn draw_needle(&self, c: &cairo::Context) {
+        // needle center
+        c.arc(self.xc, self.yc, self.needle_center_diameter, 0.0, 2.0 * std::f64::consts::PI);
         c.set_source_rgb(0.0, 0.0, 0.0);
         c.set_line_width(2.0);
         c.fill();
 
-        for theta in (self.theta_start..=self.theta_end).step_by(self.step) {
-            let a = theta as f64 * std::f64::consts::PI / 180.0;
-
-            c.move_to(self.xc + (self.outer * a.cos()) , self.yc - (self.outer * a.sin()));
-            c.line_to(self.xc + (self.inner * a.cos()), self.yc - (self.inner * a.sin()));
-        }
-
-        c.stroke();
-
         c.move_to(self.xc, self.yc);
-        c.set_source_rgb(1.0, 0.05, 0.05);
+        c.set_source_rgb(1.0, 0.6, 0.0);
         c.set_line_width(10.0);
         
         let pct = self.val / (self.max - self.min);
@@ -90,9 +85,30 @@ impl Gauge {
         let d = self.theta_end as f64 - ((self.theta_end - self.theta_start) as f64 * pct);
         let a = d * std::f64::consts::PI / 180.0;
 
-
         c.line_to(self.xc + (self.outer * a.cos()) , self.yc - (self.outer * a.sin()));
         c.stroke();
+    }
+
+    fn draw_gauge_face(&self, c: &cairo::Context) {
+        c.set_source_rgb(0.0, 0.0, 0.0);
+        c.set_line_width(2.0);
+
+        for theta in (self.theta_start..=self.theta_end).step_by(self.step) {
+            let a = theta as f64 * std::f64::consts::PI / 180.0;
+
+            c.move_to(self.xc + (self.outer * a.cos()) , self.yc - (self.outer * a.sin()));
+            c.line_to(self.xc + (self.inner * a.cos()), self.yc - (self.inner * a.sin()));
+        }
+        c.stroke();
+    }
+
+    fn draw_internal(&self, c: &cairo::Context) {
+
+        self.draw_background(c);
+
+        self.draw_gauge_face(c);
+
+        self.draw_needle(c);
     }
 }
 
