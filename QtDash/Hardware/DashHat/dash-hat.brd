@@ -651,6 +651,21 @@ NS Package M08A</description>
 <pad name="11" x="-5" y="8.66" drill="2" diameter="4"/>
 <pad name="12" x="-8.66" y="5" drill="2" diameter="4"/>
 </package>
+<package name="VOLVO_CON_32">
+<circle x="0" y="10" radius="1" width="0.001" layer="51"/>
+<circle x="-5" y="8.66025" radius="1" width="0.001" layer="51"/>
+<circle x="0" y="10" radius="2" width="0.001" layer="51"/>
+<circle x="5" y="8.66025" radius="1" width="0.001" layer="51"/>
+<circle x="8.66025" y="5" radius="1" width="0.001" layer="51"/>
+<circle x="-10" y="0" radius="1" width="0.001" layer="51"/>
+<circle x="-8.66025" y="5" radius="1" width="0.001" layer="51"/>
+<pad name="4" x="-10" y="0" drill="2" diameter="4"/>
+<pad name="3" x="-8.66" y="5" drill="2" diameter="4"/>
+<pad name="A" x="-5" y="8.66" drill="2" diameter="4"/>
+<pad name="2" x="5" y="8.66" drill="2" diameter="4"/>
+<pad name="1" x="8.66" y="5" drill="2" diameter="4"/>
+<hole x="0" y="10" drill="4"/>
+</package>
 </packages>
 </library>
 <library name="SparkFun-Resistors">
@@ -1305,6 +1320,7 @@ design rules under a new name.</description>
 </element>
 <element name="IC4" library="digital_dash" package="SO08" value="LM358D" x="95.75" y="-27.75"/>
 <element name="J6" library="digital_dash" package="VOLVO_CON_31" value="VOLVO_CONN_31" x="175.5" y="59.75"/>
+<element name="U$1" library="digital_dash" package="VOLVO_CON_32" value="VOLVO_CONN_32" x="-37.5" y="-73"/>
 </elements>
 <signals>
 <signal name="SENSOR1_IN">
