@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -2073,6 +2073,21 @@ NS Package M08A</description>
 <pad name="11" x="-5" y="8.66" drill="2" diameter="4"/>
 <pad name="12" x="-8.66" y="5" drill="2" diameter="4"/>
 </package>
+<package name="VOLVO_CON_32">
+<circle x="0" y="10" radius="1" width="0.001" layer="51"/>
+<circle x="-5" y="8.66025" radius="1" width="0.001" layer="51"/>
+<circle x="0" y="10" radius="2" width="0.001" layer="51"/>
+<circle x="5" y="8.66025" radius="1" width="0.001" layer="51"/>
+<circle x="8.66025" y="5" radius="1" width="0.001" layer="51"/>
+<circle x="-10" y="0" radius="1" width="0.001" layer="51"/>
+<circle x="-8.66025" y="5" radius="1" width="0.001" layer="51"/>
+<pad name="4" x="-10" y="0" drill="2" diameter="4"/>
+<pad name="3" x="-8.66" y="5" drill="2" diameter="4"/>
+<pad name="A" x="-5" y="8.66" drill="2" diameter="4"/>
+<pad name="2" x="5" y="8.66" drill="2" diameter="4"/>
+<pad name="1" x="8.66" y="5" drill="2" diameter="4"/>
+<hole x="0" y="10" drill="4"/>
+</package>
 </packages>
 <symbols>
 <symbol name="OP-AMP+-">
@@ -2228,6 +2243,19 @@ NS Package M08A</description>
 <pin name="10" x="0" y="10" visible="pad" length="point"/>
 <pin name="11" x="-5" y="8.66" visible="pad" length="point"/>
 <pin name="12" x="-8.66" y="5" visible="pad" length="point"/>
+</symbol>
+<symbol name="CONN_32">
+<circle x="-5" y="8.66025" radius="1" width="0.001" layer="94"/>
+<circle x="0" y="10" radius="2" width="0.001" layer="94"/>
+<circle x="5" y="8.66025" radius="1" width="0.001" layer="94"/>
+<circle x="8.66025" y="5" radius="1" width="0.001" layer="94"/>
+<circle x="-10" y="0" radius="1" width="0.001" layer="94"/>
+<circle x="-8.66025" y="5" radius="1" width="0.001" layer="94"/>
+<pin name="1" x="8.66" y="5" length="point"/>
+<pin name="2" x="5" y="8.66" length="point"/>
+<pin name="A" x="-5" y="8.66" length="point"/>
+<pin name="3" x="-8.66" y="5" length="point"/>
+<pin name="4" x="-10" y="0" length="point"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -2422,6 +2450,25 @@ Source: http://cache.national.com/ds/LM/LM158.pdf</description>
 <connect gate="G$1" pin="7" pad="7"/>
 <connect gate="G$1" pin="8" pad="8"/>
 <connect gate="G$1" pin="9" pad="9"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="VOLVO_CONN_32">
+<gates>
+<gate name="G$1" symbol="CONN_32" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="VOLVO_CON_32">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="3" pad="3"/>
+<connect gate="G$1" pin="4" pad="4"/>
+<connect gate="G$1" pin="A" pad="A"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -4620,6 +4667,7 @@ Siemens, Hewlett-Packard, Texas Instuments, Sharp, Motorola&lt;p&gt;
 <part name="GND-ISO19" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
 <part name="GND-ISO20" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
 <part name="GND-ISO21" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
+<part name="U$1" library="digital_dash" deviceset="VOLVO_CONN_32" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4833,7 +4881,7 @@ Siemens, Hewlett-Packard, Texas Instuments, Sharp, Motorola&lt;p&gt;
 <instance part="R62" gate="G$1" x="304.165" y="196.215"/>
 <instance part="IC4" gate="B" x="229.87" y="212.09"/>
 <instance part="IC4" gate="A" x="229.87" y="275.59"/>
-<instance part="J6" gate="G$1" x="529.59" y="260.35"/>
+<instance part="J6" gate="G$1" x="521.97" y="217.17"/>
 <instance part="GND-ISO1" gate="G$1" x="203.2" y="264.16"/>
 <instance part="GND-ISO2" gate="G$1" x="203.2" y="200.66"/>
 <instance part="GND-ISO3" gate="G$1" x="219.71" y="245.11"/>
@@ -4855,6 +4903,7 @@ Siemens, Hewlett-Packard, Texas Instuments, Sharp, Motorola&lt;p&gt;
 <instance part="GND-ISO19" gate="G$1" x="411.48" y="59.69"/>
 <instance part="GND-ISO20" gate="G$1" x="259.08" y="283.21" rot="R270"/>
 <instance part="GND-ISO21" gate="G$1" x="259.08" y="219.71" rot="R270"/>
+<instance part="U$1" gate="G$1" x="487.68" y="215.9"/>
 </instances>
 <busses>
 </busses>
