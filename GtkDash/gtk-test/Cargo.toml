@@ -5,9 +5,24 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+# [dependencies]
+# cairo-rs = "0.14.9"
+# gio = "0.14.8"
+# glib = "0.14.8"
+# pango = "0.14.8"
+# pango_sys = "0.14.8"
+# pango_cairo_sys = "0.14.0"
+# gtk = "0.14.3"
+
 [dependencies]
-cairo-rs = "0.14.9"
-gio = "0.14.8"
-glib = "0.14.8"
-pango = "0.14.8"
-gtk = "0.14.3"
+glib-sys = "^0"
+gobject-sys = "^0"
+glib = "^0"
+gio = "^0"
+gdk = "^0"
+gdk-pixbuf = "^0"
+gtk = "^0"
+once_cell = "^0"
+pango = "^0"
+pangocairo = "^0"
+cairo-rs = { version = "^0", features = ["png"] }
