@@ -25,6 +25,7 @@ pub struct Gauge {
     min: f64,
     max: f64,
     pub val: f64,
+    val_internal: f64,
     dial_diameter: f64,
     drawing_area: DrawingArea,
 }
@@ -56,6 +57,7 @@ impl Gauge {
             min: min,
             max: max, 
             val: 0.0, 
+            val_internal: 0.0,
             dial_diameter: dial_diameter,
             drawing_area: drawing_area,
         };
@@ -64,6 +66,8 @@ impl Gauge {
     }
 
     pub fn set_value(&mut self, val: f64) {
+        self.val_internal = val;
+
         if val <= self.max && val >= self.min {
             self.val = val;
         } else if val > self.max {
@@ -130,7 +134,7 @@ impl Gauge {
         c.line_to(self.xc + (self.outer * a.cos()) , self.yc - (self.outer * a.sin()));
         c.stroke();
 
-        let val = format!("{:.2}", self.val);
+        let val = format!("{:.2}", self.val_internal);
         let layout = w.create_pango_layout(Some(&val));
         layout.set_font_description(Some(&font));
         let (w, h) = layout.pixel_size();
