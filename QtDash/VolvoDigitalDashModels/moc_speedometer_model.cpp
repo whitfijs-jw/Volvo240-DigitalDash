@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'speedometer_model.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.12.8)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'speedometer_model.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.9.2. It"
+#error "This file was generated using the moc from 5.12.8. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -66,7 +66,7 @@ QT_MOC_LITERAL(19, 234, 8) // "topUnits"
 static const uint qt_meta_data_SpeedometerModel[] = {
 
  // content:
-       7,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
       12,   14, // methods
@@ -130,7 +130,7 @@ static const uint qt_meta_data_SpeedometerModel[] = {
 void SpeedometerModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        SpeedometerModel *_t = static_cast<SpeedometerModel *>(_o);
+        auto *_t = static_cast<SpeedometerModel *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->minValueChanged(); break;
@@ -149,45 +149,44 @@ void SpeedometerModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
-        void **func = reinterpret_cast<void **>(_a[1]);
         {
-            typedef void (SpeedometerModel::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&SpeedometerModel::minValueChanged)) {
+            using _t = void (SpeedometerModel::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&SpeedometerModel::minValueChanged)) {
                 *result = 0;
                 return;
             }
         }
         {
-            typedef void (SpeedometerModel::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&SpeedometerModel::maxValueChanged)) {
+            using _t = void (SpeedometerModel::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&SpeedometerModel::maxValueChanged)) {
                 *result = 1;
                 return;
             }
         }
         {
-            typedef void (SpeedometerModel::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&SpeedometerModel::currentValueChanged)) {
+            using _t = void (SpeedometerModel::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&SpeedometerModel::currentValueChanged)) {
                 *result = 2;
                 return;
             }
         }
         {
-            typedef void (SpeedometerModel::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&SpeedometerModel::unitsChanged)) {
+            using _t = void (SpeedometerModel::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&SpeedometerModel::unitsChanged)) {
                 *result = 3;
                 return;
             }
         }
         {
-            typedef void (SpeedometerModel::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&SpeedometerModel::topValueChanged)) {
+            using _t = void (SpeedometerModel::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&SpeedometerModel::topValueChanged)) {
                 *result = 4;
                 return;
             }
         }
         {
-            typedef void (SpeedometerModel::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&SpeedometerModel::topUnitsChanged)) {
+            using _t = void (SpeedometerModel::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&SpeedometerModel::topUnitsChanged)) {
                 *result = 5;
                 return;
             }
@@ -195,7 +194,7 @@ void SpeedometerModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
     }
 #ifndef QT_NO_PROPERTIES
     else if (_c == QMetaObject::ReadProperty) {
-        SpeedometerModel *_t = static_cast<SpeedometerModel *>(_o);
+        auto *_t = static_cast<SpeedometerModel *>(_o);
         Q_UNUSED(_t)
         void *_v = _a[0];
         switch (_id) {
@@ -208,7 +207,7 @@ void SpeedometerModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         default: break;
         }
     } else if (_c == QMetaObject::WriteProperty) {
-        SpeedometerModel *_t = static_cast<SpeedometerModel *>(_o);
+        auto *_t = static_cast<SpeedometerModel *>(_o);
         Q_UNUSED(_t)
         void *_v = _a[0];
         switch (_id) {
@@ -225,10 +224,14 @@ void SpeedometerModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
 #endif // QT_NO_PROPERTIES
 }
 
-const QMetaObject SpeedometerModel::staticMetaObject = {
-    { &QAbstractListModel::staticMetaObject, qt_meta_stringdata_SpeedometerModel.data,
-      qt_meta_data_SpeedometerModel,  qt_static_metacall, nullptr, nullptr}
-};
+QT_INIT_METAOBJECT const QMetaObject SpeedometerModel::staticMetaObject = { {
+    &QAbstractListModel::staticMetaObject,
+    qt_meta_stringdata_SpeedometerModel.data,
+    qt_meta_data_SpeedometerModel,
+    qt_static_metacall,
+    nullptr,
+    nullptr
+} };
 
 
 const QMetaObject *SpeedometerModel::metaObject() const
@@ -259,7 +262,7 @@ int SpeedometerModel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         _id -= 12;
     }
 #ifndef QT_NO_PROPERTIES
-   else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
+    else if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
         _id -= 6;

@@ -366,6 +366,20 @@ ApplicationWindow {
             }
 
         Page {
+            BigTachCenter {
+                Component.onCompleted: {
+                    setSmallGaugeSize(140);
+                    setTachSize(440);
+                    setSpeedoSize(tachSize - smallGaugeSize - 10);
+                    setTempFuelSize(tachSize - smallGaugeSize - 10);
+                }
+            }
+
+            WarningLightBar {
+            }
+        }
+
+        Page {
             BigTachLeft {
                 id: bigTach
                 Component.onCompleted: {
@@ -377,20 +391,6 @@ ApplicationWindow {
 
                 WarningLightBar {
                 }
-            }
-        }
-
-        Page {
-            BigTachCenter {
-                Component.onCompleted: {
-                    setSmallGaugeSize(140);
-                    setTachSize(440);
-                    setSpeedoSize(tachSize - smallGaugeSize - 10);
-                    setTempFuelSize(tachSize - smallGaugeSize - 10);
-                }
-            }
-
-            WarningLightBar {
             }
         }
 

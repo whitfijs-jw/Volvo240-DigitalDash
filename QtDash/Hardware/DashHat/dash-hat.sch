@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -4857,6 +4857,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="U$1" library="digital_dash" deviceset="12V_FUSE_8" device=""/>
 <part name="U$2" library="digital_dash" deviceset="12V_FUSE_16" device=""/>
 <part name="GND-ISO23" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
+<part name="U$3" library="digital_dash" deviceset="12V_FUSE_8" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5114,6 +5115,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instance part="U$1" gate="G$1" x="525.78" y="279.4"/>
 <instance part="U$2" gate="G$1" x="480.06" y="233.68"/>
 <instance part="GND-ISO23" gate="G$1" x="214.63" y="283.21"/>
+<instance part="U$3" gate="G$1" x="163.83" y="226.06"/>
 </instances>
 <busses>
 </busses>
@@ -7031,11 +7033,16 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <label x="114.3" y="-5.08" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
-<net name="N$37" class="0">
+<net name="CONN_32_PIN3" class="0">
 <segment>
 <pinref part="J7" gate="G$1" pin="3"/>
 <wire x1="483.87" y1="224.79" x2="477.52" y2="224.79" width="0.1524" layer="91"/>
 <label x="477.52" y="224.79" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="JP11" gate="G$1" pin="2"/>
+<wire x1="411.48" y1="-2.54" x2="406.4" y2="-2.54" width="0.1524" layer="91"/>
+<label x="406.4" y="-2.54" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="PARKING_BRAKE_N" class="0">
@@ -7045,9 +7052,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <label x="477.52" y="213.36" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="JP11" gate="G$1" pin="2"/>
-<wire x1="411.48" y1="-2.54" x2="406.4" y2="-2.54" width="0.1524" layer="91"/>
-<label x="406.4" y="-2.54" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="JP12" gate="G$1" pin="2"/>
+<wire x1="411.48" y1="-16.51" x2="406.4" y2="-16.51" width="0.1524" layer="91"/>
+<label x="406.4" y="-16.51" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="FUEL_LVL_SENDER" class="0">
@@ -7060,25 +7067,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="27.94" y1="228.6" x2="17.78" y2="228.6" width="0.1524" layer="91"/>
 <label x="17.78" y="228.6" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="JP14" gate="G$1" pin="3"/>
-</segment>
-</net>
-<net name="N$19" class="0">
-<segment>
-<pinref part="JP10" gate="G$1" pin="2"/>
-<wire x1="353.06" y1="-16.51" x2="347.98" y2="-16.51" width="0.1524" layer="91"/>
-<label x="347.98" y="-16.51" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-<segment>
-<pinref part="JP12" gate="G$1" pin="2"/>
-<wire x1="411.48" y1="-16.51" x2="406.4" y2="-16.51" width="0.1524" layer="91"/>
-<label x="406.4" y="-16.51" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-</net>
-<net name="N" class="0">
-<segment>
-<pinref part="JP9" gate="G$1" pin="2"/>
-<wire x1="353.06" y1="-2.54" x2="347.98" y2="-2.54" width="0.1524" layer="91"/>
-<label x="347.98" y="-2.54" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="N$28" class="0">
@@ -7153,6 +7141,13 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="525.78" y1="270.51" x2="525.78" y2="279.4" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="12V-FUSE_8"/>
 </segment>
+<segment>
+<pinref part="JP18" gate="G$1" pin="3"/>
+<wire x1="175.26" y1="219.71" x2="175.26" y2="222.25" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="222.25" x2="163.83" y2="222.25" width="0.1524" layer="91"/>
+<pinref part="U$3" gate="G$1" pin="12V-FUSE_8"/>
+<wire x1="163.83" y1="222.25" x2="163.83" y2="226.06" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="12V-FUSE_16" class="0">
 <segment>
@@ -7160,6 +7155,27 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="483.87" y1="220.98" x2="480.06" y2="220.98" width="0.1524" layer="91"/>
 <wire x1="480.06" y1="220.98" x2="480.06" y2="233.68" width="0.1524" layer="91"/>
 <pinref part="U$2" gate="G$1" pin="12V-FUSE_16"/>
+</segment>
+</net>
+<net name="N$32" class="0">
+<segment>
+<pinref part="JP9" gate="G$1" pin="2"/>
+<wire x1="353.06" y1="-2.54" x2="347.98" y2="-2.54" width="0.1524" layer="91"/>
+<label x="347.98" y="-2.54" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="N$33" class="0">
+<segment>
+<pinref part="JP10" gate="G$1" pin="2"/>
+<wire x1="353.06" y1="-16.51" x2="347.98" y2="-16.51" width="0.1524" layer="91"/>
+<label x="347.98" y="-16.51" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="N$34" class="0">
+<segment>
+<pinref part="JP18" gate="G$1" pin="1"/>
+<wire x1="175.26" y1="209.55" x2="175.26" y2="205.74" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="205.74" x2="163.83" y2="205.74" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

@@ -41,7 +41,10 @@ dtparam=chc_datarate=3
 dtparam=chc_enable=true
 dtparam=chc_datarate=3
 
-#hdmi_cvt 1280 480 60 5 0 0 0
+dtoverlay=mcp23017
+dtparam=addr=0x27
 
-#hdmi_group=2
-#hdmi_mode=87 
+hdmi_cvt 1280 480 60 5 0 0 0
+
+hdmi_group=2
+hdmi_mode=87 

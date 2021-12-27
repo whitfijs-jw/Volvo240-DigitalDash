@@ -7,6 +7,7 @@
 #include <QColor>
 #include <QTextStream>
 #include <QFontDatabase>
+#include <QString>
 
 #include <tachometer_model.h>
 #include <accessory_gauge_model.h>
@@ -15,7 +16,8 @@
 #include <indicator_model.h>
 #include <warning_light_model.h>
 
-//#define RASPBERRY_PI
+#include <mcp23017.h>
+#include <dash_lights.h>
 
 static TachometerModel tachModel;
 static SpeedometerModel speedoModel;
@@ -38,6 +40,10 @@ static WarningLightModel batteryWarningLightModel;
 static WarningLightModel absWarningLightModel;
 static WarningLightModel checkEngineLightModel;
 static WarningLightModel serviceLightModel;
+
+#ifdef RASPBERRY_PI
+static mcp23017 dashLightInputs;
+#endif
 
 
 void initializeModels()
@@ -107,6 +113,7 @@ void initializeModels()
     absWarningLightModel.setText("ABS");
     checkEngineLightModel.setText("CHECK\nENGINE");
     serviceLightModel.setText("SER-\nVICE");
+
 }
 
 void updateGaugesRPi()
@@ -120,10 +127,35 @@ void updateGaugesRPi()
     static double rpm = 0;
 
     QString tempPath = "/sys/class/thermal/thermal_zone0/temp";
-    QString adcPath = "/sys/class/i2c-adapter/i2c-1/1-0048/iio:device0";
+    //QString adcPath = "/sys/class/i2c-adapter/i2c-1/1-0048/iio:device0";
     QFile tempFile(tempPath);
     QTextStream tempStream(&tempFile);
     tempFile.open(QIODevice::ReadOnly);
+
+
+
+#ifdef RASPBERRY_PI
+    dashLightInputs.openDevice();
+    uint8_t portA = dashLightInputs.read(mcp23017::RegisterAddr::GPIOA);
+    uint8_t portB = dashLightInputs.read(mcp23017::RegisterAddr::GPIOB);
+    dashLightInputs.closeDevice();
+
+    auto lights = DashLights::parse(portA, portB);
+
+    leftBlinkerModel.setOn(lights.lights.BlinkerLeft);
+    rightBlinkerModel.setOn(lights.lights.BlinkerRight);
+    highBeamLightModel.setOn(lights.lights.HighBeam);
+    parkingBrakeLightModel.setOn(lights.lights.ParkingBrake);
+    brakeFailureLightModel.setOn(lights.lights.BrakeFailure);
+    bulbFailureLightModel.setOn(lights.lights.BulbFailure);
+    shiftUpLightModel.setOn(0);
+    srsWarningLightModel.setOn(lights.lights.ODLamp);
+    oilWarningLightModel.setOn(lights.lights.OilPressureSwitch);
+    batteryWarningLightModel.setOn(lights.lights.Charging);
+    absWarningLightModel.setOn(lights.lights.Conn32Pin3);
+    checkEngineLightModel.setOn(0);
+    serviceLightModel.setOn(0);
+#endif
 
     if(tempFile.isOpen())
     {
@@ -186,7 +218,7 @@ void updateGaugesRPi()
 }
 
 void updateGauges() {
-    QString tempPath = "//sys/class/thermal/thermal_zone1/temp";
+    QString tempPath = "/sys/class/thermal/thermal_zone1/temp";
     QString rpmPath = "/sys/class/hwmon/hwmon3/fan1_input";
     QString battPath = "/sys/class/power_supply/BAT0/voltage_now";
     QString fuelLevelPath = "/sys/class/power_supply/BAT0/capacity";
@@ -210,6 +242,13 @@ void updateGauges() {
     fuelFile.open(QIODevice::ReadOnly);
     speedFile.open(QIODevice::ReadOnly);
 
+    //dashLightInputs.openDevice();
+    uint8_t portA = 0xAA;//dashLightInputs.read(mcp23017::RegisterAddr::GPIOA);
+    uint8_t portB = 0x0F;//dashLightInputs.read(mcp23017::RegisterAddr::GPIOB);
+    //dashLightInputs.closeDevice();
+
+    auto lights = DashLights::parse(portA, portB);
+
     if(tempFile.isOpen())
     {
         QString coreTemp = tempStream.readLine();
@@ -223,7 +262,7 @@ void updateGauges() {
         QString rpmString = rpmStream.readLine();
         int rpm = rpmString.toInt();
         tachModel.setRpm(rpm);
-        boostModel.setCurrentValue( ((float)rpm/1000.0)*5.75 );
+        boostModel.setCurrentValue( ((float)rpm/1000.0)*2.0 );
         oilPressureModel.setCurrentValue( ((float)rpm / 1000.0) );
     }
 
@@ -263,19 +302,19 @@ void updateGauges() {
 
 void blink() {
     static int cnt = -1;
-    leftBlinkerModel.setOn(cnt >= 0);
-    rightBlinkerModel.setOn(cnt >= 1);
-    highBeamLightModel.setOn(cnt >= 2);
-    parkingBrakeLightModel.setOn(cnt >= 3);
-    brakeFailureLightModel.setOn(cnt >= 4);
-    bulbFailureLightModel.setOn(cnt >= 5);
-    shiftUpLightModel.setOn(cnt >= 6);
-    srsWarningLightModel.setOn(cnt >= 7);
-    oilWarningLightModel.setOn(cnt >= 8);
-    batteryWarningLightModel.setOn(cnt >= 9);
-    absWarningLightModel.setOn(cnt >= 10);
-    checkEngineLightModel.setOn(cnt >= 11);
-    serviceLightModel.setOn(cnt >= 12);
+//    leftBlinkerModel.setOn(cnt >= 0);
+//    rightBlinkerModel.setOn(cnt >= 1);
+//    highBeamLightModel.setOn(cnt >= 2);
+//    parkingBrakeLightModel.setOn(cnt >= 3);
+//    brakeFailureLightModel.setOn(cnt >= 4);
+//    bulbFailureLightModel.setOn(cnt >= 5);
+//    shiftUpLightModel.setOn(cnt >= 6);
+//    srsWarningLightModel.setOn(cnt >= 7);
+//    oilWarningLightModel.setOn(cnt >= 8);
+//    batteryWarningLightModel.setOn(cnt >= 9);
+//    absWarningLightModel.setOn(cnt >= 10);
+//    checkEngineLightModel.setOn(cnt >= 11);
+//    serviceLightModel.setOn(cnt >= 12);
 
     if (cnt++ >= 12) {
         cnt = -1;
