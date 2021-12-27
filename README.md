@@ -20,3 +20,5 @@ Current parts (mainly driven by availability):
 - IL300 for 12V to 3.3V for isolated analog signals (rheostat and battery voltage)
 - lM358D for driving IL300 12V isolated analog inputs
 - LM324 for 5V to 3.3V analog sensor inputs
+
+![alt text](https://github.com/whitfijs-jw/Volvo240-DigitalDash/blob/develop/QtDash/project_preview.jpg?raw=true)
