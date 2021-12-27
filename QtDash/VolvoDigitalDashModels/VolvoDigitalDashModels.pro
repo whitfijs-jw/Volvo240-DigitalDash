@@ -34,12 +34,17 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    dash_lights.h \
     indicator_model.h \
+    mcp23017.h \
     tachometer_model.h \
     accessory_gauge_model.h \
     speedometer_model.h \
     temp_and_fuel_gauge_model.h \
     warning_light_model.h
+
+INCLUDEPATH += \
+    Headers \
 
 RPI {
     message("rpi is selected")
