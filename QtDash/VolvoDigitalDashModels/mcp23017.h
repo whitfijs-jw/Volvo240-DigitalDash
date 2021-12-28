@@ -29,7 +29,6 @@
 extern "C" {
     #include <linux/i2c.h>
     #include <linux/i2c-dev.h>
-    //#include <i2c/smbus.h>
 }
 
 static inline __s32 i2c_smbus_access(int file, char read_write, __u8 command,
@@ -56,10 +55,21 @@ static inline __s32 i2c_smbus_read_byte_data(int file, __u8 command)
         return 0x0FF & data.byte;
 }
 
+/**
+ * @brief MCP23017 i2c i/o expander class
+ * uses linux i2c-dev interface to read from
+ * the i2c bus.
+ *
+ * On a pi, this is all assuming that the i2c-bcm2835
+ * and i2c-dev modules have been loaded into the kernel.
+ */
 class mcp23017
 {
 public:
 
+    /**
+     * @brief MCP23017 register addresses
+     */
     enum class RegisterAddr{
         IODIRA      = 0x00,
         IODIRB      = 0x01,
@@ -85,10 +95,19 @@ public:
         OLATB       = 0x15,
     };
 
+    /**
+     * @brief Constructor
+     * @param bus: i2c bus -- ex: 1 for i2c-1, 0 for i2c-0
+     * @param addr: 8 bit address of device on the bus (use i2cdetect if you don't know)
+     */
     mcp23017(uint8_t bus = 0x01, uint8_t addr = 0x27) : mAddr(addr), mBus(bus) {
 
     }
 
+    /**
+     * @brief Open I2C device
+     * @return true if successful, false on error
+     */
     bool openDevice() {
         char fname[32];
         snprintf(fname, 32, "/dev/i2c-%d", mBus);
@@ -108,6 +127,10 @@ public:
         return true;
     }
 
+    /**
+     * @brief Close the I2C device
+     * @return true if successful, false on error
+     */
     bool closeDevice() {
         if (mFd > 0) {
             if (close(mFd) != 0) {
@@ -123,6 +146,11 @@ public:
         return false;
     }
 
+    /**
+     * @brief read
+     * @param reg
+     * @return
+     */
     uint8_t read(RegisterAddr reg) {
         if (!mIsOpen) {
             printf("read failed: device not open\n");
@@ -140,9 +168,24 @@ public:
         return ret;
     }
 private:
+    /**
+     * @brief device address
+     */
     uint8_t mAddr = 0x27;
+
+    /**
+     * @brief i2c bus on which device is located
+     */
     uint8_t mBus = 0x01;
+
+    /**
+     * @brief /dev file descriptor
+     */
     int mFd = -0xff;
+
+    /**
+     * @brief is device connected?
+     */
     bool mIsOpen = false;
 };
 
