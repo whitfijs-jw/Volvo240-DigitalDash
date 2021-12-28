@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
@@ -2552,7 +2552,6 @@ Standard 3-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="R1" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="2k"/>
 <part name="R2" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="220"/>
 <part name="IC1" library="tach_adapter" deviceset="PS2701-1" device=""/>
-<part name="R3" library="SparkFun-Passives" deviceset="RESISTOR" device="0603-RES" value="1k"/>
 <part name="SUPPLY1" library="SparkFun-Aesthetics" deviceset="3.3V" device=""/>
 <part name="GND1" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="D4" library="SparkFun-DiscreteSemi" deviceset="DIODE-ZENER" device="SMB" value="13V"/>
@@ -2563,6 +2562,7 @@ Standard 3-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <part name="SUPPLY2" library="SparkFun-Aesthetics" deviceset="3.3V" device=""/>
 <part name="GND2" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="R4" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="220"/>
+<part name="R3" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="1k"/>
 </parts>
 <sheets>
 <sheet>
@@ -2584,7 +2584,6 @@ Standard 3-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="R1" gate="G$1" x="63.5" y="60.96"/>
 <instance part="R2" gate="G$1" x="81.28" y="60.96"/>
 <instance part="IC1" gate="G$1" x="101.6" y="58.42"/>
-<instance part="R3" gate="G$1" x="111.76" y="68.58" rot="R90"/>
 <instance part="SUPPLY1" gate="G$1" x="111.76" y="76.2"/>
 <instance part="GND1" gate="1" x="111.76" y="45.72"/>
 <instance part="D4" gate="G$1" x="71.12" y="55.88" smashed="yes" rot="R90">
@@ -2598,6 +2597,7 @@ Standard 3-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <instance part="SUPPLY2" gate="G$1" x="124.46" y="66.04"/>
 <instance part="GND2" gate="1" x="124.46" y="45.72"/>
 <instance part="R4" gate="G$1" x="81.28" y="53.34"/>
+<instance part="R3" gate="G$1" x="111.76" y="68.58" rot="R270"/>
 </instances>
 <busses>
 </busses>
@@ -2646,17 +2646,17 @@ Standard 3-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <pinref part="IC1" gate="G$1" pin="COL"/>
 <wire x1="109.22" y1="60.96" x2="111.76" y2="60.96" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="60.96" x2="111.76" y2="63.5" width="0.1524" layer="91"/>
-<pinref part="R3" gate="G$1" pin="1"/>
 <pinref part="J2" gate="J$1" pin="2"/>
 <wire x1="127" y1="60.96" x2="111.76" y2="60.96" width="0.1524" layer="91"/>
 <junction x="111.76" y="60.96"/>
+<pinref part="R3" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="3.3V" class="0">
 <segment>
-<pinref part="R3" gate="G$1" pin="2"/>
 <pinref part="SUPPLY1" gate="G$1" pin="3.3V"/>
 <wire x1="111.76" y1="73.66" x2="111.76" y2="76.2" width="0.1524" layer="91"/>
+<pinref part="R3" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="J2" gate="J$1" pin="1"/>
