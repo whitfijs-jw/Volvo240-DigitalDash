@@ -1,4 +1,4 @@
-#ifndef DASHLIGHTS_H
++#ifndef DASHLIGHTS_H
 #define DASHLIGHTS_H
 
 #include <stdint.h>
