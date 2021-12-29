@@ -18,6 +18,7 @@
 
 #include <mcp23017.h>
 #include <dash_lights.h>
+#include <analog_input.h>
 
 static TachometerModel tachModel;
 static SpeedometerModel speedoModel;
@@ -43,6 +44,9 @@ static WarningLightModel serviceLightModel;
 
 #ifdef RASPBERRY_PI
 static mcp23017 dashLightInputs;
+static AnalogInput analogInputs;
+#else
+static AnalogInput analogInputs("mcp3208", "/home/whitfijs/git/dummy_sys/bus/iio/devices/");
 #endif
 
 
@@ -114,6 +118,14 @@ void initializeModels()
     checkEngineLightModel.setText("CHECK\nENGINE");
     serviceLightModel.setText("SER-\nVICE");
 
+#ifdef RASPBERRY_PI
+    std::cout << "Set reference" << std::endl;
+    //analogInputs.setVoltageRef(5.0);
+    std::cout << "Set reference end" << std::endl;
+#else
+    //auto analogInputs = new AnalogInput("mcp3208", "/home/whitfijs/git/dummy_sys/bus/iio/devices/");
+    analogInputs.setVoltageRef(5.0);
+#endif
 }
 
 void updateGaugesRPi()
@@ -155,6 +167,16 @@ void updateGaugesRPi()
     absWarningLightModel.setOn(lights.lights.Conn32Pin3);
     checkEngineLightModel.setOn(0);
     serviceLightModel.setOn(0);
+
+    volts = analogInputs.readValue(0);
+
+    voltMeterModel.setCurrentValue(volts);
+    volts += 0.01;
+    if( volts > 16.0 )
+    {
+        volts = 10.0;
+    }
+
 #endif
 
     if(tempFile.isOpen())
@@ -163,13 +185,6 @@ void updateGaugesRPi()
         float temp = coreTemp.toFloat();
         oilTemperatureModel.setCurrentValue(((temp/1000.0) * 9.0/5.0)+32.0);
         tempFuelModel.setCurrentTemp(((temp/1000.0) * 9.0/5.0)+32.0);
-    }
-
-    voltMeterModel.setCurrentValue(volts);
-    volts += 0.01;
-    if( volts > 16.0 )
-    {
-        volts = 10.0;
     }
 
     boostModel.setCurrentValue((boost*8.94)-14.53);
