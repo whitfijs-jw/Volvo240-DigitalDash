@@ -44,6 +44,9 @@ dtparam=chc_datarate=3
 dtoverlay=mcp23017
 dtparam=addr=0x27
 
+dtparam=spi=on
+dtoverlay=mcp3208:spi0-0-present
+
 hdmi_cvt 1280 480 60 5 0 0 0
 
 hdmi_group=2
