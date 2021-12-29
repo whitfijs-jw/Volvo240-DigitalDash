@@ -29,3 +29,12 @@ cp "${QT_EXEC_DIR}" "${QT_EXEC_TARGET_DIR}"
 
 echo "Copy custom config.txt"
 cp "${BOARD_DIR}/config.txt" "${BINARIES_DIR}/rpi-firmware"
+
+echo "Creating etc/sysconfig directory"
+cp -r "${BOARD_DIR}/sysconfig" "${TARGET_DIR}/etc"
+
+echo "Copying S03modules to etc/init.d"
+cp "${BOARD_DIR}/S03modules" "${TARGET_DIR}/etc/init.d"
+
+echo "Copying mcp3208 dtb"
+cp "${BOARD_DIR}/mcp3208.dtbo" "${BINARIES_DIR}/rpi-firmware/overlays"
