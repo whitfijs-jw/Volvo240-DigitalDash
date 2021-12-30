@@ -18,7 +18,7 @@
 
 #include <mcp23017.h>
 #include <dash_lights.h>
-#include <analog_input.h>
+#include <adc.h>
 
 static TachometerModel tachModel;
 static SpeedometerModel speedoModel;
@@ -44,7 +44,7 @@ static WarningLightModel serviceLightModel;
 
 #ifdef RASPBERRY_PI
 static mcp23017 dashLightInputs;
-static AnalogInput analogInputs;
+static Adc analogInputs;
 #else
 static AnalogInput analogInputs("mcp3208", "/home/whitfijs/git/dummy_sys/bus/iio/devices/");
 #endif
@@ -119,9 +119,6 @@ void initializeModels()
     serviceLightModel.setText("SER-\nVICE");
 
 #ifdef RASPBERRY_PI
-    std::cout << "Set reference" << std::endl;
-    //analogInputs.setVoltageRef(5.0);
-    std::cout << "Set reference end" << std::endl;
 #else
     //auto analogInputs = new AnalogInput("mcp3208", "/home/whitfijs/git/dummy_sys/bus/iio/devices/");
     analogInputs.setVoltageRef(5.0);

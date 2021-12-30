@@ -9,15 +9,34 @@
 #include <filesystem>
 #include <map>
 
-class AnalogInput
+/**
+ * @brief The Adc -- relies on correct iio
+ * adc driver to be loaded.  Searches in
+ * /sys/bus/iio/devices/ path for devices
+ * with the matching name.
+ */
+class Adc
 {
 public:
-    AnalogInput(std::string name = "mcp3208",
+    /**
+     * @brief Constructor
+     * @param name: device name, must match an existing name in iio subsystem
+     * @param path: iio device path to search defaults to "/sys/bus/iio/devices/"
+     * @param vRef: reference voltage
+     */
+    Adc(std::string name = "mcp3208",
                 std::string path = IIO_DEVICE_PATH,
                 double vRef = 5.0) :
         mDeviceName(name), mVref(vRef) {
+        // search in path for the given device.
         mPath = findDevicePath(path, name);
 
+        if (mPath.empty()) {
+            std::cout << "Device: " << name << " not found in iio subsystem" << std::endl;
+            return;
+        }
+
+        // setup channel number and max values
         if (name == MCP3208) {
             mNumChannels = 8;
             mMaxVal = 4095;
@@ -31,33 +50,46 @@ public:
             mNumChannels = 0;
         }
 
+        // setup a map of all of the input channels
         for (int i = 0; i < mNumChannels; i++) {
+            // we're looking for in_voltageX_raw files in the iio device directory
             std::string dataPath = CHANNEL_DATA_PATH;
             std::size_t p = dataPath.find("X");
             if (p != std::string::npos) {
                 dataPath.replace(p, 1, std::to_string(i));
             }
             std::string fullPath = mPath + "/" + dataPath;
-            mChannelMap.insert(std::pair<int, std::string>(i, fullPath));
 
-            std::cout << "Channel data path: " << mChannelMap.at(i) << std::endl;
+            //make sure it exists
+            if (std::filesystem::exists(fullPath)) {
+                // add this to the map
+                mChannelMap.insert(std::pair<int, std::string>(i, fullPath));
+
+                std::cout << "Channel data path: " << mChannelMap.at(i) << std::endl;
+            }
         }
     }
 
-    bool setVoltageRef(double vref) {
-        mVref = vref;
-    }
-
+    /**
+     * @brief Read scaled ADC value
+     * @param channel: adc channel to read
+     * @return current measured voltage
+     */
     double readValue(int channel) {
         return  ((double)readRawValue(channel) / (double)mMaxVal) * mVref;
     }
 
+    /**
+     * @brief Read raw ADC value
+     * @param channel: adc channel to read
+     * @return:
+     */
     int readRawValue(int channel) {
         if (mChannelMap.find(channel) != mChannelMap.end()) {
             std::ifstream ifs(mChannelMap.at(channel), std::ios::in);
             if (!ifs.is_open()) {
                 std::cout << "Error opening channel data file" << std::endl;
-                return false;
+                return -1.0;
             }
 
             std::string val;
@@ -69,7 +101,7 @@ public:
             return std::stoi(val);
         }
 
-        return -1;
+        return -1.0;
     }
 
 private:
@@ -82,6 +114,12 @@ private:
     static constexpr char ADS1115[] = "ads1115";
     static constexpr char MCP3008[] = "mcp3008";
 
+    /**
+     * @brief Find the iio device given the expected name
+     * @param path: path to search -- not a recursive search
+     * @param name: name of the iio device
+     * @return path to the device if found. empty string if not found
+     */
     std::string findDevicePath(std::string& path, std::string name) {
         for (auto& device : std::filesystem::directory_iterator(path)) {
             if (std::filesystem::is_directory(device.path())) {
@@ -108,12 +146,12 @@ private:
         return "";
     }
 
-    std::string mDeviceName;
-    std::string mPath;
-    int mNumChannels = 0;
-    double mVref = 0.0f;
-    int mMaxVal = 0;
-    std::map<int, std::string> mChannelMap;
+    std::string mDeviceName; //!< Device name
+    std::string mPath; //!< iio device path
+    int mNumChannels = 0; //!< Number of channels that can be read
+    double mVref = 0.0f; //!< voltage reference
+    int mMaxVal = 0; //!< max adc value
+    std::map<int, std::string> mChannelMap; //!< map of channels and their respective paths
 };
 
 #endif // ANALOG_INPUT_H

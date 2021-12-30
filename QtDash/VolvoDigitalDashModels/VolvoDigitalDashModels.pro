@@ -34,7 +34,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    analog_input.h \
+    adc.h \
     dash_lights.h \
     indicator_model.h \
     mcp23017.h \
