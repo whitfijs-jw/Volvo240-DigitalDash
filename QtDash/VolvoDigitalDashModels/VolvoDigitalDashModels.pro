@@ -1,4 +1,4 @@
-QT += quick
+QT += quick serialport positioning
 CONFIG += c++17
 
 # The following define makes your compiler emit warnings if you use
@@ -36,6 +36,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     adc.h \
     dash_lights.h \
+    gps_location.h \
     indicator_model.h \
     mcp23017.h \
     tachometer_model.h \

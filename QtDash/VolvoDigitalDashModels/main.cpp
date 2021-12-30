@@ -9,6 +9,9 @@
 #include <QFontDatabase>
 #include <QString>
 
+#include <QNmeaPositionInfoSource>
+#include <QGeoPositionInfoSource>
+
 #include <tachometer_model.h>
 #include <accessory_gauge_model.h>
 #include <speedometer_model.h>
@@ -19,6 +22,7 @@
 #include <mcp23017.h>
 #include <dash_lights.h>
 #include <adc.h>
+#include <gps_location.h>
 
 static TachometerModel tachModel;
 static SpeedometerModel speedoModel;
@@ -46,7 +50,7 @@ static WarningLightModel serviceLightModel;
 static mcp23017 dashLightInputs;
 static Adc analogInputs;
 #else
-static AnalogInput analogInputs("mcp3208", "/home/whitfijs/git/dummy_sys/bus/iio/devices/");
+static Adc analogInputs("mcp3208", "/home/whitfijs/git/dummy_sys/bus/iio/devices/");
 #endif
 
 
@@ -121,7 +125,7 @@ void initializeModels()
 #ifdef RASPBERRY_PI
 #else
     //auto analogInputs = new AnalogInput("mcp3208", "/home/whitfijs/git/dummy_sys/bus/iio/devices/");
-    analogInputs.setVoltageRef(5.0);
+    //analogInputs.setVoltageRef(5.0);
 #endif
 }
 
@@ -301,7 +305,7 @@ void updateGauges() {
         }
         cpuSpeed = cpuSpeed.right(cpuSpeed.indexOf(": "));
         qreal speed = cpuSpeed.toFloat();
-        speedoModel.setCurrentValue(speed / 3400.0 * 120.0);
+        //speedoModel.setCurrentValue(speed / 3400.0 * 120.0);
         //voltMeterModel.setCurrentValue(speed / 3400.0 * 16.0);
     }
 
@@ -332,6 +336,8 @@ void blink() {
         cnt = -1;
     }
 }
+
+
 
 int main(int argc, char *argv[])
 {
@@ -401,6 +407,12 @@ int main(int argc, char *argv[])
         return -1;
 
     QObject::connect(&engine, SIGNAL(quit()), &app, SLOT(quit()));
+
+    GpsLocation * loc = new GpsLocation(&app);
+
+    QObject::connect(loc, SIGNAL(speedUpdateMilesPerHour(qreal)), &speedoModel, SLOT(setCurrentValue(qreal)));
+
+    loc->init();
 
     return app.exec();
 }
