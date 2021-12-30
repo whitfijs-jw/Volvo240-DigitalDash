@@ -2,12 +2,14 @@
 #define __HQ_FBIT__ 15
 #define __FLT32X_MAX_EXP__ 1024
 #define __cpp_attributes 200809
+#define __cpp_nontype_template_parameter_auto 201606
 #define __UINT_LEAST16_MAX__ 0xffff
 #define __ARM_SIZEOF_WCHAR_T 4
 #define __ATOMIC_ACQUIRE 2
 #define __SFRACT_IBIT__ 0
 #define __FLT_MIN__ 1.1754943508222875e-38F
 #define __GCC_IEC_559_COMPLEX 2
+#define __cpp_aggregate_nsdmi 201304
 #define __UFRACT_MAX__ 0XFFFFP-16UR
 #define __UINT_LEAST8_TYPE__ unsigned char
 #define __DQ_FBIT__ 63
@@ -21,7 +23,7 @@
 #define __ACCUM_FBIT__ 15
 #define __WINT_MAX__ 0xffffffffU
 #define __FLT32_MIN_EXP__ (-125)
-#define __cpp_static_assert 200410
+#define __cpp_static_assert 201411
 #define __USFRACT_FBIT__ 8
 #define __ORDER_LITTLE_ENDIAN__ 1234
 #define __SIZE_MAX__ 0xffffffffU
@@ -37,10 +39,12 @@
 #define __GCC_IEC_559 2
 #define __FLT32X_DECIMAL_DIG__ 17
 #define __FLT_EVAL_METHOD__ 0
+#define __cpp_enumerator_attributes 201411
 #define __unix__ 1
 #define __cpp_binary_literals 201304
 #define __LLACCUM_MAX__ 0X7FFFFFFFFFFFFFFFP-31LLK
 #define __FLT64_DECIMAL_DIG__ 17
+#define __cpp_noexcept_function_type 201510
 #define __GCC_ATOMIC_CHAR32_T_LOCK_FREE 2
 #define __FRACT_FBIT__ 15
 #define __cpp_variadic_templates 200704
@@ -50,6 +54,7 @@
 #define __DBL_MIN_10_EXP__ (-307)
 #define __FINITE_MATH_ONLY__ 0
 #define __ARMEL__ 1
+#define __cpp_variable_templates 201304
 #define __ARM_FEATURE_UNALIGNED 1
 #define __LFRACT_IBIT__ 0
 #define __GNUC_PATCHLEVEL__ 0
@@ -58,15 +63,19 @@
 #define __UINT_FAST8_MAX__ 0xff
 #define __cpp_rvalue_reference 200610
 #define __has_include(STR) __has_include__(STR)
+#define __FLT32_MAX_10_EXP__ 38
 #define __DEC64_MAX_EXP__ 385
 #define __INT8_C(c) c
 #define __INT_LEAST8_WIDTH__ 8
+#define __cpp_variadic_using 201611
 #define __UINT_LEAST64_MAX__ 0xffffffffffffffffULL
 #define __SA_FBIT__ 15
+#define __cpp_capture_star_this 201603
 #define __SHRT_MAX__ 0x7fff
 #define __LDBL_MAX__ 1.7976931348623157e+308L
 #define __ARM_FEATURE_IDIV 1
 #define __FRACT_MAX__ 0X7FFFP-15R
+#define __cpp_if_constexpr 201606
 #define __UFRACT_FBIT__ 16
 #define __ARM_FP 14
 #define __UFRACT_MIN__ 0.0UR
@@ -99,6 +108,7 @@
 #define __SIZEOF_POINTER__ 4
 #define __GCC_ATOMIC_CHAR16_T_LOCK_FREE 2
 #define __USACCUM_IBIT__ 8
+#define __cpp_aligned_new 201606
 #define __USER_LABEL_PREFIX__ 
 #define __STDC_HOSTED__ 1
 #define __LDBL_HAS_INFINITY__ 1
@@ -158,7 +168,9 @@
 #define __cpp_raw_strings 200710
 #define __INT_FAST32_MAX__ 0x7fffffff
 #define __DBL_HAS_INFINITY__ 1
+#define __cpp_deduction_guides 201703
 #define __HAVE_SPECULATION_SAFE_VALUE 1
+#define __cpp_fold_expressions 201603
 #define __ACCUM_IBIT__ 16
 #define __DEC32_MIN_EXP__ (-94)
 #define __THUMB_INTERWORK__ 1
@@ -168,7 +180,7 @@
 #define __INT_FAST16_TYPE__ int
 #define __LDBL_HAS_DENORM__ 1
 #define __ARM_FEATURE_LDREX 15
-#define __cplusplus 201103L
+#define __cplusplus 201703L
 #define __cpp_ref_qualifiers 200710
 #define __DEC128_MAX__ 9.999999999999999999999999999999999E6144DL
 #define __INT_LEAST32_MAX__ 0x7fffffff
@@ -233,16 +245,18 @@
 #define __VERSION__ "9.3.0"
 #define __UINT64_C(c) c ## ULL
 #define __ULLFRACT_FBIT__ 64
-#define __cpp_unicode_characters 200704
+#define __cpp_unicode_characters 201411
 #define __FRACT_EPSILON__ 0x1P-15R
 #define __ULACCUM_MIN__ 0.0ULK
 #define __UDA_FBIT__ 32
+#define __cpp_decltype_auto 201304
 #define __LLACCUM_EPSILON__ 0x1P-31LLK
 #define __ARM_FEATURE_FMA 1
 #define __GCC_ATOMIC_INT_LOCK_FREE 2
 #define __FLT32_MANT_DIG__ 24
 #define __FLOAT_WORD_ORDER__ __ORDER_LITTLE_ENDIAN__
 #define __USFRACT_MIN__ 0.0UHR
+#define __cpp_aggregate_bases 201603
 #define __ULLACCUM_IBIT__ 32
 #define __UQQ_IBIT__ 0
 #define __ARM_NEON__ 1
@@ -253,7 +267,7 @@
 #define __DEC128_MIN_EXP__ (-6142)
 #define __UHQ_FBIT__ 16
 #define __LLACCUM_FBIT__ 31
-#define __FLT32_MAX_10_EXP__ 38
+#define __cpp_nested_namespace_definitions 201411
 #define __INT_FAST32_TYPE__ int
 #define __UINT_LEAST16_TYPE__ short unsigned int
 #define unix 1
@@ -264,6 +278,7 @@
 #define __UINT64_MAX__ 0xffffffffffffffffULL
 #define __UDQ_FBIT__ 64
 #define __INT8_TYPE__ signed char
+#define __cpp_digit_separators 201309
 #define __ELF__ 1
 #define __ULFRACT_EPSILON__ 0x1P-32ULR
 #define __LLFRACT_FBIT__ 63
@@ -314,15 +329,18 @@
 #define __ARM_FEATURE_CLZ 1
 #define __INT16_TYPE__ short int
 #define __INT_LEAST8_TYPE__ signed char
+#define __cpp_structured_bindings 201606
 #define __SQ_FBIT__ 31
 #define __DEC32_MAX_EXP__ 97
 #define __ARM_ARCH_ISA_THUMB 2
 #define __INT_FAST8_MAX__ 0x7f
 #define __ARM_ARCH 8
 #define __INTPTR_MAX__ 0x7fffffff
+#define __cpp_sized_deallocation 201309
+#define __cpp_guaranteed_copy_elision 201606
 #define __QQ_FBIT__ 7
 #define linux 1
-#define __cpp_range_based_for 200907
+#define __cpp_range_based_for 201603
 #define __UTA_IBIT__ 64
 #define __FLT64_HAS_QUIET_NAN__ 1
 #define __FLT32_MIN_10_EXP__ (-37)
@@ -332,7 +350,10 @@
 #define __SACCUM_MIN__ (-0X1P7HK-0X1P7HK)
 #define __DBL_HAS_QUIET_NAN__ 1
 #define __FLT64_HAS_INFINITY__ 1
+#define __STDCPP_DEFAULT_NEW_ALIGNMENT__ 8
 #define __SIG_ATOMIC_MIN__ (-__SIG_ATOMIC_MAX__ - 1)
+#define __cpp_nontype_template_args 201411
+#define __cpp_return_type_deduction 201304
 #define __INTPTR_TYPE__ int
 #define __UINT16_TYPE__ short unsigned int
 #define __WCHAR_TYPE__ unsigned int
@@ -348,6 +369,7 @@
 #define __GCC_ATOMIC_TEST_AND_SET_TRUEVAL 1
 #define __FLT_DIG__ 6
 #define __UINT_FAST64_TYPE__ long long unsigned int
+#define __cpp_inline_variables 201606
 #define __INT_MAX__ 0x7fffffff
 #define __LACCUM_FBIT__ 31
 #define __USACCUM_MIN__ 0.0UHK
@@ -369,6 +391,7 @@
 #define __FLT64_MAX__ 1.7976931348623157e+308F64
 #define __UDA_IBIT__ 32
 #define __WINT_WIDTH__ 32
+#define __cpp_template_auto 201606
 #define __FP_FAST_FMAF64 1
 #define __INT_LEAST8_MAX__ 0x7f
 #define __FLT32X_MAX_10_EXP__ 308
@@ -405,6 +428,7 @@
 #define __ORDER_BIG_ENDIAN__ 4321
 #define __cpp_runtime_arrays 198712
 #define __UINT64_TYPE__ long long unsigned int
+#define __cpp_namespace_attributes 201411
 #define __ACCUM_EPSILON__ 0x1P-15K
 #define __UINT32_C(c) c ## U
 #define __INTMAX_MAX__ 0x7fffffffffffffffLL
@@ -420,7 +444,7 @@
 #define __CHAR32_TYPE__ unsigned int
 #define __FLT_MAX__ 3.4028234663852886e+38F
 #define __FP_FAST_FMA 1
-#define __cpp_constexpr 200704
+#define __cpp_constexpr 201603
 #define __USACCUM_FBIT__ 8
 #define __INT32_TYPE__ int
 #define __SIZEOF_DOUBLE__ 8
@@ -439,9 +463,11 @@
 #define __DEC32_MANT_DIG__ 7
 #define __FLT32X_DENORM_MIN__ 4.9406564584124654e-324F32x
 #define __HA_FBIT__ 7
+#define __cpp_template_template_args 201611
 #define __DBL_MAX_10_EXP__ 308
 #define __LDBL_DENORM_MIN__ 4.9406564584124654e-324L
 #define __INT16_C(c) c
+#define __cpp_generic_lambdas 201304
 #define __STDC__ 1
 #define __FLT32X_DIG__ 15
 #define __PTRDIFF_TYPE__ int
@@ -475,5 +501,6 @@
 #define __ULACCUM_FBIT__ 32
 #define __ARM_FEATURE_DSP 1
 #define __QQ_IBIT__ 0
+#define __cpp_init_captures 201304
 #define __ATOMIC_ACQ_REL 4
 #define __ATOMIC_RELEASE 3

@@ -16,7 +16,7 @@ CC            = /home/whitfijs/git/Volvo240-DigitalDash/buildroot/output/host/bi
 CXX           = /home/whitfijs/git/Volvo240-DigitalDash/buildroot/output/host/bin/arm-buildroot-linux-uclibcgnueabihf-g++
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DRASPBERRY_PI -DQT_QML_DEBUG -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_QMLMODELS_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -Os --sysroot=/home/whitfijs/git/Volvo240-DigitalDash/buildroot/output/host/arm-buildroot-linux-uclibcgnueabihf/sysroot -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-CXXFLAGS      = -pipe -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -Os --sysroot=/home/whitfijs/git/Volvo240-DigitalDash/buildroot/output/host/arm-buildroot-linux-uclibcgnueabihf/sysroot -std=gnu++11 -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
+CXXFLAGS      = -pipe -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -Os --sysroot=/home/whitfijs/git/Volvo240-DigitalDash/buildroot/output/host/arm-buildroot-linux-uclibcgnueabihf/sysroot -std=gnu++1z -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 INCPATH       = -I../VolvoDigitalDashModels -I. -IHeaders -I../../buildroot/output/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5 -I../../buildroot/output/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtQuick -I../../buildroot/output/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtGui -I../../buildroot/output/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtQmlModels -I../../buildroot/output/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtQml -I../../buildroot/output/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtNetwork -I../../buildroot/output/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/qt5/QtCore -I. -I../../buildroot/output/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include -I../../buildroot/output/host/mkspecs/devices/linux-buildroot-g++
 QMAKE         = /home/whitfijs/git/Volvo240-DigitalDash/buildroot/output/host/bin/qmake
 DEL_FILE      = rm -f
@@ -219,7 +219,8 @@ DIST          = ../../buildroot/output/host/mkspecs/features/spec_pre.prf \
 		../../buildroot/output/host/mkspecs/features/exceptions.prf \
 		../../buildroot/output/host/mkspecs/features/yacc.prf \
 		../../buildroot/output/host/mkspecs/features/lex.prf \
-		../VolvoDigitalDashModels/VolvoDigitalDashModels.pro ../VolvoDigitalDashModels/dash_lights.h \
+		../VolvoDigitalDashModels/VolvoDigitalDashModels.pro ../VolvoDigitalDashModels/adc.h \
+		../VolvoDigitalDashModels/dash_lights.h \
 		../VolvoDigitalDashModels/indicator_model.h \
 		../VolvoDigitalDashModels/mcp23017.h \
 		../VolvoDigitalDashModels/tachometer_model.h \
@@ -471,7 +472,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents ../VolvoDigitalDashModels/qml.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents qml_qmlcache.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../buildroot/output/host/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../VolvoDigitalDashModels/dash_lights.h ../VolvoDigitalDashModels/indicator_model.h ../VolvoDigitalDashModels/mcp23017.h ../VolvoDigitalDashModels/tachometer_model.h ../VolvoDigitalDashModels/accessory_gauge_model.h ../VolvoDigitalDashModels/speedometer_model.h ../VolvoDigitalDashModels/temp_and_fuel_gauge_model.h ../VolvoDigitalDashModels/warning_light_model.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../VolvoDigitalDashModels/adc.h ../VolvoDigitalDashModels/dash_lights.h ../VolvoDigitalDashModels/indicator_model.h ../VolvoDigitalDashModels/mcp23017.h ../VolvoDigitalDashModels/tachometer_model.h ../VolvoDigitalDashModels/accessory_gauge_model.h ../VolvoDigitalDashModels/speedometer_model.h ../VolvoDigitalDashModels/temp_and_fuel_gauge_model.h ../VolvoDigitalDashModels/warning_light_model.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../VolvoDigitalDashModels/main.cpp ../VolvoDigitalDashModels/indicator_model.cpp ../VolvoDigitalDashModels/tachometer_model.cpp ../VolvoDigitalDashModels/accessory_gauge_model.cpp ../VolvoDigitalDashModels/speedometer_model.cpp ../VolvoDigitalDashModels/temp_and_fuel_gauge_model.cpp ../VolvoDigitalDashModels/warning_light_model.cpp $(DISTDIR)/
 
 
@@ -634,7 +635,7 @@ compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
 moc_predefs.h: ../../buildroot/output/host/mkspecs/features/data/dummy.cpp
-	/home/whitfijs/git/Volvo240-DigitalDash/buildroot/output/host/bin/arm-buildroot-linux-uclibcgnueabihf-g++ -pipe -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -Os --sysroot=/home/whitfijs/git/Volvo240-DigitalDash/buildroot/output/host/arm-buildroot-linux-uclibcgnueabihf/sysroot -std=gnu++11 -Wall -Wextra -dM -E -o moc_predefs.h ../../buildroot/output/host/mkspecs/features/data/dummy.cpp
+	/home/whitfijs/git/Volvo240-DigitalDash/buildroot/output/host/bin/arm-buildroot-linux-uclibcgnueabihf-g++ -pipe -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -Os --sysroot=/home/whitfijs/git/Volvo240-DigitalDash/buildroot/output/host/arm-buildroot-linux-uclibcgnueabihf/sysroot -std=gnu++1z -Wall -Wextra -dM -E -o moc_predefs.h ../../buildroot/output/host/mkspecs/features/data/dummy.cpp
 
 compiler_moc_header_make_all: moc_indicator_model.cpp moc_tachometer_model.cpp moc_accessory_gauge_model.cpp moc_speedometer_model.cpp moc_temp_and_fuel_gauge_model.cpp moc_warning_light_model.cpp
 compiler_moc_header_clean:
@@ -1544,7 +1545,8 @@ main.o: ../VolvoDigitalDashModels/main.cpp ../../buildroot/output/host/arm-build
 		../../buildroot/output/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/stdint.h \
 		../../buildroot/output/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/err.h \
 		../../buildroot/output/host/arm-buildroot-linux-uclibcgnueabihf/sysroot/usr/include/linux/i2c.h \
-		../VolvoDigitalDashModels/dash_lights.h
+		../VolvoDigitalDashModels/dash_lights.h \
+		../VolvoDigitalDashModels/adc.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../VolvoDigitalDashModels/main.cpp
 
 indicator_model.o: ../VolvoDigitalDashModels/indicator_model.cpp ../VolvoDigitalDashModels/indicator_model.h \
