@@ -12,6 +12,7 @@ Project components:
 - i2c IO expander for warning lights
 - Raspberry Pi daughter board to read various sensors.
 - DC/DC power supply for screen, pi and sensor supplies, if necessary
+- Cheap USB GPS for speedometer and heading (leaving the original speedo behind the dash? Not planning on implementing a validated odometer)
 
 Current parts (mainly driven by availability):
 - MCP3208 for ADC inputs
@@ -20,5 +21,6 @@ Current parts (mainly driven by availability):
 - IL300 for 12V to 3.3V for isolated analog signals (rheostat and battery voltage)
 - lM358D for driving IL300 12V isolated analog inputs
 - LM324 for 5V to 3.3V analog sensor inputs
+- VK-162 USB GPS module -- needs to be manually configured with u-blox u-center to get 10Hz update rate.
 
 ![alt text](https://github.com/whitfijs-jw/Volvo240-DigitalDash/blob/develop/QtDash/project_preview.jpg?raw=true)
