@@ -406,13 +406,16 @@ int main(int argc, char *argv[])
     if (engine.rootObjects().isEmpty())
         return -1;
 
-    QObject::connect(&engine, SIGNAL(quit()), &app, SLOT(quit()));
+
 
     GpsLocation * loc = new GpsLocation(&app);
 
     QObject::connect(loc, SIGNAL(speedUpdateMilesPerHour(qreal)), &speedoModel, SLOT(setCurrentValue(qreal)));
 
-    loc->init();
+    loc->init("/dev/ttyACM0");
+
+    QObject::connect(&engine, SIGNAL(quit()), &app, SLOT(quit()));
+    QObject::connect(&app, SIGNAL(lastWindowClosed()), loc, SLOT(close()));
 
     return app.exec();
 }
