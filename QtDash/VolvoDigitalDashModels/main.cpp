@@ -131,7 +131,6 @@ void initializeModels()
 
 void updateGaugesRPi()
 {
-    static double speed = 0.0;
     static double oilPressure = 0.0;
     static double boost = 0.0;
     static double oilTemperature = 115.0;
@@ -209,13 +208,6 @@ void updateGaugesRPi()
         oilPressure = 0.0;
     }
 
-    speedoModel.setCurrentValue(speed);
-    speed += 0.25;
-    if( speed > 120.0 )
-    {
-        speed = 0.0;
-    }
-
     tempFuelModel.setFuelLevel(fuel);
     fuel -= 0.05;
     if( fuel < 0.0 )
@@ -238,25 +230,21 @@ void updateGauges() {
     QString rpmPath = "/sys/class/hwmon/hwmon3/fan1_input";
     QString battPath = "/sys/class/power_supply/BAT0/voltage_now";
     QString fuelLevelPath = "/sys/class/power_supply/BAT0/capacity";
-    QString speedPath = "/proc/cpuinfo";
 
     QFile tempFile(tempPath);
     QFile rpmFile(rpmPath);
     QFile battFile(battPath);
     QFile fuelFile(fuelLevelPath);
-    QFile speedFile(speedPath);
 
     QTextStream tempStream(&tempFile);
     QTextStream rpmStream(&rpmFile);
     QTextStream battStream(&battFile);
     QTextStream fuelStream(&fuelFile);
-    QTextStream speedStream(&speedFile);
 
     tempFile.open(QIODevice::ReadOnly);
     rpmFile.open(QIODevice::ReadOnly);
     battFile.open(QIODevice::ReadOnly);
     fuelFile.open(QIODevice::ReadOnly);
-    speedFile.open(QIODevice::ReadOnly);
 
     //dashLightInputs.openDevice();
     uint8_t portA = 0xAA;//dashLightInputs.read(mcp23017::RegisterAddr::GPIOA);
@@ -296,48 +284,11 @@ void updateGauges() {
         tempFuelModel.setFuelLevel(level);
     }
 
-    if(speedFile.isOpen())
-    {
-        QString cpuSpeed = "";
-        while(!cpuSpeed.contains("cpu MHz"))
-        {
-            cpuSpeed = speedStream.readLine();
-        }
-        cpuSpeed = cpuSpeed.right(cpuSpeed.indexOf(": "));
-        qreal speed = cpuSpeed.toFloat();
-        //speedoModel.setCurrentValue(speed / 3400.0 * 120.0);
-        //voltMeterModel.setCurrentValue(speed / 3400.0 * 16.0);
-    }
-
     tempFile.close();
     rpmFile.close();
     battFile.close();
     fuelFile.close();
-    speedFile.close();
 }
-
-void blink() {
-    static int cnt = -1;
-//    leftBlinkerModel.setOn(cnt >= 0);
-//    rightBlinkerModel.setOn(cnt >= 1);
-//    highBeamLightModel.setOn(cnt >= 2);
-//    parkingBrakeLightModel.setOn(cnt >= 3);
-//    brakeFailureLightModel.setOn(cnt >= 4);
-//    bulbFailureLightModel.setOn(cnt >= 5);
-//    shiftUpLightModel.setOn(cnt >= 6);
-//    srsWarningLightModel.setOn(cnt >= 7);
-//    oilWarningLightModel.setOn(cnt >= 8);
-//    batteryWarningLightModel.setOn(cnt >= 9);
-//    absWarningLightModel.setOn(cnt >= 10);
-//    checkEngineLightModel.setOn(cnt >= 11);
-//    serviceLightModel.setOn(cnt >= 12);
-
-    if (cnt++ >= 12) {
-        cnt = -1;
-    }
-}
-
-
 
 int main(int argc, char *argv[])
 {
@@ -397,20 +348,15 @@ int main(int argc, char *argv[])
     rpmTimer.start();
 #endif
 
-    QTimer blinkerTimer;
-    blinkerTimer.setInterval(200);
-    QObject::connect(&blinkerTimer, &QTimer::timeout, &app, &blink);
-    blinkerTimer.start();
-
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
-
+    std::cout << "Starting GPS" << std::endl;
     GpsHelper * loc = new GpsHelper(&app);
 
     QObject::connect(loc, SIGNAL(speedUpdateMilesPerHour(qreal)), &speedoModel, SLOT(setCurrentValue(qreal)));
 
-    loc->init("/dev/ttyACM0");
+    loc->init();
 
     QObject::connect(&engine, SIGNAL(quit()), &app, SLOT(quit()));
     QObject::connect(&app, SIGNAL(lastWindowClosed()), loc, SLOT(close()));

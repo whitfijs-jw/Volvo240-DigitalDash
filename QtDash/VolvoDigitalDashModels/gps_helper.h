@@ -48,21 +48,48 @@ public:
         QVariantMap params;
         params["serialnmea.serial_port"] = port;
         QStringList sources = QGeoPositionInfoSource::availableSources();
+
+        std::cout << "number of available data sources: " << sources.size() << std::endl;
         for (int i = 0; i < sources.size(); i++) {
             std::cout << sources.at(i).toLocal8Bit().constData() << std::endl;
         }
 
-        QGeoPositionInfoSource * serialPositionSource = QGeoPositionInfoSource::createSource("serialnmea", params, this);
+//        QGeoPositionInfoSource * serialPositionSource = QGeoPositionInfoSource::createSource("serialnmea", params, this);
 
-        if (serialPositionSource != nullptr) {
+//        if (serialPositionSource != nullptr) {
 
-            QObject::connect(serialPositionSource, SIGNAL(positionUpdated(QGeoPositionInfo)), this, SLOT(positionUpdate(QGeoPositionInfo)));
+//            QObject::connect(serialPositionSource, SIGNAL(positionUpdated(QGeoPositionInfo)), this, SLOT(positionUpdate(QGeoPositionInfo)));
 
-            serialPositionSource->setUpdateInterval(100);
+//            serialPositionSource->setUpdateInterval(100);
 
-            serialPositionSource->startUpdates();
+//            serialPositionSource->startUpdates();
 
-            QObject::connect(this, SIGNAL(stop()), serialPositionSource, SLOT(stopUpdates()));
+//            QObject::connect(this, SIGNAL(stop()), serialPositionSource, SLOT(stopUpdates()));
+//        } else {
+//            std::cout << "Couldn't open port" << std::endl;
+//        }
+
+        QSerialPort * serialPort = new QSerialPort(this);
+        serialPort->setPortName(port);
+        serialPort->setBaudRate(QSerialPort::Baud9600);
+        serialPort->setDataBits(QSerialPort::Data8);
+        serialPort->setParity(QSerialPort::NoParity);
+        serialPort->setStopBits(QSerialPort::OneStop);
+        serialPort->open(QIODevice::ReadOnly);
+
+        if(serialPort->isOpen()) {
+            QNmeaPositionInfoSource *source = new QNmeaPositionInfoSource(QNmeaPositionInfoSource::RealTimeMode);
+            source->setDevice(serialPort);
+
+            if(source){
+                connect(source, SIGNAL(positionUpdated(QGeoPositionInfo)), this, SLOT(positionUpdate(QGeoPositionInfo)));
+
+                source->setUpdateInterval(100);
+
+                source->startUpdates();
+
+                QObject::connect(this, SIGNAL(stop()), serialPositionSource, SLOT(stopUpdates()));
+            }
         }
     }
 
@@ -177,6 +204,8 @@ private:
         case CardinalDirection::NORTH_WEST:
             return "NW";
         }
+
+        return "";
     }
 };
 
