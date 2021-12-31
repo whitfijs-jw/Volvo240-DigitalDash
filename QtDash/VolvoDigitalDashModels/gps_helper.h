@@ -11,10 +11,15 @@
 #include <QVariantMap>
 #include <cmath>
 
-
-class GpsLocation : public QObject {
+/**
+ * @brief GPS helper class
+ */
+class GpsHelper : public QObject {
     Q_OBJECT
 public:
+    /**
+     * @brief cardinal directions
+     */
     enum class CardinalDirection {
         NORTH = 0,
         NORTH_EAST,
@@ -26,20 +31,28 @@ public:
         NORTH_WEST,
     };
 
-    GpsLocation(QObject * parent) : QObject(parent) {
+    /**
+     * @brief GpsHelper constructor
+     * @param parent
+     */
+    GpsHelper(QObject * parent) : QObject(parent) {
 
     }
 
-    void init(QString port) {
+    /**
+     * @brief Initialize and start the serial NMEA stream.
+     * @param port: port to read from /dev/ttyACM0 is the default
+     */
+    void init(QString port = "/dev/ttyACM0") {
         // serial port
         QVariantMap params;
-        params["serialnmea.serial_port"] = port;//"/dev/ttyACM0";
+        params["serialnmea.serial_port"] = port;
         QStringList sources = QGeoPositionInfoSource::availableSources();
         for (int i = 0; i < sources.size(); i++) {
             std::cout << sources.at(i).toLocal8Bit().constData() << std::endl;
         }
 
-        QGeoPositionInfoSource *serialPositionSource = QGeoPositionInfoSource::createSource("serialnmea", params, this);
+        QGeoPositionInfoSource * serialPositionSource = QGeoPositionInfoSource::createSource("serialnmea", params, this);
 
         if (serialPositionSource != nullptr) {
 
@@ -54,6 +67,10 @@ public:
     }
 
 public slots:
+    /**
+     * @brief Process incoming GPS data
+     * @param data: position information
+     */
     void positionUpdate(QGeoPositionInfo data) {
 
         if (data.hasAttribute(QGeoPositionInfo::Direction)) {
@@ -69,23 +86,58 @@ public slots:
 
         emit speedUpdateMeterPerSec(speed);
         emit speedUpdateMilesPerHour(speed * 2.23694);
+        emit speedUpdateKph(speed *  3.6);
     }
 
+    /**
+     * @brief Stop the current GPS updates
+     */
     void close() {
         emit stop();
     }
 
 signals:
-    void speedUpdateMeterPerSec(double mps);
+    /**
+     * @brief speedUpdateMeterPerSec
+     * @param mps
+     */
+    void speedUpdateMeterPerSec(qreal mps);
+
+    /**
+     * @brief speedUpdateMilesPerHour
+     * @param mph
+     */
     void speedUpdateMilesPerHour(qreal mph);
+
+    /**
+     * @brief speedUpdateKph
+     * @param kph
+     */
+    void speedUpdateKph(qreal kph);
+    /**
+     * @brief headingUpdateDegree
+     * @param heading
+     */
     void headingUpdateDegree(qreal heading);
+
+    /**
+     * @brief headingUpdate
+     * @param heading
+     */
     void headingUpdate(QString heading);
+
+    /**
+     * @brief stop
+     */
     void stop();
 
 private:
-    QSerialPort mPort;
-    QString mPortName;
-
+    /**
+     * @brief Convert heading angle to cardinal direction (enum)
+     * @param angle: heading direction retrieved from QGeoPositionInfo structure
+     *
+     * @return: @ref CardinalDirection
+     */
     CardinalDirection headingToDirection(qreal angle) {
         if (angle < 0) {
             angle += 360.0;
@@ -98,6 +150,12 @@ private:
         return (CardinalDirection) dir;
     }
 
+    /**
+     * @brief Convert heading angle to Cardinal Direction string "N", "E", "SE", etc
+     * @param angle: heading direction retrieved from QGeoPositionInfo structure
+     *
+     * @return Cardinal direction string
+     */
     QString headingToDirectionString(qreal angle) {
         auto dir = headingToDirection(angle);
 

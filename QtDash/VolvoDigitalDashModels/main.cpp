@@ -22,7 +22,7 @@
 #include <mcp23017.h>
 #include <dash_lights.h>
 #include <adc.h>
-#include <gps_location.h>
+#include <gps_helper.h>
 
 static TachometerModel tachModel;
 static SpeedometerModel speedoModel;
@@ -406,9 +406,7 @@ int main(int argc, char *argv[])
     if (engine.rootObjects().isEmpty())
         return -1;
 
-
-
-    GpsLocation * loc = new GpsLocation(&app);
+    GpsHelper * loc = new GpsHelper(&app);
 
     QObject::connect(loc, SIGNAL(speedUpdateMilesPerHour(qreal)), &speedoModel, SLOT(setCurrentValue(qreal)));
 
