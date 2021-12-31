@@ -88,7 +88,8 @@ public:
 
                 source->startUpdates();
 
-                QObject::connect(this, SIGNAL(stop()), serialPositionSource, SLOT(stopUpdates()));
+                QObject::connect(this, SIGNAL(stop()), source, SLOT(stopUpdates()));
+                QObject::connect(this, SIGNAL(stop()), serialPort, SLOT(close()));
             }
         }
     }
