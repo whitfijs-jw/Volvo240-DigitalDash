@@ -5497,21 +5497,6 @@ Based on the following sources:
 </package>
 </packages>
 <symbols>
-<symbol name="SCHOTTKY">
-<wire x1="-1.27" y1="-1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
-<wire x1="1.27" y1="0" x2="-1.27" y2="1.27" width="0.254" layer="94"/>
-<wire x1="1.905" y1="1.27" x2="1.27" y2="1.27" width="0.254" layer="94"/>
-<wire x1="1.27" y1="1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
-<wire x1="-1.27" y1="1.27" x2="-1.27" y2="-1.27" width="0.254" layer="94"/>
-<wire x1="1.27" y1="0" x2="1.27" y2="-1.27" width="0.254" layer="94"/>
-<wire x1="1.905" y1="1.27" x2="1.905" y2="1.016" width="0.254" layer="94"/>
-<wire x1="1.27" y1="-1.27" x2="0.635" y2="-1.27" width="0.254" layer="94"/>
-<wire x1="0.635" y1="-1.016" x2="0.635" y2="-1.27" width="0.254" layer="94"/>
-<text x="-2.286" y="1.905" size="1.778" layer="95">&gt;NAME</text>
-<text x="-2.286" y="-3.429" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="A" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
-<pin name="C" x="2.54" y="0" visible="off" length="short" direction="pas" rot="R180"/>
-</symbol>
 <symbol name="SDD_AKAK">
 <wire x1="-3.81" y1="-1.27" x2="-1.27" y2="0" width="0.254" layer="94"/>
 <wire x1="-1.27" y1="0" x2="-3.81" y2="1.27" width="0.254" layer="94"/>
@@ -5543,24 +5528,6 @@ Based on the following sources:
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="BAT54" prefix="D">
-<description>&lt;b&gt;Schottky Diodes&lt;/b&gt;&lt;p&gt;
-Source: Fairchild .. BAT54.pdf</description>
-<gates>
-<gate name="G$1" symbol="SCHOTTKY" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="SOT23">
-<connects>
-<connect gate="G$1" pin="A" pad="1"/>
-<connect gate="G$1" pin="C" pad="3"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="BAT54S" prefix="D">
 <description>&lt;b&gt;Schottky Diodes&lt;/b&gt;&lt;p&gt;
 Pin connection corrected 2011-05-04&lt;br&gt;
@@ -6313,8 +6280,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="R52" library="SparkFun-Resistors" deviceset="470OHM" device="-0603-1/10W-1%" value="470"/>
 <part name="SUPPLY37" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="GND48" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="D9" library="diode" deviceset="BAT54" device=""/>
-<part name="D10" library="diode" deviceset="BAT54" device=""/>
 <part name="C12" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-5%" value="0.1uF"/>
 <part name="C13" library="SparkFun-Capacitors" deviceset="1.0UF" device="-0603-16V-10%" value="1.0uF"/>
 <part name="R57" library="SparkFun-Resistors" deviceset="100OHM" device="-0603-1/10W-1%" value="100"/>
@@ -6334,8 +6299,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="C14" library="SparkFun-Capacitors" deviceset="1.0UF" device="-0603-16V-10%" value="1.0uF"/>
 <part name="SUPPLY42" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="GND57" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="D11" library="diode" deviceset="BAT54" device=""/>
-<part name="D12" library="diode" deviceset="BAT54" device=""/>
 <part name="R58" library="SparkFun-Resistors" deviceset="100OHM" device="-0603-1/10W-1%" value="100"/>
 <part name="SUPPLY43" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="R59" library="SparkFun-Resistors" deviceset="1MOHM" device="-0603-1/4W-5%" value="1M"/>
@@ -6451,6 +6414,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="SUPPLY52" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="GND45" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="JP23" library="SparkFun-Jumpers" deviceset="JUMPER-SMT_3_NO" device="_SILK" value="TACH_INPUT_SEL"/>
+<part name="D7" library="diode" deviceset="BAT54S" device=""/>
+<part name="D8" library="diode" deviceset="BAT54S" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -6621,8 +6586,6 @@ conditioning circuit to here.</text>
 <instance part="R52" gate="G$1" x="438.15" y="43.18" rot="R90"/>
 <instance part="SUPPLY37" gate="G$1" x="438.15" y="49.53"/>
 <instance part="GND48" gate="1" x="438.15" y="16.51"/>
-<instance part="D9" gate="G$1" x="203.2" y="285.75" rot="R90"/>
-<instance part="D10" gate="G$1" x="203.2" y="270.51" rot="R90"/>
 <instance part="C12" gate="G$1" x="219.71" y="289.56"/>
 <instance part="C13" gate="G$1" x="210.82" y="289.56"/>
 <instance part="R57" gate="G$1" x="193.04" y="278.13"/>
@@ -6643,8 +6606,6 @@ conditioning circuit to here.</text>
 <instance part="C14" gate="G$1" x="283.21" y="294.005"/>
 <instance part="SUPPLY42" gate="G$1" x="299.72" y="304.165"/>
 <instance part="GND57" gate="1" x="287.655" y="284.48" rot="MR0"/>
-<instance part="D11" gate="G$1" x="203.2" y="219.71" rot="R90"/>
-<instance part="D12" gate="G$1" x="203.2" y="208.28" rot="R90"/>
 <instance part="R58" gate="G$1" x="193.04" y="214.63"/>
 <instance part="SUPPLY43" gate="G$1" x="203.2" y="226.06"/>
 <instance part="R59" gate="G$1" x="219.71" y="194.31" rot="R90"/>
@@ -6764,6 +6725,8 @@ conditioning circuit to here.</text>
 <instance part="JP23" gate="G$1" x="222.25" y="144.78" smashed="yes">
 <attribute name="NAME" x="228.346" y="146.05" size="1.778" layer="95" font="vector" align="center"/>
 </instance>
+<instance part="D7" gate="G$1" x="203.2" y="278.13" rot="R90"/>
+<instance part="D8" gate="G$1" x="203.2" y="214.63" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -7762,19 +7725,9 @@ conditioning circuit to here.</text>
 <pinref part="IC4" gate="A" pin="V+"/>
 </segment>
 <segment>
-<pinref part="D9" gate="G$1" pin="C"/>
-<pinref part="SUPPLY38" gate="G$1" pin="12V"/>
-<wire x1="203.2" y1="292.1" x2="203.2" y2="288.29" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="IC5" gate="G$1" pin="C3"/>
 <wire x1="265.43" y1="272.415" x2="261.62" y2="272.415" width="0.1524" layer="91"/>
 <pinref part="SUPPLY39" gate="G$1" pin="12V"/>
-</segment>
-<segment>
-<pinref part="D11" gate="G$1" pin="C"/>
-<pinref part="SUPPLY43" gate="G$1" pin="12V"/>
-<wire x1="203.2" y1="226.06" x2="203.2" y2="222.25" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="IC7" gate="G$1" pin="C3"/>
@@ -7785,6 +7738,16 @@ conditioning circuit to here.</text>
 <pinref part="JP21" gate="G$1" pin="2"/>
 <wire x1="421.64" y1="171.45" x2="421.64" y2="176.53" width="0.1524" layer="91"/>
 <pinref part="SUPPLY51" gate="G$1" pin="12V"/>
+</segment>
+<segment>
+<pinref part="D7" gate="G$1" pin="C2"/>
+<pinref part="SUPPLY38" gate="G$1" pin="12V"/>
+<wire x1="203.2" y1="283.21" x2="203.2" y2="292.1" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="D8" gate="G$1" pin="C2"/>
+<pinref part="SUPPLY43" gate="G$1" pin="12V"/>
+<wire x1="203.2" y1="219.71" x2="203.2" y2="226.06" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="OUT1" class="0">
@@ -8357,15 +8320,12 @@ conditioning circuit to here.</text>
 </net>
 <net name="N$2" class="0">
 <segment>
-<pinref part="D9" gate="G$1" pin="A"/>
-<pinref part="D10" gate="G$1" pin="C"/>
-<wire x1="203.2" y1="283.21" x2="203.2" y2="278.13" width="0.1524" layer="91"/>
-<wire x1="203.2" y1="278.13" x2="203.2" y2="273.05" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="278.13" x2="203.2" y2="278.13" width="0.1524" layer="91"/>
-<junction x="203.2" y="278.13"/>
-<wire x1="203.2" y1="278.13" x2="222.25" y2="278.13" width="0.1524" layer="91"/>
+<wire x1="198.12" y1="278.13" x2="200.66" y2="278.13" width="0.1524" layer="91"/>
 <pinref part="R57" gate="G$1" pin="2"/>
 <pinref part="IC4" gate="A" pin="+IN"/>
+<pinref part="D7" gate="G$1" pin="C1A2"/>
+<wire x1="200.66" y1="278.13" x2="222.25" y2="278.13" width="0.1524" layer="91"/>
+<junction x="200.66" y="278.13"/>
 </segment>
 </net>
 <net name="IN1_12V_SIGNAL" class="0">
@@ -8440,15 +8400,12 @@ conditioning circuit to here.</text>
 </net>
 <net name="N$6" class="0">
 <segment>
-<pinref part="D11" gate="G$1" pin="A"/>
-<pinref part="D12" gate="G$1" pin="C"/>
-<wire x1="203.2" y1="217.17" x2="203.2" y2="214.63" width="0.1524" layer="91"/>
-<wire x1="203.2" y1="214.63" x2="203.2" y2="210.82" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="214.63" x2="203.2" y2="214.63" width="0.1524" layer="91"/>
-<junction x="203.2" y="214.63"/>
-<wire x1="203.2" y1="214.63" x2="222.25" y2="214.63" width="0.1524" layer="91"/>
+<wire x1="198.12" y1="214.63" x2="200.66" y2="214.63" width="0.1524" layer="91"/>
 <pinref part="R58" gate="G$1" pin="2"/>
 <pinref part="IC4" gate="B" pin="+IN"/>
+<pinref part="D8" gate="G$1" pin="C1A2"/>
+<wire x1="200.66" y1="214.63" x2="222.25" y2="214.63" width="0.1524" layer="91"/>
+<junction x="200.66" y="214.63"/>
 </segment>
 </net>
 <net name="N$8" class="0">
@@ -8511,16 +8468,6 @@ conditioning circuit to here.</text>
 </segment>
 </net>
 <net name="GND-ISO" class="0">
-<segment>
-<pinref part="D10" gate="G$1" pin="A"/>
-<pinref part="GND-ISO1" gate="G$1" pin="GND-ISO"/>
-<wire x1="203.2" y1="266.7" x2="203.2" y2="267.97" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="D12" gate="G$1" pin="A"/>
-<pinref part="GND-ISO2" gate="G$1" pin="GND-ISO"/>
-<wire x1="203.2" y1="203.2" x2="203.2" y2="205.74" width="0.1524" layer="91"/>
-</segment>
 <segment>
 <pinref part="R53" gate="G$1" pin="1"/>
 <pinref part="GND-ISO3" gate="G$1" pin="GND-ISO"/>
@@ -8641,6 +8588,16 @@ conditioning circuit to here.</text>
 <pinref part="R74" gate="G$1" pin="1"/>
 <pinref part="GND-ISO25" gate="G$1" pin="GND-ISO"/>
 <wire x1="182.88" y1="262.89" x2="182.88" y2="265.43" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND-ISO1" gate="G$1" pin="GND-ISO"/>
+<pinref part="D7" gate="G$1" pin="A1"/>
+<wire x1="203.2" y1="266.7" x2="203.2" y2="273.05" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND-ISO2" gate="G$1" pin="GND-ISO"/>
+<pinref part="D8" gate="G$1" pin="A1"/>
+<wire x1="203.2" y1="203.2" x2="203.2" y2="209.55" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="BRAKE_FAILURE_N" class="0">
