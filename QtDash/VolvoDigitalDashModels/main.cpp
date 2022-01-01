@@ -8,6 +8,7 @@
 #include <QTextStream>
 #include <QFontDatabase>
 #include <QString>
+#include <QtMath>
 
 #include <QNmeaPositionInfoSource>
 #include <QGeoPositionInfoSource>
@@ -23,6 +24,7 @@
 #include <dash_lights.h>
 #include <adc.h>
 #include <gps_helper.h>
+#include <ntc.h>
 
 static TachometerModel tachModel;
 static SpeedometerModel speedoModel;
@@ -49,6 +51,7 @@ static WarningLightModel serviceLightModel;
 #ifdef RASPBERRY_PI
 static mcp23017 dashLightInputs;
 static Adc analogInputs;
+static Ntc oilTempSensor(3700.0, 5.0, 10000.0, 0.75);
 #else
 static Adc analogInputs("mcp3208", "/home/whitfijs/git/dummy_sys/bus/iio/devices/");
 #endif
@@ -133,7 +136,6 @@ void updateGaugesRPi()
 {
     static double oilPressure = 0.0;
     static double boost = 0.0;
-    static double oilTemperature = 115.0;
     static double volts = 13.0;
     static double fuel = 100.0;
     static double rpm = 0;
@@ -169,21 +171,19 @@ void updateGaugesRPi()
     serviceLightModel.setOn(0);
 
     volts = analogInputs.readValue(0);
-
     voltMeterModel.setCurrentValue(volts);
-    volts += 0.01;
-    if( volts > 16.0 )
-    {
-        volts = 10.0;
-    }
 
+    qreal oilVolts = analogInputs.readValue(1);
+
+    oilTemperatureModel.setCurrentValue(
+                oilTempSensor.calculateAvgTemp(oilVolts)
+                );
 #endif
 
     if(tempFile.isOpen())
     {
         QString coreTemp = tempStream.readLine();
         float temp = coreTemp.toFloat();
-        oilTemperatureModel.setCurrentValue(((temp/1000.0) * 9.0/5.0)+32.0);
         tempFuelModel.setCurrentTemp(((temp/1000.0) * 9.0/5.0)+32.0);
     }
 
@@ -192,13 +192,6 @@ void updateGaugesRPi()
     if( boost > 5.0 )
     {
         boost = 0.0;
-    }
-
-    oilTemperatureModel.setCurrentValue(oilTemperature);
-    oilTemperature += 0.5;
-    if( oilTemperature > 300)
-    {
-        oilTemperature = 115.0;
     }
 
     oilPressureModel.setCurrentValue(oilPressure);

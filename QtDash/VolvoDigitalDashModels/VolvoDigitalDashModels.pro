@@ -1,5 +1,5 @@
 QT += quick serialport positioning
-CONFIG += c++17
+CONFIG += c++17 qtquickcompiler
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
@@ -39,6 +39,7 @@ HEADERS += \
     gps_helper.h \
     indicator_model.h \
     mcp23017.h \
+    ntc.h \
     tachometer_model.h \
     accessory_gauge_model.h \
     speedometer_model.h \

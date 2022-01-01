@@ -10,6 +10,10 @@
 #include <QGeoPositionInfoSource>
 #include <QVariantMap>
 #include <cmath>
+#include <QProcess>
+#include <QDateTime>
+#include <QTimeZone>
+#include <QtMath>
 
 /**
  * @brief GPS helper class
@@ -89,7 +93,7 @@ public:
                 source->startUpdates();
 
                 QObject::connect(this, SIGNAL(stop()), source, SLOT(stopUpdates()));
-                QObject::connect(this, SIGNAL(stop()), serialPort, SLOT(close()));
+                //QObject::connect(this, SIGNAL(stop()), serialPort, SLOT(close()));
             }
         }
     }
@@ -103,14 +107,44 @@ public slots:
 
         if (data.hasAttribute(QGeoPositionInfo::Direction)) {
             qreal heading = data.attribute(QGeoPositionInfo::Direction);
+
+#ifdef RASPBERRY_PI
+            // setting time -- this is gross
+            if (!mTimeSet) {
+                auto ts = data.timestamp();
+
+                auto coord = data.coordinate();
+                auto tz = guessAtTheTimeZone(coord);
+                ts.setTimeZone(tz);
+
+                std::cout << "Timezone? maybe?: " << tz.abbreviation(ts).toStdString() << std::endl;
+
+                QString pg = "/bin/date";
+                QStringList args;
+                args << "-s" << ts.toString("yyyy-MM-dd hh:mm:ss");
+
+                QProcess *proc = new QProcess(this);
+
+                QObject::connect(proc, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished),
+                                 [=](int exitCode, QProcess::ExitStatus exitStatus) {
+                    std::cout << "finished date set: " << exitCode << std::endl;
+                });
+
+                proc->startDetached(pg, args);
+                mTimeSet = true;
+
+                std::cout << "Set Time to: " << ts.toString("yyyy-MM-dd hh:mm:ss").toStdString() << std::endl;
+            }
+#endif
+
             QString headingString = headingToDirectionString(heading);
-            std::cout << "heading: " << heading << " (" << headingString.toStdString() << ") " << std::endl;
+            //std::cout << "heading: " << heading << " (" << headingString.toStdString() << ")" << std::endl;
 
             emit headingUpdateDegree(heading);
             emit headingUpdate(headingToDirectionString(heading));
         }
         double speed = data.attribute(QGeoPositionInfo::GroundSpeed);
-        std::cout << std::setprecision(3) << speed << " m/s\t" << (speed * 2.23694) << " mph" << std::endl;
+        //std::cout << std::setprecision(3) << speed << " m/s\t" << (speed * 2.23694) << " mph" << std::endl;
 
         emit speedUpdateMeterPerSec(speed);
         emit speedUpdateMilesPerHour(speed * 2.23694);
@@ -160,6 +194,18 @@ signals:
     void stop();
 
 private:
+
+    bool mTimeSet = false;
+
+    QTimeZone guessAtTheTimeZone(QGeoCoordinate coord) {
+        // this is more gross
+        std::cout << "Current longitude: " << coord.longitude() << std::endl;
+
+        int offset = qRound(coord.longitude() / 15.0) * 3600;
+        return QTimeZone(offset);
+    }
+
+
     /**
      * @brief Convert heading angle to cardinal direction (enum)
      * @param angle: heading direction retrieved from QGeoPositionInfo structure
