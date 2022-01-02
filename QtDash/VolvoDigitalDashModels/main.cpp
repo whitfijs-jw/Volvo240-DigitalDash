@@ -110,6 +110,10 @@ void initializeModels()
     voltMeterModel.setLowAlarm(11.0);
     voltMeterModel.setHighAlarm(15.0);
 
+    ambientTemperatureModel.setMinValue(-15);
+    ambientTemperatureModel.setMaxValue(105);
+    ambientTemperatureModel.setUnits("°F");
+
     /** Init blinkers */
     leftBlinkerModel.setOn(false);
     rightBlinkerModel.setOn(false);
@@ -136,19 +140,7 @@ void initializeModels()
 
 void updateGaugesRPi()
 {
-    static double oilPressure = 0.0;
-    static double boost = 0.0;
-    static double volts = 13.0;
-    static double fuel = 100.0;
     static double rpm = 0;
-
-    QString tempPath = "/sys/class/thermal/thermal_zone0/temp";
-    //QString adcPath = "/sys/class/i2c-adapter/i2c-1/1-0048/iio:device0";
-    QFile tempFile(tempPath);
-    QTextStream tempStream(&tempFile);
-    tempFile.open(QIODevice::ReadOnly);
-
-
 
 #ifdef RASPBERRY_PI
     dashLightInputs.openDevice();
@@ -174,43 +166,36 @@ void updateGaugesRPi()
     checkEngineLightModel.setOn(inputs & (1 << lightConf->value(Config::CHECK_ENGINE_KEY)));
     serviceLightModel.setOn(0);
 
-    volts = analogInputs.readValue(0);
+    auto sensorConf = conf->getSensorConfig();
+
+    // volt meter
+    qreal volts = analogInputs.readValue(sensorConf->value(Config::FUSE8_12V_KEY));
     voltMeterModel.setCurrentValue(volts);
 
-    qreal oilVolts = analogInputs.readValue(1);
+    // oil temp
+    qreal oilVolts = analogInputs.readValue(sensorConf->value(Config::OIL_TEMP_KEY));
+    oilTemperatureModel.setCurrentValue(oilTempSensor.calculateAvgTemp(oilVolts));
 
-    oilTemperatureModel.setCurrentValue(
-                oilTempSensor.calculateAvgTemp(oilVolts)
-                );
+    // boost gauge
+    qreal mapVoltage = analogInputs.readValue(sensorConf->value(Config::MAP_SENSOR_KEY));
+    boostModel.setCurrentValue(mapVoltage); // TODO: replace with real sensor calculation
+
+    // oil pressure
+    qreal oilPressureVolts = analogInputs.readValue(sensorConf->value(Config::OIL_PRESSURE_KEY));
+    oilPressureModel.setCurrentValue(oilPressureVolts); // TODO: replace with real sensor calculation
+
+    // fuel level
+    qreal fuelVolts = analogInputs.readValue(sensorConf->value(Config::FUEL_LEVEL_KEY));
+
+    qreal coolantTempVolts = analogInputs.readValue(sensorConf->value(Config::COOLANT_TEMP_KEY));
+
+    tempFuelModel.setFuelLevel(fuelVolts); // TODO: replace with real sensor calculation
+    tempFuelModel.setCurrentTemp(coolantTempVolts); // TODO: replace with real sensor calculation
+
+    //ambient temp
+    qreal ambientTempVolts = analogInputs.readValue(sensorConf->value(Config::AMBIENT_TEMP_KEY));
+    ambientTemperatureModel.setCurrentValue(ambientTempVolts);
 #endif
-
-    if(tempFile.isOpen())
-    {
-        QString coreTemp = tempStream.readLine();
-        float temp = coreTemp.toFloat();
-        tempFuelModel.setCurrentTemp(((temp/1000.0) * 9.0/5.0)+32.0);
-    }
-
-    boostModel.setCurrentValue((boost*8.94)-14.53);
-    boost += 0.005;
-    if( boost > 5.0 )
-    {
-        boost = 0.0;
-    }
-
-    oilPressureModel.setCurrentValue(oilPressure);
-    oilPressure += 0.005;
-    if( oilPressure > 5.0)
-    {
-        oilPressure = 0.0;
-    }
-
-    tempFuelModel.setFuelLevel(fuel);
-    fuel -= 0.05;
-    if( fuel < 0.0 )
-    {
-        fuel = 100.0;
-    }
 
     tachModel.setRpm(rpm);
     rpm += 10;
@@ -219,11 +204,10 @@ void updateGaugesRPi()
         rpm = 0.0;
     }
 
-    tempFile.close();
 }
 
 void updateGauges() {
-    QString tempPath = "/sys/class/thermal/thermal_zone1/temp";
+    QString tempPath = "/sys/class/hwmon/hwmon0/temp1_input";
     QString rpmPath = "/sys/class/hwmon/hwmon3/fan1_input";
     QString battPath = "/sys/class/power_supply/BAT0/voltage_now";
     QString fuelLevelPath = "/sys/class/power_supply/BAT0/capacity";
@@ -254,6 +238,10 @@ void updateGauges() {
         float temp = coreTemp.toFloat();
         oilTemperatureModel.setCurrentValue(((temp/1000.0) * 9.0/5.0)+32.0);
         tempFuelModel.setCurrentTemp(((temp/1000.0) * 9.0/5.0)+32.0);
+        static double test = 0.0;
+        ambientTemperatureModel.setCurrentValue(test);
+        test += 0.25;
+        if (test > 105) test = -15;
     }
 
     if(rpmFile.isOpen())
@@ -290,8 +278,11 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
 
+#ifdef RASPBERRY_PI
+    conf = new Config(&app);
+#else
     conf = new Config(&app, "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/config.ini");
-
+#endif
 
 #ifndef RASPBERRY_PI
     QFontDatabase::addApplicationFont(":/fonts/aribkl.ttf");

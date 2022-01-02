@@ -38,3 +38,6 @@ cp "${BOARD_DIR}/S03modules" "${TARGET_DIR}/etc/init.d"
 
 echo "Copying mcp3208 dtb"
 cp "${BOARD_DIR}/mcp3208.dtbo" "${BINARIES_DIR}/rpi-firmware/overlays"
+
+echo "Copying Config from QtDash"
+cp "${QT_PROJECT_DIR}/config.ini" "${QT_EXEC_TARGET_DIR}"

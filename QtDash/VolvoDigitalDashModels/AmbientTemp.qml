@@ -11,7 +11,7 @@ Item
     property int maxValue
     property int minValue
     property real value
-    property real units
+    property string units
 
     CircularGauge
     {
@@ -37,15 +37,15 @@ Item
             color: "transparent"
 
             Text {
-                property int textSize: 20
+                property int textSize: gauge.height/8
                 id: valueText
 
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
 
                 anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.verticalCenterOffset: 45
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: -textSize*1.5
 
                 fontSizeMode: Text.Fit
                 font.pixelSize: textSize
@@ -54,11 +54,12 @@ Item
                 color: "white"
             }
 
+
         }
 
         style: CircularGaugeStyle {
-            maximumValueAngle: 160
-            minimumValueAngle: -70
+            maximumValueAngle: 146.5
+            minimumValueAngle: -95
 
             tickmark: null
             tickmarkLabel: null
@@ -73,7 +74,7 @@ Item
 
             foreground: NeedleCenter {
                 size: outerRadius * 0.3
-                rotation: valueToAngle(ambientTemp.value) - 90
+                rotation: boundedAngle(valueToAngle(ambientTemp.value), minimumValueAngle, maximumValueAngle) - 90
             }
             needle: Rectangle {
                 y: - outerRadius * 0.3

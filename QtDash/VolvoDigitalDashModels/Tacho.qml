@@ -60,7 +60,7 @@ Item
 
             foreground: NeedleCenter {
                 size: outerRadius * 0.2
-                rotation: valueToAngle(tacho.value) - 90
+                rotation: boundedAngle(valueToAngle(tacho.value), minimumValueAngle, maximumValueAngle) - 90
             }
 
             needle: Rectangle {

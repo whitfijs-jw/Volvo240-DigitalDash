@@ -85,7 +85,7 @@ Item
 
             foreground: NeedleCenter {
                 size: outerRadius * 0.3
-                rotation: valueToAngle(volts.value) - 90
+                rotation: boundedAngle(valueToAngle(volts.value), minimumValueAngle, maximumValueAngle) - 90
             }
 
             needle: Rectangle {

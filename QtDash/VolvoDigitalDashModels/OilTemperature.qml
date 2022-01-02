@@ -85,7 +85,7 @@ Item
 
             foreground: NeedleCenter {
                 size: outerRadius * 0.3
-                rotation: valueToAngle(oilTemperature.value) - 90
+                rotation: boundedAngle(valueToAngle(oilTemperature.value), minimumValueAngle, maximumValueAngle) - 90
             }
 
             needle: Rectangle {

@@ -95,7 +95,7 @@ Item
 
             foreground: NeedleCenter {
                 size: outerRadius * 0.2
-                rotation: valueToAngle(speedo.speed) - 90
+                rotation: boundedAngle(valueToAngle(speedo.speed), minimumValueAngle, maximumValueAngle) - 90
             }
 
             needle: Rectangle {

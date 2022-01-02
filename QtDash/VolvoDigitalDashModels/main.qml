@@ -39,6 +39,16 @@ ApplicationWindow {
         tempFuelSize = size;
     }
 
+    function boundedAngle(angle, min, max) {
+        if (angle > max) {
+            angle = max;
+        } else if (angle < min) {
+            angle = min;
+        }
+
+        return angle;
+    }
+
     Component {
         id: boostDelegate
         BoostGauge {
@@ -93,6 +103,19 @@ ApplicationWindow {
             units: gaugeUnits
             highAlarm: gaugeHighAlarm
             lowAlarm: gaugeLowAlarm
+
+            height: smallGaugeSize
+            width: smallGaugeSize
+        }
+    }
+
+    Component {
+        id: ambientTempDelegate
+        AmbientTemp {
+            minValue: gaugeMin
+            maxValue: gaugeMax
+            value: currentValue
+            units: gaugeUnits
 
             height: smallGaugeSize
             width: smallGaugeSize

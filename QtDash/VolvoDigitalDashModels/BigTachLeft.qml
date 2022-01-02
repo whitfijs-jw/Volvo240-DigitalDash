@@ -124,5 +124,19 @@ Item {
                 anchors.fill: parent
             }
         }
+
+//        Rectangle {
+//            id: ambientTempContainer
+//            anchors.left: clockContainer.right
+//            height: smallGaugeSize
+//            width: smallGaugeSize
+//            color: "transparent"
+
+//            ListView {
+//                id: ambientTemp
+//                model: outsideTempModel
+//                delegate: ambientTempDelegate
+//            }
+//        }
     }
 }

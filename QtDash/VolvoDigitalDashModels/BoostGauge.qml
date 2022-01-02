@@ -73,7 +73,7 @@ Item
 
             foreground: NeedleCenter {
                 size: outerRadius * 0.3
-                rotation: valueToAngle(boostGauge.value) - 90
+                rotation: boundedAngle(valueToAngle(boostGauge.value), minimumValueAngle, maximumValueAngle) - 90
             }
             needle: Rectangle {
                 y: - outerRadius * 0.3
