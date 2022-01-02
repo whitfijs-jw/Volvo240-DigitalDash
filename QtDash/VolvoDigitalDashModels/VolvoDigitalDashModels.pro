@@ -38,6 +38,7 @@ HEADERS += \
     config.h \
     gps_helper.h \
     indicator_model.h \
+    map_sensor.h \
     mcp23017.h \
     ntc.h \
     tachometer_model.h \
