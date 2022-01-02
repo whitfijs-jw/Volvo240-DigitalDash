@@ -20,8 +20,8 @@
 #include <indicator_model.h>
 #include <warning_light_model.h>
 
+#include <config.h>
 #include <mcp23017.h>
-#include <dash_lights.h>
 #include <adc.h>
 #include <gps_helper.h>
 #include <ntc.h>
@@ -47,6 +47,8 @@ static WarningLightModel batteryWarningLightModel;
 static WarningLightModel absWarningLightModel;
 static WarningLightModel checkEngineLightModel;
 static WarningLightModel serviceLightModel;
+
+Config * conf;
 
 #ifdef RASPBERRY_PI
 static mcp23017 dashLightInputs;
@@ -154,20 +156,22 @@ void updateGaugesRPi()
     uint8_t portB = dashLightInputs.read(mcp23017::RegisterAddr::GPIOB);
     dashLightInputs.closeDevice();
 
-    auto lights = DashLights::parse(portA, portB);
+    uint16_t inputs = (portB << 8) | portA;
 
-    leftBlinkerModel.setOn(lights.lights.BlinkerLeft);
-    rightBlinkerModel.setOn(lights.lights.BlinkerRight);
-    highBeamLightModel.setOn(lights.lights.HighBeam);
-    parkingBrakeLightModel.setOn(lights.lights.ParkingBrake);
-    brakeFailureLightModel.setOn(lights.lights.BrakeFailure);
-    bulbFailureLightModel.setOn(lights.lights.BulbFailure);
+    auto lightConf = conf->getDashLightConfig();
+
+    leftBlinkerModel.setOn(inputs & (1 << lightConf->value(Config::BLINKER_LEFT_KEY)));
+    rightBlinkerModel.setOn(inputs & (1 << lightConf->value(Config::BLINKER_RIGHT_KEY)));
+    highBeamLightModel.setOn(inputs & (1 << lightConf->value(Config::HIGH_BEAM_KEY)));
+    parkingBrakeLightModel.setOn(inputs & (1 << lightConf->value(Config::PARKING_BRAKE_KEY)));
+    brakeFailureLightModel.setOn(inputs & (1 << lightConf->value(Config::BRAKE_FAILURE_KEY)));
+    bulbFailureLightModel.setOn(inputs & (1 << lightConf->value(Config::BULB_FAILURE_KEY)));
     shiftUpLightModel.setOn(0);
-    srsWarningLightModel.setOn(lights.lights.ODLamp);
-    oilWarningLightModel.setOn(lights.lights.OilPressureSwitch);
-    batteryWarningLightModel.setOn(lights.lights.Charging);
-    absWarningLightModel.setOn(lights.lights.Conn32Pin3);
-    checkEngineLightModel.setOn(0);
+    srsWarningLightModel.setOn(inputs & (1 << lightConf->value(Config::OD_LAMP_KEY)));
+    oilWarningLightModel.setOn(inputs & (1 << lightConf->value(Config::OIL_PRESSURE_KEY)));
+    batteryWarningLightModel.setOn(inputs & (1 << lightConf->value(Config::CHARGING_LIGHT_KEY)));
+    absWarningLightModel.setOn(inputs & (1 << lightConf->value(Config::CONN_32_PIN3)));
+    checkEngineLightModel.setOn(inputs & (1 << lightConf->value(Config::CHECK_ENGINE_KEY)));
     serviceLightModel.setOn(0);
 
     volts = analogInputs.readValue(0);
@@ -244,8 +248,6 @@ void updateGauges() {
     uint8_t portB = 0x0F;//dashLightInputs.read(mcp23017::RegisterAddr::GPIOB);
     //dashLightInputs.closeDevice();
 
-    auto lights = DashLights::parse(portA, portB);
-
     if(tempFile.isOpen())
     {
         QString coreTemp = tempStream.readLine();
@@ -287,6 +289,8 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
+
+    conf = new Config(&app, "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/config.ini");
 
 
 #ifndef RASPBERRY_PI

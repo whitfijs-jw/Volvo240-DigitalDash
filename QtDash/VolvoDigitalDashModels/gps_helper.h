@@ -58,21 +58,6 @@ public:
             std::cout << sources.at(i).toLocal8Bit().constData() << std::endl;
         }
 
-//        QGeoPositionInfoSource * serialPositionSource = QGeoPositionInfoSource::createSource("serialnmea", params, this);
-
-//        if (serialPositionSource != nullptr) {
-
-//            QObject::connect(serialPositionSource, SIGNAL(positionUpdated(QGeoPositionInfo)), this, SLOT(positionUpdate(QGeoPositionInfo)));
-
-//            serialPositionSource->setUpdateInterval(100);
-
-//            serialPositionSource->startUpdates();
-
-//            QObject::connect(this, SIGNAL(stop()), serialPositionSource, SLOT(stopUpdates()));
-//        } else {
-//            std::cout << "Couldn't open port" << std::endl;
-//        }
-
         QSerialPort * serialPort = new QSerialPort(this);
         serialPort->setPortName(port);
         serialPort->setBaudRate(QSerialPort::Baud9600);
