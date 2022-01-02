@@ -281,7 +281,7 @@ int main(int argc, char *argv[])
 #ifdef RASPBERRY_PI
     conf = new Config(&app);
 #else
-    conf = new Config(&app, "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/config.ini");
+    conf = new Config(&app, "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config.ini");
 #endif
 
 #ifndef RASPBERRY_PI

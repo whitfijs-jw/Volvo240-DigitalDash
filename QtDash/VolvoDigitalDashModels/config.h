@@ -11,6 +11,7 @@ public:
     // expected groups
     static constexpr char SENSOR_CHANNEL_GROUP[] = "sensor_channels";
     static constexpr char DASH_LIGHT_GROUP[] = "dash_lights";
+    static constexpr char MAP_SENSOR_GROUP[] = "map_sensor";
 
     // expected sensor keys
     static constexpr char COOLANT_TEMP_KEY[] = "coolant_temp";
@@ -36,6 +37,26 @@ public:
     static constexpr char PARKING_BRAKE_KEY[] = "parking_brake";
     static constexpr char CONN_32_PIN3[] = "conn_32_pin3";
 
+    //expected map sensor keys
+    static constexpr char PRESSURE_AT_0V[] = "p_0V";
+    static constexpr char PRESSURE_AT_5V[] = "p_5v";
+    static constexpr char PRESSURE_UNITS[] = "units";
+
+    static constexpr char UNITS_KPA[] = "kPa";
+    static constexpr char UNITS_PSI[] = "psi";
+    static constexpr char UNITS_BAR[] = "bar";
+
+    enum class PressureUnits {
+        KPA = 0,
+        PSI,
+        BAR
+    };
+
+    typedef struct MapSensorConfig {
+        qreal p0V;
+        qreal p5V;
+        PressureUnits units;
+    } MapSensorConfig_t;
 
     Config(QObject * parent, QString configPath = "/opt/config.ini") :
         QObject(parent) {
@@ -66,6 +87,29 @@ public:
 
         mConfig->endGroup();
 
+        //load map sensor config
+        mConfig->beginGroup(MAP_SENSOR_GROUP);
+
+        for (auto key : mConfig->childKeys()) {
+            if (key == PRESSURE_AT_0V) {
+                mMapSensorConfig.p0V = mConfig->value(key, -1).toReal();
+            } else if (key == PRESSURE_AT_5V) {
+                mMapSensorConfig.p5V = mConfig->value(key, -1).toReal();
+            } else if (key == PRESSURE_UNITS) {
+                // default to kPa
+                auto units = mConfig->value(key, UNITS_KPA);
+                if (units == UNITS_KPA) {
+                    mMapSensorConfig.units = PressureUnits::KPA;
+                } else if (units == UNITS_PSI) {
+                    mMapSensorConfig.units = PressureUnits::PSI;
+                } else if (units == UNITS_BAR) {
+                    mMapSensorConfig.units = PressureUnits::BAR;
+                }
+            }
+
+            std::cout << "Map Sensor " << key.toStdString() << ": " << mConfig->value(key, "N/A").toString().toStdString() << std::endl;
+        }
+
         return keys.size() > 0;
     }
 
@@ -85,6 +129,7 @@ private:
     QSettings * mConfig = nullptr;
     QMap<QString, int> mSensorChannelConfig;
     QMap<QString, int> mDashLightConfig;
+    MapSensorConfig mMapSensorConfig;
 };
 
 #endif // CONFIG_H
