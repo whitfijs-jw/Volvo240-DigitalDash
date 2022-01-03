@@ -1,0 +1,61 @@
+import QtQuick 2.7
+import QtQuick.Controls 2.0
+import QtQuick.Layouts 1.3
+
+ApplicationWindow {
+    visible: true
+    width: 1280
+    height: 480
+    title: qsTr("Hello World")
+
+    SwipeView {
+        id: swipeView
+        anchors.fill: parent
+        currentIndex: tabBar.currentIndex
+
+        Page {
+            Rectangle {
+                width: 1280
+                height: 480
+                color: "transparent"
+                Component {
+                    id: rpmDelegate
+                    Tacho {
+                        value: rpm
+                        maxValue: maxRpm
+                        mRedLine: : redLine
+                        height: 400
+                        width: 400
+                    }
+                }
+
+                /* Rpm: */
+                ListView {
+                    height: 400
+                    width: 400
+                    model: rpmModel
+                    delegate: rpmDelegate
+                }
+
+            }
+        }
+
+        Page {
+            Label {
+                text: qsTr("Second page")
+                anchors.centerIn: parent
+            }
+        }
+    }
+
+    footer: TabBar {
+        id: tabBar
+        currentIndex: swipeView.currentIndex
+        TabButton {
+            text: qsTr("First")
+        }
+        TabButton {
+            text: qsTr("Second")
+        }
+    }
+}

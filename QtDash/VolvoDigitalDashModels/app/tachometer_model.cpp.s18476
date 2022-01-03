@@ -1,0 +1,7 @@
+#include "tachometer_model.h"
+
+TachometerModel::TachometerModel(QObject *parent) :
+    QAbstractListModel(parent),
+{
+
+}

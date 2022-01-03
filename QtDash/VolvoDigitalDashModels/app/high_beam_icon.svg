@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="100"
+   height="80"
+   id="svg7773">
+  <defs
+     id="defs7776" />
+  <g
+     transform="matrix(1.1440027,0,0,1.2187081,2.2845877,4.4707377)"
+     id="g8305"
+     style="fill:none;stroke:#0000ff;stroke-opacity:1">
+    <path
+       d="M 46.25,7.28125 C 34.785591,10.407751 32.939289,44.611469 46.71875,51.8125 C 55.595263,52.577165 75.175422,42.874274 75.449809,29.872787 C 75.631086,21.28319 63.759384,9.2755739 46.25,7.28125 z"
+       id="path7786"
+       style="fill:none;fill-rule:evenodd;stroke:#0000ff;stroke-width:4;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       d="M 10.542949,11.421875 L 27.582051,11.421875"
+       id="path7784"
+       style="fill:none;fill-rule:evenodd;stroke:#0000ff;stroke-width:5.07986355px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       d="M 10.542949,21.03125 L 27.582051,21.03125"
+       id="path8297"
+       style="fill:none;fill-rule:evenodd;stroke:#0000ff;stroke-width:5.07986355px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       d="M 10.542949,30.71875 L 27.582051,30.71875"
+       id="path8299"
+       style="fill:none;fill-rule:evenodd;stroke:#0000ff;stroke-width:5.07986355px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       d="M 10.621074,39.625 L 27.660176,39.625"
+       id="path8301"
+       style="fill:none;fill-rule:evenodd;stroke:#0000ff;stroke-width:5.07986355px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       d="M 10.621074,49.625 L 27.660176,49.625"
+       id="path8303"
+       style="fill:none;fill-rule:evenodd;stroke:#0000ff;stroke-width:5.07986355px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1" />
+  </g>
+</svg>
