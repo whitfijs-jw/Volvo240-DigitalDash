@@ -4,8 +4,8 @@ set -u
 set -e
 
 QT_PROJECT_DIR="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/"
-QT_EXEC_DIR="${QT_PROJECT_DIR}/build-VolvoDigitalDashModels-RPI3-Debug/VolvoDigitalDashModels"
-QT_FONTS_DIR="${QT_PROJECT_DIR}/VolvoDigitalDashModels/ariblk.ttf"
+QT_EXEC_DIR="${QT_PROJECT_DIR}/VolvoDigitalDashModels/build-RPI3/app/VolvoDigitalDashModels"
+QT_FONTS_DIR="${QT_PROJECT_DIR}/VolvoDigitalDashModels/app/ariblk.ttf"
 QT_EXEC_TARGET_DIR="${TARGET_DIR}/opt"
 QT_FONTS_TARGET_DIR="${TARGET_DIR}/usr/lib/fonts"
 BOARD_DIR="$(dirname $0)"
