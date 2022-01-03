@@ -61,6 +61,20 @@ ApplicationWindow {
             height: smallGaugeSize
             width: smallGaugeSize
         }
+    }
+
+    Component {
+        id: boostDelegate740
+        BoostGauge740 {
+            minValue: gaugeMin
+            maxValue: gaugeMax
+            value: currentValue
+            units: gaugeUnits
+            highAlarm: gaugeHighAlarm
+
+            height: smallGaugeSize
+            width: smallGaugeSize
+        }
 
     }
 
@@ -110,6 +124,21 @@ ApplicationWindow {
     }
 
     Component {
+        id: voltMeterDelegate740
+        Volts740 {
+            minValue: gaugeMin
+            maxValue: gaugeMax
+            value: currentValue
+            units: gaugeUnits
+            highAlarm: gaugeHighAlarm
+            lowAlarm: gaugeLowAlarm
+
+            height: smallGaugeSize
+            width: smallGaugeSize
+        }
+    }
+
+    Component {
         id: ambientTempDelegate
         AmbientTemp {
             minValue: gaugeMin
@@ -142,8 +171,33 @@ ApplicationWindow {
     }
 
     Component {
+        id: rpmDelegate740
+        Tacho740 {
+            value: rpm
+            maxValue: maxRpm
+            mRedLine: redLine
+            height: tachSize
+            width: tachSize
+        }
+    }
+
+    Component {
         id: speedoDelegate
         Speedo {
+            speed: currentValue
+            minSpeed: minValue
+            maxSpeed: maxValue
+            units: speedUnits
+            topValue: valueTop
+            topUnit: valueTopUnits
+            height: speedoSize
+            width: speedoSize
+        }
+    }
+
+    Component {
+        id: speedoDelegate740
+        Speedo740 {
             speed: currentValue
             minSpeed: minValue
             maxSpeed: maxValue
@@ -168,6 +222,34 @@ ApplicationWindow {
 
             height: tempFuelSize
             width: tempFuelSize
+        }
+    }
+
+    Component {
+        id: coolant740Delegate
+        CoolantTemp740 {
+            minValue: gaugeMin
+            maxValue: gaugeMax
+            value: currentValue
+            units: gaugeUnits
+            highAlarm: gaugeHighAlarm
+
+            height: smallGaugeSize
+            width: smallGaugeSize
+        }
+    }
+
+    Component {
+        id: fuelLevel740Delegate
+        FuelLevel740 {
+            minValue: gaugeMin
+            maxValue: gaugeMax
+            value: currentValue
+            units: gaugeUnits
+            lowAlarm: gaugeLowAlarm
+
+            height: smallGaugeSize
+            width: smallGaugeSize
         }
     }
 
@@ -350,10 +432,16 @@ ApplicationWindow {
                 setTempFuelSize(tachSize - smallGaugeSize - 10);
                 break;
             case 2:
-                setSmallGaugeSize(140);
+                setSmallGaugeSize(0);
                 setTachSize(400);
                 setSpeedoSize(440);
                 setTempFuelSize(400);
+                break;
+            case 3:
+                setSmallGaugeSize(140);
+                setTachSize(300);
+                setSpeedoSize(400);
+                setTempFuelSize(300);
                 break;
             default:
                 setSmallGaugeSize(140);
@@ -391,10 +479,10 @@ ApplicationWindow {
         Page {
             BigTachCenter {
                 Component.onCompleted: {
-                    setSmallGaugeSize(140);
-                    setTachSize(440);
-                    setSpeedoSize(tachSize - smallGaugeSize - 10);
-                    setTempFuelSize(tachSize - smallGaugeSize - 10);
+//                    setSmallGaugeSize(140);
+//                    setTachSize(440);
+//                    setSpeedoSize(tachSize - smallGaugeSize - 10);
+//                    setTempFuelSize(tachSize - smallGaugeSize - 10);
                 }
             }
 
@@ -406,10 +494,10 @@ ApplicationWindow {
             BigTachLeft {
                 id: bigTach
                 Component.onCompleted: {
-                    setSmallGaugeSize(140);
-                    setTachSize(440);
-                    setSpeedoSize(tachSize - smallGaugeSize - 10);
-                    setTempFuelSize(tachSize - smallGaugeSize - 10);
+//                    setSmallGaugeSize(140);
+//                    setTachSize(440);
+//                    setSpeedoSize(tachSize - smallGaugeSize - 10);
+//                    setTempFuelSize(tachSize - smallGaugeSize - 10);
                 }
 
                 WarningLightBar {
@@ -420,10 +508,24 @@ ApplicationWindow {
         Page {
             Original240Layout {
                 Component.onCompleted: {
-                    setSmallGaugeSize(140);
-                    setTachSize(400);
-                    setSpeedoSize(440);
-                    setTempFuelSize(400);
+//                    setSmallGaugeSize(140);
+//                    setTachSize(400);
+//                    setSpeedoSize(440);
+//                    setTempFuelSize(400);
+                }
+            }
+
+            WarningLightBar {
+            }
+        }
+
+        Page {
+            Original740Layout {
+                Component.onCompleted: {
+//                    setSmallGaugeSize(140);
+//                    setTachSize(275);
+//                    setSpeedoSize(350);
+//                    setTempFuelSize(300);
                 }
             }
 

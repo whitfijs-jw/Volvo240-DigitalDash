@@ -69,6 +69,7 @@ Item
             {
                 source: "qrc:accCluster/boost_black_no_numbers.png"
                 anchors.fill: parent
+                asynchronous: true
             }
 
             foreground: NeedleCenter {

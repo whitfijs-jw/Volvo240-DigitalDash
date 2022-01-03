@@ -36,6 +36,7 @@ Item {
 
         anchors.fill: parent
         z: 3
+        asynchronous: true
     }
 
     Rectangle {

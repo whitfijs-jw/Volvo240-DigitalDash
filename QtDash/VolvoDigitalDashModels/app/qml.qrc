@@ -19,6 +19,14 @@
         <file>Original240Layout.qml</file>
         <file>WarningLight.qml</file>
         <file>WarningLightBar.qml</file>
+        <file>Clock740.qml</file>
+        <file>Original740Layout.qml</file>
+        <file>Tacho740.qml</file>
+        <file>Speedo740.qml</file>
+        <file>Volts740.qml</file>
+        <file>BoostGauge740.qml</file>
+        <file>CoolantTemp740.qml</file>
+        <file>FuelLevel740.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -59,9 +67,9 @@
         <file>740_tach.png</file>
         <file>740_coolant_temp.png</file>
         <file>740_fuel.png</file>
-        <file>740_voltmeterpng.png</file>
         <file>740_boost.png</file>
         <file>740_speedo.png</file>
         <file>740_clock.png</file>
+        <file>740_voltmeter.png</file>
     </qresource>
 </RCC>

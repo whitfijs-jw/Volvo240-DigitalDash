@@ -34,6 +34,8 @@ static AccessoryGaugeModel oilTemperatureModel;
 static AccessoryGaugeModel ambientTemperatureModel;
 static AccessoryGaugeModel boostModel;
 static AccessoryGaugeModel voltMeterModel;
+static AccessoryGaugeModel coolantTempModel;
+static AccessoryGaugeModel fuelLevelModel;
 static IndicatorModel leftBlinkerModel;
 static IndicatorModel rightBlinkerModel;
 static WarningLightModel parkingBrakeLightModel;
@@ -82,6 +84,18 @@ void initializeModels()
     tempFuelModel.setFuelLevel(0);
     tempFuelModel.setHighTempAlarm(220.0);
     tempFuelModel.setLowFuelAlarm(10);
+
+    coolantTempModel.setMinValue(120);
+    coolantTempModel.setMaxValue(250);
+    coolantTempModel.setUnits("°F");
+    coolantTempModel.setHighAlarm(220.0);
+    coolantTempModel.setCurrentValue(0.0);
+
+    fuelLevelModel.setMinValue(0);
+    fuelLevelModel.setMaxValue(100);
+    fuelLevelModel.setCurrentValue(0.0);
+    fuelLevelModel.setLowAlarm(10.0);
+    fuelLevelModel.setUnits("%");
 
     /** Init accessory gauges **/
     oilPressureModel.setMinValue(0.0);
@@ -191,10 +205,12 @@ void updateGaugesRPi()
 
     tempFuelModel.setFuelLevel(fuelVolts); // TODO: replace with real sensor calculation
     tempFuelModel.setCurrentTemp(coolantTempVolts); // TODO: replace with real sensor calculation
+    fuelLevelModel.setCurrentValue(fuelVolts);
+    coolantTempModel.setCurrentValue(coolantTempVolts);
 
     //ambient temp
     qreal ambientTempVolts = analogInputs.readValue(sensorConf->value(Config::AMBIENT_TEMP_KEY));
-    ambientTemperatureModel.setCurrentValue(ambientTempVolts);
+    speedoModel.setTopValue(ambientTempVolts);
 #endif
 
     tachModel.setRpm(rpm);
@@ -239,9 +255,8 @@ void updateGauges() {
         oilTemperatureModel.setCurrentValue(((temp/1000.0) * 9.0/5.0)+32.0);
         tempFuelModel.setCurrentTemp(((temp/1000.0) * 9.0/5.0)+32.0);
         static double test = 0.0;
-        ambientTemperatureModel.setCurrentValue(test);
-        test += 0.25;
-        if (test > 105) test = -15;
+        speedoModel.setTopValue(((temp/1000.0) * 9.0/5.0)+32.0);
+        coolantTempModel.setCurrentValue(260);//(2 * (temp/1000.0) * 9.0/5.0)+32.0);
     }
 
     if(rpmFile.isOpen())
@@ -303,6 +318,8 @@ int main(int argc, char *argv[])
     ctxt->setContextProperty("rpmModel", &tachModel);
     ctxt->setContextProperty("speedoModel", &speedoModel);
     ctxt->setContextProperty("tempFuelModel", &tempFuelModel);
+    ctxt->setContextProperty("coolantTempModel", &coolantTempModel);
+    ctxt->setContextProperty("fuelLevelModel", &fuelLevelModel);
     ctxt->setContextProperty("oilPModel", &oilPressureModel);
     ctxt->setContextProperty("oilTModel", &oilTemperatureModel);
     ctxt->setContextProperty("outsideTempModel", &ambientTemperatureModel);

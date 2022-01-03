@@ -56,6 +56,7 @@ Item
         z: -1
         source: "qrc:accCluster/clock_black.png"
         anchors.fill: parent
+        asynchronous: true
     }
 
     CircularGauge

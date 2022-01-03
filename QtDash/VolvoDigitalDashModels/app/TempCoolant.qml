@@ -24,12 +24,14 @@ Item
         z: 0;
         source: "qrc:mainCluster/temp_coolant_overlay_small.png"
         anchors.fill: parent
+        asynchronous: true
     }
 
     Image {
         z: -2;
         source: "qrc:mainCluster/temp_coolant.png"
         anchors.fill: parent
+        asynchronous: true
     }
 
     Image {
@@ -37,6 +39,7 @@ Item
         source: "qrc:mainCluster/temp_coolant_gas_can.png"
         anchors.fill: parent
         visible: fuelLevel < lowAlarm ? true : false
+        asynchronous: true
     }
 
     CircularGauge
