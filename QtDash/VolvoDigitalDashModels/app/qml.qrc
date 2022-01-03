@@ -55,4 +55,13 @@
         <file>high_beam_icon.png</file>
         <file>Bulb_failure_icon_no_background.png</file>
     </qresource>
+    <qresource prefix="/gauge-faces-740-940">
+        <file>740_tach.png</file>
+        <file>740_coolant_temp.png</file>
+        <file>740_fuel.png</file>
+        <file>740_voltmeterpng.png</file>
+        <file>740_boost.png</file>
+        <file>740_speedo.png</file>
+        <file>740_clock.png</file>
+    </qresource>
 </RCC>
