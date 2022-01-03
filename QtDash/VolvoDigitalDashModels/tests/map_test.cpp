@@ -1,17 +1,4 @@
-#include <QtTest/QtTest>
-#include <map_sensor.h>
-#include <config.h>
-
-class MapTest: public QObject
-{
-    Q_OBJECT
-public:
-    static constexpr qreal DELTA = 1.0; //!< Allowable error (in kPa) from table values (which I think are rounded anyway)
-
-private slots:
-    void testGetAbsolutePressure();
-    void testGetAbsolutePressure_data();
-};
+#include <map_test.h>
 
 void MapTest::testGetAbsolutePressure()
 {
@@ -28,28 +15,27 @@ void MapTest::testGetAbsolutePressure()
     qreal actual = sensor->getAbsolutePressure(volts, Config::PressureUnits::KPA);
     qreal expected = expected_kpa;
     qreal delta = MapTest::DELTA;
-    std::cout << "Actual: " << actual << " Expected: " << expected << std::endl;
+    qDebug() << "Actual: " << actual << " Expected: " << expected;
     QVERIFY(actual-delta <= expected && actual+delta >=expected);
 
     // psi values
     actual = sensor->getAbsolutePressure(volts, Config::PressureUnits::PSI);
     expected = expected_psi;
     delta = MapTest::DELTA * .145038;
-    std::cout << "Actual: " << actual << " Expected: " << expected << std::endl;
+    qDebug() << "Actual: " << actual << " Expected: " << expected;
     QVERIFY(actual-delta <= expected && actual+delta >=expected);
 
     // bar values (kPa / 100)
     actual = sensor->getAbsolutePressure(volts, Config::PressureUnits::BAR);
     expected = expected_kpa / 100.0;
     delta = MapTest::DELTA / 100.0;
-    std::cout << "Actual: " << actual << " Expected: " << expected << std::endl;
+    qDebug() << "Actual: " << actual << " Expected: " << expected;
     QVERIFY(actual-delta <= expected && actual+delta >=expected);
 
     delete(sensor);
 }
 
-void MapTest::testGetAbsolutePressure_data()
-{
+void MapTest::testGetAbsolutePressure_data() {
     typedef struct {
         qreal oneBar;
         qreal twoBar;
@@ -58,6 +44,7 @@ void MapTest::testGetAbsolutePressure_data()
 
     QMap<qreal, map_pressures_t> GMMapExpectedValues;
 
+    // some values I found on the internet, perfect
     GMMapExpectedValues[0.00] = {10.0, 8.8, 3.6};
     GMMapExpectedValues[0.25] = {15, 18, 17};
     GMMapExpectedValues[0.50] = {20, 28, 33};
@@ -91,8 +78,9 @@ void MapTest::testGetAbsolutePressure_data()
     while(iter.hasNext()) {
         iter.next();
         QString rowName;
-        rowName.asprintf("1bar-%2.2f", iter.key());
 
+        // kPa calibration data
+        QTextStream(&rowName) << "1bar-" << iter.key();
         QTest::newRow(rowName.toStdString().c_str())
                 << 10.0
                 << 105.0
@@ -101,7 +89,8 @@ void MapTest::testGetAbsolutePressure_data()
                 << iter.value().oneBar
                 << iter.value().oneBar * .145038;
 
-        rowName.asprintf("2bar-%2.2f", iter.key());
+        rowName.clear();
+        QTextStream(&rowName) << "2bar-" << iter.key();
         QTest::newRow(rowName.toStdString().c_str())
                 << 8.8
                 << 208.0
@@ -110,9 +99,45 @@ void MapTest::testGetAbsolutePressure_data()
                 << iter.value().twoBar
                 << iter.value().twoBar * .145038;
 
+        rowName.clear();
+        QTextStream(&rowName) << "3bar-" << iter.key();
+        QTest::newRow(rowName.toStdString().c_str())
+                << 3.6
+                << 315.0
+                << (int) Config::PressureUnits::KPA
+                << iter.key()
+                << iter.value().threeBar
+                << iter.value().threeBar * .145038;
+
+        // psi calibration data
+        rowName.clear();
+        QTextStream(&rowName) << "1bar-" << iter.key() <<"-psi-calib";
+        QTest::newRow(rowName.toStdString().c_str())
+                << 10.0 * .145038
+                << 105.0 * .145038
+                << (int) Config::PressureUnits::PSI
+                << iter.key()
+                << iter.value().oneBar
+                << iter.value().oneBar * .145038;
+
+        rowName.clear();
+        QTextStream(&rowName) << "2bar-" << iter.key() <<"-psi-calib";
+        QTest::newRow(rowName.toStdString().c_str())
+                << 8.8 * .145038
+                << 208.0 * .145038
+                << (int) Config::PressureUnits::PSI
+                << iter.key()
+                << iter.value().twoBar
+                << iter.value().twoBar * .145038;
+
+        rowName.clear();
+        QTextStream(&rowName) << "3bar-" << iter.key() <<"-psi-calib";
+        QTest::newRow(rowName.toStdString().c_str())
+                << 3.6 * .145038
+                << 315.0 * .145038
+                << (int) Config::PressureUnits::PSI
+                << iter.key()
+                << iter.value().threeBar
+                << iter.value().threeBar * .145038;
     }
 }
-
-
-QTEST_MAIN(MapTest)
-#include "map_test.moc"
