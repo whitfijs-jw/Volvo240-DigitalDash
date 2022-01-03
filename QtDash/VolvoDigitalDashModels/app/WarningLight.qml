@@ -25,7 +25,7 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
 
-        font.bold: true
+        font.bold: false
     }
 
     Image {

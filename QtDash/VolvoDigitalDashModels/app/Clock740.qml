@@ -41,6 +41,9 @@ Item
         source: "qrc:gauge-faces-740-940/740_clock.png"
         anchors.fill: parent
         asynchronous: true
+
+        smooth: true
+        mipmap: true
     }
 
 //    CircularGauge
