@@ -51,61 +51,71 @@ ApplicationWindow {
 
     Component {
         id: boostDelegate
-        BoostGauge {
-            minValue: gaugeMin
-            maxValue: gaugeMax
-            value: currentValue
-            units: gaugeUnits
-            highAlarm: gaugeHighAlarm
+        Loader {
+            BoostGauge {
+                minValue: gaugeMin
+                maxValue: gaugeMax
+                value: currentValue
+                units: gaugeUnits
+                highAlarm: gaugeHighAlarm
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+                height: smallGaugeSize
+                width: smallGaugeSize
+            }
         }
-
     }
 
     Component {
         id: oilPressureDelegate
-        OilPressure {
-            minValue: gaugeMin
-            maxValue: gaugeMax
-            value: currentValue
-            units: gaugeUnits
-            highAlarm: gaugeHighAlarm
-            lowAlarm: gaugeLowAlarm
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+        Loader {
+            OilPressure {
+                minValue: gaugeMin
+                maxValue: gaugeMax
+                value: currentValue
+                units: gaugeUnits
+                highAlarm: gaugeHighAlarm
+                lowAlarm: gaugeLowAlarm
+
+                height: smallGaugeSize
+                width: smallGaugeSize
+            }
         }
     }
 
     Component {
         id: oilTemperatureDelegate
-        OilTemperature {
-            minValue: gaugeMin
-            maxValue: gaugeMax
-            value: currentValue
-            units: gaugeUnits
-            highAlarm: gaugeHighAlarm
-            lowAlarm: gaugeLowAlarm
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+        Loader {
+            OilTemperature {
+                minValue: gaugeMin
+                maxValue: gaugeMax
+                value: currentValue
+                units: gaugeUnits
+                highAlarm: gaugeHighAlarm
+                lowAlarm: gaugeLowAlarm
+
+                height: smallGaugeSize
+                width: smallGaugeSize
+            }
         }
     }
 
     Component {
         id: voltMeterDelegate
-        Volts {
-            minValue: gaugeMin
-            maxValue: gaugeMax
-            value: currentValue
-            units: gaugeUnits
-            highAlarm: gaugeHighAlarm
-            lowAlarm: gaugeLowAlarm
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+        Loader {
+            Volts {
+                minValue: gaugeMin
+                maxValue: gaugeMax
+                value: currentValue
+                units: gaugeUnits
+                highAlarm: gaugeHighAlarm
+                lowAlarm: gaugeLowAlarm
+
+                height: smallGaugeSize
+                width: smallGaugeSize
+            }
         }
     }
 
@@ -124,208 +134,246 @@ ApplicationWindow {
 
     Component {
         id: clockDelegate
-        Clock {
-            height: smallGaugeSize
-            width: smallGaugeSize
+        Loader {
+            Clock {
+                height: smallGaugeSize
+                width: smallGaugeSize
+            }
         }
     }
 
     Component {
         id: rpmDelegate
-        Tacho {
-            value: rpm
-            maxValue: maxRpm
-            mRedLine: redLine
-            height: tachSize
-            width: tachSize
+
+        Loader {
+            Tacho {
+                value: rpm
+                maxValue: maxRpm
+                mRedLine: redLine
+                height: tachSize
+                width: tachSize
+            }
         }
     }
 
     Component {
         id: speedoDelegate
-        Speedo {
-            speed: currentValue
-            minSpeed: minValue
-            maxSpeed: maxValue
-            units: speedUnits
-            topValue: valueTop
-            topUnit: valueTopUnits
-            height: speedoSize
-            width: speedoSize
+
+        Loader {
+            Speedo {
+                speed: currentValue
+                minSpeed: minValue
+                maxSpeed: maxValue
+                units: speedUnits
+                topValue: valueTop
+                topUnit: valueTopUnits
+                height: speedoSize
+                width: speedoSize
+            }
         }
     }
 
     Component {
         id: tempFuelDelegate
-        TempCoolant {
-            maxCoolantTemp: tempMax
-            minCoolantTemp: tempMin
-            coolantTemp: currentTemp
-            units: tempUnits
-            fuelLevel: currentFuelLevel
-            highAlarm: alarmHighTemp
-            lowAlarm: alarmLowFuel
+        Loader {
+            TempCoolant {
+                maxCoolantTemp: tempMax
+                minCoolantTemp: tempMin
+                coolantTemp: currentTemp
+                units: tempUnits
+                fuelLevel: currentFuelLevel
+                highAlarm: alarmHighTemp
+                lowAlarm: alarmLowFuel
 
-            height: tempFuelSize
-            width: tempFuelSize
+                height: tempFuelSize
+                width: tempFuelSize
+            }
         }
     }
 
     Component {
         id: leftBlinkerDelegate
-        Blinker {
-            on: indicatorOn
-            flipped: false
 
-            width: blinkerSize
-            height: 3 * blinkerSize / 4
+        Loader {
+            Blinker {
+                on: indicatorOn
+                flipped: false
+
+                width: blinkerSize
+                height: 3 * blinkerSize / 4
+            }
         }
     }
 
     Component {
         id: rightBlinkerDelegate
-        Blinker {
-            on: indicatorOn
-            flipped: true
 
-            width: blinkerSize
-            height: 3 * blinkerSize / 4
+        Loader {
+            Blinker {
+                on: indicatorOn
+                flipped: true
+
+                width: blinkerSize
+                height: 3 * blinkerSize / 4
+            }
         }
     }
 
     Component {
         id: parkingBrakeLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "red"
+        Loader {
+            WarningLight {
+                on: warningLightOn
+                warningText: warningLightText
+                lightColor: "red"
 
-            width: warningLightWideWidth
+                width: warningLightWideWidth
+            }
         }
     }
 
     Component {
         id: brakeFailureLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "red"
+        Loader {
+            WarningLight {
+                on: warningLightOn
+                warningText: warningLightText
+                lightColor: "red"
 
-            width: warningLightWideWidth
+                width: warningLightWideWidth
+            }
         }
     }
 
     Component {
         id: bulbFailureLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "orange"
-            imageSource: "qrc:/warningLights/Bulb_failure_icon_no_background.png"
+        Loader {
+            WarningLight {
+                on: warningLightOn
+                warningText: warningLightText
+                lightColor: "orange"
+                imageSource: "qrc:/warningLights/Bulb_failure_icon_no_background.png"
 
-            width: warningLightWidth
+                width: warningLightWidth
+            }
         }
     }
 
     Component {
         id: shiftUpLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "orange"
+        Loader {
+            WarningLight {
+                on: warningLightOn
+                warningText: warningLightText
+                lightColor: "orange"
 
-            width: warningLightWidth
+                width: warningLightWidth
+            }
         }
     }
 
     Component {
         id: highBeamLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "lightcyan"
-            imageSource: "qrc:/warningLights/high_beam_icon.png"
+        Loader {
+            WarningLight {
+                on: warningLightOn
+                warningText: warningLightText
+                lightColor: "lightcyan"
+                imageSource: "qrc:/warningLights/high_beam_icon.png"
 
-            width: warningLightWidth
+                width: warningLightWidth
+            }
         }
     }
 
     Component {
         id: srsWarningLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "red"
+        Loader {
+            WarningLight {
+                on: warningLightOn
+                warningText: warningLightText
+                lightColor: "red"
 
-            width: warningLightWidth
+                width: warningLightWidth
+            }
         }
     }
 
     Component {
         id: oilWarningLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "red"
-            imageSource: "qrc:warningLights/oil_icon_no_background.png"
+        Loader {
+            WarningLight {
+                on: warningLightOn
+                warningText: warningLightText
+                lightColor: "red"
+                imageSource: "qrc:warningLights/oil_icon_no_background.png"
 
-            width: warningLightWidth
+                width: warningLightWidth
+            }
         }
     }
 
     Component {
         id: batteryWarningLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "red"
-            imageSource: "qrc:warningLights/battery_charge_icon_no_background.png"
+        Loader {
+            WarningLight {
+                on: warningLightOn
+                warningText: warningLightText
+                lightColor: "red"
+                imageSource: "qrc:warningLights/battery_charge_icon_no_background.png"
 
-            width: warningLightWidth
+                width: warningLightWidth
+            }
         }
     }
 
     Component {
         id: absWarningLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "red"
+        Loader {
+            WarningLight {
+                on: warningLightOn
+                warningText: warningLightText
+                lightColor: "red"
 
-            width: warningLightWidth
+                width: warningLightWidth
+            }
         }
     }
 
     Component {
         id: checkEngineLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "orange"
+        Loader {
+            WarningLight {
+                on: warningLightOn
+                warningText: warningLightText
+                lightColor: "orange"
 
-            width: warningLightWidth
+                width: warningLightWidth
+            }
         }
     }
 
     Component {
         id: serviceLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "orange"
+        Loader {
+            WarningLight {
+                on: warningLightOn
+                warningText: warningLightText
+                lightColor: "orange"
 
-            width: warningLightWidth
+                width: warningLightWidth
+            }
         }
     }
 
@@ -390,12 +438,12 @@ ApplicationWindow {
 
         Page {
             BigTachCenter {
-                Component.onCompleted: {
-                    setSmallGaugeSize(140);
-                    setTachSize(440);
-                    setSpeedoSize(tachSize - smallGaugeSize - 10);
-                    setTempFuelSize(tachSize - smallGaugeSize - 10);
-                }
+//                Component.onCompleted: {
+//                    setSmallGaugeSize(140);
+//                    setTachSize(440);
+//                    setSpeedoSize(tachSize - smallGaugeSize - 10);
+//                    setTempFuelSize(tachSize - smallGaugeSize - 10);
+//                }
             }
 
             WarningLightBar {
@@ -405,12 +453,12 @@ ApplicationWindow {
         Page {
             BigTachLeft {
                 id: bigTach
-                Component.onCompleted: {
-                    setSmallGaugeSize(140);
-                    setTachSize(440);
-                    setSpeedoSize(tachSize - smallGaugeSize - 10);
-                    setTempFuelSize(tachSize - smallGaugeSize - 10);
-                }
+//                Component.onCompleted: {
+//                    setSmallGaugeSize(140);
+//                    setTachSize(440);
+//                    setSpeedoSize(tachSize - smallGaugeSize - 10);
+//                    setTempFuelSize(tachSize - smallGaugeSize - 10);
+//                }
 
                 WarningLightBar {
                 }
@@ -419,12 +467,12 @@ ApplicationWindow {
 
         Page {
             Original240Layout {
-                Component.onCompleted: {
-                    setSmallGaugeSize(140);
-                    setTachSize(400);
-                    setSpeedoSize(440);
-                    setTempFuelSize(400);
-                }
+//                Component.onCompleted: {
+//                    setSmallGaugeSize(140);
+//                    setTachSize(400);
+//                    setSpeedoSize(440);
+//                    setTempFuelSize(400);
+//                }
             }
 
             WarningLightBar {

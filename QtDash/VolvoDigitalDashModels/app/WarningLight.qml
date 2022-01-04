@@ -33,6 +33,7 @@ Item {
         source: warning_light.imageSource
         smooth: true
         mipmap: true
+        asynchronous: true
 
         anchors.fill: parent
         z: 3
