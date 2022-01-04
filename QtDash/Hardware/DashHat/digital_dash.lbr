@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.000393700787" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
@@ -64,6 +64,7 @@
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
 <layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
+<layer number="58" name="bCopper" color="7" fill="1" visible="no" active="no"/>
 <layer number="59" name="tCarbon" color="7" fill="1" visible="no" active="no"/>
 <layer number="60" name="bCarbon" color="7" fill="1" visible="no" active="no"/>
 <layer number="88" name="SimResults" color="9" fill="1" visible="no" active="no"/>
@@ -95,7 +96,10 @@
 <layer number="114" name="Badge_Outline" color="7" fill="1" visible="no" active="no"/>
 <layer number="115" name="ReferenceISLANDS" color="7" fill="1" visible="no" active="no"/>
 <layer number="116" name="Patch_BOT" color="9" fill="4" visible="no" active="no"/>
+<layer number="117" name="PM_Ref" color="7" fill="1" visible="no" active="no"/>
 <layer number="118" name="Rect_Pads" color="7" fill="1" visible="no" active="no"/>
+<layer number="119" name="PF_Ref" color="7" fill="1" visible="no" active="no"/>
+<layer number="120" name="WFL_Ref" color="7" fill="1" visible="no" active="no"/>
 <layer number="121" name="_tsilk" color="7" fill="1" visible="no" active="no"/>
 <layer number="122" name="_bsilk" color="7" fill="1" visible="no" active="no"/>
 <layer number="123" name="tTestmark" color="7" fill="1" visible="no" active="no"/>
@@ -105,15 +109,40 @@
 <layer number="127" name="_tValues" color="7" fill="1" visible="no" active="no"/>
 <layer number="128" name="_bValues" color="7" fill="1" visible="no" active="no"/>
 <layer number="129" name="Mask" color="7" fill="1" visible="no" active="no"/>
+<layer number="130" name="SMDSTROOK" color="7" fill="1" visible="no" active="no"/>
 <layer number="131" name="tAdjust" color="7" fill="1" visible="no" active="no"/>
 <layer number="132" name="bAdjust" color="7" fill="1" visible="no" active="no"/>
+<layer number="133" name="bottom_silk" color="7" fill="1" visible="no" active="no"/>
+<layer number="134" name="silk_top" color="7" fill="1" visible="no" active="no"/>
+<layer number="135" name="silk_bottom" color="7" fill="1" visible="no" active="no"/>
+<layer number="136" name="silktop" color="7" fill="1" visible="no" active="no"/>
+<layer number="137" name="silkbottom" color="7" fill="1" visible="no" active="no"/>
+<layer number="138" name="EEE" color="7" fill="1" visible="no" active="no"/>
+<layer number="139" name="_tKeepout" color="7" fill="1" visible="no" active="no"/>
+<layer number="140" name="mbKeepout" color="7" fill="1" visible="no" active="no"/>
+<layer number="141" name="ASSEMBLY_TOP" color="7" fill="1" visible="no" active="no"/>
+<layer number="142" name="mbRestrict" color="7" fill="1" visible="no" active="no"/>
+<layer number="143" name="PLACE_BOUND_TOP" color="7" fill="1" visible="no" active="no"/>
 <layer number="144" name="Drill_legend" color="7" fill="1" visible="no" active="no"/>
+<layer number="145" name="DrillLegend_01-02" color="7" fill="1" visible="no" active="no"/>
+<layer number="146" name="DrillLegend_01-15" color="7" fill="1" visible="no" active="no"/>
+<layer number="147" name="DrillLegend_01-16" color="7" fill="1" visible="no" active="no"/>
+<layer number="148" name="DrillLegend_01-20" color="7" fill="1" visible="no" active="no"/>
+<layer number="149" name="DrillLegend_02-15" color="7" fill="1" visible="no" active="no"/>
 <layer number="150" name="Notes" color="7" fill="1" visible="no" active="no"/>
 <layer number="151" name="HeatSink" color="7" fill="1" visible="no" active="no"/>
 <layer number="152" name="_bDocu" color="7" fill="1" visible="no" active="no"/>
 <layer number="153" name="FabDoc1" color="7" fill="1" visible="no" active="no"/>
 <layer number="154" name="FabDoc2" color="7" fill="1" visible="no" active="no"/>
 <layer number="155" name="FabDoc3" color="7" fill="1" visible="no" active="no"/>
+<layer number="166" name="AntennaArea" color="7" fill="1" visible="no" active="no"/>
+<layer number="168" name="4mmHeightArea" color="7" fill="1" visible="no" active="no"/>
+<layer number="191" name="mNets" color="7" fill="1" visible="no" active="no"/>
+<layer number="192" name="mBusses" color="7" fill="1" visible="no" active="no"/>
+<layer number="193" name="mPins" color="7" fill="1" visible="no" active="no"/>
+<layer number="194" name="mSymbols" color="7" fill="1" visible="no" active="no"/>
+<layer number="195" name="mNames" color="7" fill="1" visible="no" active="no"/>
+<layer number="196" name="mValues" color="7" fill="1" visible="no" active="no"/>
 <layer number="199" name="Contour" color="7" fill="1" visible="no" active="no"/>
 <layer number="200" name="200bmp" color="1" fill="10" visible="no" active="no"/>
 <layer number="201" name="201bmp" color="2" fill="10" visible="no" active="no"/>
@@ -153,6 +182,7 @@
 <layer number="249" name="Edge" color="7" fill="1" visible="no" active="no"/>
 <layer number="250" name="Descript" color="3" fill="1" visible="no" active="no"/>
 <layer number="251" name="SMDround" color="12" fill="11" visible="no" active="no"/>
+<layer number="253" name="Extra" color="7" fill="1" visible="no" active="no"/>
 <layer number="254" name="cooling" color="7" fill="1" visible="no" active="no"/>
 <layer number="255" name="routoute" color="7" fill="1" visible="no" active="no"/>
 </layers>
@@ -545,6 +575,23 @@ Source: http://www.vishay.com/docs/83673/sfh618.pdf</description>
 <text x="0" y="-6.477" size="0.6096" layer="25" font="vector" ratio="20" rot="R180" align="bottom-center">&gt;NAME</text>
 <text x="0" y="-4.953" size="0.6096" layer="27" font="vector" ratio="20" rot="R180" align="top-center">&gt;VALUE</text>
 </package>
+<package name="0603">
+<description>&lt;p&gt;&lt;b&gt;Generic 1608 (0603) package&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;0.2mm courtyard excess rounded to nearest 0.05mm.&lt;/p&gt;</description>
+<wire x1="-1.6" y1="0.7" x2="1.6" y2="0.7" width="0.0508" layer="39"/>
+<wire x1="1.6" y1="0.7" x2="1.6" y2="-0.7" width="0.0508" layer="39"/>
+<wire x1="1.6" y1="-0.7" x2="-1.6" y2="-0.7" width="0.0508" layer="39"/>
+<wire x1="-1.6" y1="-0.7" x2="-1.6" y2="0.7" width="0.0508" layer="39"/>
+<wire x1="-0.356" y1="0.432" x2="0.356" y2="0.432" width="0.1016" layer="51"/>
+<wire x1="-0.356" y1="-0.419" x2="0.356" y2="-0.419" width="0.1016" layer="51"/>
+<smd name="1" x="-0.85" y="0" dx="1.1" dy="1" layer="1"/>
+<smd name="2" x="0.85" y="0" dx="1.1" dy="1" layer="1"/>
+<text x="0" y="0.762" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-0.762" size="0.6096" layer="27" font="vector" ratio="20" align="top-center">&gt;VALUE</text>
+<rectangle x1="-0.8382" y1="-0.4699" x2="-0.3381" y2="0.4801" layer="51"/>
+<rectangle x1="0.3302" y1="-0.4699" x2="0.8303" y2="0.4801" layer="51"/>
+<rectangle x1="-0.1999" y1="-0.3" x2="0.1999" y2="0.3" layer="35"/>
+</package>
 </packages>
 <symbols>
 <symbol name="OP-AMP">
@@ -580,22 +627,22 @@ Source: http://www.vishay.com/docs/83673/sfh618.pdf</description>
 <pin name="V-" x="-2.54" y="-7.62" visible="pad" length="short" direction="pwr" rot="R90"/>
 </symbol>
 <symbol name="MCP3X08">
-<pin name="CH0" x="-20.32" y="15.24" length="middle"/>
-<pin name="CH1" x="-20.32" y="10.16" length="middle"/>
-<pin name="CH2" x="-20.32" y="5.08" length="middle"/>
-<pin name="CH3" x="-20.32" y="0" length="middle"/>
-<pin name="CH4" x="-20.32" y="-5.08" length="middle"/>
-<pin name="CH5" x="-20.32" y="-10.16" length="middle"/>
-<pin name="CH6" x="-20.32" y="-15.24" length="middle"/>
-<pin name="CH7" x="-20.32" y="-20.32" length="middle"/>
-<pin name="VDD" x="20.32" y="15.24" length="middle" rot="R180"/>
-<pin name="VREF" x="20.32" y="10.16" length="middle" rot="R180"/>
-<pin name="AGND" x="20.32" y="5.08" length="middle" rot="R180"/>
-<pin name="CLK" x="20.32" y="0" length="middle" rot="R180"/>
-<pin name="DOUT" x="20.32" y="-5.08" length="middle" rot="R180"/>
-<pin name="DIN" x="20.32" y="-10.16" length="middle" rot="R180"/>
-<pin name="!CS/SHDN" x="20.32" y="-15.24" length="middle" rot="R180"/>
-<pin name="DGND" x="20.32" y="-20.32" length="middle" rot="R180"/>
+<pin name="CH0" x="-20.32" y="15.24" length="middle" direction="in"/>
+<pin name="CH1" x="-20.32" y="10.16" length="middle" direction="in"/>
+<pin name="CH2" x="-20.32" y="5.08" length="middle" direction="in"/>
+<pin name="CH3" x="-20.32" y="0" length="middle" direction="in"/>
+<pin name="CH4" x="-20.32" y="-5.08" length="middle" direction="in"/>
+<pin name="CH5" x="-20.32" y="-10.16" length="middle" direction="in"/>
+<pin name="CH6" x="-20.32" y="-15.24" length="middle" direction="in"/>
+<pin name="CH7" x="-20.32" y="-20.32" length="middle" direction="in"/>
+<pin name="VDD" x="20.32" y="15.24" length="middle" direction="pwr" rot="R180"/>
+<pin name="VREF" x="20.32" y="10.16" length="middle" direction="pwr" rot="R180"/>
+<pin name="AGND" x="20.32" y="5.08" length="middle" direction="pwr" rot="R180"/>
+<pin name="CLK" x="20.32" y="0" length="middle" direction="in" rot="R180"/>
+<pin name="DOUT" x="20.32" y="-5.08" length="middle" direction="out" rot="R180"/>
+<pin name="DIN" x="20.32" y="-10.16" length="middle" direction="in" rot="R180"/>
+<pin name="!CS/SHDN" x="20.32" y="-15.24" length="middle" direction="in" rot="R180"/>
+<pin name="DGND" x="20.32" y="-20.32" length="middle" direction="pwr" rot="R180"/>
 <wire x1="-15.24" y1="20.32" x2="-15.24" y2="-25.4" width="0.254" layer="94"/>
 <wire x1="-15.24" y1="-25.4" x2="15.24" y2="-25.4" width="0.254" layer="94"/>
 <wire x1="15.24" y1="-25.4" x2="15.24" y2="20.32" width="0.254" layer="94"/>
@@ -851,14 +898,14 @@ Source: http://www.vishay.com/docs/83673/sfh618.pdf</description>
 <wire x1="-10.16" y1="12.7" x2="10.16" y2="12.7" width="0.254" layer="94"/>
 <pin name="X1" x="-15.24" y="10.16" length="middle"/>
 <pin name="X2" x="-15.24" y="5.08" length="middle"/>
-<pin name="VBKP" x="-15.24" y="0" length="middle"/>
-<pin name="!RST" x="-15.24" y="-5.08" length="middle"/>
-<pin name="GND" x="-15.24" y="-10.16" length="middle"/>
+<pin name="VBKP" x="-15.24" y="0" length="middle" direction="pwr"/>
+<pin name="!RST" x="-15.24" y="-5.08" length="middle" direction="in"/>
+<pin name="GND" x="-15.24" y="-10.16" length="middle" direction="pwr"/>
 <pin name="SDA" x="15.24" y="-10.16" length="middle" rot="R180"/>
 <pin name="SCL" x="15.24" y="-5.08" length="middle" rot="R180"/>
-<pin name="!INT" x="15.24" y="0" length="middle" rot="R180"/>
-<pin name="SQW" x="15.24" y="5.08" length="middle" rot="R180"/>
-<pin name="VCC" x="15.24" y="10.16" length="middle" rot="R180"/>
+<pin name="!INT" x="15.24" y="0" length="middle" direction="out" rot="R180"/>
+<pin name="SQW" x="15.24" y="5.08" length="middle" direction="out" rot="R180"/>
+<pin name="VCC" x="15.24" y="10.16" length="middle" direction="pwr" rot="R180"/>
 <text x="5.08" y="-15.24" size="1.27" layer="94">&gt;NAME</text>
 <text x="-3.302" y="-13.97" size="1.27" layer="94" rot="R180">&gt;VALUE</text>
 </symbol>
@@ -877,6 +924,31 @@ Source: http://www.vishay.com/docs/83673/sfh618.pdf</description>
 <text x="1.524" y="-1.143" size="0.8636" layer="93">2</text>
 <pin name="2" x="5.08" y="0" visible="pad" length="short" direction="pas" swaplevel="1" rot="R180"/>
 <pin name="1" x="-5.08" y="0" visible="pad" length="short" direction="pas" swaplevel="1"/>
+</symbol>
+<symbol name="RESISTOR">
+<wire x1="-2.54" y1="0" x2="-2.159" y2="1.016" width="0.1524" layer="94"/>
+<wire x1="-2.159" y1="1.016" x2="-1.524" y2="-1.016" width="0.1524" layer="94"/>
+<wire x1="-1.524" y1="-1.016" x2="-0.889" y2="1.016" width="0.1524" layer="94"/>
+<wire x1="-0.889" y1="1.016" x2="-0.254" y2="-1.016" width="0.1524" layer="94"/>
+<wire x1="-0.254" y1="-1.016" x2="0.381" y2="1.016" width="0.1524" layer="94"/>
+<wire x1="0.381" y1="1.016" x2="1.016" y2="-1.016" width="0.1524" layer="94"/>
+<wire x1="1.016" y1="-1.016" x2="1.651" y2="1.016" width="0.1524" layer="94"/>
+<wire x1="1.651" y1="1.016" x2="2.286" y2="-1.016" width="0.1524" layer="94"/>
+<wire x1="2.286" y1="-1.016" x2="2.54" y2="0" width="0.1524" layer="94"/>
+<text x="0" y="1.524" size="1.778" layer="95" font="vector" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-1.524" size="1.778" layer="96" font="vector" align="top-center">&gt;VALUE</text>
+<pin name="2" x="5.08" y="0" visible="off" length="short" direction="pas" swaplevel="1" rot="R180"/>
+<pin name="1" x="-5.08" y="0" visible="off" length="short" direction="pas" swaplevel="1"/>
+</symbol>
+<symbol name="CAP">
+<wire x1="0" y1="2.54" x2="0" y2="2.032" width="0.1524" layer="94"/>
+<wire x1="0" y1="0" x2="0" y2="0.508" width="0.1524" layer="94"/>
+<text x="1.524" y="2.921" size="1.778" layer="95" font="vector">&gt;NAME</text>
+<text x="1.524" y="-2.159" size="1.778" layer="96" font="vector">&gt;VALUE</text>
+<rectangle x1="-2.032" y1="0.508" x2="2.032" y2="1.016" layer="94"/>
+<rectangle x1="-2.032" y1="1.524" x2="2.032" y2="2.032" layer="94"/>
+<pin name="1" x="0" y="5.08" visible="off" length="short" direction="pas" swaplevel="1" rot="R270"/>
+<pin name="2" x="0" y="-2.54" visible="off" length="short" direction="pas" swaplevel="1" rot="R90"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -1283,6 +1355,45 @@ Source: http://cache.national.com/ds/LM/LM158.pdf</description>
 <technology name="-.327-12.5-34RR"/>
 <technology name="-.327-6-34RR"/>
 <technology name="-.327-9-34RR"/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="RC0603JR" prefix="R">
+<gates>
+<gate name="G$1" symbol="RESISTOR" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="0603">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="VALUE" value="" constant="no"/>
+</technology>
+<technology name="-07100KL">
+<attribute name="VALUE" value="100k" constant="no"/>
+</technology>
+<technology name="-07100RL">
+<attribute name="VALUE" value="100R" constant="no"/>
+</technology>
+<technology name="-071ML">
+<attribute name="VALUE" value="" constant="no"/>
+</technology>
+<technology name="-07330KL">
+<attribute name="VALUE" value="330k" constant="no"/>
+</technology>
+<technology name="-07470RL">
+<attribute name="VALUE" value="470R" constant="no"/>
+</technology>
+<technology name="-07620KL">
+<attribute name="VALUE" value="620k" constant="no"/>
+</technology>
+<technology name="-1310RL">
+<attribute name="VALUE" value="10R" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>

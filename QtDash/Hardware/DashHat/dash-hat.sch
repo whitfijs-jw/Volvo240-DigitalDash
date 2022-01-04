@@ -3937,14 +3937,14 @@ Source: http://www.vishay.com/docs/83673/sfh618.pdf</description>
 <wire x1="-10.16" y1="12.7" x2="10.16" y2="12.7" width="0.254" layer="94"/>
 <pin name="X1" x="-15.24" y="10.16" length="middle"/>
 <pin name="X2" x="-15.24" y="5.08" length="middle"/>
-<pin name="VBKP" x="-15.24" y="0" length="middle"/>
-<pin name="!RST" x="-15.24" y="-5.08" length="middle"/>
-<pin name="GND" x="-15.24" y="-10.16" length="middle"/>
+<pin name="VBKP" x="-15.24" y="0" length="middle" direction="pwr"/>
+<pin name="!RST" x="-15.24" y="-5.08" length="middle" direction="in"/>
+<pin name="GND" x="-15.24" y="-10.16" length="middle" direction="pwr"/>
 <pin name="SDA" x="15.24" y="-10.16" length="middle" rot="R180"/>
 <pin name="SCL" x="15.24" y="-5.08" length="middle" rot="R180"/>
-<pin name="!INT" x="15.24" y="0" length="middle" rot="R180"/>
-<pin name="SQW" x="15.24" y="5.08" length="middle" rot="R180"/>
-<pin name="VCC" x="15.24" y="10.16" length="middle" rot="R180"/>
+<pin name="!INT" x="15.24" y="0" length="middle" direction="out" rot="R180"/>
+<pin name="SQW" x="15.24" y="5.08" length="middle" direction="out" rot="R180"/>
+<pin name="VCC" x="15.24" y="10.16" length="middle" direction="pwr" rot="R180"/>
 <text x="5.08" y="-15.24" size="1.27" layer="94">&gt;NAME</text>
 <text x="-3.302" y="-13.97" size="1.27" layer="94" rot="R180">&gt;VALUE</text>
 </symbol>
@@ -8289,7 +8289,7 @@ conditioning circuit to here.</text>
 <instance part="C11" gate="G$1" x="292.1" y="294.005"/>
 <instance part="C14" gate="G$1" x="283.21" y="294.005"/>
 <instance part="SUPPLY42" gate="G$1" x="299.72" y="304.165"/>
-<instance part="GND57" gate="1" x="287.655" y="284.48" rot="MR0"/>
+<instance part="GND57" gate="1" x="288.29" y="284.48" rot="MR0"/>
 <instance part="R58" gate="G$1" x="193.04" y="214.63"/>
 <instance part="SUPPLY43" gate="G$1" x="203.2" y="226.06"/>
 <instance part="R59" gate="G$1" x="219.71" y="194.31" rot="R90"/>
@@ -8721,16 +8721,6 @@ conditioning circuit to here.</text>
 <wire x1="299.72" y1="265.43" x2="299.72" y2="267.335" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C14" gate="G$1" pin="2"/>
-<wire x1="283.21" y1="291.465" x2="283.21" y2="290.195" width="0.1524" layer="91"/>
-<wire x1="283.21" y1="290.195" x2="287.655" y2="290.195" width="0.1524" layer="91"/>
-<wire x1="287.655" y1="290.195" x2="287.655" y2="287.02" width="0.1524" layer="91"/>
-<pinref part="C11" gate="G$1" pin="2"/>
-<wire x1="292.1" y1="291.465" x2="292.1" y2="290.195" width="0.1524" layer="91"/>
-<wire x1="292.1" y1="290.195" x2="287.655" y2="290.195" width="0.1524" layer="91"/>
-<pinref part="GND57" gate="1" pin="GND"/>
-</segment>
-<segment>
 <pinref part="GND61" gate="1" pin="GND"/>
 <wire x1="285.75" y1="194.31" x2="285.75" y2="201.295" width="0.1524" layer="91"/>
 <pinref part="IC7" gate="G$1" pin="A5"/>
@@ -8846,6 +8836,17 @@ conditioning circuit to here.</text>
 <wire x1="617.22" y1="63.5" x2="626.11" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="626.11" y1="63.5" x2="626.11" y2="64.77" width="0.1524" layer="91"/>
 <junction x="617.22" y="63.5"/>
+</segment>
+<segment>
+<pinref part="C14" gate="G$1" pin="2"/>
+<wire x1="283.21" y1="291.465" x2="283.21" y2="288.29" width="0.1524" layer="91"/>
+<pinref part="GND57" gate="1" pin="GND"/>
+<wire x1="283.21" y1="288.29" x2="288.29" y2="288.29" width="0.1524" layer="91"/>
+<wire x1="288.29" y1="288.29" x2="288.29" y2="287.02" width="0.1524" layer="91"/>
+<pinref part="C11" gate="G$1" pin="2"/>
+<wire x1="292.1" y1="291.465" x2="292.1" y2="288.29" width="0.1524" layer="91"/>
+<wire x1="292.1" y1="288.29" x2="288.29" y2="288.29" width="0.1524" layer="91"/>
+<junction x="288.29" y="288.29"/>
 </segment>
 </net>
 <net name="5V" class="0">

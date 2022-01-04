@@ -1801,8 +1801,6 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <contactref element="IC5" pad="5"/>
 <contactref element="IC6" pad="3"/>
 <contactref element="IC6" pad="4"/>
-<contactref element="C14" pad="2"/>
-<contactref element="C11" pad="2"/>
 <contactref element="IC7" pad="5"/>
 <contactref element="IC6" pad="5"/>
 <contactref element="OK1" pad="12"/>
@@ -1883,6 +1881,8 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <via x="34.544" y="46.482" extent="1-16" drill="0.5"/>
 <via x="26.924" y="52.578" extent="1-16" drill="0.5"/>
 <via x="26.924" y="53.594" extent="1-16" drill="0.5"/>
+<contactref element="C14" pad="2"/>
+<contactref element="C11" pad="2"/>
 </signal>
 <signal name="5V">
 <contactref element="IC1" pad="4"/>
