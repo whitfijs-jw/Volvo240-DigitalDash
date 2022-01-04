@@ -20,6 +20,7 @@ Item {
         z:1
         source: "qrc:mainCluster/arrow_off.png"
         anchors.fill: parent
+        asynchronous: true
         rotation: (blinker.flipped) ? 180 : 0
     }
 }

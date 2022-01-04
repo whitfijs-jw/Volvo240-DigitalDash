@@ -1,6 +1,4 @@
-import QtQuick 2.7
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.3
+import QtQuick 2.15
 import QtQuick.Extras 1.4
 import QtQuick.Controls.Styles 1.4
 
@@ -90,6 +88,7 @@ Item
                     z:0
                     source: "qrc:mainCluster/early120mphspeedolo.png"
                     anchors.fill: parent
+                    asynchronous: true
                 }
             }
 

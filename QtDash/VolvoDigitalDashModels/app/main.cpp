@@ -133,8 +133,20 @@ void initializeModels()
 
 #ifdef RASPBERRY_PI
 #else
-    //auto analogInputs = new AnalogInput("mcp3208", "/home/whitfijs/git/dummy_sys/bus/iio/devices/");
-    //analogInputs.setVoltageRef(5.0);
+    leftBlinkerModel.setOn(true);
+    rightBlinkerModel.setOn(true);
+
+    parkingBrakeLightModel.setOn(true);
+    brakeFailureLightModel.setOn(true);
+    bulbFailureLightModel.setOn(true);
+    shiftUpLightModel.setOn(true);
+    highBeamLightModel.setOn(true);
+    srsWarningLightModel.setOn(true);
+    oilWarningLightModel.setOn(true);
+    batteryWarningLightModel.setOn(true);
+    absWarningLightModel.setOn(true);
+    checkEngineLightModel.setOn(true);
+    serviceLightModel.setOn(true);
 #endif
 }
 
@@ -285,15 +297,15 @@ int main(int argc, char *argv[])
 #endif
 
 #ifndef RASPBERRY_PI
-    QFontDatabase::addApplicationFont(":/fonts/aribkl.ttf");
+    QFontDatabase::addApplicationFont(":/fonts/HandelGothReg.ttf");
     QFont mFont;
-    mFont.setFamily("Arial Black");
+    mFont.setFamily("Handel Gothic");
     app.setFont(mFont);
 #else
-    QFontDatabase::addApplicationFont(":/fonts/aribkl.ttf");
-    QFont font;
-    font.setFamily("Arial Black");
-    app.setFont(font);
+    QFontDatabase::addApplicationFont(":/fonts/HandelGothReg.ttf");
+    QFont mFont;
+    mFont.setFamily("Handel Gothic");
+    app.setFont(mFont);
 #endif
 
 
@@ -324,6 +336,21 @@ int main(int argc, char *argv[])
 
     initializeModels();
 
+    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
+    if (engine.rootObjects().isEmpty())
+        return -1;
+
+
+    std::cout << "Starting GPS" << std::endl;
+    GpsHelper * loc = new GpsHelper(&app);
+
+    QObject::connect(loc, SIGNAL(speedUpdateMilesPerHour(qreal)), &speedoModel, SLOT(setCurrentValue(qreal)));
+
+    loc->init();
+
+    QObject::connect(&engine, SIGNAL(quit()), &app, SLOT(quit()));
+    QObject::connect(&app, SIGNAL(lastWindowClosed()), loc, SLOT(close()));
+
 #ifndef RASPBERRY_PI
     QTimer rpmTimer;
     rpmTimer.setInterval(100);
@@ -335,19 +362,6 @@ int main(int argc, char *argv[])
     QObject::connect(&rpmTimer, &QTimer::timeout, &app, &updateGaugesRPi);
     rpmTimer.start();
 #endif
-
-    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
-    if (engine.rootObjects().isEmpty())
-        return -1;
-    std::cout << "Starting GPS" << std::endl;
-    GpsHelper * loc = new GpsHelper(&app);
-
-    QObject::connect(loc, SIGNAL(speedUpdateMilesPerHour(qreal)), &speedoModel, SLOT(setCurrentValue(qreal)));
-
-    loc->init();
-
-    QObject::connect(&engine, SIGNAL(quit()), &app, SLOT(quit()));
-    QObject::connect(&app, SIGNAL(lastWindowClosed()), loc, SLOT(close()));
 
     return app.exec();
 }
