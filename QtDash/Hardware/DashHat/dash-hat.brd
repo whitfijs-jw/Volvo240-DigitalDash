@@ -881,23 +881,6 @@ Source: http://www.vishay.com/docs/83673/sfh618.pdf</description>
 <text x="-2.48" y="-1.81" size="0.6096" layer="21">&gt;NAME</text>
 <text x="-2.39" y="1.15" size="0.6096" layer="21">&gt;VALUE</text>
 </package>
-</packages>
-</library>
-<library name="SparkFun-Resistors">
-<description>&lt;h3&gt;SparkFun Resistors&lt;/h3&gt;
-This library contains resistors. Reference designator:R. 
-&lt;br&gt;
-&lt;br&gt;
-We've spent an enormous amount of time creating and checking these footprints and parts, but it is &lt;b&gt; the end user's responsibility&lt;/b&gt; to ensure correctness and suitablity for a given componet or application. 
-&lt;br&gt;
-&lt;br&gt;If you enjoy using this library, please buy one of our products at &lt;a href=" www.sparkfun.com"&gt;SparkFun.com&lt;/a&gt;.
-&lt;br&gt;
-&lt;br&gt;
-&lt;b&gt;Licensing:&lt;/b&gt; Creative Commons ShareAlike 4.0 International - https://creativecommons.org/licenses/by-sa/4.0/ 
-&lt;br&gt;
-&lt;br&gt;
-You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
-<packages>
 <package name="0603">
 <description>&lt;p&gt;&lt;b&gt;Generic 1608 (0603) package&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;0.2mm courtyard excess rounded to nearest 0.05mm.&lt;/p&gt;</description>
@@ -1364,9 +1347,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <elements>
 <element name="J1" library="SparkFun-Connectors" package="2X20" value="CONN_20X2" x="5.642" y="8.5" rot="R90"/>
 <element name="IC1" library="digital_dash" package="TSSOP14" value="LM324" x="23.114" y="21.336"/>
-<element name="R2" library="SparkFun-Resistors" package="0603" value="330k" x="18.542" y="24.13" rot="R270">
-<attribute name="PROD_ID" value="RES-08968" x="18.542" y="24.13" size="1.778" layer="27" rot="R270" display="off"/>
-</element>
+<element name="R2" library="digital_dash" package="0603" value="330k" x="18.542" y="24.13" rot="R270"/>
 <element name="C1" library="SparkFun-Capacitors" package="0603" value="10nF" x="15.494" y="24.13" rot="R270">
 <attribute name="PROD_ID" value="CAP-00867" x="15.494" y="24.13" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
@@ -1374,63 +1355,33 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PROD_ID" value="CAP-08604" x="22.86" y="22.86" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
 <element name="J2" library="SparkFun-Connectors" package="1X02" value="" x="11.43" y="2.032"/>
-<element name="R9" library="SparkFun-Resistors" package="0603" value="1k" x="11.698" y="9.418" rot="R90">
-<attribute name="PROD_ID" value="RES-07856" x="11.698" y="9.418" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
+<element name="R9" library="digital_dash" package="0603" value="1k" x="11.698" y="9.418" rot="R90"/>
 <element name="J3" library="SparkFun-Connectors" package="1X02" value="" x="17.018" y="2.032"/>
-<element name="R10" library="SparkFun-Resistors" package="0603" value="1k" x="17.272" y="9.398" rot="R90">
-<attribute name="PROD_ID" value="RES-07856" x="17.272" y="9.398" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
+<element name="R10" library="digital_dash" package="0603" value="1k" x="17.272" y="9.398" rot="R90"/>
 <element name="J4" library="SparkFun-Connectors" package="1X02" value="" x="22.606" y="2.032"/>
-<element name="R11" library="SparkFun-Resistors" package="0603" value="1k" x="22.86" y="9.398" rot="R90">
-<attribute name="PROD_ID" value="RES-07856" x="22.86" y="9.398" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
+<element name="R11" library="digital_dash" package="0603" value="1k" x="22.86" y="9.398" rot="R90"/>
 <element name="J5" library="SparkFun-Connectors" package="1X02" value="" x="28.194" y="2.032"/>
-<element name="R12" library="SparkFun-Resistors" package="0603" value="1k" x="28.448" y="9.398" rot="R90">
-<attribute name="PROD_ID" value="RES-07856" x="28.448" y="9.398" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
-<element name="R1" library="SparkFun-Resistors" package="0603" value="100" x="13.236" y="9.378" rot="R90">
-<attribute name="PROD_ID" value="RES-07863" x="13.236" y="9.378" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
-<element name="R3" library="SparkFun-Resistors" package="0603" value="330k" x="18.542" y="18.542" rot="R90">
-<attribute name="PROD_ID" value="RES-08968" x="3.542" y="18.542" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
+<element name="R12" library="digital_dash" package="0603" value="1k" x="28.448" y="9.398" rot="R90"/>
+<element name="R1" library="digital_dash" package="0603" value="100R" x="13.236" y="9.378" rot="R90"/>
+<element name="R3" library="digital_dash" package="0603" value="330k" x="18.542" y="18.542" rot="R90"/>
 <element name="C2" library="SparkFun-Capacitors" package="0603" value="10nF" x="15.494" y="18.542" rot="R90">
 <attribute name="PROD_ID" value="CAP-00867" x="11.244" y="11.792" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="R4" library="SparkFun-Resistors" package="0603" value="100" x="18.796" y="9.398" rot="R90">
-<attribute name="PROD_ID" value="RES-07863" x="10.296" y="3.898" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
-<element name="R5" library="SparkFun-Resistors" package="0603" value="330k" x="26.416" y="16.764" rot="R270">
-<attribute name="PROD_ID" value="RES-08968" x="41.416" y="16.764" size="1.778" layer="27" rot="R270" display="off"/>
-</element>
+<element name="R4" library="digital_dash" package="0603" value="100R" x="18.796" y="9.398" rot="R90"/>
+<element name="R5" library="digital_dash" package="0603" value="330k" x="26.416" y="16.764" rot="R270"/>
 <element name="C3" library="SparkFun-Capacitors" package="0603" value="10nF" x="23.368" y="16.764" rot="R270">
 <attribute name="PROD_ID" value="CAP-00867" x="27.618" y="23.514" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="R6" library="SparkFun-Resistors" package="0603" value="100" x="24.384" y="9.398" rot="R90">
-<attribute name="PROD_ID" value="RES-07863" x="15.884" y="3.898" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
-<element name="R7" library="SparkFun-Resistors" package="0603" value="330k" x="27.686" y="24.13" rot="R270">
-<attribute name="PROD_ID" value="RES-08968" x="42.686" y="24.13" size="1.778" layer="27" rot="R270" display="off"/>
-</element>
+<element name="R6" library="digital_dash" package="0603" value="100R" x="24.384" y="9.398" rot="R90"/>
+<element name="R7" library="digital_dash" package="0603" value="330k" x="27.686" y="24.13" rot="R270"/>
 <element name="C4" library="SparkFun-Capacitors" package="0603" value="10nF" x="30.734" y="24.13" rot="R270">
 <attribute name="PROD_ID" value="CAP-00867" x="34.984" y="30.88" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="R8" library="SparkFun-Resistors" package="0603" value="100" x="29.972" y="9.398" rot="R90">
-<attribute name="PROD_ID" value="RES-07863" x="21.472" y="3.898" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
-<element name="R13" library="SparkFun-Resistors" package="0603" value="640k" x="17.018" y="24.13" rot="R90">
-<attribute name="PROD_ID" value="RES-12024" x="17.018" y="24.13" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
-<element name="R14" library="SparkFun-Resistors" package="0603" value="640k" x="24.892" y="16.764" rot="R90">
-<attribute name="PROD_ID" value="RES-12024" x="24.892" y="16.764" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
-<element name="R15" library="SparkFun-Resistors" package="0603" value="640k" x="17.018" y="18.542" rot="R270">
-<attribute name="PROD_ID" value="RES-12024" x="17.018" y="18.542" size="1.778" layer="27" rot="R270" display="off"/>
-</element>
-<element name="R16" library="SparkFun-Resistors" package="0603" value="640k" x="29.21" y="24.13" rot="R90">
-<attribute name="PROD_ID" value="RES-12024" x="29.21" y="24.13" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
+<element name="R8" library="digital_dash" package="0603" value="100R" x="29.972" y="9.398" rot="R90"/>
+<element name="R13" library="digital_dash" package="0603" value="620k" x="17.018" y="24.13" rot="R90"/>
+<element name="R14" library="digital_dash" package="0603" value="620k" x="24.892" y="16.764" rot="R90"/>
+<element name="R15" library="digital_dash" package="0603" value="620k" x="17.018" y="18.542" rot="R270"/>
+<element name="R16" library="digital_dash" package="0603" value="620k" x="29.21" y="24.13" rot="R90"/>
 <element name="IC2" library="digital_dash" package="SO16" value="MCP3X083008" x="29.464" y="32.258" rot="R90"/>
 <element name="C6" library="SparkFun-Capacitors" package="0603" value="1.0uF" x="22.86" y="19.812" rot="MR180">
 <attribute name="PROD_ID" value="CAP-00868" x="22.86" y="19.812" size="1.778" layer="28" rot="MR180" display="off"/>
@@ -1448,79 +1399,31 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="OC_FARNELL" value="1467674" x="45.466" y="35.56" size="1.778" layer="27" display="off"/>
 </element>
 <element name="OK1" library="digital_dash" package="SMD16" value="ILQ1X009" x="62.484" y="47.498" rot="R180"/>
-<element name="R17" library="SparkFun-Resistors" package="0603" value="470" x="70.866" y="38.354">
-<attribute name="PROD_ID" value="RES-07869" x="70.866" y="38.354" size="1.778" layer="27" display="off"/>
-</element>
-<element name="R18" library="SparkFun-Resistors" package="0603" value="470" x="70.866" y="41.402" rot="R180">
-<attribute name="PROD_ID" value="RES-07869" x="70.866" y="41.402" size="1.778" layer="27" rot="R180" display="off"/>
-</element>
-<element name="R19" library="SparkFun-Resistors" package="0603" value="470" x="55.118" y="39.878" rot="R270">
-<attribute name="PROD_ID" value="RES-07869" x="55.118" y="39.878" size="1.778" layer="27" rot="R270" display="off"/>
-</element>
-<element name="R20" library="SparkFun-Resistors" package="0603" value="470" x="70.866" y="46.482">
-<attribute name="PROD_ID" value="RES-07869" x="70.866" y="46.482" size="1.778" layer="27" display="off"/>
-</element>
-<element name="R21" library="SparkFun-Resistors" package="0603" value="470" x="70.866" y="42.926" rot="R180">
-<attribute name="PROD_ID" value="RES-07869" x="70.866" y="42.926" size="1.778" layer="27" rot="R180" display="off"/>
-</element>
-<element name="R22" library="SparkFun-Resistors" package="0603" value="470" x="55.118" y="44.45" rot="R90">
-<attribute name="PROD_ID" value="RES-07869" x="55.118" y="44.45" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
-<element name="R23" library="SparkFun-Resistors" package="0603" value="470" x="70.866" y="48.006">
-<attribute name="PROD_ID" value="RES-07869" x="70.866" y="48.006" size="1.778" layer="27" display="off"/>
-</element>
-<element name="R24" library="SparkFun-Resistors" package="0603" value="470" x="70.866" y="51.562" rot="R180">
-<attribute name="PROD_ID" value="RES-07869" x="70.866" y="51.562" size="1.778" layer="27" rot="R180" display="off"/>
-</element>
-<element name="R25" library="SparkFun-Resistors" package="0603" value="470" x="70.866" y="56.134">
-<attribute name="PROD_ID" value="RES-07869" x="70.866" y="56.134" size="1.778" layer="27" display="off"/>
-</element>
-<element name="R26" library="SparkFun-Resistors" package="0603" value="470" x="70.866" y="53.086" rot="R180">
-<attribute name="PROD_ID" value="RES-07869" x="70.866" y="53.086" size="1.778" layer="27" rot="R180" display="off"/>
-</element>
-<element name="R27" library="SparkFun-Resistors" package="0603" value="470" x="55.118" y="50.038" rot="R270">
-<attribute name="PROD_ID" value="RES-07869" x="55.118" y="50.038" size="1.778" layer="27" rot="R270" display="off"/>
-</element>
-<element name="R28" library="SparkFun-Resistors" package="0603" value="470" x="55.118" y="54.864" rot="R90">
-<attribute name="PROD_ID" value="RES-07869" x="55.118" y="54.864" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
+<element name="R17" library="digital_dash" package="0603" value="470R" x="70.866" y="38.354"/>
+<element name="R18" library="digital_dash" package="0603" value="470R" x="70.866" y="41.402" rot="R180"/>
+<element name="R19" library="digital_dash" package="0603" value="470R" x="55.118" y="39.878" rot="R270"/>
+<element name="R20" library="digital_dash" package="0603" value="470R" x="70.866" y="46.482"/>
+<element name="R21" library="digital_dash" package="0603" value="470R" x="70.866" y="42.926" rot="R180"/>
+<element name="R22" library="digital_dash" package="0603" value="470R" x="55.118" y="44.45" rot="R90"/>
+<element name="R23" library="digital_dash" package="0603" value="470R" x="70.866" y="48.006"/>
+<element name="R24" library="digital_dash" package="0603" value="470R" x="70.866" y="51.562" rot="R180"/>
+<element name="R25" library="digital_dash" package="0603" value="470R" x="70.866" y="56.134"/>
+<element name="R26" library="digital_dash" package="0603" value="470R" x="70.866" y="53.086" rot="R180"/>
+<element name="R27" library="digital_dash" package="0603" value="470R" x="55.118" y="50.038" rot="R270"/>
+<element name="R28" library="digital_dash" package="0603" value="470R" x="55.118" y="54.864" rot="R90"/>
 <element name="OK2" library="digital_dash" package="SMD16" value="ILQ1X009" x="62.484" y="47.498" rot="MR0"/>
-<element name="R29" library="SparkFun-Resistors" package="0603" value="470" x="70.612" y="56.134" rot="MR180">
-<attribute name="PROD_ID" value="RES-07869" x="70.612" y="56.134" size="1.778" layer="28" rot="MR180" display="off"/>
-</element>
-<element name="R30" library="SparkFun-Resistors" package="0603" value="470" x="70.612" y="53.34" rot="MR0">
-<attribute name="PROD_ID" value="RES-07869" x="76.112" y="50.09" size="1.778" layer="28" rot="MR0" display="off"/>
-</element>
-<element name="R31" library="SparkFun-Resistors" package="0603" value="470" x="55.118" y="54.864" rot="MR90">
-<attribute name="PROD_ID" value="RES-07869" x="48.618" y="43.864" size="1.778" layer="28" rot="MR90" display="off"/>
-</element>
-<element name="R32" library="SparkFun-Resistors" package="0603" value="470" x="70.612" y="48.006" rot="MR180">
-<attribute name="PROD_ID" value="RES-07869" x="54.112" y="57.756" size="1.778" layer="28" rot="MR180" display="off"/>
-</element>
-<element name="R33" library="SparkFun-Resistors" package="0603" value="470" x="70.612" y="51.816" rot="MR0">
-<attribute name="PROD_ID" value="RES-07869" x="92.612" y="38.816" size="1.778" layer="28" rot="MR0" display="off"/>
-</element>
-<element name="R34" library="SparkFun-Resistors" package="0603" value="470" x="55.118" y="50.038" rot="MR270">
-<attribute name="PROD_ID" value="RES-07869" x="68.118" y="50.038" size="1.778" layer="28" rot="MR270" display="off"/>
-</element>
-<element name="R35" library="SparkFun-Resistors" package="0603" value="470" x="70.612" y="46.482" rot="MR180">
-<attribute name="PROD_ID" value="RES-07869" x="65.112" y="62.732" size="1.778" layer="28" rot="MR180" display="off"/>
-</element>
-<element name="R36" library="SparkFun-Resistors" package="0603" value="470" x="70.612" y="42.926" rot="MR0">
-<attribute name="PROD_ID" value="RES-07869" x="81.612" y="23.426" size="1.778" layer="28" rot="MR0" display="off"/>
-</element>
-<element name="R37" library="SparkFun-Resistors" package="0603" value="470" x="70.612" y="38.354" rot="MR180">
-<attribute name="PROD_ID" value="RES-07869" x="54.112" y="61.104" size="1.778" layer="28" rot="MR180" display="off"/>
-</element>
-<element name="R38" library="SparkFun-Resistors" package="0603" value="470" x="70.612" y="41.402" rot="MR0">
-<attribute name="PROD_ID" value="RES-07869" x="92.612" y="15.402" size="1.778" layer="28" rot="MR0" display="off"/>
-</element>
-<element name="R39" library="SparkFun-Resistors" package="0603" value="470" x="55.118" y="44.45" rot="MR90">
-<attribute name="PROD_ID" value="RES-07869" x="29.118" y="44.45" size="1.778" layer="28" rot="MR90" display="off"/>
-</element>
-<element name="R40" library="SparkFun-Resistors" package="0603" value="470" x="55.118" y="39.878" rot="MR270">
-<attribute name="PROD_ID" value="RES-07869" x="84.368" y="45.378" size="1.778" layer="28" rot="MR270" display="off"/>
-</element>
+<element name="R29" library="digital_dash" package="0603" value="470R" x="70.612" y="56.134" rot="MR180"/>
+<element name="R30" library="digital_dash" package="0603" value="470R" x="70.612" y="53.34" rot="MR0"/>
+<element name="R31" library="digital_dash" package="0603" value="470R" x="55.118" y="54.864" rot="MR90"/>
+<element name="R32" library="digital_dash" package="0603" value="470R" x="70.612" y="48.006" rot="MR180"/>
+<element name="R33" library="digital_dash" package="0603" value="470R" x="70.612" y="51.816" rot="MR0"/>
+<element name="R34" library="digital_dash" package="0603" value="470R" x="55.118" y="50.038" rot="MR270"/>
+<element name="R35" library="digital_dash" package="0603" value="470R" x="70.612" y="46.482" rot="MR180"/>
+<element name="R36" library="digital_dash" package="0603" value="470R" x="70.612" y="42.926" rot="MR0"/>
+<element name="R37" library="digital_dash" package="0603" value="470R" x="70.612" y="38.354" rot="MR180"/>
+<element name="R38" library="digital_dash" package="0603" value="470R" x="70.612" y="41.402" rot="MR0"/>
+<element name="R39" library="digital_dash" package="0603" value="470R" x="55.118" y="44.45" rot="MR90"/>
+<element name="R40" library="digital_dash" package="0603" value="470R" x="55.118" y="39.878" rot="MR270"/>
 <element name="C9" library="SparkFun-Capacitors" package="0603" value="0.1uF" x="51.562" y="36.068" rot="R270">
 <attribute name="PROD_ID" value="CAP-08604" x="51.562" y="36.068" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
@@ -1528,64 +1431,30 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="PROD_ID" value="CAP-00868" x="53.34" y="36.068" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="OK3" library="digital_dash" package="SMD16" value="ILQ1X009" x="62.738" y="22.352" rot="R180"/>
-<element name="R41" library="SparkFun-Resistors" package="0603" value="470" x="71.628" y="13.462">
-<attribute name="PROD_ID" value="RES-07869" x="71.628" y="13.462" size="1.778" layer="27" display="off"/>
-</element>
-<element name="R42" library="SparkFun-Resistors" package="0603" value="470" x="71.628" y="16.51" rot="R180">
-<attribute name="PROD_ID" value="RES-07869" x="77.128" y="19.76" size="1.778" layer="27" rot="R180" display="off"/>
-</element>
-<element name="R43" library="SparkFun-Resistors" package="0603" value="470" x="55.118" y="14.986" rot="R270">
-<attribute name="PROD_ID" value="RES-07869" x="48.618" y="25.986" size="1.778" layer="27" rot="R270" display="off"/>
-</element>
-<element name="R44" library="SparkFun-Resistors" package="0603" value="470" x="71.628" y="21.59">
-<attribute name="PROD_ID" value="RES-07869" x="55.128" y="11.84" size="1.778" layer="27" display="off"/>
-</element>
-<element name="R45" library="SparkFun-Resistors" package="0603" value="470" x="71.628" y="18.034" rot="R180">
-<attribute name="PROD_ID" value="RES-07869" x="93.628" y="31.034" size="1.778" layer="27" rot="R180" display="off"/>
-</element>
-<element name="R46" library="SparkFun-Resistors" package="0603" value="470" x="55.118" y="19.558" rot="R90">
-<attribute name="PROD_ID" value="RES-07869" x="68.118" y="19.558" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
-<element name="R47" library="SparkFun-Resistors" package="0603" value="470" x="71.628" y="23.114">
-<attribute name="PROD_ID" value="RES-07869" x="66.128" y="6.864" size="1.778" layer="27" display="off"/>
-</element>
-<element name="R48" library="SparkFun-Resistors" package="0603" value="470" x="71.628" y="26.67" rot="R180">
-<attribute name="PROD_ID" value="RES-07869" x="82.628" y="46.17" size="1.778" layer="27" rot="R180" display="off"/>
-</element>
-<element name="R49" library="SparkFun-Resistors" package="0603" value="470" x="71.628" y="31.242">
-<attribute name="PROD_ID" value="RES-07869" x="55.128" y="8.492" size="1.778" layer="27" display="off"/>
-</element>
-<element name="R50" library="SparkFun-Resistors" package="0603" value="470" x="71.628" y="28.194" rot="R180">
-<attribute name="PROD_ID" value="RES-07869" x="93.628" y="54.194" size="1.778" layer="27" rot="R180" display="off"/>
-</element>
-<element name="R51" library="SparkFun-Resistors" package="0603" value="470" x="55.118" y="25.146" rot="R270">
-<attribute name="PROD_ID" value="RES-07869" x="29.118" y="25.146" size="1.778" layer="27" rot="R270" display="off"/>
-</element>
-<element name="R52" library="SparkFun-Resistors" package="0603" value="470" x="55.118" y="29.718" rot="R90">
-<attribute name="PROD_ID" value="RES-07869" x="84.368" y="24.218" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
+<element name="R41" library="digital_dash" package="0603" value="470R" x="71.628" y="13.462"/>
+<element name="R42" library="digital_dash" package="0603" value="470R" x="71.628" y="16.51" rot="R180"/>
+<element name="R43" library="digital_dash" package="0603" value="470R" x="55.118" y="14.986" rot="R270"/>
+<element name="R44" library="digital_dash" package="0603" value="470R" x="71.628" y="21.59"/>
+<element name="R45" library="digital_dash" package="0603" value="470R" x="71.628" y="18.034" rot="R180"/>
+<element name="R46" library="digital_dash" package="0603" value="470R" x="55.118" y="19.558" rot="R90"/>
+<element name="R47" library="digital_dash" package="0603" value="470R" x="71.628" y="23.114"/>
+<element name="R48" library="digital_dash" package="0603" value="470R" x="71.628" y="26.67" rot="R180"/>
+<element name="R49" library="digital_dash" package="0603" value="470R" x="71.628" y="31.242"/>
+<element name="R50" library="digital_dash" package="0603" value="470R" x="71.628" y="28.194" rot="R180"/>
+<element name="R51" library="digital_dash" package="0603" value="470R" x="55.118" y="25.146" rot="R270"/>
+<element name="R52" library="digital_dash" package="0603" value="470R" x="55.118" y="29.718" rot="R90"/>
 <element name="C12" library="SparkFun-Capacitors" package="0603" value="0.1uF" x="73.66" y="20.066" rot="MR270">
 <attribute name="PROD_ID" value="CAP-08604" x="73.66" y="20.066" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="C13" library="SparkFun-Capacitors" package="0603" value="1.0uF" x="71.882" y="20.066" rot="MR270">
 <attribute name="PROD_ID" value="CAP-00868" x="71.882" y="20.066" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
-<element name="R57" library="SparkFun-Resistors" package="0603" value="100" x="83.312" y="20.574" rot="MR0">
-<attribute name="PROD_ID" value="RES-07863" x="83.312" y="20.574" size="1.778" layer="28" rot="MR0" display="off"/>
-</element>
+<element name="R57" library="digital_dash" package="0603" value="100R" x="83.312" y="20.574" rot="MR0"/>
 <element name="IC5" library="digital_dash" package="DIL8-SMD" value="IL300" x="62.23" y="14.986" rot="MR0"/>
-<element name="R53" library="SparkFun-Resistors" package="0603" value="1M" x="71.12" y="10.414" rot="MR90">
-<attribute name="PROD_ID" value="RES-07868" x="71.12" y="10.414" size="1.778" layer="28" rot="MR90" display="off"/>
-</element>
-<element name="R54" library="SparkFun-Resistors" package="0603" value="1M" x="69.342" y="10.414" rot="MR90">
-<attribute name="PROD_ID" value="RES-07868" x="69.342" y="10.414" size="1.778" layer="28" rot="MR90" display="off"/>
-</element>
-<element name="R55" library="SparkFun-Resistors" package="0603" value="10" x="70.358" y="16.256" rot="MR0">
-<attribute name="PROD_ID" value="RES-09834" x="70.358" y="16.256" size="1.778" layer="28" rot="MR0" display="off"/>
-</element>
-<element name="R56" library="SparkFun-Resistors" package="0603" value="100k" x="52.578" y="18.288" rot="MR180">
-<attribute name="PROD_ID" value="RES-07828" x="52.578" y="18.288" size="1.778" layer="28" rot="MR180" display="off"/>
-</element>
+<element name="R53" library="digital_dash" package="0603" value="1M" x="71.12" y="10.414" rot="MR90"/>
+<element name="R54" library="digital_dash" package="0603" value="1M" x="69.342" y="10.414" rot="MR90"/>
+<element name="R55" library="digital_dash" package="0603" value="10R" x="70.358" y="16.256" rot="MR0"/>
+<element name="R56" library="digital_dash" package="0603" value="100k" x="52.578" y="18.288" rot="MR180"/>
 <element name="IC6" library="digital_dash" package="SO08" value="LM358D" x="51.308" y="23.368" rot="MR90"/>
 <element name="C11" library="SparkFun-Capacitors" package="0603" value="0.1uF" x="56.896" y="22.098" rot="MR180">
 <attribute name="PROD_ID" value="CAP-08604" x="56.896" y="22.098" size="1.778" layer="28" rot="MR180" display="off"/>
@@ -1593,22 +1462,12 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <element name="C14" library="SparkFun-Capacitors" package="0603" value="1.0uF" x="56.896" y="23.876" rot="MR180">
 <attribute name="PROD_ID" value="CAP-00868" x="56.896" y="23.876" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
-<element name="R58" library="SparkFun-Resistors" package="0603" value="100" x="82.55" y="32.004" rot="MR0">
-<attribute name="PROD_ID" value="RES-07863" x="82.55" y="21.254" size="1.778" layer="28" rot="MR0" display="off"/>
-</element>
-<element name="R59" library="SparkFun-Resistors" package="0603" value="1M" x="67.056" y="23.876" rot="MR180">
-<attribute name="PROD_ID" value="RES-07868" x="61.556" y="37.876" size="1.778" layer="28" rot="MR180" display="off"/>
-</element>
-<element name="R60" library="SparkFun-Resistors" package="0603" value="1M" x="67.056" y="22.098" rot="MR180">
-<attribute name="PROD_ID" value="RES-07868" x="67.056" y="36.098" size="1.778" layer="28" rot="MR180" display="off"/>
-</element>
+<element name="R58" library="digital_dash" package="0603" value="100R" x="82.55" y="32.004" rot="MR0"/>
+<element name="R59" library="digital_dash" package="0603" value="1M" x="67.056" y="23.876" rot="MR180"/>
+<element name="R60" library="digital_dash" package="0603" value="1M" x="67.056" y="22.098" rot="MR180"/>
 <element name="IC7" library="digital_dash" package="DIL8-SMD" value="IL300" x="62.484" y="29.972" rot="MR0"/>
-<element name="R61" library="SparkFun-Resistors" package="0603" value="10" x="70.866" y="31.242" rot="MR0">
-<attribute name="PROD_ID" value="RES-09834" x="70.866" y="31.242" size="1.778" layer="28" rot="MR0" display="off"/>
-</element>
-<element name="R62" library="SparkFun-Resistors" package="0603" value="100k" x="51.308" y="28.448" rot="MR180">
-<attribute name="PROD_ID" value="RES-07828" x="45.808" y="31.698" size="1.778" layer="28" rot="MR180" display="off"/>
-</element>
+<element name="R61" library="digital_dash" package="0603" value="10R" x="70.866" y="31.242" rot="MR0"/>
+<element name="R62" library="digital_dash" package="0603" value="100k" x="51.308" y="28.448" rot="MR180"/>
 <element name="IC4" library="digital_dash" package="SO08" value="LM358D" x="77.47" y="22.098" rot="MR90"/>
 <element name="J6" library="digital_dash" package="VOLVO_CON_31" value="VOLVO_CONN_31" x="93.218" y="45.466" rot="R270"/>
 <element name="J7" library="digital_dash" package="VOLVO_CON_32" value="VOLVO_CONN_32" x="86.951309375" y="18.849815625" rot="R235"/>
@@ -1637,37 +1496,21 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <element name="C16" library="SparkFun-Capacitors" package="0603" value="1.0uF" x="38.608" y="23.368" rot="R180">
 <attribute name="PROD_ID" value="CAP-00868" x="38.608" y="23.368" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="R63" library="SparkFun-Resistors" package="0603" value="1k" x="34.036" y="9.652" rot="R90">
-<attribute name="PROD_ID" value="RES-07856" x="22.352" y="4.064" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
-<element name="R64" library="SparkFun-Resistors" package="0603" value="330k" x="32.766" y="18.542">
-<attribute name="PROD_ID" value="RES-08968" x="32.766" y="30.226" size="1.778" layer="27" display="off"/>
-</element>
+<element name="R63" library="digital_dash" package="0603" value="1k" x="34.036" y="9.652" rot="R90"/>
+<element name="R64" library="digital_dash" package="0603" value="330k" x="32.766" y="18.542"/>
 <element name="C17" library="SparkFun-Capacitors" package="0603" value="10nF" x="32.766" y="15.494">
 <attribute name="PROD_ID" value="CAP-00867" x="32.766" y="20.574" size="1.778" layer="27" display="off"/>
 </element>
-<element name="R65" library="SparkFun-Resistors" package="0603" value="100" x="35.56" y="9.652" rot="R90">
-<attribute name="PROD_ID" value="RES-07863" x="30.48" y="4.064" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
-<element name="R66" library="SparkFun-Resistors" package="0603" value="640k" x="32.766" y="17.018" rot="R180">
-<attribute name="PROD_ID" value="RES-12024" x="32.766" y="26.924" size="1.778" layer="27" rot="R180" display="off"/>
-</element>
+<element name="R65" library="digital_dash" package="0603" value="100R" x="35.56" y="9.652" rot="R90"/>
+<element name="R66" library="digital_dash" package="0603" value="620k" x="32.766" y="17.018" rot="R180"/>
 <element name="JP19" library="SparkFun-Jumpers" package="SMT-JUMPER_3_NO_SILK" value="JUMPER-SMT_3_NO_SILK" x="35.56" y="6.604" rot="R180"/>
-<element name="R67" library="SparkFun-Resistors" package="0603" value="1k" x="43.688" y="9.652" rot="R90">
-<attribute name="PROD_ID" value="RES-07856" x="32.004" y="4.064" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
-<element name="R68" library="SparkFun-Resistors" package="0603" value="330k" x="43.434" y="18.288" rot="R270">
-<attribute name="PROD_ID" value="RES-08968" x="55.118" y="18.288" size="1.778" layer="27" rot="R270" display="off"/>
-</element>
+<element name="R67" library="digital_dash" package="0603" value="1k" x="43.688" y="9.652" rot="R90"/>
+<element name="R68" library="digital_dash" package="0603" value="330k" x="43.434" y="18.288" rot="R270"/>
 <element name="C18" library="SparkFun-Capacitors" package="0603" value="10nF" x="46.482" y="18.288" rot="R270">
 <attribute name="PROD_ID" value="CAP-00867" x="51.562" y="18.288" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="R69" library="SparkFun-Resistors" package="0603" value="100" x="41.91" y="9.652" rot="R90">
-<attribute name="PROD_ID" value="RES-07863" x="36.83" y="4.064" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
-<element name="R70" library="SparkFun-Resistors" package="0603" value="640k" x="44.958" y="18.288" rot="R90">
-<attribute name="PROD_ID" value="RES-12024" x="54.864" y="18.288" size="1.778" layer="27" rot="R90" display="off"/>
-</element>
+<element name="R69" library="digital_dash" package="0603" value="100R" x="41.91" y="9.652" rot="R90"/>
+<element name="R70" library="digital_dash" package="0603" value="620k" x="44.958" y="18.288" rot="R90"/>
 <element name="JP20" library="SparkFun-Jumpers" package="SMT-JUMPER_3_NO_SILK" value="JUMPER-SMT_3_NO_SILK" x="43.688" y="6.604" rot="R180"/>
 <element name="J10" library="SparkFun-Connectors" package="1X03" value="455-1750-1-ND" x="33.782" y="2.032">
 <attribute name="PROD_ID" value="XXX-00000" x="33.782" y="2.032" size="1.778" layer="27" display="off"/>
@@ -1692,18 +1535,10 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <element name="J12" library="SparkFun-Connectors" package="1X01_OFFSET" value="" x="78.994" y="36.83" rot="R90"/>
 <element name="J13" library="SparkFun-Connectors" package="1X01_2MM" value="" x="74.168" y="7.874"/>
 <element name="J14" library="SparkFun-Connectors" package="1X01_2MM" value="" x="79.248" y="7.874"/>
-<element name="R71" library="SparkFun-Resistors" package="0603" value="100k" x="86.106" y="32.004" rot="MR0">
-<attribute name="PROD_ID" value="RES-07828" x="86.106" y="32.004" size="1.778" layer="28" rot="MR0" display="off"/>
-</element>
-<element name="R72" library="SparkFun-Resistors" package="0603" value="100k" x="82.55" y="34.544" rot="MR180">
-<attribute name="PROD_ID" value="RES-07828" x="82.55" y="34.544" size="1.778" layer="28" rot="MR180" display="off"/>
-</element>
-<element name="R73" library="SparkFun-Resistors" package="0603" value="100k" x="86.868" y="20.574" rot="MR0">
-<attribute name="PROD_ID" value="RES-07828" x="86.868" y="20.574" size="1.778" layer="28" rot="MR0" display="off"/>
-</element>
-<element name="R74" library="SparkFun-Resistors" package="0603" value="100k" x="83.312" y="19.05" rot="MR180">
-<attribute name="PROD_ID" value="RES-07828" x="83.312" y="19.05" size="1.778" layer="28" rot="MR180" display="off"/>
-</element>
+<element name="R71" library="digital_dash" package="0603" value="100k" x="86.106" y="32.004" rot="MR0"/>
+<element name="R72" library="digital_dash" package="0603" value="100k" x="82.55" y="34.544" rot="MR180"/>
+<element name="R73" library="digital_dash" package="0603" value="100k" x="86.868" y="20.574" rot="MR0"/>
+<element name="R74" library="digital_dash" package="0603" value="100k" x="83.312" y="19.05" rot="MR180"/>
 <element name="J15" library="SparkFun-Connectors" package="1X03" value="455-1750-1-ND" x="17.272" y="62.738" rot="R180">
 <attribute name="PROD_ID" value="XXX-00000" x="17.272" y="62.738" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
@@ -1722,9 +1557,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <element name="C20" library="SparkFun-Capacitors" package="0603" value="1.0uF" x="32.258" y="46.482">
 <attribute name="PROD_ID" value="CAP-00868" x="32.258" y="46.482" size="1.778" layer="27" display="off"/>
 </element>
-<element name="R75" library="SparkFun-Resistors" package="0603" value="1k" x="32.258" y="44.704" rot="R180">
-<attribute name="PROD_ID" value="RES-07856" x="32.258" y="44.704" size="1.778" layer="27" rot="R180" display="off"/>
-</element>
+<element name="R75" library="digital_dash" package="0603" value="1k" x="32.258" y="44.704" rot="R180"/>
 <element name="S1" library="SparkFun-Switches" package="TACTILE_SWITCH_SMD_6.0X3.5MM" value="RST_SW" x="24.384" y="50.546" rot="R270">
 <attribute name="PROD_ID" value="SWCH-14278" x="24.384" y="50.546" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="SF_SKU" value="COM-08229" x="24.384" y="50.546" size="1.778" layer="27" rot="R270" display="off"/>

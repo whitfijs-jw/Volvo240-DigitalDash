@@ -1379,8 +1379,11 @@ Source: http://cache.national.com/ds/LM/LM158.pdf</description>
 <technology name="-07100RL">
 <attribute name="VALUE" value="100R" constant="no"/>
 </technology>
+<technology name="-071KL">
+<attribute name="VALUE" value="1k" constant="no"/>
+</technology>
 <technology name="-071ML">
-<attribute name="VALUE" value="" constant="no"/>
+<attribute name="VALUE" value="1M" constant="no"/>
 </technology>
 <technology name="-07330KL">
 <attribute name="VALUE" value="330k" constant="no"/>
