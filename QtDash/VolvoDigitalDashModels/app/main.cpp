@@ -31,7 +31,6 @@ static SpeedometerModel speedoModel;
 static TempAndFuelGaugeModel tempFuelModel;
 static AccessoryGaugeModel oilPressureModel;
 static AccessoryGaugeModel oilTemperatureModel;
-static AccessoryGaugeModel ambientTemperatureModel;
 static AccessoryGaugeModel boostModel;
 static AccessoryGaugeModel voltMeterModel;
 static IndicatorModel leftBlinkerModel;
@@ -109,10 +108,6 @@ void initializeModels()
     voltMeterModel.setCurrentValue(0.0);
     voltMeterModel.setLowAlarm(11.0);
     voltMeterModel.setHighAlarm(15.0);
-
-    ambientTemperatureModel.setMinValue(-15);
-    ambientTemperatureModel.setMaxValue(105);
-    ambientTemperatureModel.setUnits("°F");
 
     /** Init blinkers */
     leftBlinkerModel.setOn(false);
@@ -206,7 +201,7 @@ void updateGaugesRPi()
 
     //ambient temp
     qreal ambientTempVolts = analogInputs.readValue(sensorConf->value(Config::AMBIENT_TEMP_KEY));
-    ambientTemperatureModel.setCurrentValue(ambientTempVolts);
+    speedoModel.setTopValue(ambientTempVolts);
 #endif
 
     tachModel.setRpm(rpm);
@@ -250,10 +245,7 @@ void updateGauges() {
         float temp = coreTemp.toFloat();
         oilTemperatureModel.setCurrentValue(((temp/1000.0) * 9.0/5.0)+32.0);
         tempFuelModel.setCurrentTemp(((temp/1000.0) * 9.0/5.0)+32.0);
-        static double test = 0.0;
-        ambientTemperatureModel.setCurrentValue(test);
-        test += 0.25;
-        if (test > 105) test = -15;
+        speedoModel.setTopValue(((temp/1000.0) * 9.0/5.0)+32.0);
     }
 
     if(rpmFile.isOpen())
@@ -317,7 +309,6 @@ int main(int argc, char *argv[])
     ctxt->setContextProperty("tempFuelModel", &tempFuelModel);
     ctxt->setContextProperty("oilPModel", &oilPressureModel);
     ctxt->setContextProperty("oilTModel", &oilTemperatureModel);
-    ctxt->setContextProperty("outsideTempModel", &ambientTemperatureModel);
     ctxt->setContextProperty("boostModel", &boostModel);
     ctxt->setContextProperty("voltMeterModel", &voltMeterModel);
     ctxt->setContextProperty("leftBlinkerModel", &leftBlinkerModel);

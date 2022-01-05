@@ -51,7 +51,7 @@ Window {
     Component {
         id: boostDelegate
         Loader {
-            source: "BoostGauge.qml"
+            source: "qrc:/BoostGauge.qml"
             asynchronous: true
             onLoaded: {
                 item.minValue = gaugeMin
@@ -87,7 +87,7 @@ Window {
         id: oilPressureDelegate
 
         Loader {
-            source: "OilPressure.qml"
+            source: "qrc:/OilPressure.qml"
             asynchronous: true
             onLoaded: {
                 item.minValue = gaugeMin
@@ -124,7 +124,7 @@ Window {
         id: oilTemperatureDelegate
 
         Loader {
-            source: "OilTemperature.qml"
+            source: "qrc:/OilTemperature.qml"
             asynchronous: true
             onLoaded: {
                 item.minValue = gaugeMin
@@ -161,7 +161,7 @@ Window {
         id: voltMeterDelegate
 
         Loader {
-            source: "Volts.qml"
+            source: "qrc:/Volts.qml"
             asynchronous: true
             onLoaded: {
                 item.minValue = gaugeMin
@@ -197,7 +197,7 @@ Window {
     Component {
         id: clockDelegate
         Loader {
-            source: "Clock.qml"
+            source: "qrc:/Clock.qml"
             asynchronous: true
             onLoaded: {
                 item.height = smallGaugeSize
@@ -222,8 +222,9 @@ Window {
         id: rpmDelegate
 
         Loader {
-            source: "Tacho.qml"
+            source: "qrc:/Tacho.qml"
             asynchronous: true
+
             onLoaded: {
                 item.maxValue = maxRpm
                 item.mRedLine = redLine
@@ -255,7 +256,7 @@ Window {
         id: speedoDelegate
 
         Loader {
-            source: "Speedo.qml"
+            source: "qrc:/Speedo.qml"
             asynchronous: true
             onLoaded: {
                 speed: currentValue
@@ -292,7 +293,7 @@ Window {
     Component {
         id: tempFuelDelegate
         Loader {
-            source: "TempCoolant.qml"
+            source: "qrc:/TempCoolant.qml"
             asynchronous: true
             onLoaded: {
                 item.maxCoolantTemp = tempMax
@@ -336,7 +337,7 @@ Window {
         id: leftBlinkerDelegate
 
         Loader {
-            source: "Blinker.qml"
+            source: "qrc:/Blinker.qml"
             asynchronous: true
             onLoaded: {
                 item.flipped = false
@@ -368,7 +369,7 @@ Window {
         id: rightBlinkerDelegate
 
         Loader {
-            source: "Blinker.qml"
+            source: "qrc:/Blinker.qml"
             asynchronous: true
             onLoaded: {
                 item.flipped = true
@@ -400,7 +401,7 @@ Window {
         id: parkingBrakeLightDelegate
 
         Loader {
-            source: "WarningLight.qml"
+            source: "qrc:/WarningLight.qml"
             asynchronous: true
             onLoaded: {
                 item.warningText = warningLightText
@@ -420,7 +421,7 @@ Window {
         id: brakeFailureLightDelegate
 
         Loader {
-            source: "WarningLight.qml"
+            source: "qrc:/WarningLight.qml"
             asynchronous: true
             onLoaded: {
                 item.warningText = warningLightText
@@ -440,7 +441,7 @@ Window {
         id: bulbFailureLightDelegate
 
         Loader {
-            source: "WarningLight.qml"
+            source: "qrc:/WarningLight.qml"
             asynchronous: true
             onLoaded: {
                 item.warningText = warningLightText
@@ -461,7 +462,7 @@ Window {
         id: shiftUpLightDelegate
 
         Loader {
-            source: "WarningLight.qml"
+            source: "qrc:/WarningLight.qml"
             asynchronous: true
             onLoaded: {
                 item.warningText = warningLightText
@@ -481,7 +482,7 @@ Window {
         id: highBeamLightDelegate
 
         Loader {
-            source: "WarningLight.qml"
+            source: "qrc:/WarningLight.qml"
             asynchronous: true
             onLoaded: {
                 item.warningText = warningLightText
@@ -502,7 +503,7 @@ Window {
         id: srsWarningLightDelegate
 
         Loader {
-            source: "WarningLight.qml"
+            source: "qrc:/WarningLight.qml"
             asynchronous: true
             onLoaded: {
                 item.warningText = warningLightText
@@ -522,7 +523,7 @@ Window {
         id: oilWarningLightDelegate
 
         Loader {
-            source: "WarningLight.qml"
+            source: "qrc:/WarningLight.qml"
             asynchronous: true
             onLoaded: {
                 item.warningText = warningLightText
@@ -543,7 +544,7 @@ Window {
         id: batteryWarningLightDelegate
 
         Loader {
-            source: "WarningLight.qml"
+            source: "qrc:/WarningLight.qml"
             asynchronous: true
             onLoaded: {
                 item.warningText = warningLightText
@@ -564,7 +565,7 @@ Window {
         id: absWarningLightDelegate
 
         Loader {
-            source: "WarningLight.qml"
+            source: "qrc:/WarningLight.qml"
             asynchronous: true
             onLoaded: {
                 item.warningText = warningLightText
@@ -584,7 +585,7 @@ Window {
         id: checkEngineLightDelegate
 
         Loader {
-            source: "WarningLight.qml"
+            source: "qrc:/WarningLight.qml"
             asynchronous: true
             onLoaded: {
                 item.warningText = warningLightText
@@ -604,7 +605,7 @@ Window {
         id: serviceLightDelegate
 
         Loader {
-            source: "WarningLight.qml"
+            source: "qrc:/WarningLight.qml"
             asynchronous: true
             onLoaded: {
                 item.warningText = warningLightText
@@ -623,26 +624,22 @@ Window {
     Item {
         id: loading
         anchors.fill: parent
-
         Rectangle {
             anchors.fill: parent
             color: "black"
 
             Text {
                 id: loadText
-                text: qsTr("Loading...")
+                text: qsTr("Loading Dash...")
                 fontSizeMode: Text.Fit
                 font.pixelSize: 100
                 color: "white"
                 onVisibleChanged: {
                     console.count("hidden");
                 }
-                anchors.fill: parent
                 anchors.centerIn: parent
             }
         }
-
-
     }
 
     Item {
@@ -653,21 +650,42 @@ Window {
         Loader {
             id: currentGauge
             anchors.fill: parent
-            source: "Original240Layout.qml"
+            source: "qrc:/Original240Layout.qml"
             asynchronous: true
+            visible: false
+            onStatusChanged: {
+                if (status == Loader.Ready) {
+                    splashWait.start()
+                    console.log("Loader Ready")
+                }
+            }
+            Component.onCompleted: {
+                console.log("Component Complete")
+            }
+        }
+
+        Timer {
+            id: splashWait
+            interval: 3500
+            repeat: false
+            running: false
+            onTriggered: {
+                loadText.visible = false;
+                currentGauge.visible = true;
+            }
         }
 
         Keys.onPressed: {
             switch (event.key) {
                 case Qt.Key_0:
-                    currentGauge.source = "BigTachCenter.qml";
+                    currentGauge.source = "qrc:/BigTachCenter.qml";
                     setSmallGaugeSize(140);
                     setTachSize(440);
                     setSpeedoSize(tachSize - smallGaugeSize - 10);
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
                     break;
                 case Qt.Key_1:
-                    currentGauge.source = "BigTachLeft.qml";
+                    currentGauge.source = "qrc:/BigTachLeft.qml";
                     setSmallGaugeSize(140);
                     setTachSize(440);
                     setSpeedoSize(tachSize - smallGaugeSize - 10);
