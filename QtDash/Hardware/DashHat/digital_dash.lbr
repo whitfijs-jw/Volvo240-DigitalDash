@@ -1401,6 +1401,33 @@ Source: http://cache.national.com/ds/LM/LM158.pdf</description>
 </device>
 </devices>
 </deviceset>
+<deviceset name="CL">
+<gates>
+<gate name="G$1" symbol="CAP" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="0603">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="VALUE" value="" constant="no"/>
+</technology>
+<technology name="10A105KA8NNNC">
+<attribute name="VALUE" value="1u" constant="no"/>
+</technology>
+<technology name="10B103KB8NNNC">
+<attribute name="VALUE" value="10n" constant="no"/>
+</technology>
+<technology name="10B104MB8NNNC">
+<attribute name="VALUE" value="100n" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 </drawing>

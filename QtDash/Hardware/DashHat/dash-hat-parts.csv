@@ -1,0 +1,45 @@
+Qty,Value,Device,Package,Parts,Description,MF,MPN,OC_FARNELL,OC_NEWARK,PROD_ID,SF_SKU,VALUE
+36,470R,RC0603JR-07470RL,603,"R17, R18, R19, R20, R21, R22, R23, R24, R25, R26, R27, R28, R29, R30, R31, R32, R33, R34, R35, R36, R37, R38, R39, R40, R41, R42, R43, R44, R45, R46, R47, R48, R49, R50, R51, R52",,,,,,,,470R
+9,JUMPER-SMT_3_NO_SILK,JUMPER-SMT_3_NO_SILK,SMT-JUMPER_3_NO_SILK,"JP13, JP14, JP15, JP16, JP17, JP18, JP19, JP20, JP21",Normally open jumper,,,,,,,
+8,100R,RC0603JR-07100RL,603,"R1, R4, R6, R8, R57, R58, R65, R69",,,,,,,,100R
+8,BAT54S,BAT54S,SOT23,"D1, D2, D3, D4, D5, D6, D7, D8",Schottky Diodes,,,,,,,
+7,100n,CL10B104MB8NNNC,603,"C5, C7, C9, C11, C12, C15, C19",,,,,,,,100n
+7,1k,RC0603JR-071KL,603,"R9, R10, R11, R12, R63, R67, R75",,,,,,,,1k
+7,1u,CL10A105KA8NNNC,603,"C6, C8, C10, C13, C14, C16, C20",,,,,,,,1u
+6,100k,RC0603JR-07100KL,603,"R56, R62, R71, R72, R73, R74",,,,,,,,100k
+6,10n,CL10B103KB8NNNC,603,"C1, C2, C3, C4, C17, C18",,,,,,,,10n
+6,330k,RC0603JR-07330KL,603,"R2, R3, R5, R7, R64, R68",,,,,,,,330k
+6,620k,RC0603JR-07620KL,603,"R13, R14, R15, R16, R66, R70",,,,,,,,620k
+5,455-1750-1-ND,CONN_03,1X03,"J8, J9, J10, J11, J15",Multi connection point. Often used as Generic Header-pin footprint for 0.1 inch spaced/style header connections,,,,,XXX-00000,,455-1750-1-ND
+4,,CONN_02,1X02,"J2, J3, J4, J5",Multi connection point. Often used as Generic Header-pin footprint for 0.1 inch spaced/style header connections,,,,,,,
+4,1M,RC0603JR-071ML,603,"R53, R54, R59, R60",,,,,,,,1M
+3,ILQ1X009,ILQ1X009,SMD16,"OK1, OK2, OK3",SIEMENS OPTO COUPLER,,,,,,,
+3,LM358D,LM358D,SO08,"IC4, IC6, IC8",OP AMP also LM158, LM258, LM2904,,,,,
+2,,CONN_01PTH_2MM,1X01_2MM,"J13, J14",Single connection point. Often used as Generic Header-pin footprint for 0.1 inch spaced/style header connections,,,,,,,
+2,10R,RC0603JR-1310RL,603,"R55, R61",,,,,,,,10R
+2,IL300,IL300,DIL8-SMD,"IC5, IC7",,,,,,,,
+1,,BATTERY-12MM_SMD,BATTCON_12MM,BT1,Battery - Single Cell,,,,,BATT-08044,PRT-10592,
+1,,CONN_01OFFSET,1X01_OFFSET,J12,Single connection point. Often used as Generic Header-pin footprint for 0.1 inch spaced/style header connections,,,,,,,
+1,CONN_20X2,CONN_20X2,2X20,J1,Multi connection point. Often used as Generic Header-pin footprint for 0.1 inch spaced/style header connections,,,,,,,
+1,DS1374,DS1374,UMAX10,IC9,,,,,,,,
+1,ECX-.327-6-34RR,ECX-.327-6-34RR,ECX-34RR,Y1,,,,,,,,
+1,IN10_SEL,JUMPER-SMT_3_NO_SILK,SMT-JUMPER_3_NO_SILK,JP10,Normally open jumper,,,,,,,
+1,IN11_SEL,JUMPER-SMT_3_NO_SILK,SMT-JUMPER_3_NO_SILK,JP11,Normally open jumper,,,,,,,
+1,IN12_SEL,JUMPER-SMT_3_NO_SILK,SMT-JUMPER_3_NO_SILK,JP12,Normally open jumper,,,,,,,
+1,IN1_SEL,JUMPER-SMT_3_NO_SILK,SMT-JUMPER_3_NO_SILK,JP1,Normally open jumper,,,,,,,
+1,IN2_SEL,JUMPER-SMT_3_NO_SILK,SMT-JUMPER_3_NO_SILK,JP2,Normally open jumper,,,,,,,
+1,IN3_SEL,JUMPER-SMT_3_NO_SILK,SMT-JUMPER_3_NO_SILK,JP3,Normally open jumper,,,,,,,
+1,IN4_SEL,JUMPER-SMT_3_NO_SILK,SMT-JUMPER_3_NO_SILK,JP4,Normally open jumper,,,,,,,
+1,IN5_SEL,JUMPER-SMT_3_NO_SILK,SMT-JUMPER_3_NO_SILK,JP5,Normally open jumper,,,,,,,
+1,IN6_SEL,JUMPER-SMT_3_NO_SILK,SMT-JUMPER_3_NO_SILK,JP6,Normally open jumper,,,,,,,
+1,IN7_SEL,JUMPER-SMT_3_NO_SILK,SMT-JUMPER_3_NO_SILK,JP7,Normally open jumper,,,,,,,
+1,IN8_SEL,JUMPER-SMT_3_NO_SILK,SMT-JUMPER_3_NO_SILK,JP8,Normally open jumper,,,,,,,
+1,IN9_SEL,JUMPER-SMT_3_NO_SILK,SMT-JUMPER_3_NO_SILK,JP9,Normally open jumper,,,,,,,
+1,LM324,LM324,TSSOP14,IC1,,,,,,,,
+1,MCP23017SS,MCP23017SS,SSOP28,IC3,http://ww1.microchip.com/downloads/en/DeviceDoc/21952a.pdf,MICROCHIP,MCP23017-E/SS,1467674,31K2960,,,
+1,MCP3X083008,MCP3X083008,SO16,IC2,,,,,,,,
+1,RST_SW,MOMENTARY-SWITCH-SPST-SMD-6.0X3.5MM,TACTILE_SWITCH_SMD_6.0X3.5MM,S1,Momentary Switch (Pushbutton) - SPST,,,,,SWCH-14278,COM-08229,
+1,SPI_CS_SEL,JUMPER-SMT_3_NO_SILK,SMT-JUMPER_3_NO_SILK,JP22,Normally open jumper,,,,,,,
+1,TACH_INPUT_SEL,JUMPER-SMT_3_NO_SILK,SMT-JUMPER_3_NO_SILK,JP23,Normally open jumper,,,,,,,
+1,VOLVO_CONN_31,VOLVO_CONN_31,VOLVO_CON_31,J6,,,,,,,,
+1,VOLVO_CONN_32,VOLVO_CONN_32,VOLVO_CON_32,J7,,,,,,,,
