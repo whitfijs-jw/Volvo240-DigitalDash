@@ -59,8 +59,8 @@ Item
         }
 
         style: CircularGaugeStyle {
-            maximumValueAngle: 132
-            minimumValueAngle: -142
+            maximumValueAngle: 135
+            minimumValueAngle: -135
 
             tickmark: null
             tickmarkLabel: null
@@ -91,9 +91,6 @@ Item
                     source: "qrc:gauge-faces-740-940/740_speedo.png"
                     anchors.fill: parent
                     asynchronous: true
-
-                    smooth: true
-                    mipmap: true
                 }
             }
 

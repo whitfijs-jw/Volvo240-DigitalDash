@@ -31,7 +31,7 @@ Item
     }
 
     Timer {
-        interval: 100; running: true; repeat: true;
+        interval: 500; running: true; repeat: true;
         onTriggered: clock740.timeChanged()
     }
 
@@ -41,9 +41,6 @@ Item
         source: "qrc:gauge-faces-740-940/740_clock.png"
         anchors.fill: parent
         asynchronous: true
-
-        smooth: true
-        mipmap: true
     }
 
 //    CircularGauge

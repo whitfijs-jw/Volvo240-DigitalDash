@@ -7,7 +7,7 @@ Item {
     Rectangle {
         width: 1280
         height: 480
-        color: "black"
+        color: "transparent"
 
 
         Rectangle {

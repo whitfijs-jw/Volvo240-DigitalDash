@@ -20,8 +20,6 @@ Item
         anchors.fill: parent
         asynchronous: true
         z: -1
-        smooth: true
-        mipmap: true
     }
 
     CircularGauge

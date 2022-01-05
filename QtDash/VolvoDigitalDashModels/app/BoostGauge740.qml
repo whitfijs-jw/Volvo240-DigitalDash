@@ -70,8 +70,6 @@ Item
                 source: "qrc:/gauge-faces-740-940/740_boost.png"
                 anchors.fill: parent
                 asynchronous: true
-//                smooth: true
-//                mipmap: true
             }
 
             foreground: NeedleCenter {

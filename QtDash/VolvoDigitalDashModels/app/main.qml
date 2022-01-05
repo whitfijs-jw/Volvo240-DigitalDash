@@ -21,6 +21,8 @@ Window {
     property int warningLightVerticalMargin: 5;
     property int warningLightHorizontalMargin: 8
 
+    property int speedoMax: 120;
+
 
     function setSmallGaugeSize(size) {
         smallGaugeSize = size;
@@ -38,6 +40,10 @@ Window {
         tempFuelSize = size;
     }
 
+    function setSpeedoMax(max) {
+        speedoMax = max;
+    }
+
     function boundedAngle(angle, min, max) {
         if (angle > max) {
             angle = max;
@@ -53,6 +59,42 @@ Window {
 
         Loader {
             source: "qrc:/BoostGauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeHighAlarm
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
+        }
+    }
+
+    Component {
+        id: boostDelegate740
+
+        Loader {
+            source: "qrc:/BoostGauge740.qml"
             asynchronous: true
             onLoaded: {
                 item.minValue = gaugeMin
@@ -255,12 +297,35 @@ Window {
 
     Component {
         id: rpmDelegate740
-        Tacho740 {
-            value: rpm
-            maxValue: maxRpm
-            mRedLine: redLine
-            height: tachSize
-            width: tachSize
+
+        Loader {
+            source: "qrc:/Tacho740.qml"
+            asynchronous: true
+
+            onLoaded: {
+                item.maxValue = maxRpm
+                item.mRedLine = redLine
+                item.height = tachSize
+                item.width = tachSize
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: rpm
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: tachSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: tachSize
+            }
         }
     }
 
@@ -273,7 +338,7 @@ Window {
             onLoaded: {
                 speed: currentValue
                 item.minSpeed = minValue
-                item.maxSpeed = maxValue
+                item.maxSpeed = speedoMax
                 item.units = speedUnits
                 item.topValue = valueTop
                 item.topUnit = valueTopUnits
@@ -286,6 +351,18 @@ Window {
                 target: item
                 property: "speed"
                 value: currentValue;
+            }
+
+            Binding {
+                target: item
+                property: "maxSpeed"
+                value: speedoMax
+            }
+
+            Binding {
+                target: item
+                property: "topValue"
+                value: valueTop
             }
 
             Binding {
@@ -304,15 +381,51 @@ Window {
 
     Component {
         id: speedoDelegate740
-        Speedo740 {
-            speed: currentValue
-            minSpeed: minValue
-            maxSpeed: maxValue
-            units: speedUnits
-            topValue: valueTop
-            topUnit: valueTopUnits
-            height: speedoSize
-            width: speedoSize
+
+        Loader {
+            source: "qrc:/Speedo740.qml"
+            asynchronous: true
+            onLoaded: {
+                speed: currentValue
+                item.minSpeed = minValue
+                item.maxSpeed = speedoMax
+                item.units = speedUnits
+                item.topValue = valueTop
+                item.topUnit = valueTopUnits
+
+                item.height = speedoSize
+                item.width = speedoSize
+            }
+
+            Binding {
+                target: item
+                property: "speed"
+                value: currentValue;
+            }
+
+            Binding {
+                target: item
+                property: "maxSpeed"
+                value: speedoMax
+            }
+
+            Binding {
+                target: item
+                property: "topValue"
+                value: valueTop
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: speedoSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: speedoSize
+            }
         }
     }
 
@@ -361,29 +474,110 @@ Window {
 
     Component {
         id: coolant740Delegate
-        CoolantTemp740 {
-            minValue: gaugeMin
-            maxValue: gaugeMax
-            value: currentValue
-            units: gaugeUnits
-            highAlarm: gaugeHighAlarm
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+        Loader {
+            source: "qrc:/CoolantTemp740.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeHighAlarm
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
         }
     }
 
     Component {
         id: fuelLevel740Delegate
-        FuelLevel740 {
-            minValue: gaugeMin
-            maxValue: gaugeMax
-            value: currentValue
-            units: gaugeUnits
-            lowAlarm: gaugeLowAlarm
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+        Loader {
+            source: "qrc:/FuelLevel740.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.lowAlarm = gaugeLowAlarm
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
+        }
+    }
+
+    Component {
+        id: voltMeterDelegate740
+
+        Loader {
+            source: "qrc:/Volts740.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.lowAlarm = gaugeLowAlarm
+                item.highAlarm = gaugeHighAlarm
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
         }
     }
 
@@ -737,6 +931,7 @@ Window {
                     setSmallGaugeSize(140);
                     setTachSize(440);
                     setSpeedoSize(tachSize - smallGaugeSize - 10);
+                    setSpeedoMax(120);
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
                     break;
                 case Qt.Key_1:
@@ -744,20 +939,24 @@ Window {
                     setSmallGaugeSize(140);
                     setTachSize(440);
                     setSpeedoSize(tachSize - smallGaugeSize - 10);
+                    setSpeedoMax(120);
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
                     break;
                 case Qt.Key_2:
-                    currentGauge.source = "Original240Layout.qml";
+                    currentGauge.source = "qrc:/Original240Layout.qml";
                     setSmallGaugeSize(140);
                     setTachSize(400);
                     setSpeedoSize(440);
+                    setSpeedoMax(120);
                     setTempFuelSize(400);
                     break;
                 case Qt.Key_3:
-//                    setSmallGaugeSize(140);
-//                    setTachSize(275);
-//                    setSpeedoSize(350);
-//                    setTempFuelSize(300);
+                    currentGauge.source = "qrc:/Original740Layout.qml"
+                    setSmallGaugeSize(140);
+                    setTachSize(275);
+                    setSpeedoSize(350);
+                    setSpeedoMax(140);
+                    setTempFuelSize(300);
                 break;
                 default:
                     break;
