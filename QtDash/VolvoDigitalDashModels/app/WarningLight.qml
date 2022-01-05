@@ -1,5 +1,5 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.0
+import QtQuick 2.15
+//import QtQuick.Controls 2.15
 import QtGraphicalEffects 1.0
 
 Item {
@@ -14,7 +14,7 @@ Item {
     height: warningLightHeight
     visible: on
 
-    Label {
+    Text {
         id: warning_text
         text: warning_light.warningText
         z: 3
@@ -31,8 +31,9 @@ Item {
     Image {
         id: warning_symbol
         source: warning_light.imageSource
-        smooth: true
-        mipmap: true
+        //smooth: true
+        //mipmap: true
+        //asynchronous: true
 
         anchors.fill: parent
         z: 3

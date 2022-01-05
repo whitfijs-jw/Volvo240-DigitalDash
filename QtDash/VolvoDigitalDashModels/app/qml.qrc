@@ -51,6 +51,7 @@
     </qresource>
     <qresource prefix="/fonts">
         <file>ariblk.ttf</file>
+        <file>HandelGothReg.ttf</file>
     </qresource>
     <qresource prefix="/warningLights">
         <file>battery_charge_icon.png</file>

@@ -31,7 +31,6 @@ static SpeedometerModel speedoModel;
 static TempAndFuelGaugeModel tempFuelModel;
 static AccessoryGaugeModel oilPressureModel;
 static AccessoryGaugeModel oilTemperatureModel;
-static AccessoryGaugeModel ambientTemperatureModel;
 static AccessoryGaugeModel boostModel;
 static AccessoryGaugeModel voltMeterModel;
 static AccessoryGaugeModel coolantTempModel;
@@ -124,10 +123,6 @@ void initializeModels()
     voltMeterModel.setLowAlarm(11.0);
     voltMeterModel.setHighAlarm(15.0);
 
-    ambientTemperatureModel.setMinValue(-15);
-    ambientTemperatureModel.setMaxValue(105);
-    ambientTemperatureModel.setUnits("°F");
-
     /** Init blinkers */
     leftBlinkerModel.setOn(false);
     rightBlinkerModel.setOn(false);
@@ -147,8 +142,20 @@ void initializeModels()
 
 #ifdef RASPBERRY_PI
 #else
-    //auto analogInputs = new AnalogInput("mcp3208", "/home/whitfijs/git/dummy_sys/bus/iio/devices/");
-    //analogInputs.setVoltageRef(5.0);
+    leftBlinkerModel.setOn(true);
+    rightBlinkerModel.setOn(true);
+
+    parkingBrakeLightModel.setOn(true);
+    brakeFailureLightModel.setOn(true);
+    bulbFailureLightModel.setOn(true);
+    shiftUpLightModel.setOn(true);
+    highBeamLightModel.setOn(true);
+    srsWarningLightModel.setOn(true);
+    oilWarningLightModel.setOn(true);
+    batteryWarningLightModel.setOn(true);
+    absWarningLightModel.setOn(true);
+    checkEngineLightModel.setOn(true);
+    serviceLightModel.setOn(true);
 #endif
 }
 
@@ -254,9 +261,7 @@ void updateGauges() {
         float temp = coreTemp.toFloat();
         oilTemperatureModel.setCurrentValue(((temp/1000.0) * 9.0/5.0)+32.0);
         tempFuelModel.setCurrentTemp(((temp/1000.0) * 9.0/5.0)+32.0);
-        static double test = 0.0;
         speedoModel.setTopValue(((temp/1000.0) * 9.0/5.0)+32.0);
-        coolantTempModel.setCurrentValue(260);//(2 * (temp/1000.0) * 9.0/5.0)+32.0);
     }
 
     if(rpmFile.isOpen())
@@ -300,15 +305,15 @@ int main(int argc, char *argv[])
 #endif
 
 #ifndef RASPBERRY_PI
-    QFontDatabase::addApplicationFont(":/fonts/aribkl.ttf");
+    QFontDatabase::addApplicationFont(":/fonts/HandelGothReg.ttf");
     QFont mFont;
-    mFont.setFamily("Arial Black");
+    mFont.setFamily("Handel Gothic");
     app.setFont(mFont);
 #else
-    QFontDatabase::addApplicationFont(":/fonts/aribkl.ttf");
-    QFont font;
-    font.setFamily("Arial Black");
-    app.setFont(font);
+    QFontDatabase::addApplicationFont(":/fonts/HandelGothReg.ttf");
+    QFont mFont;
+    mFont.setFamily("Handel Gothic");
+    app.setFont(mFont);
 #endif
 
 
@@ -322,7 +327,6 @@ int main(int argc, char *argv[])
     ctxt->setContextProperty("fuelLevelModel", &fuelLevelModel);
     ctxt->setContextProperty("oilPModel", &oilPressureModel);
     ctxt->setContextProperty("oilTModel", &oilTemperatureModel);
-    ctxt->setContextProperty("outsideTempModel", &ambientTemperatureModel);
     ctxt->setContextProperty("boostModel", &boostModel);
     ctxt->setContextProperty("voltMeterModel", &voltMeterModel);
     ctxt->setContextProperty("leftBlinkerModel", &leftBlinkerModel);
@@ -341,6 +345,21 @@ int main(int argc, char *argv[])
 
     initializeModels();
 
+    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
+    if (engine.rootObjects().isEmpty())
+        return -1;
+
+
+    std::cout << "Starting GPS" << std::endl;
+    GpsHelper * loc = new GpsHelper(&app);
+
+    QObject::connect(loc, SIGNAL(speedUpdateMilesPerHour(qreal)), &speedoModel, SLOT(setCurrentValue(qreal)));
+
+    loc->init();
+
+    QObject::connect(&engine, SIGNAL(quit()), &app, SLOT(quit()));
+    QObject::connect(&app, SIGNAL(lastWindowClosed()), loc, SLOT(close()));
+
 #ifndef RASPBERRY_PI
     QTimer rpmTimer;
     rpmTimer.setInterval(100);
@@ -352,19 +371,6 @@ int main(int argc, char *argv[])
     QObject::connect(&rpmTimer, &QTimer::timeout, &app, &updateGaugesRPi);
     rpmTimer.start();
 #endif
-
-    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
-    if (engine.rootObjects().isEmpty())
-        return -1;
-    std::cout << "Starting GPS" << std::endl;
-    GpsHelper * loc = new GpsHelper(&app);
-
-    QObject::connect(loc, SIGNAL(speedUpdateMilesPerHour(qreal)), &speedoModel, SLOT(setCurrentValue(qreal)));
-
-    loc->init();
-
-    QObject::connect(&engine, SIGNAL(quit()), &app, SLOT(quit()));
-    QObject::connect(&app, SIGNAL(lastWindowClosed()), loc, SLOT(close()));
 
     return app.exec();
 }
