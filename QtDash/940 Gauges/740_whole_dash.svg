@@ -690,8 +690,8 @@
      id="namedview836"
      showgrid="false"
      inkscape:zoom="0.50000001"
-     inkscape:cx="3074.4611"
-     inkscape:cy="408.21052"
+     inkscape:cx="1385.6148"
+     inkscape:cy="640.21052"
      inkscape:window-x="1672"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
@@ -862,8 +862,8 @@
   <g
      id="g6897"
      transform="translate(-3.1232834e-5,7.8093262)"
-     inkscape:export-xdpi="300"
-     inkscape:export-ydpi="300">
+     inkscape:export-xdpi="75.43"
+     inkscape:export-ydpi="75.43">
     <g
        id="g1222"
        inkscape:export-xdpi="500.02286"
@@ -1254,8 +1254,8 @@
   <g
      id="g6853"
      transform="translate(-50.278352)"
-     inkscape:export-xdpi="300"
-     inkscape:export-ydpi="300">
+     inkscape:export-xdpi="75.43"
+     inkscape:export-ydpi="75.43">
     <rect
        inkscape:export-ydpi="1000"
        inkscape:export-xdpi="1000"
@@ -1506,8 +1506,8 @@
   <g
      id="g6638"
      transform="translate(4047.8395,489.22586)"
-     inkscape:export-xdpi="300"
-     inkscape:export-ydpi="300">
+     inkscape:export-xdpi="67.199997"
+     inkscape:export-ydpi="67.199997">
     <rect
        rx="2.7755599e-17"
        y="310.74036"
@@ -1643,8 +1643,8 @@
   <g
      id="g6648"
      transform="translate(4051.7964,489.22586)"
-     inkscape:export-xdpi="300"
-     inkscape:export-ydpi="300">
+     inkscape:export-xdpi="67.199997"
+     inkscape:export-ydpi="67.199997">
     <rect
        rx="2.7755599e-17"
        y="310.74036"
@@ -1687,8 +1687,8 @@
   <g
      id="g6658"
      transform="translate(4044.6508,489.22586)"
-     inkscape:export-xdpi="300"
-     inkscape:export-ydpi="300">
+     inkscape:export-xdpi="67.199997"
+     inkscape:export-ydpi="67.199997">
     <rect
        rx="2.7755599e-17"
        y="310.74036"
@@ -1798,8 +1798,8 @@
        style="font-size:18.66666603px">Turbo</tspan></text>
   <g
      id="g1191"
-     inkscape:export-xdpi="300"
-     inkscape:export-ydpi="300">
+     inkscape:export-xdpi="67.199997"
+     inkscape:export-ydpi="67.199997">
     <g
        inkscape:export-ydpi="300"
        inkscape:export-xdpi="300"
@@ -1963,8 +1963,9 @@
   <g
      id="g7214"
      transform="matrix(1.4,0,0,1.4,-1697.6164,-265.25176)"
-     inkscape:export-xdpi="300"
-     inkscape:export-ydpi="300">
+     inkscape:export-xdpi="274.29001"
+     inkscape:export-ydpi="274.29001"
+     inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/740_speedo.png">
     <rect
        rx="2.3650818e-17"
        y="481.6084"
