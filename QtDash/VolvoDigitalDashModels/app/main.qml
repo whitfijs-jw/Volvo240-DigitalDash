@@ -164,7 +164,7 @@ Window {
                 item.minValue = gaugeMin
                 item.maxValue = gaugeMax
                 item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
+                item.highAlarm = gaugeMax
                 item.lowAlarm = gaugeLowAlarm
 
                 item.minAngle = -136
@@ -446,20 +446,6 @@ Window {
         id: speedoDelegate
 
         Loader {
-//            source: "qrc:/Speedo.qml"
-//            asynchronous: true
-//            onLoaded: {
-//                speed: currentValue
-//                item.minSpeed = minValue
-//                item.maxSpeed = speedoMax
-//                item.units = speedUnits
-//                item.topValue = valueTop
-//                item.topUnit = valueTopUnits
-
-//                item.height = speedoSize
-//                item.width = speedoSize
-//            }
-
             source: "qrc:/Gauge.qml"
             asynchronous: true
             onLoaded: {
@@ -468,6 +454,8 @@ Window {
                 item.units = speedUnits
                 item.lowAlarm = minValue
                 item.highAlarm = speedoMax
+
+                item.initialValueOffset = 4
 
                 item.topValue = valueTop
                 item.topUnits = valueTopUnits
@@ -532,29 +520,55 @@ Window {
         id: speedoDelegate740
 
         Loader {
-            source: "qrc:/Speedo740.qml"
+
+            source: "qrc:/Gauge.qml"
             asynchronous: true
             onLoaded: {
-                speed: currentValue
-                item.minSpeed = minValue
-                item.maxSpeed = speedoMax
+                item.minValue = minValue
+                item.maxValue = speedoMax
                 item.units = speedUnits
+                item.lowAlarm = minValue
+                item.highAlarm = speedoMax
+
+                item.initialValueOffset = 2
+
                 item.topValue = valueTop
-                item.topUnit = valueTopUnits
+                item.topUnits = valueTopUnits
+                item.topValueEnabled = true
+                item.topTextOffset = -speedoSize / 6
+                item.topTextSize = speedoSize / 20.0
+
+                item.minAngle = -227
+                item.maxAngle = 45
 
                 item.height = speedoSize
                 item.width = speedoSize
+
+                item.imageResource = "qrc:/gauge-faces-740-940/740_speedo.png"
+
+                item.needleColor = "red"
+
+                item.needleWidth = speedoSize * 0.025
+                item.needleLength = speedoSize * 0.45
+                item.needleOffset = speedoSize * 0.15 / 2
+
+                item.needleCenterRadius = 0.15
+
+                item.textSize = speedoSize * .15 / 2
+                item.textOffset = speedoSize / 6
+                item.significantDigits = 0
             }
+
 
             Binding {
                 target: item
-                property: "speed"
+                property: "value"
                 value: currentValue;
             }
 
             Binding {
                 target: item
-                property: "maxSpeed"
+                property: "maxValue"
                 value: speedoMax
             }
 
@@ -682,8 +696,8 @@ Window {
                 item.minValue = gaugeMin
                 item.maxValue = gaugeMax
                 item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeMin
+                item.highAlarm = gaugeMax
+                item.lowAlarm = gaugeLowAlarm
 
                 item.minAngle = -115
                 item.maxAngle = -65
@@ -734,9 +748,9 @@ Window {
                 item.maxValue = gaugeMax
                 item.units = gaugeUnits
                 item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeMin
+                item.lowAlarm = gaugeLowAlarm
 
-                item.minAngle = -124
+                item.minAngle = -130
                 item.maxAngle = -55
 
                 item.height = smallGaugeSize
@@ -1117,7 +1131,7 @@ Window {
 
         Timer {
             id: bootTimer
-            interval: 1500
+            interval: 2000
             running: false
             repeat: false
             onTriggered: {

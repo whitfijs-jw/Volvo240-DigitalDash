@@ -23,12 +23,6 @@ Item
         anchors.fill: parent
     }
 
-//    Image {
-//        z: -2;
-//        source: "qrc:mainCluster/temp_coolant.png"
-//        anchors.fill: parent
-//    }
-
     Image {
         z: 1;
         source: "qrc:mainCluster/temp_coolant_gas_can.png"

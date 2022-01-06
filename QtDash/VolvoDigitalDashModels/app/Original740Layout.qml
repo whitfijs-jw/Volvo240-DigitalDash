@@ -32,8 +32,9 @@ Item {
             width: tachSize
             color: "transparent"
 
-            Clock740 {
+            ClockLarge {
                 anchors.fill: parent
+                imageSource: "qrc:gauge-faces-740-940/740_clock.png"
             }
         }
 

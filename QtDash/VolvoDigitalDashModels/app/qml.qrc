@@ -19,7 +19,7 @@
         <file>Original240Layout.qml</file>
         <file>WarningLight.qml</file>
         <file>WarningLightBar.qml</file>
-        <file>Clock740.qml</file>
+        <file>ClockLarge.qml</file>
         <file>Original740Layout.qml</file>
         <file>Tacho740.qml</file>
         <file>Speedo740.qml</file>

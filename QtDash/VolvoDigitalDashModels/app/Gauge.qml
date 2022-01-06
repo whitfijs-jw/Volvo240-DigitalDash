@@ -7,11 +7,14 @@ Item {
     property int maxValue: 100
     property int minValue: 0
     property real value: 0
-    property real angle: (value - minValue) / (maxValue - minValue) * (maxAngle - minAngle) + minAngle;
+    property real angle: (value <= initialValueOffset) ?
+                           (initialValueOffset - minValue) / (maxValue - minValue) * (maxAngle - minAngle) + minAngle :
+                           (value - minValue) / (maxValue - minValue) * (maxAngle - minAngle) + minAngle;
     property string units: "F"
     property int lowAlarm: 0
     property int highAlarm: 0
     property int offset: 0
+    property int initialValueOffset: 0
 
     property int minAngle: -235
     property int maxAngle: 45
@@ -62,8 +65,6 @@ Item {
             z: -1
         }
 
-
-
         NeedleCenter {
             id: needleCenter
             size: needleCenterRadius * parent.width
@@ -79,8 +80,6 @@ Item {
                     origin.y: 0
                 }
             ]
-
-
         }
 
         Rectangle {
