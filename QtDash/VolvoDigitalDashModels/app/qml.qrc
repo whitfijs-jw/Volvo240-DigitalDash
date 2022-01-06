@@ -2,18 +2,11 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>qtquickcontrols2.conf</file>
-        <file>Tacho.qml</file>
         <file>NeedleCenter.qml</file>
-        <file>Volts.qml</file>
         <file>TempCoolant.qml</file>
         <file>Styles.qml</file>
-        <file>Speedo.qml</file>
-        <file>OilTemperature.qml</file>
-        <file>OilPressure.qml</file>
         <file>Clock.qml</file>
-        <file>BoostGauge.qml</file>
         <file>Blinker.qml</file>
-        <file>AmbientTemp.qml</file>
         <file>BigTachLeft.qml</file>
         <file>BigTachCenter.qml</file>
         <file>Original240Layout.qml</file>
@@ -21,12 +14,6 @@
         <file>WarningLightBar.qml</file>
         <file>ClockLarge.qml</file>
         <file>Original740Layout.qml</file>
-        <file>Tacho740.qml</file>
-        <file>Speedo740.qml</file>
-        <file>Volts740.qml</file>
-        <file>BoostGauge740.qml</file>
-        <file>CoolantTemp740.qml</file>
-        <file>FuelLevel740.qml</file>
         <file>Gauge.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
