@@ -2,23 +2,19 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>qtquickcontrols2.conf</file>
-        <file>Tacho.qml</file>
         <file>NeedleCenter.qml</file>
-        <file>Volts.qml</file>
         <file>TempCoolant.qml</file>
         <file>Styles.qml</file>
-        <file>Speedo.qml</file>
-        <file>OilTemperature.qml</file>
-        <file>OilPressure.qml</file>
         <file>Clock.qml</file>
-        <file>BoostGauge.qml</file>
         <file>Blinker.qml</file>
-        <file>AmbientTemp.qml</file>
         <file>BigTachLeft.qml</file>
         <file>BigTachCenter.qml</file>
         <file>Original240Layout.qml</file>
         <file>WarningLight.qml</file>
         <file>WarningLightBar.qml</file>
+        <file>ClockLarge.qml</file>
+        <file>Original740Layout.qml</file>
+        <file>Gauge.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -55,5 +51,14 @@
         <file>oil_icon_no_background.png</file>
         <file>high_beam_icon.png</file>
         <file>Bulb_failure_icon_no_background.png</file>
+    </qresource>
+    <qresource prefix="/gauge-faces-740-940">
+        <file>740_tach.png</file>
+        <file>740_coolant_temp.png</file>
+        <file>740_fuel.png</file>
+        <file>740_boost.png</file>
+        <file>740_speedo.png</file>
+        <file>740_clock.png</file>
+        <file>740_voltmeter.png</file>
     </qresource>
 </RCC>

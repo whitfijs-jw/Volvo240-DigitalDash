@@ -13,6 +13,7 @@ Item {
         anchors.fill: parent
         visible: blinker.on
         rotation: (blinker.flipped) ? 180 : 0
+        asynchronous: true
     }
 
     Image{
@@ -20,7 +21,7 @@ Item {
         z:1
         source: "qrc:mainCluster/arrow_off.png"
         anchors.fill: parent
-        asynchronous: true
         rotation: (blinker.flipped) ? 180 : 0
+        asynchronous: true
     }
 }
