@@ -23,6 +23,18 @@ Window {
 
     property int speedoMax: 120;
 
+    property int screenSwitch: 0
+    property var msg: [
+        "You thought this\nwas going to work?",
+        "Come back later...",
+        "Just crush this\nthing already",
+        "Yea, not going to\ndo that",
+        "Can this even\nhit 60?",
+        "Have fun with your\nM cam",
+        "I bet you could get\n$500 on BaT for this"
+    ]
+
+
 
     function setSmallGaugeSize(size) {
         smallGaugeSize = size;
@@ -1091,13 +1103,14 @@ Window {
 
             Text {
                 id: loadText
-                text: qsTr("You thought this\nwas going to work?")
+                text: qsTr(rootWindow.msg[Math.floor(Math.random() * rootWindow.msg.length)])
                 horizontalAlignment: Text.AlignHCenter
                 fontSizeMode: Text.Fit
                 font.pixelSize: 100
                 color: "white"
                 onVisibleChanged: {
                     console.count("hidden");
+                    loadText.text = qsTr(rootWindow.msg[Math.floor(Math.random() * rootWindow.msg.length)]);
                 }
                 anchors.centerIn: parent
             }
