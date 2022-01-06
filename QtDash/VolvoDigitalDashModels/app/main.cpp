@@ -25,6 +25,7 @@
 #include <adc.h>
 #include <gps_helper.h>
 #include <ntc.h>
+#include <map_sensor.h>
 
 static TachometerModel tachModel;
 static SpeedometerModel speedoModel;
@@ -50,6 +51,7 @@ static WarningLightModel checkEngineLightModel;
 static WarningLightModel serviceLightModel;
 
 Config * conf;
+MapSensor * map;
 
 #ifdef RASPBERRY_PI
 static mcp23017 dashLightInputs;
@@ -120,7 +122,7 @@ void initializeModels()
     voltMeterModel.setMaxValue(16.0);
     voltMeterModel.setUnits("V");
     voltMeterModel.setCurrentValue(0.0);
-    voltMeterModel.setLowAlarm(11.0);
+    voltMeterModel.setLowAlarm(12.0);
     voltMeterModel.setHighAlarm(15.0);
 
     /** Init blinkers */
@@ -199,7 +201,8 @@ void updateGaugesRPi()
 
     // boost gauge
     qreal mapVoltage = analogInputs.readValue(sensorConf->value(Config::MAP_SENSOR_KEY));
-    boostModel.setCurrentValue(mapVoltage); // TODO: replace with real sensor calculation
+    qreal psi = map->getAbsolutePressure(mapVoltage, Config::PressureUnits::PSI) - 14.5038;// will need real atm measurement
+    boostModel.setCurrentValue(psi); // TODO: replace with real sensor calculation
 
     // oil pressure
     qreal oilPressureVolts = analogInputs.readValue(sensorConf->value(Config::OIL_PRESSURE_KEY));
@@ -270,9 +273,9 @@ void updateGauges() {
     {
         QString rpmString = rpmStream.readLine();
         int rpm = rpmString.toInt();
-        tachModel.setRpm(rpm * 10);
-        boostModel.setCurrentValue( ((float)rpm/1000.0)*2.0 );
-        oilPressureModel.setCurrentValue( ((float)rpm / 1000.0) );
+        tachModel.setRpm(rpm);
+        boostModel.setCurrentValue( ((float)rpm/1000.0) * 5.0 );
+        oilPressureModel.setCurrentValue( ((float)rpm / 1000.0 * 3) );
     }
 
     if(battFile.isOpen())
@@ -290,8 +293,6 @@ void updateGauges() {
         fuelLevelModel.setCurrentValue(level);
     }
 
-    tempFuelModel.setFuelLevel(25);
-
     tempFile.close();
     rpmFile.close();
     battFile.close();
@@ -305,8 +306,10 @@ int main(int argc, char *argv[])
 
 #ifdef RASPBERRY_PI
     conf = new Config(&app);
+    map = new MapSensor(conf->getMapSensorConfig()->p0V, conf->getMapSensorConfig()->p5V, Config::PressureUnits::KPA);
 #else
     conf = new Config(&app, "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config.ini");
+    map = new MapSensor(conf->getMapSensorConfig()->p0V, conf->getMapSensorConfig()->p5V, Config::PressureUnits::KPA);
 #endif
 
 #ifndef RASPBERRY_PI
