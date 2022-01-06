@@ -1,6 +1,4 @@
-import QtQuick 2.7
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.3
+import QtQuick 2.15
 import QtQuick.Extras 1.4
 import QtQuick.Controls.Styles 1.4
 
@@ -24,12 +22,14 @@ Item
         z: 0;
         source: "qrc:mainCluster/temp_coolant_overlay_small.png"
         anchors.fill: parent
+        asynchronous: true
     }
 
     Image {
         z: -2;
         source: "qrc:mainCluster/temp_coolant.png"
         anchors.fill: parent
+        asynchronous: true
     }
 
     Image {
@@ -37,6 +37,7 @@ Item
         source: "qrc:mainCluster/temp_coolant_gas_can.png"
         anchors.fill: parent
         visible: fuelLevel < lowAlarm ? true : false
+        asynchronous: true
     }
 
     CircularGauge

@@ -1,9 +1,6 @@
-import QtQuick 2.7
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.3
+import QtQuick 2.15
 import QtQuick.Extras 1.4
 import QtQuick.Controls.Styles 1.4
-import QtGraphicalEffects 1.0
 
 Item
 {
@@ -29,7 +26,7 @@ Item
     }
 
     Timer {
-        interval: 100; running: true; repeat: true;
+        interval: 1000; running: true; repeat: true;
         onTriggered: clock.timeChanged()
     }
 
@@ -56,6 +53,7 @@ Item
         z: -1
         source: "qrc:accCluster/clock_black.png"
         anchors.fill: parent
+        asynchronous: true
     }
 
     CircularGauge
