@@ -38,7 +38,7 @@ public:
     static constexpr char CONN_32_PIN3[] = "conn_32_pin3";
 
     //expected map sensor keys
-    static constexpr char PRESSURE_AT_0V[] = "p_0V";
+    static constexpr char PRESSURE_AT_0V[] = "p_0v";
     static constexpr char PRESSURE_AT_5V[] = "p_5v";
     static constexpr char PRESSURE_UNITS[] = "units";
 
@@ -110,6 +110,9 @@ public:
             std::cout << "Map Sensor " << key.toStdString() << ": " << mConfig->value(key, "N/A").toString().toStdString() << std::endl;
         }
 
+        mConfig->endGroup();
+
+
         return keys.size() > 0;
     }
 
@@ -119,6 +122,10 @@ public:
 
     QMap<QString, int> * getSensorConfig() {
         return &mSensorChannelConfig;
+    }
+
+    MapSensorConfig * getMapSensorConfig() {
+        return &mMapSensorConfig;
     }
 
 signals:

@@ -66,8 +66,9 @@ Window {
                 item.units = gaugeUnits
                 item.highAlarm = gaugeHighAlarm
                 item.lowAlarm = gaugeMin
+                item.initialValueOffset = gaugeMin
 
-                item.minAngle = -225
+                item.minAngle = -226
                 item.maxAngle = 45
 
                 item.height = smallGaugeSize
@@ -116,8 +117,9 @@ Window {
                 item.units = gaugeUnits
                 item.highAlarm = gaugeHighAlarm
                 item.lowAlarm = gaugeMin
+                item.initialValueOffset = gaugeMin
 
-                item.minAngle = -235
+                item.minAngle = -228
                 item.maxAngle = 45
 
                 item.height = smallGaugeSize
@@ -347,7 +349,9 @@ Window {
                 item.highAlarm = redLine
                 item.lowAlarm = 0
 
-                item.minAngle = -220
+                item.initialValueOffset = 200
+
+                item.minAngle = -221
                 item.maxAngle = 32
 
                 item.height = tachSize
@@ -400,8 +404,9 @@ Window {
                 item.units = "rpm"
                 item.highAlarm = redLine
                 item.lowAlarm = 0
+                item.initialValueOffset = 200
 
-                item.minAngle = -223
+                item.minAngle = -220
                 item.maxAngle = 40
 
                 item.height = tachSize
