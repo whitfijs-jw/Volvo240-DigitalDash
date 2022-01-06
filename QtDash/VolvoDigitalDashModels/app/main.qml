@@ -58,16 +58,30 @@ Window {
         id: boostDelegate
 
         Loader {
-            source: "qrc:/BoostGauge.qml"
+            source: "qrc:/Gauge.qml"
             asynchronous: true
             onLoaded: {
                 item.minValue = gaugeMin
                 item.maxValue = gaugeMax
                 item.units = gaugeUnits
                 item.highAlarm = gaugeHighAlarm
+                item.lowAlarm = gaugeMin
+
+                item.minAngle = -225
+                item.maxAngle = 45
 
                 item.height = smallGaugeSize
                 item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/accCluster/boost_black_no_numbers.png"
+
+                item.needleColor = "orange"
+
+                item.needleWidth = smallGaugeSize * 0.03
+                item.needleLength = smallGaugeSize * 0.55
+                item.needleOffset = smallGaugeSize * .25 / 2
+
+                item.needleCenterRadius = 0.15
             }
 
             Binding {
@@ -94,16 +108,30 @@ Window {
         id: boostDelegate740
 
         Loader {
-            source: "qrc:/BoostGauge740.qml"
+            source: "qrc:/Gauge.qml"
             asynchronous: true
             onLoaded: {
                 item.minValue = gaugeMin
                 item.maxValue = gaugeMax
                 item.units = gaugeUnits
                 item.highAlarm = gaugeHighAlarm
+                item.lowAlarm = gaugeMin
+
+                item.minAngle = -235
+                item.maxAngle = 45
 
                 item.height = smallGaugeSize
                 item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-740-940/740_boost.png"
+
+                item.needleColor = "red"
+
+                item.needleWidth = smallGaugeSize * 0.05
+                item.needleLength = smallGaugeSize * 0.55
+                item.needleOffset = smallGaugeSize * .25 / 2
+
+                item.needleCenterRadius = 0.25
             }
 
             Binding {
@@ -130,7 +158,7 @@ Window {
         id: oilPressureDelegate
 
         Loader {
-            source: "qrc:/OilPressure.qml"
+            source: "qrc:/Gauge.qml"
             asynchronous: true
             onLoaded: {
                 item.minValue = gaugeMin
@@ -139,8 +167,23 @@ Window {
                 item.highAlarm = gaugeHighAlarm
                 item.lowAlarm = gaugeLowAlarm
 
+                item.minAngle = -136
+                item.maxAngle = -45
+
                 item.height = smallGaugeSize
                 item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/accCluster/oil_pressure_black.png"
+
+                item.needleColor = "orange"
+
+                item.needleWidth = smallGaugeSize * 0.03
+                item.needleLength = smallGaugeSize * 0.65
+                item.needleOffset = smallGaugeSize * .25 / 2
+
+                item.offset = smallGaugeSize / 4.5
+
+                item.needleCenterRadius = 0.15
             }
 
             Binding {
@@ -167,7 +210,7 @@ Window {
         id: oilTemperatureDelegate
 
         Loader {
-            source: "qrc:/OilTemperature.qml"
+            source: "qrc:/Gauge.qml"
             asynchronous: true
             onLoaded: {
                 item.minValue = gaugeMin
@@ -176,8 +219,23 @@ Window {
                 item.highAlarm = gaugeHighAlarm
                 item.lowAlarm = gaugeLowAlarm
 
+                item.minAngle = -136
+                item.maxAngle = -43
+
                 item.height = smallGaugeSize
                 item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/accCluster/oil_temp_black.png"
+
+                item.needleColor = "orange"
+
+                item.needleWidth = smallGaugeSize * 0.03
+                item.needleLength = smallGaugeSize * 0.65
+                item.needleOffset = smallGaugeSize * .25 / 2
+
+                item.offset = smallGaugeSize / 4.5
+
+                item.needleCenterRadius = 0.15
             }
 
             Binding {
@@ -204,7 +262,7 @@ Window {
         id: voltMeterDelegate
 
         Loader {
-            source: "qrc:/Volts.qml"
+            source: "qrc:/Gauge.qml"
             asynchronous: true
             onLoaded: {
                 item.minValue = gaugeMin
@@ -213,8 +271,23 @@ Window {
                 item.highAlarm = gaugeHighAlarm
                 item.lowAlarm = gaugeLowAlarm
 
+                item.minAngle = -136
+                item.maxAngle = -45
+
                 item.height = smallGaugeSize
                 item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/accCluster/volt_black.png"
+
+                item.needleColor = "orange"
+
+                item.needleWidth = smallGaugeSize * 0.03
+                item.needleLength = smallGaugeSize * 0.65
+                item.needleOffset = smallGaugeSize * .25 / 2
+
+                item.offset = smallGaugeSize / 4.5
+
+                item.needleCenterRadius = 0.15
             }
 
             Binding {
@@ -265,14 +338,34 @@ Window {
         id: rpmDelegate
 
         Loader {
-            source: "qrc:/Tacho.qml"
+            source: "qrc:/Gauge.qml"
             asynchronous: true
-
             onLoaded: {
+                item.minValue = 0
                 item.maxValue = maxRpm
-                item.mRedLine = redLine
+                item.units = "rpm"
+                item.highAlarm = redLine
+                item.lowAlarm = 0
+
+                item.minAngle = -220
+                item.maxAngle = 32
+
                 item.height = tachSize
                 item.width = tachSize
+
+                item.imageResource = "qrc:/mainCluster/tacho.png"
+
+                item.needleColor = "orange"
+
+                item.needleWidth = smallGaugeSize * 0.05
+                item.needleLength = tachSize * 0.45
+                item.needleOffset = tachSize * 0.15 / 2
+
+                item.needleCenterRadius = 0.10
+
+                item.textSize = tachSize * 0.15 / 2
+                item.textOffset = tachSize / 6
+                item.significantDigits = 0
             }
 
             Binding {
@@ -299,14 +392,34 @@ Window {
         id: rpmDelegate740
 
         Loader {
-            source: "qrc:/Tacho740.qml"
+            source: "qrc:/Gauge.qml"
             asynchronous: true
-
             onLoaded: {
+                item.minValue = 0
                 item.maxValue = maxRpm
-                item.mRedLine = redLine
+                item.units = "rpm"
+                item.highAlarm = redLine
+                item.lowAlarm = 0
+
+                item.minAngle = -223
+                item.maxAngle = 40
+
                 item.height = tachSize
                 item.width = tachSize
+
+                item.imageResource = "qrc:/gauge-faces-740-940/740_tach.png"
+
+                item.needleColor = "red"
+
+                item.needleWidth = tachSize * 0.03
+                item.needleLength = tachSize * 0.45
+                item.needleOffset = tachSize * 0.15 / 2
+
+                item.needleCenterRadius = 0.15
+
+                item.textSize = 20
+                item.textOffset = tachSize / 6
+                item.significantDigits = 0
             }
 
             Binding {
@@ -333,29 +446,65 @@ Window {
         id: speedoDelegate
 
         Loader {
-            source: "qrc:/Speedo.qml"
+//            source: "qrc:/Speedo.qml"
+//            asynchronous: true
+//            onLoaded: {
+//                speed: currentValue
+//                item.minSpeed = minValue
+//                item.maxSpeed = speedoMax
+//                item.units = speedUnits
+//                item.topValue = valueTop
+//                item.topUnit = valueTopUnits
+
+//                item.height = speedoSize
+//                item.width = speedoSize
+//            }
+
+            source: "qrc:/Gauge.qml"
             asynchronous: true
             onLoaded: {
-                speed: currentValue
-                item.minSpeed = minValue
-                item.maxSpeed = speedoMax
+                item.minValue = minValue
+                item.maxValue = speedoMax
                 item.units = speedUnits
+                item.lowAlarm = minValue
+                item.highAlarm = speedoMax
+
                 item.topValue = valueTop
-                item.topUnit = valueTopUnits
+                item.topUnits = valueTopUnits
+                item.topValueEnabled = true
+                item.topTextOffset = -speedoSize / 6
+                item.topTextSize = speedoSize / 20.0
+
+                item.minAngle = -233
+                item.maxAngle = 43
 
                 item.height = speedoSize
                 item.width = speedoSize
+
+                item.imageResource = "qrc:mainCluster/early120mphspeedolo.png"
+
+                item.needleColor = "orange"
+
+                item.needleWidth = speedoSize * 0.015
+                item.needleLength = speedoSize * 0.45
+                item.needleOffset = speedoSize * 0.15 / 2
+
+                item.needleCenterRadius = 0.10
+
+                item.textSize = speedoSize * .15 / 2
+                item.textOffset = speedoSize / 6
+                item.significantDigits = 0
             }
 
             Binding {
                 target: item
-                property: "speed"
+                property: "value"
                 value: currentValue;
             }
 
             Binding {
                 target: item
-                property: "maxSpeed"
+                property: "maxValue"
                 value: speedoMax
             }
 
@@ -476,16 +625,31 @@ Window {
         id: coolant740Delegate
 
         Loader {
-            source: "qrc:/CoolantTemp740.qml"
+            source: "qrc:/Gauge.qml"
             asynchronous: true
             onLoaded: {
                 item.minValue = gaugeMin
                 item.maxValue = gaugeMax
                 item.units = gaugeUnits
                 item.highAlarm = gaugeHighAlarm
+                item.lowAlarm = gaugeMin
+
+                item.minAngle = -115
+                item.maxAngle = -65
 
                 item.height = smallGaugeSize
                 item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-740-940/740_coolant_temp.png"
+
+                item.needleColor = "red"
+
+                item.needleWidth = smallGaugeSize * 0.05
+                item.needleLength = smallGaugeSize * 0.75
+                item.needleOffset = smallGaugeSize * 0.25 / 2
+                item.offset = smallGaugeSize / 4.5
+
+                item.needleCenterRadius = 0.25
             }
 
             Binding {
@@ -512,16 +676,31 @@ Window {
         id: fuelLevel740Delegate
 
         Loader {
-            source: "qrc:/FuelLevel740.qml"
+            source: "qrc:/Gauge.qml"
             asynchronous: true
             onLoaded: {
                 item.minValue = gaugeMin
                 item.maxValue = gaugeMax
                 item.units = gaugeUnits
-                item.lowAlarm = gaugeLowAlarm
+                item.highAlarm = gaugeHighAlarm
+                item.lowAlarm = gaugeMin
+
+                item.minAngle = -115
+                item.maxAngle = -65
 
                 item.height = smallGaugeSize
                 item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-740-940/740_fuel.png"
+
+                item.needleColor = "red"
+
+                item.needleWidth = smallGaugeSize * 0.05
+                item.needleLength = smallGaugeSize * 0.75
+                item.needleOffset = smallGaugeSize * 0.25 / 2
+                item.offset = smallGaugeSize / 4.5
+
+                item.needleCenterRadius = 0.25
             }
 
             Binding {
@@ -548,17 +727,31 @@ Window {
         id: voltMeterDelegate740
 
         Loader {
-            source: "qrc:/Volts740.qml"
+            source: "qrc:/Gauge.qml"
             asynchronous: true
             onLoaded: {
                 item.minValue = gaugeMin
                 item.maxValue = gaugeMax
                 item.units = gaugeUnits
-                item.lowAlarm = gaugeLowAlarm
                 item.highAlarm = gaugeHighAlarm
+                item.lowAlarm = gaugeMin
+
+                item.minAngle = -124
+                item.maxAngle = -55
 
                 item.height = smallGaugeSize
                 item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-740-940/740_voltmeter.png"
+
+                item.needleColor = "red"
+
+                item.needleWidth = smallGaugeSize * 0.05
+                item.needleLength = smallGaugeSize * 0.75
+                item.needleOffset = smallGaugeSize * 0.25 / 2
+                item.offset = smallGaugeSize / 4.5
+
+                item.needleCenterRadius = 0.25
             }
 
             Binding {
@@ -879,7 +1072,8 @@ Window {
 
             Text {
                 id: loadText
-                text: qsTr("Loading Dash...")
+                text: qsTr("You thought this\nwas going to work?")
+                horizontalAlignment: Text.AlignHCenter
                 fontSizeMode: Text.Fit
                 font.pixelSize: 100
                 color: "white"
@@ -895,6 +1089,7 @@ Window {
         id: gaugeItem
         anchors.fill: parent
         focus: true
+        property bool initialLoad: true
 
         Loader {
             id: currentGauge
@@ -904,29 +1099,37 @@ Window {
             visible: false
             onStatusChanged: {
                 if (status == Loader.Ready) {
-                    splashWait.start()
                     console.log("Loader Ready")
+                    if (!gaugeItem.initialLoad) {
+                        visible = true;
+                        loadText.visible = false;
+                    } else {
+                        bootTimer.start();
+                        gaugeItem.initialLoad = false
+                    }
+                } else if (status == Loader.Loading) {
+                    currentGauge.visible = false;
+                    loadText.visible = true;
+                    console.log("Loader Loading")
                 }
-            }
-            Component.onCompleted: {
-                console.log("Component Complete")
             }
         }
 
         Timer {
-            id: splashWait
-            interval: 3500
-            repeat: false
+            id: bootTimer
+            interval: 1500
             running: false
+            repeat: false
             onTriggered: {
-                loadText.visible = false;
                 currentGauge.visible = true;
+                loadText.visible = false;
             }
         }
 
         Keys.onPressed: {
             switch (event.key) {
                 case Qt.Key_0:
+                    //currentGauge.source = "";
                     currentGauge.source = "qrc:/BigTachCenter.qml";
                     setSmallGaugeSize(140);
                     setTachSize(440);
@@ -935,6 +1138,7 @@ Window {
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
                     break;
                 case Qt.Key_1:
+                    //currentGauge.source = "";
                     currentGauge.source = "qrc:/BigTachLeft.qml";
                     setSmallGaugeSize(140);
                     setTachSize(440);
@@ -943,6 +1147,7 @@ Window {
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
                     break;
                 case Qt.Key_2:
+                    //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original240Layout.qml";
                     setSmallGaugeSize(140);
                     setTachSize(400);
@@ -951,6 +1156,7 @@ Window {
                     setTempFuelSize(400);
                     break;
                 case Qt.Key_3:
+                    //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original740Layout.qml"
                     setSmallGaugeSize(140);
                     setTachSize(275);
@@ -958,6 +1164,9 @@ Window {
                     setSpeedoMax(140);
                     setTempFuelSize(300);
                 break;
+                case Qt.Key_Escape:
+                    Qt.quit();
+                    break;
                 default:
                     break;
                 }

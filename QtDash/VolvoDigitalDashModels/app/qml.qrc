@@ -27,6 +27,7 @@
         <file>BoostGauge740.qml</file>
         <file>CoolantTemp740.qml</file>
         <file>FuelLevel740.qml</file>
+        <file>Gauge.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>

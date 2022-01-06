@@ -230,8 +230,8 @@ void updateGaugesRPi()
 }
 
 void updateGauges() {
-    QString tempPath = "/sys/class/hwmon/hwmon5/temp1_input";
-    QString rpmPath = "/sys/class/hwmon/hwmon5/fan1_input";
+    QString tempPath = "/sys/class/hwmon/hwmon0/temp1_input";
+    QString rpmPath = "/sys/class/hwmon/hwmon3/fan1_input";
     QString battPath = "/sys/class/power_supply/BAT0/voltage_now";
     QString fuelLevelPath = "/sys/class/power_supply/BAT0/capacity";
 
@@ -261,16 +261,16 @@ void updateGauges() {
         float temp = coreTemp.toFloat();
         qreal tempF = ((temp/1000.0) * 9.0/5.0)+32.0;
         oilTemperatureModel.setCurrentValue(tempF);
-        tempFuelModel.setCurrentTemp(tempF);
+        tempFuelModel.setCurrentTemp(tempF * 2);
         speedoModel.setTopValue(tempF);
-        coolantTempModel.setCurrentValue(tempF);
+        coolantTempModel.setCurrentValue(tempF * 2);
     }
 
     if(rpmFile.isOpen())
     {
         QString rpmString = rpmStream.readLine();
         int rpm = rpmString.toInt();
-        tachModel.setRpm(rpm);
+        tachModel.setRpm(rpm * 10);
         boostModel.setCurrentValue( ((float)rpm/1000.0)*2.0 );
         oilPressureModel.setCurrentValue( ((float)rpm / 1000.0) );
     }
@@ -289,6 +289,8 @@ void updateGauges() {
         tempFuelModel.setFuelLevel(level);
         fuelLevelModel.setCurrentValue(level);
     }
+
+    tempFuelModel.setFuelLevel(25);
 
     tempFile.close();
     rpmFile.close();
