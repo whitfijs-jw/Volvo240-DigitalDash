@@ -9,6 +9,7 @@
 #include <QFontDatabase>
 #include <QString>
 #include <QtMath>
+#include <QList>
 
 #include <QNmeaPositionInfoSource>
 #include <QGeoPositionInfoSource>
@@ -52,11 +53,13 @@ static WarningLightModel serviceLightModel;
 
 Config * conf;
 MapSensor * map;
+Ntc * coolantTempSensor;
+Ntc * oilTempSensor;
+Ntc * ambientTempSensor;
 
 #ifdef RASPBERRY_PI
 static mcp23017 dashLightInputs;
 static Adc analogInputs;
-static Ntc oilTempSensor(3700.0, 5.0, 10000.0, 0.75);
 #else
 static Adc analogInputs("mcp3208", "/home/whitfijs/git/dummy_sys/bus/iio/devices/");
 #endif
@@ -197,7 +200,8 @@ void updateGaugesRPi()
 
     // oil temp
     qreal oilVolts = analogInputs.readValue(sensorConf->value(Config::OIL_TEMP_KEY));
-    oilTemperatureModel.setCurrentValue(oilTempSensor.calculateAvgTemp(oilVolts));
+    qreal oilTemp = oilTempSensor->calculateTemp(oilVolts, Config::TemperatureUnits::FAHRENHEIT);
+    oilTemperatureModel.setCurrentValue(oilTemp);
 
     // boost gauge
     qreal mapVoltage = analogInputs.readValue(sensorConf->value(Config::MAP_SENSOR_KEY));
@@ -212,15 +216,17 @@ void updateGaugesRPi()
     qreal fuelVolts = analogInputs.readValue(sensorConf->value(Config::FUEL_LEVEL_KEY));
 
     qreal coolantTempVolts = analogInputs.readValue(sensorConf->value(Config::COOLANT_TEMP_KEY));
+    qreal coolantTemp = coolantTempSensor->calculateTemp(coolantTempVolts, Config::TemperatureUnits::FAHRENHEIT);
 
     tempFuelModel.setFuelLevel(fuelVolts); // TODO: replace with real sensor calculation
-    tempFuelModel.setCurrentTemp(coolantTempVolts); // TODO: replace with real sensor calculation
+    tempFuelModel.setCurrentTemp(coolantTemp); // TODO: replace with real sensor calculation
     fuelLevelModel.setCurrentValue(fuelVolts);
-    coolantTempModel.setCurrentValue(coolantTempVolts);
+    coolantTempModel.setCurrentValue(coolantTemp);
 
     //ambient temp
     qreal ambientTempVolts = analogInputs.readValue(sensorConf->value(Config::AMBIENT_TEMP_KEY));
-    speedoModel.setTopValue(ambientTempVolts);
+    qreal ambientTemp = ambientTempSensor->calculateTemp(ambientTempVolts, Config::TemperatureUnits::FAHRENHEIT);
+    speedoModel.setTopValue(ambientTemp);
 #endif
 
     tachModel.setRpm(rpm);
@@ -306,11 +312,28 @@ int main(int argc, char *argv[])
 
 #ifdef RASPBERRY_PI
     conf = new Config(&app);
-    map = new MapSensor(conf->getMapSensorConfig()->p0V, conf->getMapSensorConfig()->p5V, Config::PressureUnits::KPA);
 #else
     conf = new Config(&app, "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config.ini");
-    map = new MapSensor(conf->getMapSensorConfig()->p0V, conf->getMapSensorConfig()->p5V, Config::PressureUnits::KPA);
 #endif
+
+    map = new MapSensor(conf->getMapSensorConfig()->p0V, conf->getMapSensorConfig()->p5V, Config::PressureUnits::KPA);
+
+    QList<Config::TempSensorConfig_t> * tempSensorConfigs = conf->getTempSensorConfigs();
+    for (Config::TempSensorConfig_t config : *tempSensorConfigs) {
+        if (config.isValid()) {
+            if (config.type == Config::TemperatureSensorType::COOLANT) {
+                coolantTempSensor = new Ntc(config);
+            } else if (config.type == Config::TemperatureSensorType::OIL) {
+                oilTempSensor = new Ntc(config);
+            } else if (config.type == Config::TemperatureSensorType::AMBIENT) {
+                ambientTempSensor = new Ntc(config);
+            } else {
+                qDebug() << "Sensor type not supported.  Check config.ini file";
+            }
+        } else {
+            qDebug() << "Sensor Config is not valid: " << QString((int)config.type) << " Check config.ini file";
+        }
+    }
 
 #ifndef RASPBERRY_PI
     QFontDatabase::addApplicationFont(":/fonts/HandelGothReg.ttf");
