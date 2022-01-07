@@ -23,15 +23,16 @@ Window {
 
     property int speedoMax: 120;
 
-    property int screenSwitch: 0
     property var msg: [
         "You thought this\nwas going to work?",
         "Come back later...",
         "Just crush this\nthing already",
-        "Yea, not going to\ndo that",
-        "Can this even\nhit 60?",
+        "Can this thing\neven hit 60?",
         "Have fun with your\nM cam",
-        "I bet you could get\n$500 on BaT for this"
+        "I bet you could get\n$500 on BaT for this",
+        "404 Not Found",
+        "I heard you like\nFWD Volvos",
+
     ]
 
 
@@ -1110,7 +1111,12 @@ Window {
                 color: "white"
                 onVisibleChanged: {
                     console.count("hidden");
-                    loadText.text = qsTr(rootWindow.msg[Math.floor(Math.random() * rootWindow.msg.length)]);
+                    var txt = qsTr(rootWindow.msg[Math.floor(Math.random() * rootWindow.msg.length)]);
+                    if (loadText.text === txt) {
+                        loadText.text = qsTr(rootWindow.msg[Math.floor(Math.random() * rootWindow.msg.length)]);
+                    } else {
+                        loadText.text = txt;
+                    }
                 }
                 anchors.centerIn: parent
             }
