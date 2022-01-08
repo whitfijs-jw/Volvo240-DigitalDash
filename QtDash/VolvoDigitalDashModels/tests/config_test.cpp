@@ -6,7 +6,11 @@ void ConfigTest::testLoadSensorChannelConfig() {
 
     Config * testConfig = new Config(this, config);
 
-    QCOMPARE(testConfig->isSensorConfigValid(), result);
+    if (testConfig != nullptr) {
+        QCOMPARE(testConfig->isSensorConfigValid(), result);
+    } else {
+        QFAIL("Config not loaded.");
+    }
 }
 
 void ConfigTest::testLoadSensorChannelConfig_data() {
@@ -144,3 +148,110 @@ void ConfigTest::testLoadDashLightsConfig_data() {
         delete invalidValueConfig;
     }
 }
+
+void ConfigTest::testLoadMapConfig() {
+    QFETCH(QString, config);
+    QFETCH(bool, result);
+    QFETCH(qreal, pressure_0V);
+    QFETCH(qreal, pressure_5V);
+    QFETCH(QString, units);
+
+    Config * testConfig = new Config(this, config);
+
+    // check if the settings are valid
+    QCOMPARE(testConfig->getMapSensorConfig()->isValid(), result);
+
+    // now check the rest if the results should be good
+    if (result) {
+        QCOMPARE(testConfig->getMapSensorConfig()->p0V, pressure_0V);
+        QCOMPARE(testConfig->getMapSensorConfig()->p5V, pressure_5V);
+
+        auto configUnits = testConfig->getMapSensorConfig()->units;
+        QString compare;
+        if (configUnits == Config::PressureUnits::KPA) {
+            compare = Config::UNITS_KPA;
+        } else if (configUnits == Config::PressureUnits::BAR) {
+            compare = Config::UNITS_BAR;
+        } else if (configUnits == Config::PressureUnits::PSI) {
+            compare = Config::UNITS_PSI;
+        }
+
+        QCOMPARE(compare.toLower(), units.toLower());
+    }
+
+    delete testConfig;
+}
+
+void ConfigTest::testLoadMapConfig_data() {
+    QTest::addColumn<QString>("config");
+    QTest::addColumn<bool>("result");
+    QTest::addColumn<qreal>("pressure_0V");
+    QTest::addColumn<qreal>("pressure_5V");
+    QTest::addColumn<QString>("units");
+
+    // try an empty config
+    QSettings * emptyConfig = new QSettings("emptyConfig.ini", QSettings::IniFormat);
+
+    emptyConfig->beginGroup(Config::MAP_SENSOR_GROUP);
+    emptyConfig->setValue(Config::PRESSURE_AT_0V, "");
+    emptyConfig->setValue(Config::PRESSURE_AT_5V, "");
+    emptyConfig->setValue(Config::PRESSURE_UNITS, "");
+    emptyConfig->endGroup();
+
+    QTest::addRow("empty_config") << "emptyConfig.ini" << false << 0.0 << 0.0 << "kpa";
+    delete emptyConfig;
+
+    // try a known valid config
+    QSettings * validConfig = new QSettings("validConfig.ini", QSettings::IniFormat);
+    qreal p0v = 3.6;
+    qreal p5v = 315.0;
+    QString units = "kpa";
+
+    validConfig->beginGroup(Config::MAP_SENSOR_GROUP);
+    validConfig->setValue(Config::PRESSURE_AT_0V, p0v);
+    validConfig->setValue(Config::PRESSURE_AT_5V, p5v);
+    validConfig->setValue(Config::PRESSURE_UNITS, units);
+    validConfig->endGroup();
+
+    QTest::addRow("valid_config") << "validConfig.ini" << true << p0v << p5v << units;
+    delete validConfig;
+
+    // try a known valid config w/ different values
+    QSettings * validConfig1 = new QSettings("validConfig1.ini", QSettings::IniFormat);
+    p0v = 10.0;
+    p5v = 105.0;
+    units = "kPa"; // try different case
+
+    validConfig1->beginGroup(Config::MAP_SENSOR_GROUP);
+    validConfig1->setValue(Config::PRESSURE_AT_0V, p0v);
+    validConfig1->setValue(Config::PRESSURE_AT_5V, p5v);
+    validConfig1->setValue(Config::PRESSURE_UNITS, units);
+    validConfig1->endGroup();
+
+    QTest::addRow("valid_config1") << "validConfig1.ini" << true << p0v << p5v << units;
+    delete validConfig1;
+
+    // lets mess it all up
+    QSettings * invalidConfig = new QSettings("invalidConfig.ini", QSettings::IniFormat);
+    p0v = -10.0; // slip a negative in here
+    p5v = 105.0;
+    units = "kpa"; // try different case
+
+    invalidConfig->beginGroup(Config::MAP_SENSOR_GROUP);
+    invalidConfig->setValue(Config::PRESSURE_AT_0V, p0v);
+    invalidConfig->setValue(Config::PRESSURE_AT_5V, p5v);
+    invalidConfig->setValue(Config::PRESSURE_UNITS, units);
+    invalidConfig->endGroup();
+
+    QTest::addRow("invalid_config") << "invalidConfig.ini" << false << p0v << p5v << units;
+    delete invalidConfig;
+}
+
+void ConfigTest::testLoadTempSensorConfig() {
+
+}
+
+void ConfigTest::testLoadTempSensorConfig_data() {
+
+}
+

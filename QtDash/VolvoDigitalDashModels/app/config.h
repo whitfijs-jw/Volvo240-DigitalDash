@@ -44,7 +44,7 @@ public:
     static constexpr char PRESSURE_AT_5V[] = "p_5v";
     static constexpr char PRESSURE_UNITS[] = "units";
 
-    static constexpr char UNITS_KPA[] = "kPa";
+    static constexpr char UNITS_KPA[] = "kpa";
     static constexpr char UNITS_PSI[] = "psi";
     static constexpr char UNITS_BAR[] = "bar";
 
@@ -95,6 +95,7 @@ public:
         PressureUnits units;
 
         bool isValid() {
+            // we're assuming absolute pressure.
             return (p0V >= 0) && (p5V != p0V);
         }
     } MapSensorConfig_t;
@@ -163,12 +164,12 @@ public:
                 mMapSensorConfig.p5V = mConfig->value(key, -1).toReal();
             } else if (key == PRESSURE_UNITS) {
                 // default to kPa
-                auto units = mConfig->value(key, UNITS_KPA);
-                if (units == UNITS_KPA) {
+                QString units = mConfig->value(key, UNITS_KPA).toString();
+                if (units.toLower() == UNITS_KPA) {
                     mMapSensorConfig.units = PressureUnits::KPA;
-                } else if (units == UNITS_PSI) {
+                } else if (units.toLower() == UNITS_PSI) {
                     mMapSensorConfig.units = PressureUnits::PSI;
-                } else if (units == UNITS_BAR) {
+                } else if (units.toLower() == UNITS_BAR) {
                     mMapSensorConfig.units = PressureUnits::BAR;
                 } else {
                     qDebug() << "Unrecognized pressure units, assuming kPa.  Fix config.ini file if not correct";

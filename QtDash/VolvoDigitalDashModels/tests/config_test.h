@@ -16,6 +16,12 @@ private slots:
 
     void testLoadDashLightsConfig();
     void testLoadDashLightsConfig_data();
+
+    void testLoadMapConfig();
+    void testLoadMapConfig_data();
+
+    void testLoadTempSensorConfig();
+    void testLoadTempSensorConfig_data();
 };
 
 #endif // CONFIG_TEST_H
