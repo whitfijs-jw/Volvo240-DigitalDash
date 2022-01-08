@@ -27,6 +27,7 @@ void ConfigTest::testLoadSensorChannelConfig_data() {
     dummyConfig->endGroup();
 
     QTest::addRow("empty_config") << "emptyConfig.ini" << false;
+    delete dummyConfig;
 
     QSettings * validConfig = new QSettings("validConfig.ini", QSettings::IniFormat);
 
@@ -42,7 +43,7 @@ void ConfigTest::testLoadSensorChannelConfig_data() {
     validConfig->endGroup();
 
     QTest::addRow("valid_config") << "validConfig.ini" << true;
-
+    delete validConfig;
 
     for (int i = 0; i < 8; i++) {
         QString configName;
@@ -61,6 +62,7 @@ void ConfigTest::testLoadSensorChannelConfig_data() {
         invalidValueConfig->endGroup();
 
         QTest::addRow(configName.toStdString().c_str()) << configName << false;
+        delete invalidValueConfig;
     }
  }
 
@@ -95,6 +97,7 @@ void ConfigTest::testLoadDashLightsConfig_data() {
     emptyConfig->endGroup();
 
     QTest::addRow("empty_config") << "emptyConfig.ini" << false;
+    delete emptyConfig;
 
     QSettings * validConfig = new QSettings("validConfig.ini", QSettings::IniFormat);
 
@@ -113,4 +116,31 @@ void ConfigTest::testLoadDashLightsConfig_data() {
     validConfig->endGroup();
 
     QTest::addRow("valid_config") << "validConfig.ini" << true;
+    delete validConfig;
+
+    for (int i = 0; i < 8; i++) {
+        QString configName;
+        QTextStream(&configName) << "invalidValueConfig" << i << ".ini";
+        QSettings * invalidValueConfig = new QSettings(configName, QSettings::IniFormat);
+
+        invalidValueConfig->beginGroup(Config::DASH_LIGHT_GROUP);
+
+        invalidValueConfig->setValue(Config::OIL_PRESSURE_SW_KEY, i == 0 ? -1 : 0);
+        invalidValueConfig->setValue(Config::OD_LAMP_KEY, i == 1 ? -1 : 1);
+        invalidValueConfig->setValue(Config::HIGH_BEAM_KEY, i == 2 ? -1 : 2);
+        invalidValueConfig->setValue(Config::BRAKE_FAILURE_KEY, i == 3 ? -1 : 3);
+        invalidValueConfig->setValue(Config::BULB_FAILURE_KEY, i == 4 ? -1 : 4);
+        invalidValueConfig->setValue(Config::CHARGING_LIGHT_KEY, i == 5 ? -1 : 5);
+        invalidValueConfig->setValue(Config::BLINKER_LEFT_KEY, i == 6 ? -1 : 6);
+        invalidValueConfig->setValue(Config::BLINKER_RIGHT_KEY, i == 7 ? -1 : 7);
+        invalidValueConfig->setValue(Config::OD_LAMP_AUTO, i == 8 ? -1 : 8);
+        invalidValueConfig->setValue(Config::CHECK_ENGINE_KEY, i == 9 ? -1 : 9);
+        invalidValueConfig->setValue(Config::CONN_32_PIN3, i == 10 ? -1 : 10);
+
+        invalidValueConfig->endGroup();
+
+        QTest::addRow(configName.toStdString().c_str()) << configName << false;
+
+        delete invalidValueConfig;
+    }
 }

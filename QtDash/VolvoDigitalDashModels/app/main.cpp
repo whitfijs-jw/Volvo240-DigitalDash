@@ -206,7 +206,7 @@ void updateGaugesRPi()
     // boost gauge
     qreal mapVoltage = analogInputs.readValue(sensorConf->value(Config::MAP_SENSOR_KEY));
     qreal psi = map->getAbsolutePressure(mapVoltage, Config::PressureUnits::PSI) - 14.5038;// will need real atm measurement
-    boostModel.setCurrentValue(psi); // TODO: replace with real sensor calculation
+    boostModel.setCurrentValue(psi);
 
     // oil pressure
     qreal oilPressureVolts = analogInputs.readValue(sensorConf->value(Config::OIL_PRESSURE_KEY));
@@ -219,7 +219,7 @@ void updateGaugesRPi()
     qreal coolantTemp = coolantTempSensor->calculateTemp(coolantTempVolts, Config::TemperatureUnits::FAHRENHEIT);
 
     tempFuelModel.setFuelLevel(fuelVolts); // TODO: replace with real sensor calculation
-    tempFuelModel.setCurrentTemp(coolantTemp); // TODO: replace with real sensor calculation
+    tempFuelModel.setCurrentTemp(coolantTemp);
     fuelLevelModel.setCurrentValue(fuelVolts);
     coolantTempModel.setCurrentValue(coolantTemp);
 
