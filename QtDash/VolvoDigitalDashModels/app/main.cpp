@@ -61,7 +61,6 @@ Ntc * ambientTempSensor;
 static mcp23017 dashLightInputs;
 static Adc analogInputs;
 #else
-static Adc analogInputs("mcp3208", "/home/whitfijs/git/dummy_sys/bus/iio/devices/");
 #endif
 
 

@@ -249,11 +249,11 @@ public:
     }
 
     bool isSensorConfigValid() {
-        isMapConfigValid(&mSensorChannelConfig);
+        return isMapConfigValid(&mSensorChannelConfig);
     }
 
     bool isDashLightConfigValid() {
-        isMapConfigValid(&mDashLightConfig);
+        return isMapConfigValid(&mDashLightConfig);
     }
 
 
