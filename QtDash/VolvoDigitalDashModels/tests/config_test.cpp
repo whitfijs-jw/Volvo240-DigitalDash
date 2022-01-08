@@ -4,9 +4,6 @@ void ConfigTest::testLoadSensorChannelConfig() {
     QFETCH(QString, config);
     QFETCH(bool, result);
 
-    // dummy test for now
-    QCOMPARE(1, 1);
-
     Config * testConfig = new Config(this, config);
 
     QCOMPARE(testConfig->isSensorConfigValid(), result);
@@ -66,3 +63,54 @@ void ConfigTest::testLoadSensorChannelConfig_data() {
         QTest::addRow(configName.toStdString().c_str()) << configName << false;
     }
  }
+
+
+void ConfigTest::testLoadDashLightsConfig() {
+    QFETCH(QString, config);
+    QFETCH(bool, result);
+
+    Config * testConfig = new Config(this, config);
+
+    QCOMPARE(testConfig->isDashLightConfigValid(), result);
+}
+
+void ConfigTest::testLoadDashLightsConfig_data() {
+    QTest::addColumn<QString>("config");
+    QTest::addColumn<bool>("result");
+
+    QSettings * emptyConfig = new QSettings("emptyConfig.ini", QSettings::IniFormat);
+
+    emptyConfig->beginGroup(Config::DASH_LIGHT_GROUP);
+    emptyConfig->setValue(Config::OIL_PRESSURE_SW_KEY, "");
+    emptyConfig->setValue(Config::OD_LAMP_KEY, "");
+    emptyConfig->setValue(Config::HIGH_BEAM_KEY, "");
+    emptyConfig->setValue(Config::BRAKE_FAILURE_KEY, "");
+    emptyConfig->setValue(Config::BULB_FAILURE_KEY, "");
+    emptyConfig->setValue(Config::CHARGING_LIGHT_KEY, "");
+    emptyConfig->setValue(Config::BLINKER_LEFT_KEY, "");
+    emptyConfig->setValue(Config::BLINKER_RIGHT_KEY, "");
+    emptyConfig->setValue(Config::OD_LAMP_AUTO, "");
+    emptyConfig->setValue(Config::CHECK_ENGINE_KEY, "");
+    emptyConfig->setValue(Config::CONN_32_PIN3, "");
+    emptyConfig->endGroup();
+
+    QTest::addRow("empty_config") << "emptyConfig.ini" << false;
+
+    QSettings * validConfig = new QSettings("validConfig.ini", QSettings::IniFormat);
+
+    validConfig->beginGroup(Config::DASH_LIGHT_GROUP);
+    validConfig->setValue(Config::OIL_PRESSURE_SW_KEY, 0);
+    validConfig->setValue(Config::OD_LAMP_KEY, 1);
+    validConfig->setValue(Config::HIGH_BEAM_KEY, 2);
+    validConfig->setValue(Config::BRAKE_FAILURE_KEY, 3);
+    validConfig->setValue(Config::BULB_FAILURE_KEY, 4);
+    validConfig->setValue(Config::CHARGING_LIGHT_KEY, 5);
+    validConfig->setValue(Config::BLINKER_LEFT_KEY, 6);
+    validConfig->setValue(Config::BLINKER_RIGHT_KEY, 7);
+    validConfig->setValue(Config::OD_LAMP_AUTO, 8);
+    validConfig->setValue(Config::CHECK_ENGINE_KEY, 9);
+    validConfig->setValue(Config::CONN_32_PIN3, 10);
+    validConfig->endGroup();
+
+    QTest::addRow("valid_config") << "validConfig.ini" << true;
+}

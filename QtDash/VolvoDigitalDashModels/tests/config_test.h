@@ -13,6 +13,9 @@ public:
 private slots:
     void testLoadSensorChannelConfig();
     void testLoadSensorChannelConfig_data();
+
+    void testLoadDashLightsConfig();
+    void testLoadDashLightsConfig_data();
 };
 
 #endif // CONFIG_TEST_H
