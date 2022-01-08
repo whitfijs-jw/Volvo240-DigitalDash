@@ -30,6 +30,9 @@ cp "${QT_EXEC_DIR}" "${QT_EXEC_TARGET_DIR}"
 echo "Copy custom config.txt"
 cp "${BOARD_DIR}/config.txt" "${BINARIES_DIR}/rpi-firmware"
 
+echo "Copy custom cmdline.txt"
+cp "${BOARD_DIR}/cmdline.txt" "${BINARIES_DIR}/rpi-firmware"
+
 echo "Creating etc/sysconfig directory"
 cp -r "${BOARD_DIR}/sysconfig" "${TARGET_DIR}/etc"
 
