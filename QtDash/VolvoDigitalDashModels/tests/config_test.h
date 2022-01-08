@@ -11,8 +11,8 @@ class ConfigTest: public QObject
 public:
 
 private slots:
-    void testLoadDashLightConfig();
-    void testLoadDashLightConfig_data();
+    void testLoadSensorChannelConfig();
+    void testLoadSensorChannelConfig_data();
 };
 
 #endif // CONFIG_TEST_H

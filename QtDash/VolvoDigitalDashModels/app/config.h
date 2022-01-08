@@ -93,6 +93,10 @@ public:
         qreal p0V;
         qreal p5V;
         PressureUnits units;
+
+        bool isValid() {
+            return (p0V >= 0) && (p5V != p0V);
+        }
     } MapSensorConfig_t;
 
     typedef struct TempSensorConfig {
@@ -243,6 +247,16 @@ public:
         return &mTempSensorConfigs;
     }
 
+    bool isSensorConfigValid() {
+        isMapConfigValid(&mSensorChannelConfig);
+    }
+
+    bool isDashLightConfigValid() {
+        isMapConfigValid(&mDashLightConfig);
+    }
+
+
+
 signals:
 
 public slots:
@@ -254,6 +268,24 @@ private:
     MapSensorConfig_t mMapSensorConfig;
     QList<TempSensorConfig_t> mTempSensorConfigs;
 
+
+    bool isMapConfigValid(QMap<QString, int> *map) {
+        QSet<int> values;
+        for (int val : map->values()) {
+            // check that the value is valid
+            if (val < 0) {
+                return false;
+            }
+
+            // check that the value doesn't already exist
+            if (values.contains(val)) {
+                return false;
+            }
+
+            values.insert(val);
+        }
+        return true;
+    }
 };
 
 #endif // CONFIG_H
