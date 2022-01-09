@@ -1,0 +1,3 @@
+nmcli con add con-name dash-target type ethernet ifname enp8s0 ip4 192.168.42.1/24
+nmcli con up id dash-target
+ping 192.168.42.2

@@ -1,0 +1,55 @@
+#!/bin/sh
+#
+# Start the network....
+#
+
+# Debian ifupdown needs the /run/network lock directory
+mkdir -p /run/network
+
+WAIT_DELAY=15
+
+wait_for_interfaces() {
+	IFACES=$(awk '/^auto/ { print $2 }' /etc/network/interfaces)
+	[ -n "$IFACES" ] || return
+
+	printf "Waiting for network interfaces to appear"
+
+	for i in $(seq $WAIT_DELAY); do
+	    for IFACE in $IFACES; do
+		if [ ! -e "/sys/class/net/$IFACE" ]; then
+		    printf "."
+		    sleep 1
+		    continue 2
+		fi
+	    done
+
+	    printf " ok\n"; return
+	done
+
+	printf " timeout\n"
+	exit 1
+}
+
+case "$1" in
+  start)
+  	wait_for_interfaces
+  
+	printf "Starting network: "
+	/sbin/ifup -a
+	[ $? = 0 ] && echo "OK" || echo "FAIL"
+	;;
+  stop)
+	printf "Stopping network: "
+	/sbin/ifdown -a
+	[ $? = 0 ] && echo "OK" || echo "FAIL"
+	;;
+  restart|reload)
+	"$0" stop
+	"$0" start
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?

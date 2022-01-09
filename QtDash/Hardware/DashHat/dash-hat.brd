@@ -9,7 +9,7 @@
 <grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="1" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
-<layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
+<layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
 <layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
 <layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
 <layer number="5" name="Route5" color="4" fill="4" visible="no" active="no"/>
@@ -22,8 +22,8 @@
 <layer number="12" name="Route12" color="1" fill="5" visible="no" active="no"/>
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
-<layer number="15" name="Route15" color="4" fill="6" visible="yes" active="yes"/>
-<layer number="16" name="Bottom" color="9" fill="1" visible="no" active="yes"/>
+<layer number="15" name="Route15" color="4" fill="6" visible="no" active="yes"/>
+<layer number="16" name="Bottom" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
@@ -2820,14 +2820,9 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <via x="9.652" y="10.16" extent="1-16" drill="0.5"/>
 <wire x1="22.86" y1="10.248" x2="22.772" y2="10.16" width="0.8128" layer="1"/>
 <wire x1="22.772" y1="10.16" x2="21.336" y2="10.16" width="0.8128" layer="1"/>
-<via x="21.336" y="10.16" extent="1-16" drill="0.5"/>
 <wire x1="28.448" y1="10.248" x2="28.36" y2="10.16" width="0.8128" layer="1"/>
 <wire x1="28.36" y1="10.16" x2="26.924" y2="10.16" width="0.8128" layer="1"/>
 <via x="26.924" y="10.16" extent="1-16" drill="0.5"/>
-<wire x1="22.01" y1="19.812" x2="22.098" y2="19.724" width="0.8128" layer="16"/>
-<wire x1="22.098" y1="19.724" x2="22.098" y2="12.446" width="0.8128" layer="16"/>
-<wire x1="22.098" y1="12.446" x2="21.336" y2="11.684" width="0.8128" layer="16"/>
-<wire x1="21.336" y1="11.684" x2="21.336" y2="10.16" width="0.8128" layer="16"/>
 <wire x1="34.036" y1="10.502" x2="33.948" y2="10.414" width="0.8128" layer="1"/>
 <wire x1="33.948" y1="10.414" x2="32.512" y2="10.414" width="0.8128" layer="1"/>
 <via x="32.512" y="10.414" extent="1-16" drill="0.5"/>
@@ -2845,6 +2840,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <vertex x="59.69" y="0"/>
 <vertex x="0" y="0"/>
 </polygon>
+<via x="21.336" y="10.16" extent="1-16" drill="0.5"/>
 </signal>
 <signal name="N$1">
 <contactref element="IC1" pad="2"/>
@@ -3028,8 +3024,8 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <wire x1="47.741" y1="37.349" x2="47.741" y2="39.185" width="0.3048" layer="1"/>
 <polygon width="0.3048" layer="15" isolate="0.3048">
 <vertex x="0.254" y="66.802"/>
-<vertex x="60.452" y="66.802"/>
-<vertex x="60.452" y="0"/>
+<vertex x="59.69" y="67.056"/>
+<vertex x="59.69" y="0.254"/>
 <vertex x="0.254" y="0"/>
 </polygon>
 <via x="55.118" y="32.258" extent="1-16" drill="0.5"/>
@@ -3199,23 +3195,23 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <wire x1="79.375" y1="24.698" x2="79.375" y2="23.114" width="0.6096" layer="16"/>
 <contactref element="JP21" pad="2"/>
 <polygon width="0.3048" layer="1" isolate="0.3048" orphans="yes" thermals="no">
-<vertex x="73.66" y="65.786"/>
+<vertex x="73.66" y="66.294"/>
 <vertex x="73.66" y="58.674"/>
 <vertex x="88.138" y="58.928"/>
 <vertex x="88.138" y="59.376040625"/>
-<vertex x="88.078040625" y="65.786"/>
+<vertex x="88.078040625" y="66.294"/>
 </polygon>
-<via x="78.74" y="64.77" extent="1-16" drill="0.5"/>
-<via x="78.74" y="62.23" extent="1-16" drill="0.5"/>
-<via x="78.74" y="60.96" extent="1-16" drill="0.5"/>
-<via x="78.74" y="63.5" extent="1-16" drill="0.5"/>
-<via x="78.74" y="59.69" extent="1-16" drill="0.5"/>
+<via x="78.74" y="65.024" extent="1-16" drill="0.5"/>
+<via x="78.74" y="62.484" extent="1-16" drill="0.5"/>
+<via x="78.74" y="61.214" extent="1-16" drill="0.5"/>
+<via x="78.74" y="63.754" extent="1-16" drill="0.5"/>
+<via x="78.74" y="59.944" extent="1-16" drill="0.5"/>
 <wire x1="79.375" y1="23.114" x2="79.375" y2="22.987" width="0.6096" layer="16"/>
-<wire x1="74.168" y1="62.23" x2="78.74" y2="62.23" width="0.6096" layer="1"/>
-<via x="77.47" y="64.77" extent="1-16" drill="0.5"/>
-<via x="77.47" y="62.23" extent="1-16" drill="0.5"/>
-<via x="77.47" y="60.96" extent="1-16" drill="0.5"/>
-<via x="77.47" y="59.69" extent="1-16" drill="0.5"/>
+<wire x1="74.168" y1="62.23" x2="78.74" y2="62.484" width="0.6096" layer="1"/>
+<via x="77.47" y="65.024" extent="1-16" drill="0.5"/>
+<via x="77.47" y="62.484" extent="1-16" drill="0.5"/>
+<via x="77.47" y="61.214" extent="1-16" drill="0.5"/>
+<via x="77.47" y="59.944" extent="1-16" drill="0.5"/>
 <polygon width="0.3048" layer="2" isolate="0.3048">
 <vertex x="82.55" y="66.04"/>
 <vertex x="82.55" y="57.658"/>
@@ -3277,12 +3273,12 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <wire x1="80.838" y1="23.03" x2="80.754" y2="23.114" width="0.6096" layer="16"/>
 <wire x1="80.754" y1="23.114" x2="79.375" y2="23.114" width="0.6096" layer="16"/>
 <contactref element="R82" pad="2"/>
-<via x="77.47" y="63.5" extent="1-16" drill="0.5"/>
-<via x="80.01" y="64.77" extent="1-16" drill="0.5"/>
-<via x="80.01" y="63.5" extent="1-16" drill="0.5"/>
-<via x="80.01" y="62.23" extent="1-16" drill="0.5"/>
-<via x="80.01" y="60.96" extent="1-16" drill="0.5"/>
-<via x="80.01" y="59.69" extent="1-16" drill="0.5"/>
+<via x="77.47" y="63.754" extent="1-16" drill="0.5"/>
+<via x="80.01" y="65.024" extent="1-16" drill="0.5"/>
+<via x="80.01" y="63.754" extent="1-16" drill="0.5"/>
+<via x="80.01" y="62.484" extent="1-16" drill="0.5"/>
+<via x="80.01" y="61.214" extent="1-16" drill="0.5"/>
+<via x="80.01" y="59.944" extent="1-16" drill="0.5"/>
 </signal>
 <signal name="OUT1">
 <contactref element="OK1" pad="15"/>
