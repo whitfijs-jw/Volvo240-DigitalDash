@@ -3,7 +3,9 @@
 set -u
 set -e
 
-QT_PROJECT_DIR="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/"
+echo "we are here: $PWD"
+
+QT_PROJECT_DIR="../QtDash"
 QT_EXEC_DIR="${QT_PROJECT_DIR}/VolvoDigitalDashModels/build-RPI3/app/VolvoDigitalDashModels"
 QT_FONTS_DIR="${QT_PROJECT_DIR}/VolvoDigitalDashModels/app/HandelGothReg.ttf"
 QT_EXEC_TARGET_DIR="${TARGET_DIR}/opt"
