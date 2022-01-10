@@ -35,6 +35,7 @@ Buildroot will build the custom linux image.  The image being build is based on 
 From within the main project directory:
 
 `cd buildroot`
+
 `make volvodash_defconfig`
 
 This will get buildroot configured to build the linux image. 
