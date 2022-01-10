@@ -51,3 +51,5 @@ hdmi_cvt 1280 480 60 5 0 0 0
 
 hdmi_group=2
 hdmi_mode=87 
+
+disable_splash=1
