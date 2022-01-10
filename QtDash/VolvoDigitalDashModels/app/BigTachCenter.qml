@@ -1,12 +1,10 @@
-import QtQuick 2.0
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.3
+import QtQuick 2.15
 
 Item {
     Rectangle {
         width: 1280
         height: 480
-        color: "black"
+        color: "transparent"
 
         Rectangle {
             id: tachContainer

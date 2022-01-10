@@ -9,6 +9,7 @@
 #include <QFontDatabase>
 #include <QString>
 #include <QtMath>
+#include <QList>
 
 #include <QNmeaPositionInfoSource>
 #include <QGeoPositionInfoSource>
@@ -25,15 +26,17 @@
 #include <adc.h>
 #include <gps_helper.h>
 #include <ntc.h>
+#include <map_sensor.h>
 
 static TachometerModel tachModel;
 static SpeedometerModel speedoModel;
 static TempAndFuelGaugeModel tempFuelModel;
 static AccessoryGaugeModel oilPressureModel;
 static AccessoryGaugeModel oilTemperatureModel;
-static AccessoryGaugeModel ambientTemperatureModel;
 static AccessoryGaugeModel boostModel;
 static AccessoryGaugeModel voltMeterModel;
+static AccessoryGaugeModel coolantTempModel;
+static AccessoryGaugeModel fuelLevelModel;
 static IndicatorModel leftBlinkerModel;
 static IndicatorModel rightBlinkerModel;
 static WarningLightModel parkingBrakeLightModel;
@@ -49,13 +52,15 @@ static WarningLightModel checkEngineLightModel;
 static WarningLightModel serviceLightModel;
 
 Config * conf;
+MapSensor * map;
+Ntc * coolantTempSensor;
+Ntc * oilTempSensor;
+Ntc * ambientTempSensor;
 
 #ifdef RASPBERRY_PI
 static mcp23017 dashLightInputs;
 static Adc analogInputs;
-static Ntc oilTempSensor(3700.0, 5.0, 10000.0, 0.75);
 #else
-static Adc analogInputs("mcp3208", "/home/whitfijs/git/dummy_sys/bus/iio/devices/");
 #endif
 
 
@@ -83,6 +88,18 @@ void initializeModels()
     tempFuelModel.setHighTempAlarm(220.0);
     tempFuelModel.setLowFuelAlarm(10);
 
+    coolantTempModel.setMinValue(120);
+    coolantTempModel.setMaxValue(250);
+    coolantTempModel.setUnits("°F");
+    coolantTempModel.setHighAlarm(220.0);
+    coolantTempModel.setCurrentValue(0.0);
+
+    fuelLevelModel.setMinValue(0);
+    fuelLevelModel.setMaxValue(100);
+    fuelLevelModel.setCurrentValue(0.0);
+    fuelLevelModel.setLowAlarm(10.0);
+    fuelLevelModel.setUnits("%");
+
     /** Init accessory gauges **/
     oilPressureModel.setMinValue(0.0);
     oilPressureModel.setMaxValue(5.0);
@@ -107,12 +124,8 @@ void initializeModels()
     voltMeterModel.setMaxValue(16.0);
     voltMeterModel.setUnits("V");
     voltMeterModel.setCurrentValue(0.0);
-    voltMeterModel.setLowAlarm(11.0);
+    voltMeterModel.setLowAlarm(12.0);
     voltMeterModel.setHighAlarm(15.0);
-
-    ambientTemperatureModel.setMinValue(-15);
-    ambientTemperatureModel.setMaxValue(105);
-    ambientTemperatureModel.setUnits("°F");
 
     /** Init blinkers */
     leftBlinkerModel.setOn(false);
@@ -133,8 +146,20 @@ void initializeModels()
 
 #ifdef RASPBERRY_PI
 #else
-    //auto analogInputs = new AnalogInput("mcp3208", "/home/whitfijs/git/dummy_sys/bus/iio/devices/");
-    //analogInputs.setVoltageRef(5.0);
+    leftBlinkerModel.setOn(true);
+    rightBlinkerModel.setOn(true);
+
+    parkingBrakeLightModel.setOn(true);
+    brakeFailureLightModel.setOn(true);
+    bulbFailureLightModel.setOn(true);
+    shiftUpLightModel.setOn(true);
+    highBeamLightModel.setOn(true);
+    srsWarningLightModel.setOn(true);
+    oilWarningLightModel.setOn(true);
+    batteryWarningLightModel.setOn(true);
+    absWarningLightModel.setOn(true);
+    checkEngineLightModel.setOn(true);
+    serviceLightModel.setOn(true);
 #endif
 }
 
@@ -174,11 +199,13 @@ void updateGaugesRPi()
 
     // oil temp
     qreal oilVolts = analogInputs.readValue(sensorConf->value(Config::OIL_TEMP_KEY));
-    oilTemperatureModel.setCurrentValue(oilTempSensor.calculateAvgTemp(oilVolts));
+    qreal oilTemp = oilTempSensor->calculateTemp(oilVolts, Config::TemperatureUnits::FAHRENHEIT);
+    oilTemperatureModel.setCurrentValue(oilTemp);
 
     // boost gauge
     qreal mapVoltage = analogInputs.readValue(sensorConf->value(Config::MAP_SENSOR_KEY));
-    boostModel.setCurrentValue(mapVoltage); // TODO: replace with real sensor calculation
+    qreal psi = map->getAbsolutePressure(mapVoltage, Config::PressureUnits::PSI) - 14.5038;// will need real atm measurement
+    boostModel.setCurrentValue(psi);
 
     // oil pressure
     qreal oilPressureVolts = analogInputs.readValue(sensorConf->value(Config::OIL_PRESSURE_KEY));
@@ -188,13 +215,17 @@ void updateGaugesRPi()
     qreal fuelVolts = analogInputs.readValue(sensorConf->value(Config::FUEL_LEVEL_KEY));
 
     qreal coolantTempVolts = analogInputs.readValue(sensorConf->value(Config::COOLANT_TEMP_KEY));
+    qreal coolantTemp = coolantTempSensor->calculateTemp(coolantTempVolts, Config::TemperatureUnits::FAHRENHEIT);
 
     tempFuelModel.setFuelLevel(fuelVolts); // TODO: replace with real sensor calculation
-    tempFuelModel.setCurrentTemp(coolantTempVolts); // TODO: replace with real sensor calculation
+    tempFuelModel.setCurrentTemp(coolantTemp);
+    fuelLevelModel.setCurrentValue(fuelVolts);
+    coolantTempModel.setCurrentValue(coolantTemp);
 
     //ambient temp
     qreal ambientTempVolts = analogInputs.readValue(sensorConf->value(Config::AMBIENT_TEMP_KEY));
-    ambientTemperatureModel.setCurrentValue(ambientTempVolts);
+    qreal ambientTemp = ambientTempSensor->calculateTemp(ambientTempVolts, Config::TemperatureUnits::FAHRENHEIT);
+    speedoModel.setTopValue(ambientTemp);
 #endif
 
     tachModel.setRpm(rpm);
@@ -236,12 +267,11 @@ void updateGauges() {
     {
         QString coreTemp = tempStream.readLine();
         float temp = coreTemp.toFloat();
-        oilTemperatureModel.setCurrentValue(((temp/1000.0) * 9.0/5.0)+32.0);
-        tempFuelModel.setCurrentTemp(((temp/1000.0) * 9.0/5.0)+32.0);
-        static double test = 0.0;
-        ambientTemperatureModel.setCurrentValue(test);
-        test += 0.25;
-        if (test > 105) test = -15;
+        qreal tempF = ((temp/1000.0) * 9.0/5.0)+32.0;
+        oilTemperatureModel.setCurrentValue(tempF);
+        tempFuelModel.setCurrentTemp(tempF * 2);
+        speedoModel.setTopValue(tempF);
+        coolantTempModel.setCurrentValue(tempF * 2);
     }
 
     if(rpmFile.isOpen())
@@ -249,8 +279,8 @@ void updateGauges() {
         QString rpmString = rpmStream.readLine();
         int rpm = rpmString.toInt();
         tachModel.setRpm(rpm);
-        boostModel.setCurrentValue( ((float)rpm/1000.0)*2.0 );
-        oilPressureModel.setCurrentValue( ((float)rpm / 1000.0) );
+        boostModel.setCurrentValue( ((float)rpm/1000.0) * 5.0 );
+        oilPressureModel.setCurrentValue( ((float)rpm / 1000.0 * 3) );
     }
 
     if(battFile.isOpen())
@@ -265,6 +295,7 @@ void updateGauges() {
         QString fuelLevel = fuelStream.readLine();
         int level = fuelLevel.toInt();
         tempFuelModel.setFuelLevel(level);
+        fuelLevelModel.setCurrentValue(level);
     }
 
     tempFile.close();
@@ -284,16 +315,35 @@ int main(int argc, char *argv[])
     conf = new Config(&app, "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config.ini");
 #endif
 
+    map = new MapSensor(conf->getMapSensorConfig()->p0V, conf->getMapSensorConfig()->p5V, Config::PressureUnits::KPA);
+
+    QList<Config::TempSensorConfig_t> * tempSensorConfigs = conf->getTempSensorConfigs();
+    for (Config::TempSensorConfig_t config : *tempSensorConfigs) {
+        if (config.isValid()) {
+            if (config.type == Config::TemperatureSensorType::COOLANT) {
+                coolantTempSensor = new Ntc(config);
+            } else if (config.type == Config::TemperatureSensorType::OIL) {
+                oilTempSensor = new Ntc(config);
+            } else if (config.type == Config::TemperatureSensorType::AMBIENT) {
+                ambientTempSensor = new Ntc(config);
+            } else {
+                qDebug() << "Sensor type not supported.  Check config.ini file";
+            }
+        } else {
+            qDebug() << "Sensor Config is not valid: " << QString((int)config.type) << " Check config.ini file";
+        }
+    }
+
 #ifndef RASPBERRY_PI
-    QFontDatabase::addApplicationFont(":/fonts/aribkl.ttf");
+    QFontDatabase::addApplicationFont(":/fonts/HandelGothReg.ttf");
     QFont mFont;
-    mFont.setFamily("Arial Black");
+    mFont.setFamily("Handel Gothic");
     app.setFont(mFont);
 #else
-    QFontDatabase::addApplicationFont(":/fonts/aribkl.ttf");
-    QFont font;
-    font.setFamily("Arial Black");
-    app.setFont(font);
+    QFontDatabase::addApplicationFont(":/fonts/HandelGothReg.ttf");
+    QFont mFont;
+    mFont.setFamily("Handel Gothic");
+    app.setFont(mFont);
 #endif
 
 
@@ -303,9 +353,10 @@ int main(int argc, char *argv[])
     ctxt->setContextProperty("rpmModel", &tachModel);
     ctxt->setContextProperty("speedoModel", &speedoModel);
     ctxt->setContextProperty("tempFuelModel", &tempFuelModel);
+    ctxt->setContextProperty("coolantTempModel", &coolantTempModel);
+    ctxt->setContextProperty("fuelLevelModel", &fuelLevelModel);
     ctxt->setContextProperty("oilPModel", &oilPressureModel);
     ctxt->setContextProperty("oilTModel", &oilTemperatureModel);
-    ctxt->setContextProperty("outsideTempModel", &ambientTemperatureModel);
     ctxt->setContextProperty("boostModel", &boostModel);
     ctxt->setContextProperty("voltMeterModel", &voltMeterModel);
     ctxt->setContextProperty("leftBlinkerModel", &leftBlinkerModel);
@@ -324,6 +375,21 @@ int main(int argc, char *argv[])
 
     initializeModels();
 
+    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
+    if (engine.rootObjects().isEmpty())
+        return -1;
+
+
+    std::cout << "Starting GPS" << std::endl;
+    GpsHelper * loc = new GpsHelper(&app);
+
+    QObject::connect(loc, SIGNAL(speedUpdateMilesPerHour(qreal)), &speedoModel, SLOT(setCurrentValue(qreal)));
+
+    loc->init();
+
+    QObject::connect(&engine, SIGNAL(quit()), &app, SLOT(quit()));
+    QObject::connect(&app, SIGNAL(lastWindowClosed()), loc, SLOT(close()));
+
 #ifndef RASPBERRY_PI
     QTimer rpmTimer;
     rpmTimer.setInterval(100);
@@ -335,19 +401,6 @@ int main(int argc, char *argv[])
     QObject::connect(&rpmTimer, &QTimer::timeout, &app, &updateGaugesRPi);
     rpmTimer.start();
 #endif
-
-    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
-    if (engine.rootObjects().isEmpty())
-        return -1;
-    std::cout << "Starting GPS" << std::endl;
-    GpsHelper * loc = new GpsHelper(&app);
-
-    QObject::connect(loc, SIGNAL(speedUpdateMilesPerHour(qreal)), &speedoModel, SLOT(setCurrentValue(qreal)));
-
-    loc->init();
-
-    QObject::connect(&engine, SIGNAL(quit()), &app, SLOT(quit()));
-    QObject::connect(&app, SIGNAL(lastWindowClosed()), loc, SLOT(close()));
 
     return app.exec();
 }

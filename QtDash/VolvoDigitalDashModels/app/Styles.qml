@@ -17,18 +17,23 @@ QtObject {
         property color black: "black";
     }
 
-    property QtObject gradients: QtObject {
-        property Gradient buttonGradient:
-            Gradient {
-                GradientStop { position: 0.0; color: colors.darkGray }
-                GradientStop { position: 1.0; color: "#394148" }
-            }
+    property Gradient buttonGradient:
+        Gradient {
+            GradientStop { position: 0.0; color: colors.darkGray }
+            GradientStop { position: 1.0; color: "#394148" }
+        }
 
-        property Gradient needleCenterGradient:
-            Gradient {
-                GradientStop { position: 0.0; color: colors.black}
-                GradientStop { position: 0.5; color: colors.darkGray }
-                GradientStop { position: 1.0; color: colors.black }
-            }
+    property Gradient needleCenterGradient:
+        Gradient {
+            GradientStop { position: 0.0; color: colors.black}
+            GradientStop { position: 0.5; color: colors.darkGray }
+            GradientStop { position: 1.0; color: colors.black }
+        }
+
+    property Gradient needle240Gradient: Gradient {
+                GradientStop { position: 0.25; color: "orange"}
+                GradientStop { position: 0.5; color: "white" }
+                GradientStop { position: 0.75; color: "orange" }
     }
+
 }

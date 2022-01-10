@@ -1,9 +1,5 @@
-import QtQuick 2.7
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.3
-import QtQuick.Extras 1.4
-import QtQuick.Controls.Styles 1.4
-import QtGraphicalEffects 1.0
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 
 Item
 {
@@ -29,8 +25,101 @@ Item
     }
 
     Timer {
-        interval: 100; running: true; repeat: true;
+        interval: 1000; running: true; repeat: true;
         onTriggered: clock.timeChanged()
+    }
+
+
+
+
+    Gauge {
+        id: secondHand
+        anchors.fill: parent
+
+        value: clock.seconds
+
+        lowAlarm: -1
+        highAlarm: 61
+
+        minValue: 0
+        maxValue: 60
+
+        minAngle: -90
+        maxAngle: 270
+
+        units: ""
+        textEnabled: false
+
+        imageResource: "qrc:/accCluster/clock_black.png"
+
+        needleColor: "orange"
+
+        needleWidth: parent.width * 0.015
+        needleLength: parent.width * 0.525
+        needleOffset: parent.width * .15 / 2
+
+        needleCenterRadius: 0.15
+
+    }
+
+    Gauge {
+        id: minuteHand
+        anchors.fill: parent
+
+        value: clock.minutes
+
+        lowAlarm: -1
+        highAlarm: 61
+
+        minValue: 0
+        maxValue: 60
+
+        minAngle: -90
+        maxAngle: 270
+
+        units: ""
+        textEnabled: false
+
+        imageResource: ""
+
+        needleColor: "orange"
+
+        needleWidth: smallGaugeSize * 0.03
+        needleLength: smallGaugeSize * 0.525
+        needleOffset: smallGaugeSize * .15 / 2
+
+        needleCenterRadius: 0.15
+
+    }
+
+    Gauge {
+        id: hour
+        anchors.fill: parent
+
+        value: clock.hours
+
+        lowAlarm: -1
+        highAlarm: 61
+
+        minValue: 0
+        maxValue: 12
+
+        minAngle: -90
+        maxAngle: 270
+
+        units: ""
+        textEnabled: false
+
+        imageResource: ""
+
+        needleColor: "orange"
+
+        needleWidth: smallGaugeSize * 0.035
+        needleLength: smallGaugeSize * 0.425
+        needleOffset: smallGaugeSize * .15 / 2
+
+        needleCenterRadius: 0.15
+
     }
 
     Text {
@@ -51,138 +140,131 @@ Item
         color: "white"
     }
 
-    Image
-    {
-        z: -1
-        source: "qrc:accCluster/clock_black.png"
-        anchors.fill: parent
-    }
+//    CircularGauge
+//    {
+//        id: secondHand
+//        z: 1
 
-    CircularGauge
-    {
-        id: secondHand
-        z: 1
+//        value: clock.seconds
 
-        value: clock.seconds
+//        anchors.fill: parent
 
-        anchors.fill: parent
+//        maximumValue: 60
+//        minimumValue: 0
 
-        maximumValue: 60
-        minimumValue: 0
+//        style: CircularGaugeStyle {
+//            maximumValueAngle: 360
+//            minimumValueAngle: 0
 
-        style: CircularGaugeStyle {
-            maximumValueAngle: 360
-            minimumValueAngle: 0
+//            tickmark: null
+//            tickmarkLabel: null
+//            minorTickmark: null
 
-            tickmark: null
-            tickmarkLabel: null
-            minorTickmark: null
+//            foreground: NeedleCenter {
+//                size: outerRadius * 0.3
+//                rotation: valueToAngle(secondHand.value) - 90
+//            }
 
-            foreground: NeedleCenter {
-                size: outerRadius * 0.3
-                rotation: valueToAngle(secondHand.value) - 90
-            }
-
-            needle: Rectangle {
-                y: - outerRadius * 0.35
-                radius: outerRadius * 0.025
-                implicitWidth: outerRadius * 1.0
-                implicitHeight: outerRadius * 0.03
-                antialiasing: true
-                rotation: 90
-                gradient: Gradient {
-                        GradientStop { position: 0.25; color: "orange"}
-                        GradientStop { position: 0.5; color: "white" }
-                        GradientStop { position: 0.75; color: "orange" }
-                }
-            }
+//            needle: Rectangle {
+//                y: - outerRadius * 0.35
+//                radius: outerRadius * 0.025
+//                implicitWidth: outerRadius * 1.0
+//                implicitHeight: outerRadius * 0.03
+//                antialiasing: true
+//                rotation: 90
+//                gradient: Gradient {
+//                        GradientStop { position: 0.25; color: "orange"}
+//                        GradientStop { position: 0.5; color: "white" }
+//                        GradientStop { position: 0.75; color: "orange" }
+//                }
+//            }
 
 
 
-        }
+//        }
 
-    }
+//    }
 
-    CircularGauge
-    {
-        id: minuteHand
+//    CircularGauge
+//    {
+//        id: minuteHand
 
-        value: clock.minutes
+//        value: clock.minutes
 
-        anchors.fill: parent
+//        anchors.fill: parent
 
-        maximumValue: 60
-        minimumValue: 0
+//        maximumValue: 60
+//        minimumValue: 0
 
-        style: CircularGaugeStyle {
-            maximumValueAngle: 360
-            minimumValueAngle: 0
+//        style: CircularGaugeStyle {
+//            maximumValueAngle: 360
+//            minimumValueAngle: 0
 
-            tickmark: null
-            tickmarkLabel: null
-            minorTickmark: null
+//            tickmark: null
+//            tickmarkLabel: null
+//            minorTickmark: null
 
-            foreground: NeedleCenter {
-                size: outerRadius * 0.3
-            }
+//            foreground: NeedleCenter {
+//                size: outerRadius * 0.3
+//            }
 
-            needle: Rectangle {
-                y: - outerRadius * 0.35
-                radius: outerRadius * 0.025
-                implicitWidth: outerRadius * 1.0
-                implicitHeight: outerRadius * 0.05
-                antialiasing: true
-                rotation: 90
-                gradient: Gradient {
-                        GradientStop { position: 0.25; color: "orange"}
-                        GradientStop { position: 0.5; color: "white" }
-                        GradientStop { position: 0.75; color: "orange" }
-                }
-            }
+//            needle: Rectangle {
+//                y: - outerRadius * 0.35
+//                radius: outerRadius * 0.025
+//                implicitWidth: outerRadius * 1.0
+//                implicitHeight: outerRadius * 0.05
+//                antialiasing: true
+//                rotation: 90
+//                gradient: Gradient {
+//                        GradientStop { position: 0.25; color: "orange"}
+//                        GradientStop { position: 0.5; color: "white" }
+//                        GradientStop { position: 0.75; color: "orange" }
+//                }
+//            }
 
-        }
+//        }
 
-    }
+//    }
 
-    CircularGauge
-    {
-        id: hourHand
+//    CircularGauge
+//    {
+//        id: hourHand
 
-        value: clock.hours
+//        value: clock.hours
 
-        anchors.fill: parent
+//        anchors.fill: parent
 
-        maximumValue: 12
-        minimumValue: 0
+//        maximumValue: 12
+//        minimumValue: 0
 
-        style: CircularGaugeStyle {
-            maximumValueAngle: 360
-            minimumValueAngle: 0
+//        style: CircularGaugeStyle {
+//            maximumValueAngle: 360
+//            minimumValueAngle: 0
 
-            tickmark: null
-            tickmarkLabel: null
-            //tickmarkStepSize: 1
-            minorTickmark: null
+//            tickmark: null
+//            tickmarkLabel: null
+//            //tickmarkStepSize: 1
+//            minorTickmark: null
 
-            foreground: NeedleCenter {
-                size: outerRadius * 0.3
-            }
+//            foreground: NeedleCenter {
+//                size: outerRadius * 0.3
+//            }
 
-            needle: Rectangle {
-                y: - outerRadius * 0.35
-                radius: outerRadius * 0.025
-                implicitWidth: outerRadius * 0.65
-                implicitHeight: outerRadius * 0.05
-                antialiasing: true
-                rotation: 90
-                gradient: Gradient {
-                        GradientStop { position: 0.25; color: "orange"}
-                        GradientStop { position: 0.5; color: "white" }
-                        GradientStop { position: 0.75; color: "orange" }
-                }
-            }
+//            needle: Rectangle {
+//                y: - outerRadius * 0.35
+//                radius: outerRadius * 0.025
+//                implicitWidth: outerRadius * 0.65
+//                implicitHeight: outerRadius * 0.05
+//                antialiasing: true
+//                rotation: 90
+//                gradient: Gradient {
+//                        GradientStop { position: 0.25; color: "orange"}
+//                        GradientStop { position: 0.5; color: "white" }
+//                        GradientStop { position: 0.75; color: "orange" }
+//                }
+//            }
 
-        }
+//        }
 
-    }
+//    }
 }

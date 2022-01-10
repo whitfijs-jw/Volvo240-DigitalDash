@@ -1,19 +1,18 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.3
-import QtQml 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
 
-ApplicationWindow {
+Window {
     id: rootWindow
     visible: true
     width: 1280
     height: 480
     title: qsTr("Lolvo")
 
+
     property int smallGaugeSize: 140
-    property int tachSize: 440
-    property int speedoSize: tachSize - smallGaugeSize - 10
-    property int tempFuelSize: tachSize - smallGaugeSize - 10
+    property int tachSize: 400
+    property int speedoSize: 440
+    property int tempFuelSize: 400
     property int blinkerSize: 50;
 
     property int warningLightHeight: 50;
@@ -21,6 +20,21 @@ ApplicationWindow {
     property int warningLightWideWidth: 100;
     property int warningLightVerticalMargin: 5;
     property int warningLightHorizontalMargin: 8
+
+    property int speedoMax: 120;
+
+    property var msg: [
+        "You thought this\nwas going to work?",
+        "Come back later...",
+        "Just crush this\nthing already",
+        "Can this thing\neven hit 60?",
+        "Have fun with your\nM cam",
+        "I bet you could get\n$500 on BaT for this",
+        "404 Not Found",
+        "I heard you like\nFWD Volvos",
+
+    ]
+
 
 
     function setSmallGaugeSize(size) {
@@ -39,6 +53,10 @@ ApplicationWindow {
         tempFuelSize = size;
     }
 
+    function setSpeedoMax(max) {
+        speedoMax = max;
+    }
+
     function boundedAngle(angle, min, max) {
         if (angle > max) {
             angle = max;
@@ -51,384 +69,1151 @@ ApplicationWindow {
 
     Component {
         id: boostDelegate
-        BoostGauge {
-            minValue: gaugeMin
-            maxValue: gaugeMax
-            value: currentValue
-            units: gaugeUnits
-            highAlarm: gaugeHighAlarm
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeHighAlarm
+                item.lowAlarm = gaugeMin
+                item.initialValueOffset = gaugeMin
+
+                item.minAngle = -226
+                item.maxAngle = 45
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/accCluster/boost_black_no_numbers.png"
+
+                item.needleColor = "orange"
+
+                item.needleWidth = smallGaugeSize * 0.03
+                item.needleLength = smallGaugeSize * 0.55
+                item.needleOffset = smallGaugeSize * .25 / 2
+
+                item.needleCenterRadius = 0.15
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
         }
+    }
 
+    Component {
+        id: boostDelegate740
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeHighAlarm
+                item.lowAlarm = gaugeMin
+                item.initialValueOffset = gaugeMin
+
+                item.minAngle = -228
+                item.maxAngle = 45
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-740-940/740_boost.png"
+
+                item.needleColor = "red"
+
+                item.needleWidth = smallGaugeSize * 0.05
+                item.needleLength = smallGaugeSize * 0.55
+                item.needleOffset = smallGaugeSize * .25 / 2
+
+                item.needleCenterRadius = 0.25
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
+        }
     }
 
     Component {
         id: oilPressureDelegate
-        OilPressure {
-            minValue: gaugeMin
-            maxValue: gaugeMax
-            value: currentValue
-            units: gaugeUnits
-            highAlarm: gaugeHighAlarm
-            lowAlarm: gaugeLowAlarm
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeMax
+                item.lowAlarm = gaugeLowAlarm
+
+                item.minAngle = -136
+                item.maxAngle = -45
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/accCluster/oil_pressure_black.png"
+
+                item.needleColor = "orange"
+
+                item.needleWidth = smallGaugeSize * 0.03
+                item.needleLength = smallGaugeSize * 0.65
+                item.needleOffset = smallGaugeSize * .25 / 2
+
+                item.offset = smallGaugeSize / 4.5
+
+                item.needleCenterRadius = 0.15
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
         }
     }
 
     Component {
         id: oilTemperatureDelegate
-        OilTemperature {
-            minValue: gaugeMin
-            maxValue: gaugeMax
-            value: currentValue
-            units: gaugeUnits
-            highAlarm: gaugeHighAlarm
-            lowAlarm: gaugeLowAlarm
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeHighAlarm
+                item.lowAlarm = gaugeLowAlarm
+
+                item.minAngle = -136
+                item.maxAngle = -43
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/accCluster/oil_temp_black.png"
+
+                item.needleColor = "orange"
+
+                item.needleWidth = smallGaugeSize * 0.03
+                item.needleLength = smallGaugeSize * 0.65
+                item.needleOffset = smallGaugeSize * .25 / 2
+
+                item.offset = smallGaugeSize / 4.5
+
+                item.needleCenterRadius = 0.15
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
         }
     }
 
     Component {
         id: voltMeterDelegate
-        Volts {
-            minValue: gaugeMin
-            maxValue: gaugeMax
-            value: currentValue
-            units: gaugeUnits
-            highAlarm: gaugeHighAlarm
-            lowAlarm: gaugeLowAlarm
 
-            height: smallGaugeSize
-            width: smallGaugeSize
-        }
-    }
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeHighAlarm
+                item.lowAlarm = gaugeLowAlarm
 
-    Component {
-        id: ambientTempDelegate
-        AmbientTemp {
-            minValue: gaugeMin
-            maxValue: gaugeMax
-            value: currentValue
-            units: gaugeUnits
+                item.minAngle = -136
+                item.maxAngle = -45
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/accCluster/volt_black.png"
+
+                item.needleColor = "orange"
+
+                item.needleWidth = smallGaugeSize * 0.03
+                item.needleLength = smallGaugeSize * 0.65
+                item.needleOffset = smallGaugeSize * .25 / 2
+
+                item.offset = smallGaugeSize / 4.5
+
+                item.needleCenterRadius = 0.15
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
         }
     }
 
     Component {
         id: clockDelegate
-        Clock {
-            height: smallGaugeSize
-            width: smallGaugeSize
+        Loader {
+            source: "qrc:/Clock.qml"
+            asynchronous: true
+            onLoaded: {
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
         }
     }
 
     Component {
         id: rpmDelegate
-        Tacho {
-            value: rpm
-            maxValue: maxRpm
-            mRedLine: redLine
-            height: tachSize
-            width: tachSize
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = 0
+                item.maxValue = maxRpm
+                item.units = "rpm"
+                item.highAlarm = redLine
+                item.lowAlarm = 0
+
+                item.initialValueOffset = 200
+
+                item.minAngle = -221
+                item.maxAngle = 32
+
+                item.height = tachSize
+                item.width = tachSize
+
+                item.imageResource = "qrc:/mainCluster/tacho.png"
+
+                item.needleColor = "orange"
+
+                item.needleWidth = smallGaugeSize * 0.05
+                item.needleLength = tachSize * 0.45
+                item.needleOffset = tachSize * 0.15 / 2
+
+                item.needleCenterRadius = 0.10
+
+                item.textSize = tachSize * 0.15 / 2
+                item.textOffset = tachSize / 6
+                item.significantDigits = 0
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: rpm
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: tachSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: tachSize
+            }
+        }
+    }
+
+    Component {
+        id: rpmDelegate740
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = 0
+                item.maxValue = maxRpm
+                item.units = "rpm"
+                item.highAlarm = redLine
+                item.lowAlarm = 0
+                item.initialValueOffset = 200
+
+                item.minAngle = -220
+                item.maxAngle = 40
+
+                item.height = tachSize
+                item.width = tachSize
+
+                item.imageResource = "qrc:/gauge-faces-740-940/740_tach.png"
+
+                item.needleColor = "red"
+
+                item.needleWidth = tachSize * 0.03
+                item.needleLength = tachSize * 0.45
+                item.needleOffset = tachSize * 0.15 / 2
+
+                item.needleCenterRadius = 0.15
+
+                item.textSize = 20
+                item.textOffset = tachSize / 6
+                item.significantDigits = 0
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: rpm
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: tachSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: tachSize
+            }
         }
     }
 
     Component {
         id: speedoDelegate
-        Speedo {
-            speed: currentValue
-            minSpeed: minValue
-            maxSpeed: maxValue
-            units: speedUnits
-            topValue: valueTop
-            topUnit: valueTopUnits
-            height: speedoSize
-            width: speedoSize
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = minValue
+                item.maxValue = speedoMax
+                item.units = speedUnits
+                item.lowAlarm = minValue
+                item.highAlarm = speedoMax
+
+                item.initialValueOffset = 4
+
+                item.topValue = valueTop
+                item.topUnits = valueTopUnits
+                item.topValueEnabled = true
+                item.topTextOffset = -speedoSize / 6
+                item.topTextSize = speedoSize / 20.0
+
+                item.minAngle = -233
+                item.maxAngle = 43
+
+                item.height = speedoSize
+                item.width = speedoSize
+
+                item.imageResource = "qrc:mainCluster/early120mphspeedolo.png"
+
+                item.needleColor = "orange"
+
+                item.needleWidth = speedoSize * 0.015
+                item.needleLength = speedoSize * 0.45
+                item.needleOffset = speedoSize * 0.15 / 2
+
+                item.needleCenterRadius = 0.10
+
+                item.textSize = speedoSize * .15 / 2
+                item.textOffset = speedoSize / 6
+                item.significantDigits = 0
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue;
+            }
+
+            Binding {
+                target: item
+                property: "maxValue"
+                value: speedoMax
+            }
+
+            Binding {
+                target: item
+                property: "topValue"
+                value: valueTop
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: speedoSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: speedoSize
+            }
+        }
+    }
+
+    Component {
+        id: speedoDelegate740
+
+        Loader {
+
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = minValue
+                item.maxValue = speedoMax
+                item.units = speedUnits
+                item.lowAlarm = minValue
+                item.highAlarm = speedoMax
+
+                item.initialValueOffset = 2
+
+                item.topValue = valueTop
+                item.topUnits = valueTopUnits
+                item.topValueEnabled = true
+                item.topTextOffset = -speedoSize / 6
+                item.topTextSize = speedoSize / 20.0
+
+                item.minAngle = -227
+                item.maxAngle = 45
+
+                item.height = speedoSize
+                item.width = speedoSize
+
+                item.imageResource = "qrc:/gauge-faces-740-940/740_speedo.png"
+
+                item.needleColor = "red"
+
+                item.needleWidth = speedoSize * 0.025
+                item.needleLength = speedoSize * 0.45
+                item.needleOffset = speedoSize * 0.15 / 2
+
+                item.needleCenterRadius = 0.15
+
+                item.textSize = speedoSize * .15 / 2
+                item.textOffset = speedoSize / 6
+                item.significantDigits = 0
+            }
+
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue;
+            }
+
+            Binding {
+                target: item
+                property: "maxValue"
+                value: speedoMax
+            }
+
+            Binding {
+                target: item
+                property: "topValue"
+                value: valueTop
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: speedoSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: speedoSize
+            }
         }
     }
 
     Component {
         id: tempFuelDelegate
-        TempCoolant {
-            maxCoolantTemp: tempMax
-            minCoolantTemp: tempMin
-            coolantTemp: currentTemp
-            units: tempUnits
-            fuelLevel: currentFuelLevel
-            highAlarm: alarmHighTemp
-            lowAlarm: alarmLowFuel
+        Loader {
+            source: "qrc:/TempCoolant.qml"
+            asynchronous: true
+            onLoaded: {
+                item.maxCoolantTemp = tempMax
+                item.minCoolantTemp = tempMin
+                item.units = tempUnits
 
-            height: tempFuelSize
-            width: tempFuelSize
+                item.highAlarm = alarmHighTemp
+                item.lowAlarm = alarmLowFuel
+
+                item.height = tempFuelSize
+                item.width = tempFuelSize
+            }
+
+            Binding {
+                target: item
+                property: "coolantTemp"
+                value: currentTemp;
+            }
+
+            Binding {
+                target: item
+                property: "fuelLevel"
+                value: currentFuelLevel
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: tempFuelSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: tempFuelSize
+            }
+        }
+    }
+
+    Component {
+        id: coolant740Delegate
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeHighAlarm
+                item.lowAlarm = gaugeMin
+
+                item.minAngle = -115
+                item.maxAngle = -65
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-740-940/740_coolant_temp.png"
+
+                item.needleColor = "red"
+
+                item.needleWidth = smallGaugeSize * 0.05
+                item.needleLength = smallGaugeSize * 0.75
+                item.needleOffset = smallGaugeSize * 0.25 / 2
+                item.offset = smallGaugeSize / 4.5
+
+                item.needleCenterRadius = 0.25
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
+        }
+    }
+
+    Component {
+        id: fuelLevel740Delegate
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeMax
+                item.lowAlarm = gaugeLowAlarm
+
+                item.minAngle = -115
+                item.maxAngle = -65
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-740-940/740_fuel.png"
+
+                item.needleColor = "red"
+
+                item.needleWidth = smallGaugeSize * 0.05
+                item.needleLength = smallGaugeSize * 0.75
+                item.needleOffset = smallGaugeSize * 0.25 / 2
+                item.offset = smallGaugeSize / 4.5
+
+                item.needleCenterRadius = 0.25
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
+        }
+    }
+
+    Component {
+        id: voltMeterDelegate740
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeHighAlarm
+                item.lowAlarm = gaugeLowAlarm
+
+                item.minAngle = -130
+                item.maxAngle = -55
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-740-940/740_voltmeter.png"
+
+                item.needleColor = "red"
+
+                item.needleWidth = smallGaugeSize * 0.05
+                item.needleLength = smallGaugeSize * 0.75
+                item.needleOffset = smallGaugeSize * 0.25 / 2
+                item.offset = smallGaugeSize / 4.5
+
+                item.needleCenterRadius = 0.25
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
         }
     }
 
     Component {
         id: leftBlinkerDelegate
-        Blinker {
-            on: indicatorOn
-            flipped: false
 
-            width: blinkerSize
-            height: 3 * blinkerSize / 4
+        Loader {
+            source: "qrc:/Blinker.qml"
+            asynchronous: true
+            onLoaded: {
+                item.flipped = false
+                item.width = blinkerSize
+                item.height = 3 * blinkerSize / 4
+            }
+
+            Binding {
+                target: item
+                property: "on"
+                value: indicatorOn
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: blinkerSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: 3 * blinkerSize / 4
+            }
         }
     }
 
     Component {
         id: rightBlinkerDelegate
-        Blinker {
-            on: indicatorOn
-            flipped: true
 
-            width: blinkerSize
-            height: 3 * blinkerSize / 4
+        Loader {
+            source: "qrc:/Blinker.qml"
+            asynchronous: true
+            onLoaded: {
+                item.flipped = true
+                item.width = blinkerSize
+                item.height = 3 * blinkerSize / 4
+            }
+
+            Binding {
+                target: item
+                property: "on"
+                value: indicatorOn
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: blinkerSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: 3 * blinkerSize / 4
+            }
         }
     }
 
     Component {
         id: parkingBrakeLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "red"
+        Loader {
+            source: "qrc:/WarningLight.qml"
+            asynchronous: true
+            onLoaded: {
+                item.warningText = warningLightText
+                item.lightColor = "red"
+                item.width = warningLightWideWidth
+            }
 
-            width: warningLightWideWidth
+            Binding {
+                target: item
+                property: "on"
+                value: warningLightOn
+            }
         }
     }
 
     Component {
         id: brakeFailureLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "red"
+        Loader {
+            source: "qrc:/WarningLight.qml"
+            asynchronous: true
+            onLoaded: {
+                item.warningText = warningLightText
+                item.lightColor = "red"
+                item.width = warningLightWideWidth
+            }
 
-            width: warningLightWideWidth
+            Binding {
+                target: item
+                property: "on"
+                value: warningLightOn
+            }
         }
     }
 
     Component {
         id: bulbFailureLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "orange"
-            imageSource: "qrc:/warningLights/Bulb_failure_icon_no_background.png"
+        Loader {
+            source: "qrc:/WarningLight.qml"
+            asynchronous: true
+            onLoaded: {
+                item.warningText = warningLightText
+                item.lightColor = "orange"
+                item.width = warningLightWidth
+                item.imageSource = "qrc:/warningLights/Bulb_failure_icon_no_background.png"
+            }
 
-            width: warningLightWidth
+            Binding {
+                target: item
+                property: "on"
+                value: warningLightOn
+            }
         }
     }
 
     Component {
         id: shiftUpLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "orange"
+        Loader {
+            source: "qrc:/WarningLight.qml"
+            asynchronous: true
+            onLoaded: {
+                item.warningText = warningLightText
+                item.lightColor = "orange"
+                item.width = warningLightWidth
+            }
 
-            width: warningLightWidth
+            Binding {
+                target: item
+                property: "on"
+                value: warningLightOn
+            }
         }
     }
 
     Component {
         id: highBeamLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "lightcyan"
-            imageSource: "qrc:/warningLights/high_beam_icon.png"
+        Loader {
+            source: "qrc:/WarningLight.qml"
+            asynchronous: true
+            onLoaded: {
+                item.warningText = warningLightText
+                item.lightColor = "lightcyan"
+                item.width = warningLightWidth
+                item.imageSource = "qrc:/warningLights/high_beam_icon.png"
+            }
 
-            width: warningLightWidth
+            Binding {
+                target: item
+                property: "on"
+                value: warningLightOn
+            }
         }
     }
 
     Component {
         id: srsWarningLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "red"
+        Loader {
+            source: "qrc:/WarningLight.qml"
+            asynchronous: true
+            onLoaded: {
+                item.warningText = warningLightText
+                item.lightColor = "red"
+                item.width = warningLightWidth
+            }
 
-            width: warningLightWidth
+            Binding {
+                target: item
+                property: "on"
+                value: warningLightOn
+            }
         }
     }
 
     Component {
         id: oilWarningLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "red"
-            imageSource: "qrc:warningLights/oil_icon_no_background.png"
+        Loader {
+            source: "qrc:/WarningLight.qml"
+            asynchronous: true
+            onLoaded: {
+                item.warningText = warningLightText
+                item.lightColor = "red"
+                item.width = warningLightWidth
+                item.imageSource = "qrc:warningLights/oil_icon_no_background.png"
+            }
 
-            width: warningLightWidth
+            Binding {
+                target: item
+                property: "on"
+                value: warningLightOn
+            }
         }
     }
 
     Component {
         id: batteryWarningLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "red"
-            imageSource: "qrc:warningLights/battery_charge_icon_no_background.png"
+        Loader {
+            source: "qrc:/WarningLight.qml"
+            asynchronous: true
+            onLoaded: {
+                item.warningText = warningLightText
+                item.lightColor = "red"
+                item.width = warningLightWidth
+                item.imageSource = "qrc:warningLights/battery_charge_icon_no_background.png"
+            }
 
-            width: warningLightWidth
+            Binding {
+                target: item
+                property: "on"
+                value: warningLightOn
+            }
         }
     }
 
     Component {
         id: absWarningLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "red"
+        Loader {
+            source: "qrc:/WarningLight.qml"
+            asynchronous: true
+            onLoaded: {
+                item.warningText = warningLightText
+                item.lightColor = "red"
+                item.width = warningLightWidth
+            }
 
-            width: warningLightWidth
+            Binding {
+                target: item
+                property: "on"
+                value: warningLightOn
+            }
         }
     }
 
     Component {
         id: checkEngineLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "orange"
+        Loader {
+            source: "qrc:/WarningLight.qml"
+            asynchronous: true
+            onLoaded: {
+                item.warningText = warningLightText
+                item.lightColor = "orange"
+                item.width = warningLightWidth
+            }
 
-            width: warningLightWidth
+            Binding {
+                target: item
+                property: "on"
+                value: warningLightOn
+            }
         }
     }
 
     Component {
         id: serviceLightDelegate
 
-        WarningLight {
-            on: warningLightOn
-            warningText: warningLightText
-            lightColor: "orange"
+        Loader {
+            source: "qrc:/WarningLight.qml"
+            asynchronous: true
+            onLoaded: {
+                item.warningText = warningLightText
+                item.lightColor = "orange"
+                item.width = warningLightWidth
+            }
 
-            width: warningLightWidth
+            Binding {
+                target: item
+                property: "on"
+                value: warningLightOn
+            }
         }
     }
 
-    SwipeView {
-        id: swipeView
+    Item {
+        id: loading
+        anchors.fill: parent
+
+        Rectangle {
+            anchors.fill: parent
+            color: "black"
+
+            Text {
+                id: loadText
+                text: qsTr(rootWindow.msg[Math.floor(Math.random() * rootWindow.msg.length)])
+                horizontalAlignment: Text.AlignHCenter
+                fontSizeMode: Text.Fit
+                font.pixelSize: 100
+                color: "white"
+                onVisibleChanged: {
+                    console.count("hidden");
+                    var txt = qsTr(rootWindow.msg[Math.floor(Math.random() * rootWindow.msg.length)]);
+                    if (loadText.text === txt) {
+                        loadText.text = qsTr(rootWindow.msg[Math.floor(Math.random() * rootWindow.msg.length)]);
+                    } else {
+                        loadText.text = txt;
+                    }
+                }
+                anchors.centerIn: parent
+            }
+        }
+    }
+
+    Item {
+        id: gaugeItem
         anchors.fill: parent
         focus: true
+        property bool initialLoad: true
 
-        onCurrentIndexChanged: {
-            switch( swipeView.currentIndex )
-            {
-            case 0:
-                setSmallGaugeSize(140);
-                setTachSize(440);
-                setSpeedoSize(tachSize - smallGaugeSize - 10);
-                setTempFuelSize(tachSize - smallGaugeSize - 10);
-                break;
-            case 1:
-                setSmallGaugeSize(140);
-                setTachSize(440);
-                setSpeedoSize(tachSize - smallGaugeSize - 10);
-                setTempFuelSize(tachSize - smallGaugeSize - 10);
-                break;
-            case 2:
-                setSmallGaugeSize(140);
-                setTachSize(400);
-                setSpeedoSize(440);
-                setTempFuelSize(400);
-                break;
-            default:
-                setSmallGaugeSize(140);
-                setTachSize(440);
-                setSpeedoSize(tachSize - smallGaugeSize - 10);
-                setTempFuelSize(tachSize - smallGaugeSize - 10);
-                break;
+        Loader {
+            id: currentGauge
+            anchors.fill: parent
+            source: "qrc:/Original240Layout.qml"
+            asynchronous: true
+            visible: false
+            onStatusChanged: {
+                if (status == Loader.Ready) {
+                    console.log("Loader Ready")
+                    if (!gaugeItem.initialLoad) {
+                        visible = true;
+                        loadText.visible = false;
+                    } else {
+                        bootTimer.start();
+                        gaugeItem.initialLoad = false
+                    }
+                } else if (status == Loader.Loading) {
+                    currentGauge.visible = false;
+                    loadText.visible = true;
+                    console.log("Loader Loading")
+                }
+            }
+        }
+
+        Timer {
+            id: bootTimer
+            interval: 2000
+            running: false
+            repeat: false
+            onTriggered: {
+                currentGauge.visible = true;
+                loadText.visible = false;
             }
         }
 
         Keys.onPressed: {
-                switch (event.key) {
-                case Qt.Key_Right:
-                    if(swipeView.currentIndex + 1 < swipeView.count) {
-                        swipeView.incrementCurrentIndex();
-                    } else {
-                        swipeView.setCurrentIndex(0);
-                    }
-
+            switch (event.key) {
+                case Qt.Key_0:
+                    //currentGauge.source = "";
+                    currentGauge.source = "qrc:/BigTachCenter.qml";
+                    setSmallGaugeSize(140);
+                    setTachSize(440);
+                    setSpeedoSize(tachSize - smallGaugeSize - 10);
+                    setSpeedoMax(120);
+                    setTempFuelSize(tachSize - smallGaugeSize - 10);
                     break;
+                case Qt.Key_1:
+                    //currentGauge.source = "";
+                    currentGauge.source = "qrc:/BigTachLeft.qml";
+                    setSmallGaugeSize(140);
+                    setTachSize(440);
+                    setSpeedoSize(tachSize - smallGaugeSize - 10);
+                    setSpeedoMax(120);
+                    setTempFuelSize(tachSize - smallGaugeSize - 10);
+                    break;
+                case Qt.Key_2:
+                    //currentGauge.source = "";
+                    currentGauge.source = "qrc:/Original240Layout.qml";
+                    setSmallGaugeSize(140);
+                    setTachSize(400);
+                    setSpeedoSize(440);
+                    setSpeedoMax(120);
+                    setTempFuelSize(400);
+                    break;
+                case Qt.Key_3:
+                    //currentGauge.source = "";
+                    currentGauge.source = "qrc:/Original740Layout.qml"
+                    setSmallGaugeSize(140);
+                    setTachSize(275);
+                    setSpeedoSize(350);
+                    setSpeedoMax(140);
+                    setTempFuelSize(300);
+                break;
                 case Qt.Key_Escape:
-                    rootWindow.close();
-                    break;
-                case Qt.Key_L:
-                    break;
-                case Qt.Key_R:
+                    Qt.quit();
                     break;
                 default:
-                    swipeView.setCurrentIndex(0);
                     break;
                 }
                 event.accepted = true;
             }
 
-        Page {
-            BigTachCenter {
-                Component.onCompleted: {
-                    setSmallGaugeSize(140);
-                    setTachSize(440);
-                    setSpeedoSize(tachSize - smallGaugeSize - 10);
-                    setTempFuelSize(tachSize - smallGaugeSize - 10);
-                }
-            }
-
-            WarningLightBar {
-            }
-        }
-
-        Page {
-            BigTachLeft {
-                id: bigTach
-                Component.onCompleted: {
-                    setSmallGaugeSize(140);
-                    setTachSize(440);
-                    setSpeedoSize(tachSize - smallGaugeSize - 10);
-                    setTempFuelSize(tachSize - smallGaugeSize - 10);
-                }
-
-                WarningLightBar {
-                }
-            }
-        }
-
-        Page {
-            Original240Layout {
-                Component.onCompleted: {
-                    setSmallGaugeSize(140);
-                    setTachSize(400);
-                    setSpeedoSize(440);
-                    setTempFuelSize(400);
-                }
-            }
-
-            WarningLightBar {
-            }
+        Loader {
+            source: "WarningLightBar.qml"
+            asynchronous: true
         }
     }
 }

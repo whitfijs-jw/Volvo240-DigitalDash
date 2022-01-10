@@ -3,9 +3,18 @@
 set -u
 set -e
 
-QT_PROJECT_DIR="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/"
-QT_EXEC_DIR="${QT_PROJECT_DIR}/VolvoDigitalDashModels/build-RPI3/app/VolvoDigitalDashModels"
-QT_FONTS_DIR="${QT_PROJECT_DIR}/VolvoDigitalDashModels/app/ariblk.ttf"
+echo "we are here: $PWD"
+echo "host dir is: ${HOST_DIR}"
+
+BUILDROOT_DIR="${PWD}"
+PROJECT_DIR="../QtDash"
+QT_PROJECT_DIR="${PROJECT_DIR}/VolvoDigitalDashModels"
+QMAKE_CMD="${HOST_DIR}/bin/qmake"
+QT_PROJECT_FILE=""
+QT_BUILD_CMD="${QMAKE_CMD} ${QT_PROJECT_DIR}/subdirs.pro -spec devices/linux-buildroot-g++ CONFIG+=debug CONFIG+=qml_debug CONFIG+=RPI && /usr/bin/make qmake_all"
+QT_BUILD_DIR="${QT_PROJECT_DIR}/build-RPI3/"
+QT_EXEC_DIR="${QT_PROJECT_DIR}/build-RPI3/app/VolvoDigitalDashModels"
+QT_FONTS_DIR="${QT_PROJECT_DIR}/app/HandelGothReg.ttf"
 QT_EXEC_TARGET_DIR="${TARGET_DIR}/opt"
 QT_FONTS_TARGET_DIR="${TARGET_DIR}/usr/lib/fonts"
 BOARD_DIR="$(dirname $0)"
@@ -18,26 +27,27 @@ if [ -e ${TARGET_DIR}/etc/inittab ]; then
 tty1::respawn:/sbin/getty -L  tty1 0 vt100 # HDMI console' ${TARGET_DIR}/etc/inittab
 fi
 
-echo "Making /usr/lib/fonts directory"
-mkdir -p "${QT_FONTS_TARGET_DIR}"
+echo "Create Qt App build directory"
+mkdir -p "${QT_BUILD_DIR}"
 
-echo "Copying fonts to /usr/lib/fonts"
-cp "${QT_FONTS_DIR}" "${QT_FONTS_TARGET_DIR}"
+echo "Building Qt App (qmake + make)"
+cd "${QT_BUILD_DIR}"
+${QMAKE_CMD} ../subdirs.pro -spec devices/linux-buildroot-g++ CONFIG+=debug CONFIG+=qml_debug CONFIG+=RPI && /usr/bin/make qmake_all
+
+make -j
 
 echo "Copying QtDash executable to /opt"
+cd "${BUILDROOT_DIR}"
 cp "${QT_EXEC_DIR}" "${QT_EXEC_TARGET_DIR}"
 
 echo "Copy custom config.txt"
 cp "${BOARD_DIR}/config.txt" "${BINARIES_DIR}/rpi-firmware"
 
-echo "Creating etc/sysconfig directory"
-cp -r "${BOARD_DIR}/sysconfig" "${TARGET_DIR}/etc"
-
-echo "Copying S03modules to etc/init.d"
-cp "${BOARD_DIR}/S03modules" "${TARGET_DIR}/etc/init.d"
+echo "Copy custom cmdline.txt"
+cp "${BOARD_DIR}/cmdline.txt" "${BINARIES_DIR}/rpi-firmware"
 
 echo "Copying mcp3208 dtb"
 cp "${BOARD_DIR}/mcp3208.dtbo" "${BINARIES_DIR}/rpi-firmware/overlays"
 
 echo "Copying Config from QtDash"
-cp "${QT_PROJECT_DIR}/config.ini" "${QT_EXEC_TARGET_DIR}"
+cp "${PROJECT_DIR}/config.ini" "${QT_EXEC_TARGET_DIR}"
