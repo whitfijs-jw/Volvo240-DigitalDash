@@ -14,6 +14,7 @@ public:
     static constexpr char DASH_LIGHT_GROUP[] = "dash_lights";
     static constexpr char MAP_SENSOR_GROUP[] = "map_sensor";
     static constexpr char TEMP_SENSOR_GROUP[] = "temp_sensor";
+    static constexpr char TACH_INPUT_GROUP[] = "tach_input";
 
     // expected sensor keys
     static constexpr char COOLANT_TEMP_KEY[] = "coolant_temp";
@@ -70,6 +71,9 @@ public:
 
     static constexpr qreal INVALID_TEMP = -459.67; // value if temp could not be read
 
+    //expected keys for tach input
+    static constexpr char TACH_PULSES_PER_ROTATION[] = "pulse_per_rot";
+
 
     enum class PressureUnits {
         KPA = 0,
@@ -124,6 +128,11 @@ public:
 
         }
     } TempSensorConfig_t;
+
+
+    typedef struct TachInputConfig {
+        int pulsesPerRot;
+    }TachInputConfig_t;
 
     Config(QObject * parent, QString configPath = "/opt/config.ini") :
         QObject(parent) {
@@ -182,6 +191,7 @@ public:
 
         mConfig->endGroup();
 
+        // Temperature sensor config
         int size = mConfig->beginReadArray(TEMP_SENSOR_GROUP);
         for (int i = 0; i < size; ++i) {
             TempSensorConfig_t conf;
@@ -228,6 +238,12 @@ public:
         }
         mConfig->endArray();
 
+        //tach input config
+        mConfig->beginGroup(TACH_INPUT_GROUP);
+
+        mTachConfig.pulsesPerRot = mConfig->value(TACH_PULSES_PER_ROTATION, 2).toInt(); // default to 4 cylinder
+
+        mConfig->endGroup();
 
         return keys.size() > 0;
     }
@@ -246,6 +262,10 @@ public:
 
     QList<TempSensorConfig_t> * getTempSensorConfigs() {
         return &mTempSensorConfigs;
+    }
+
+    TachInputConfig_t getTachInputConfig() {
+        return mTachConfig;
     }
 
     bool isSensorConfigValid() {
@@ -268,6 +288,7 @@ private:
     QMap<QString, int> mDashLightConfig;
     MapSensorConfig_t mMapSensorConfig;
     QList<TempSensorConfig_t> mTempSensorConfigs;
+    TachInputConfig_t mTachConfig;
 
 
     bool isMapConfigValid(QMap<QString, int> *map) {

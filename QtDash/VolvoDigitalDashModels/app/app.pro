@@ -1,5 +1,5 @@
 QT += quick serialport positioning
-CONFIG += c++17 qtquickcompiler
+CONFIG += c++17 qtquickcompiler static
 
 TARGET = VolvoDigitalDashModels
 TEMPLATE = app
@@ -44,6 +44,7 @@ HEADERS += \
     map_sensor.h \
     mcp23017.h \
     ntc.h \
+    tach_input.h \
     tachometer_model.h \
     accessory_gauge_model.h \
     speedometer_model.h \
