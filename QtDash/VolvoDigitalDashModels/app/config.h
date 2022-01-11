@@ -73,6 +73,7 @@ public:
 
     //expected keys for tach input
     static constexpr char TACH_PULSES_PER_ROTATION[] = "pulse_per_rot";
+    static constexpr char TACH_MAX_RPM[] = "max_rpm";
 
 
     enum class PressureUnits {
@@ -132,6 +133,7 @@ public:
 
     typedef struct TachInputConfig {
         int pulsesPerRot;
+        int maxRpm;
     }TachInputConfig_t;
 
     Config(QObject * parent, QString configPath = "/opt/config.ini") :
@@ -242,6 +244,7 @@ public:
         mConfig->beginGroup(TACH_INPUT_GROUP);
 
         mTachConfig.pulsesPerRot = mConfig->value(TACH_PULSES_PER_ROTATION, 2).toInt(); // default to 4 cylinder
+        mTachConfig.maxRpm = mConfig->value(TACH_MAX_RPM, 9000).toInt(); // default rpm is 9000 (a bit aspirational)
 
         mConfig->endGroup();
 

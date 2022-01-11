@@ -227,6 +227,7 @@ void updateGaugesRPi()
     qreal ambientTemp = ambientTempSensor->calculateTemp(ambientTempVolts, Config::TemperatureUnits::FAHRENHEIT);
     speedoModel.setTopValue(ambientTemp);
 
+    // tach input
     tachModel.setRpm(tachInput->getRpm());
 #endif
 
