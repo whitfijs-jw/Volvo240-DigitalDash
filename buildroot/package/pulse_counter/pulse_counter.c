@@ -8,6 +8,7 @@
 #include <linux/interrupt.h>
 #include <linux/gpio.h>
 #include <linux/timekeeping.h>
+#include <linux/delay.h>
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("whitfijs");
@@ -24,28 +25,33 @@ MODULE_AUTHOR("whitfijs");
 
 static __u16 pulse_counter_gpio_irq_num 	= 0;
 static __u32 pulse_count_total				= 0;
-static __u32 pulse_spacing[PULSE_SPACING_NUM_SAMPLES];
-static __u32 pulse_spacing_index            = 0;
-static __u32 pulse_spacing_avg              = 0;
+static __u64 pulse_spacing[PULSE_SPACING_NUM_SAMPLES];
+static __u64 pulse_spacing_index            = 0;
+static __u64 pulse_spacing_avg              = 0;
 
 static irqreturn_t pulse_irq_handler(__u32 irq, void * dev_id, struct pt_regs * regs){
-
-    static int lastInterrupt = 0;
+	static ktime_t last;
+	ktime_t now;
+	static int lastInterrupt = 0;
     static __u8 on = 0;
+	
 	
     on = !on;
     gpio_set_value(PULSE_COUNTER_LED_GPIO, on);
 
     if (lastInterrupt == 0) {
+		last = ktime_get();
         lastInterrupt = jiffies;
     } else {
-        int now = jiffies;
-        pulse_spacing[pulse_spacing_index++] = (now - lastInterrupt);
+		now = ktime_get();
+        __u64 now_usec = ktime_to_ns(now);
+		__u64 last_usec = ktime_to_ns(last);
+        pulse_spacing[pulse_spacing_index++] = (now_usec - last_usec);
         pulse_spacing_index = pulse_spacing_index & (PULSE_SPACING_NUM_SAMPLES - 1);
-        lastInterrupt = now;
-        
+        last = now;
+
         if (pulse_spacing_index == 0) {
-            int avg = 0;
+            __u64 avg = 0;
 	        for (int i = 0; i < PULSE_SPACING_NUM_SAMPLES; i++) {
 	            avg += pulse_spacing[i];
 	        }
@@ -96,7 +102,7 @@ static DEVICE_ATTR(pulse_spacing_avg, 00664, show_pulse_spacing_avg_callback, se
 
 static struct class *s_pDeviceClass;
 static struct device *s_pDeviceObject;
-static struct device *s_pPulseSpacingDeviceObject;
+//static struct device *s_pPulseSpacingDeviceObject;
 
 static int __init pulseCounterModule_init(void){
 	int result;
