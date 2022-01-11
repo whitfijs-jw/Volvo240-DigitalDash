@@ -26,14 +26,15 @@ static __u16 pulse_counter_gpio_irq_num 	= 0;
 static __u32 pulse_count_total				= 0;
 static __u32 pulse_spacing[PULSE_SPACING_NUM_SAMPLES];
 static __u32 pulse_spacing_index            = 0;
+static __u32 pulse_spacing_avg              = 0;
 
 static irqreturn_t pulse_irq_handler(__u32 irq, void * dev_id, struct pt_regs * regs){
 
     static int lastInterrupt = 0;
-	static __u8 on = 0;
+    static __u8 on = 0;
 	
-	on = !on;
-	gpio_set_value(PULSE_COUNTER_LED_GPIO, on);
+    on = !on;
+    gpio_set_value(PULSE_COUNTER_LED_GPIO, on);
 
     if (lastInterrupt == 0) {
         lastInterrupt = jiffies;
@@ -41,10 +42,19 @@ static irqreturn_t pulse_irq_handler(__u32 irq, void * dev_id, struct pt_regs * 
         int now = jiffies;
         pulse_spacing[pulse_spacing_index++] = (now - lastInterrupt);
         pulse_spacing_index = pulse_spacing_index & (PULSE_SPACING_NUM_SAMPLES - 1);
+        lastInterrupt = now;
+        
+        if (pulse_spacing_index == 0) {
+            int avg = 0;
+	        for (int i = 0; i < PULSE_SPACING_NUM_SAMPLES; i++) {
+	            avg += pulse_spacing[i];
+	        }
+	        pulse_spacing_avg = avg / PULSE_SPACING_NUM_SAMPLES;
+        }
     }
-	pulse_count_total++;
+    pulse_count_total++;
 
-	return IRQ_HANDLED;
+    return IRQ_HANDLED;
 }
 
 static ssize_t set_pulse_count_callback(struct device* dev,struct device_attribute* attr, const char * buf, size_t count){
@@ -59,21 +69,34 @@ static ssize_t set_pulse_count_callback(struct device* dev,struct device_attribu
 static ssize_t show_pulse_count_callback(struct device *d, struct device_attribute * attr, char * buf){
 	__u32 pulse_count = pulse_count_total;
 	printk(KERN_INFO "In attr1_show function\n");
-	printk(KERN_INFO "%u\n", pulse_count_total);
-	int avg = 0;
-	for (int i = 0; i < PULSE_SPACING_NUM_SAMPLES; i++) {
-	    avg += pulse_spacing[i];
-	}
-	avg /= PULSE_SPACING_NUM_SAMPLES;
-	return sprintf(buf, "%u\n", avg);
+	printk(KERN_INFO "%u\n", pulse_count);
+	return sprintf(buf, "%u\n", pulse_count);
 }
 
 
 
+static ssize_t set_pulse_spacing_avg_callback(struct device* dev,struct device_attribute* attr, const char * buf, size_t count){
+	long int spacing = 0;
+	if (kstrtol(buf, 10, &spacing) < 0)
+		return -EINVAL;
+
+	pulse_spacing_avg = spacing;
+	return count;
+}
+
+static ssize_t show_pulse_spacing_avg_callback(struct device *d, struct device_attribute * attr, char * buf){
+	__u32 pulse_spacing = pulse_spacing_avg;
+	printk(KERN_INFO "Show Pulse Spacing Avg:\n");
+	printk(KERN_INFO "%u\n", pulse_spacing);
+	return sprintf(buf, "%u\n", pulse_spacing);
+}
+
 static DEVICE_ATTR(pulse_count, 00664, show_pulse_count_callback, set_pulse_count_callback);
+static DEVICE_ATTR(pulse_spacing_avg, 00664, show_pulse_spacing_avg_callback, set_pulse_spacing_avg_callback);
 
 static struct class *s_pDeviceClass;
 static struct device *s_pDeviceObject;
+static struct device *s_pPulseSpacingDeviceObject;
 
 static int __init pulseCounterModule_init(void){
 	int result;
@@ -83,14 +106,22 @@ static int __init pulseCounterModule_init(void){
 	  return -EINVAL;
 	}
 	gpio_direction_output(PULSE_COUNTER_LED_GPIO, 1);
-
-	s_pDeviceClass = class_create(THIS_MODULE, "PulseCounter");
+    
+    // create class in /sys/class
+	s_pDeviceClass = class_create(THIS_MODULE, "volvo_dash");
 	BUG_ON(IS_ERR(s_pDeviceClass));
-
-	s_pDeviceObject = device_create(s_pDeviceClass, NULL, 0, NULL, "PulseCounter");
+    
+    // create pulse_count attribute
+	s_pDeviceObject = device_create(s_pDeviceClass, NULL, 0, NULL, "pulse_counter");
 	BUG_ON(IS_ERR(s_pDeviceObject));
 
 	result = device_create_file(s_pDeviceObject, &dev_attr_pulse_count);
+    
+    // create pulse spacing object
+	//s_pPulseSpacingDeviceObject = device_create(s_pDeviceClass, NULL, 0, NULL, "pulse_spacing_avg");
+	//BUG_ON(IS_ERR(s_pPulseSpacingDeviceObject));
+
+	result = device_create_file(s_pDeviceObject, &dev_attr_pulse_spacing_avg);
 
    if (gpio_request(PULSE_COUNTER_GPIO, PULSE_COUNTER_GPIO_DESC)) {
       printk("GPIO request faiure: %s\n", PULSE_COUNTER_GPIO_DESC);
