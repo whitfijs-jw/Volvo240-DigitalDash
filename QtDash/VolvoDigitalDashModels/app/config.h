@@ -74,6 +74,7 @@ public:
     //expected keys for tach input
     static constexpr char TACH_PULSES_PER_ROTATION[] = "pulse_per_rot";
     static constexpr char TACH_MAX_RPM[] = "max_rpm";
+    static constexpr char TACH_AVG_NUM_SAMPLES[] = "avg_num_samples";
 
 
     enum class PressureUnits {
@@ -134,6 +135,7 @@ public:
     typedef struct TachInputConfig {
         int pulsesPerRot;
         int maxRpm;
+        int avgNumSamples;
     }TachInputConfig_t;
 
     Config(QObject * parent, QString configPath = "/opt/config.ini") :
@@ -149,9 +151,10 @@ public:
         mConfig->beginGroup(SENSOR_CHANNEL_GROUP);
 
         for (auto key : mConfig->childKeys()) {
-            qDebug() << key << ": " << mConfig->value(key, -1).toInt();
             mSensorChannelConfig.insert(key, mConfig->value(key, -1).toInt());
         }
+
+        printKeys("Sensor Channels ");
 
         mConfig->endGroup();
 
@@ -159,9 +162,10 @@ public:
         mConfig->beginGroup(DASH_LIGHT_GROUP);
 
         for (auto key : mConfig->childKeys()) {
-            qDebug() << key << ": " << mConfig->value(key, -1).toInt();
             mDashLightConfig.insert(key, mConfig->value(key, -1).toInt());
         }
+
+        printKeys("Dash Light Config ");
 
         mConfig->endGroup();
 
@@ -187,9 +191,9 @@ public:
                     mMapSensorConfig.units = PressureUnits::KPA;
                 }
             }
-
-            qDebug() << "Map Sensor " << key << ": " << mConfig->value(key, "N/A").toString();
         }
+
+        printKeys("Map Sensor ");
 
         mConfig->endGroup();
 
@@ -234,9 +238,7 @@ public:
 
             mTempSensorConfigs.append(conf);
 
-            for (auto key : mConfig->childKeys()) {
-                qDebug() << "Temp Sensor " << key << ": " << mConfig->value(key, "N/A").toString();
-            }
+            printKeys("Temp Sensor ");
         }
         mConfig->endArray();
 
@@ -245,10 +247,19 @@ public:
 
         mTachConfig.pulsesPerRot = mConfig->value(TACH_PULSES_PER_ROTATION, 2).toInt(); // default to 4 cylinder
         mTachConfig.maxRpm = mConfig->value(TACH_MAX_RPM, 9000).toInt(); // default rpm is 9000 (a bit aspirational)
+        mTachConfig.avgNumSamples = mConfig->value(TACH_AVG_NUM_SAMPLES, 4).toInt(); // default is to average over last 4 tach pulse spacing
+
+        printKeys("Tach Input ");
 
         mConfig->endGroup();
 
         return keys.size() > 0;
+    }
+
+    void printKeys(QString setting) {
+        for (auto key : mConfig->childKeys()) {
+            qDebug() << setting << key << ": " << mConfig->value(key, "N/A").toString();
+        }
     }
 
     QMap<QString, int> * getDashLightConfig() {

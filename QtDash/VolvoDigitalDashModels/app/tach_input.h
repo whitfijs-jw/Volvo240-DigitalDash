@@ -29,6 +29,7 @@ public:
               std::string path = DEFAULT_TACH_PULSE_PATH) :
         mConfig(config), mPath(path) {
         setMaxRpm(config.maxRpm);
+        setNumSamplesToAvg(config.avgNumSamples);
     }
 
     /**
@@ -73,23 +74,15 @@ public:
      * @return returns new max if written to sysfs.  returns -1 if failed
      */
     int setMaxRpm(int rpm) {
-        // read the nano second spacing variable
-        std::string fullPath = mPath + PULSE_SPACING_MIN;
-        std::ofstream ofs(fullPath, std::ofstream::out);
-        if (!ofs.is_open()) {
-            std::cout << "Error opening min pulse spacing file" << std::endl;
-            return -1.0;
-        }
-
         //calculate min time in nsec
         int nsec = std::round(1.0e9 * 60 / (rpm * 2.0));
 
-        ofs << nsec;
-        ofs.close();
+        return writeAttribute(PULSE_SPACING_MIN, nsec);
 
-        std::cout << "min pulse spacing set to: " << nsec << " nsec" << std::endl;
+    }
 
-        return rpm;
+    int setNumSamplesToAvg(int num) {
+        return writeAttribute(PULSE_SPACING_AVG_NUM_SAMPLES, num);
     }
 
 private:
@@ -98,6 +91,24 @@ private:
     static constexpr char PULSE_COUNT_ATTR[] = "pulse_count"; //!< total pulses detected attribute
     static constexpr char PULSE_SPACING_AVG[] = "pulse_spacing_avg"; //!< average pulse spacing attribute
     static constexpr char PULSE_SPACING_MIN[] = "pulse_spacing_min"; //!< minimum pulse spacing (in nsec)
+    static constexpr char PULSE_SPACING_AVG_NUM_SAMPLES[] = "pulse_spacing_avg_num_samples"; //!< number of samples to average over
+
+    int writeAttribute(std::string attr, int value) {
+        // read the nano second spacing variable
+        std::string fullPath = mPath + attr;
+        std::ofstream ofs(fullPath, std::ofstream::out);
+        if (!ofs.is_open()) {
+            std::cout << "Error opening " << attr << std::endl;
+            return -1.0;
+        }
+
+        ofs << value;
+        ofs.close();
+
+        std::cout << attr << " set to: " << value <<  std::endl;
+
+        return value;
+    }
 
     Config::TachInputConfig_t mConfig; //!< Tach configuration
     std::string mPath; //!< path to sysfs tach input class
