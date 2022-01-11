@@ -11,6 +11,7 @@
 #include <linux/delay.h>
 #include <linux/timer.h>
 #include <linux/jiffies.h>
+#include <linux/math64.h>
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("whitfijs");
@@ -24,6 +25,7 @@ MODULE_AUTHOR("whitfijs");
 #define PULSE_COUNTER_LED_GPIO_DESC         "Pulse counter led indicator pin"
 
 #define PULSE_SPACING_NUM_SAMPLES           4
+#define MAX_PULSE_SPACING_NUM_SAMPLES		32
 
 #define PULSE_SPACING_TIMEOUT_MSEC			200
 #define PULSE_SPACING_MIN_DEFAULT_USEC 		2500		
@@ -31,9 +33,10 @@ MODULE_AUTHOR("whitfijs");
 
 static __u16 pulse_counter_gpio_irq_num 	= 0;
 static __u32 pulse_count_total				= 0;
-static __u64 pulse_spacing[PULSE_SPACING_NUM_SAMPLES];
+static __u64 pulse_spacing[MAX_PULSE_SPACING_NUM_SAMPLES];
 static __u64 pulse_spacing_index            = 0;
 static __u64 pulse_spacing_avg              = 0;
+static __u64 pulse_spacing_avg_num_samples  = PULSE_SPACING_NUM_SAMPLES;
 static __u64 pulse_spacing_min				= PULSE_SPACING_MIN_DEFAULT_USEC * 1000;
 
 struct timer_list timeout_timer;
@@ -43,8 +46,6 @@ void restart_timeout_timer(void) {
 }
 
 void timeout_timer_function(struct timer_list *timer) {
-    printk(KERN_INFO "No Pulse Detected in last %d msec: \n", PULSE_SPACING_TIMEOUT_MSEC);
-
 	// reset pulse spacing
 	pulse_spacing_avg = 0;
 	pulse_spacing_index = 0;
@@ -82,15 +83,14 @@ static irqreturn_t pulse_irq_handler(__u32 irq, void * dev_id, struct pt_regs * 
 		}
 		 
 		pulse_spacing[pulse_spacing_index++] = spacing;
-		pulse_spacing_index = pulse_spacing_index & (PULSE_SPACING_NUM_SAMPLES - 1);		
+		pulse_spacing_index = pulse_spacing_index & (pulse_spacing_avg_num_samples - 1);		
 
-
-		if (pulse_spacing_index == 0) {
+		if (pulse_count_total > pulse_spacing_avg_num_samples) {
 			__u64 avg = 0;
-			for (int i = 0; i < PULSE_SPACING_NUM_SAMPLES; i++) {
+			for (int i = 0; i < pulse_spacing_avg_num_samples; i++) {
 				avg += pulse_spacing[i];
 			}
-			pulse_spacing_avg = avg / PULSE_SPACING_NUM_SAMPLES;
+			pulse_spacing_avg = div_u64(avg, pulse_spacing_avg_num_samples);
 		}
 		
 
@@ -148,9 +148,44 @@ static ssize_t show_min_pulse_spacing_callback(struct device *d, struct device_a
 	return sprintf(buf, "%llu\n", spacing);
 }
 
+static ssize_t set_avg_num_samples_callback(struct device* dev,struct device_attribute* attr, const char * buf, size_t count) {
+	long int num_samples = 0;
+	if (kstrtol(buf, 10, &num_samples) < 0)
+		return -EINVAL;
+	
+	// round up to a power of 2
+	long int v = num_samples;
+	v--;
+	v |= v >> 1;
+	v |= v >> 2;
+	v |= v >> 4;
+	v |= v >> 8;
+	v |= v >> 16;
+	v++;
+
+	if (v > MAX_PULSE_SPACING_NUM_SAMPLES) {
+		v = MAX_PULSE_SPACING_NUM_SAMPLES;
+	}
+
+	printk("Num samples to average: %ld\n", v);
+
+	pulse_spacing_index = 0;
+	pulse_spacing_avg = 0;
+	pulse_count_total = 0;
+
+	pulse_spacing_avg_num_samples = v;
+	return count;
+}
+
+static ssize_t show_avg_num_samples_callback(struct device *d, struct device_attribute * attr, char * buf) {
+	__u64 output = pulse_spacing_avg_num_samples;
+	return sprintf(buf, "%llu\n", output);
+}
+
 static DEVICE_ATTR(pulse_count, 00664, show_pulse_count_callback, set_pulse_count_callback);
 static DEVICE_ATTR(pulse_spacing_avg, 00664, show_pulse_spacing_avg_callback, set_pulse_spacing_avg_callback);
 static DEVICE_ATTR(pulse_spacing_min, 00664, show_min_pulse_spacing_callback, set_min_pulse_spacing_callback);
+static DEVICE_ATTR(pulse_spacing_avg_num_samples, 00664, show_avg_num_samples_callback, set_avg_num_samples_callback);
 
 static struct class *s_pDeviceClass;
 static struct device *s_pDeviceObject;
@@ -175,6 +210,7 @@ static int __init pulseCounterModule_init(void){
 	result = device_create_file(s_pDeviceObject, &dev_attr_pulse_count);
 	result = device_create_file(s_pDeviceObject, &dev_attr_pulse_spacing_avg);
 	result = device_create_file(s_pDeviceObject, &dev_attr_pulse_spacing_min);
+	result = device_create_file(s_pDeviceObject, &dev_attr_pulse_spacing_avg_num_samples);
 
    if (gpio_request(PULSE_COUNTER_GPIO, PULSE_COUNTER_GPIO_DESC)) {
       printk("GPIO request faiure: %s\n", PULSE_COUNTER_GPIO_DESC);
@@ -211,6 +247,7 @@ static void __exit pulseCounterModule_exit(void) {
 	device_remove_file(s_pDeviceObject, &dev_attr_pulse_count);
 	device_remove_file(s_pDeviceObject, &dev_attr_pulse_spacing_avg);
 	device_remove_file(s_pDeviceObject, &dev_attr_pulse_spacing_min);
+	device_remove_file(s_pDeviceObject, &dev_attr_pulse_spacing_avg_num_samples);
 	device_destroy(s_pDeviceClass, 0);
 	class_destroy(s_pDeviceClass);
 
