@@ -9,6 +9,8 @@
 #include <linux/gpio.h>
 #include <linux/timekeeping.h>
 #include <linux/delay.h>
+#include <linux/timer.h>
+#include <linux/jiffies.h>
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("whitfijs");
@@ -23,11 +25,32 @@ MODULE_AUTHOR("whitfijs");
 
 #define PULSE_SPACING_NUM_SAMPLES           4
 
+#define PULSE_SPACING_TIMEOUT_MSEC			200
+
 static __u16 pulse_counter_gpio_irq_num 	= 0;
 static __u32 pulse_count_total				= 0;
 static __u64 pulse_spacing[PULSE_SPACING_NUM_SAMPLES];
 static __u64 pulse_spacing_index            = 0;
 static __u64 pulse_spacing_avg              = 0;
+
+
+struct timer_list timeout_timer;
+
+void restart_timeout_timer(void) {
+	mod_timer (&timeout_timer, jiffies + ( msecs_to_jiffies(PULSE_SPACING_TIMEOUT_MSEC)));	
+}
+
+void timeout_timer_function(struct timer_list *timer) {
+	// reset pulse spacing
+	pulse_spacing_avg = 0;
+	pulse_spacing_index = 0;
+	for (int i = 0; i < PULSE_SPACING_NUM_SAMPLES; i++) {
+		pulse_spacing[i] = 0;
+	}
+
+	// restart the timer
+	restart_timeout_timer();
+}
 
 static irqreturn_t pulse_irq_handler(__u32 irq, void * dev_id, struct pt_regs * regs){
 	static ktime_t last;
@@ -35,10 +58,11 @@ static irqreturn_t pulse_irq_handler(__u32 irq, void * dev_id, struct pt_regs * 
 	static int lastInterrupt = 0;
     static __u8 on = 0;
 	
-	
+	// temporary -- flip pin
     on = !on;
     gpio_set_value(PULSE_COUNTER_LED_GPIO, on);
 
+	// set the pulse spacing avg
     if (lastInterrupt == 0) {
 		last = ktime_get();
         lastInterrupt = jiffies;
@@ -58,7 +82,12 @@ static irqreturn_t pulse_irq_handler(__u32 irq, void * dev_id, struct pt_regs * 
 	        pulse_spacing_avg = avg / PULSE_SPACING_NUM_SAMPLES;
         }
     }
+
+	// increment pulse count total
     pulse_count_total++;
+
+	// reset the timeout timer
+	restart_timeout_timer();
 
     return IRQ_HANDLED;
 }
@@ -74,7 +103,7 @@ static ssize_t set_pulse_count_callback(struct device* dev,struct device_attribu
 
 static ssize_t show_pulse_count_callback(struct device *d, struct device_attribute * attr, char * buf){
 	__u32 pulse_count = pulse_count_total;
-	printk(KERN_INFO "In attr1_show function\n");
+	printk(KERN_INFO "Pulse count: \n");
 	printk(KERN_INFO "%u\n", pulse_count);
 	return sprintf(buf, "%u\n", pulse_count);
 }
@@ -102,7 +131,6 @@ static DEVICE_ATTR(pulse_spacing_avg, 00664, show_pulse_spacing_avg_callback, se
 
 static struct class *s_pDeviceClass;
 static struct device *s_pDeviceObject;
-//static struct device *s_pPulseSpacingDeviceObject;
 
 static int __init pulseCounterModule_init(void){
 	int result;
@@ -122,11 +150,6 @@ static int __init pulseCounterModule_init(void){
 	BUG_ON(IS_ERR(s_pDeviceObject));
 
 	result = device_create_file(s_pDeviceObject, &dev_attr_pulse_count);
-    
-    // create pulse spacing object
-	//s_pPulseSpacingDeviceObject = device_create(s_pDeviceClass, NULL, 0, NULL, "pulse_spacing_avg");
-	//BUG_ON(IS_ERR(s_pPulseSpacingDeviceObject));
-
 	result = device_create_file(s_pDeviceObject, &dev_attr_pulse_spacing_avg);
 
    if (gpio_request(PULSE_COUNTER_GPIO, PULSE_COUNTER_GPIO_DESC)) {
@@ -152,11 +175,15 @@ static int __init pulseCounterModule_init(void){
    }
 
 
+	timer_setup(&timeout_timer, timeout_timer_function, 0);
+	restart_timeout_timer();
+
 	return 0;
 }
 
-static void __exit pulseCounterModule_exit(void)
-{
+static void __exit pulseCounterModule_exit(void) {
+	del_timer(&timeout_timer);
+
 	device_remove_file(s_pDeviceObject, &dev_attr_pulse_count);
 	device_destroy(s_pDeviceClass, 0);
 	class_destroy(s_pDeviceClass);

@@ -6,3 +6,4 @@
 spi_bcm2835
 mcp320x
 cdc_acm
+pulse_counter
