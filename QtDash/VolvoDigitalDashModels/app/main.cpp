@@ -27,6 +27,7 @@
 #include <gps_helper.h>
 #include <ntc.h>
 #include <map_sensor.h>
+#include <tach_input.h>
 
 static TachometerModel tachModel;
 static SpeedometerModel speedoModel;
@@ -60,6 +61,7 @@ Ntc * ambientTempSensor;
 #ifdef RASPBERRY_PI
 static mcp23017 dashLightInputs;
 static Adc analogInputs;
+static TachInput * tachInput;
 #else
 #endif
 
@@ -165,8 +167,6 @@ void initializeModels()
 
 void updateGaugesRPi()
 {
-    static double rpm = 0;
-
 #ifdef RASPBERRY_PI
     dashLightInputs.openDevice();
     uint8_t portA = dashLightInputs.read(mcp23017::RegisterAddr::GPIOA);
@@ -226,14 +226,10 @@ void updateGaugesRPi()
     qreal ambientTempVolts = analogInputs.readValue(sensorConf->value(Config::AMBIENT_TEMP_KEY));
     qreal ambientTemp = ambientTempSensor->calculateTemp(ambientTempVolts, Config::TemperatureUnits::FAHRENHEIT);
     speedoModel.setTopValue(ambientTemp);
-#endif
 
-    tachModel.setRpm(rpm);
-    rpm += 10;
-    if( rpm > 7200 )
-    {
-        rpm = 0.0;
-    }
+    // tach input
+    tachModel.setRpm(tachInput->getRpm());
+#endif
 
 }
 
@@ -311,10 +307,11 @@ int main(int argc, char *argv[])
 
 #ifdef RASPBERRY_PI
     conf = new Config(&app);
-#else
-    conf = new Config(&app, "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config.ini");
-#endif
 
+    tachInput = new TachInput(conf->getTachInputConfig());
+#else
+    conf = new Config(&app, "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config.ini");    
+#endif
     map = new MapSensor(conf->getMapSensorConfig()->p0V, conf->getMapSensorConfig()->p5V, Config::PressureUnits::KPA);
 
     QList<Config::TempSensorConfig_t> * tempSensorConfigs = conf->getTempSensorConfigs();
