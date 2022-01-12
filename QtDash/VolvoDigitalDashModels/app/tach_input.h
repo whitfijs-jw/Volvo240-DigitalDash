@@ -75,12 +75,17 @@ public:
      */
     int setMaxRpm(int rpm) {
         //calculate min time in nsec
-        int nsec = std::round(1.0e9 * 60 / (rpm * 2.0));
+        int nsec = (int)std::round(1.0e9 * 60.0 / (rpm * 2.0));
 
         return writeAttribute(PULSE_SPACING_MIN, nsec);
 
     }
 
+    /**
+     * @brief Set number of tach samples to average over
+     * @param num: number of samples to average
+     * @return: returns new value if written to sysfs.  returns -1 if failed
+     */
     int setNumSamplesToAvg(int num) {
         return writeAttribute(PULSE_SPACING_AVG_NUM_SAMPLES, num);
     }
@@ -93,6 +98,12 @@ private:
     static constexpr char PULSE_SPACING_MIN[] = "pulse_spacing_min"; //!< minimum pulse spacing (in nsec)
     static constexpr char PULSE_SPACING_AVG_NUM_SAMPLES[] = "pulse_spacing_avg_num_samples"; //!< number of samples to average over
 
+    /**
+     * @brief Write attribute in the tach input sysfs
+     * @param attr: attribute to write
+     * @param value: value to write
+     * @return: returns value if written successfully
+     */
     int writeAttribute(std::string attr, int value) {
         // read the nano second spacing variable
         std::string fullPath = mPath + attr;
