@@ -60,7 +60,7 @@ public:
 
         QSerialPort * serialPort = new QSerialPort(this);
         serialPort->setPortName(port);
-        serialPort->setBaudRate(QSerialPort::Baud9600);
+        serialPort->setBaudRate(QSerialPort::Baud115200);
         serialPort->setDataBits(QSerialPort::Data8);
         serialPort->setParity(QSerialPort::NoParity);
         serialPort->setStopBits(QSerialPort::OneStop);
@@ -123,13 +123,13 @@ public slots:
 #endif
 
             QString headingString = headingToDirectionString(heading);
-            //std::cout << "heading: " << heading << " (" << headingString.toStdString() << ")" << std::endl;
+            std::cout << "heading: " << heading << " (" << headingString.toStdString() << ")" << std::endl;
 
             emit headingUpdateDegree(heading);
             emit headingUpdate(headingToDirectionString(heading));
         }
         double speed = data.attribute(QGeoPositionInfo::GroundSpeed);
-        //std::cout << std::setprecision(3) << speed << " m/s\t" << (speed * 2.23694) << " mph" << std::endl;
+        std::cout << std::setprecision(3) << speed << " m/s\t" << (speed * 2.23694) << " mph" << std::endl;
 
         emit speedUpdateMeterPerSec(speed);
         emit speedUpdateMilesPerHour(speed * 2.23694);

@@ -14,6 +14,7 @@
 # process   == program to run
 
 # Startup the system
+::sysinit:fbv -d 1 /opt/splash.png > /dev/null 2>&1
 ::sysinit:/bin/mount -t proc proc /proc
 ::sysinit:/bin/mount -o remount,rw /
 ::sysinit:/bin/mkdir -p /dev/pts /dev/shm
