@@ -15,6 +15,7 @@
         <file>ClockLarge.qml</file>
         <file>Original740Layout.qml</file>
         <file>Gauge.qml</file>
+        <file>Original240LayoutClock.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -28,6 +29,7 @@
         <file>temp_coolant_overlay.png</file>
         <file>temp_coolant_overlay_small.png</file>
         <file>temp_coolant_gas_can.png</file>
+        <file>origclockblack.png</file>
     </qresource>
     <qresource prefix="/accCluster">
         <file>volt_black.png</file>
