@@ -311,8 +311,8 @@ public:
      * @brief Get dash light configuration
      * @return Dash light gpio configuration
      */
-    QMap<QString, int> * getDashLightConfig() {
-        return &mDashLightConfig;
+    QMap<QString, int> getDashLightConfig() {
+        return mDashLightConfig;
     }
 
     /**

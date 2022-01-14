@@ -28,6 +28,7 @@
 #include <ntc.h>
 #include <map_sensor.h>
 #include <tach_input.h>
+#include <dash_lights.h>
 
 static TachometerModel tachModel;
 static SpeedometerModel speedoModel;
@@ -38,19 +39,6 @@ static AccessoryGaugeModel boostModel;
 static AccessoryGaugeModel voltMeterModel;
 static AccessoryGaugeModel coolantTempModel;
 static AccessoryGaugeModel fuelLevelModel;
-static IndicatorModel leftBlinkerModel;
-static IndicatorModel rightBlinkerModel;
-static WarningLightModel parkingBrakeLightModel;
-static WarningLightModel brakeFailureLightModel;
-static WarningLightModel bulbFailureLightModel;
-static WarningLightModel shiftUpLightModel;
-static WarningLightModel highBeamLightModel;
-static WarningLightModel srsWarningLightModel;
-static WarningLightModel oilWarningLightModel;
-static WarningLightModel batteryWarningLightModel;
-static WarningLightModel absWarningLightModel;
-static WarningLightModel checkEngineLightModel;
-static WarningLightModel serviceLightModel;
 
 Config * conf;
 MapSensor * map;
@@ -58,8 +46,9 @@ Ntc * coolantTempSensor;
 Ntc * oilTempSensor;
 Ntc * ambientTempSensor;
 
+
+
 #ifdef RASPBERRY_PI
-static mcp23017 dashLightInputs;
 static Adc analogInputs;
 static TachInput * tachInput;
 #else
@@ -128,68 +117,12 @@ void initializeModels()
     voltMeterModel.setCurrentValue(0.0);
     voltMeterModel.setLowAlarm(12.0);
     voltMeterModel.setHighAlarm(15.0);
-
-    /** Init blinkers */
-    leftBlinkerModel.setOn(false);
-    rightBlinkerModel.setOn(false);
-
-    /** Init Warning Lights **/
-    parkingBrakeLightModel.setText("PARKING\nBRAKE");
-    brakeFailureLightModel.setText("BRAKE\nFAILURE");
-    bulbFailureLightModel.setText("");
-    shiftUpLightModel.setText("SHIFT\nUP");
-    highBeamLightModel.setText("");
-    srsWarningLightModel.setText("SRS");
-    oilWarningLightModel.setText("");
-    batteryWarningLightModel.setText("");
-    absWarningLightModel.setText("ABS");
-    checkEngineLightModel.setText("CHECK\nENGINE");
-    serviceLightModel.setText("SER-\nVICE");
-
-#ifdef RASPBERRY_PI
-#else
-    leftBlinkerModel.setOn(true);
-    rightBlinkerModel.setOn(true);
-
-    parkingBrakeLightModel.setOn(true);
-    brakeFailureLightModel.setOn(true);
-    bulbFailureLightModel.setOn(true);
-    shiftUpLightModel.setOn(true);
-    highBeamLightModel.setOn(true);
-    srsWarningLightModel.setOn(true);
-    oilWarningLightModel.setOn(true);
-    batteryWarningLightModel.setOn(true);
-    absWarningLightModel.setOn(true);
-    checkEngineLightModel.setOn(true);
-    serviceLightModel.setOn(true);
-#endif
 }
 
 void updateGaugesRPi()
 {
 #ifdef RASPBERRY_PI
-    dashLightInputs.openDevice();
-    uint8_t portA = dashLightInputs.read(mcp23017::RegisterAddr::GPIOA);
-    uint8_t portB = dashLightInputs.read(mcp23017::RegisterAddr::GPIOB);
-    dashLightInputs.closeDevice();
 
-    uint16_t inputs = (portB << 8) | portA;
-
-    auto lightConf = conf->getDashLightConfig();
-
-    leftBlinkerModel.setOn(inputs & (1 << lightConf->value(Config::BLINKER_LEFT_KEY)));
-    rightBlinkerModel.setOn(inputs & (1 << lightConf->value(Config::BLINKER_RIGHT_KEY)));
-    highBeamLightModel.setOn(inputs & (1 << lightConf->value(Config::HIGH_BEAM_KEY)));
-    parkingBrakeLightModel.setOn(inputs & (1 << lightConf->value(Config::PARKING_BRAKE_KEY)));
-    brakeFailureLightModel.setOn(inputs & (1 << lightConf->value(Config::BRAKE_FAILURE_KEY)));
-    bulbFailureLightModel.setOn(inputs & (1 << lightConf->value(Config::BULB_FAILURE_KEY)));
-    shiftUpLightModel.setOn(0);
-    srsWarningLightModel.setOn(inputs & (1 << lightConf->value(Config::OD_LAMP_KEY)));
-    oilWarningLightModel.setOn(inputs & (1 << lightConf->value(Config::OIL_PRESSURE_KEY)));
-    batteryWarningLightModel.setOn(inputs & (1 << lightConf->value(Config::CHARGING_LIGHT_KEY)));
-    absWarningLightModel.setOn(inputs & (1 << lightConf->value(Config::CONN_32_PIN3)));
-    checkEngineLightModel.setOn(inputs & (1 << lightConf->value(Config::CHECK_ENGINE_KEY)));
-    serviceLightModel.setOn(0);
 
     auto sensorConf = conf->getSensorConfig();
 
@@ -312,6 +245,11 @@ int main(int argc, char *argv[])
 #else
     conf = new Config(&app, "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config.ini");    
 #endif
+
+    // Setup Dash Light Models
+    DashLights dashLights(&app, conf->getDashLightConfig());
+    dashLights.init();
+
     map = new MapSensor(conf->getMapSensorConfig()->p0V, conf->getMapSensorConfig()->p5V, Config::PressureUnits::KPA);
 
     QList<Config::TempSensorConfig_t> * tempSensorConfigs = conf->getTempSensorConfigs();
@@ -356,19 +294,16 @@ int main(int argc, char *argv[])
     ctxt->setContextProperty("oilTModel", &oilTemperatureModel);
     ctxt->setContextProperty("boostModel", &boostModel);
     ctxt->setContextProperty("voltMeterModel", &voltMeterModel);
-    ctxt->setContextProperty("leftBlinkerModel", &leftBlinkerModel);
-    ctxt->setContextProperty("rightBlinkerModel", &rightBlinkerModel);
-    ctxt->setContextProperty("parkingBrakeLightModel", &parkingBrakeLightModel);
-    ctxt->setContextProperty("brakeFailureLightModel", &brakeFailureLightModel);
-    ctxt->setContextProperty("bulbFailureLightModel", &bulbFailureLightModel);
-    ctxt->setContextProperty("shiftUpLightModel", &shiftUpLightModel);
-    ctxt->setContextProperty("highBeamLightModel", &highBeamLightModel);
-    ctxt->setContextProperty("srsWarningLightModel", &srsWarningLightModel);
-    ctxt->setContextProperty("oilWarningLightModel", &oilWarningLightModel);
-    ctxt->setContextProperty("batteryWarningLightModel", &batteryWarningLightModel);
-    ctxt->setContextProperty("absWarningLightModel", &absWarningLightModel);
-    ctxt->setContextProperty("checkEngineLightModel", &checkEngineLightModel);
-    ctxt->setContextProperty("serviceLightModel", &serviceLightModel);
+
+    // Connect warning light models to qml
+    for (auto modelName : dashLights.getWarningLightModels()->keys()) {
+        ctxt->setContextProperty(modelName, dashLights.getWarningLightModels()->value(modelName));
+    }
+
+    // Connect indicator models to qml
+    for (auto modelName : dashLights.getIndicatorModels()->keys()) {
+        ctxt->setContextProperty(modelName, dashLights.getIndicatorModels()->value(modelName));
+    }
 
     initializeModels();
 
@@ -391,11 +326,13 @@ int main(int argc, char *argv[])
     QTimer rpmTimer;
     rpmTimer.setInterval(100);
     QObject::connect(&rpmTimer, &QTimer::timeout, &app, &updateGauges);
+    QObject::connect(&rpmTimer, &QTimer::timeout, &dashLights, &DashLights::update);
     rpmTimer.start();
 #else
     QTimer rpmTimer;
     rpmTimer.setInterval(100);
     QObject::connect(&rpmTimer, &QTimer::timeout, &app, &updateGaugesRPi);
+    QObject::connect(&rpmTimer, &QTimer::timeout, &dashLights, &DashLights::update);
     rpmTimer.start();
 #endif
 
