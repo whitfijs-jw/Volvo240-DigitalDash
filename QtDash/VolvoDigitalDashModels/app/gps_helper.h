@@ -100,13 +100,13 @@ public slots:
 
                 auto coord = data.coordinate();
                 auto tz = guessAtTheTimeZone(coord);
-                ts.setTimeZone(tz);
+                //ts.setTimeZone(tz);
 
                 std::cout << "Timezone? maybe?: " << tz.abbreviation(ts).toStdString() << std::endl;
 
                 QString pg = "/bin/date";
                 QStringList args;
-                args << "-s" << ts.toString("yyyy-MM-dd hh:mm:ss");
+                args << "-s" << ts.toString("yyyy-MM-dd hh:mm:ss") << "-u";
 
                 QProcess *proc = new QProcess(this);
 
@@ -123,13 +123,13 @@ public slots:
 #endif
 
             QString headingString = headingToDirectionString(heading);
-            std::cout << "heading: " << heading << " (" << headingString.toStdString() << ")" << std::endl;
+            //std::cout << "heading: " << heading << " (" << headingString.toStdString() << ")" << std::endl;
 
             emit headingUpdateDegree(heading);
             emit headingUpdate(headingToDirectionString(heading));
         }
         double speed = data.attribute(QGeoPositionInfo::GroundSpeed);
-        std::cout << std::setprecision(3) << speed << " m/s\t" << (speed * 2.23694) << " mph" << std::endl;
+        //std::cout << std::setprecision(3) << speed << " m/s\t" << (speed * 2.23694) << " mph" << std::endl;
 
         emit speedUpdateMeterPerSec(speed);
         emit speedUpdateMilesPerHour(speed * 2.23694);
