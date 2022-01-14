@@ -29,6 +29,7 @@
 #include <map_sensor.h>
 #include <tach_input.h>
 #include <dash_lights.h>
+#include <event_timers.h>
 
 static TachometerModel tachModel;
 static SpeedometerModel speedoModel;
@@ -187,10 +188,6 @@ void updateGauges() {
     battFile.open(QIODevice::ReadOnly);
     fuelFile.open(QIODevice::ReadOnly);
 
-    //dashLightInputs.openDevice();
-    uint8_t portA = 0xAA;//dashLightInputs.read(mcp23017::RegisterAddr::GPIOA);
-    uint8_t portB = 0x0F;//dashLightInputs.read(mcp23017::RegisterAddr::GPIOB);
-    //dashLightInputs.closeDevice();
 
     if(tempFile.isOpen())
     {
@@ -237,6 +234,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
+    EventTimers eventTiming(&app);
 
 #ifdef RASPBERRY_PI
     conf = new Config(&app);
@@ -322,19 +320,29 @@ int main(int argc, char *argv[])
     QObject::connect(&engine, SIGNAL(quit()), &app, SLOT(quit()));
     QObject::connect(&app, SIGNAL(lastWindowClosed()), loc, SLOT(close()));
 
+    QObject::connect(
+                eventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
+                &QTimer::timeout,
+                &dashLights,
+                &DashLights::update
+                );
+
 #ifndef RASPBERRY_PI
-    QTimer rpmTimer;
-    rpmTimer.setInterval(100);
-    QObject::connect(&rpmTimer, &QTimer::timeout, &app, &updateGauges);
-    QObject::connect(&rpmTimer, &QTimer::timeout, &dashLights, &DashLights::update);
-    rpmTimer.start();
+    QObject::connect(
+                eventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::FAST_TIMER)),
+                &QTimer::timeout,
+                &app,
+                &updateGauges
+                );
 #else
-    QTimer rpmTimer;
-    rpmTimer.setInterval(100);
-    QObject::connect(&rpmTimer, &QTimer::timeout, &app, &updateGaugesRPi);
-    QObject::connect(&rpmTimer, &QTimer::timeout, &dashLights, &DashLights::update);
-    rpmTimer.start();
+    QObject::connect(
+                eventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::FAST_TIMER)),
+                &QTimer::timeout,
+                &app,
+                &updateGaugesRPi
+                );
 #endif
+    eventTiming.start();
 
     return app.exec();
 }

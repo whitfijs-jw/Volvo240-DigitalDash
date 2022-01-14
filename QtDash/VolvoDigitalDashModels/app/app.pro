@@ -40,6 +40,7 @@ HEADERS += \
     adc.h \
     config.h \
     dash_lights.h \
+    event_timers.h \
     gps_helper.h \
     indicator_model.h \
     map_sensor.h \

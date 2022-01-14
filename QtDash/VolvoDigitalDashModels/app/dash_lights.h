@@ -8,13 +8,24 @@
 #include <QMap>
 #include <mcp23017.h>
 
+/**
+ * @brief The DashLights class
+ */
 class DashLights: public QObject {
 Q_OBJECT
 public:
+    /**
+     * @brief DashLights
+     * @param parent
+     * @param config
+     */
     DashLights(QObject * parent, QMap<QString, int> config) :
         QObject(parent), mConfig(config) {
     }
 
+    /**
+     * @brief Initialize blinkers and warning light models
+     */
     void init() {
         /** Init blinkers */
         mLeftBlinkerModel.setOn(false);
@@ -50,10 +61,18 @@ public:
         mIndicatorModels.insert(RIGHT_BLINKER_MODEL_NAME, &mRightBlinkerModel);
     }
 
+    /**
+     * @brief Get map of qml model names and references to c++ model
+     * @return Map of warning light models
+     */
     QMap<QString, WarningLightModel*> * getWarningLightModels() {
         return &mWarningLightModels;
     }
 
+    /**
+     * @brief Get map of qml model names and references to c++ model
+     * @return Map of indicator models
+     */
     QMap<QString, IndicatorModel*> * getIndicatorModels() {
         return &mIndicatorModels;
     }
@@ -61,17 +80,23 @@ public:
 signals:
 
 public slots:
+    /**
+     * @brief update dash light states
+     */
     void update() {
 #ifdef RASPBERRY_PI
+        // load raw port values
         mDashLightInputs.openDevice();
         uint8_t portA = mDashLightInputs.read(mcp23017::RegisterAddr::GPIOA);
         uint8_t portB = mDashLightInputs.read(mcp23017::RegisterAddr::GPIOB);
         mDashLightInputs.closeDevice();
 
+        // combine ports
         uint16_t inputs = (portB << 8) | portA;
 
         auto lightConf = mConfig;
 
+        // set em
         mLeftBlinkerModel.setOn(inputs & (1 << lightConf.value(Config::BLINKER_LEFT_KEY)));
         mRightBlinkerModel.setOn(inputs & (1 << lightConf.value(Config::BLINKER_RIGHT_KEY)));
         mHighBeamLightModel.setOn(inputs & (1 << lightConf.value(Config::HIGH_BEAM_KEY)));
@@ -119,26 +144,26 @@ private:
     static constexpr char CHECK_ENGINE_MODEL_NAME[] = "checkEngineLightModel";
     static constexpr char SERVICE_ENGINE_MODEL_NAME[] = "serviceLightModel";
 
-    QMap<QString, int> mConfig;
-    QMap<QString, WarningLightModel*> mWarningLightModels;
-    QMap<QString, IndicatorModel*> mIndicatorModels;
+    QMap<QString, int> mConfig; //!< Dash light config
+    QMap<QString, WarningLightModel*> mWarningLightModels; //!< map of warning light model names (from qml) and c++/qobject model references
+    QMap<QString, IndicatorModel*> mIndicatorModels; //!< map of indicator model names (from qml) and c++/qobject model references
 
-    IndicatorModel mLeftBlinkerModel;
-    IndicatorModel mRightBlinkerModel;
-    WarningLightModel mParkingBrakeLightModel;
-    WarningLightModel mBrakeFailureLightModel;
-    WarningLightModel mBulbFailureLightModel;
-    WarningLightModel mShiftUpLightModel;
-    WarningLightModel mHighBeamLightModel;
-    WarningLightModel mSrsWarningLightModel;
-    WarningLightModel mOilWarningLightModel;
-    WarningLightModel mBatteryWarningLightModel;
-    WarningLightModel mAbsWarningLightModel;
-    WarningLightModel mCheckEngineLightModel;
-    WarningLightModel mServiceLightModel;
+    IndicatorModel mLeftBlinkerModel; //!< left blinker model
+    IndicatorModel mRightBlinkerModel; //!< right blinker model
+    WarningLightModel mParkingBrakeLightModel; //!< parking brake light model
+    WarningLightModel mBrakeFailureLightModel; //!< brake failure light model
+    WarningLightModel mBulbFailureLightModel; //!< bulb failure light model
+    WarningLightModel mShiftUpLightModel; //!< shift up light model
+    WarningLightModel mHighBeamLightModel; //!< high beam light model
+    WarningLightModel mSrsWarningLightModel; //!< srs warning light model
+    WarningLightModel mOilWarningLightModel; //!< oil pressure warning light model
+    WarningLightModel mBatteryWarningLightModel; //!< battery/charge light model
+    WarningLightModel mAbsWarningLightModel; //!< abs light model
+    WarningLightModel mCheckEngineLightModel; //!< check engine light model
+    WarningLightModel mServiceLightModel; //!< service light model
 
 #ifdef RASPBERRY_PI
-    mcp23017 mDashLightInputs;
+    mcp23017 mDashLightInputs; //!< dash light inputs
 #endif
 
 };
