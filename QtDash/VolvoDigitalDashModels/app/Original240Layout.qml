@@ -27,7 +27,8 @@ Item {
             width: speedoSize
             height: speedoSize
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.topMargin: 10
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenterOffset: 0
             color: "transparent"
 
             /* Rpm: */
