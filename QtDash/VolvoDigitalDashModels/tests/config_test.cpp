@@ -159,14 +159,14 @@ void ConfigTest::testLoadMapConfig() {
     Config * testConfig = new Config(this, config);
 
     // check if the settings are valid
-    QCOMPARE(testConfig->getMapSensorConfig()->isValid(), result);
+    QCOMPARE(testConfig->getMapSensorConfig().isValid(), result);
 
     // now check the rest if the results should be good
     if (result) {
-        QCOMPARE(testConfig->getMapSensorConfig()->p0V, pressure_0V);
-        QCOMPARE(testConfig->getMapSensorConfig()->p5V, pressure_5V);
+        QCOMPARE(testConfig->getMapSensorConfig().p0V, pressure_0V);
+        QCOMPARE(testConfig->getMapSensorConfig().p5V, pressure_5V);
 
-        auto configUnits = testConfig->getMapSensorConfig()->units;
+        auto configUnits = testConfig->getMapSensorConfig().units;
         QString compare;
         if (configUnits == Config::PressureUnits::KPA) {
             compare = Config::UNITS_KPA;
