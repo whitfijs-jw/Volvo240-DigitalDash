@@ -319,16 +319,16 @@ public:
      * @brief Get Sensor channel configuration
      * @return Sensor channel configuration
      */
-    QMap<QString, int> * getSensorConfig() {
-        return &mSensorChannelConfig;
+    QMap<QString, int> getSensorConfig() {
+        return mSensorChannelConfig;
     }
 
     /**
      * @brief Get MAP sensor configuration
      * @return MAP sensor configuration
      */
-    MapSensorConfig * getMapSensorConfig() {
-        return &mMapSensorConfig;
+    MapSensorConfig getMapSensorConfig() {
+        return mMapSensorConfig;
     }
 
     /**

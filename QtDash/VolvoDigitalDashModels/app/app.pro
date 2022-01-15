@@ -38,6 +38,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     adc.h \
+    analog_sensors.h \
     config.h \
     dash_lights.h \
     event_timers.h \

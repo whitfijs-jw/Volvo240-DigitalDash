@@ -30,6 +30,7 @@
 #include <tach_input.h>
 #include <dash_lights.h>
 #include <event_timers.h>
+#include <analog_sensors.h>
 
 static TachometerModel tachModel;
 static SpeedometerModel speedoModel;
@@ -42,12 +43,6 @@ static AccessoryGaugeModel coolantTempModel;
 static AccessoryGaugeModel fuelLevelModel;
 
 Config * conf;
-MapSensor * map;
-Ntc * coolantTempSensor;
-Ntc * oilTempSensor;
-Ntc * ambientTempSensor;
-
-
 
 #ifdef RASPBERRY_PI
 static Adc analogInputs;
@@ -123,44 +118,6 @@ void initializeModels()
 void updateGaugesRPi()
 {
 #ifdef RASPBERRY_PI
-
-
-    auto sensorConf = conf->getSensorConfig();
-
-    // volt meter
-    qreal volts = analogInputs.readValue(sensorConf->value(Config::FUSE8_12V_KEY));
-    voltMeterModel.setCurrentValue(volts);
-
-    // oil temp
-    qreal oilVolts = analogInputs.readValue(sensorConf->value(Config::OIL_TEMP_KEY));
-    qreal oilTemp = oilTempSensor->calculateTemp(oilVolts, Config::TemperatureUnits::FAHRENHEIT);
-    oilTemperatureModel.setCurrentValue(oilTemp);
-
-    // boost gauge
-    qreal mapVoltage = analogInputs.readValue(sensorConf->value(Config::MAP_SENSOR_KEY));
-    qreal psi = map->getAbsolutePressure(mapVoltage, Config::PressureUnits::PSI) - 14.5038;// will need real atm measurement
-    boostModel.setCurrentValue(psi);
-
-    // oil pressure
-    qreal oilPressureVolts = analogInputs.readValue(sensorConf->value(Config::OIL_PRESSURE_KEY));
-    oilPressureModel.setCurrentValue(oilPressureVolts); // TODO: replace with real sensor calculation
-
-    // fuel level
-    qreal fuelVolts = analogInputs.readValue(sensorConf->value(Config::FUEL_LEVEL_KEY));
-
-    qreal coolantTempVolts = analogInputs.readValue(sensorConf->value(Config::COOLANT_TEMP_KEY));
-    qreal coolantTemp = coolantTempSensor->calculateTemp(coolantTempVolts, Config::TemperatureUnits::FAHRENHEIT);
-
-    tempFuelModel.setFuelLevel(fuelVolts); // TODO: replace with real sensor calculation
-    tempFuelModel.setCurrentTemp(coolantTemp);
-    fuelLevelModel.setCurrentValue(fuelVolts);
-    coolantTempModel.setCurrentValue(coolantTemp);
-
-    //ambient temp
-    qreal ambientTempVolts = analogInputs.readValue(sensorConf->value(Config::AMBIENT_TEMP_KEY));
-    qreal ambientTemp = ambientTempSensor->calculateTemp(ambientTempVolts, Config::TemperatureUnits::FAHRENHEIT);
-    speedoModel.setTopValue(ambientTemp);
-
     // tach input
     tachModel.setRpm(tachInput->getRpm());
 #endif
@@ -187,7 +144,6 @@ void updateGauges() {
     rpmFile.open(QIODevice::ReadOnly);
     battFile.open(QIODevice::ReadOnly);
     fuelFile.open(QIODevice::ReadOnly);
-
 
     if(tempFile.isOpen())
     {
@@ -239,7 +195,37 @@ int main(int argc, char *argv[])
 #ifdef RASPBERRY_PI
     conf = new Config(&app);
 
+    // setup tach input
     tachInput = new TachInput(conf->getTachInputConfig());
+
+    // setup analog sensors and connect to models
+    AnalogSensors sensors(&app, conf);
+    QObject::connect(&sensors, &AnalogSensors::coolantTempUpdate,
+                     &coolantTempModel, &AccessoryGaugeModel::setCurrentValue);
+
+    QObject::connect(&sensors, &AnalogSensors::boostPressureUpdate,
+                     &boostModel, &AccessoryGaugeModel::setCurrentValue);
+
+    QObject::connect(&sensors, &AnalogSensors::voltMeterUpdate,
+                     &voltMeterModel, &AccessoryGaugeModel::setCurrentValue);
+
+    QObject::connect(&sensors, &AnalogSensors::oilTempUpdate,
+                     &oilTemperatureModel, &AccessoryGaugeModel::setCurrentValue);
+
+    QObject::connect(&sensors, &AnalogSensors::oilPressureUpdate,
+                     &oilPressureModel, &AccessoryGaugeModel::setCurrentValue);
+
+    QObject::connect(&sensors, &AnalogSensors::fuelLevelUpdate,
+                     &fuelLevelModel, &AccessoryGaugeModel::setCurrentValue);
+
+    QObject::connect(&sensors, &AnalogSensors::ambientTempUpdate,
+                     &speedoModel, &SpeedometerModel::setTopValue);
+
+    QObject::connect(&sensors, &AnalogSensors::coolantTempUpdate,
+                     &tempFuelModel, &TempAndFuelGaugeModel::setCurrentTemp);
+
+    QObject::connect(&sensors, &AnalogSensors::fuelLevelUpdate,
+                     &tempFuelModel, &TempAndFuelGaugeModel::setFuelLevel);
 #else
     conf = new Config(&app, "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config.ini");    
 #endif
@@ -248,38 +234,13 @@ int main(int argc, char *argv[])
     DashLights dashLights(&app, conf->getDashLightConfig());
     dashLights.init();
 
-    map = new MapSensor(conf->getMapSensorConfig()->p0V, conf->getMapSensorConfig()->p5V, Config::PressureUnits::KPA);
-
-    QList<Config::TempSensorConfig_t> * tempSensorConfigs = conf->getTempSensorConfigs();
-    for (Config::TempSensorConfig_t config : *tempSensorConfigs) {
-        if (config.isValid()) {
-            if (config.type == Config::TemperatureSensorType::COOLANT) {
-                coolantTempSensor = new Ntc(config);
-            } else if (config.type == Config::TemperatureSensorType::OIL) {
-                oilTempSensor = new Ntc(config);
-            } else if (config.type == Config::TemperatureSensorType::AMBIENT) {
-                ambientTempSensor = new Ntc(config);
-            } else {
-                qDebug() << "Sensor type not supported.  Check config.ini file";
-            }
-        } else {
-            qDebug() << "Sensor Config is not valid: " << QString((int)config.type) << " Check config.ini file";
-        }
-    }
-
-#ifndef RASPBERRY_PI
     QFontDatabase::addApplicationFont(":/fonts/HandelGothReg.ttf");
     QFont mFont;
     mFont.setFamily("Handel Gothic");
     app.setFont(mFont);
-#else
-    QFontDatabase::addApplicationFont(":/fonts/HandelGothReg.ttf");
-    QFont mFont;
-    mFont.setFamily("Handel Gothic");
-    app.setFont(mFont);
-#endif
 
 
+    // Link c++ models to qml models
     QQmlApplicationEngine engine;
 
     QQmlContext *ctxt = engine.rootContext();
@@ -303,8 +264,10 @@ int main(int argc, char *argv[])
         ctxt->setContextProperty(modelName, dashLights.getIndicatorModels()->value(modelName));
     }
 
+    //initialize c++ models
     initializeModels();
 
+    // load main.qml
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
@@ -340,6 +303,20 @@ int main(int argc, char *argv[])
                 &QTimer::timeout,
                 &app,
                 &updateGaugesRPi
+                );
+
+    QObject::connect(
+                eventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
+                &QTimer::timeout,
+                &sensors,
+                &AnalogSensors::update
+                );
+
+    QObject::connect(
+                eventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::FAST_TIMER)),
+                &QTimer::timeout,
+                &sensors,
+                &AnalogSensors::updateFast
                 );
 #endif
     eventTiming.start();
