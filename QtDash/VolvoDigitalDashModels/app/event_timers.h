@@ -6,7 +6,7 @@
 #include <QMap>
 
 /**
- * @brief The EventTimers class
+ * @brief Collection of timers to run Dash events
  */
 class EventTimers : public QObject{
     Q_OBJECT
@@ -26,7 +26,7 @@ public:
     };
 
     /**
-     * @brief EventTimers
+     * @brief EventTimers Constructor
      * @param parent
      */
     EventTimers(QObject * parent) : QObject(parent) {
@@ -37,11 +37,11 @@ public:
     }
 
     /**
-     * @brief addTimer
-     * @param timerId
-     * @param timeoutMSec
-     * @param start
-     * @return
+     * @brief Add timer to the collection
+     * @param timerId: timer id of timer to add
+     * @param timeoutMSec: timer timeout in milliseconds
+     * @param start: Set true to start time immediately
+     * @return true if timer was added, false if it already exists
      */
     bool addTimer(int timerId, int timeoutMSec, bool start = false) {
         if (!mTimers.contains(timerId)) {
@@ -61,27 +61,40 @@ public:
     }
 
     /**
-     * @brief getTimer
-     * @param timerId
-     * @return
+     * @brief Get timer from collection
+     * @param timerId: timer id
+     * @return Pointer to timer if it exists in collection, nullptr otherwise
      */
     QTimer * getTimer(int timerId) {
         return mTimers.value(timerId, nullptr);
     }
 
-    /**
-     * @brief start
-     */
-    void start() {
-        for (auto id : mTimers.keys()) {
-            getTimer(id)->start();
-        }
-    }
+
 
 signals:
 
 public slots:
+    /**
+     * @brief Start all timers in collection
+     */
+    void start() {
+        for (auto id : mTimers.keys()) {
+            if (getTimer(id) != nullptr) {
+                getTimer(id)->start();
+            }
+        }
+    }
 
+    /**
+     * @brief Stop all timers in collection
+     */
+    void stop() {
+        for (auto id : mTimers.keys()) {
+            if (getTimer(id) != nullptr) {
+                getTimer(id)->stop();
+            }
+        }
+    }
 private:
     QMap<int, QTimer *> mTimers; //!< map of timers that are running in the app
 };
