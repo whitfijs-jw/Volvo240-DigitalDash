@@ -88,6 +88,7 @@ private:
             return toKelvin(temp, from);
         }
 
+        return 0;
     }
 
     void calculateCoefficients(qreal r1, qreal t1,
