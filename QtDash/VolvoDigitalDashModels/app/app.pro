@@ -41,6 +41,7 @@ HEADERS += \
     analog_sensors.h \
     config.h \
     dash.h \
+    dash_host.h \
     dash_lights.h \
     event_timers.h \
     gps_helper.h \

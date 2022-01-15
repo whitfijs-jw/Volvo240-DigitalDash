@@ -1,9 +1,10 @@
-#ifndef DASH_H
-#define DASH_H
+#ifndef DASH_HOST_H
+#define DASH_HOST_H
 
 #include <QObject>
 #include <QQmlContext>
 #include <QMap>
+#include <QFile>
 
 #include <tachometer_model.h>
 #include <accessory_gauge_model.h>
@@ -13,20 +14,14 @@
 #include <warning_light_model.h>
 
 #include <config.h>
-#include <mcp23017.h>
-#include <adc.h>
 #include <gps_helper.h>
-#include <ntc.h>
-#include <map_sensor.h>
-#include <tach_input.h>
 #include <dash_lights.h>
 #include <event_timers.h>
-#include <analog_sensors.h>
 
 /**
  * @brief Class for initializing, linking and updating gauge models
  */
-class Dash : public QObject {
+class DashHost : public QObject {
     Q_OBJECT
 public:
 
@@ -40,12 +35,14 @@ public:
     static constexpr char SPEEDO_MODEL_NAME[] = "speedoModel";
     static constexpr char TEMP_FUEL_CLUSTER_MODEL_NAME[] = "tempFuelModel";
 
+
+
     /**
      * @brief Constructor
      * @param parent: parent qobject
      * @param context: qml context to link the gauge models to their respective c++ model
      */
-    Dash(QObject * parent, QQmlContext * context) :
+    DashHost(QObject * parent, QQmlContext * context) :
         QObject(parent), mContext(context), mEventTiming(parent), mConfig(parent) {
 
         // populate accessory gauge model map
@@ -92,8 +89,71 @@ public slots:
     /**
      * @brief Update tachometer model
      */
-    void updateTach() {
-        mTachModel.setRpm(mTachInput->getRpm());
+    void sysfsUpdate() {
+        QString tempPath = "/sys/class/hwmon/hwmon4/temp1_input";
+        QString rpmPath = "/sys/class/hwmon/hwmon3/fan1_input";
+        QString battPath = "/sys/class/power_supply/BAT0/voltage_now";
+        QString fuelLevelPath = "/sys/class/power_supply/BAT0/capacity";
+
+        QFile tempFile(tempPath);
+        QFile rpmFile(rpmPath);
+        QFile battFile(battPath);
+        QFile fuelFile(fuelLevelPath);
+
+        QTextStream tempStream(&tempFile);
+        QTextStream rpmStream(&rpmFile);
+        QTextStream battStream(&battFile);
+        QTextStream fuelStream(&fuelFile);
+
+        tempFile.open(QIODevice::ReadOnly);
+        rpmFile.open(QIODevice::ReadOnly);
+        battFile.open(QIODevice::ReadOnly);
+        fuelFile.open(QIODevice::ReadOnly);
+
+        //dashLightInputs.openDevice();
+        uint8_t portA = 0xAA;//dashLightInputs.read(mcp23017::RegisterAddr::GPIOA);
+        uint8_t portB = 0x0F;//dashLightInputs.read(mcp23017::RegisterAddr::GPIOB);
+        //dashLightInputs.closeDevice();
+
+        if(tempFile.isOpen())
+        {
+            QString coreTemp = tempStream.readLine();
+            float temp = coreTemp.toFloat();
+            qreal tempF = ((temp/1000.0) * 9.0/5.0)+32.0;
+            mOilTemperatureModel.setCurrentValue(tempF);
+            mTempFuelModel.setCurrentTemp(tempF);
+            mSpeedoModel.setTopValue(tempF);
+            mCoolantTempModel.setCurrentValue(tempF);
+        }
+
+        if(rpmFile.isOpen())
+        {
+            QString rpmString = rpmStream.readLine();
+            int rpm = rpmString.toInt();
+            mTachModel.setRpm(rpm);
+            mBoostModel.setCurrentValue( ((float)rpm/1000.0) * 5.0 );
+            mOilPressureModel.setCurrentValue( ((float)rpm / 1000.0 * 3) );
+        }
+
+        if(battFile.isOpen())
+        {
+            QString voltage = battStream.readLine();
+            float volts = voltage.toInt();
+            mVoltMeterModel.setCurrentValue(volts/1.0e6);
+        }
+
+        if(fuelFile.isOpen())
+        {
+            QString fuelLevel = fuelStream.readLine();
+            int level = fuelLevel.toInt();
+            mTempFuelModel.setFuelLevel(level);
+            mFuelLevelModel.setCurrentValue(level);
+        }
+
+        tempFile.close();
+        rpmFile.close();
+        battFile.close();
+        fuelFile.close();
     }
 private:
     /**
@@ -113,22 +173,7 @@ private:
                     mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::FAST_TIMER)),
                     &QTimer::timeout,
                     this,
-                    &Dash::updateTach
-                    );
-        // hook up analog sensor updates that don't need 10Hz updates
-        QObject::connect(
-                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
-                    &QTimer::timeout,
-                    mSensors,
-                    &AnalogSensors::update
-                    );
-
-        // hook up fast analog sensor updates
-        QObject::connect(
-                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::FAST_TIMER)),
-                    &QTimer::timeout,
-                    mSensors,
-                    &AnalogSensors::updateFast
+                    &DashHost::sysfsUpdate
                     );
     }
 
@@ -136,35 +181,6 @@ private:
      * @brief Initialize sensor inputs and connect updates to respective models
      */
     void initSensorInputs() {
-        mSensors = new AnalogSensors(this->parent(), &mConfig);
-
-        // setup events
-        QObject::connect(mSensors, &AnalogSensors::coolantTempUpdate,
-                         &mCoolantTempModel, &AccessoryGaugeModel::setCurrentValue);
-
-        QObject::connect(mSensors, &AnalogSensors::boostPressureUpdate,
-                         &mBoostModel, &AccessoryGaugeModel::setCurrentValue);
-
-        QObject::connect(mSensors, &AnalogSensors::voltMeterUpdate,
-                         &mVoltMeterModel, &AccessoryGaugeModel::setCurrentValue);
-
-        QObject::connect(mSensors, &AnalogSensors::oilTempUpdate,
-                         &mOilTemperatureModel, &AccessoryGaugeModel::setCurrentValue);
-
-        QObject::connect(mSensors, &AnalogSensors::oilPressureUpdate,
-                         &mOilPressureModel, &AccessoryGaugeModel::setCurrentValue);
-
-        QObject::connect(mSensors, &AnalogSensors::fuelLevelUpdate,
-                         &mFuelLevelModel, &AccessoryGaugeModel::setCurrentValue);
-
-        QObject::connect(mSensors, &AnalogSensors::ambientTempUpdate,
-                         &mSpeedoModel, &SpeedometerModel::setTopValue);
-
-        QObject::connect(mSensors, &AnalogSensors::coolantTempUpdate,
-                         &mTempFuelModel, &TempAndFuelGaugeModel::setCurrentTemp);
-
-        QObject::connect(mSensors, &AnalogSensors::fuelLevelUpdate,
-                         &mTempFuelModel, &TempAndFuelGaugeModel::setFuelLevel);
     }
 
     /**
@@ -177,9 +193,6 @@ private:
         mTachModel.setMaxRpm(maxRpm);
         mTachModel.setRedLine(redLine);
         mTachModel.setRpm(0);
-
-        // init tach input
-        mTachInput = new TachInput(mConfig.getTachInputConfig());
 
         // hookup c++ model to qml
         mContext->setContextProperty(TACH_MODEL_NAME, &mTachModel);
@@ -307,8 +320,6 @@ private:
 
     // Inputs
     GpsHelper * mGpsHelper;
-    AnalogSensors * mSensors;
-    TachInput * mTachInput;
 
     // Timing
     EventTimers mEventTiming;
@@ -317,4 +328,4 @@ private:
     Config mConfig;
 };
 
-#endif // DASH_H
+#endif // DASH_HOST_H

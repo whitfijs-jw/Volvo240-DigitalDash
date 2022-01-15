@@ -1,22 +1,17 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include <QTimer>
 #include <QFont>
-#include <QFile>
-#include <QColor>
-#include <QTextStream>
 #include <QFontDatabase>
-#include <QString>
-#include <QtMath>
 #include <QList>
 
-#include <QNmeaPositionInfoSource>
-#include <QGeoPositionInfoSource>
-
 #include <config.h>
-#include <gps_helper.h>
+
+#ifdef RASPBERRY_PI
 #include <dash.h>
+#else
+#include <dash_host.h>
+#endif
 
 int main(int argc, char *argv[])
 {
@@ -33,8 +28,11 @@ int main(int argc, char *argv[])
     QQmlContext * ctxt = engine.rootContext();
 
     // Initialize Dash
+#ifdef RASPBERRY_PI
     Dash * dash = new Dash(&app, ctxt);
-    qDebug() << "Dash setup: " << dash;
+#else
+    DashHost * dash = new DashHost(&app, ctxt);
+#endif
     dash->init();
 
     // load main.qml
