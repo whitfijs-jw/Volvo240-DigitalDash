@@ -49,6 +49,7 @@ HEADERS += \
     map_sensor.h \
     mcp23017.h \
     ntc.h \
+    sensor_utils.h \
     tach_input.h \
     tachometer_model.h \
     accessory_gauge_model.h \
