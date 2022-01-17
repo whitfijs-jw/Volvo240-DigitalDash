@@ -306,24 +306,24 @@ public:
 
         mConfig->endGroup();
 
-        mConfig->beginGroup("oil_pressure");
+        int resSize = mConfig->beginReadArray("oil_pressure");
+        for (int i = 0; i < resSize; ++i) {
+            ResistiveSensorConfig_t rSensorConf;
+            QList p = mConfig->value("p", "").toList();
+            QList<qreal> pressure;
+            for (QVariant val : p) {
+                rSensorConf.y.push_back(val.toReal());
+            }
 
-        ResistiveSensorConfig_t rSensorConf;
-        QList p = mConfig->value("p", "").toList();
-        QList<qreal> pressure;
-        for (QVariant val : p) {
-            rSensorConf.y.push_back(val.toReal());
+            QList r = mConfig->value("r", "").toList();
+            QList<qreal> resistance;
+            for (QVariant val : r) {
+                rSensorConf.x.push_back(val.toReal());
+            }
+
+            mResistiveSensorConfig.push_back(rSensorConf);
         }
-
-        QList r = mConfig->value("r", "").toList();
-        QList<qreal> resistance;
-        for (QVariant val : r) {
-            rSensorConf.x.push_back(val.toReal());
-        }
-
-        mResistiveSensorConfig.push_back(rSensorConf);
-
-        mConfig->endGroup();
+        mConfig->endArray();
 
         return keys.size() > 0;
     }

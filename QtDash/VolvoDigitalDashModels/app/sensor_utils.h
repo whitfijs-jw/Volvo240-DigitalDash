@@ -130,7 +130,7 @@ public:
         return  (y0 * (1 - diff) + y1 * diff);
     }
 
-    static QList<qreal> polyRegression(QList<qreal> x, QList<qreal> y, int order) {
+    static QList<qreal> polynomialRegression(QList<qreal> x, QList<qreal> y, int order) {
         if (x.length() != y.length()) {
             // problem
         }
@@ -139,6 +139,7 @@ public:
         Eigen::MatrixXd Beta(x.size(), 1);
         Eigen::MatrixXd Y(y.size(), 1);
 
+        // populate X and Y matrices
         for (int r = 0; r < x.size(); r++) {
             for (int c = 0; c <= order; c++) {
                 X(r, c) = qPow(x.at(r), c);
@@ -147,18 +148,30 @@ public:
             Y(r) = y.at(r);
         }
 
+        // intermediates
         Eigen::MatrixXd XtX = X.transpose() * X;
         Eigen::MatrixXd XtXinv = XtX.inverse();
 
+        // do it
         Beta = XtXinv * X.transpose() * Y;
 
-        // check that we didn't mess everything up
+        // output coefficients (should be x^0 to x^order)
         QList<qreal> coeff;
-        for (int i = 0; i < y.length(); i++) {
-            coeff.push_back(Beta(1, i));
+        for (int i = 0; i < (order + 1); i++) {
+            coeff.push_back(Beta(i));
         }
 
         return coeff;
+    }
+
+    static qreal polynomialValue(qreal x, QList<qreal> coeff) {
+        qreal sum = 0;
+        // sum terms
+        for (int i = 0; i < coeff.size(); i++) {
+            sum += qPow(x, i) * coeff.at(i);
+        }
+
+        return sum;
     }
 
 };

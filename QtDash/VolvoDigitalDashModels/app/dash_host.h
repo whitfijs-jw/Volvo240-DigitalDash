@@ -61,8 +61,9 @@ public:
     void init() {
         // temp -- work in progress
         Config::ResistiveSensorConfig_t l = mConfig.getResistiveSensorConfig().at(0);
-        l.coeff = SensorUtils::polyRegression(l.x, l.y, 2);
+        l.coeff = SensorUtils::polynomialRegression(l.x, l.y, 2);
 
+        qreal estPressure = SensorUtils::polynomialValue(50, l.coeff);
         // initialize models
         initTacho();
         initSpeedo();
