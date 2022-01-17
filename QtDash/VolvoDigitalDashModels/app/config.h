@@ -24,6 +24,7 @@ public:
     static constexpr char TEMP_SENSOR_GROUP[] = "temp_sensor";
     static constexpr char TACH_INPUT_GROUP[] = "tach_input";
     static constexpr char RESISTIVE_SENSOR_GROUP[] = "resistive_sensor";
+    static constexpr char ANALOG_INPUT_12V_GROUP[] = "12v_analog";
 
     // units for sensors
     static constexpr char UNITS_KPA[] = "kpa";
@@ -100,6 +101,17 @@ public:
     static constexpr char RES_SENSOR_FIT_TYPE_POLYNOMIAL[] = "polynomial";
     static constexpr char RES_SENSOR_FIT_TYPE_INTERPOLATION[] = "interp";
 
+    //expected keys for 12V analog signals
+    static constexpr char ANALOG_INPUT_12V_NAME[] = "name";
+    static constexpr char ANALOG_INPUT_12V_OPTO_R1[] = "opto_r1";
+    static constexpr char ANALOG_INPUT_12V_OPTO_R2[] = "opto_r2";
+    static constexpr char ANALOG_INPUT_12V_INPUT_R1[] = "input_r1";
+    static constexpr char ANALOG_INPUT_12V_INPUT_R2[] = "input_r2";
+    static constexpr char ANALOG_INPUT_12V_OPTO_GAIN_K3[] = "k3";
+
+    static constexpr char ANALOG_INPUT_12V_VOLTMETER[] = "voltmeter";
+    static constexpr char ANALOG_INPUT_12V_RHEOSTAT[] = "rheostat";
+
     /**
      * @brief The PressureUnits enum
      */
@@ -143,9 +155,22 @@ public:
         QString units;
 
         bool isValid() {
-            return true;
+            return true; //TODO: yea
         }
     } ResistiveSensorConfig_t;
+
+    typedef struct Analog12VInputConfig{
+        QString type; // name?
+        qreal optoR1; // opto R1 resistance
+        qreal optoR2; // opto R2 resistance
+        qreal inputR1; // input voltage divided R1
+        qreal inputR2; // input voltage divider R2
+        qreal gainK3; // opto transfer gain K3
+
+        bool isValid() {
+            return true; //TODO: yea
+        }
+    } Analog12VInputConfig_t;
 
     /**
      * @struct MapSensorConfig
@@ -330,8 +355,9 @@ public:
 
         mConfig->endGroup();
 
-        int resSize = mConfig->beginReadArray(RESISTIVE_SENSOR_GROUP);
-        for (int i = 0; i < resSize; ++i) {
+        size = 0;
+        size = mConfig->beginReadArray(RESISTIVE_SENSOR_GROUP);
+        for (int i = 0; i < size; ++i) {
             mConfig->setArrayIndex(i);
             ResistiveSensorConfig_t rSensorConf;
             // sensor type/name
@@ -366,6 +392,25 @@ public:
 
             mResistiveSensorConfig.push_back(rSensorConf);
             printKeys("Resistive Sensor: ");
+        }
+        mConfig->endArray();
+
+        size = 0;
+        size = mConfig->beginReadArray(ANALOG_INPUT_12V_GROUP);
+        for (int i = 0; i < size; ++i) {
+            mConfig->setArrayIndex(i);
+
+            Analog12VInputConfig_t conf;
+
+            conf.type = mConfig->value(ANALOG_INPUT_12V_NAME, "").toString();
+            conf.optoR1 = mConfig->value(ANALOG_INPUT_12V_OPTO_R1, "").toReal();
+            conf.optoR2 = mConfig->value(ANALOG_INPUT_12V_OPTO_R2, "").toReal();
+            conf.inputR1 = mConfig->value(ANALOG_INPUT_12V_INPUT_R1, "").toReal();
+            conf.inputR2 = mConfig->value(ANALOG_INPUT_12V_INPUT_R2, "").toReal();
+            conf.gainK3 = mConfig->value(ANALOG_INPUT_12V_OPTO_GAIN_K3, "").toReal();
+
+            mAnalog12VInputConfig.push_back(conf);
+            printKeys("Analog 12V input: ");
         }
         mConfig->endArray();
 
@@ -442,6 +487,10 @@ public:
         return mResistiveSensorConfig;
     }
 
+    QList<Analog12VInputConfig_t> getAnalog12VInputConfig() {
+        return mAnalog12VInputConfig;
+    }
+
 signals:
 
 public slots:
@@ -454,6 +503,7 @@ private:
     QList<TempSensorConfig_t> mTempSensorConfigs; //!< Temp sensor configurations
     TachInputConfig_t mTachConfig; //!< Tach signal input configuration
     QList<ResistiveSensorConfig_t> mResistiveSensorConfig;
+    QList<Analog12VInputConfig_t> mAnalog12VInputConfig;
 
     /**
      * @brief Check that values are valid in a map

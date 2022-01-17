@@ -11,6 +11,7 @@
 #include <ntc.h>
 #include <map_sensor.h>
 #include <sensor_utils.h>
+#include <analog_12v_input.h>
 
 class AnalogSensors : public QObject {
     Q_OBJECT
@@ -63,9 +64,16 @@ public:
             }
         }
 
-        // setup oil pressure sensor
-
-        // setup fuel level gauge
+        // setup voltmeter and rheostat voltage
+        for (Config::Analog12VInputConfig_t config : conf->getAnalog12VInputConfig()) {
+            if (config.isValid()) {
+                if (config.type == Config::ANALOG_INPUT_12V_VOLTMETER) {
+                    mVoltmeter = new Analog12VInput(config);
+                } else if (config.type == Config::ANALOG_INPUT_12V_RHEOSTAT) {
+                    mRheostat = new Analog12VInput(config);
+                }
+            }
+        }
 
         // setup map sensor
         mMapSensor = new MapSensor(
@@ -109,7 +117,13 @@ public slots:
 
         // volt meter
         qreal volts = mAnalogInputs.readValue(sensorConf.value(Config::FUSE8_12V_KEY));
-        emit voltMeterUpdate(volts); // TODO: replace with real calculation
+        qreal voltMeterVolts = mVoltmeter->getVoltage(volts);
+        emit voltMeterUpdate(voltMeterVolts);
+
+        //rheostat voltage (maybe use for screen dimming?)
+        qreal rheoVolts = mAnalogInputs.readValue(sensorConf.value(Config::DIMMER_VOLTAGE_KEY));
+        qreal rheoFullVolts = mRheostat->getVoltage(rheoVolts);
+        // TODO: hook this up somewhere?
 
         // oil temp
         qreal oilVolts = mAnalogInputs.readValue(sensorConf.value(Config::OIL_TEMP_KEY));
@@ -142,6 +156,9 @@ private:
     MapSensor * mMapSensor;
     Config::ResistiveSensorConfig_t mOilPressureSensor;
     Config::ResistiveSensorConfig_t mFuelLevelSensor;
+    Config::Analog12VInputConfig_t mVoltMeterInput;
+    Analog12VInput * mVoltmeter;
+    Analog12VInput * mRheostat;
 
 
 };

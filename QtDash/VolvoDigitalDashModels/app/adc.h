@@ -114,6 +114,9 @@ private:
     static constexpr char ADS1115[] = "ads1115";
     static constexpr char MCP3008[] = "mcp3008";
 
+    /* 5V inputs go through voltage divider for 3.3V ADC inputs -- not quite 100% */
+    static constexpr char VOLTAGE_CONVERSION_CORRECTION_FACTOR = 3.3 / ((620.0 / (620.0 * 330.0)) * 5.0);
+
     /**
      * @brief Find the iio device given the expected name
      * @param path: path to search -- not a recursive search

@@ -404,6 +404,7 @@ HEADERS += \
     ../../eigen/Eigen/src/plugins/MatrixCwiseUnaryOps.h \
     ../../eigen/Eigen/src/plugins/ReshapedMethods.h \
     adc.h \
+    analog_12v_input.h \
     analog_sensors.h \
     config.h \
     dash.h \
