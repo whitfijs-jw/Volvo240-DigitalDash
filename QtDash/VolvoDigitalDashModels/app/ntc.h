@@ -24,7 +24,7 @@ public:
 
     qreal calculateTemp(qreal volts, Config::TemperatureUnits units) {
         // calculate NTC resistance
-        qreal rNtc = mConfig.rBalance / ((mConfig.vSupply / volts) - 1.0);
+        qreal rNtc = SensorUtils::getResistance(volts, mConfig.vSupply, mConfig.rBalance);
 
         // calculate temperature in kelvin
         qreal lnR = qLn(rNtc);

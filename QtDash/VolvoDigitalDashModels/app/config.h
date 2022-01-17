@@ -23,6 +23,16 @@ public:
     static constexpr char MAP_SENSOR_GROUP[] = "map_sensor";
     static constexpr char TEMP_SENSOR_GROUP[] = "temp_sensor";
     static constexpr char TACH_INPUT_GROUP[] = "tach_input";
+    static constexpr char RESISTIVE_SENSOR_GROUP[] = "resistive_sensor";
+
+    // units for sensors
+    static constexpr char UNITS_KPA[] = "kpa";
+    static constexpr char UNITS_PSI[] = "psi";
+    static constexpr char UNITS_BAR[] = "bar";
+    static constexpr char UNITS_F[] = "F";
+    static constexpr char UNITS_C[] = "C";
+    static constexpr char UNITS_K[] = "K";
+    static constexpr char UNITS_PCT[] = "%";
 
     // expected sensor keys
     static constexpr char COOLANT_TEMP_KEY[] = "coolant_temp";
@@ -53,10 +63,6 @@ public:
     static constexpr char PRESSURE_AT_5V[] = "p_5v";
     static constexpr char PRESSURE_UNITS[] = "units";
 
-    static constexpr char UNITS_KPA[] = "kpa";
-    static constexpr char UNITS_PSI[] = "psi";
-    static constexpr char UNITS_BAR[] = "bar";
-
     //expected temperature sensor keys
     static constexpr char TEMP_TYPE[] = "type";
     static constexpr char TEMP_R_BALANCE[] = "r_balance";
@@ -69,10 +75,6 @@ public:
     static constexpr char T3_RES[] = "t3_R";
     static constexpr char TEMP_UNITS[] = "units";
 
-    static constexpr char UNITS_F[] = "F";
-    static constexpr char UNITS_C[] = "C";
-    static constexpr char UNITS_K[] = "K";
-
     static constexpr char TEMP_TYPE_COOLANT[] = "coolant";
     static constexpr char TEMP_TYPE_OIL[] = "oil";
     static constexpr char TEMP_TYPE_AMBIENT[] = "ambient";
@@ -83,6 +85,20 @@ public:
     static constexpr char TACH_PULSES_PER_ROTATION[] = "pulse_per_rot";
     static constexpr char TACH_MAX_RPM[] = "max_rpm";
     static constexpr char TACH_AVG_NUM_SAMPLES[] = "avg_num_samples";
+
+    //expected keys for resistive sensors
+    static constexpr char RES_SENSOR_TYPE[] = "type";
+    static constexpr char RES_SENSOR_FIT_TYPE[] = "fit";
+    static constexpr char RES_SENSOR_R_VALUES[] = "r";
+    static constexpr char RES_SENSOR_Y_VALUES[] = "y";
+    static constexpr char RES_SENSOR_UNITS[] = "units";
+    static constexpr char RES_SENSOR_R_BALANCE[] = "r_balance";
+
+    static constexpr char RES_SENSOR_TYPE_FUEL_LEVEL[] = "fuel_level";
+    static constexpr char RES_SENSOR_TYPE_OIL_PRESSURE[] = "oil_pressure";
+
+    static constexpr char RES_SENSOR_FIT_TYPE_POLYNOMIAL[] = "polynomial";
+    static constexpr char RES_SENSOR_FIT_TYPE_INTERPOLATION[] = "interp";
 
     /**
      * @brief The PressureUnits enum
@@ -117,10 +133,14 @@ public:
     };
 
     typedef struct ResistiveSensorConfig {
+        QString type;
+        ResistiveSensorType fitType;
         QList<qreal> x;
         QList<qreal> y;
         QList<qreal> coeff; // polynomial only
-        int units;
+        int order; //polynomial only
+        qreal rBalance;
+        QString units;
     } ResistiveSensorConfig_t;
 
     /**
@@ -306,22 +326,42 @@ public:
 
         mConfig->endGroup();
 
-        int resSize = mConfig->beginReadArray("oil_pressure");
+        int resSize = mConfig->beginReadArray(RESISTIVE_SENSOR_GROUP);
         for (int i = 0; i < resSize; ++i) {
+            mConfig->setArrayIndex(i);
             ResistiveSensorConfig_t rSensorConf;
-            QList p = mConfig->value("p", "").toList();
-            QList<qreal> pressure;
-            for (QVariant val : p) {
-                rSensorConf.y.push_back(val.toReal());
+            // sensor type/name
+            rSensorConf.type = mConfig->value(RES_SENSOR_TYPE, "").toString();
+
+            // sensor fit type
+            QList fit = mConfig->value(RES_SENSOR_FIT_TYPE, "").toList();
+            if (fit.at(0).toString() == RES_SENSOR_FIT_TYPE_POLYNOMIAL && fit.length() == 2) {
+                rSensorConf.fitType = ResistiveSensorType::POLYNOMIAL;
+                rSensorConf.order = fit.at(1).toInt();
+            } else {
+                rSensorConf.fitType = ResistiveSensorType::INTERPOLATION;
+                rSensorConf.order = -1;
             }
 
-            QList r = mConfig->value("r", "").toList();
-            QList<qreal> resistance;
+            // balance/pullup/high side whatever resistor
+            rSensorConf.rBalance = mConfig->value(RES_SENSOR_R_BALANCE, "1000.0").toReal();
+
+            // resistance values
+            QList r = mConfig->value(RES_SENSOR_R_VALUES, "").toList();
             for (QVariant val : r) {
                 rSensorConf.x.push_back(val.toReal());
             }
 
+            // y values (fuel level, pressure, etc)
+            QList y = mConfig->value(RES_SENSOR_Y_VALUES, "").toList();
+            for (QVariant val : y) {
+                rSensorConf.y.push_back(val.toReal());
+            }
+
+            rSensorConf.units = mConfig->value(RES_SENSOR_UNITS, "").toString();
+
             mResistiveSensorConfig.push_back(rSensorConf);
+            printKeys("Resistive Sensor: ");
         }
         mConfig->endArray();
 
@@ -334,7 +374,7 @@ public:
      */
     void printKeys(QString setting) {
         for (auto key : mConfig->childKeys()) {
-            qDebug() << setting << key << ": " << mConfig->value(key, "N/A").toString();
+            qDebug() << setting << key << ": " << mConfig->value(key, "N/A").toStringList();
         }
     }
 

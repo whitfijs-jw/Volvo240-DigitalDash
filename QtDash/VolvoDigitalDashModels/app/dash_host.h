@@ -59,11 +59,6 @@ public:
      * @brief Initialize dash
      */
     void init() {
-        // temp -- work in progress
-        Config::ResistiveSensorConfig_t l = mConfig.getResistiveSensorConfig().at(0);
-        l.coeff = SensorUtils::polynomialRegression(l.x, l.y, 2);
-
-        qreal estPressure = SensorUtils::polynomialValue(50, l.coeff);
         // initialize models
         initTacho();
         initSpeedo();
@@ -115,11 +110,6 @@ public slots:
         rpmFile.open(QIODevice::ReadOnly);
         battFile.open(QIODevice::ReadOnly);
         fuelFile.open(QIODevice::ReadOnly);
-
-        //dashLightInputs.openDevice();
-        uint8_t portA = 0xAA;//dashLightInputs.read(mcp23017::RegisterAddr::GPIOA);
-        uint8_t portB = 0x0F;//dashLightInputs.read(mcp23017::RegisterAddr::GPIOB);
-        //dashLightInputs.closeDevice();
 
         if(tempFile.isOpen())
         {
