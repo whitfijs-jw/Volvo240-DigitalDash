@@ -111,6 +111,18 @@ public:
         AMBIENT, //!< Outside/Ambient temp sensor
     };
 
+    enum class ResistiveSensorType {
+        INTERPOLATION = 0,
+        POLYNOMIAL,
+    };
+
+    typedef struct ResistiveSensorConfig {
+        QList<qreal> x;
+        QList<qreal> y;
+        QList<qreal> coeff; // polynomial only
+        int units;
+    } ResistiveSensorConfig_t;
+
     /**
      * @struct MapSensorConfig
      */
@@ -294,6 +306,25 @@ public:
 
         mConfig->endGroup();
 
+        mConfig->beginGroup("oil_pressure");
+
+        ResistiveSensorConfig_t rSensorConf;
+        QList p = mConfig->value("p", "").toList();
+        QList<qreal> pressure;
+        for (QVariant val : p) {
+            rSensorConf.y.push_back(val.toReal());
+        }
+
+        QList r = mConfig->value("r", "").toList();
+        QList<qreal> resistance;
+        for (QVariant val : r) {
+            rSensorConf.x.push_back(val.toReal());
+        }
+
+        mResistiveSensorConfig.push_back(rSensorConf);
+
+        mConfig->endGroup();
+
         return keys.size() > 0;
     }
 
@@ -363,7 +394,9 @@ public:
         return isMapConfigValid(&mDashLightConfig);
     }
 
-
+    QList<ResistiveSensorConfig_t> getResistiveSensorConfig() {
+        return mResistiveSensorConfig;
+    }
 
 signals:
 
@@ -376,6 +409,7 @@ private:
     MapSensorConfig_t mMapSensorConfig; //!< MAP sensor configuration
     QList<TempSensorConfig_t> mTempSensorConfigs; //!< Temp sensor configurations
     TachInputConfig_t mTachConfig; //!< Tach signal input configuration
+    QList<ResistiveSensorConfig_t> mResistiveSensorConfig;
 
     /**
      * @brief Check that values are valid in a map

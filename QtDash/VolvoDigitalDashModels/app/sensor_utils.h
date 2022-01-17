@@ -5,6 +5,7 @@
 #include <QtMath>
 
 #include <config.h>
+#include <../../eigen/Eigen/Dense>
 
 class SensorUtils {
 public:
@@ -18,7 +19,6 @@ public:
     static constexpr qreal PSI_PER_KPA = .145038;
     static constexpr qreal BAR_PER_KPA = .01;
 
-
     static constexpr qreal getResistance(qreal volts, qreal vSupply, qreal rBalance) {
         qreal res = rBalance / ((vSupply / volts) - 1.0);
 
@@ -27,7 +27,7 @@ public:
         return res;
     }
 
-    static constexpr qreal estimateOptimalBalanceResistor(qreal rLow, qreal rHigh) {
+    static qreal estimateOptimalBalanceResistor(qreal rLow, qreal rHigh) {
         // checks?
 
         return qSqrt(rLow * rHigh);
@@ -55,6 +55,24 @@ public:
         } else {
             return temp;
         }
+    }
+
+    static constexpr qreal convertTemperature(qreal temp,
+                                   Config::TemperatureUnits to,
+                                   Config::TemperatureUnits from) {
+        if (to == from) {
+            return temp;
+        }
+
+        if (to == Config::TemperatureUnits::FAHRENHEIT) {
+            return toFahrenheit(temp, from);
+        } else if (to == Config::TemperatureUnits::CELSIUS) {
+            return toCelsius(temp, from);
+        } else if (to == Config::TemperatureUnits::KELVIN) {
+            return toKelvin(temp, from);
+        }
+
+        return 0;
     }
 
     static constexpr qreal toKpa(qreal pressure, Config::PressureUnits units) {
@@ -90,6 +108,58 @@ public:
         }
     }
 
+    static constexpr qreal convertPressure(
+            qreal pressure, Config::PressureUnits to, Config::PressureUnits from) {
+        switch (to) {
+        case Config::PressureUnits::PSI:
+            return toPsi(pressure, from);
+            break;
+        case Config::PressureUnits::BAR:
+            return toBar(pressure, from);
+            break;
+        case Config::PressureUnits::KPA:
+            return toKpa(pressure, from);
+            break;
+        default:
+            return 0;
+        }
+    }
+
+    static constexpr qreal interp(qreal x, qreal x0, qreal y0, qreal x1, qreal y1) {
+        qreal diff = (x - x0) / (x1 - x0);
+        return  (y0 * (1 - diff) + y1 * diff);
+    }
+
+    static QList<qreal> polyRegression(QList<qreal> x, QList<qreal> y, int order) {
+        if (x.length() != y.length()) {
+            // problem
+        }
+
+        Eigen::MatrixXd X(x.size(), order + 1);
+        Eigen::MatrixXd Beta(x.size(), 1);
+        Eigen::MatrixXd Y(y.size(), 1);
+
+        for (int r = 0; r < x.size(); r++) {
+            for (int c = 0; c <= order; c++) {
+                X(r, c) = qPow(x.at(r), c);
+            }
+
+            Y(r) = y.at(r);
+        }
+
+        Eigen::MatrixXd XtX = X.transpose() * X;
+        Eigen::MatrixXd XtXinv = XtX.inverse();
+
+        Beta = XtXinv * X.transpose() * Y;
+
+        // check that we didn't mess everything up
+        QList<qreal> coeff;
+        for (int i = 0; i < y.length(); i++) {
+            coeff.push_back(Beta(1, i));
+        }
+
+        return coeff;
+    }
 
 };
 
