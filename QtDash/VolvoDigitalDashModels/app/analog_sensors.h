@@ -10,6 +10,7 @@
 #include <adc.h>
 #include <ntc.h>
 #include <map_sensor.h>
+#include <sensor_utils.h>
 
 class AnalogSensors : public QObject {
     Q_OBJECT
@@ -28,10 +29,37 @@ public:
                 } else if (config.type == Config::TemperatureSensorType::AMBIENT) {
                     mAmbientTempSensor = new Ntc(config);
                 } else {
-                    qDebug() << "Sensor type not supported.  Check config.ini file";
+                    qDebug() << "Temperature Sensor type not supported.  Check config.ini file";
                 }
             } else {
-                qDebug() << "Sensor Config is not valid: " << QString((int)config.type) << " Check config.ini file";
+                qDebug() << "Temperature Sensor Config is not valid: " << QString((int)config.type) << " Check config.ini file";
+            }
+        }
+
+        QList<Config::ResistiveSensorConfig_t> resSensorConfig = conf->getResistiveSensorConfig();
+        for (Config::ResistiveSensorConfig_t config : resSensorConfig) {
+            if (config.isValid()) {
+                if (config.type == Config::RES_SENSOR_TYPE_OIL_PRESSURE) {
+                    mOilPressureSensor = config;
+                    if (config.fitType == Config::ResistiveSensorType::POLYNOMIAL) {
+                        mOilPressureSensor.coeff = SensorUtils::polynomialRegression(
+                                    mOilPressureSensor.x,
+                                    mOilPressureSensor.y,
+                                    mOilPressureSensor.order
+                                    );
+                    }
+                } else if (config.type == Config::RES_SENSOR_TYPE_FUEL_LEVEL) {
+                    mFuelLevelSensor = config;
+                    if (config.fitType == Config::ResistiveSensorType::POLYNOMIAL) {
+                        mFuelLevelSensor.coeff = SensorUtils::polynomialRegression(
+                                    mFuelLevelSensor.x,
+                                    mFuelLevelSensor.y,
+                                    mFuelLevelSensor.order
+                                    );
+
+                        qDebug() << "Fuel Coeff: " << mFuelLevelSensor.x.length() << " " << mFuelLevelSensor.y.length();
+                    }
+                }
             }
         }
 
@@ -71,7 +99,8 @@ public slots:
 
         // oil pressure
         qreal oilPressureVolts = mAnalogInputs.readValue(sensorConf.value(Config::OIL_PRESSURE_KEY));
-        qreal oilPressure = oilPressureVolts; // TODO: replace with real sensor calculation
+        qreal oilPRes = SensorUtils::getResistance(oilPressureVolts, 5.0, mOilPressureSensor.rBalance);
+        qreal oilPressure = SensorUtils::polynomialValue(oilPRes, mOilPressureSensor.coeff);
         emit oilPressureUpdate(oilPressure, Config::PressureUnits::BAR);
     }
 
@@ -89,7 +118,8 @@ public slots:
 
         // fuel level
         qreal fuelVolts = mAnalogInputs.readValue(sensorConf.value(Config::FUEL_LEVEL_KEY));
-        qreal fuelLevel = (fuelVolts / 5.0) * 100.0; // TODO: replace with real sensor calculation
+        qreal fuelRes = SensorUtils::getResistance(fuelVolts, 5.0, mFuelLevelSensor.rBalance);
+        qreal fuelLevel = SensorUtils::polynomialValue(fuelRes, mFuelLevelSensor.coeff);
         emit fuelLevelUpdate(fuelLevel);
 
         qreal coolantTempVolts = mAnalogInputs.readValue(sensorConf.value(Config::COOLANT_TEMP_KEY));
@@ -110,6 +140,10 @@ private:
     Ntc * mOilTempSensor;
     Ntc * mAmbientTempSensor;
     MapSensor * mMapSensor;
+    Config::ResistiveSensorConfig_t mOilPressureSensor;
+    Config::ResistiveSensorConfig_t mFuelLevelSensor;
+
+
 };
 
 #endif // ANALOG_SENSORS_H

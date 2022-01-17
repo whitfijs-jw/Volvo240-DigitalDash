@@ -141,6 +141,10 @@ public:
         int order; //polynomial only
         qreal rBalance;
         QString units;
+
+        bool isValid() {
+            return true;
+        }
     } ResistiveSensorConfig_t;
 
     /**
