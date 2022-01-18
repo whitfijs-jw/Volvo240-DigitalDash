@@ -57,9 +57,7 @@ private:
 
     qreal getCoolantTemp() {
         qreal coolantTempVolts = mAnalogInputs.readValue(mChannel);
-        qreal coolantTemp = mCoolantTempSensor->calculateTemp(coolantTempVolts, Config::TemperatureUnits::FAHRENHEIT);
-        emit coolantTempUpdate(coolantTemp, Config::TemperatureUnits::FAHRENHEIT);
-
+        return mNtc->calculateTemp(coolantTempVolts, Config::TemperatureUnits::FAHRENHEIT);
     }
 };
 

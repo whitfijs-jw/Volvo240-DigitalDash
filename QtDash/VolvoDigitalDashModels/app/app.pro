@@ -410,6 +410,7 @@ HEADERS += \
     dash.h \
     dash_host.h \
     dash_lights.h \
+    dash_new.h \
     event_timers.h \
     gauge.h \
     gauge_coolant_temperature.h \
@@ -420,6 +421,9 @@ HEADERS += \
     map_sensor.h \
     mcp23017.h \
     ntc.h \
+    sensor.h \
+    sensor_map.h \
+    sensor_ntc.h \
     sensor_source.h \
     sensor_source_adc.h \
     sensor_source_gpio.h \
