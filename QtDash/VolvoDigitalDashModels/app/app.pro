@@ -411,11 +411,20 @@ HEADERS += \
     dash_host.h \
     dash_lights.h \
     event_timers.h \
+    gauge.h \
+    gauge_coolant_temperature.h \
+    gauge_speedo.h \
+    gauge_tach.h \
     gps_helper.h \
     indicator_model.h \
     map_sensor.h \
     mcp23017.h \
     ntc.h \
+    sensor_source.h \
+    sensor_source_adc.h \
+    sensor_source_gpio.h \
+    sensor_source_gps.h \
+    sensor_source_tach.h \
     sensor_utils.h \
     tach_input.h \
     tachometer_model.h \

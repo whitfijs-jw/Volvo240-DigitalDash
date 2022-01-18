@@ -168,6 +168,10 @@ public:
         //printf("i2c-%d device @0x%02X register addr: 0x%02X read success: 0x%02X\n", mBus, mAddr, reg, ret);
         return ret;
     }
+
+    int getNumChannels() {
+        return 16;
+    }
 private:
     /**
      * @brief device address
