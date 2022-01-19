@@ -65,15 +65,11 @@ public:
         }
 
         // setup voltmeter and rheostat voltage
-        for (Config::Analog12VInputConfig_t config : conf->getAnalog12VInputConfig()) {
-            if (config.isValid()) {
-                if (config.type == Config::ANALOG_INPUT_12V_VOLTMETER) {
-                    mVoltmeter = new Analog12VInput(config);
-                } else if (config.type == Config::ANALOG_INPUT_12V_RHEOSTAT) {
-                    mRheostat = new Analog12VInput(config);
-                }
-            }
-        }
+        mVoltmeter = new Analog12VInput(
+                    conf->getAnalog12VInputConfig(Config::ANALOG_INPUT_12V_VOLTMETER));
+
+        mRheostat = new Analog12VInput(
+                    conf->getAnalog12VInputConfig(Config::ANALOG_INPUT_12V_RHEOSTAT));
 
         // setup map sensor
         mMapSensor = new MapSensor(

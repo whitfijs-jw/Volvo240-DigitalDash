@@ -28,17 +28,15 @@ public:
         }
     }
 
-    void init() override {
-        Sensor::init();
-    }
-
 public slots:
     void transform(QVariant data, int channel) override {
-        qreal volts = data.toReal();
-        //get desired temperature units from config?
-        emit sensorDataReady(
-                    mNtc->calculateTemp(volts,Config::TemperatureUnits::FAHRENHEIT)
-                    );
+        if (channel == getChannel()) {
+            qreal volts = data.toReal();
+            //get desired temperature units from config?
+            emit sensorDataReady(
+                        mNtc->calculateTemp(volts,Config::TemperatureUnits::FAHRENHEIT)
+                        );
+        }
     }
 
 private:

@@ -18,6 +18,9 @@
 #include <sensor_source_adc.h>
 #include <sensor_map.h>
 #include <sensor_ntc.h>
+#include <sensor_voltmeter.h>
+
+#include <gauge_accessory.h>
 
 class DashNew : public QObject {
     Q_OBJECT
@@ -42,8 +45,12 @@ public:
 
     }
 
-    void init() {
+    void initSensorSources() {
         mAdcSource = new AdcSource(this->parent(), &mConfig);
+    }
+
+    void initSensors() {
+        //map sensor
         mMapSensor = new Map_Sensor(
                     this->parent(), &mConfig, mAdcSource,
                     mConfig.getSensorConfig().value(Config::MAP_SENSOR_KEY)
@@ -56,21 +63,97 @@ public:
             mAdcSource->update(mMapSensor->getChannel());
         });
 
+        // coolant temp sensor
+        mCoolantTempSensor = new NtcSensor(
+                    this->parent(), &mConfig, mAdcSource,
+                    mConfig.getSensorConfig().value(Config::COOLANT_TEMP_KEY),
+                    Config::TemperatureSensorType::COOLANT);
+
         QObject::connect(
-                    mMapSensor, &Sensor::sensorDataReady,
-                    [=](QVariant data) {
-            mBoostModel.setCurrentValue(data.toReal());
+                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
+                    &QTimer::timeout,
+                    [=]() {
+            mAdcSource->update(mCoolantTempSensor->getChannel());
         });
 
-        mBoostModel.setMinValue(-20.0);
-        mBoostModel.setMaxValue(30.0);
-        mBoostModel.setUnits("psi");
-        mBoostModel.setHighAlarm(18.0);
-        mBoostModel.setLowAlarm(-50.0);
+        // ambient temp sensor
+        mAmbientTempSensor = new NtcSensor(
+                    this->parent(), &mConfig, mAdcSource,
+                    mConfig.getSensorConfig().value(Config::AMBIENT_TEMP_KEY),
+                    Config::TemperatureSensorType::AMBIENT);
 
-        mBoostModel.setCurrentValue(0.0);
+        QObject::connect(
+                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
+                    &QTimer::timeout,
+                    [=]() {
+            mAdcSource->update(mAmbientTempSensor->getChannel());
+        });
 
-        mContext->setContextProperty(BOOST_GAUGE_MODEL_NAME, &mBoostModel);
+        // oil temp sensor
+        mOilTempSensor = new NtcSensor(
+                    this->parent(), &mConfig, mAdcSource,
+                    mConfig.getSensorConfig().value(Config::OIL_TEMP_KEY),
+                    Config::TemperatureSensorType::OIL);
+
+        QObject::connect(
+                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
+                    &QTimer::timeout,
+                    [=]() {
+            mAdcSource->update(mOilTempSensor->getChannel());
+        });
+
+        // oil pressure sensor
+
+        // voltmeter
+        mVoltmeterSensor = new VoltmeterSensor(
+                    this->parent(), &mConfig, mAdcSource,
+                    mConfig.getSensorConfig().value(Config::FUSE8_12V_KEY),
+                    mConfig.getAnalog12VInputConfig(Config::ANALOG_INPUT_12V_VOLTMETER)
+                    );
+
+        QObject::connect(
+                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
+                    &QTimer::timeout,
+                    [=]() {
+            mAdcSource->update(mVoltmeterSensor->getChannel());
+        });
+    }
+
+    void initAccessoryGauges() {
+        // boost gauge
+        QList<Sensor *> boostSensors = {mMapSensor};
+        mBoostGauge = new AccessoryGauge(
+                    this->parent(), &mConfig, boostSensors, &mBoostModel,
+                    AccessoryGaugeModel::BOOST_GAUGE_MODEL_NAME,
+                    mContext);
+
+        // coolant temp gauge
+        QList<Sensor *> coolantSensors = {mCoolantTempSensor};
+        mCoolantTempGauge = new AccessoryGauge(
+                    this->parent(), &mConfig, coolantSensors,
+                    &mCoolantTempModel, AccessoryGaugeModel::COOLANT_TEMP_MODEL_NAME,
+                    mContext);
+
+        // oil temp gauge
+        QList<Sensor *> oilTempSensors = {mOilTempSensor};
+        mOilTempGauge = new AccessoryGauge(
+                    this->parent(), &mConfig, oilTempSensors,
+                    &mOilTemperatureModel, AccessoryGaugeModel::OIL_TEMPERATURE_MODEL_NAME,
+                    mContext);
+
+        // voltmeter
+        QList<Sensor *> voltmeterSensors = {mVoltmeterSensor};
+        mVoltmeterGauge = new AccessoryGauge(
+                    this->parent(), &mConfig, voltmeterSensors,
+                    &mVoltMeterModel, AccessoryGaugeModel::VOLT_METER_MODEL_NAME,
+                    mContext
+                    );
+    }
+
+    void init() {
+        initSensorSources();
+        initSensors();
+        initAccessoryGauges();
     }
 
     void start() {
@@ -87,8 +170,20 @@ private:
     NtcSensor * mCoolantTempSensor;
     NtcSensor * mAmbientTempSensor;
     NtcSensor * mOilTempSensor;
+    VoltmeterSensor * mVoltmeterSensor;
 
     AccessoryGaugeModel mBoostModel;
+    AccessoryGaugeModel mOilPressureModel;
+    AccessoryGaugeModel mOilTemperatureModel;
+    AccessoryGaugeModel mCoolantTempModel;
+
+    AccessoryGaugeModel mFuelLevelModel;
+    AccessoryGaugeModel mVoltMeterModel;
+
+    AccessoryGauge * mBoostGauge;
+    AccessoryGauge * mCoolantTempGauge;
+    AccessoryGauge * mOilTempGauge;
+    AccessoryGauge * mVoltmeterGauge;
 };
 
 #endif // DASH_NEW_H

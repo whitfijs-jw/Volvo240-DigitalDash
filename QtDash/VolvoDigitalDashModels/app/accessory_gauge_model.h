@@ -15,6 +15,13 @@ class AccessoryGaugeModel : public QAbstractListModel
     Q_PROPERTY(qreal highAlarm READ highAlarm WRITE setHighAlarm NOTIFY highAlarmChanged)
 
 public:
+    static constexpr char COOLANT_TEMP_MODEL_NAME[] = "coolantTempModel";
+    static constexpr char FUEL_LEVEL_MODEL_NAME[] = "fuelLevelModel";
+    static constexpr char OIL_PRESSURE_MODEL_NAME[] = "oilPModel";
+    static constexpr char OIL_TEMPERATURE_MODEL_NAME[] = "oilTModel";
+    static constexpr char BOOST_GAUGE_MODEL_NAME[] = "boostModel";
+    static constexpr char VOLT_METER_MODEL_NAME[] = "voltMeterModel";
+
     enum AccessoryGaugeRoles {
         MinValueRole        = Qt::UserRole + 1,
         MaxValueRole        = Qt::UserRole + 2,

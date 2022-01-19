@@ -23,13 +23,6 @@ public:
         context->setContextProperty(modelName, mModel);
     }
 
-    virtual bool init() = 0;
-
-signals:
-
-public slots:
-    virtual void update(QVariant data, int channel) = 0;
-
 protected:
     Config * mConfig;
     QList<Sensor *> mSensors;

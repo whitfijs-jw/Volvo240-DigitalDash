@@ -502,7 +502,7 @@ public:
             conf.inputR2 = mConfig->value(ANALOG_INPUT_12V_INPUT_R2, "").toReal();
             conf.gainK3 = mConfig->value(ANALOG_INPUT_12V_OPTO_GAIN_K3, "").toReal();
 
-            mAnalog12VInputConfig.push_back(conf);
+            mAnalog12VInputConfig.insert(conf.type, conf);
             printKeys("Analog 12V input: ", mConfig);
         }
         mConfig->endArray();
@@ -580,8 +580,14 @@ public:
         return mResistiveSensorConfig;
     }
 
-    QList<Analog12VInputConfig_t> getAnalog12VInputConfig() {
-        return mAnalog12VInputConfig;
+    Analog12VInputConfig_t getAnalog12VInputConfig(QString name) {
+        Analog12VInputConfig_t empty;
+        return mAnalog12VInputConfig.value(name, empty);
+    }
+
+    GaugeConfig_t getGaugeConfig(QString name) {
+        GaugeConfig_t empty;
+        return mGaugeConfigs.value(name, empty);
     }
 
 signals:
@@ -596,7 +602,7 @@ private:
     QList<TempSensorConfig_t> mTempSensorConfigs; //!< Temp sensor configurations
     TachInputConfig_t mTachConfig; //!< Tach signal input configuration
     QList<ResistiveSensorConfig_t> mResistiveSensorConfig;
-    QList<Analog12VInputConfig_t> mAnalog12VInputConfig;
+    QMap<QString, Analog12VInputConfig_t> mAnalog12VInputConfig;
 
     QSettings * mGaugeConfig = nullptr;
     QMap<QString, GaugeConfig_t> mGaugeConfigs;

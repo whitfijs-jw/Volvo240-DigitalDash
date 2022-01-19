@@ -23,10 +23,6 @@ public:
                     this, &Sensor::transform);
     }
 
-    virtual void init() {
-
-    }
-
     int getChannel() {
         return mChannel;
     }

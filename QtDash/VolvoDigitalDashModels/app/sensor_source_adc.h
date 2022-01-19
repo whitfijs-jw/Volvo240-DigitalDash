@@ -35,7 +35,8 @@ public slots:
     }
 
     void update(int channel) {
-        emit dataReady(mAdc.readValue(channel), channel);
+        qreal volts = mAdc.readValue(channel);
+        emit dataReady(volts, channel);
     }
 
 private:
