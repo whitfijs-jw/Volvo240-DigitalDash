@@ -262,7 +262,7 @@ public:
     } GaugeConfig_t;
 
     typedef struct SpeedoConfig {
-        GaugeConfig_t speedoConfig;
+        GaugeConfig_t gaugeConfig;
         QString topSource;
         QString topUnits;
     } SpeedoConfig_t;
@@ -296,7 +296,7 @@ public:
         mGaugeConfigs.insert(VOLTMETER_GAUGE_GROUP, loadGaugeConfig(VOLTMETER_GAUGE_GROUP));
 
         // speedo
-        mSpeedoGaugeConfig.speedoConfig = loadGaugeConfig(SPEEDOMETER_GAUGE_GROUP);
+        mSpeedoGaugeConfig.gaugeConfig = loadGaugeConfig(SPEEDOMETER_GAUGE_GROUP);
         mGaugeConfig->beginGroup(SPEEDOMETER_GAUGE_GROUP);
         mSpeedoGaugeConfig.topSource = mGaugeConfig->value(TOP_VALUE_SOURCE).toString();
         mSpeedoGaugeConfig.topUnits = mGaugeConfig->value(TOP_VALUE_UNITS).toString();
@@ -589,6 +589,10 @@ public:
     GaugeConfig_t getGaugeConfig(QString name) {
         GaugeConfig_t empty;
         return mGaugeConfigs.value(name, empty);
+    }
+
+    SpeedoConfig_t getSpeedoConfig() {
+        return mSpeedoGaugeConfig;
     }
 
 signals:

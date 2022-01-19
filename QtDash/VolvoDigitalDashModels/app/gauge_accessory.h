@@ -32,7 +32,7 @@ public:
         ((AccessoryGaugeModel *)mModel)->setLowAlarm(gaugeConfig.lowAlarm);
         ((AccessoryGaugeModel *)mModel)->setUnits(gaugeConfig.displayUnits);
 
-        // connect the
+        // connect the sensor output to the model value
         QObject::connect(
                     sensors.at(0), &Sensor::sensorDataReady,
                     [=](QVariant data) {

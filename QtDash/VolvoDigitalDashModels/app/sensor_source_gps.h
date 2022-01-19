@@ -46,9 +46,7 @@ public:
         mLastData.insert(GpsDataChannel::SPEED_METERS_PER_SEC, 0.0);
         mLastData.insert(GpsDataChannel::SPEED_MILES_PER_HOUR, 0.0);
         mLastData.insert(GpsDataChannel::SPEED_KILOMETERS_PER_HOUR, 0.0);
-    }
 
-    bool init() {
         // serial port
         QVariantMap params;
         // TODO: get port from config? Find ACMx port?
@@ -74,8 +72,8 @@ public:
             source->setDevice(serialPort);
 
             if(source){
-                connect(source, SIGNAL(positionUpdated(QGeoPositionInfo)),
-                        this, SLOT(update(QGeoPositionInfo)));
+                connect(source, &QNmeaPositionInfoSource::positionUpdated,
+                        this, &GpsSource::updatePosition);
 
                 source->setUpdateInterval(100);
 
@@ -86,6 +84,9 @@ public:
             }
         }
 
+    }
+
+    bool init() {
         return true;
     }
 
@@ -133,7 +134,7 @@ public slots:
         emit dataReady(mLastData.value((GpsDataChannel)channel, ""), channel);
     }
 
-    void update(QGeoPositionInfo data) {
+    void updatePosition(QGeoPositionInfo data) {
         if (data.hasAttribute(QGeoPositionInfo::Direction)) {
             qreal heading = data.attribute(QGeoPositionInfo::Direction);
 

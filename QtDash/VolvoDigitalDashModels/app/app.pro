@@ -414,6 +414,7 @@ HEADERS += \
     event_timers.h \
     gauge.h \
     gauge_accessory.h \
+    gauge_speedo.h \
     gps_helper.h \
     indicator_model.h \
     map_sensor.h \
@@ -428,6 +429,7 @@ HEADERS += \
     sensor_source_gpio.h \
     sensor_source_gps.h \
     sensor_source_tach.h \
+    sensor_speedo.h \
     sensor_utils.h \
     sensor_voltmeter.h \
     tach_input.h \

@@ -16,12 +16,16 @@
 #include <event_timers.h>
 
 #include <sensor_source_adc.h>
+#include <sensor_source_gps.h>
+
 #include <sensor_map.h>
 #include <sensor_ntc.h>
 #include <sensor_voltmeter.h>
 #include <sensor_resistive.h>
+#include <sensor_speedo.h>
 
 #include <gauge_accessory.h>
+#include <gauge_speedo.h>
 
 class DashNew : public QObject {
     Q_OBJECT
@@ -48,6 +52,7 @@ public:
 
     void initSensorSources() {
         mAdcSource = new AdcSource(this->parent(), &mConfig);
+        mGpsSource = new GpsSource(this->parent(), &mConfig);
     }
 
     void initSensors() {
@@ -146,7 +151,11 @@ public:
             mAdcSource->update(mVoltmeterSensor->getChannel());
         });
 
-
+        // speedometer
+        mSpeedoSensor = new SpeedometerSensor(
+                    this->parent(), &mConfig, mGpsSource,
+                    (int) GpsSource::GpsDataChannel::SPEED_MILES_PER_HOUR
+                    );
     }
 
     void initAccessoryGauges() {
@@ -196,10 +205,21 @@ public:
                     );
     }
 
+    void initSpeedo() {
+        // init gauge+
+        QList<Sensor *> speedoSensors = {mSpeedoSensor, mAmbientTempSensor};
+        mSpeedoGauge = new SpeedometerGauge(
+                    this->parent(), &mConfig, speedoSensors,
+                    &mSpeedoModel, SpeedometerModel::SPEEDO_MODEL_NAME,
+                    mContext
+                    );
+    }
+
     void init() {
         initSensorSources();
         initSensors();
         initAccessoryGauges();
+        initSpeedo();
     }
 
     void start() {
@@ -212,6 +232,8 @@ private:
     Config mConfig;
 
     AdcSource * mAdcSource;
+    GpsSource * mGpsSource;
+
     Map_Sensor * mMapSensor;
     NtcSensor * mCoolantTempSensor;
     NtcSensor * mAmbientTempSensor;
@@ -219,6 +241,7 @@ private:
     VoltmeterSensor * mVoltmeterSensor;
     ResistiveSensor * mOilPressureSensor;
     ResistiveSensor * mFuelLevelSensor;
+    SpeedometerSensor<GpsSource> * mSpeedoSensor;
 
     AccessoryGaugeModel mBoostModel;
     AccessoryGaugeModel mOilTemperatureModel;
@@ -227,12 +250,16 @@ private:
     AccessoryGaugeModel mFuelLevelModel;
     AccessoryGaugeModel mVoltMeterModel;
 
+    SpeedometerModel mSpeedoModel;
+
     AccessoryGauge * mBoostGauge;
     AccessoryGauge * mCoolantTempGauge;
     AccessoryGauge * mOilTempGauge;
     AccessoryGauge * mVoltmeterGauge;
     AccessoryGauge * mOilPressureGauge;
     AccessoryGauge * mFuelLevelGauge;
+
+    SpeedometerGauge * mSpeedoGauge;
 };
 
 #endif // DASH_NEW_H
