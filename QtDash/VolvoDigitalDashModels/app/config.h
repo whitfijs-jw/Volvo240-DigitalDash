@@ -112,6 +112,28 @@ public:
     static constexpr char ANALOG_INPUT_12V_VOLTMETER[] = "voltmeter";
     static constexpr char ANALOG_INPUT_12V_RHEOSTAT[] = "rheostat";
 
+    //gauge config groups
+    static constexpr char BOOST_GAUGE_GROUP[] = "boost";
+    static constexpr char COOLANT_TEMP_GAUGE_GROUP[] = "coolant_temp";
+    static constexpr char FUEL_GAUGE_GROUP[] = "fuel_level";
+    static constexpr char OIL_PRESSURE_GAUGE_GROUP[] = "oil_pressure";
+    static constexpr char OIL_TEMPERATURE_GAUGE_GROUP[] = "oil_temperature";
+    static constexpr char VOLTMETER_GAUGE_GROUP[] = "voltmeter";
+    static constexpr char SPEEDOMETER_GAUGE_GROUP[] = "speedo";
+    static constexpr char TACHOMETER_GAUGE_GROUP[] = "tacho";
+
+
+    // gauge config keys
+    static constexpr char MIN_VALUE[] = "min";
+    static constexpr char MAX_VALUE[] = "max";
+    static constexpr char HIGH_ALARM[] = "high_alarm";
+    static constexpr char LOW_ALARM[] = "low_alarm";
+    static constexpr char GAUGE_UNITS[] = "units";
+    static constexpr char TOP_VALUE_SOURCE[] = "top_value_source";
+    static constexpr char TOP_VALUE_UNITS[] = "top_value_units";
+    static constexpr char MAX_RPM[] = "max_rpm";
+    static constexpr char REDLINE[] = "redline";
+
     /**
      * @brief The PressureUnits enum
      */
@@ -231,6 +253,25 @@ public:
         int avgNumSamples; //!< number of samples to average over
     }TachInputConfig_t;
 
+    typedef struct GaugeConfig {
+        qreal min;
+        qreal max;
+        qreal lowAlarm;
+        qreal highAlarm;
+        QString displayUnits;
+    } GaugeConfig_t;
+
+    typedef struct SpeedoConfig {
+        GaugeConfig_t speedoConfig;
+        QString topSource;
+        QString topUnits;
+    } SpeedoConfig_t;
+
+    typedef struct TachoConfig {
+        qreal maxRpm;
+        qreal redline;
+    } TachoConfig_t ;
+
     /**
      * @brief Constructor
      * @param parent: Parent QObject
@@ -240,6 +281,58 @@ public:
         QObject(parent) {
         mConfig = new QSettings(configPath, QSettings::IniFormat);
         loadConfig();
+
+        mGaugeConfig = new QSettings("/opt/config_gauges.ini", QSettings::IniFormat);
+        loadGaugeConfigs();
+    }
+
+    bool loadGaugeConfigs() {
+        // accessory gauges
+        mGaugeConfigs.insert(BOOST_GAUGE_GROUP, loadGaugeConfig(BOOST_GAUGE_GROUP));
+        mGaugeConfigs.insert(COOLANT_TEMP_GAUGE_GROUP, loadGaugeConfig(COOLANT_TEMP_GAUGE_GROUP));
+        mGaugeConfigs.insert(FUEL_GAUGE_GROUP, loadGaugeConfig(FUEL_GAUGE_GROUP));
+        mGaugeConfigs.insert(OIL_PRESSURE_GAUGE_GROUP, loadGaugeConfig(OIL_PRESSURE_GAUGE_GROUP));
+        mGaugeConfigs.insert(OIL_TEMPERATURE_GAUGE_GROUP, loadGaugeConfig(OIL_TEMPERATURE_GAUGE_GROUP));
+        mGaugeConfigs.insert(VOLTMETER_GAUGE_GROUP, loadGaugeConfig(VOLTMETER_GAUGE_GROUP));
+
+        // speedo
+        mSpeedoGaugeConfig.speedoConfig = loadGaugeConfig(SPEEDOMETER_GAUGE_GROUP);
+        mGaugeConfig->beginGroup(SPEEDOMETER_GAUGE_GROUP);
+        mSpeedoGaugeConfig.topSource = mGaugeConfig->value(TOP_VALUE_SOURCE).toString();
+        mSpeedoGaugeConfig.topUnits = mGaugeConfig->value(TOP_VALUE_UNITS).toString();
+
+        printKeys("Speedometer: ", mGaugeConfig);
+
+        mGaugeConfig->endGroup();
+
+        //tacho
+        mGaugeConfig->beginGroup(TACHOMETER_GAUGE_GROUP);
+        mTachGaugeConfig.maxRpm = mGaugeConfig->value(MAX_RPM).toInt();
+        mTachGaugeConfig.redline = mGaugeConfig->value(REDLINE).toInt();
+
+        printKeys("Tachometer: ", mGaugeConfig);
+
+        mGaugeConfig->endGroup();
+
+        return true;
+    }
+
+    GaugeConfig_t loadGaugeConfig(QString groupName) {
+        mGaugeConfig->beginGroup(groupName);
+
+        GaugeConfig_t conf;
+
+        conf.min = mGaugeConfig->value(MIN_VALUE, "").toReal();
+        conf.max = mGaugeConfig->value(MAX_VALUE, "").toReal();
+        conf.highAlarm = mGaugeConfig->value(HIGH_ALARM, "").toReal();
+        conf.lowAlarm = mGaugeConfig->value(LOW_ALARM, "").toReal();
+        conf.displayUnits = mGaugeConfig->value(GAUGE_UNITS, "").toString();
+
+        printKeys(groupName, mGaugeConfig);
+
+        mGaugeConfig->endGroup();
+
+        return conf;
     }
 
     /**
@@ -256,7 +349,7 @@ public:
             mSensorChannelConfig.insert(key, mConfig->value(key, -1).toInt());
         }
 
-        printKeys("Sensor Channels ");
+        printKeys("Sensor Channels ", mConfig);
 
         mConfig->endGroup();
 
@@ -267,7 +360,7 @@ public:
             mDashLightConfig.insert(key, mConfig->value(key, -1).toInt());
         }
 
-        printKeys("Dash Light Config ");
+        printKeys("Dash Light Config ", mConfig);
 
         mConfig->endGroup();
 
@@ -295,7 +388,7 @@ public:
             }
         }
 
-        printKeys("Map Sensor ");
+        printKeys("Map Sensor ", mConfig);
 
         mConfig->endGroup();
 
@@ -340,7 +433,7 @@ public:
 
             mTempSensorConfigs.append(conf);
 
-            printKeys("Temp Sensor ");
+            printKeys("Temp Sensor ", mConfig);
         }
         mConfig->endArray();
 
@@ -351,7 +444,7 @@ public:
         mTachConfig.maxRpm = mConfig->value(TACH_MAX_RPM, 9000).toInt(); // default rpm is 9000 (a bit aspirational)
         mTachConfig.avgNumSamples = mConfig->value(TACH_AVG_NUM_SAMPLES, 4).toInt(); // default is to average over last 4 tach pulse spacing
 
-        printKeys("Tach Input ");
+        printKeys("Tach Input ", mConfig);
 
         mConfig->endGroup();
 
@@ -391,7 +484,7 @@ public:
             rSensorConf.units = mConfig->value(RES_SENSOR_UNITS, "").toString();
 
             mResistiveSensorConfig.push_back(rSensorConf);
-            printKeys("Resistive Sensor: ");
+            printKeys("Resistive Sensor: ", mConfig);
         }
         mConfig->endArray();
 
@@ -410,7 +503,7 @@ public:
             conf.gainK3 = mConfig->value(ANALOG_INPUT_12V_OPTO_GAIN_K3, "").toReal();
 
             mAnalog12VInputConfig.push_back(conf);
-            printKeys("Analog 12V input: ");
+            printKeys("Analog 12V input: ", mConfig);
         }
         mConfig->endArray();
 
@@ -421,9 +514,9 @@ public:
      * @brief Print all child keys for the current config subgroup
      * @param setting: Group name to output to log
      */
-    void printKeys(QString setting) {
-        for (auto key : mConfig->childKeys()) {
-            qDebug() << setting << key << ": " << mConfig->value(key, "N/A").toStringList();
+    void printKeys(QString setting, QSettings * config) {
+        for (auto key : config->childKeys()) {
+            qDebug() << setting << key << ": " << config->value(key, "N/A").toStringList();
         }
     }
 
@@ -504,6 +597,11 @@ private:
     TachInputConfig_t mTachConfig; //!< Tach signal input configuration
     QList<ResistiveSensorConfig_t> mResistiveSensorConfig;
     QList<Analog12VInputConfig_t> mAnalog12VInputConfig;
+
+    QSettings * mGaugeConfig = nullptr;
+    QMap<QString, GaugeConfig_t> mGaugeConfigs;
+    SpeedoConfig_t mSpeedoGaugeConfig;
+    TachoConfig_t mTachGaugeConfig;
 
     /**
      * @brief Check that values are valid in a map

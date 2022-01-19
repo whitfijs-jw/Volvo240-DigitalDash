@@ -122,13 +122,11 @@ signals:
     void stop();
 
 public slots:
-    void update() {
-        QList<QVariant> vals;
+    void updateAll() {
         // add the last data points
         for (auto key : mLastData.keys()) {
-            vals.push_back(mLastData.value(key, ""));
+            update((int) key);
         }
-        emit dataReady(vals);
     }
 
     void update(int channel) {

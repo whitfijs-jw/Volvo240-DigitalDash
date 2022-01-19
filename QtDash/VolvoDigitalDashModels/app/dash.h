@@ -26,8 +26,6 @@
 
 #include <sensor_source_gps.h>
 #include <sensor_source_tach.h>
-#include <gauge_speedo.h>
-#include <gauge_tach.h>
 
 
 /**
@@ -179,15 +177,6 @@ private:
         mTachModel.setRedLine(redLine);
         mTachModel.setRpm(0);
 
-        TachSource * s = new TachSource(this->parent(), &mConfig);
-        Tachometer * t = new Tachometer(this->parent(), &mConfig, s, &mTachModel);
-
-        // hook up tach update
-        QObject::connect(
-                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::FAST_TIMER)),
-                    SIGNAL(QTimer::timeout),
-                    s,
-                    SLOT(SensorSource::update));
 
         // hookup c++ model to qml
         mContext->setContextProperty(TACH_MODEL_NAME, &mTachModel);
@@ -209,9 +198,6 @@ private:
         mSpeedoModel.setCurrentValue(0);
         mSpeedoModel.setTopValue(0);
         mSpeedoModel.setTopUnits(topUnits); // "°F"
-
-        GpsSource * s = new GpsSource(this->parent(), &mConfig);
-        Speedometer * sp = new Speedometer(this->parent(), &mConfig, s, &mSpeedoModel);
 
         // hookup c++ model to qml model
         mContext->setContextProperty(SPEEDO_MODEL_NAME, &mSpeedoModel);

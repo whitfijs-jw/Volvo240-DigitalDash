@@ -17,6 +17,7 @@
 
 #include <sensor_source_adc.h>
 #include <sensor_map.h>
+#include <sensor_ntc.h>
 
 class DashNew : public QObject {
     Q_OBJECT
@@ -50,10 +51,16 @@ public:
 
         QObject::connect(
                     mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::FAST_TIMER)),
-                    SIGNAL(QTimer::timeout),
-                    mAdcSource,
-                    SLOT(AdcSource::update(mMapSensor->getChannel()))
-                    );
+                    &QTimer::timeout,
+                    [=]() {
+            mAdcSource->update(mMapSensor->getChannel());
+        });
+
+        QObject::connect(
+                    mMapSensor, &Sensor::sensorDataReady,
+                    [=](QVariant data) {
+            mBoostModel.setCurrentValue(data.toReal());
+        });
 
         mBoostModel.setMinValue(-20.0);
         mBoostModel.setMaxValue(30.0);
@@ -77,6 +84,9 @@ private:
 
     AdcSource * mAdcSource;
     Map_Sensor * mMapSensor;
+    NtcSensor * mCoolantTempSensor;
+    NtcSensor * mAmbientTempSensor;
+    NtcSensor * mOilTempSensor;
 
     AccessoryGaugeModel mBoostModel;
 };

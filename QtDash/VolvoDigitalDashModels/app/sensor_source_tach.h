@@ -35,16 +35,13 @@ public:
     }
 
 public slots:
-    void update() {
-        QList<QVariant> vals;
-        vals.push_back(getValue(0));
-
-        emit dataReady(vals);
+    void updateAll() {
+        emit dataReady(getValue(0), 0);
     }
 
     void update(int channel) {
         (void) channel;
-        update();
+        updateAll();
     }
 
 private:

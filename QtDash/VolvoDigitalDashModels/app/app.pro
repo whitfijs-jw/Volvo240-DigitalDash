@@ -413,9 +413,6 @@ HEADERS += \
     dash_new.h \
     event_timers.h \
     gauge.h \
-    gauge_coolant_temperature.h \
-    gauge_speedo.h \
-    gauge_tach.h \
     gps_helper.h \
     indicator_model.h \
     map_sensor.h \

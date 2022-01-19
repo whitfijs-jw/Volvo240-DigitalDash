@@ -27,12 +27,11 @@ public:
     }
 
 public slots:
-    void update() {
-        QList<QVariant> vals;
+    void updateAll() {
         for (int i = 0; i < mAdc.getNumChannels(); i++) {
-            vals.push_back(mAdc.readValue(i));
+            update(i);
         }
-        emit dataReady(vals);
+
     }
 
     void update(int channel) {

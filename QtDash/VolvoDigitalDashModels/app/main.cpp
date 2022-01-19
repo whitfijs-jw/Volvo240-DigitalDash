@@ -9,6 +9,7 @@
 
 #ifdef RASPBERRY_PI
 #include <dash.h>
+#include <dash_new.h>
 #else
 #include <dash_host.h>
 #endif
@@ -29,7 +30,8 @@ int main(int argc, char *argv[])
 
     // Initialize Dash
 #ifdef RASPBERRY_PI
-    Dash * dash = new Dash(&app, ctxt);
+    //Dash * dash = new Dash(&app, ctxt);
+    DashNew * dash = new DashNew(&app, ctxt);
 #else
     DashHost * dash = new DashHost(&app, ctxt);
 #endif

@@ -18,13 +18,13 @@ public:
                     );
     }
 
+
+
 public slots:
     void transform(QVariant data, int channel) override {
         qreal volts = data.toReal();
-        emit sensorDataReady(
-                    mMapSensor->getAbsolutePressure(
-                        volts, Config::PressureUnits::PSI)
-                    );
+        qreal pressure = mMapSensor->getAbsolutePressure(volts, Config::PressureUnits::PSI) - 14.5038;
+        emit sensorDataReady(pressure);
     }
 
 private:

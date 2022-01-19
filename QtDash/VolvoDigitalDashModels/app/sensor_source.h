@@ -20,11 +20,10 @@ public:
     };
 
 signals:
-    void dataReady(QList<QVariant> data);
     void dataReady(QVariant data, int channel);
 
 public slots:
-    virtual void update() = 0;
+    virtual void updateAll() = 0;
     virtual void update(int channel) = 0;
 
 protected:

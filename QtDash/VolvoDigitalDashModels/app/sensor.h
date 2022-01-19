@@ -12,13 +12,19 @@ public:
            SensorSource * source, int channel) :
     QObject(parent), mConfig(config), mSource(source),
     mChannel(channel) {
+//        QObject::connect(
+//                    mSource, &SensorSource::dataReady,
+//                    [=](QVariant data, int channel){
+//            this->transform(data, channel);
+//        });
 
+        QObject::connect(
+                    mSource, &SensorSource::dataReady,
+                    this, &Sensor::transform);
     }
 
     virtual void init() {
-        QObject::connect(
-                    mSource, SIGNAL(SensorSource::dataReady(QVariant, int)),
-                    this, SLOT(transform(QVariant, int)));
+
     }
 
     int getChannel() {

@@ -30,7 +30,7 @@ class GpioSource : public SensorSource {
     }
 
 public slots:
-    void update() {
+    void updateAll() {
         uint16_t inputs = getInputs();
         QList<QVariant> vals;
         for (int i = 0; i < mInputs.getNumChannels(); i++) {
