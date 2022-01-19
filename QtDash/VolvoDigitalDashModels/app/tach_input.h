@@ -68,6 +68,32 @@ public:
         }
     }
 
+    int getTachPulseCount() {
+        std::string fullPath = mPath + PULSE_COUNT_ATTR;
+        std::ifstream ifs(fullPath, std::ios::in);
+        if (!ifs.is_open()) {
+            std::cout << "Error opening pulse count file" << std::endl;
+            return -1.0;
+        }
+
+        std::string val;
+        std::getline(ifs, val);
+        ifs.close();
+
+        int count = 0;
+        try {
+            count = std::stoi(val);
+        } catch (std::invalid_argument& e) {
+            std::cout << "tach input, invalid argument -- count will be 0" << std::endl;
+        } catch (std::out_of_range& e) {
+            std::cout << "tach input, out of range -- count will be 0" << std::endl;
+        } catch (...) {
+            std::cout << "tach input, other exception -- count will be 0" << std::endl;
+        }
+
+        return count;
+    }
+
     /**
      * @brief Set the max rpm
      * @param rpm: RPM to be the new max

@@ -9,6 +9,7 @@
 
 #ifdef RASPBERRY_PI
 #include <dash.h>
+#include <dash_new.h>
 #else
 #include <dash_host.h>
 #endif
@@ -27,18 +28,21 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     QQmlContext * ctxt = engine.rootContext();
 
+    // load main.qml
+    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
+    if (engine.rootObjects().isEmpty())
+        return -1;
+
     // Initialize Dash
 #ifdef RASPBERRY_PI
-    Dash * dash = new Dash(&app, ctxt);
+    //Dash * dash = new Dash(&app, ctxt); //old style dash
+    DashNew * dash = new DashNew(&app, ctxt); // new scheme with sensor source -> sensor -> gauge -> model
 #else
     DashHost * dash = new DashHost(&app, ctxt);
 #endif
     dash->init();
 
-    // load main.qml
-    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
-    if (engine.rootObjects().isEmpty())
-        return -1;
+
 
     // connect quit
     QObject::connect(&engine, SIGNAL(quit()), &app, SLOT(quit()));

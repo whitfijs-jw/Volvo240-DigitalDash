@@ -10,6 +10,8 @@
 #include <adc.h>
 #include <ntc.h>
 #include <map_sensor.h>
+#include <sensor_utils.h>
+#include <analog_12v_input.h>
 
 class AnalogSensors : public QObject {
     Q_OBJECT
@@ -28,16 +30,39 @@ public:
                 } else if (config.type == Config::TemperatureSensorType::AMBIENT) {
                     mAmbientTempSensor = new Ntc(config);
                 } else {
-                    qDebug() << "Sensor type not supported.  Check config.ini file";
+                    qDebug() << "Temperature Sensor type not supported.  Check config.ini file";
                 }
             } else {
-                qDebug() << "Sensor Config is not valid: " << QString((int)config.type) << " Check config.ini file";
+                qDebug() << "Temperature Sensor Config is not valid: " << QString((int)config.type) << " Check config.ini file";
             }
         }
 
-        // setup oil pressure sensor
+        mOilPressureSensor = conf->getResistiveSensorConfig(
+                    Config::RES_SENSOR_TYPE_OIL_PRESSURE);
+        if (mOilPressureSensor.fitType == Config::ResistiveSensorType::POLYNOMIAL) {
+            mOilPressureSensor.coeff = SensorUtils::polynomialRegression(
+                        mOilPressureSensor.x,
+                        mOilPressureSensor.y,
+                        mOilPressureSensor.order
+                        );
+        }
 
-        // setup fuel level gauge
+        mFuelLevelSensor = conf->getResistiveSensorConfig(
+                    Config::RES_SENSOR_TYPE_FUEL_LEVEL);
+        if (mFuelLevelSensor.fitType == Config::ResistiveSensorType::POLYNOMIAL) {
+            mFuelLevelSensor.coeff = SensorUtils::polynomialRegression(
+                        mOilPressureSensor.x,
+                        mOilPressureSensor.y,
+                        mOilPressureSensor.order
+                        );
+        }
+
+        // setup voltmeter and rheostat voltage
+        mVoltmeter = new Analog12VInput(
+                    conf->getAnalog12VInputConfig(Config::ANALOG_INPUT_12V_VOLTMETER));
+
+        mRheostat = new Analog12VInput(
+                    conf->getAnalog12VInputConfig(Config::ANALOG_INPUT_12V_RHEOSTAT));
 
         // setup map sensor
         mMapSensor = new MapSensor(
@@ -71,7 +96,8 @@ public slots:
 
         // oil pressure
         qreal oilPressureVolts = mAnalogInputs.readValue(sensorConf.value(Config::OIL_PRESSURE_KEY));
-        qreal oilPressure = oilPressureVolts; // TODO: replace with real sensor calculation
+        qreal oilPRes = SensorUtils::getResistance(oilPressureVolts, 5.0, mOilPressureSensor.rBalance);
+        qreal oilPressure = SensorUtils::polynomialValue(oilPRes, mOilPressureSensor.coeff);
         emit oilPressureUpdate(oilPressure, Config::PressureUnits::BAR);
     }
 
@@ -80,7 +106,14 @@ public slots:
 
         // volt meter
         qreal volts = mAnalogInputs.readValue(sensorConf.value(Config::FUSE8_12V_KEY));
-        emit voltMeterUpdate(volts); // TODO: replace with real calculation
+        qreal voltMeterVolts = mVoltmeter->getVoltage(volts);
+        emit voltMeterUpdate(voltMeterVolts);
+
+        //rheostat voltage (maybe use for screen dimming?)
+        qreal rheoVolts = mAnalogInputs.readValue(sensorConf.value(Config::DIMMER_VOLTAGE_KEY));
+        qreal rheoFullVolts = mRheostat->getVoltage(rheoVolts);
+        // TODO: hook this up somewhere?
+        (void)rheoFullVolts;
 
         // oil temp
         qreal oilVolts = mAnalogInputs.readValue(sensorConf.value(Config::OIL_TEMP_KEY));
@@ -89,7 +122,8 @@ public slots:
 
         // fuel level
         qreal fuelVolts = mAnalogInputs.readValue(sensorConf.value(Config::FUEL_LEVEL_KEY));
-        qreal fuelLevel = (fuelVolts / 5.0) * 100.0; // TODO: replace with real sensor calculation
+        qreal fuelRes = SensorUtils::getResistance(fuelVolts, 5.0, mFuelLevelSensor.rBalance);
+        qreal fuelLevel = SensorUtils::polynomialValue(fuelRes, mFuelLevelSensor.coeff);
         emit fuelLevelUpdate(fuelLevel);
 
         qreal coolantTempVolts = mAnalogInputs.readValue(sensorConf.value(Config::COOLANT_TEMP_KEY));
@@ -110,6 +144,13 @@ private:
     Ntc * mOilTempSensor;
     Ntc * mAmbientTempSensor;
     MapSensor * mMapSensor;
+    Config::ResistiveSensorConfig_t mOilPressureSensor;
+    Config::ResistiveSensorConfig_t mFuelLevelSensor;
+    Config::Analog12VInputConfig_t mVoltMeterInput;
+    Analog12VInput * mVoltmeter;
+    Analog12VInput * mRheostat;
+
+
 };
 
 #endif // ANALOG_SENSORS_H

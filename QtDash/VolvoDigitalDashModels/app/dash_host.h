@@ -17,6 +17,7 @@
 #include <gps_helper.h>
 #include <dash_lights.h>
 #include <event_timers.h>
+#include <sensor_utils.h>
 
 /**
  * @brief Class for initializing, linking and updating gauge models
@@ -43,7 +44,7 @@ public:
      * @param context: qml context to link the gauge models to their respective c++ model
      */
     DashHost(QObject * parent, QQmlContext * context) :
-        QObject(parent), mContext(context), mEventTiming(parent), mConfig(parent) {
+        QObject(parent), mContext(context), mEventTiming(parent), mConfig(parent, "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config.ini") {
 
         // populate accessory gauge model map
         mAccessoryGaugeModelMap.insert(COOLANT_TEMP_MODEL_NAME, &mCoolantTempModel);
@@ -109,11 +110,6 @@ public slots:
         rpmFile.open(QIODevice::ReadOnly);
         battFile.open(QIODevice::ReadOnly);
         fuelFile.open(QIODevice::ReadOnly);
-
-        //dashLightInputs.openDevice();
-        uint8_t portA = 0xAA;//dashLightInputs.read(mcp23017::RegisterAddr::GPIOA);
-        uint8_t portB = 0x0F;//dashLightInputs.read(mcp23017::RegisterAddr::GPIOB);
-        //dashLightInputs.closeDevice();
 
         if(tempFile.isOpen())
         {

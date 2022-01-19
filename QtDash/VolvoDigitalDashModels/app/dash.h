@@ -23,6 +23,11 @@
 #include <event_timers.h>
 #include <analog_sensors.h>
 
+
+#include <sensor_source_gps.h>
+#include <sensor_source_tach.h>
+
+
 /**
  * @brief Class for initializing, linking and updating gauge models
  */
@@ -89,12 +94,6 @@ public:
 
 signals:
 public slots:
-    /**
-     * @brief Update tachometer model
-     */
-    void updateTach() {
-        mTachModel.setRpm(mTachInput->getRpm());
-    }
 private:
     /**
      * @brief Initialize event timer
@@ -108,13 +107,13 @@ private:
                     &DashLights::update
                     );
 
-        // hook up tach update
-        QObject::connect(
-                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::FAST_TIMER)),
-                    &QTimer::timeout,
-                    this,
-                    &Dash::updateTach
-                    );
+//        // hook up tach update
+//        QObject::connect(
+//                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::FAST_TIMER)),
+//                    &QTimer::timeout,
+//                    this,
+//                    &Dash::updateTach
+//                    );
         // hook up analog sensor updates that don't need 10Hz updates
         QObject::connect(
                     mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
@@ -178,8 +177,6 @@ private:
         mTachModel.setRedLine(redLine);
         mTachModel.setRpm(0);
 
-        // init tach input
-        mTachInput = new TachInput(mConfig.getTachInputConfig());
 
         // hookup c++ model to qml
         mContext->setContextProperty(TACH_MODEL_NAME, &mTachModel);
@@ -201,15 +198,6 @@ private:
         mSpeedoModel.setCurrentValue(0);
         mSpeedoModel.setTopValue(0);
         mSpeedoModel.setTopUnits(topUnits); // "°F"
-
-        // init speedo input
-        mGpsHelper = new GpsHelper(this->parent());
-        QObject::connect(mGpsHelper, SIGNAL(speedUpdateMilesPerHour(qreal)),
-                         &mSpeedoModel, SLOT(setCurrentValue(qreal)));
-
-        QObject::connect(this->parent(), SIGNAL(lastWindowClosed()), mGpsHelper, SLOT(close()));
-
-        mGpsHelper->init();
 
         // hookup c++ model to qml model
         mContext->setContextProperty(SPEEDO_MODEL_NAME, &mSpeedoModel);
@@ -306,9 +294,7 @@ private:
     QMap<QString, AccessoryGaugeModel*> mAccessoryGaugeModelMap;
 
     // Inputs
-    GpsHelper * mGpsHelper;
     AnalogSensors * mSensors;
-    TachInput * mTachInput;
 
     // Timing
     EventTimers mEventTiming;

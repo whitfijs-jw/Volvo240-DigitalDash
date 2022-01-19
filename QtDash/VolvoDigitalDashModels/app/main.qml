@@ -664,7 +664,7 @@ Window {
                 item.maxValue = gaugeMax
                 item.units = gaugeUnits
                 item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeMin
+                item.lowAlarm = gaugeLowAlarm
 
                 item.minAngle = -115
                 item.maxAngle = -65

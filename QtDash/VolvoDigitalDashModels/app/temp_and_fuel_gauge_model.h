@@ -16,6 +16,8 @@ class TempAndFuelGaugeModel : public QAbstractListModel
     Q_PROPERTY(qreal lowFuelAlarm READ lowFuelAlarm WRITE setLowFuelAlarm NOTIFY lowFuelAlarmChanged)
 
 public:
+    static constexpr char TEMP_FUEL_CLUSTER_MODEL_NAME[] = "tempFuelModel";
+
     enum TempAndFuelGaugeModelRoles {
         MaxTempRole         = Qt::UserRole + 1,
         MinTempRole         = Qt::UserRole + 2,

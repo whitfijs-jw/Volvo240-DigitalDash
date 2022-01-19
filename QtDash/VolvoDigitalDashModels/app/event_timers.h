@@ -12,7 +12,8 @@ class EventTimers : public QObject{
     Q_OBJECT
 
 public:
-    static constexpr int FAST_TIMER_TIMEOUT_MSEC = 100; //!< fast time timeout
+    static constexpr int VERY_FAST_TIMER_TIMEOUT_MSEC = 50; //!< very fast timer timeout
+    static constexpr int FAST_TIMER_TIMEOUT_MSEC = 100; //!< fast timer timeout
     static constexpr int MEDIUM_TIMER_TIMEOUT_MSEC = 250; //!< medium timer timeout
     static constexpr int SLOW_TIMER_TIMEOUT_MSEC = 500; //!< slow timer timeout
 
@@ -20,7 +21,8 @@ public:
      * @brief Default timer values
      */
     enum class DataTimers{
-        FAST_TIMER = 0,
+        VERY_FAST_TIMER = 0,
+        FAST_TIMER,
         MEDIUM_TIMER,
         SLOW_TIMER,
     };
@@ -31,6 +33,7 @@ public:
      */
     EventTimers(QObject * parent) : QObject(parent) {
         // Add the default timers
+        addTimer(static_cast<int>(DataTimers::VERY_FAST_TIMER), VERY_FAST_TIMER_TIMEOUT_MSEC);
         addTimer(static_cast<int>(DataTimers::FAST_TIMER), FAST_TIMER_TIMEOUT_MSEC);
         addTimer(static_cast<int>(DataTimers::MEDIUM_TIMER), MEDIUM_TIMER_TIMEOUT_MSEC);
         addTimer(static_cast<int>(DataTimers::SLOW_TIMER), MEDIUM_TIMER_TIMEOUT_MSEC);
