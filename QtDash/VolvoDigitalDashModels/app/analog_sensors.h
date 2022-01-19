@@ -37,31 +37,24 @@ public:
             }
         }
 
-        QList<Config::ResistiveSensorConfig_t> resSensorConfig = conf->getResistiveSensorConfig();
-        for (Config::ResistiveSensorConfig_t config : resSensorConfig) {
-            if (config.isValid()) {
-                if (config.type == Config::RES_SENSOR_TYPE_OIL_PRESSURE) {
-                    mOilPressureSensor = config;
-                    if (config.fitType == Config::ResistiveSensorType::POLYNOMIAL) {
-                        mOilPressureSensor.coeff = SensorUtils::polynomialRegression(
-                                    mOilPressureSensor.x,
-                                    mOilPressureSensor.y,
-                                    mOilPressureSensor.order
-                                    );
-                    }
-                } else if (config.type == Config::RES_SENSOR_TYPE_FUEL_LEVEL) {
-                    mFuelLevelSensor = config;
-                    if (config.fitType == Config::ResistiveSensorType::POLYNOMIAL) {
-                        mFuelLevelSensor.coeff = SensorUtils::polynomialRegression(
-                                    mFuelLevelSensor.x,
-                                    mFuelLevelSensor.y,
-                                    mFuelLevelSensor.order
-                                    );
+        mOilPressureSensor = conf->getResistiveSensorConfig(
+                    Config::RES_SENSOR_TYPE_OIL_PRESSURE);
+        if (mOilPressureSensor.fitType == Config::ResistiveSensorType::POLYNOMIAL) {
+            mOilPressureSensor.coeff = SensorUtils::polynomialRegression(
+                        mOilPressureSensor.x,
+                        mOilPressureSensor.y,
+                        mOilPressureSensor.order
+                        );
+        }
 
-                        qDebug() << "Fuel Coeff: " << mFuelLevelSensor.x.length() << " " << mFuelLevelSensor.y.length();
-                    }
-                }
-            }
+        mFuelLevelSensor = conf->getResistiveSensorConfig(
+                    Config::RES_SENSOR_TYPE_FUEL_LEVEL);
+        if (mFuelLevelSensor.fitType == Config::ResistiveSensorType::POLYNOMIAL) {
+            mFuelLevelSensor.coeff = SensorUtils::polynomialRegression(
+                        mOilPressureSensor.x,
+                        mOilPressureSensor.y,
+                        mOilPressureSensor.order
+                        );
         }
 
         // setup voltmeter and rheostat voltage

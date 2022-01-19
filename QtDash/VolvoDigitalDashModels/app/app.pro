@@ -422,6 +422,7 @@ HEADERS += \
     sensor.h \
     sensor_map.h \
     sensor_ntc.h \
+    sensor_resistive.h \
     sensor_source.h \
     sensor_source_adc.h \
     sensor_source_gpio.h \

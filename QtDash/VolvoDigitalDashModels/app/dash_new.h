@@ -19,6 +19,7 @@
 #include <sensor_map.h>
 #include <sensor_ntc.h>
 #include <sensor_voltmeter.h>
+#include <sensor_resistive.h>
 
 #include <gauge_accessory.h>
 
@@ -103,6 +104,33 @@ public:
         });
 
         // oil pressure sensor
+        mOilPressureSensor = new ResistiveSensor(
+                    this->parent(), &mConfig, mAdcSource,
+                    mConfig.getSensorConfig().value(Config::OIL_PRESSURE_KEY),
+                    mConfig.getResistiveSensorConfig(Config::RES_SENSOR_TYPE_OIL_PRESSURE)
+                    );
+
+        QObject::connect(
+                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::FAST_TIMER)),
+                    &QTimer::timeout,
+                    [=]() {
+            mAdcSource->update(mOilPressureSensor->getChannel());
+        });
+
+        //fuel level sensor
+        mFuelLevelSensor = new ResistiveSensor(
+                    this->parent(), &mConfig, mAdcSource,
+                    mConfig.getSensorConfig().value(Config::FUEL_LEVEL_KEY),
+                    mConfig.getResistiveSensorConfig(Config::RES_SENSOR_TYPE_FUEL_LEVEL)
+                    );
+
+        QObject::connect(
+                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
+                    &QTimer::timeout,
+                    [=]() {
+            mAdcSource->update(mFuelLevelSensor->getChannel());
+        });
+
 
         // voltmeter
         mVoltmeterSensor = new VoltmeterSensor(
@@ -117,6 +145,8 @@ public:
                     [=]() {
             mAdcSource->update(mVoltmeterSensor->getChannel());
         });
+
+
     }
 
     void initAccessoryGauges() {
@@ -148,6 +178,22 @@ public:
                     &mVoltMeterModel, AccessoryGaugeModel::VOLT_METER_MODEL_NAME,
                     mContext
                     );
+
+        // fuel level (acc gauge)
+        QList<Sensor *> fuelGaugeSensors = {mFuelLevelSensor};
+        mFuelLevelGauge = new AccessoryGauge(
+                    this->parent(), &mConfig, fuelGaugeSensors,
+                    &mFuelLevelModel, AccessoryGaugeModel::FUEL_LEVEL_MODEL_NAME,
+                    mContext
+                    );
+
+        // oil pressure gauge
+        QList<Sensor *> oilPressureSensors = {mOilPressureSensor};
+        mOilPressureGauge = new AccessoryGauge(
+                    this->parent(), &mConfig, oilPressureSensors,
+                    &mOilPressureModel, AccessoryGaugeModel::OIL_PRESSURE_MODEL_NAME,
+                    mContext
+                    );
     }
 
     void init() {
@@ -171,12 +217,13 @@ private:
     NtcSensor * mAmbientTempSensor;
     NtcSensor * mOilTempSensor;
     VoltmeterSensor * mVoltmeterSensor;
+    ResistiveSensor * mOilPressureSensor;
+    ResistiveSensor * mFuelLevelSensor;
 
     AccessoryGaugeModel mBoostModel;
-    AccessoryGaugeModel mOilPressureModel;
     AccessoryGaugeModel mOilTemperatureModel;
     AccessoryGaugeModel mCoolantTempModel;
-
+    AccessoryGaugeModel mOilPressureModel;
     AccessoryGaugeModel mFuelLevelModel;
     AccessoryGaugeModel mVoltMeterModel;
 
@@ -184,6 +231,8 @@ private:
     AccessoryGauge * mCoolantTempGauge;
     AccessoryGauge * mOilTempGauge;
     AccessoryGauge * mVoltmeterGauge;
+    AccessoryGauge * mOilPressureGauge;
+    AccessoryGauge * mFuelLevelGauge;
 };
 
 #endif // DASH_NEW_H

@@ -483,7 +483,7 @@ public:
 
             rSensorConf.units = mConfig->value(RES_SENSOR_UNITS, "").toString();
 
-            mResistiveSensorConfig.push_back(rSensorConf);
+            mResistiveSensorConfig.insert(rSensorConf.type, rSensorConf);
             printKeys("Resistive Sensor: ", mConfig);
         }
         mConfig->endArray();
@@ -576,8 +576,9 @@ public:
         return isMapConfigValid(&mDashLightConfig);
     }
 
-    QList<ResistiveSensorConfig_t> getResistiveSensorConfig() {
-        return mResistiveSensorConfig;
+    ResistiveSensorConfig_t getResistiveSensorConfig(QString name) {
+        ResistiveSensorConfig_t empty;
+        return mResistiveSensorConfig.value(name, empty);
     }
 
     Analog12VInputConfig_t getAnalog12VInputConfig(QString name) {
@@ -601,7 +602,7 @@ private:
     MapSensorConfig_t mMapSensorConfig; //!< MAP sensor configuration
     QList<TempSensorConfig_t> mTempSensorConfigs; //!< Temp sensor configurations
     TachInputConfig_t mTachConfig; //!< Tach signal input configuration
-    QList<ResistiveSensorConfig_t> mResistiveSensorConfig;
+    QMap<QString, ResistiveSensorConfig_t> mResistiveSensorConfig;
     QMap<QString, Analog12VInputConfig_t> mAnalog12VInputConfig;
 
     QSettings * mGaugeConfig = nullptr;
