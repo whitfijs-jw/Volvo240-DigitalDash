@@ -3,41 +3,24 @@
 
 #include <gauge.h>
 #include <tachometer_model.h>
-#include <sensor_source_tach.h>
 
-class Tachometer : public Gauge {
+class TachometerGauge : public Gauge {
 public:
-    Tachometer(QObject * parent, Config * config,
-               TachSource * source, TachometerModel * model) :
-               Gauge(parent, config, source, model) {
+    TachometerGauge(QObject * parent, Config * config, QList<Sensor *> sensors,
+                   TachometerModel * model, QString modelName, QQmlContext * context) :
+    Gauge(parent, config, sensors, model, modelName, context) {
 
-    }
+        // get config
+        Config::TachoConfig_t gaugeConfig = mConfig->getTachGaugeConfig();
 
-    bool init() {
-        mSource->init();
-        QObject::connect(mSource, SIGNAL(SensorSource::dataReady),
-                         this, SLOT(Gauge::update));
+        ((TachometerModel *)mModel)->setMaxRpm(gaugeConfig.maxRpm);
+        ((TachometerModel *)mModel)->setRedLine(gaugeConfig.redline);
 
-        return true;
-    }
-
-public slots:
-    void update(QList<QVariant> data) {
-        if (data.length() > 0) {
-            int rpm = data.at(0).toInt();
-            updateRpm(rpm);
-        }
-    }
-
-    void update(QVariant data, int channel) {
-        if (channel == (int)TachSource::TachDataChannel::RPM_CHANNEL) {
-            updateRpm(data.toInt());
-        }
-    }
-
-private:
-    void updateRpm(int rpm) {
-        ((TachometerModel)mModel).setRpm(rpm);
+        QObject::connect(
+                    sensors.at(0), &Sensor::sensorDataReady,
+                    [=](QVariant data) {
+            ((TachometerModel *)mModel)->setRpm(data.toInt());
+        });
     }
 };
 

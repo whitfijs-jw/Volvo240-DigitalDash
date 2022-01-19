@@ -5,13 +5,14 @@
 #include <adc.h>
 
 class AdcSource : public SensorSource {
+    Q_OBJECT
 public:
     AdcSource(QObject * parent, Config * config, QString name = "adc") :
         SensorSource(parent, config, name) {
     }
 
     bool init() {
-
+        return true;
     }
 
     int getNumChannels() {
@@ -23,6 +24,7 @@ public:
     }
 
     QString getUnits(int channel) {
+        (void)channel;
         return "volts";
     }
 

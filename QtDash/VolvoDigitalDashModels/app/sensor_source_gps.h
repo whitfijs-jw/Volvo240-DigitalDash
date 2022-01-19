@@ -16,6 +16,7 @@
 #include <QtMath>
 
 class GpsSource : public SensorSource {
+    Q_OBJECT
 public:
     /**
      * @brief cardinal directions
@@ -79,8 +80,8 @@ public:
 
                 source->startUpdates();
 
-                QObject::connect(this, SIGNAL(stop()),
-                                 source, SLOT(stopUpdates()));
+                QObject::connect(this, &GpsSource::stop,
+                                 source, &QNmeaPositionInfoSource::stopUpdates);
             }
         }
 

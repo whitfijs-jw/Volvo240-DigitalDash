@@ -12,6 +12,8 @@ class TachometerModel : public QAbstractListModel
     Q_PROPERTY(int maxRpm READ maxRpm WRITE setMaxRpm NOTIFY maxRpmChanged)
 
 public:
+    static constexpr char TACH_MODEL_NAME[] = "rpmModel";
+
     enum TachometerRoles {
         RpmRole     = Qt::UserRole + 1,
         RedLineRole = Qt::UserRole + 2,

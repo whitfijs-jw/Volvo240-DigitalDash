@@ -5,6 +5,7 @@
 #include <mcp23017.h>
 
 class GpioSource : public SensorSource {
+    Q_OBJECT
     GpioSource(QObject * parent, Config * config, QString name = "gpio") :
         SensorSource(parent, config, name) {
 
@@ -32,11 +33,9 @@ class GpioSource : public SensorSource {
 public slots:
     void updateAll() {
         uint16_t inputs = getInputs();
-        QList<QVariant> vals;
         for (int i = 0; i < mInputs.getNumChannels(); i++) {
-            vals.push_back(bitValue(inputs, i));
+            emit dataReady(bitValue(inputs, i), i);
         }
-        emit dataReady(vals);
     }
 
     void update(int channel) {

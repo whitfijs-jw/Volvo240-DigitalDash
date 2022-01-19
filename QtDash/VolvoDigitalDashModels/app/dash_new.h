@@ -14,18 +14,24 @@
 
 #include <config.h>
 #include <event_timers.h>
+#include <dash_lights.h>
 
 #include <sensor_source_adc.h>
 #include <sensor_source_gps.h>
+#include <sensor_source_tach.h>
 
 #include <sensor_map.h>
 #include <sensor_ntc.h>
 #include <sensor_voltmeter.h>
 #include <sensor_resistive.h>
 #include <sensor_speedo.h>
+#include <sensor_tach.h>
 
 #include <gauge_accessory.h>
 #include <gauge_speedo.h>
+#include <gauge_tach.h>
+#include <gauge_temp_fuel_cluster.h>
+
 
 class DashNew : public QObject {
     Q_OBJECT
@@ -53,6 +59,7 @@ public:
     void initSensorSources() {
         mAdcSource = new AdcSource(this->parent(), &mConfig);
         mGpsSource = new GpsSource(this->parent(), &mConfig);
+        mTachSource = new TachSource(this->parent(), &mConfig);
     }
 
     void initSensors() {
@@ -154,8 +161,19 @@ public:
         // speedometer
         mSpeedoSensor = new SpeedometerSensor(
                     this->parent(), &mConfig, mGpsSource,
-                    (int) GpsSource::GpsDataChannel::SPEED_MILES_PER_HOUR
-                    );
+                    (int) GpsSource::GpsDataChannel::SPEED_MILES_PER_HOUR);
+
+        // tacho
+        mTachSensor = new TachSensor(
+                    this->parent(), &mConfig, mTachSource,
+                    (int) TachSource::TachDataChannel::RPM_CHANNEL);
+
+        QObject::connect(
+                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::VERY_FAST_TIMER)),
+                    &QTimer::timeout,
+                    [=]() {
+            mTachSource->update((int) TachSource::TachDataChannel::RPM_CHANNEL);
+        });
     }
 
     void initAccessoryGauges() {
@@ -203,6 +221,14 @@ public:
                     &mOilPressureModel, AccessoryGaugeModel::OIL_PRESSURE_MODEL_NAME,
                     mContext
                     );
+
+        //temp and fuel cluster
+        QList<Sensor *> tempAndFuelSensors = {mCoolantTempSensor, mFuelLevelSensor};
+        mTempFuelClusterGauge = new TempFuelClusterGauge(
+                    this->parent(), &mConfig, tempAndFuelSensors,
+                    &mTempFuelModel, TempAndFuelGaugeModel::TEMP_FUEL_CLUSTER_MODEL_NAME,
+                    mContext
+                    );
     }
 
     void initSpeedo() {
@@ -215,11 +241,51 @@ public:
                     );
     }
 
+    void initTacho() {
+        QList<Sensor *> tachSensors = {mTachSensor};
+        mTachoGauge = new TachometerGauge(
+                    this->parent(), &mConfig, tachSensors,
+                    &mTachoModel, TachometerModel::TACH_MODEL_NAME,
+                    mContext
+                    );
+    }
+
+    void initDashLights() {
+        // init models
+        mDashLights = new DashLights(this->parent(), mConfig.getDashLightConfig());
+        mDashLights->init();
+
+        // hook up models in QML context
+        for (auto modelName : mDashLights->getWarningLightModels()->keys()) {
+            mContext->setContextProperty(
+                        modelName,
+                        mDashLights->getWarningLightModels()->value(modelName));
+        }
+
+        // Connect indicator models to qml
+        for (auto modelName : mDashLights->getIndicatorModels()->keys()) {
+            mContext->setContextProperty(
+                        modelName,
+                        mDashLights->getIndicatorModels()->value(modelName));
+        }
+
+        // hook up dash light timing
+        QObject::connect(
+                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
+                    &QTimer::timeout,
+                    mDashLights,
+                    &DashLights::update
+                    );
+    }
+
     void init() {
         initSensorSources();
         initSensors();
         initAccessoryGauges();
         initSpeedo();
+        initTacho();
+
+        initDashLights();
     }
 
     void start() {
@@ -231,8 +297,11 @@ private:
     EventTimers mEventTiming;
     Config mConfig;
 
+    DashLights * mDashLights;
+
     AdcSource * mAdcSource;
     GpsSource * mGpsSource;
+    TachSource * mTachSource;
 
     Map_Sensor * mMapSensor;
     NtcSensor * mCoolantTempSensor;
@@ -242,6 +311,7 @@ private:
     ResistiveSensor * mOilPressureSensor;
     ResistiveSensor * mFuelLevelSensor;
     SpeedometerSensor<GpsSource> * mSpeedoSensor;
+    TachSensor * mTachSensor;
 
     AccessoryGaugeModel mBoostModel;
     AccessoryGaugeModel mOilTemperatureModel;
@@ -249,8 +319,10 @@ private:
     AccessoryGaugeModel mOilPressureModel;
     AccessoryGaugeModel mFuelLevelModel;
     AccessoryGaugeModel mVoltMeterModel;
+    TempAndFuelGaugeModel mTempFuelModel;
 
     SpeedometerModel mSpeedoModel;
+    TachometerModel mTachoModel;
 
     AccessoryGauge * mBoostGauge;
     AccessoryGauge * mCoolantTempGauge;
@@ -258,8 +330,10 @@ private:
     AccessoryGauge * mVoltmeterGauge;
     AccessoryGauge * mOilPressureGauge;
     AccessoryGauge * mFuelLevelGauge;
+    TempFuelClusterGauge * mTempFuelClusterGauge;
 
     SpeedometerGauge * mSpeedoGauge;
+    TachometerGauge * mTachoGauge;
 };
 
 #endif // DASH_NEW_H

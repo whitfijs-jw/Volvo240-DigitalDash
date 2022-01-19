@@ -5,15 +5,16 @@
 #include <tach_input.h>
 
 class TachSource : public SensorSource {
+    Q_OBJECT
 public:
     enum class TachDataChannel {
         RPM_CHANNEL = 0,
+        COUNT,
     };
 
     TachSource(QObject * parent, Config * config, QString name = "tach") :
         SensorSource(parent, config, name),
         mTachInput(config->getTachInputConfig()) {
-
     }
 
     bool init() {
@@ -40,8 +41,13 @@ public slots:
     }
 
     void update(int channel) {
-        (void) channel;
-        updateAll();
+        switch (channel) {
+        case (int) TachDataChannel::RPM_CHANNEL:
+            emit dataReady(mTachInput.getRpm(), channel);
+            break;
+        case (int) TachDataChannel::COUNT:
+            emit dataReady(mTachInput.getTachPulseCount(), channel);
+        }
     }
 
 private:

@@ -595,6 +595,10 @@ public:
         return mSpeedoGaugeConfig;
     }
 
+    TachoConfig_t getTachGaugeConfig() {
+        return mTachGaugeConfig;
+    }
+
 signals:
 
 public slots:
