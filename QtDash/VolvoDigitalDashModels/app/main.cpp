@@ -35,8 +35,8 @@ int main(int argc, char *argv[])
 
     // Initialize Dash
 #ifdef RASPBERRY_PI
-    //Dash * dash = new Dash(&app, ctxt);
-    DashNew * dash = new DashNew(&app, ctxt);
+    //Dash * dash = new Dash(&app, ctxt); //old style dash
+    DashNew * dash = new DashNew(&app, ctxt); // new scheme with sensor source -> sensor -> gauge -> model
 #else
     DashHost * dash = new DashHost(&app, ctxt);
 #endif

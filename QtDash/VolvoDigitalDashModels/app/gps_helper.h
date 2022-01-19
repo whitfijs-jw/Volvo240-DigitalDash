@@ -112,6 +112,7 @@ public slots:
 
                 QObject::connect(proc, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished),
                                  [=](int exitCode, QProcess::ExitStatus exitStatus) {
+                    (void)exitStatus;
                     std::cout << "finished date set: " << exitCode << std::endl;
                 });
 

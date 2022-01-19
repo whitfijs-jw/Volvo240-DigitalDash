@@ -113,6 +113,7 @@ public slots:
         qreal rheoVolts = mAnalogInputs.readValue(sensorConf.value(Config::DIMMER_VOLTAGE_KEY));
         qreal rheoFullVolts = mRheostat->getVoltage(rheoVolts);
         // TODO: hook this up somewhere?
+        (void)rheoFullVolts;
 
         // oil temp
         qreal oilVolts = mAnalogInputs.readValue(sensorConf.value(Config::OIL_TEMP_KEY));
