@@ -51,3 +51,6 @@ cp "${BOARD_DIR}/mcp3208.dtbo" "${BINARIES_DIR}/rpi-firmware/overlays"
 
 echo "Copying Config from QtDash"
 cp "${PROJECT_DIR}/config.ini" "${QT_EXEC_TARGET_DIR}"
+
+echo "Copying Gauge Config from QtDash"
+cp "${PROJECT_DIR}/config_gauges.ini" "${QT_EXEC_TARGET_DIR}"
