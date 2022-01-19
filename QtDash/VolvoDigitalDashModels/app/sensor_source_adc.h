@@ -19,10 +19,6 @@ public:
         return mAdc.getNumChannels();
     }
 
-    QVariant getValue(int channel) {
-        return mAdc.readValue(channel);
-    }
-
     QString getUnits(int channel) {
         (void)channel;
         return "volts";

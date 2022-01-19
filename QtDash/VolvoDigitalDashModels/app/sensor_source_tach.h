@@ -22,12 +22,7 @@ public:
     }
 
     int getNumChannels() {
-        return 1;
-    }
-
-    QVariant getValue(int channel) {
-        (void) channel;
-        return mTachInput.getRpm();
+        return 2;
     }
 
     QString getUnits(int channel) {
@@ -37,7 +32,9 @@ public:
 
 public slots:
     void updateAll() {
-        emit dataReady(getValue(0), 0);
+        for (int i = 0; i < getNumChannels(); i++) {
+            emit dataReady(getValue(i), i);
+        }
     }
 
     void update(int channel) {
@@ -52,6 +49,11 @@ public slots:
 
 private:
     TachInput mTachInput;
+
+    QVariant getValue(int channel) {
+        (void) channel;
+        return mTachInput.getRpm();
+    }
 };
 
 #endif // SENSOR_SOURCE_TACH_H

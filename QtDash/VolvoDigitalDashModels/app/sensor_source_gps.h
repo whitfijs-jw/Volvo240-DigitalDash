@@ -92,11 +92,7 @@ public:
     }
 
     int getNumChannels() {
-        return 1;
-    }
-
-    QVariant getValue(int channel) {
-        return mLastData.value((GpsDataChannel)channel, "");
+        return 5;
     }
 
     QString getUnits(int channel) {

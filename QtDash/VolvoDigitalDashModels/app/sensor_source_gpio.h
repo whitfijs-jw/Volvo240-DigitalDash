@@ -19,12 +19,6 @@ class GpioSource : public SensorSource {
         return 16;
     }
 
-    QVariant getValue(int channel) {
-        uint16_t inputs = getInputs();
-
-        return bitValue(inputs, channel);
-    }
-
     QString getUnits(int channel) {
         (void)channel;
         return "on/off";

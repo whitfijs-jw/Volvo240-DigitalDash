@@ -13,20 +13,35 @@
 #include <config.h>
 #include <sensor.h>
 
+/**
+ * @brief The Gauge class initializes the gauge model and
+ * routes data from the given sensors to the gauge model's
+ * properties
+ */
 class Gauge : public QObject {
     Q_OBJECT
 public:
+    /**
+     * @brief Gauge constructor
+     * @param parent: Parent QObject
+     * @param config: Dash config
+     * @param sensors: Sensors used by the gauge
+     * @param model: Gauge model
+     * @param modelName: Gauge model name (used to register model with Qml Context)
+     * @param context: QML context in which the gauge will be registered
+     */
     Gauge(QObject * parent, Config * config, QList<Sensor *> sensors,
           QAbstractListModel * model, QString modelName, QQmlContext * context) :
           QObject(parent), mConfig(config), mSensors(sensors), mModel(model) {
 
+        // register the gauge model in the QML Context
         context->setContextProperty(modelName, mModel);
     }
 
 protected:
-    Config * mConfig;
-    QList<Sensor *> mSensors;
-    QAbstractListModel * mModel;
+    Config * mConfig; //!< Dash config
+    QList<Sensor *> mSensors; //!< sensor list
+    QAbstractListModel * mModel; //!< gauge model
 };
 
 #endif // GAUGE_H
