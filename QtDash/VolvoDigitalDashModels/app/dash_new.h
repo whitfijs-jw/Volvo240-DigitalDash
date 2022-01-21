@@ -361,7 +361,7 @@ private:
 
         // hook up dash light timing
         QObject::connect(
-                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
+                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::FAST_TIMER)),
                     &QTimer::timeout,
                     mDashLights,
                     &DashLights::update

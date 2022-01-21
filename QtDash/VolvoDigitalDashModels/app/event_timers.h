@@ -14,7 +14,7 @@ class EventTimers : public QObject{
 public:
     static constexpr int VERY_FAST_TIMER_TIMEOUT_MSEC = 50; //!< very fast timer timeout
     static constexpr int FAST_TIMER_TIMEOUT_MSEC = 100; //!< fast timer timeout
-    static constexpr int MEDIUM_TIMER_TIMEOUT_MSEC = 250; //!< medium timer timeout
+    static constexpr int MEDIUM_TIMER_TIMEOUT_MSEC = 150; //!< medium timer timeout
     static constexpr int SLOW_TIMER_TIMEOUT_MSEC = 500; //!< slow timer timeout
 
     /**
