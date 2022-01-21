@@ -42,6 +42,12 @@ Item
         onTriggered: clockLarge.timeChanged()
     }
 
+    Behavior on seconds {
+        RotationAnimation {
+            duration: 250
+            direction: RotationAnimation.Clockwise
+        }
+    }
 
     Gauge {
         id: minuteHand
