@@ -11,9 +11,18 @@ Item {
         z:2
         source: "qrc:mainCluster/arrow_on.png"
         anchors.fill: parent
-        visible: blinker.on
+        //visible: blinker.on
+        opacity: (blinker.on == true) ? 1.0 : 0.0
         rotation: (blinker.flipped) ? 180 : 0
         asynchronous: true
+
+        Behavior on opacity {
+            PropertyAnimation {
+                target: blinkerOnImage
+                property: "opacity"
+                duration: 150
+            }
+        }
     }
 
     Image{
@@ -24,4 +33,6 @@ Item {
         rotation: (blinker.flipped) ? 180 : 0
         asynchronous: true
     }
+
+
 }

@@ -11,8 +11,18 @@ Item {
     property color lightColor
     property url imageSource
 
+    opacity: (on == true) ? 1.0 : 0.0
     height: warningLightHeight
-    visible: on
+    visible: true
+
+    Behavior on opacity {
+        PropertyAnimation {
+            target: warning_light
+            property: "opacity"
+            duration: 250
+        }
+    }
+
 
     Text {
         id: warning_text
