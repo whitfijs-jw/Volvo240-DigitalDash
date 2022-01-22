@@ -1,5 +1,5 @@
 QT += quick serialport positioning
-CONFIG += c++17 qtquickcompiler static
+CONFIG += c++17 qtquickcompiler staticlib
 
 TARGET = VolvoDigitalDashModels
 TEMPLATE = app

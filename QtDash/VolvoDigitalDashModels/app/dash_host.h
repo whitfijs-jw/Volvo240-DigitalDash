@@ -127,7 +127,7 @@ public slots:
             QString rpmString = rpmStream.readLine();
             int rpm = rpmString.toInt();
             mTachModel.setRpm(rpm);
-            mBoostModel.setCurrentValue( ((float)rpm/1000.0) * 5.0 );
+            //mBoostModel.setCurrentValue( ((float)rpm/1000.0) * 5.0 );
             mOilPressureModel.setCurrentValue( ((float)rpm / 1000.0 * 3) );
         }
 
@@ -144,6 +144,25 @@ public slots:
             int level = fuelLevel.toInt();
             mTempFuelModel.setFuelLevel(level);
             mFuelLevelModel.setCurrentValue(level);
+        }
+
+
+        mBoostModel.setCurrentValue(mBoostModel.currentValue() + 1);
+        mFuelLevelModel.setCurrentValue(mFuelLevelModel.currentValue() + 1);
+        mCoolantTempModel.setCurrentValue(mCoolantTempModel.currentValue() + 1);
+
+        if (mBoostModel.currentValue() > mBoostModel.maxValue()) {
+            mBoostModel.setCurrentValue(-25.0);
+        }
+
+
+        if (mFuelLevelModel.currentValue() > mFuelLevelModel.maxValue()) {
+            mFuelLevelModel.setCurrentValue(0);
+        }
+
+
+        if (mCoolantTempModel.currentValue() > mCoolantTempModel.maxValue()) {
+            mCoolantTempModel.setCurrentValue(120);
         }
 
         tempFile.close();
@@ -166,7 +185,7 @@ private:
 
         // hook up tach update
         QObject::connect(
-                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::FAST_TIMER)),
+                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
                     &QTimer::timeout,
                     this,
                     &DashHost::sysfsUpdate

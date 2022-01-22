@@ -170,6 +170,57 @@ Window {
     }
 
     Component {
+        id: boostDelegate850
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeHighAlarm
+                item.lowAlarm = gaugeMin
+                item.initialValueOffset = gaugeMin
+
+                item.minAngle = -140
+                item.maxAngle = -45
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-850/850_boost.png"
+
+                item.needleColor = "red"
+
+                item.needleWidth = smallGaugeSize * 0.05
+                item.needleLength = smallGaugeSize * 0.50
+                item.needleOffset = smallGaugeSize * .25 / 2
+
+                item.needleCenterRadius = 0.25
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
+        }
+    }
+
+    Component {
         id: oilPressureDelegate
 
         Loader {
@@ -807,6 +858,108 @@ Window {
     }
 
     Component {
+        id: coolantDelegate850
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeHighAlarm
+                item.lowAlarm = gaugeLowAlarm
+
+
+                item.minAngle = 45
+                item.maxAngle = -45
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-850/850_coolant.png"
+
+                item.needleColor = "red"
+
+                item.needleWidth = smallGaugeSize * 0.05
+                item.needleLength = smallGaugeSize * 0.50
+                item.needleOffset = smallGaugeSize * .25 / 2
+
+                item.needleCenterRadius = 0.25
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
+        }
+    }
+
+    Component {
+        id: fuelLevelDelegate850
+
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeMax
+                item.lowAlarm = gaugeLowAlarm
+
+                item.minAngle = -225
+                item.maxAngle = -135
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-850/850_fuel_level.png"
+
+                item.needleColor = "red"
+
+                item.needleWidth = smallGaugeSize * 0.05
+                item.needleLength = smallGaugeSize * 0.50
+                item.needleOffset = smallGaugeSize * .25 / 2
+
+                item.needleCenterRadius = 0.25
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
+        }
+    }
+
+    Component {
         id: leftBlinkerDelegate
 
         Loader {
@@ -1211,6 +1364,16 @@ Window {
                     setSpeedoMax(120);
                     setTempFuelSize(400);
                     break;
+                case Qt.Key_5:
+                    //currentGauge.source = "";
+                    currentGauge.source = "qrc:/Original850R.qml"
+                    setSmallGaugeSize(200);
+                    setTachSize(320);
+                    setSpeedoSize(440);
+                    setSpeedoMax(140);
+                    //setTempFuelSize(300);
+                    break;
+
                 case Qt.Key_Escape:
                     Qt.quit();
                     break;

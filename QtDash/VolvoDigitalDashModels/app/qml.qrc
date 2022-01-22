@@ -16,6 +16,7 @@
         <file>Original740Layout.qml</file>
         <file>Gauge.qml</file>
         <file>Original240LayoutClock.qml</file>
+        <file>Original850R.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -62,5 +63,11 @@
         <file>740_speedo.png</file>
         <file>740_clock.png</file>
         <file>740_voltmeter.png</file>
+    </qresource>
+    <qresource prefix="/gauge-faces-850">
+        <file>850_unleaded_only.png</file>
+        <file>850_fuel_level.png</file>
+        <file>850_coolant.png</file>
+        <file>850_boost.png</file>
     </qresource>
 </RCC>
