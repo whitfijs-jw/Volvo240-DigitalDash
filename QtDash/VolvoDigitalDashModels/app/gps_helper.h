@@ -60,7 +60,7 @@ public:
 
         QSerialPort * serialPort = new QSerialPort(this);
         serialPort->setPortName(port);
-        serialPort->setBaudRate(QSerialPort::Baud9600);
+        serialPort->setBaudRate(QSerialPort::Baud115200);
         serialPort->setDataBits(QSerialPort::Data8);
         serialPort->setParity(QSerialPort::NoParity);
         serialPort->setStopBits(QSerialPort::OneStop);
@@ -100,18 +100,19 @@ public slots:
 
                 auto coord = data.coordinate();
                 auto tz = guessAtTheTimeZone(coord);
-                ts.setTimeZone(tz);
+                //ts.setTimeZone(tz);
 
                 std::cout << "Timezone? maybe?: " << tz.abbreviation(ts).toStdString() << std::endl;
 
                 QString pg = "/bin/date";
                 QStringList args;
-                args << "-s" << ts.toString("yyyy-MM-dd hh:mm:ss");
+                args << "-s" << ts.toString("yyyy-MM-dd hh:mm:ss") << "-u";
 
                 QProcess *proc = new QProcess(this);
 
                 QObject::connect(proc, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished),
                                  [=](int exitCode, QProcess::ExitStatus exitStatus) {
+                    (void)exitStatus;
                     std::cout << "finished date set: " << exitCode << std::endl;
                 });
 

@@ -2524,4 +2524,8 @@ menu "Text editors and viewers"
 	source "package/vim/Config.in"
 endmenu
 
+menu "Volvo Dash Kernel Modules"
+	source "package/pulse_counter/Config.in"
+endmenu
+
 endmenu

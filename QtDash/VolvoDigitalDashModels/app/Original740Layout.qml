@@ -45,7 +45,7 @@ Item {
             height: speedoSize
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
-            anchors.topMargin: 10
+            anchors.topMargin: 0
             color: "transparent"
 
             /* Rpm: */
@@ -115,6 +115,36 @@ Item {
             ListView {
                 model: voltMeterModel
                 delegate: voltMeterDelegate740
+            }
+        }
+
+        Rectangle {
+            id: leftBlinker
+            width: blinkerSize * 2
+            anchors.top: speedoContainer740.top
+            anchors.topMargin: 10
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset: -parent.width / 8
+            color: "transparent"
+
+            ListView {
+                model: leftBlinkerModel
+                delegate: leftBlinkerDelegate
+            }
+        }
+
+        Rectangle {
+            id: rightBlinker
+            width: blinkerSize * 2
+            anchors.top: speedoContainer740.top
+            anchors.topMargin: 10
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset: parent.width / 6
+            color: "transparent"
+
+            ListView {
+                model: rightBlinkerModel
+                delegate: rightBlinkerDelegate
             }
         }
 

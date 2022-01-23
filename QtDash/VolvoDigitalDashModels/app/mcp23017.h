@@ -1,4 +1,5 @@
 #ifndef MCP23017_H
+#define MCP23017_H
 
 #include <cstddef>
 #include <cstdint>
@@ -160,12 +161,16 @@ public:
         int ret = i2c_smbus_read_byte_data(mFd, (uint8_t) reg);
 
         if (ret < 0) {
-            printf("i2c-%d device @0x%02X register addr: 0x%02X read failed: %d\n", mBus, mAddr, reg, errno);
+            printf("i2c-%d device @0x%02X register addr: 0x%02X read failed: %d\n", mBus, (unsigned int)mAddr, (unsigned int)reg, errno);
             return -1;
         }
 
         //printf("i2c-%d device @0x%02X register addr: 0x%02X read success: 0x%02X\n", mBus, mAddr, reg, ret);
         return ret;
+    }
+
+    int getNumChannels() {
+        return 16;
     }
 private:
     /**

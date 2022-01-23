@@ -53,9 +53,18 @@ Item {
 
         return angle;
     }
+
+    Behavior on angle {
+        RotationAnimation {
+            duration: 150
+        }
+    }
+
     Rectangle {
         anchors.fill: parent
         color: "transparent"
+
+
 
         Image {
             source: gauge.imageResource

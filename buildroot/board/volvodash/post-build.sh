@@ -21,11 +21,11 @@ BOARD_DIR="$(dirname $0)"
 BOARD_NAME="$(basename ${BOARD_DIR})"
 
 # Add a console on tty1
-if [ -e ${TARGET_DIR}/etc/inittab ]; then
-    grep -qE '^tty1::' ${TARGET_DIR}/etc/inittab || \
-	sed -i '/GENERIC_SERIAL/a\
-tty1::respawn:/sbin/getty -L  tty1 0 vt100 # HDMI console' ${TARGET_DIR}/etc/inittab
-fi
+#if [ -e ${TARGET_DIR}/etc/inittab ]; then
+#    grep -qE '^tty1::' ${TARGET_DIR}/etc/inittab || \
+#	sed -i '/GENERIC_SERIAL/a\
+#tty1::respawn:/sbin/getty -L  tty1 0 vt100 # HDMI console' ${TARGET_DIR}/etc/inittab
+#fi
 
 echo "Create Qt App build directory"
 mkdir -p "${QT_BUILD_DIR}"
@@ -51,3 +51,6 @@ cp "${BOARD_DIR}/mcp3208.dtbo" "${BINARIES_DIR}/rpi-firmware/overlays"
 
 echo "Copying Config from QtDash"
 cp "${PROJECT_DIR}/config.ini" "${QT_EXEC_TARGET_DIR}"
+
+echo "Copying Gauge Config from QtDash"
+cp "${PROJECT_DIR}/config_gauges.ini" "${QT_EXEC_TARGET_DIR}"

@@ -18,9 +18,15 @@ Item
 
     property string imageSource: ""
 
+    property string generation: "740"
+
+    property int minuteWidth: parent.width * 0.03
+
     function timeChanged() {
         var date = new Date;
-        hours = date.getHours() + date.getMinutes()/60;
+        var hrLocal = parseInt(date.toTimeString().substring(0,2), 10);
+        hours = hrLocal + date.getMinutes()/60;
+
         if(hours > 12) {
             hours -= 12.0;
         }
@@ -36,10 +42,18 @@ Item
         onTriggered: clockLarge.timeChanged()
     }
 
+    Behavior on seconds {
+        RotationAnimation {
+            duration: 250
+            direction: RotationAnimation.Clockwise
+        }
+    }
 
     Gauge {
         id: minuteHand
         anchors.fill: parent
+
+        z: generation === "740" ? 0 : 2
 
         value: clockLarge.minutes
 
@@ -55,22 +69,23 @@ Item
         units: ""
         textEnabled: false
 
-        imageResource: imageSource
+        imageResource: generation === "740" ? imageSource : ""
 
-        needleColor: "red"
+        needleColor: generation === "740" ? "red" : "orange"
 
-        needleWidth: parent.width * 0.03
-        needleLength: parent.width * 0.525
+        needleWidth: generation === "740" ? parent.width * 0.03 : parent.width * 0.015
+        needleLength: generation === "740" ? parent.width * 0.525 : parent.width * 0.425
         needleOffset: parent.width * .15 / 2
 
-        needleCenterRadius: 0.15
-
+        needleCenterRadius: generation === "740" ? 0.15: 0.10
     }
 
     Gauge {
         id: secondHand
         anchors.fill: parent
         visible: enableSeconds
+
+        z: generation === "740" ? 0 : 0
 
         value: clockLarge.seconds
 
@@ -86,15 +101,15 @@ Item
         units: ""
         textEnabled: false
 
-        imageResource: ""
+        imageResource: generation === "740" ? "" : imageSource
 
-        needleColor: "red"
+        needleColor: generation === "740" ? "red" : "orange"
 
-        needleWidth: parent.width * 0.015
-        needleLength: parent.width * 0.525
+        needleWidth: generation === "740" ? parent.width * 0.015 : parent.width * 0.010
+        needleLength: generation === "740" ? parent.width * 0.525 : parent.width * 0.425
         needleOffset: parent.width * .15 / 2
 
-        needleCenterRadius: 0.15
+        needleCenterRadius: generation === "740" ? 0.15: 0.10
 
     }
 
@@ -103,6 +118,8 @@ Item
         anchors.fill: parent
 
         value: clockLarge.hours
+
+        z: generation === "740" ? 0 : 1
 
         lowAlarm: -1
         highAlarm: 61
@@ -118,13 +135,13 @@ Item
 
         imageResource: ""
 
-        needleColor: "red"
+        needleColor: generation === "740" ? "red" : "orange"
 
-        needleWidth: parent.width * 0.035
-        needleLength: parent.width * 0.425
-        needleOffset: parent.width * .15 / 2
+        needleWidth: generation === "740" ? parent.width * 0.035 : parent.width * 0.020
+        needleLength: generation === "740" ? parent.width * 0.425 : parent.width * 0.275
+        needleOffset: generation === "740" ? (parent.width * .15 / 2) : (parent.width * 0.05 / 2)
 
-        needleCenterRadius: 0.15
+        needleCenterRadius: generation === "740" ? 0.15: 0.10
 
     }
 
@@ -137,7 +154,7 @@ Item
 
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: parent.height / 6.0
+        anchors.verticalCenterOffset: generation === "740" ? (parent.height / 6.0) : (parent.height / 8.0)
 
         fontSizeMode: Text.Fit
         font.pixelSize: textSize

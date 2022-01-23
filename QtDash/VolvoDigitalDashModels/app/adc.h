@@ -104,6 +104,14 @@ public:
         return -1.0;
     }
 
+    int getNumChannels() {
+        return mNumChannels;
+    }
+
+    std::string getDeviceName() {
+        return mDeviceName;
+    }
+
 private:
 
     static constexpr char IIO_DEVICE_PATH[] = "/sys/bus/iio/devices/";
@@ -113,6 +121,9 @@ private:
     static constexpr char MCP3208[] = "mcp3208";
     static constexpr char ADS1115[] = "ads1115";
     static constexpr char MCP3008[] = "mcp3008";
+
+    /* 5V inputs go through voltage divider for 3.3V ADC inputs -- not quite 100% */
+    static constexpr double VOLTAGE_CONVERSION_CORRECTION_FACTOR = 3.3 / ((620.0 / (620.0 * 330.0)) * 5.0);
 
     /**
      * @brief Find the iio device given the expected name

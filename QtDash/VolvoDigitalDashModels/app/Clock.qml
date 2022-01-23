@@ -14,14 +14,15 @@ Item
 
     function timeChanged() {
         var date = new Date;
-        hours = date.getHours() + date.getMinutes()/60;
+        valueText.text = date.toLocaleTimeString();
+        var hrLocal = parseInt(date.toTimeString().substring(0,2), 10);
+        hours = hrLocal + date.getMinutes()/60;
         if(hours > 12) {
             hours -= 12.0;
         }
 
         minutes = date.getMinutes()
         seconds = date.getUTCSeconds();
-        valueText.text = date.toTimeString();
     }
 
     Timer {
@@ -29,8 +30,12 @@ Item
         onTriggered: clock.timeChanged()
     }
 
-
-
+    Behavior on seconds {
+        RotationAnimation {
+            duration: 250
+            direction: RotationAnimation.Clockwise
+        }
+    }
 
     Gauge {
         id: secondHand
@@ -139,132 +144,4 @@ Item
         text: "--:--:--"
         color: "white"
     }
-
-//    CircularGauge
-//    {
-//        id: secondHand
-//        z: 1
-
-//        value: clock.seconds
-
-//        anchors.fill: parent
-
-//        maximumValue: 60
-//        minimumValue: 0
-
-//        style: CircularGaugeStyle {
-//            maximumValueAngle: 360
-//            minimumValueAngle: 0
-
-//            tickmark: null
-//            tickmarkLabel: null
-//            minorTickmark: null
-
-//            foreground: NeedleCenter {
-//                size: outerRadius * 0.3
-//                rotation: valueToAngle(secondHand.value) - 90
-//            }
-
-//            needle: Rectangle {
-//                y: - outerRadius * 0.35
-//                radius: outerRadius * 0.025
-//                implicitWidth: outerRadius * 1.0
-//                implicitHeight: outerRadius * 0.03
-//                antialiasing: true
-//                rotation: 90
-//                gradient: Gradient {
-//                        GradientStop { position: 0.25; color: "orange"}
-//                        GradientStop { position: 0.5; color: "white" }
-//                        GradientStop { position: 0.75; color: "orange" }
-//                }
-//            }
-
-
-
-//        }
-
-//    }
-
-//    CircularGauge
-//    {
-//        id: minuteHand
-
-//        value: clock.minutes
-
-//        anchors.fill: parent
-
-//        maximumValue: 60
-//        minimumValue: 0
-
-//        style: CircularGaugeStyle {
-//            maximumValueAngle: 360
-//            minimumValueAngle: 0
-
-//            tickmark: null
-//            tickmarkLabel: null
-//            minorTickmark: null
-
-//            foreground: NeedleCenter {
-//                size: outerRadius * 0.3
-//            }
-
-//            needle: Rectangle {
-//                y: - outerRadius * 0.35
-//                radius: outerRadius * 0.025
-//                implicitWidth: outerRadius * 1.0
-//                implicitHeight: outerRadius * 0.05
-//                antialiasing: true
-//                rotation: 90
-//                gradient: Gradient {
-//                        GradientStop { position: 0.25; color: "orange"}
-//                        GradientStop { position: 0.5; color: "white" }
-//                        GradientStop { position: 0.75; color: "orange" }
-//                }
-//            }
-
-//        }
-
-//    }
-
-//    CircularGauge
-//    {
-//        id: hourHand
-
-//        value: clock.hours
-
-//        anchors.fill: parent
-
-//        maximumValue: 12
-//        minimumValue: 0
-
-//        style: CircularGaugeStyle {
-//            maximumValueAngle: 360
-//            minimumValueAngle: 0
-
-//            tickmark: null
-//            tickmarkLabel: null
-//            //tickmarkStepSize: 1
-//            minorTickmark: null
-
-//            foreground: NeedleCenter {
-//                size: outerRadius * 0.3
-//            }
-
-//            needle: Rectangle {
-//                y: - outerRadius * 0.35
-//                radius: outerRadius * 0.025
-//                implicitWidth: outerRadius * 0.65
-//                implicitHeight: outerRadius * 0.05
-//                antialiasing: true
-//                rotation: 90
-//                gradient: Gradient {
-//                        GradientStop { position: 0.25; color: "orange"}
-//                        GradientStop { position: 0.5; color: "white" }
-//                        GradientStop { position: 0.75; color: "orange" }
-//                }
-//            }
-
-//        }
-
-//    }
 }

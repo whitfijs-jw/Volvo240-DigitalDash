@@ -3,6 +3,4 @@
 # This file contains the names of kernel modules that should be loaded
 # at boot time, one per line. Lines beginning with "#" are ignored.
 
-spi_bcm2835
-mcp320x
-cdc_acm
+pulse_counter

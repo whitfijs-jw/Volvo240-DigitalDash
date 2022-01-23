@@ -13,6 +13,7 @@ Item {
             height: tachSize
             color: "transparent"
             anchors.right: speedoContainer.left
+            anchors.bottom: speedoContainer.bottom
 
             /* Rpm: */
             ListView {
@@ -27,8 +28,9 @@ Item {
             width: speedoSize
             height: speedoSize
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: boostContainer.bottom
-            anchors.topMargin: 10
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenterOffset: 70
+            anchors.topMargin: 0
             color: "transparent"
 
             /* Rpm: */
@@ -44,9 +46,11 @@ Item {
             width: tempFuelSize
             height: tempFuelSize
             anchors.left: speedoContainer.right
+            anchors.verticalCenter: speedoContainer.verticalCenter
+            anchors.verticalCenterOffset: -20
             anchors.leftMargin: 50
-            anchors.top: boostContainer.bottom
-            anchors.topMargin: 10
+//            anchors.top: boostContainer.bottom
+//            anchors.topMargin: 10
             color: "transparent"
 
             /* Rpm: */
@@ -61,6 +65,8 @@ Item {
         Rectangle {
             id: boostContainer
             anchors.left: tachContainer.right
+            anchors.bottom: speedoContainer.top
+            anchors.bottomMargin: 10
             anchors.leftMargin: -50
             height: smallGaugeSize
             width: smallGaugeSize
@@ -74,6 +80,7 @@ Item {
         Rectangle {
             id: oilPContainer
             anchors.left: boostContainer.right
+            anchors.verticalCenter: boostContainer.verticalCenter
             height: smallGaugeSize
             width: smallGaugeSize
             color: "transparent"
@@ -87,6 +94,7 @@ Item {
         Rectangle {
             id: oilTContainer
             anchors.left: oilPContainer.right
+            anchors.verticalCenter: boostContainer.verticalCenter
             height: smallGaugeSize
             width: smallGaugeSize
             color: "transparent"
@@ -100,6 +108,7 @@ Item {
         Rectangle {
             id: voltContainer
             anchors.left: oilTContainer.right
+            anchors.verticalCenter: boostContainer.verticalCenter
             height: smallGaugeSize
             width: smallGaugeSize
             color: "transparent"
@@ -114,6 +123,7 @@ Item {
         Rectangle {
             id: clockContainer
             anchors.left: voltContainer.right
+            anchors.verticalCenter: boostContainer.verticalCenter
             height: smallGaugeSize
             width: smallGaugeSize
             color: "transparent"
@@ -122,19 +132,5 @@ Item {
                 anchors.fill: parent
             }
         }
-
-//        Rectangle {
-//            id: ambientTempContainer
-//            anchors.left: clockContainer.right
-//            height: smallGaugeSize
-//            width: smallGaugeSize
-//            color: "transparent"
-
-//            ListView {
-//                id: ambientTemp
-//                model: outsideTempModel
-//                delegate: ambientTempDelegate
-//            }
-//        }
     }
 }

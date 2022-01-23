@@ -664,7 +664,7 @@ Window {
                 item.maxValue = gaugeMax
                 item.units = gaugeUnits
                 item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeMin
+                item.lowAlarm = gaugeLowAlarm
 
                 item.minAngle = -115
                 item.maxAngle = -65
@@ -1202,6 +1202,15 @@ Window {
                     setSpeedoMax(140);
                     setTempFuelSize(300);
                 break;
+                case Qt.Key_4:
+                    //currentGauge.source = "";
+                    currentGauge.source = "qrc:/Original240LayoutClock.qml";
+                    setSmallGaugeSize(140);
+                    setTachSize(400);
+                    setSpeedoSize(440);
+                    setSpeedoMax(120);
+                    setTempFuelSize(400);
+                    break;
                 case Qt.Key_Escape:
                     Qt.quit();
                     break;

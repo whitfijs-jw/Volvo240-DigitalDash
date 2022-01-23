@@ -15,6 +15,8 @@ class SpeedometerModel : public QAbstractListModel
     Q_PROPERTY(QString topUnits READ topUnits WRITE setTopUnits NOTIFY topUnitsChanged)
 
 public:
+    static constexpr char SPEEDO_MODEL_NAME[] = "speedoModel";
+
     enum SpeedometerModelRoles{
         MinValueRole        = Qt::UserRole + 1,
         MaxValueRole        = Qt::UserRole + 2,

@@ -52,3 +52,8 @@ compile_commands.json
 *creator.user*
 
 *_qmlcache.qrc
+
+# ltspice sim junk
+Hardware/Simulation/*.log
+Hardware/Simulation/*.raw
+Hardware/Simulation/*.net
