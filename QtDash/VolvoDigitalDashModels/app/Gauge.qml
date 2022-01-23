@@ -4,12 +4,14 @@ import QtQuick.Controls 2.15
 Item {
     id: gauge
 
+    property bool clockwise: true
     property int maxValue: 100
     property int minValue: 0
     property real value: 0
-    property real angle: (value <= initialValueOffset) ?
+    property real internalValue: clockwise ? value : (maxValue - (value - minValue))
+    property real angle: (internalValue <= initialValueOffset) ?
                            (initialValueOffset - minValue) / (maxValue - minValue) * (maxAngle - minAngle) + minAngle :
-                           (value - minValue) / (maxValue - minValue) * (maxAngle - minAngle) + minAngle;
+                           (internalValue - minValue) / (maxValue - minValue) * (maxAngle - minAngle) + minAngle;
     property string units: "F"
     property int lowAlarm: 0
     property int highAlarm: 0

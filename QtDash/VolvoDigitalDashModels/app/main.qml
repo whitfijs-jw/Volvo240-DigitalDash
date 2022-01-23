@@ -869,10 +869,10 @@ Window {
                 item.units = gaugeUnits
                 item.highAlarm = gaugeHighAlarm
                 item.lowAlarm = gaugeLowAlarm
+                item.clockwise = false
 
-
-                item.minAngle = 45
-                item.maxAngle = -45
+                item.minAngle = -45
+                item.maxAngle = 45
 
                 item.height = smallGaugeSize
                 item.width = smallGaugeSize
