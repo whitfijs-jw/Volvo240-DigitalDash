@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -3485,7 +3485,7 @@ NS Package M08A</description>
 <pad name="9" x="5" y="8.66" drill="2.1336" diameter="4"/>
 <pad name="10" x="0" y="10" drill="2.1336" diameter="4"/>
 <pad name="11" x="-5" y="8.66" drill="2.1336" diameter="4"/>
-<pad name="12" x="-8.66" y="5" drill="2" diameter="4"/>
+<pad name="12" x="-8.66" y="5" drill="2.1336" diameter="4"/>
 <polygon width="0.127" layer="41">
 <vertex x="-4.33" y="2.5"/>
 <vertex x="4.33" y="-2.5"/>
@@ -4008,7 +4008,7 @@ Source: http://www.vishay.com/docs/83673/sfh618.pdf</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="LM324" prefix="IC">
+<deviceset name="LMV614" prefix="IC">
 <gates>
 <gate name="A" symbol="OP-AMP+-" x="-20.32" y="12.7"/>
 <gate name="B" symbol="OP-AMP" x="15.24" y="12.7"/>
@@ -4128,6 +4128,51 @@ Source: http://www.vishay.com/docs/83673/sfh618.pdf</description>
 <connect gate="G$1" pin="C1" pad="1"/>
 <connect gate="G$1" pin="C3" pad="3"/>
 <connect gate="G$1" pin="C6" pad="6"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TSV912" prefix="IC">
+<description>&lt;b&gt;OP AMP&lt;/b&gt; also TSV912A &lt;p&gt;
+Source: https://www.ti.com/lit/ds/symlink/tsv912.pdf</description>
+<gates>
+<gate name="B" symbol="OPAMP" x="15.24" y="-12.7" swaplevel="1"/>
+<gate name="A" symbol="OP-AMP+-" x="15.24" y="10.16"/>
+</gates>
+<devices>
+<device name="N" package="DIL08">
+<connects>
+<connect gate="B" pin="+IN" pad="5"/>
+<connect gate="B" pin="-IN" pad="6"/>
+<connect gate="B" pin="OUT" pad="7"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="D" package="SO08">
+<connects>
+<connect gate="A" pin="+IN" pad="3"/>
+<connect gate="A" pin="-IN" pad="2"/>
+<connect gate="A" pin="OUT" pad="1"/>
+<connect gate="A" pin="V+" pad="8"/>
+<connect gate="A" pin="V-" pad="4"/>
+<connect gate="B" pin="+IN" pad="5"/>
+<connect gate="B" pin="-IN" pad="6"/>
+<connect gate="B" pin="OUT" pad="7"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="MX" package="SO08">
+<connects>
+<connect gate="B" pin="+IN" pad="5"/>
+<connect gate="B" pin="-IN" pad="6"/>
+<connect gate="B" pin="OUT" pad="7"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -10183,7 +10228,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 </classes>
 <parts>
 <part name="J1" library="SparkFun-Connectors" deviceset="CONN_20X2" device=""/>
-<part name="IC1" library="digital_dash" deviceset="LM324" device=""/>
+<part name="IC1" library="digital_dash" deviceset="LMV614" device=""/>
 <part name="R2" library="digital_dash" deviceset="RC0603JR" device="" technology="-07330KL" value="330k"/>
 <part name="C1" library="digital_dash" deviceset="CL" device="" technology="10B103KB8NNNC" value="10n"/>
 <part name="GND1" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
@@ -10341,7 +10386,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="GND54" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="GND55" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="R56" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100KL" value="100k"/>
-<part name="IC6" library="digital_dash" deviceset="LM358" device="D"/>
+<part name="IC6" library="digital_dash" deviceset="TSV912" device="D"/>
 <part name="GND56" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="C11" library="digital_dash" deviceset="CL" device="" technology="10B104MB8NNNC" value="100n"/>
 <part name="C14" library="digital_dash" deviceset="CL" device="" technology="10A105KA8NNNC" value="1u"/>
@@ -10404,7 +10449,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="U$2" library="digital_dash" deviceset="12V_FUSE_16" device=""/>
 <part name="GND-ISO23" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
 <part name="U$3" library="digital_dash" deviceset="12V_FUSE_8" device=""/>
-<part name="IC8" library="digital_dash" deviceset="LM358" device="D"/>
+<part name="IC8" library="digital_dash" deviceset="TSV912" device="D"/>
 <part name="GND23" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="GND25" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY44" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
