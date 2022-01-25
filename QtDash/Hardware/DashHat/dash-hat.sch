@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -10528,8 +10528,8 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="R77" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="R78" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="R79" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
-<part name="SUPPLY56" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="R82" library="resistor" deviceset="R-US_" device="0617/17"/>
+<part name="U$4" library="digital_dash" deviceset="12V_FUSE_16" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -10862,8 +10862,8 @@ conditioning circuit to here.</text>
 <instance part="R77" gate="G$1" x="544.83" y="143.51" rot="R90"/>
 <instance part="R78" gate="G$1" x="497.84" y="156.21" rot="R90"/>
 <instance part="R79" gate="G$1" x="497.84" y="143.51" rot="R90"/>
-<instance part="SUPPLY56" gate="G$1" x="454.66" y="288.29"/>
 <instance part="R82" gate="G$1" x="454.66" y="280.67" rot="R90"/>
+<instance part="U$4" gate="G$1" x="454.66" y="289.56"/>
 </instances>
 <busses>
 </busses>
@@ -11960,11 +11960,6 @@ conditioning circuit to here.</text>
 <pinref part="D8" gate="G$1" pin="C2"/>
 <pinref part="SUPPLY43" gate="G$1" pin="12V"/>
 <wire x1="203.2" y1="219.71" x2="203.2" y2="226.06" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="SUPPLY56" gate="G$1" pin="12V"/>
-<pinref part="R82" gate="G$1" pin="2"/>
-<wire x1="454.66" y1="285.75" x2="454.66" y2="288.29" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="OUT1" class="0">
@@ -13085,6 +13080,11 @@ conditioning circuit to here.</text>
 <wire x1="483.87" y1="220.98" x2="480.06" y2="220.98" width="0.1524" layer="91"/>
 <wire x1="480.06" y1="220.98" x2="480.06" y2="233.68" width="0.1524" layer="91"/>
 <pinref part="U$2" gate="G$1" pin="12V-FUSE_16"/>
+</segment>
+<segment>
+<pinref part="R82" gate="G$1" pin="2"/>
+<pinref part="U$4" gate="G$1" pin="12V-FUSE_16"/>
+<wire x1="454.66" y1="285.75" x2="454.66" y2="289.56" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="OD_LAMP_AUTO_P" class="0">
