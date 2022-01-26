@@ -35,20 +35,9 @@ dtoverlay=miniuart-bt
 
 dtparam=i2c_arm=on
 dtoverlay=ads1115
-dtparam=cha_enable=true
-dtparam=cha_datarate=3
-
-dtparam=chb_enable=true
-dtparam=chb_datarate=3
-
-dtparam=chc_enable=true
-dtparam=chc_datarate=3
-
-dtparam=chc_enable=true
-dtparam=chc_datarate=3
 
 dtoverlay=mcp23017
-dtparam=addr=0x27
+dtparam=addr=0x20
 
 dtparam=spi=on
 dtoverlay=mcp3208:spi0-0-present
