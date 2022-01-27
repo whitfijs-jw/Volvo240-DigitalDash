@@ -1274,23 +1274,6 @@ tDocu marks the spring arms
 <text x="-1.27" y="3.429" size="0.6096" layer="25" font="vector" ratio="20">&gt;NAME</text>
 <text x="-1.27" y="-4.064" size="0.6096" layer="27" font="vector" ratio="20">&gt;VALUE</text>
 </package>
-<package name="1X02_POKEHOME">
-<description>2 pin poke-home connector
-
-part number 2062-2P from STA</description>
-<wire x1="-7" y1="-4" x2="-7" y2="2" width="0.2032" layer="21"/>
-<wire x1="-7" y1="2" x2="-7" y2="4" width="0.2032" layer="21"/>
-<wire x1="4.7" y1="4" x2="4.7" y2="-4" width="0.2032" layer="21"/>
-<wire x1="4.7" y1="-4" x2="-7" y2="-4" width="0.2032" layer="21"/>
-<smd name="P2" x="5.25" y="-2" dx="3.5" dy="2" layer="1"/>
-<smd name="P1" x="5.25" y="2" dx="3.5" dy="2" layer="1"/>
-<smd name="P4" x="-4" y="-2" dx="6" dy="2" layer="1"/>
-<smd name="P3" x="-4" y="2" dx="6" dy="2" layer="1"/>
-<wire x1="-7" y1="4" x2="4.7" y2="4" width="0.2032" layer="21"/>
-<text x="0.635" y="-3.175" size="0.4064" layer="25">&gt;NAME</text>
-<text x="0.635" y="-1.905" size="0.4064" layer="27">&gt;VALUE</text>
-<text x="-7.239" y="-1.397" size="0.3048" layer="51" rot="R90">BOARD EDGE</text>
-</package>
 <package name="1X02_RA_PTH_FEMALE">
 <wire x1="-2.79" y1="4.25" x2="-2.79" y2="-4.25" width="0.1778" layer="21"/>
 <text x="-1.397" y="0.762" size="0.6096" layer="25" font="vector" ratio="20">&gt;NAME</text>
@@ -2184,6 +2167,60 @@ Fits 4-40 Screws.
 &lt;/ul&gt;</description>
 <pad name="P$1" x="0" y="0" drill="0.508"/>
 </package>
+<package name="1X02_POKEHOME">
+<description>2 pin poke-home connector
+
+part number 2062-2P from STA</description>
+<wire x1="-7" y1="-4" x2="-7" y2="4" width="0.2032" layer="21"/>
+<wire x1="4.7" y1="4" x2="4.7" y2="-4" width="0.2032" layer="21"/>
+<wire x1="4.7" y1="-4" x2="-7" y2="-4" width="0.2032" layer="21"/>
+<smd name="P2" x="5.25" y="-2" dx="3.5" dy="2" layer="1"/>
+<smd name="P1" x="5.25" y="2" dx="3.5" dy="2" layer="1"/>
+<smd name="P4" x="-4" y="-2" dx="6" dy="2" layer="1"/>
+<smd name="P3" x="-4" y="2" dx="6" dy="2" layer="1"/>
+<wire x1="-7" y1="4" x2="4.7" y2="4" width="0.2032" layer="21"/>
+<text x="0.635" y="-0.635" size="0.6096" layer="25" font="vector" ratio="20" align="center">&gt;NAME</text>
+<text x="0.635" y="0.635" size="0.6096" layer="27" font="vector" ratio="20" distance="20" align="center">&gt;VALUE</text>
+<text x="-7.239" y="-1.397" size="0.3048" layer="51" rot="R90">BOARD EDGE</text>
+</package>
+<package name="LATCHTERMINAL-5MM-2">
+<pad name="1" x="-2.5" y="0" drill="1.5"/>
+<pad name="2" x="2.5" y="0" drill="1.5"/>
+<wire x1="-5.1" y1="6.3" x2="-5.1" y2="-6.3" width="0.1524" layer="21"/>
+<wire x1="-5.1" y1="-6.3" x2="5.1" y2="-6.3" width="0.1524" layer="21"/>
+<wire x1="-5.1" y1="6.3" x2="5.1" y2="6.3" width="0.1524" layer="21"/>
+<wire x1="5.1" y1="6.3" x2="5.1" y2="-6.3" width="0.1524" layer="21"/>
+<wire x1="-4" y1="5" x2="-4" y2="-7" width="0.1524" layer="51"/>
+<wire x1="-4" y1="-7" x2="-1" y2="-7" width="0.1524" layer="51"/>
+<wire x1="-1" y1="-7" x2="-1" y2="5" width="0.1524" layer="51"/>
+<wire x1="-1" y1="5" x2="-4" y2="5" width="0.1524" layer="51"/>
+<wire x1="1" y1="5" x2="1" y2="-7" width="0.1524" layer="51"/>
+<wire x1="1" y1="-7" x2="4" y2="-7" width="0.1524" layer="51"/>
+<wire x1="4" y1="-7" x2="4" y2="5" width="0.1524" layer="51"/>
+<wire x1="4" y1="5" x2="1" y2="5" width="0.1524" layer="51"/>
+<text x="0" y="5.715" size="0.6096" layer="25" font="vector" ratio="20" align="center">&gt;Name</text>
+<text x="0" y="-5.08" size="0.6096" layer="27" font="vector" ratio="20" align="center">&gt;Value</text>
+</package>
+<package name="1X02_6.35_SCREWTERM">
+<description>&lt;h3&gt;2 Pin Screw Terminal - 6.35 mm&lt;/h3&gt;
+300VAC-30A Screw Terminal
+&lt;p&gt;Specifications:
+&lt;ul&gt;&lt;li&gt;Pin count:2&lt;/li&gt;
+&lt;li&gt;Pin pitch: 6.35 mm&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;
+&lt;p&gt;Example device(s):
+&lt;ul&gt;&lt;li&gt;CONN_02&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;</description>
+<pad name="P1" x="-3.175" y="0" drill="1.6" diameter="2.8"/>
+<pad name="P2" x="3.175" y="0" drill="1.6" diameter="2.8"/>
+<wire x1="-6.65" y1="5.362" x2="6.65" y2="5.362" width="0.2032" layer="21"/>
+<wire x1="6.65" y1="5.362" x2="6.65" y2="-7.303" width="0.2032" layer="21"/>
+<wire x1="6.65" y1="-7.303" x2="6.65" y2="-7.9" width="0.2032" layer="21"/>
+<wire x1="6.65" y1="-7.9" x2="-6.65" y2="-7.9" width="0.2032" layer="21"/>
+<wire x1="-6.65" y1="-7.9" x2="-6.65" y2="-7.303" width="0.2032" layer="21"/>
+<wire x1="-6.65" y1="-7.303" x2="-6.65" y2="5.362" width="0.2032" layer="21"/>
+<wire x1="-6.65" y1="-7.303" x2="6.65" y2="-7.303" width="0.2032" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="CONN_20X2">
@@ -2795,6 +2832,29 @@ Fits 4-40 Screws.
 <technologies>
 <technology name="">
 <attribute name="PROD_ID" value="CONN-13700"/>
+</technology>
+</technologies>
+</device>
+<device name="LATCH_2" package="LATCHTERMINAL-5MM-2">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="PROD_ID" value="CONN-14720" constant="no"/>
+<attribute name="STOREFRONT_SKU" value="PRT-15898" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="SCREWTERMINAL-6.35MM-2" package="1X02_6.35_SCREWTERM">
+<connects>
+<connect gate="G$1" pin="1" pad="P2"/>
+<connect gate="G$1" pin="2" pad="P1"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="PROD_ID" value="CONN-15154" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3540,7 +3600,7 @@ NS Package M08A</description>
 <pad name="A" x="-5" y="8.66" drill="2.1336" diameter="4"/>
 <pad name="2" x="5" y="8.66" drill="2.1336" diameter="4"/>
 <pad name="1" x="8.66" y="5" drill="2.1336" diameter="4"/>
-<hole x="0" y="10" drill="4"/>
+<hole x="0" y="10" drill="4.2"/>
 </package>
 <package name="SMD16">
 <description>&lt;b&gt;SMD 4&lt;/b&gt;&lt;p&gt;
@@ -10489,9 +10549,6 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="D4" library="diode" deviceset="BAT54S" device=""/>
 <part name="D5" library="diode" deviceset="BAT54S" device=""/>
 <part name="D6" library="diode" deviceset="BAT54S" device=""/>
-<part name="J9" library="SparkFun-Connectors" deviceset="CONN_03" device="" value="455-1750-1-ND"/>
-<part name="J11" library="SparkFun-Connectors" deviceset="CONN_03" device="" value="455-1750-1-ND"/>
-<part name="JP21" library="SparkFun-Jumpers" deviceset="JUMPER-SMT_3_NO" device="_SILK"/>
 <part name="SUPPLY51" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="JP22" library="SparkFun-Jumpers" deviceset="JUMPER-SMT_3_NO" device="_SILK" value="SPI_CS_SEL"/>
 <part name="J12" library="SparkFun-Connectors" deviceset="CONN_01" device="OFFSET"/>
@@ -10530,6 +10587,15 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="R79" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="R82" library="resistor" deviceset="R-US_" device="0617/17"/>
 <part name="U$4" library="digital_dash" deviceset="12V_FUSE_16" device=""/>
+<part name="J19" library="SparkFun-Connectors" deviceset="CONN_02" device="PTH4"/>
+<part name="SUPPLY56" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
+<part name="GND51" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
+<part name="J20" library="SparkFun-Connectors" deviceset="CONN_02" device="PTH4"/>
+<part name="J21" library="SparkFun-Connectors" deviceset="CONN_02" device="PTH4"/>
+<part name="GND-ISO26" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
+<part name="J22" library="SparkFun-Connectors" deviceset="CONN_02" device="PTH4"/>
+<part name="J17" library="SparkFun-Connectors" deviceset="CONN_02" device="PTH4"/>
+<part name="J18" library="SparkFun-Connectors" deviceset="CONN_02" device="PTH4"/>
 </parts>
 <sheets>
 <sheet>
@@ -10819,9 +10885,6 @@ conditioning circuit to here.</text>
 <instance part="D4" gate="G$1" x="31.75" y="218.44" rot="R90"/>
 <instance part="D5" gate="G$1" x="35.56" y="173.99" rot="R90"/>
 <instance part="D6" gate="G$1" x="35.56" y="137.16" rot="R90"/>
-<instance part="J9" gate="J$1" x="398.78" y="151.13"/>
-<instance part="J11" gate="J$1" x="449.58" y="151.13" rot="MR0"/>
-<instance part="JP21" gate="G$1" x="421.64" y="166.37" rot="R270"/>
 <instance part="SUPPLY51" gate="G$1" x="421.64" y="176.53"/>
 <instance part="JP22" gate="G$1" x="69.85" y="27.94" rot="R180"/>
 <instance part="J12" gate="G$1" x="561.34" y="248.92" rot="R180"/>
@@ -10864,6 +10927,15 @@ conditioning circuit to here.</text>
 <instance part="R79" gate="G$1" x="497.84" y="143.51" rot="R90"/>
 <instance part="R82" gate="G$1" x="454.66" y="280.67" rot="R90"/>
 <instance part="U$4" gate="G$1" x="454.66" y="289.56"/>
+<instance part="J19" gate="G$1" x="66.04" y="72.39"/>
+<instance part="SUPPLY56" gate="G$1" x="76.2" y="80.01"/>
+<instance part="GND51" gate="1" x="76.2" y="66.04"/>
+<instance part="J20" gate="G$1" x="147.32" y="175.26"/>
+<instance part="J21" gate="G$1" x="147.32" y="165.1"/>
+<instance part="GND-ISO26" gate="G$1" x="158.75" y="157.48"/>
+<instance part="J22" gate="G$1" x="567.69" y="274.32" rot="R180"/>
+<instance part="J17" gate="G$1" x="441.96" y="218.44"/>
+<instance part="J18" gate="G$1" x="411.48" y="165.1"/>
 </instances>
 <busses>
 </busses>
@@ -11306,6 +11378,12 @@ conditioning circuit to here.</text>
 <wire x1="544.83" y1="137.16" x2="538.48" y2="137.16" width="0.1524" layer="91"/>
 <junction x="538.48" y="137.16"/>
 </segment>
+<segment>
+<pinref part="J19" gate="G$1" pin="1"/>
+<wire x1="73.66" y1="72.39" x2="76.2" y2="72.39" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="72.39" x2="76.2" y2="68.58" width="0.1524" layer="91"/>
+<pinref part="GND51" gate="1" pin="GND"/>
+</segment>
 </net>
 <net name="5V" class="0">
 <segment>
@@ -11417,6 +11495,12 @@ conditioning circuit to here.</text>
 <pinref part="D1" gate="G$1" pin="C2"/>
 <pinref part="SUPPLY6" gate="G$1" pin="5V"/>
 <wire x1="31.75" y1="328.93" x2="31.75" y2="326.39" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="J19" gate="G$1" pin="2"/>
+<wire x1="73.66" y1="74.93" x2="76.2" y2="74.93" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="74.93" x2="76.2" y2="80.01" width="0.1524" layer="91"/>
+<pinref part="SUPPLY56" gate="G$1" pin="5V"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -11947,11 +12031,6 @@ conditioning circuit to here.</text>
 <pinref part="SUPPLY41" gate="G$1" pin="12V"/>
 </segment>
 <segment>
-<pinref part="JP21" gate="G$1" pin="2"/>
-<wire x1="421.64" y1="171.45" x2="421.64" y2="176.53" width="0.1524" layer="91"/>
-<pinref part="SUPPLY51" gate="G$1" pin="12V"/>
-</segment>
-<segment>
 <pinref part="D7" gate="G$1" pin="C2"/>
 <pinref part="SUPPLY38" gate="G$1" pin="12V"/>
 <wire x1="203.2" y1="283.21" x2="203.2" y2="292.1" width="0.1524" layer="91"/>
@@ -11960,6 +12039,16 @@ conditioning circuit to here.</text>
 <pinref part="D8" gate="G$1" pin="C2"/>
 <pinref part="SUPPLY43" gate="G$1" pin="12V"/>
 <wire x1="203.2" y1="219.71" x2="203.2" y2="226.06" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="J18" gate="G$1" pin="2"/>
+<pinref part="SUPPLY51" gate="G$1" pin="12V"/>
+<wire x1="419.1" y1="167.64" x2="421.64" y2="167.64" width="0.1524" layer="91"/>
+<wire x1="421.64" y1="167.64" x2="421.64" y2="176.53" width="0.1524" layer="91"/>
+<pinref part="J18" gate="G$1" pin="1"/>
+<wire x1="419.1" y1="165.1" x2="421.64" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="421.64" y1="165.1" x2="421.64" y2="167.64" width="0.1524" layer="91"/>
+<junction x="421.64" y="167.64"/>
 </segment>
 </net>
 <net name="OUT1" class="0">
@@ -12821,6 +12910,24 @@ conditioning circuit to here.</text>
 <pinref part="D8" gate="G$1" pin="A1"/>
 <wire x1="203.2" y1="203.2" x2="203.2" y2="209.55" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="J20" gate="G$1" pin="1"/>
+<wire x1="154.94" y1="175.26" x2="158.75" y2="175.26" width="0.1524" layer="91"/>
+<wire x1="158.75" y1="175.26" x2="158.75" y2="167.64" width="0.1524" layer="91"/>
+<pinref part="J21" gate="G$1" pin="1"/>
+<wire x1="158.75" y1="167.64" x2="158.75" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="158.75" y1="165.1" x2="158.75" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="165.1" x2="158.75" y2="165.1" width="0.1524" layer="91"/>
+<junction x="158.75" y="165.1"/>
+<pinref part="J21" gate="G$1" pin="2"/>
+<wire x1="154.94" y1="167.64" x2="158.75" y2="167.64" width="0.1524" layer="91"/>
+<junction x="158.75" y="167.64"/>
+<pinref part="J20" gate="G$1" pin="2"/>
+<wire x1="154.94" y1="177.8" x2="158.75" y2="177.8" width="0.1524" layer="91"/>
+<wire x1="158.75" y1="177.8" x2="158.75" y2="175.26" width="0.1524" layer="91"/>
+<junction x="158.75" y="175.26"/>
+<pinref part="GND-ISO26" gate="G$1" pin="GND-ISO"/>
+</segment>
 </net>
 <net name="BRAKE_FAILURE_N" class="0">
 <segment>
@@ -13063,8 +13170,17 @@ conditioning circuit to here.</text>
 <segment>
 <pinref part="J6" gate="G$1" pin="9"/>
 <wire x1="523.24" y1="270.51" x2="525.78" y2="270.51" width="0.1524" layer="91"/>
-<wire x1="525.78" y1="270.51" x2="525.78" y2="279.4" width="0.1524" layer="91"/>
+<wire x1="525.78" y1="270.51" x2="525.78" y2="274.32" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="12V-FUSE_8"/>
+<wire x1="525.78" y1="274.32" x2="525.78" y2="279.4" width="0.1524" layer="91"/>
+<wire x1="560.07" y1="274.32" x2="556.26" y2="274.32" width="0.1524" layer="91"/>
+<junction x="525.78" y="274.32"/>
+<pinref part="J22" gate="G$1" pin="1"/>
+<pinref part="J22" gate="G$1" pin="2"/>
+<wire x1="556.26" y1="274.32" x2="525.78" y2="274.32" width="0.1524" layer="91"/>
+<wire x1="560.07" y1="271.78" x2="556.26" y2="271.78" width="0.1524" layer="91"/>
+<wire x1="556.26" y1="271.78" x2="556.26" y2="274.32" width="0.1524" layer="91"/>
+<junction x="556.26" y="274.32"/>
 </segment>
 <segment>
 <pinref part="JP18" gate="G$1" pin="3"/>
@@ -13080,6 +13196,14 @@ conditioning circuit to here.</text>
 <wire x1="483.87" y1="220.98" x2="480.06" y2="220.98" width="0.1524" layer="91"/>
 <wire x1="480.06" y1="220.98" x2="480.06" y2="233.68" width="0.1524" layer="91"/>
 <pinref part="U$2" gate="G$1" pin="12V-FUSE_16"/>
+<wire x1="480.06" y1="220.98" x2="452.12" y2="220.98" width="0.1524" layer="91"/>
+<junction x="480.06" y="220.98"/>
+<pinref part="J17" gate="G$1" pin="2"/>
+<pinref part="J17" gate="G$1" pin="1"/>
+<wire x1="452.12" y1="220.98" x2="449.58" y2="220.98" width="0.1524" layer="91"/>
+<wire x1="449.58" y1="218.44" x2="452.12" y2="218.44" width="0.1524" layer="91"/>
+<wire x1="452.12" y1="218.44" x2="452.12" y2="220.98" width="0.1524" layer="91"/>
+<junction x="452.12" y="220.98"/>
 </segment>
 <segment>
 <pinref part="R82" gate="G$1" pin="2"/>
@@ -13264,37 +13388,6 @@ conditioning circuit to here.</text>
 <label x="1.27" y="142.24" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="JP20" gate="G$1" pin="3"/>
 <wire x1="1.27" y1="142.24" x2="11.43" y2="142.24" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$10" class="0">
-<segment>
-<pinref part="J9" gate="J$1" pin="1"/>
-<pinref part="J11" gate="J$1" pin="1"/>
-<wire x1="406.4" y1="148.59" x2="415.29" y2="148.59" width="0.1524" layer="91"/>
-<wire x1="415.29" y1="148.59" x2="441.96" y2="148.59" width="0.1524" layer="91"/>
-<wire x1="415.29" y1="148.59" x2="415.29" y2="166.37" width="0.1524" layer="91"/>
-<junction x="415.29" y="148.59"/>
-<pinref part="JP21" gate="G$1" pin="3"/>
-<wire x1="415.29" y1="166.37" x2="416.56" y2="166.37" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$12" class="0">
-<segment>
-<pinref part="J9" gate="J$1" pin="2"/>
-<pinref part="J11" gate="J$1" pin="2"/>
-<wire x1="406.4" y1="151.13" x2="441.96" y2="151.13" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$14" class="0">
-<segment>
-<pinref part="J9" gate="J$1" pin="3"/>
-<pinref part="J11" gate="J$1" pin="3"/>
-<wire x1="406.4" y1="153.67" x2="427.99" y2="153.67" width="0.1524" layer="91"/>
-<wire x1="427.99" y1="153.67" x2="441.96" y2="153.67" width="0.1524" layer="91"/>
-<wire x1="427.99" y1="153.67" x2="427.99" y2="166.37" width="0.1524" layer="91"/>
-<junction x="427.99" y="153.67"/>
-<pinref part="JP21" gate="G$1" pin="1"/>
-<wire x1="427.99" y1="166.37" x2="426.72" y2="166.37" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$17" class="0">
