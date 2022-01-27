@@ -101,7 +101,7 @@ public:
      * @param bus: i2c bus -- ex: 1 for i2c-1, 0 for i2c-0
      * @param addr: 8 bit address of device on the bus (use i2cdetect if you don't know)
      */
-    mcp23017(uint8_t bus = 0x01, uint8_t addr = 0x27) : mAddr(addr), mBus(bus) {
+    mcp23017(uint8_t bus = 0x01, uint8_t addr = 0x20) : mAddr(addr), mBus(bus) {
 
     }
 
@@ -176,7 +176,7 @@ private:
     /**
      * @brief device address
      */
-    uint8_t mAddr = 0x27;
+    uint8_t mAddr = 0x20;
 
     /**
      * @brief i2c bus on which device is located
