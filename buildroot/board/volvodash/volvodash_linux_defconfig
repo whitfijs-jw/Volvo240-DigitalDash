@@ -2,7 +2,7 @@
 # Automatically generated file; DO NOT EDIT.
 # Linux/arm 5.10.1 Kernel Configuration
 #
-CONFIG_CC_VERSION_TEXT="arm-buildroot-linux-uclibcgnueabihf-gcc.br_real (Buildroot -g1c90a83c-dirty) 9.3.0"
+CONFIG_CC_VERSION_TEXT="arm-buildroot-linux-uclibcgnueabihf-gcc.br_real (Buildroot -g15ae9087-dirty) 9.3.0"
 CONFIG_CC_IS_GCC=y
 CONFIG_GCC_VERSION=90300
 CONFIG_LD_VERSION=235020000
@@ -6277,7 +6277,7 @@ CONFIG_UBIFS_FS_XATTR=y
 CONFIG_UBIFS_FS_SECURITY=y
 # CONFIG_UBIFS_FS_AUTHENTICATION is not set
 # CONFIG_CRAMFS is not set
-CONFIG_SQUASHFS=m
+CONFIG_SQUASHFS=y
 CONFIG_SQUASHFS_FILE_CACHE=y
 # CONFIG_SQUASHFS_FILE_DIRECT is not set
 CONFIG_SQUASHFS_DECOMP_SINGLE=y
