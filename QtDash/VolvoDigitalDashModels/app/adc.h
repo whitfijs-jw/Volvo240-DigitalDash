@@ -79,6 +79,10 @@ public:
         return  ((double)readRawValue(channel) / (double)mMaxVal) * mVref;
     }
 
+    double readValue(int channel, double vRef) {
+        return  ((double)readRawValue(channel) / (double)mMaxVal) * vRef;
+    }
+
     /**
      * @brief Read raw ADC value
      * @param channel: adc channel to read
@@ -123,7 +127,7 @@ private:
     static constexpr char MCP3008[] = "mcp3008";
 
     /* 5V inputs go through voltage divider for 3.3V ADC inputs -- not quite 100% */
-    static constexpr double VOLTAGE_CONVERSION_CORRECTION_FACTOR = 3.3 / ((620.0 / (620.0 * 330.0)) * 5.0);
+    static constexpr double VOLTAGE_CONVERSION_CORRECTION_FACTOR = 3.3 / ((620.0 / (620.0 + 330.0)) * 5.0);
 
     /**
      * @brief Find the iio device given the expected name
