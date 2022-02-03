@@ -54,11 +54,11 @@ Item {
         return angle;
     }
 
-    Behavior on angle {
-        RotationAnimation {
-            duration: 150
-        }
-    }
+//    Behavior on angle {
+//        RotationAnimation {
+//            duration: 150
+//        }
+//    }
 
     Rectangle {
         anchors.fill: parent
@@ -87,6 +87,13 @@ Item {
                                    gauge.minAngle : gauge.angle
                     origin.x: 0
                     origin.y: 0
+
+                    Behavior on angle {
+                        RotationAnimation {
+                            duration: 150
+                            direction: RotationAnimation.Shortest
+                        }
+                    }
                 }
             ]
         }
@@ -118,6 +125,13 @@ Item {
                                    gauge.minAngle : gauge.angle
                     origin.x: 0
                     origin.y: 0
+
+                    Behavior on angle {
+                        RotationAnimation {
+                            duration: 150
+                            direction: RotationAnimation.Shortest
+                        }
+                    }
                 }
             ]
         }
