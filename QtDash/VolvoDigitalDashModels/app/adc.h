@@ -18,6 +18,9 @@
 class Adc
 {
 public:
+    /* 5V inputs go through voltage divider for 3.3V ADC inputs -- not quite 100% */
+    static constexpr double VOLTAGE_CONVERSION_CORRECTION_FACTOR = 3.3 / ((620.0 / (620.0 + 330.0)) * 5.0);
+
     /**
      * @brief Constructor
      * @param name: device name, must match an existing name in iio subsystem
@@ -76,11 +79,16 @@ public:
      * @return current measured voltage
      */
     double readValue(int channel) {
-        return  ((double)readRawValue(channel) / (double)mMaxVal) * mVref;
+        return readValue(channel, mVref);
     }
 
     double readValue(int channel, double vRef) {
-        return  ((double)readRawValue(channel) / (double)mMaxVal) * vRef;
+        double volts = ((double)readRawValue(channel) / (double)mMaxVal) * mVref;
+        if (vRef == 5.0) {
+            return volts * VOLTAGE_CONVERSION_CORRECTION_FACTOR;
+        } else {
+            return volts;
+        }
     }
 
     /**
@@ -117,7 +125,6 @@ public:
     }
 
 private:
-
     static constexpr char IIO_DEVICE_PATH[] = "/sys/bus/iio/devices/";
     static constexpr char IIO_DEVICE_BASENAME[] = "iio:device";
     static constexpr char CHANNEL_DATA_PATH[] = "in_voltageX_raw";
@@ -125,9 +132,6 @@ private:
     static constexpr char MCP3208[] = "mcp3208";
     static constexpr char ADS1115[] = "ads1115";
     static constexpr char MCP3008[] = "mcp3008";
-
-    /* 5V inputs go through voltage divider for 3.3V ADC inputs -- not quite 100% */
-    static constexpr double VOLTAGE_CONVERSION_CORRECTION_FACTOR = 3.3 / ((620.0 / (620.0 + 330.0)) * 5.0);
 
     /**
      * @brief Find the iio device given the expected name
