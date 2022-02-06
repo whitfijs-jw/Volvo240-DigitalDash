@@ -2540,6 +2540,7 @@ Standard 3-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <attributes>
 </attributes>
 <variantdefs>
+<variantdef name="Rev A Final" current="yes"/>
 </variantdefs>
 <classes>
 <class number="0" name="default" width="0" drill="0">
@@ -2547,14 +2548,18 @@ Standard 3-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </classes>
 <parts>
 <part name="D1" library="SparkFun-DiscreteSemi" deviceset="DIODE-ZENER" device="SMB" value="82V"/>
-<part name="D2" library="SparkFun-DiscreteSemi" deviceset="DIODE-ZENER" device="SMB" value="82V"/>
+<part name="D2" library="SparkFun-DiscreteSemi" deviceset="DIODE-ZENER" device="SMB" value="82V">
+<variant name="Rev A Final" populate="no"/>
+</part>
 <part name="D3" library="SparkFun-DiscreteSemi" deviceset="DIODE" device="SMA"/>
 <part name="R1" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="2k"/>
 <part name="R2" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="220"/>
 <part name="IC1" library="tach_adapter" deviceset="PS2701-1" device=""/>
 <part name="SUPPLY1" library="SparkFun-Aesthetics" deviceset="3.3V" device=""/>
 <part name="GND1" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
-<part name="D4" library="SparkFun-DiscreteSemi" deviceset="DIODE-ZENER" device="SMB" value="13V"/>
+<part name="D4" library="SparkFun-DiscreteSemi" deviceset="DIODE-ZENER" device="SMB" value="13V">
+<variant name="Rev A Final" populate="no"/>
+</part>
 <part name="GND-ISO2" library="SparkFun-Aesthetics" deviceset="GND-ISO" device=""/>
 <part name="J1" library="SparkFun-Connectors" deviceset="M02" device="PTH3"/>
 <part name="J2" library="SparkFun-Connectors" deviceset="M03" device="LONGPADS"/>
@@ -2567,6 +2572,9 @@ Standard 3-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 <sheets>
 <sheet>
 <plain>
+<text x="40.64" y="68.58" size="1.778" layer="97">Rev A Final Assembly Note:
+Replace D1 with 13V Zener 
+and short across D2 pads</text>
 </plain>
 <instances>
 <instance part="D1" gate="G$1" x="44.45" y="60.96" smashed="yes" rot="R180">
@@ -2716,4 +2724,10 @@ Standard 3-pin 0.1" header. Use with straight break away headers (SKU : PRT-0011
 </sheets>
 </schematic>
 </drawing>
+<compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
+</compatibility>
 </eagle>
