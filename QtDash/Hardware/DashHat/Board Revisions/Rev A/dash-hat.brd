@@ -2242,6 +2242,7 @@ type 0617, grid 17.5 mm</description>
 <attributes>
 </attributes>
 <variantdefs>
+<variantdef name="Rev A Final Assembly" current="yes"/>
 </variantdefs>
 <classes>
 <class number="0" name="default" width="0" drill="0">
@@ -2427,13 +2428,13 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <element name="C1" library="digital_dash" package="0603" value="10n" x="15.494" y="24.13" rot="R270"/>
 <element name="C5" library="digital_dash" package="0603" value="100n" x="22.86" y="22.86" rot="MR180"/>
 <element name="J2" library="SparkFun-Connectors" package="1X02" value="" x="11.43" y="2.032"/>
-<element name="R9" library="digital_dash" package="0603" value="1k" x="11.698" y="9.418" rot="R90"/>
+<element name="R9" library="digital_dash" package="0603" value="470R" x="11.698" y="9.418" rot="R90"/>
 <element name="J3" library="SparkFun-Connectors" package="1X02" value="" x="17.018" y="2.032"/>
-<element name="R10" library="digital_dash" package="0603" value="1k" x="17.272" y="9.398" rot="R90"/>
+<element name="R10" library="digital_dash" package="0603" value="91" x="17.272" y="9.398" rot="R90"/>
 <element name="J4" library="SparkFun-Connectors" package="1X02" value="" x="22.606" y="2.032"/>
-<element name="R11" library="digital_dash" package="0603" value="1k" x="22.86" y="9.398" rot="R90"/>
+<element name="R11" library="digital_dash" package="0603" value="43" x="22.86" y="9.398" rot="R90"/>
 <element name="J5" library="SparkFun-Connectors" package="1X02" value="" x="28.194" y="2.032"/>
-<element name="R12" library="digital_dash" package="0603" value="1k" x="28.448" y="9.398" rot="R90"/>
+<element name="R12" library="digital_dash" package="0603" value="150" x="28.448" y="9.398" rot="R90"/>
 <element name="R1" library="digital_dash" package="0603" value="100R" x="13.236" y="9.378" rot="R90"/>
 <element name="R3" library="digital_dash" package="0603" value="330k" x="18.542" y="18.542" rot="R90"/>
 <element name="C2" library="digital_dash" package="0603" value="10n" x="15.494" y="18.542" rot="R90"/>
@@ -2460,27 +2461,27 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 </element>
 <element name="OK1" library="digital_dash" package="SMD16" value="ILQ1X009" x="62.484" y="47.498" rot="R180"/>
 <element name="R17" library="digital_dash" package="0603" value="470R" x="70.866" y="38.354"/>
-<element name="R18" library="digital_dash" package="0603" value="470R" x="70.866" y="41.402" rot="R180"/>
+<element name="R18" library="digital_dash" package="0603" value="470R" x="70.866" y="41.402" populate="no" rot="R180"/>
 <element name="R19" library="digital_dash" package="0603" value="470R" x="55.118" y="39.878" rot="R270"/>
-<element name="R20" library="digital_dash" package="0603" value="470R" x="70.866" y="46.482"/>
+<element name="R20" library="digital_dash" package="0603" value="470R" x="70.866" y="46.482" populate="no"/>
 <element name="R21" library="digital_dash" package="0603" value="470R" x="70.866" y="42.926" rot="R180"/>
 <element name="R22" library="digital_dash" package="0603" value="470R" x="55.118" y="44.45" rot="R90"/>
-<element name="R23" library="digital_dash" package="0603" value="470R" x="70.866" y="48.006"/>
+<element name="R23" library="digital_dash" package="0603" value="470R" x="70.866" y="48.006" populate="no"/>
 <element name="R24" library="digital_dash" package="0603" value="470R" x="70.866" y="51.562" rot="R180"/>
 <element name="R25" library="digital_dash" package="0603" value="470R" x="70.866" y="56.134"/>
-<element name="R26" library="digital_dash" package="0603" value="470R" x="70.866" y="53.086" rot="R180"/>
+<element name="R26" library="digital_dash" package="0603" value="470R" x="70.866" y="53.086" populate="no" rot="R180"/>
 <element name="R27" library="digital_dash" package="0603" value="470R" x="55.118" y="50.038" rot="R270"/>
 <element name="R28" library="digital_dash" package="0603" value="470R" x="55.118" y="54.864" rot="R90"/>
 <element name="OK2" library="digital_dash" package="SMD16" value="ILQ1X009" x="62.484" y="47.498" rot="MR0"/>
 <element name="R29" library="digital_dash" package="0603" value="470R" x="70.612" y="56.134" rot="MR180"/>
-<element name="R30" library="digital_dash" package="0603" value="470R" x="70.612" y="53.34" rot="MR0"/>
+<element name="R30" library="digital_dash" package="0603" value="470R" x="70.612" y="53.34" populate="no" rot="MR0"/>
 <element name="R31" library="digital_dash" package="0603" value="470R" x="55.118" y="54.864" rot="MR90"/>
 <element name="R32" library="digital_dash" package="0603" value="470R" x="70.612" y="48.006" rot="MR180"/>
-<element name="R33" library="digital_dash" package="0603" value="470R" x="70.612" y="51.816" rot="MR0"/>
+<element name="R33" library="digital_dash" package="0603" value="470R" x="70.612" y="51.816" populate="no" rot="MR0"/>
 <element name="R34" library="digital_dash" package="0603" value="470R" x="55.118" y="50.038" rot="MR270"/>
-<element name="R35" library="digital_dash" package="0603" value="470R" x="70.612" y="46.482" rot="MR180"/>
+<element name="R35" library="digital_dash" package="0603" value="470R" x="70.612" y="46.482" populate="no" rot="MR180"/>
 <element name="R36" library="digital_dash" package="0603" value="470R" x="70.612" y="42.926" rot="MR0"/>
-<element name="R37" library="digital_dash" package="0603" value="470R" x="70.612" y="38.354" rot="MR180"/>
+<element name="R37" library="digital_dash" package="0603" value="470R" x="70.612" y="38.354" populate="no" rot="MR180"/>
 <element name="R38" library="digital_dash" package="0603" value="470R" x="70.612" y="41.402" rot="MR0"/>
 <element name="R39" library="digital_dash" package="0603" value="470R" x="55.118" y="44.45" rot="MR90"/>
 <element name="R40" library="digital_dash" package="0603" value="470R" x="55.118" y="39.878" rot="MR270"/>
@@ -2491,10 +2492,10 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <element name="R42" library="digital_dash" package="0603" value="470R" x="71.628" y="16.51" rot="R180"/>
 <element name="R43" library="digital_dash" package="0603" value="470R" x="55.118" y="14.986" rot="R270"/>
 <element name="R44" library="digital_dash" package="0603" value="470R" x="71.628" y="21.59"/>
-<element name="R45" library="digital_dash" package="0603" value="470R" x="71.628" y="18.034" rot="R180"/>
+<element name="R45" library="digital_dash" package="0603" value="470R" x="71.628" y="18.034" populate="no" rot="R180"/>
 <element name="R46" library="digital_dash" package="0603" value="470R" x="55.118" y="19.558" rot="R90"/>
 <element name="R47" library="digital_dash" package="0603" value="470R" x="71.628" y="23.114"/>
-<element name="R48" library="digital_dash" package="0603" value="470R" x="71.628" y="26.67" rot="R180"/>
+<element name="R48" library="digital_dash" package="0603" value="470R" x="71.628" y="26.67" populate="no" rot="R180"/>
 <element name="R49" library="digital_dash" package="0603" value="470R" x="71.628" y="31.242"/>
 <element name="R50" library="digital_dash" package="0603" value="470R" x="71.628" y="28.194" rot="R180"/>
 <element name="R51" library="digital_dash" package="0603" value="470R" x="55.118" y="25.146" rot="R270"/>
@@ -2540,13 +2541,13 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <element name="IC8" library="digital_dash" package="SO08" value="LM358D" x="38.608" y="18.034"/>
 <element name="C15" library="digital_dash" package="0603" value="100n" x="38.608" y="21.844" rot="R180"/>
 <element name="C16" library="digital_dash" package="0603" value="1u" x="38.608" y="23.368" rot="R180"/>
-<element name="R63" library="digital_dash" package="0603" value="1k" x="34.036" y="9.652" rot="R90"/>
+<element name="R63" library="digital_dash" package="0603" value="1k" x="34.036" y="9.652" populate="no" rot="R90"/>
 <element name="R64" library="digital_dash" package="0603" value="330k" x="32.766" y="18.542"/>
 <element name="C17" library="digital_dash" package="0603" value="10n" x="32.766" y="15.494"/>
 <element name="R65" library="digital_dash" package="0603" value="100R" x="35.56" y="9.652" rot="R90"/>
 <element name="R66" library="digital_dash" package="0603" value="620k" x="32.766" y="17.018" rot="R180"/>
 <element name="JP19" library="SparkFun-Jumpers" package="SMT-JUMPER_3_NO_SILK" value="JUMPER-SMT_3_NO_SILK" x="35.56" y="6.604" rot="R180"/>
-<element name="R67" library="digital_dash" package="0603" value="1k" x="43.688" y="9.652" rot="R90"/>
+<element name="R67" library="digital_dash" package="0603" value="6.49k" x="43.688" y="9.652" rot="R90"/>
 <element name="R68" library="digital_dash" package="0603" value="330k" x="43.434" y="18.288" rot="R270"/>
 <element name="C18" library="digital_dash" package="0603" value="10n" x="46.482" y="18.288" rot="R270"/>
 <element name="R69" library="digital_dash" package="0603" value="100R" x="41.91" y="9.652" rot="R90"/>
@@ -2594,7 +2595,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <element name="C19" library="digital_dash" package="0603" value="100n" x="32.258" y="48.006"/>
 <element name="C20" library="digital_dash" package="0603" value="1u" x="32.258" y="46.482"/>
 <element name="R75" library="digital_dash" package="0603" value="1k" x="32.258" y="44.704" rot="R180"/>
-<element name="S1" library="SparkFun-Switches" package="TACTILE_SWITCH_SMD_6.0X3.5MM" value="RST_SW" x="24.384" y="50.546" rot="R270">
+<element name="S1" library="SparkFun-Switches" package="TACTILE_SWITCH_SMD_6.0X3.5MM" value="RST_SW" x="24.384" y="50.546" populate="no" rot="R270">
 <attribute name="PROD_ID" value="SWCH-14278" x="24.384" y="50.546" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="SF_SKU" value="COM-08229" x="24.384" y="50.546" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
@@ -2603,9 +2604,9 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 </element>
 <element name="JP24" library="SparkFun-Jumpers" package="SMT-JUMPER_3_NO_SILK" value="TACH_INPUT_SEL" x="9.398" y="47.752" rot="R90"/>
 <element name="R76" library="digital_dash" package="0603" value="1k" x="20.066" y="59.69" rot="R180"/>
-<element name="R77" library="digital_dash" package="0603" value="1k" x="25.146" y="59.69" rot="R180"/>
+<element name="R77" library="digital_dash" package="0603" value="1k" x="25.146" y="59.69" populate="no" rot="R180"/>
 <element name="R78" library="digital_dash" package="0603" value="1k" x="9.652" y="59.69" rot="R180"/>
-<element name="R79" library="digital_dash" package="0603" value="1k" x="14.732" y="59.69" rot="R180"/>
+<element name="R79" library="digital_dash" package="0603" value="1k" x="14.732" y="59.69" populate="no" rot="R180"/>
 <element name="R82" library="resistor" package="0617/17" value="" x="95.758" y="62.992" rot="R180"/>
 </elements>
 <signals>

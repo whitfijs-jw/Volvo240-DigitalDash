@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -10176,6 +10176,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <attributes>
 </attributes>
 <variantdefs>
+<variantdef name="Rev A Final Assembly" current="yes"/>
 </variantdefs>
 <classes>
 <class number="0" name="default" width="0" drill="0">
@@ -10192,19 +10193,19 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="C5" library="digital_dash" deviceset="CL" device="" technology="10B104MB8NNNC" value="100n"/>
 <part name="GND6" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="J2" library="SparkFun-Connectors" deviceset="CONN_02" device=""/>
-<part name="R9" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
+<part name="R9" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
 <part name="GND7" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY2" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="J3" library="SparkFun-Connectors" deviceset="CONN_02" device=""/>
-<part name="R10" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
+<part name="R10" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="91"/>
 <part name="GND8" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY3" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="J4" library="SparkFun-Connectors" deviceset="CONN_02" device=""/>
-<part name="R11" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
+<part name="R11" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="43"/>
 <part name="GND9" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY4" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="J5" library="SparkFun-Connectors" deviceset="CONN_02" device=""/>
-<part name="R12" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
+<part name="R12" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="150"/>
 <part name="GND10" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY5" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="R1" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100RL" value="100R"/>
@@ -10250,22 +10251,30 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="IC3" library="microchip" deviceset="MCP23017" device="SS" value="MCP23017SS"/>
 <part name="OK1" library="digital_dash" deviceset="ILQ1" device="X009"/>
 <part name="R17" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
-<part name="R18" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R18" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R">
+<variant name="Rev A Final Assembly" populate="no"/>
+</part>
 <part name="SUPPLY13" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="R19" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
 <part name="GND24" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY14" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
-<part name="R20" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R20" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R">
+<variant name="Rev A Final Assembly" populate="no"/>
+</part>
 <part name="R21" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
 <part name="SUPPLY15" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="R22" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
 <part name="SUPPLY16" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="GND26" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R23" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R23" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R">
+<variant name="Rev A Final Assembly" populate="no"/>
+</part>
 <part name="R24" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
 <part name="SUPPLY17" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="R25" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
-<part name="R26" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R26" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R">
+<variant name="Rev A Final Assembly" populate="no"/>
+</part>
 <part name="SUPPLY18" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="R27" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
 <part name="GND29" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
@@ -10275,21 +10284,29 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="GND30" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="OK2" library="digital_dash" deviceset="ILQ1" device="X009"/>
 <part name="R29" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
-<part name="R30" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R30" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R">
+<variant name="Rev A Final Assembly" populate="no"/>
+</part>
 <part name="SUPPLY21" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="R31" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
 <part name="GND32" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY22" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="R32" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
-<part name="R33" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R33" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R">
+<variant name="Rev A Final Assembly" populate="no"/>
+</part>
 <part name="SUPPLY23" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="R34" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
 <part name="SUPPLY24" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="GND34" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R35" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R35" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R">
+<variant name="Rev A Final Assembly" populate="no"/>
+</part>
 <part name="R36" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
 <part name="SUPPLY25" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R37" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R37" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R">
+<variant name="Rev A Final Assembly" populate="no"/>
+</part>
 <part name="R38" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
 <part name="SUPPLY26" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="R39" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
@@ -10311,13 +10328,17 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="GND42" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY31" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="R44" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
-<part name="R45" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R45" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R">
+<variant name="Rev A Final Assembly" populate="no"/>
+</part>
 <part name="SUPPLY32" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="R46" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
 <part name="SUPPLY33" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="GND44" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="R47" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
-<part name="R48" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R48" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R">
+<variant name="Rev A Final Assembly" populate="no"/>
+</part>
 <part name="SUPPLY34" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="R49" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
 <part name="R50" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
@@ -10411,7 +10432,9 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="C15" library="digital_dash" deviceset="CL" device="" technology="10B104MB8NNNC" value="100n"/>
 <part name="GND27" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="C16" library="digital_dash" deviceset="CL" device="" technology="10A105KA8NNNC" value="1u"/>
-<part name="R63" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
+<part name="R63" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k">
+<variant name="Rev A Final Assembly" populate="no"/>
+</part>
 <part name="SUPPLY45" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="R64" library="digital_dash" deviceset="RC0603JR" device="" technology="-07330KL" value="330k"/>
 <part name="C17" library="digital_dash" deviceset="CL" device="" technology="10B103KB8NNNC" value="10n"/>
@@ -10423,7 +10446,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="GND33" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="JP19" library="SparkFun-Jumpers" deviceset="JUMPER-SMT_3_NO" device="_SILK"/>
 <part name="GND35" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R67" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
+<part name="R67" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="6.49k"/>
 <part name="SUPPLY47" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="R68" library="digital_dash" deviceset="RC0603JR" device="" technology="-07330KL" value="330k"/>
 <part name="C18" library="digital_dash" deviceset="CL" device="" technology="10B103KB8NNNC" value="10n"/>
@@ -10474,15 +10497,21 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="C20" library="digital_dash" deviceset="CL" device="" technology="10A105KA8NNNC" value="1u"/>
 <part name="R75" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="SUPPLY54" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
-<part name="S1" library="SparkFun-Switches" deviceset="MOMENTARY-SWITCH-SPST" device="-SMD-6.0X3.5MM" value="RST_SW"/>
+<part name="S1" library="SparkFun-Switches" deviceset="MOMENTARY-SWITCH-SPST" device="-SMD-6.0X3.5MM" value="RST_SW">
+<variant name="Rev A Final Assembly" populate="no"/>
+</part>
 <part name="J16" library="SparkFun-Connectors" deviceset="CONN_03" device="" value="TACH_IN"/>
 <part name="SUPPLY55" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="GND50" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="JP24" library="SparkFun-Jumpers" deviceset="JUMPER-SMT_3_NO" device="_SILK" value="TACH_INPUT_SEL"/>
 <part name="R76" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
-<part name="R77" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
+<part name="R77" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k">
+<variant name="Rev A Final Assembly" populate="no"/>
+</part>
 <part name="R78" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
-<part name="R79" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
+<part name="R79" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k">
+<variant name="Rev A Final Assembly" populate="no"/>
+</part>
 <part name="SUPPLY56" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="R82" library="resistor" deviceset="R-US_" device="0617/17"/>
 </parts>
@@ -10495,6 +10524,12 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <text x="110.49" y="106.68" size="5.08" layer="97">Dash Light Inputs (Isolated)</text>
 <text x="548.64" y="240.03" size="1.27" layer="97">Connect output from speedo/vss 
 conditioning circuit to here.</text>
+<text x="289.56" y="233.68" size="1.778" layer="97">Sandwich 100nF capacitor
+on R56 and R62. This should stop
+oscillations on the outputs.</text>
+<text x="551.18" y="160.02" size="1.778" layer="97">Jumper to GPIO6</text>
+<text x="502.92" y="160.02" size="1.778" layer="97">Jumper to GPIO19</text>
+<text x="459.74" y="274.32" size="1.778" layer="97" rot="R90">Used a 68R 5W.</text>
 </plain>
 <instances>
 <instance part="J1" gate="G$1" x="31.75" y="50.8"/>
@@ -10797,7 +10832,7 @@ conditioning circuit to here.</text>
 <instance part="D7" gate="G$1" x="203.2" y="278.13" rot="R90"/>
 <instance part="D8" gate="G$1" x="203.2" y="214.63" rot="R90"/>
 <instance part="IC9" gate="G$1" x="581.66" y="63.5"/>
-<instance part="BT1" gate="G$1" x="558.8" y="44.45" rot="R270"/>
+<instance part="BT1" gate="G$1" x="558.8" y="46.99" rot="R270"/>
 <instance part="Y1" gate="G$1" x="548.64" y="71.12" rot="R90"/>
 <instance part="GND46" gate="1" x="558.8" y="29.21"/>
 <instance part="SUPPLY53" gate="G$1" x="617.22" y="80.01"/>
@@ -11220,7 +11255,7 @@ conditioning circuit to here.</text>
 <pinref part="GND46" gate="1" pin="GND"/>
 <wire x1="558.8" y1="31.75" x2="558.8" y2="36.83" width="0.1524" layer="91"/>
 <pinref part="IC9" gate="G$1" pin="GND"/>
-<wire x1="558.8" y1="36.83" x2="558.8" y2="39.37" width="0.1524" layer="91"/>
+<wire x1="558.8" y1="36.83" x2="558.8" y2="41.91" width="0.1524" layer="91"/>
 <wire x1="566.42" y1="53.34" x2="565.15" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="565.15" y1="53.34" x2="565.15" y2="36.83" width="0.1524" layer="91"/>
 <wire x1="565.15" y1="36.83" x2="558.8" y2="36.83" width="0.1524" layer="91"/>
@@ -13327,7 +13362,7 @@ conditioning circuit to here.</text>
 <net name="N$38" class="0">
 <segment>
 <pinref part="BT1" gate="G$1" pin="+"/>
-<wire x1="558.8" y1="49.53" x2="558.8" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="558.8" y1="52.07" x2="558.8" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="IC9" gate="G$1" pin="VBKP"/>
 <wire x1="558.8" y1="63.5" x2="566.42" y2="63.5" width="0.1524" layer="91"/>
 </segment>
