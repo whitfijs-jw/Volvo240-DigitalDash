@@ -17,6 +17,7 @@
         <file>Gauge.qml</file>
         <file>Original240LayoutClock.qml</file>
         <file>Original850R.qml</file>
+        <file>OriginalRSportLayout.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -69,5 +70,14 @@
         <file>850_fuel_level.png</file>
         <file>850_coolant.png</file>
         <file>850_boost.png</file>
+    </qresource>
+    <qresource prefix="/gauge-faces-r-sport">
+        <file>r_sport_coolant_fahrenhet.png</file>
+        <file>r_sport_oil_pressure_5bar.png</file>
+        <file>r_sport_voltmeter.png</file>
+        <file>r_sport_coolant_celsius.png</file>
+        <file>r_sport_fuel.png</file>
+        <file>r_sport_tachometer.png</file>
+        <file>r_sport_speedo_mph.png</file>
     </qresource>
 </RCC>

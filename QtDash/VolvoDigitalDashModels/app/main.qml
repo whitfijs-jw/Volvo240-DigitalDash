@@ -960,6 +960,349 @@ Window {
     }
 
     Component {
+        id: fuelLevelDelegateRSport
+
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeMax
+                item.lowAlarm = gaugeLowAlarm
+                item.clockwise = false
+
+                item.minAngle = -40
+                item.maxAngle = 40
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_fuel.png"
+
+                item.needleColor = "white"
+
+                item.needleWidth = smallGaugeSize * 0.035
+                item.needleLength = smallGaugeSize * 0.65
+                item.needleOffset = smallGaugeSize * 0.25 / 2
+                item.offsetX = -smallGaugeSize / 7.4
+
+                item.needleCenterRadius = 0.15
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
+        }
+    }
+
+    Component {
+        id: coolantDelegateRSport
+
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeMax
+                item.lowAlarm = gaugeLowAlarm
+                item.clockwise = false
+
+                item.minAngle = -35
+                item.maxAngle = 38
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_coolant_fahrenhet.png"
+
+                item.needleColor = "white"
+
+                item.needleWidth = smallGaugeSize * 0.035
+                item.needleLength = smallGaugeSize * 0.65
+                item.needleOffset = smallGaugeSize * 0.25 / 2
+                item.offsetX = -smallGaugeSize / 7.4
+
+                item.needleCenterRadius = 0.15
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
+        }
+    }
+
+    Component {
+        id: oilPressureDelegateRSport
+
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeMax
+                item.lowAlarm = gaugeLowAlarm
+                item.clockwise = false
+
+                item.minAngle = -48
+                item.maxAngle = 48
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_oil_pressure_5bar.png"
+
+                item.needleColor = "white"
+
+                item.needleWidth = smallGaugeSize * 0.035
+                item.needleLength = smallGaugeSize * 0.65
+                item.needleOffset = smallGaugeSize * 0.25 / 2
+                item.offsetX = -smallGaugeSize / 4.65
+
+                item.needleCenterRadius = 0.15
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
+        }
+    }
+
+    Component {
+        id: voltMeterDelegateRSport
+
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = 8.0
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeMax
+                item.lowAlarm = gaugeLowAlarm
+                item.clockwise = false
+
+                item.minAngle = -48
+                item.maxAngle = 48
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_voltmeter.png"
+
+                item.needleColor = "white"
+
+                item.needleWidth = smallGaugeSize * 0.035
+                item.needleLength = smallGaugeSize * 0.65
+                item.needleOffset = smallGaugeSize * 0.25 / 2
+                item.offsetX = -smallGaugeSize / 4.65
+
+                item.needleCenterRadius = 0.15
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
+        }
+    }
+
+    Component {
+        id: speedoDelegateRSport
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = minValue
+                item.maxValue = speedoMax
+                item.units = speedUnits
+                item.lowAlarm = minValue
+                item.highAlarm = speedoMax
+
+                item.initialValueOffset = 10
+
+                item.topValue = valueTop
+                item.topUnits = valueTopUnits
+                item.topValueEnabled = true
+                item.topTextOffset = -speedoSize / 6
+                item.topTextSize = speedoSize / 20.0
+
+                item.minAngle = -148
+                item.maxAngle = 128
+
+                item.height = speedoSize
+                item.width = speedoSize
+
+                item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_speedo_mph.png"
+
+                item.needleColor = "white"
+
+                item.needleWidth = speedoSize * 0.02
+                item.needleLength = speedoSize * 0.5
+                item.needleOffset = speedoSize * 0.15 / 2
+
+                item.needleCenterRadius = 0.10
+
+                item.textSize = speedoSize * .15 / 2
+                item.textOffset = speedoSize / 6
+                item.significantDigits = 0
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue;
+            }
+
+            Binding {
+                target: item
+                property: "maxValue"
+                value: speedoMax
+            }
+
+            Binding {
+                target: item
+                property: "topValue"
+                value: valueTop
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: speedoSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: speedoSize
+            }
+        }
+    }
+
+    Component {
+        id: rpmDelegateRSport
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = 0
+                item.maxValue = 8000
+                item.units = "rpm"
+                item.highAlarm = redLine
+                item.lowAlarm = 0
+
+                item.initialValueOffset = 400
+
+                item.minAngle = -140
+                item.maxAngle = 126
+
+                item.height = tachSize
+                item.width = tachSize
+
+                item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_tachometer.png"
+
+                item.needleColor = "white"
+
+                item.needleWidth = tachSize * 0.02
+                item.needleLength = tachSize * 0.5
+                item.needleOffset = tachSize * 0.15 / 2
+
+                item.needleCenterRadius = 0.10
+
+                item.textSize = tachSize * 0.15 / 2
+                item.textOffset = tachSize / 6
+                item.significantDigits = 0
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: rpm
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: tachSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: tachSize
+            }
+        }
+    }
+
+
+    Component {
         id: leftBlinkerDelegate
 
         Loader {
@@ -1368,10 +1711,17 @@ Window {
                     //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original850R.qml"
                     setSmallGaugeSize(200);
-                    setTachSize(320);
+                    setTachSize(350);
                     setSpeedoSize(440);
                     setSpeedoMax(140);
                     //setTempFuelSize(300);
+                    break;
+                case Qt.Key_6:
+                    currentGauge.source = "qrc:/OriginalRSportLayout.qml"
+                    setSmallGaugeSize(200);
+                    setTachSize(350);
+                    setSpeedoSize(350);
+                    setSpeedoMax(130);
                     break;
 
                 case Qt.Key_Escape:

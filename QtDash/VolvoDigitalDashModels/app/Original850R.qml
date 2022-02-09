@@ -31,7 +31,7 @@ Item {
             height: tachSize
             color: "transparent"
             anchors.left: speedoContainer.right
-            anchors.leftMargin: tachSize / 6
+            anchors.leftMargin: tachSize / 8
             anchors.verticalCenter: speedoContainer.verticalCenter
             anchors.verticalCenterOffset: tachSize * 0.10
 
@@ -47,7 +47,7 @@ Item {
             width: tachSize
             height: tachSize
             anchors.right: speedoContainer.left
-            anchors.rightMargin: tachSize / 6
+            anchors.rightMargin: tachSize / 8
             anchors.verticalCenter: tachContainer.verticalCenter
             color: "transparent"
 

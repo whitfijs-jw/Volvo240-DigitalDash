@@ -16,6 +16,7 @@ Item {
     property int lowAlarm: 0
     property int highAlarm: 0
     property int offset: 0
+    property int offsetX: 0
     property int initialValueOffset: 0
 
     property int minAngle: -235
@@ -79,7 +80,7 @@ Item {
         NeedleCenter {
             id: needleCenter
             size: needleCenterRadius * parent.width
-            x: parent.width / 2
+            x: parent.width / 2 + offsetX
             y: parent.height / 2 + offset
 
             transform: [
@@ -96,7 +97,7 @@ Item {
         Rectangle {
             id: needle
 
-            x: parent.width / 2
+            x: parent.width / 2 + offsetX
             y: parent.height / 2 + offset
             width: gauge.needleLength
             height: gauge.needleWidth

@@ -449,3 +449,5 @@ RPI {
     message("rpi is selected")
     DEFINES += RASPBERRY_PI
 }
+
+DISTFILES +=
