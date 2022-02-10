@@ -45,28 +45,34 @@ Item {
         }
 
         Rectangle {
-            id: coolantTempContainer
-
             anchors.right: tachContainer.left
             anchors.rightMargin: -smallGaugeSize * .15
 
             anchors.verticalCenter: speedoContainer.verticalCenter
             anchors.verticalCenterOffset: smallGaugeSize * 0.45
 
-
             height: smallGaugeSize
             width: smallGaugeSize
             color: "transparent"
 
-            ListView {
-                model: coolantTempModel
-                delegate: coolantDelegateRSport
+            Rectangle {
+                id: coolantTempContainer
+                color: "transparent"
+
+                ListView {
+                    model: coolantTempModel
+                    delegate: coolantDelegateRSport
+                }
+            }
+
+            Image {
+                anchors.fill: parent
+                source: "qrc:/gauge-faces-r-sport/r_sport_coolant_fahrenheit_shroud.png"
+                cache: true
             }
         }
 
         Rectangle {
-            id: fuelLevelContainer
-
             anchors.left: speedoContainer.right
             anchors.leftMargin: -smallGaugeSize * 0.15
 
@@ -78,9 +84,23 @@ Item {
             width: smallGaugeSize
             color: "transparent"
 
-            ListView {
-                model: fuelLevelModel
-                delegate: fuelLevelDelegateRSport
+
+            Rectangle {
+                id: fuelLevelContainer
+
+                anchors.fill: parent
+                color: "transparent"
+
+                ListView {
+                    model: fuelLevelModel
+                    delegate: fuelLevelDelegateRSport
+                }
+            }
+
+            Image {
+                anchors.fill: parent
+                source: "qrc:/gauge-faces-r-sport/r_sport_fuel_shroud.png"
+                cache: true
             }
         }
 

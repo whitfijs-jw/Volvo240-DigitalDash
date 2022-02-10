@@ -79,5 +79,8 @@
         <file>r_sport_fuel.png</file>
         <file>r_sport_tachometer.png</file>
         <file>r_sport_speedo_mph.png</file>
+        <file>r_sport_coolant_fahrenheit_shroud.png</file>
+        <file>r_sport_coolant_celsius_shroud.png</file>
+        <file>r_sport_fuel_shroud.png</file>
     </qresource>
 </RCC>

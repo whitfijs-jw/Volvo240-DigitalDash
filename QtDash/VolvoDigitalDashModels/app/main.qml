@@ -1206,7 +1206,7 @@ Window {
                 item.needleLength = speedoSize * 0.5
                 item.needleOffset = speedoSize * 0.15 / 2
 
-                item.needleCenterRadius = 0.10
+                item.needleCenterRadius = 0.125
 
                 item.textSize = speedoSize * .15 / 2
                 item.textOffset = speedoSize / 6
@@ -1274,7 +1274,7 @@ Window {
                 item.needleLength = tachSize * 0.5
                 item.needleOffset = tachSize * 0.15 / 2
 
-                item.needleCenterRadius = 0.10
+                item.needleCenterRadius = 0.125
 
                 item.textSize = tachSize * 0.15 / 2
                 item.textOffset = tachSize / 6
