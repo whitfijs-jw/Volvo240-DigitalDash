@@ -2881,21 +2881,35 @@ Source: http://cache.national.com/ds/LM/LM158.pdf</description>
 <technologies>
 <technology name="">
 <attribute name="VALUE" value="" constant="no"/>
+<attribute name="VOLTAGE" value="" constant="no"/>
 </technology>
 <technology name="10A105KA8NNNC">
 <attribute name="VALUE" value="1u" constant="no"/>
+<attribute name="VOLTAGE" value="25V" constant="no"/>
+</technology>
+<technology name="10A475KL8NRNC">
+<attribute name="VALUE" value="4.7u" constant="no"/>
+<attribute name="VOLTAGE" value="35V" constant="no"/>
 </technology>
 <technology name="10B102KB8NNWC">
 <attribute name="VALUE" value="1n" constant="no"/>
+<attribute name="VOLTAGE" value="50V" constant="no"/>
 </technology>
 <technology name="10B103KB8NNNC">
 <attribute name="VALUE" value="10n" constant="no"/>
+<attribute name="VOLTAGE" value="50V" constant="no"/>
 </technology>
 <technology name="10B104MB8NNNC">
 <attribute name="VALUE" value="100n" constant="no"/>
+<attribute name="VOLTAGE" value="50V" constant="no"/>
 </technology>
 <technology name="10B106MQ8NRNC">
 <attribute name="VALUE" value="10u" constant="no"/>
+<attribute name="VOLTAGE" value="6.3V" constant="no"/>
+</technology>
+<technology name="10B684KO8NFNC">
+<attribute name="VALUE" value=".68u" constant="no"/>
+<attribute name="VOLTAGE" value="16V" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3691,7 +3705,7 @@ Source: https://www.ti.com/lit/ds/symlink/tsv912.pdf</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="RC0603FR">
+<deviceset name="RC0603FR" prefix="R">
 <gates>
 <gate name="G$1" symbol="RESISTOR" x="0" y="0"/>
 </gates>
@@ -3707,6 +3721,9 @@ Source: https://www.ti.com/lit/ds/symlink/tsv912.pdf</description>
 </technology>
 <technology name="-071KL">
 <attribute name="VALUE" value="1k 1%" constant="no"/>
+</technology>
+<technology name="-07270RL">
+<attribute name="VALUE" value="270 1%" constant="no"/>
 </technology>
 <technology name="-07499KL">
 <attribute name="VALUE" value="499k 1%" constant="no"/>
