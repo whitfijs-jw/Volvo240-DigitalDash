@@ -18,6 +18,7 @@
         <file>Original240LayoutClock.qml</file>
         <file>Original850R.qml</file>
         <file>OriginalRSportLayout.qml</file>
+        <file>Needle240.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>

@@ -49,13 +49,14 @@ Item {
             anchors.right: speedoContainer.left
             anchors.rightMargin: tachSize / 8
             anchors.verticalCenter: tachContainer.verticalCenter
+            anchors.verticalCenterOffset: -smallGaugeSize * 0.1
             color: "transparent"
 
             Rectangle {
                 id: boostContainer
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.verticalCenterOffset: -smallGaugeSize * 0.5
+                anchors.verticalCenterOffset: -smallGaugeSize * 0.4
                 height: smallGaugeSize
                 width: smallGaugeSize
                 color: "transparent"
@@ -70,7 +71,7 @@ Item {
                 id: coolantTempContainer
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.horizontalCenterOffset: smallGaugeSize * 0.5
+                anchors.horizontalCenterOffset: smallGaugeSize * 0.325
                 height: smallGaugeSize
                 width: smallGaugeSize
                 color: "transparent"
@@ -85,7 +86,7 @@ Item {
                 id: fuelLevelContainer
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.horizontalCenterOffset: -smallGaugeSize * 0.5
+                anchors.horizontalCenterOffset: -smallGaugeSize * 0.325
                 height: smallGaugeSize
                 width: smallGaugeSize
                 color: "transparent"

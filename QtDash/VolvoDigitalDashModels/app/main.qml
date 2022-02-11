@@ -198,6 +198,9 @@ Window {
                 item.needleOffset = smallGaugeSize * .25 / 2
 
                 item.needleCenterRadius = 0.25
+
+
+                item.textOffset = smallGaugeSize * 0.75
             }
 
             Binding {
@@ -1624,6 +1627,11 @@ Window {
         anchors.fill: parent
         focus: true
         property bool initialLoad: true
+        antialiasing: true
+        smooth: true
+
+        layer.enabled: true
+        layer.samples: 16
 
         Loader {
             id: currentGauge
