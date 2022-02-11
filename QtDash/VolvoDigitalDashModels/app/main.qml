@@ -982,7 +982,7 @@ Window {
 
                 item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_fuel.png"
 
-                item.needleColor = "white"
+                item.needleColor = "burlywood"
 
                 item.needleWidth = smallGaugeSize * 0.035
                 item.needleLength = smallGaugeSize * 0.65
@@ -1035,7 +1035,7 @@ Window {
 
                 item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_coolant_fahrenhet.png"
 
-                item.needleColor = "white"
+                item.needleColor = "burlywood"
 
                 item.needleWidth = smallGaugeSize * 0.035
                 item.needleLength = smallGaugeSize * 0.65
@@ -1088,7 +1088,7 @@ Window {
 
                 item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_oil_pressure_5bar.png"
 
-                item.needleColor = "white"
+                item.needleColor = "burlywood"
 
                 item.needleWidth = smallGaugeSize * 0.035
                 item.needleLength = smallGaugeSize * 0.65
@@ -1141,7 +1141,7 @@ Window {
 
                 item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_voltmeter.png"
 
-                item.needleColor = "white"
+                item.needleColor = "burlywood"
 
                 item.needleWidth = smallGaugeSize * 0.035
                 item.needleLength = smallGaugeSize * 0.65
@@ -1200,11 +1200,11 @@ Window {
 
                 item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_speedo_mph.png"
 
-                item.needleColor = "white"
+                item.needleColor = "burlywood"
 
                 item.needleWidth = speedoSize * 0.02
-                item.needleLength = speedoSize * 0.5
-                item.needleOffset = speedoSize * 0.15 / 2
+                item.needleLength = speedoSize * 0.525
+                item.needleOffset = speedoSize * 0.2 / 2
 
                 item.needleCenterRadius = 0.125
 
@@ -1268,11 +1268,11 @@ Window {
 
                 item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_tachometer.png"
 
-                item.needleColor = "white"
+                item.needleColor = "burlywood"
 
                 item.needleWidth = tachSize * 0.02
-                item.needleLength = tachSize * 0.5
-                item.needleOffset = tachSize * 0.15 / 2
+                item.needleLength = tachSize * 0.525
+                item.needleOffset = tachSize * 0.2 / 2
 
                 item.needleCenterRadius = 0.125
 
