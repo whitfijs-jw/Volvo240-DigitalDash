@@ -2852,6 +2852,9 @@ Source: http://cache.national.com/ds/LM/LM158.pdf</description>
 <technology name="-071ML">
 <attribute name="VALUE" value="1M" constant="no"/>
 </technology>
+<technology name="-0720KL">
+<attribute name="VALUE" value="20k" constant="no"/>
+</technology>
 <technology name="-07330KL">
 <attribute name="VALUE" value="330k" constant="no"/>
 </technology>
@@ -3721,6 +3724,9 @@ Source: https://www.ti.com/lit/ds/symlink/tsv912.pdf</description>
 </technology>
 <technology name="-071KL">
 <attribute name="VALUE" value="1k 1%" constant="no"/>
+</technology>
+<technology name="-0720KL">
+<attribute name="VALUE" value="20k 1%" constant="no"/>
 </technology>
 <technology name="-07270RL">
 <attribute name="VALUE" value="270 1%" constant="no"/>
