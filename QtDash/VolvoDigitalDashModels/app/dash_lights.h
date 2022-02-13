@@ -95,19 +95,20 @@ public slots:
         uint16_t inputs = (portB << 8) | portA;
 
         auto lightConf = mConfig;
+        bool activeLow = mConfig.value(Config::ACTIVE_LOW, true);
 
         // set em
-        mLeftBlinkerModel.setOn(inputs & (1 << lightConf.value(Config::BLINKER_LEFT_KEY)));
-        mRightBlinkerModel.setOn(inputs & (1 << lightConf.value(Config::BLINKER_RIGHT_KEY)));
-        mHighBeamLightModel.setOn(inputs & (1 << lightConf.value(Config::HIGH_BEAM_KEY)));
-        mParkingBrakeLightModel.setOn(inputs & (1 << lightConf.value(Config::PARKING_BRAKE_KEY)));
-        mBrakeFailureLightModel.setOn(inputs & (1 << lightConf.value(Config::BRAKE_FAILURE_KEY)));
-        mBulbFailureLightModel.setOn(inputs & (1 << lightConf.value(Config::BULB_FAILURE_KEY)));
-        mSrsWarningLightModel.setOn(inputs & (1 << lightConf.value(Config::OD_LAMP_KEY)));
-        mOilWarningLightModel.setOn(inputs & (1 << lightConf.value(Config::OIL_PRESSURE_KEY)));
-        mBatteryWarningLightModel.setOn(inputs & (1 << lightConf.value(Config::CHARGING_LIGHT_KEY)));
-        mAbsWarningLightModel.setOn(inputs & (1 << lightConf.value(Config::CONN_32_PIN3)));
-        mCheckEngineLightModel.setOn(inputs & (1 << lightConf.value(Config::CHECK_ENGINE_KEY)));
+        mLeftBlinkerModel.setOn(readPin(lightConf.value(Config::BLINKER_LEFT_KEY), inputs, activeLow));
+        mRightBlinkerModel.setOn(readPin(lightConf.value(Config::BLINKER_RIGHT_KEY), inputs, activeLow));
+        mHighBeamLightModel.setOn(readPin(lightConf.value(Config::HIGH_BEAM_KEY), inputs, activeLow));
+        mParkingBrakeLightModel.setOn(readPin(lightConf.value(Config::PARKING_BRAKE_KEY), inputs, activeLow));
+        mBrakeFailureLightModel.setOn(readPin(lightConf.value(Config::BRAKE_FAILURE_KEY), inputs, activeLow));
+        mBulbFailureLightModel.setOn(readPin(lightConf.value(Config::BULB_FAILURE_KEY), inputs, activeLow));;
+        mSrsWarningLightModel.setOn(readPin(lightConf.value(Config::OD_LAMP_KEY), inputs, activeLow));
+        mOilWarningLightModel.setOn(readPin(lightConf.value(Config::OIL_PRESSURE_SW_KEY), inputs, activeLow));
+        mBatteryWarningLightModel.setOn(readPin(lightConf.value(Config::CHARGING_LIGHT_KEY), inputs, activeLow));
+        mAbsWarningLightModel.setOn(readPin(lightConf.value(Config::CONN_32_PIN3), inputs, activeLow));
+        mCheckEngineLightModel.setOn(readPin(lightConf.value(Config::CHECK_ENGINE_KEY), inputs, activeLow));
 
         // not used at the moment?
         mShiftUpLightModel.setOn(0);
@@ -127,6 +128,16 @@ public slots:
         mShiftUpLightModel.setOn(true);
         mServiceLightModel.setOn(true);
 #endif
+    }
+
+    bool readPin(int pin, uint16_t inputs, bool activeLow) {
+        bool val = inputs & (1 << pin);
+
+        if (activeLow) {
+            return !val;
+        } else {
+            return val;
+        }
     }
 
 private:
