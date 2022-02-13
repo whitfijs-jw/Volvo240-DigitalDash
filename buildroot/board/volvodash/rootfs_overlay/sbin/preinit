@@ -1,0 +1,8 @@
+#!/bin/busybox sh
+
+# show splash screen
+#fbv -d 1 /opt/splash.png > /dev/null 2>&1
+dd if=/opt/splash.fb of=/dev/fb0 bs=2457600 count=1 > dev/null 2>&1
+
+# start real init
+exec /sbin/init

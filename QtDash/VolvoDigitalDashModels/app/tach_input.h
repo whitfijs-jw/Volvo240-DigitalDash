@@ -118,7 +118,7 @@ public:
 
 private:
 
-    static constexpr char DEFAULT_TACH_PULSE_PATH[] = "/sys/class/volvo_dash/pulse_counter/"; //!< default pulse counter location
+    static constexpr char DEFAULT_TACH_PULSE_PATH[] = "/sys/class/volvo_dash/tach_counter/"; //!< default pulse counter location
     static constexpr char PULSE_COUNT_ATTR[] = "pulse_count"; //!< total pulses detected attribute
     static constexpr char PULSE_SPACING_AVG[] = "pulse_spacing_avg"; //!< average pulse spacing attribute
     static constexpr char PULSE_SPACING_MIN[] = "pulse_spacing_min"; //!< minimum pulse spacing (in nsec)

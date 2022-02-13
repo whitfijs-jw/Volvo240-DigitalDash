@@ -45,7 +45,7 @@ Item
     Behavior on seconds {
         RotationAnimation {
             duration: 250
-            direction: RotationAnimation.Clockwise
+            direction: RotationAnimation.Shortest
         }
     }
 

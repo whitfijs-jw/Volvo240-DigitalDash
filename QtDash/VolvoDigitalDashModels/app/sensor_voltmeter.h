@@ -16,7 +16,8 @@ public:
 public slots:
     void transform(QVariant data, int channel) override {
         if (channel == getChannel()) {
-            qreal adcVolts = data.toReal();
+            // these are true 3.3V inputs -- remove correction factor
+            qreal adcVolts = data.toReal() / Adc::VOLTAGE_CONVERSION_CORRECTION_FACTOR;
             qreal volts = m12VInput.getVoltage(adcVolts);
             emit sensorDataReady(volts);
         }

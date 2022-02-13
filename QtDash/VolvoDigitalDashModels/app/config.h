@@ -46,6 +46,7 @@ public:
     static constexpr char FUSE8_12V_KEY[] = "fuse8_12v";
 
     // expected dash light keys
+    static constexpr char ACTIVE_LOW[] = "active_low";
     static constexpr char OIL_PRESSURE_SW_KEY[] = "oil_pressure_sw";
     static constexpr char OD_LAMP_KEY[] = "od_lamp";
     static constexpr char HIGH_BEAM_KEY[] = "high_beam";
