@@ -3752,6 +3752,101 @@ type 0617, grid 17.5 mm</description>
 <rectangle x1="-8.5344" y1="-0.4064" x2="-8.2296" y2="0.4064" layer="51"/>
 <rectangle x1="8.2296" y1="-0.4064" x2="8.5344" y2="0.4064" layer="51"/>
 </package>
+<package name="YC248">
+<smd name="1" x="-0.8" y="1.75" dx="0.8" dy="0.3" layer="1"/>
+<wire x1="-0.8" y1="2" x2="0.8" y2="2" width="0.05" layer="21"/>
+<wire x1="0.8" y1="-2" x2="-0.8" y2="-2" width="0.05" layer="21"/>
+<rectangle x1="-0.8" y1="1.6" x2="-0.1" y2="2" layer="51"/>
+<rectangle x1="0.1" y1="1.6" x2="0.8" y2="2" layer="51"/>
+<rectangle x1="-0.8" y1="0.6" x2="-0.1" y2="0.9" layer="51"/>
+<rectangle x1="-0.8" y1="0.1" x2="-0.1" y2="0.4" layer="51"/>
+<rectangle x1="-0.8" y1="-0.4" x2="-0.1" y2="-0.1" layer="51"/>
+<rectangle x1="-0.8" y1="-0.9" x2="-0.1" y2="-0.6" layer="51"/>
+<rectangle x1="-0.8" y1="-2" x2="-0.1" y2="-1.6" layer="51"/>
+<rectangle x1="-0.8" y1="-1.4" x2="-0.1" y2="-1.1" layer="51"/>
+<rectangle x1="-0.8" y1="1.1" x2="-0.1" y2="1.4" layer="51"/>
+<rectangle x1="0.1" y1="0.6" x2="0.8" y2="0.9" layer="51"/>
+<rectangle x1="0.1" y1="0.1" x2="0.8" y2="0.4" layer="51"/>
+<rectangle x1="0.1" y1="-0.4" x2="0.8" y2="-0.1" layer="51"/>
+<rectangle x1="0.1" y1="-0.9" x2="0.8" y2="-0.6" layer="51"/>
+<rectangle x1="0.1" y1="-1.4" x2="0.8" y2="-1.1" layer="51"/>
+<rectangle x1="0.1" y1="1.1" x2="0.8" y2="1.4" layer="51"/>
+<rectangle x1="0.1" y1="-2" x2="0.8" y2="-1.6" layer="51"/>
+<smd name="2" x="-0.8" y="1.25" dx="0.8" dy="0.3" layer="1"/>
+<smd name="3" x="-0.8" y="0.75" dx="0.8" dy="0.3" layer="1"/>
+<smd name="4" x="-0.8" y="0.25" dx="0.8" dy="0.3" layer="1"/>
+<smd name="5" x="-0.8" y="-0.25" dx="0.8" dy="0.3" layer="1"/>
+<smd name="6" x="-0.8" y="-0.75" dx="0.8" dy="0.3" layer="1"/>
+<smd name="7" x="-0.8" y="-1.25" dx="0.8" dy="0.3" layer="1"/>
+<smd name="8" x="-0.8" y="-1.75" dx="0.8" dy="0.3" layer="1"/>
+<smd name="9" x="0.85" y="-1.75" dx="0.8" dy="0.3" layer="1"/>
+<smd name="10" x="0.85" y="-1.25" dx="0.8" dy="0.3" layer="1"/>
+<smd name="11" x="0.85" y="-0.75" dx="0.8" dy="0.3" layer="1"/>
+<smd name="12" x="0.85" y="-0.25" dx="0.8" dy="0.3" layer="1"/>
+<smd name="13" x="0.85" y="0.25" dx="0.8" dy="0.3" layer="1"/>
+<smd name="14" x="0.85" y="0.75" dx="0.8" dy="0.3" layer="1"/>
+<smd name="15" x="0.85" y="1.25" dx="0.8" dy="0.3" layer="1"/>
+<smd name="16" x="0.85" y="1.75" dx="0.8" dy="0.3" layer="1"/>
+<text x="-0.8" y="2.1" size="0.3048" layer="25">&gt;NAME</text>
+<text x="0.7" y="-2.1" size="0.3048" layer="27" rot="R180">&gt;VALUE</text>
+<wire x1="-0.8" y1="1.6" x2="-0.5" y2="1.6" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="1.6" x2="-0.5" y2="1.4" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="1.4" x2="-0.8" y2="1.4" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="1.4" x2="-0.8" y2="1.1" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="1.1" x2="-0.5" y2="1.1" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="1.1" x2="-0.5" y2="0.9" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="0.9" x2="-0.8" y2="0.9" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="0.9" x2="-0.8" y2="0.6" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="0.6" x2="-0.5" y2="0.6" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="0.6" x2="-0.5" y2="0.4" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="0.4" x2="-0.8" y2="0.4" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="0.4" x2="-0.8" y2="0.1" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="0.1" x2="-0.5" y2="0.1" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="0.1" x2="-0.5" y2="-0.1" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="-0.1" x2="-0.8" y2="-0.1" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="-0.1" x2="-0.8" y2="-0.4" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="-0.4" x2="-0.5" y2="-0.4" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="-0.4" x2="-0.5" y2="-0.6" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="-0.6" x2="-0.8" y2="-0.6" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="-0.6" x2="-0.8" y2="-0.9" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="-0.9" x2="-0.5" y2="-0.9" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="-0.9" x2="-0.5" y2="-1.1" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="-1.1" x2="-0.8" y2="-1.1" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="-1.1" x2="-0.8" y2="-1.4" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="-1.4" x2="-0.5" y2="-1.4" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="-1.4" x2="-0.5" y2="-1.6" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="-1.6" x2="-0.8" y2="-1.6" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="-1.6" x2="-0.8" y2="-2" width="0.05" layer="27"/>
+<wire x1="0.8" y1="-2" x2="0.8" y2="-1.6" width="0.05" layer="27"/>
+<wire x1="0.8" y1="-1.6" x2="0.5" y2="-1.6" width="0.05" layer="27"/>
+<wire x1="0.5" y1="-1.6" x2="0.5" y2="-1.4" width="0.05" layer="27"/>
+<wire x1="0.5" y1="-1.4" x2="0.8" y2="-1.4" width="0.05" layer="27"/>
+<wire x1="0.8" y1="-1.4" x2="0.8" y2="-1.1" width="0.05" layer="27"/>
+<wire x1="0.8" y1="-1.1" x2="0.5" y2="-1.1" width="0.05" layer="27"/>
+<wire x1="0.5" y1="-1.1" x2="0.5" y2="-0.9" width="0.05" layer="27"/>
+<wire x1="0.5" y1="-0.9" x2="0.8" y2="-0.9" width="0.05" layer="27"/>
+<wire x1="0.8" y1="-0.9" x2="0.8" y2="-0.6" width="0.05" layer="27"/>
+<wire x1="0.8" y1="-0.6" x2="0.5" y2="-0.6" width="0.05" layer="27"/>
+<wire x1="0.5" y1="-0.6" x2="0.5" y2="-0.4" width="0.05" layer="27"/>
+<wire x1="0.5" y1="-0.4" x2="0.8" y2="-0.4" width="0.05" layer="27"/>
+<wire x1="0.8" y1="-0.4" x2="0.8" y2="-0.1" width="0.05" layer="27"/>
+<wire x1="0.8" y1="-0.1" x2="0.5" y2="-0.1" width="0.05" layer="27"/>
+<wire x1="0.5" y1="-0.1" x2="0.5" y2="0.1" width="0.05" layer="27"/>
+<wire x1="0.5" y1="0.1" x2="0.8" y2="0.1" width="0.05" layer="27"/>
+<wire x1="0.8" y1="0.1" x2="0.8" y2="0.4" width="0.05" layer="27"/>
+<wire x1="0.8" y1="0.4" x2="0.5" y2="0.4" width="0.05" layer="27"/>
+<wire x1="0.5" y1="0.4" x2="0.5" y2="0.6" width="0.05" layer="27"/>
+<wire x1="0.5" y1="0.6" x2="0.8" y2="0.6" width="0.05" layer="27"/>
+<wire x1="0.8" y1="0.6" x2="0.8" y2="0.9" width="0.05" layer="27"/>
+<wire x1="0.8" y1="0.9" x2="0.5" y2="0.9" width="0.05" layer="27"/>
+<wire x1="0.5" y1="0.9" x2="0.5" y2="1.1" width="0.05" layer="27"/>
+<wire x1="0.5" y1="1.1" x2="0.8" y2="1.1" width="0.05" layer="27"/>
+<wire x1="0.8" y1="1.1" x2="0.8" y2="1.4" width="0.05" layer="27"/>
+<wire x1="0.8" y1="1.4" x2="0.5" y2="1.4" width="0.05" layer="27"/>
+<wire x1="0.5" y1="1.4" x2="0.5" y2="1.6" width="0.05" layer="27"/>
+<wire x1="0.5" y1="1.6" x2="0.8" y2="1.6" width="0.05" layer="27"/>
+<wire x1="0.8" y1="1.6" x2="0.8" y2="2" width="0.05" layer="27"/>
+</package>
 </packages>
 <symbols>
 <symbol name="OP-AMP+-">
@@ -4491,6 +4586,42 @@ Source: http://cache.national.com/ds/LM/LM158.pdf</description>
 </device>
 </devices>
 </deviceset>
+<deviceset name="RC0603FR" prefix="R">
+<gates>
+<gate name="G$1" symbol="RESISTOR" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="0603">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="VALUE" value="" constant="no"/>
+</technology>
+<technology name="-071KL">
+<attribute name="VALUE" value="1k 1%" constant="no"/>
+</technology>
+<technology name="-0720KL">
+<attribute name="VALUE" value="20k 1%" constant="no"/>
+</technology>
+<technology name="-07270RL">
+<attribute name="VALUE" value="270 1%" constant="no"/>
+</technology>
+<technology name="-07499KL">
+<attribute name="VALUE" value="499k 1%" constant="no"/>
+</technology>
+<technology name="-10100KL">
+<attribute name="VALUE" value="100k 1%" constant="no"/>
+</technology>
+<technology name="-1010KL">
+<attribute name="VALUE" value="10k 1%" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
 <deviceset name="RC0603JR" prefix="R">
 <gates>
 <gate name="G$1" symbol="RESISTOR" x="0" y="0"/>
@@ -4517,6 +4648,9 @@ Source: http://cache.national.com/ds/LM/LM158.pdf</description>
 <technology name="-071ML">
 <attribute name="VALUE" value="1M" constant="no"/>
 </technology>
+<technology name="-0720KL">
+<attribute name="VALUE" value="20k" constant="no"/>
+</technology>
 <technology name="-07330KL">
 <attribute name="VALUE" value="330k" constant="no"/>
 </technology>
@@ -4533,7 +4667,7 @@ Source: http://cache.national.com/ds/LM/LM158.pdf</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="CL">
+<deviceset name="CL" prefix="C">
 <gates>
 <gate name="G$1" symbol="CAP" x="0" y="0"/>
 </gates>
@@ -4546,15 +4680,35 @@ Source: http://cache.national.com/ds/LM/LM158.pdf</description>
 <technologies>
 <technology name="">
 <attribute name="VALUE" value="" constant="no"/>
+<attribute name="VOLTAGE" value="" constant="no"/>
 </technology>
 <technology name="10A105KA8NNNC">
 <attribute name="VALUE" value="1u" constant="no"/>
+<attribute name="VOLTAGE" value="25V" constant="no"/>
+</technology>
+<technology name="10A475KL8NRNC">
+<attribute name="VALUE" value="4.7u" constant="no"/>
+<attribute name="VOLTAGE" value="35V" constant="no"/>
+</technology>
+<technology name="10B102KB8NNWC">
+<attribute name="VALUE" value="1n" constant="no"/>
+<attribute name="VOLTAGE" value="50V" constant="no"/>
 </technology>
 <technology name="10B103KB8NNNC">
 <attribute name="VALUE" value="10n" constant="no"/>
+<attribute name="VOLTAGE" value="50V" constant="no"/>
 </technology>
 <technology name="10B104MB8NNNC">
 <attribute name="VALUE" value="100n" constant="no"/>
+<attribute name="VOLTAGE" value="50V" constant="no"/>
+</technology>
+<technology name="10B106MQ8NRNC">
+<attribute name="VALUE" value="10u" constant="no"/>
+<attribute name="VOLTAGE" value="6.3V" constant="no"/>
+</technology>
+<technology name="10B684KO8NFNC">
+<attribute name="VALUE" value=".68u" constant="no"/>
+<attribute name="VOLTAGE" value="16V" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -4572,6 +4726,58 @@ Source: http://cache.national.com/ds/LM/LM158.pdf</description>
 </connects>
 <technologies>
 <technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="YC248" prefix="R">
+<gates>
+<gate name="A" symbol="RESISTOR" x="0" y="27.94"/>
+<gate name="B" symbol="RESISTOR" x="0" y="20.32"/>
+<gate name="C" symbol="RESISTOR" x="0" y="12.7"/>
+<gate name="D" symbol="RESISTOR" x="0" y="5.08"/>
+<gate name="E" symbol="RESISTOR" x="0" y="-2.54"/>
+<gate name="F" symbol="RESISTOR" x="0" y="-10.16"/>
+<gate name="G" symbol="RESISTOR" x="0" y="-17.78"/>
+<gate name="H" symbol="RESISTOR" x="0" y="-25.4"/>
+</gates>
+<devices>
+<device name="" package="YC248">
+<connects>
+<connect gate="A" pin="1" pad="1"/>
+<connect gate="A" pin="2" pad="16"/>
+<connect gate="B" pin="1" pad="2"/>
+<connect gate="B" pin="2" pad="15"/>
+<connect gate="C" pin="1" pad="3"/>
+<connect gate="C" pin="2" pad="14"/>
+<connect gate="D" pin="1" pad="4"/>
+<connect gate="D" pin="2" pad="13"/>
+<connect gate="E" pin="1" pad="5"/>
+<connect gate="E" pin="2" pad="12"/>
+<connect gate="F" pin="1" pad="6"/>
+<connect gate="F" pin="2" pad="11"/>
+<connect gate="G" pin="1" pad="7"/>
+<connect gate="G" pin="2" pad="10"/>
+<connect gate="H" pin="1" pad="8"/>
+<connect gate="H" pin="2" pad="9"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="TOLERANCE" value="" constant="no"/>
+<attribute name="VALUE" value="" constant="no"/>
+</technology>
+<technology name="-JR-0710KL">
+<attribute name="TOLERANCE" value="5%" constant="no"/>
+<attribute name="VALUE" value="10k" constant="no"/>
+</technology>
+<technology name="-JR-0715KL">
+<attribute name="TOLERANCE" value="5%" constant="no"/>
+<attribute name="VALUE" value="15k" constant="no"/>
+</technology>
+<technology name="-JR-078K2L">
+<attribute name="TOLERANCE" value="5%" constant="no"/>
+<attribute name="VALUE" value="8.2k" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -6926,8 +7132,7 @@ SparkFun BigTime Watch Kit&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
 <parts>
 <part name="J1" library="SparkFun-Connectors" deviceset="CONN_20X2" device=""/>
 <part name="IC1" library="digital_dash" deviceset="LMV614" device=""/>
-<part name="R2" library="digital_dash" deviceset="RC0603JR" device="" technology="-07330KL" value="330k"/>
-<part name="C1" library="digital_dash" deviceset="CL" device="" technology="10B103KB8NNNC" value="10n"/>
+<part name="C1" library="digital_dash" deviceset="CL" device="" technology="10B104MB8NNNC" value="100n"/>
 <part name="GND1" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY1" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="GND5" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
@@ -6952,20 +7157,17 @@ SparkFun BigTime Watch Kit&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
 <part name="R1" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100RL" value="100R"/>
 <part name="SUPPLY6" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="GND2" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R3" library="digital_dash" deviceset="RC0603JR" device="" technology="-07330KL" value="330k"/>
-<part name="C2" library="digital_dash" deviceset="CL" device="" technology="10B103KB8NNNC" value="10n"/>
+<part name="C2" library="digital_dash" deviceset="CL" device="" technology="10B104MB8NNNC" value="100n"/>
 <part name="GND3" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="R4" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100RL" value="100R"/>
 <part name="SUPPLY7" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="GND4" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R5" library="digital_dash" deviceset="RC0603JR" device="" technology="-07330KL" value="330k"/>
-<part name="C3" library="digital_dash" deviceset="CL" device="" technology="10B103KB8NNNC" value="10n"/>
+<part name="C3" library="digital_dash" deviceset="CL" device="" technology="10B104MB8NNNC" value="100n"/>
 <part name="GND11" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="R6" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100RL" value="100R"/>
 <part name="SUPPLY8" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="GND12" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R7" library="digital_dash" deviceset="RC0603JR" device="" technology="-07330KL" value="330k"/>
-<part name="C4" library="digital_dash" deviceset="CL" device="" technology="10B103KB8NNNC" value="10n"/>
+<part name="C4" library="digital_dash" deviceset="CL" device="" technology="10B104MB8NNNC" value="100n"/>
 <part name="GND13" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="R8" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100RL" value="100R"/>
 <part name="SUPPLY9" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
@@ -6974,13 +7176,9 @@ SparkFun BigTime Watch Kit&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
 <part name="SUPPLY11" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="GND15" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="GND16" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R13" library="digital_dash" deviceset="RC0603JR" device="" technology="-07620KL" value="620k"/>
 <part name="GND17" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R14" library="digital_dash" deviceset="RC0603JR" device="" technology="-07620KL" value="620k"/>
 <part name="GND18" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R15" library="digital_dash" deviceset="RC0603JR" device="" technology="-07620KL" value="620k"/>
 <part name="GND19" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R16" library="digital_dash" deviceset="RC0603JR" device="" technology="-07620KL" value="620k"/>
 <part name="GND20" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="IC2" library="digital_dash" deviceset="MCP3X08" device="3008"/>
 <part name="SUPPLY12" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
@@ -7076,8 +7274,7 @@ SparkFun BigTime Watch Kit&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
 <part name="SUPPLY40" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="IC5" library="digital_dash" deviceset="IL300" device=""/>
 <part name="SUPPLY38" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R53" library="digital_dash" deviceset="RC0603JR" device="" technology="-071ML" value="1M"/>
-<part name="R54" library="digital_dash" deviceset="RC0603JR" device="" technology="-071ML" value="1M"/>
+<part name="R53" library="digital_dash" deviceset="RC0603FR" device="" technology="-07499KL" value="499k 1%"/>
 <part name="SUPPLY39" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="R55" library="digital_dash" deviceset="RC0603JR" device="" technology="-1310RL" value="10R"/>
 <part name="GND54" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
@@ -7091,8 +7288,7 @@ SparkFun BigTime Watch Kit&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
 <part name="GND57" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="R58" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100RL" value="100R"/>
 <part name="SUPPLY43" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R59" library="digital_dash" deviceset="RC0603JR" device="" technology="-071ML" value="1M"/>
-<part name="R60" library="digital_dash" deviceset="RC0603JR" device="" technology="-071ML" value="1M"/>
+<part name="R59" library="digital_dash" deviceset="RC0603FR" device="" technology="-07499KL" value="499k 1%"/>
 <part name="IC7" library="digital_dash" deviceset="IL300" device=""/>
 <part name="SUPPLY41" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="R61" library="digital_dash" deviceset="RC0603JR" device="" technology="-1310RL" value="10R"/>
@@ -7103,10 +7299,8 @@ SparkFun BigTime Watch Kit&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
 <part name="GND-ISO1" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
 <part name="GND-ISO2" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
 <part name="GND-ISO3" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
-<part name="GND-ISO4" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
 <part name="GND-ISO5" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
 <part name="GND-ISO6" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
-<part name="GND-ISO7" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
 <part name="GND-ISO8" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
 <part name="GND-ISO9" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
 <part name="GND-ISO10" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
@@ -7155,25 +7349,21 @@ SparkFun BigTime Watch Kit&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
 <part name="C16" library="digital_dash" deviceset="CL" device="" technology="10A105KA8NNNC" value="1u"/>
 <part name="R63" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="SUPPLY45" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
-<part name="R64" library="digital_dash" deviceset="RC0603JR" device="" technology="-07330KL" value="330k"/>
-<part name="C17" library="digital_dash" deviceset="CL" device="" technology="10B103KB8NNNC" value="10n"/>
+<part name="C17" library="digital_dash" deviceset="CL" device="" technology="10B104MB8NNNC" value="100n"/>
 <part name="GND28" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="R65" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100RL" value="100R"/>
 <part name="SUPPLY46" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="GND31" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R66" library="digital_dash" deviceset="RC0603JR" device="" technology="-07620KL" value="620k"/>
 <part name="GND33" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="JP19" library="SparkFun-Jumpers" deviceset="JUMPER-SMT_3_NO" device="_SILK"/>
 <part name="GND35" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="R67" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="SUPPLY47" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
-<part name="R68" library="digital_dash" deviceset="RC0603JR" device="" technology="-07330KL" value="330k"/>
-<part name="C18" library="digital_dash" deviceset="CL" device="" technology="10B103KB8NNNC" value="10n"/>
+<part name="C18" library="digital_dash" deviceset="CL" device="" technology="10B104MB8NNNC" value="100n"/>
 <part name="GND36" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="R69" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100RL" value="100R"/>
 <part name="SUPPLY48" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="GND41" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R70" library="digital_dash" deviceset="RC0603JR" device="" technology="-07620KL" value="620k"/>
 <part name="GND43" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="JP20" library="SparkFun-Jumpers" deviceset="JUMPER-SMT_3_NO" device="_SILK"/>
 <part name="J10" library="SparkFun-Connectors" deviceset="CONN_03" device="" value="455-1750-1-ND"/>
@@ -7191,11 +7381,11 @@ SparkFun BigTime Watch Kit&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
 <part name="J12" library="SparkFun-Connectors" deviceset="CONN_01" device="OFFSET"/>
 <part name="J13" library="SparkFun-Connectors" deviceset="CONN_01" device="PTH_2MM"/>
 <part name="J14" library="SparkFun-Connectors" deviceset="CONN_01" device="PTH_2MM"/>
-<part name="R71" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100KL" value="100k"/>
-<part name="R72" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100KL" value="100k"/>
+<part name="R71" library="digital_dash" deviceset="RC0603FR" device="" technology="-10100KL" value="100k 1%"/>
+<part name="R72" library="digital_dash" deviceset="RC0603FR" device="" technology="-10100KL" value="100k 1%"/>
 <part name="GND-ISO24" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
-<part name="R73" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100KL" value="100k"/>
-<part name="R74" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100KL" value="100k"/>
+<part name="R73" library="digital_dash" deviceset="RC0603FR" device="" technology="-10100KL" value="100k 1%"/>
+<part name="R74" library="digital_dash" deviceset="RC0603FR" device="" technology="-10100KL" value="100k 1%"/>
 <part name="GND-ISO25" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
 <part name="J15" library="SparkFun-Connectors" deviceset="CONN_03" device="" value="VSS_IN"/>
 <part name="SUPPLY52" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
@@ -7236,6 +7426,8 @@ SparkFun BigTime Watch Kit&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
 <part name="J9" library="SparkFun-Connectors" deviceset="CONN_02" device="PTH4"/>
 <part name="C21" library="digital_dash" deviceset="CL" device="" technology="10B104MB8NNNC" value="100n"/>
 <part name="C22" library="digital_dash" deviceset="CL" device="" technology="10B104MB8NNNC" value="100n"/>
+<part name="R2" library="digital_dash" deviceset="YC248" device="" technology="-JR-078K2L" value="8.2k"/>
+<part name="R3" library="digital_dash" deviceset="YC248" device="" technology="-JR-0715KL" value="15k"/>
 </parts>
 <sheets>
 <sheet>
@@ -7253,7 +7445,6 @@ conditioning circuit to here.</text>
 <instance part="IC1" gate="B" x="58.42" y="284.48"/>
 <instance part="IC1" gate="C" x="58.42" y="250.19"/>
 <instance part="IC1" gate="D" x="58.42" y="215.9"/>
-<instance part="R2" gate="G$1" x="76.2" y="318.77" rot="R180"/>
 <instance part="C1" gate="G$1" x="85.09" y="309.88"/>
 <instance part="GND1" gate="1" x="85.09" y="303.53"/>
 <instance part="SUPPLY1" gate="G$1" x="55.88" y="344.17"/>
@@ -7279,19 +7470,16 @@ conditioning circuit to here.</text>
 <instance part="R1" gate="G$1" x="22.86" y="321.31"/>
 <instance part="SUPPLY6" gate="G$1" x="31.75" y="328.93"/>
 <instance part="GND2" gate="1" x="31.75" y="311.15"/>
-<instance part="R3" gate="G$1" x="76.2" y="284.48" rot="R180"/>
 <instance part="C2" gate="G$1" x="85.09" y="275.59"/>
 <instance part="GND3" gate="1" x="85.09" y="269.24"/>
 <instance part="R4" gate="G$1" x="22.86" y="287.02"/>
 <instance part="SUPPLY7" gate="G$1" x="31.75" y="294.64"/>
 <instance part="GND4" gate="1" x="31.75" y="276.86"/>
-<instance part="R5" gate="G$1" x="76.2" y="250.19" rot="R180"/>
 <instance part="C3" gate="G$1" x="85.09" y="241.3"/>
 <instance part="GND11" gate="1" x="85.09" y="234.95"/>
 <instance part="R6" gate="G$1" x="22.86" y="252.73"/>
 <instance part="SUPPLY8" gate="G$1" x="31.75" y="260.35"/>
 <instance part="GND12" gate="1" x="31.75" y="242.57"/>
-<instance part="R7" gate="G$1" x="76.2" y="215.9" rot="R180"/>
 <instance part="C4" gate="G$1" x="85.09" y="207.01"/>
 <instance part="GND13" gate="1" x="85.09" y="200.66"/>
 <instance part="R8" gate="G$1" x="22.86" y="218.44"/>
@@ -7301,13 +7489,9 @@ conditioning circuit to here.</text>
 <instance part="SUPPLY11" gate="G$1" x="48.26" y="78.74"/>
 <instance part="GND15" gate="1" x="19.05" y="15.24"/>
 <instance part="GND16" gate="1" x="44.45" y="15.24"/>
-<instance part="R13" gate="G$1" x="96.52" y="311.15" rot="R90"/>
 <instance part="GND17" gate="1" x="96.52" y="303.53"/>
-<instance part="R14" gate="G$1" x="96.52" y="242.57" rot="R90"/>
 <instance part="GND18" gate="1" x="96.52" y="234.95"/>
-<instance part="R15" gate="G$1" x="96.52" y="276.86" rot="R90"/>
 <instance part="GND19" gate="1" x="96.52" y="269.24"/>
-<instance part="R16" gate="G$1" x="96.52" y="208.28" rot="R90"/>
 <instance part="GND20" gate="1" x="96.52" y="200.66"/>
 <instance part="IC2" gate="G$1" x="384.81" y="238.76"/>
 <instance part="SUPPLY12" gate="G$1" x="408.94" y="266.7"/>
@@ -7413,7 +7597,6 @@ conditioning circuit to here.</text>
 <instance part="IC5" gate="G$1" x="274.32" y="273.685"/>
 <instance part="SUPPLY38" gate="G$1" x="203.2" y="292.1"/>
 <instance part="R53" gate="G$1" x="219.71" y="257.81" rot="R90"/>
-<instance part="R54" gate="G$1" x="227.33" y="257.81" rot="R90"/>
 <instance part="SUPPLY39" gate="G$1" x="261.62" y="272.415" rot="R90"/>
 <instance part="R55" gate="G$1" x="245.11" y="275.59"/>
 <instance part="GND54" gate="1" x="285.75" y="255.27" rot="MR0"/>
@@ -7429,7 +7612,6 @@ conditioning circuit to here.</text>
 <instance part="R58" gate="G$1" x="193.04" y="214.63"/>
 <instance part="SUPPLY43" gate="G$1" x="203.2" y="226.06"/>
 <instance part="R59" gate="G$1" x="219.71" y="194.31" rot="R90"/>
-<instance part="R60" gate="G$1" x="227.33" y="194.31" rot="R90"/>
 <instance part="IC7" gate="G$1" x="274.32" y="210.185"/>
 <instance part="SUPPLY41" gate="G$1" x="261.62" y="208.915" rot="R90"/>
 <instance part="R61" gate="G$1" x="245.11" y="212.09"/>
@@ -7441,10 +7623,8 @@ conditioning circuit to here.</text>
 <instance part="GND-ISO1" gate="G$1" x="203.2" y="264.16"/>
 <instance part="GND-ISO2" gate="G$1" x="203.2" y="200.66"/>
 <instance part="GND-ISO3" gate="G$1" x="219.71" y="245.11"/>
-<instance part="GND-ISO4" gate="G$1" x="227.33" y="248.92"/>
 <instance part="GND-ISO5" gate="G$1" x="242.57" y="259.08"/>
 <instance part="GND-ISO6" gate="G$1" x="219.71" y="181.61"/>
-<instance part="GND-ISO7" gate="G$1" x="227.33" y="185.42"/>
 <instance part="GND-ISO8" gate="G$1" x="119.38" y="59.69"/>
 <instance part="GND-ISO9" gate="G$1" x="119.38" y="16.51"/>
 <instance part="GND-ISO10" gate="G$1" x="179.07" y="16.51"/>
@@ -7493,26 +7673,22 @@ conditioning circuit to here.</text>
 <instance part="C16" gate="G$1" x="43.18" y="186.69"/>
 <instance part="R63" gate="G$1" x="19.05" y="181.61" rot="R90"/>
 <instance part="SUPPLY45" gate="G$1" x="19.05" y="189.23"/>
-<instance part="R64" gate="G$1" x="80.01" y="171.45" rot="R180"/>
 <instance part="C17" gate="G$1" x="88.9" y="162.56"/>
 <instance part="GND28" gate="1" x="88.9" y="156.21"/>
 <instance part="R65" gate="G$1" x="26.67" y="173.99"/>
 <instance part="SUPPLY46" gate="G$1" x="35.56" y="181.61"/>
 <instance part="GND31" gate="1" x="35.56" y="163.83"/>
-<instance part="R66" gate="G$1" x="100.33" y="163.83" rot="R90"/>
 <instance part="GND33" gate="1" x="100.33" y="156.21"/>
 <instance part="JP19" gate="G$1" x="11.43" y="173.99" rot="R180"/>
 <instance part="GND35" gate="1" x="67.31" y="162.56" rot="R90"/>
 <instance part="IC8" gate="B" x="62.23" y="134.62"/>
 <instance part="R67" gate="G$1" x="19.05" y="144.78" rot="R90"/>
 <instance part="SUPPLY47" gate="G$1" x="19.05" y="152.4"/>
-<instance part="R68" gate="G$1" x="80.01" y="134.62" rot="R180"/>
 <instance part="C18" gate="G$1" x="88.9" y="125.73"/>
 <instance part="GND36" gate="1" x="88.9" y="119.38"/>
 <instance part="R69" gate="G$1" x="26.67" y="137.16"/>
 <instance part="SUPPLY48" gate="G$1" x="35.56" y="144.78"/>
 <instance part="GND41" gate="1" x="35.56" y="127"/>
-<instance part="R70" gate="G$1" x="100.33" y="127" rot="R90"/>
 <instance part="GND43" gate="1" x="100.33" y="119.38"/>
 <instance part="JP20" gate="G$1" x="11.43" y="137.16" rot="R180"/>
 <instance part="J10" gate="J$1" x="139.7" y="363.22"/>
@@ -7582,6 +7758,18 @@ conditioning circuit to here.</text>
 <attribute name="NAME" x="303.149" y="181.864" size="1.778" layer="95" font="vector" rot="R90"/>
 <attribute name="VALUE" x="308.229" y="180.594" size="1.778" layer="96" font="vector" rot="R90"/>
 </instance>
+<instance part="R2" gate="A" x="76.2" y="318.77"/>
+<instance part="R2" gate="B" x="76.2" y="284.48"/>
+<instance part="R2" gate="C" x="76.2" y="250.19"/>
+<instance part="R2" gate="D" x="76.2" y="215.9"/>
+<instance part="R2" gate="E" x="80.01" y="171.45"/>
+<instance part="R2" gate="F" x="80.01" y="134.62"/>
+<instance part="R3" gate="A" x="96.52" y="311.15" rot="R90"/>
+<instance part="R3" gate="B" x="96.52" y="276.86" rot="R90"/>
+<instance part="R3" gate="C" x="96.52" y="242.57" rot="R90"/>
+<instance part="R3" gate="D" x="96.52" y="208.28" rot="R90"/>
+<instance part="R3" gate="E" x="100.33" y="163.83" rot="R90"/>
+<instance part="R3" gate="F" x="100.33" y="127" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -7726,22 +7914,6 @@ conditioning circuit to here.</text>
 <wire x1="44.45" y1="68.58" x2="44.45" y2="58.42" width="0.1524" layer="91"/>
 <junction x="44.45" y="58.42"/>
 <pinref part="GND16" gate="1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="R13" gate="G$1" pin="1"/>
-<pinref part="GND17" gate="1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="R14" gate="G$1" pin="1"/>
-<pinref part="GND18" gate="1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="R15" gate="G$1" pin="1"/>
-<pinref part="GND19" gate="1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="R16" gate="G$1" pin="1"/>
-<pinref part="GND20" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="C7" gate="G$1" pin="2"/>
@@ -7919,10 +8091,6 @@ conditioning circuit to here.</text>
 <pinref part="C17" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<pinref part="R66" gate="G$1" pin="1"/>
-<pinref part="GND33" gate="1" pin="GND"/>
-</segment>
-<segment>
 <pinref part="GND35" gate="1" pin="GND"/>
 <pinref part="IC8" gate="A" pin="V-"/>
 <wire x1="64.77" y1="162.56" x2="59.69" y2="162.56" width="0.1524" layer="91"/>
@@ -7937,10 +8105,6 @@ conditioning circuit to here.</text>
 <pinref part="GND41" gate="1" pin="GND"/>
 <wire x1="35.56" y1="129.54" x2="35.56" y2="132.08" width="0.1524" layer="91"/>
 <pinref part="D6" gate="G$1" pin="A1"/>
-</segment>
-<segment>
-<pinref part="R70" gate="G$1" pin="1"/>
-<pinref part="GND43" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="D5" gate="G$1" pin="A1"/>
@@ -8029,6 +8193,30 @@ conditioning circuit to here.</text>
 <wire x1="73.66" y1="72.39" x2="76.2" y2="72.39" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="72.39" x2="76.2" y2="68.58" width="0.1524" layer="91"/>
 <pinref part="GND51" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="GND17" gate="1" pin="GND"/>
+<pinref part="R3" gate="A" pin="1"/>
+</segment>
+<segment>
+<pinref part="GND19" gate="1" pin="GND"/>
+<pinref part="R3" gate="B" pin="1"/>
+</segment>
+<segment>
+<pinref part="GND18" gate="1" pin="GND"/>
+<pinref part="R3" gate="C" pin="1"/>
+</segment>
+<segment>
+<pinref part="GND20" gate="1" pin="GND"/>
+<pinref part="R3" gate="D" pin="1"/>
+</segment>
+<segment>
+<pinref part="GND33" gate="1" pin="GND"/>
+<pinref part="R3" gate="E" pin="1"/>
+</segment>
+<segment>
+<pinref part="GND43" gate="1" pin="GND"/>
+<pinref part="R3" gate="F" pin="1"/>
 </segment>
 </net>
 <net name="5V" class="0">
@@ -8157,25 +8345,25 @@ conditioning circuit to here.</text>
 <wire x1="43.18" y1="306.07" x2="68.58" y2="306.07" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="A" pin="OUT"/>
 <wire x1="66.04" y1="318.77" x2="68.58" y2="318.77" width="0.1524" layer="91"/>
-<pinref part="R2" gate="G$1" pin="2"/>
 <wire x1="68.58" y1="318.77" x2="71.12" y2="318.77" width="0.1524" layer="91"/>
 <wire x1="68.58" y1="306.07" x2="68.58" y2="318.77" width="0.1524" layer="91"/>
 <junction x="68.58" y="318.77"/>
+<pinref part="R2" gate="A" pin="1"/>
 </segment>
 </net>
 <net name="ADC1_IN" class="0">
 <segment>
-<pinref part="R2" gate="G$1" pin="1"/>
 <wire x1="81.28" y1="318.77" x2="85.09" y2="318.77" width="0.1524" layer="91"/>
 <wire x1="85.09" y1="318.77" x2="85.09" y2="314.96" width="0.1524" layer="91"/>
 <pinref part="C1" gate="G$1" pin="1"/>
 <junction x="85.09" y="318.77"/>
-<pinref part="R13" gate="G$1" pin="2"/>
 <wire x1="85.09" y1="318.77" x2="96.52" y2="318.77" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="318.77" x2="96.52" y2="316.23" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="318.77" x2="99.06" y2="318.77" width="0.1524" layer="91"/>
 <junction x="96.52" y="318.77"/>
 <label x="99.06" y="318.77" size="1.27" layer="95" xref="yes"/>
+<pinref part="R2" gate="A" pin="2"/>
+<pinref part="R3" gate="A" pin="2"/>
 </segment>
 <segment>
 <pinref part="IC2" gate="G$1" pin="CH0"/>
@@ -8197,7 +8385,6 @@ conditioning circuit to here.</text>
 <segment>
 <wire x1="50.8" y1="281.94" x2="43.18" y2="281.94" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="281.94" x2="43.18" y2="271.78" width="0.1524" layer="91"/>
-<pinref part="R3" gate="G$1" pin="2"/>
 <pinref part="IC1" gate="B" pin="OUT"/>
 <wire x1="71.12" y1="284.48" x2="68.58" y2="284.48" width="0.1524" layer="91"/>
 <wire x1="68.58" y1="284.48" x2="66.04" y2="284.48" width="0.1524" layer="91"/>
@@ -8205,21 +8392,22 @@ conditioning circuit to here.</text>
 <wire x1="68.58" y1="271.78" x2="68.58" y2="284.48" width="0.1524" layer="91"/>
 <junction x="68.58" y="284.48"/>
 <pinref part="IC1" gate="B" pin="-IN"/>
+<pinref part="R2" gate="B" pin="1"/>
 </segment>
 </net>
 <net name="ADC2_IN" class="0">
 <segment>
-<pinref part="R3" gate="G$1" pin="1"/>
 <wire x1="81.28" y1="284.48" x2="85.09" y2="284.48" width="0.1524" layer="91"/>
 <wire x1="85.09" y1="284.48" x2="85.09" y2="280.67" width="0.1524" layer="91"/>
 <pinref part="C2" gate="G$1" pin="1"/>
 <junction x="85.09" y="284.48"/>
-<pinref part="R15" gate="G$1" pin="2"/>
 <wire x1="85.09" y1="284.48" x2="96.52" y2="284.48" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="284.48" x2="96.52" y2="281.94" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="284.48" x2="99.06" y2="284.48" width="0.1524" layer="91"/>
 <junction x="96.52" y="284.48"/>
 <label x="99.06" y="284.48" size="1.27" layer="95" xref="yes"/>
+<pinref part="R2" gate="B" pin="2"/>
+<pinref part="R3" gate="B" pin="2"/>
 </segment>
 <segment>
 <pinref part="IC2" gate="G$1" pin="CH1"/>
@@ -8242,28 +8430,28 @@ conditioning circuit to here.</text>
 <wire x1="50.8" y1="247.65" x2="44.45" y2="247.65" width="0.1524" layer="91"/>
 <wire x1="44.45" y1="247.65" x2="44.45" y2="237.49" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="C" pin="OUT"/>
-<pinref part="R5" gate="G$1" pin="2"/>
 <wire x1="66.04" y1="250.19" x2="68.58" y2="250.19" width="0.1524" layer="91"/>
 <wire x1="68.58" y1="250.19" x2="71.12" y2="250.19" width="0.1524" layer="91"/>
 <wire x1="44.45" y1="237.49" x2="68.58" y2="237.49" width="0.1524" layer="91"/>
 <wire x1="68.58" y1="237.49" x2="68.58" y2="250.19" width="0.1524" layer="91"/>
 <junction x="68.58" y="250.19"/>
 <pinref part="IC1" gate="C" pin="-IN"/>
+<pinref part="R2" gate="C" pin="1"/>
 </segment>
 </net>
 <net name="ADC3_IN" class="0">
 <segment>
-<pinref part="R5" gate="G$1" pin="1"/>
 <wire x1="81.28" y1="250.19" x2="85.09" y2="250.19" width="0.1524" layer="91"/>
 <wire x1="85.09" y1="250.19" x2="85.09" y2="246.38" width="0.1524" layer="91"/>
 <pinref part="C3" gate="G$1" pin="1"/>
 <junction x="85.09" y="250.19"/>
-<pinref part="R14" gate="G$1" pin="2"/>
 <wire x1="85.09" y1="250.19" x2="96.52" y2="250.19" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="250.19" x2="96.52" y2="247.65" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="250.19" x2="99.06" y2="250.19" width="0.1524" layer="91"/>
 <junction x="96.52" y="250.19"/>
 <label x="99.06" y="250.19" size="1.27" layer="95" xref="yes"/>
+<pinref part="R2" gate="C" pin="2"/>
+<pinref part="R3" gate="C" pin="2"/>
 </segment>
 <segment>
 <pinref part="IC2" gate="G$1" pin="CH2"/>
@@ -8287,27 +8475,27 @@ conditioning circuit to here.</text>
 <wire x1="43.18" y1="213.36" x2="43.18" y2="203.2" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="203.2" x2="68.58" y2="203.2" width="0.1524" layer="91"/>
 <wire x1="68.58" y1="203.2" x2="68.58" y2="215.9" width="0.1524" layer="91"/>
-<pinref part="R7" gate="G$1" pin="2"/>
 <wire x1="68.58" y1="215.9" x2="71.12" y2="215.9" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="D" pin="OUT"/>
 <wire x1="66.04" y1="215.9" x2="68.58" y2="215.9" width="0.1524" layer="91"/>
 <junction x="68.58" y="215.9"/>
 <pinref part="IC1" gate="D" pin="-IN"/>
+<pinref part="R2" gate="D" pin="1"/>
 </segment>
 </net>
 <net name="ADC4_IN" class="0">
 <segment>
-<pinref part="R7" gate="G$1" pin="1"/>
 <wire x1="81.28" y1="215.9" x2="85.09" y2="215.9" width="0.1524" layer="91"/>
 <wire x1="85.09" y1="215.9" x2="85.09" y2="212.09" width="0.1524" layer="91"/>
 <pinref part="C4" gate="G$1" pin="1"/>
 <junction x="85.09" y="215.9"/>
-<pinref part="R16" gate="G$1" pin="2"/>
 <wire x1="85.09" y1="215.9" x2="96.52" y2="215.9" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="215.9" x2="96.52" y2="213.36" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="215.9" x2="99.06" y2="215.9" width="0.1524" layer="91"/>
 <junction x="96.52" y="215.9"/>
 <label x="99.06" y="215.9" size="1.27" layer="95" xref="yes"/>
+<pinref part="R2" gate="D" pin="2"/>
+<pinref part="R3" gate="D" pin="2"/>
 </segment>
 <segment>
 <pinref part="IC2" gate="G$1" pin="CH3"/>
@@ -9311,17 +9499,13 @@ conditioning circuit to here.</text>
 </net>
 <net name="N$4" class="0">
 <segment>
-<pinref part="R54" gate="G$1" pin="2"/>
-<wire x1="227.33" y1="262.89" x2="227.33" y2="264.795" width="0.1524" layer="91"/>
 <wire x1="222.25" y1="273.05" x2="219.71" y2="273.05" width="0.1524" layer="91"/>
 <wire x1="219.71" y1="273.05" x2="219.71" y2="264.795" width="0.1524" layer="91"/>
 <pinref part="IC5" gate="G$1" pin="A4"/>
 <wire x1="219.71" y1="264.795" x2="219.71" y2="262.89" width="0.1524" layer="91"/>
-<wire x1="265.43" y1="264.795" x2="227.33" y2="264.795" width="0.1524" layer="91"/>
+<wire x1="265.43" y1="264.795" x2="219.71" y2="264.795" width="0.1524" layer="91"/>
 <junction x="219.71" y="264.795"/>
 <pinref part="R53" gate="G$1" pin="2"/>
-<wire x1="227.33" y1="264.795" x2="219.71" y2="264.795" width="0.1524" layer="91"/>
-<junction x="227.33" y="264.795"/>
 <pinref part="IC4" gate="A" pin="-IN"/>
 </segment>
 </net>
@@ -9372,16 +9556,12 @@ conditioning circuit to here.</text>
 </net>
 <net name="N$8" class="0">
 <segment>
-<pinref part="R60" gate="G$1" pin="2"/>
-<wire x1="227.33" y1="199.39" x2="227.33" y2="201.295" width="0.1524" layer="91"/>
 <wire x1="222.25" y1="209.55" x2="219.71" y2="209.55" width="0.1524" layer="91"/>
 <wire x1="219.71" y1="209.55" x2="219.71" y2="201.295" width="0.1524" layer="91"/>
 <wire x1="219.71" y1="201.295" x2="219.71" y2="199.39" width="0.1524" layer="91"/>
 <junction x="219.71" y="201.295"/>
 <pinref part="R59" gate="G$1" pin="2"/>
-<wire x1="227.33" y1="201.295" x2="219.71" y2="201.295" width="0.1524" layer="91"/>
-<wire x1="265.43" y1="201.295" x2="227.33" y2="201.295" width="0.1524" layer="91"/>
-<junction x="227.33" y="201.295"/>
+<wire x1="265.43" y1="201.295" x2="219.71" y2="201.295" width="0.1524" layer="91"/>
 <pinref part="IC7" gate="G$1" pin="A4"/>
 <pinref part="IC4" gate="B" pin="-IN"/>
 </segment>
@@ -9444,11 +9624,6 @@ conditioning circuit to here.</text>
 <wire x1="219.71" y1="247.65" x2="219.71" y2="252.73" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="R54" gate="G$1" pin="1"/>
-<pinref part="GND-ISO4" gate="G$1" pin="GND-ISO"/>
-<wire x1="227.33" y1="251.46" x2="227.33" y2="252.73" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="IC4" gate="A" pin="V-"/>
 <pinref part="GND-ISO5" gate="G$1" pin="GND-ISO"/>
 <wire x1="242.57" y1="261.62" x2="242.57" y2="267.97" width="0.1524" layer="91"/>
@@ -9458,11 +9633,6 @@ conditioning circuit to here.</text>
 <pinref part="R59" gate="G$1" pin="1"/>
 <pinref part="GND-ISO6" gate="G$1" pin="GND-ISO"/>
 <wire x1="219.71" y1="184.15" x2="219.71" y2="189.23" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="R60" gate="G$1" pin="1"/>
-<pinref part="GND-ISO7" gate="G$1" pin="GND-ISO"/>
-<wire x1="227.33" y1="187.96" x2="227.33" y2="189.23" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R18" gate="G$1" pin="1"/>
@@ -9926,12 +10096,12 @@ conditioning circuit to here.</text>
 <wire x1="46.99" y1="168.91" x2="46.99" y2="158.75" width="0.1524" layer="91"/>
 <wire x1="46.99" y1="158.75" x2="72.39" y2="158.75" width="0.1524" layer="91"/>
 <wire x1="72.39" y1="158.75" x2="72.39" y2="171.45" width="0.1524" layer="91"/>
-<pinref part="R64" gate="G$1" pin="2"/>
 <wire x1="72.39" y1="171.45" x2="74.93" y2="171.45" width="0.1524" layer="91"/>
 <wire x1="69.85" y1="171.45" x2="72.39" y2="171.45" width="0.1524" layer="91"/>
 <junction x="72.39" y="171.45"/>
 <pinref part="IC8" gate="A" pin="-IN"/>
 <pinref part="IC8" gate="A" pin="OUT"/>
+<pinref part="R2" gate="E" pin="1"/>
 </segment>
 </net>
 <net name="N$29" class="0">
@@ -9961,12 +10131,12 @@ conditioning circuit to here.</text>
 <wire x1="46.99" y1="132.08" x2="46.99" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="46.99" y1="121.92" x2="72.39" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="72.39" y1="121.92" x2="72.39" y2="134.62" width="0.1524" layer="91"/>
-<pinref part="R68" gate="G$1" pin="2"/>
 <wire x1="72.39" y1="134.62" x2="74.93" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="69.85" y1="134.62" x2="72.39" y2="134.62" width="0.1524" layer="91"/>
 <junction x="72.39" y="134.62"/>
 <pinref part="IC8" gate="B" pin="-IN"/>
 <pinref part="IC8" gate="B" pin="OUT"/>
+<pinref part="R2" gate="F" pin="1"/>
 </segment>
 </net>
 <net name="N$36" class="0">
@@ -9992,17 +10162,17 @@ conditioning circuit to here.</text>
 </net>
 <net name="ADC5_IN" class="0">
 <segment>
-<pinref part="R64" gate="G$1" pin="1"/>
 <wire x1="85.09" y1="171.45" x2="88.9" y2="171.45" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="171.45" x2="88.9" y2="167.64" width="0.1524" layer="91"/>
 <pinref part="C17" gate="G$1" pin="1"/>
 <junction x="88.9" y="171.45"/>
-<pinref part="R66" gate="G$1" pin="2"/>
 <wire x1="88.9" y1="171.45" x2="100.33" y2="171.45" width="0.1524" layer="91"/>
 <wire x1="100.33" y1="171.45" x2="100.33" y2="168.91" width="0.1524" layer="91"/>
 <wire x1="100.33" y1="171.45" x2="102.87" y2="171.45" width="0.1524" layer="91"/>
 <junction x="100.33" y="171.45"/>
 <label x="102.87" y="171.45" size="1.27" layer="95" xref="yes"/>
+<pinref part="R2" gate="E" pin="2"/>
+<pinref part="R3" gate="E" pin="2"/>
 </segment>
 <segment>
 <label x="355.6" y="233.68" size="1.27" layer="95" rot="R180" xref="yes"/>
@@ -10012,17 +10182,17 @@ conditioning circuit to here.</text>
 </net>
 <net name="ADC6_IN" class="0">
 <segment>
-<pinref part="R68" gate="G$1" pin="1"/>
 <wire x1="85.09" y1="134.62" x2="88.9" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="134.62" x2="88.9" y2="130.81" width="0.1524" layer="91"/>
 <pinref part="C18" gate="G$1" pin="1"/>
 <junction x="88.9" y="134.62"/>
-<pinref part="R70" gate="G$1" pin="2"/>
 <wire x1="88.9" y1="134.62" x2="100.33" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="100.33" y1="134.62" x2="100.33" y2="132.08" width="0.1524" layer="91"/>
 <wire x1="100.33" y1="134.62" x2="102.87" y2="134.62" width="0.1524" layer="91"/>
 <junction x="100.33" y="134.62"/>
 <label x="102.87" y="134.62" size="1.27" layer="95" xref="yes"/>
+<pinref part="R2" gate="F" pin="2"/>
+<pinref part="R3" gate="F" pin="2"/>
 </segment>
 <segment>
 <label x="355.6" y="228.6" size="1.27" layer="95" rot="R180" xref="yes"/>

@@ -1993,6 +1993,101 @@ reflow soldering</description>
 <text x="-4.445" y="2.032" size="0.6096" layer="25" font="vector" ratio="20">&gt;NAME</text>
 <text x="-4.445" y="-2.667" size="0.6096" layer="27" font="vector" ratio="20">&gt;VALUE</text>
 </package>
+<package name="YC248">
+<smd name="1" x="-0.8" y="1.75" dx="0.8" dy="0.3" layer="1"/>
+<wire x1="-0.8" y1="2" x2="0.8" y2="2" width="0.05" layer="21"/>
+<wire x1="0.8" y1="-2" x2="-0.8" y2="-2" width="0.05" layer="21"/>
+<rectangle x1="-0.8" y1="1.6" x2="-0.1" y2="2" layer="51"/>
+<rectangle x1="0.1" y1="1.6" x2="0.8" y2="2" layer="51"/>
+<rectangle x1="-0.8" y1="0.6" x2="-0.1" y2="0.9" layer="51"/>
+<rectangle x1="-0.8" y1="0.1" x2="-0.1" y2="0.4" layer="51"/>
+<rectangle x1="-0.8" y1="-0.4" x2="-0.1" y2="-0.1" layer="51"/>
+<rectangle x1="-0.8" y1="-0.9" x2="-0.1" y2="-0.6" layer="51"/>
+<rectangle x1="-0.8" y1="-2" x2="-0.1" y2="-1.6" layer="51"/>
+<rectangle x1="-0.8" y1="-1.4" x2="-0.1" y2="-1.1" layer="51"/>
+<rectangle x1="-0.8" y1="1.1" x2="-0.1" y2="1.4" layer="51"/>
+<rectangle x1="0.1" y1="0.6" x2="0.8" y2="0.9" layer="51"/>
+<rectangle x1="0.1" y1="0.1" x2="0.8" y2="0.4" layer="51"/>
+<rectangle x1="0.1" y1="-0.4" x2="0.8" y2="-0.1" layer="51"/>
+<rectangle x1="0.1" y1="-0.9" x2="0.8" y2="-0.6" layer="51"/>
+<rectangle x1="0.1" y1="-1.4" x2="0.8" y2="-1.1" layer="51"/>
+<rectangle x1="0.1" y1="1.1" x2="0.8" y2="1.4" layer="51"/>
+<rectangle x1="0.1" y1="-2" x2="0.8" y2="-1.6" layer="51"/>
+<smd name="2" x="-0.8" y="1.25" dx="0.8" dy="0.3" layer="1"/>
+<smd name="3" x="-0.8" y="0.75" dx="0.8" dy="0.3" layer="1"/>
+<smd name="4" x="-0.8" y="0.25" dx="0.8" dy="0.3" layer="1"/>
+<smd name="5" x="-0.8" y="-0.25" dx="0.8" dy="0.3" layer="1"/>
+<smd name="6" x="-0.8" y="-0.75" dx="0.8" dy="0.3" layer="1"/>
+<smd name="7" x="-0.8" y="-1.25" dx="0.8" dy="0.3" layer="1"/>
+<smd name="8" x="-0.8" y="-1.75" dx="0.8" dy="0.3" layer="1"/>
+<smd name="9" x="0.85" y="-1.75" dx="0.8" dy="0.3" layer="1"/>
+<smd name="10" x="0.85" y="-1.25" dx="0.8" dy="0.3" layer="1"/>
+<smd name="11" x="0.85" y="-0.75" dx="0.8" dy="0.3" layer="1"/>
+<smd name="12" x="0.85" y="-0.25" dx="0.8" dy="0.3" layer="1"/>
+<smd name="13" x="0.85" y="0.25" dx="0.8" dy="0.3" layer="1"/>
+<smd name="14" x="0.85" y="0.75" dx="0.8" dy="0.3" layer="1"/>
+<smd name="15" x="0.85" y="1.25" dx="0.8" dy="0.3" layer="1"/>
+<smd name="16" x="0.85" y="1.75" dx="0.8" dy="0.3" layer="1"/>
+<text x="-0.8" y="2.1" size="0.3048" layer="25">&gt;NAME</text>
+<text x="0.7" y="-2.1" size="0.3048" layer="27" rot="R180">&gt;VALUE</text>
+<wire x1="-0.8" y1="1.6" x2="-0.5" y2="1.6" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="1.6" x2="-0.5" y2="1.4" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="1.4" x2="-0.8" y2="1.4" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="1.4" x2="-0.8" y2="1.1" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="1.1" x2="-0.5" y2="1.1" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="1.1" x2="-0.5" y2="0.9" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="0.9" x2="-0.8" y2="0.9" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="0.9" x2="-0.8" y2="0.6" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="0.6" x2="-0.5" y2="0.6" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="0.6" x2="-0.5" y2="0.4" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="0.4" x2="-0.8" y2="0.4" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="0.4" x2="-0.8" y2="0.1" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="0.1" x2="-0.5" y2="0.1" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="0.1" x2="-0.5" y2="-0.1" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="-0.1" x2="-0.8" y2="-0.1" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="-0.1" x2="-0.8" y2="-0.4" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="-0.4" x2="-0.5" y2="-0.4" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="-0.4" x2="-0.5" y2="-0.6" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="-0.6" x2="-0.8" y2="-0.6" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="-0.6" x2="-0.8" y2="-0.9" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="-0.9" x2="-0.5" y2="-0.9" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="-0.9" x2="-0.5" y2="-1.1" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="-1.1" x2="-0.8" y2="-1.1" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="-1.1" x2="-0.8" y2="-1.4" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="-1.4" x2="-0.5" y2="-1.4" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="-1.4" x2="-0.5" y2="-1.6" width="0.05" layer="27"/>
+<wire x1="-0.5" y1="-1.6" x2="-0.8" y2="-1.6" width="0.05" layer="27"/>
+<wire x1="-0.8" y1="-1.6" x2="-0.8" y2="-2" width="0.05" layer="27"/>
+<wire x1="0.8" y1="-2" x2="0.8" y2="-1.6" width="0.05" layer="27"/>
+<wire x1="0.8" y1="-1.6" x2="0.5" y2="-1.6" width="0.05" layer="27"/>
+<wire x1="0.5" y1="-1.6" x2="0.5" y2="-1.4" width="0.05" layer="27"/>
+<wire x1="0.5" y1="-1.4" x2="0.8" y2="-1.4" width="0.05" layer="27"/>
+<wire x1="0.8" y1="-1.4" x2="0.8" y2="-1.1" width="0.05" layer="27"/>
+<wire x1="0.8" y1="-1.1" x2="0.5" y2="-1.1" width="0.05" layer="27"/>
+<wire x1="0.5" y1="-1.1" x2="0.5" y2="-0.9" width="0.05" layer="27"/>
+<wire x1="0.5" y1="-0.9" x2="0.8" y2="-0.9" width="0.05" layer="27"/>
+<wire x1="0.8" y1="-0.9" x2="0.8" y2="-0.6" width="0.05" layer="27"/>
+<wire x1="0.8" y1="-0.6" x2="0.5" y2="-0.6" width="0.05" layer="27"/>
+<wire x1="0.5" y1="-0.6" x2="0.5" y2="-0.4" width="0.05" layer="27"/>
+<wire x1="0.5" y1="-0.4" x2="0.8" y2="-0.4" width="0.05" layer="27"/>
+<wire x1="0.8" y1="-0.4" x2="0.8" y2="-0.1" width="0.05" layer="27"/>
+<wire x1="0.8" y1="-0.1" x2="0.5" y2="-0.1" width="0.05" layer="27"/>
+<wire x1="0.5" y1="-0.1" x2="0.5" y2="0.1" width="0.05" layer="27"/>
+<wire x1="0.5" y1="0.1" x2="0.8" y2="0.1" width="0.05" layer="27"/>
+<wire x1="0.8" y1="0.1" x2="0.8" y2="0.4" width="0.05" layer="27"/>
+<wire x1="0.8" y1="0.4" x2="0.5" y2="0.4" width="0.05" layer="27"/>
+<wire x1="0.5" y1="0.4" x2="0.5" y2="0.6" width="0.05" layer="27"/>
+<wire x1="0.5" y1="0.6" x2="0.8" y2="0.6" width="0.05" layer="27"/>
+<wire x1="0.8" y1="0.6" x2="0.8" y2="0.9" width="0.05" layer="27"/>
+<wire x1="0.8" y1="0.9" x2="0.5" y2="0.9" width="0.05" layer="27"/>
+<wire x1="0.5" y1="0.9" x2="0.5" y2="1.1" width="0.05" layer="27"/>
+<wire x1="0.5" y1="1.1" x2="0.8" y2="1.1" width="0.05" layer="27"/>
+<wire x1="0.8" y1="1.1" x2="0.8" y2="1.4" width="0.05" layer="27"/>
+<wire x1="0.8" y1="1.4" x2="0.5" y2="1.4" width="0.05" layer="27"/>
+<wire x1="0.5" y1="1.4" x2="0.5" y2="1.6" width="0.05" layer="27"/>
+<wire x1="0.5" y1="1.6" x2="0.8" y2="1.6" width="0.05" layer="27"/>
+<wire x1="0.8" y1="1.6" x2="0.8" y2="2" width="0.05" layer="27"/>
+</package>
 </packages>
 <symbols>
 <symbol name="OP-AMP">
@@ -3739,6 +3834,58 @@ Source: https://www.ti.com/lit/ds/symlink/tsv912.pdf</description>
 </technology>
 <technology name="-1010KL">
 <attribute name="VALUE" value="10k 1%" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="YC248" prefix="R">
+<gates>
+<gate name="A" symbol="RESISTOR" x="0" y="27.94"/>
+<gate name="B" symbol="RESISTOR" x="0" y="20.32"/>
+<gate name="C" symbol="RESISTOR" x="0" y="12.7"/>
+<gate name="D" symbol="RESISTOR" x="0" y="5.08"/>
+<gate name="E" symbol="RESISTOR" x="0" y="-2.54"/>
+<gate name="F" symbol="RESISTOR" x="0" y="-10.16"/>
+<gate name="G" symbol="RESISTOR" x="0" y="-17.78"/>
+<gate name="H" symbol="RESISTOR" x="0" y="-25.4"/>
+</gates>
+<devices>
+<device name="" package="YC248">
+<connects>
+<connect gate="A" pin="1" pad="1"/>
+<connect gate="A" pin="2" pad="16"/>
+<connect gate="B" pin="1" pad="2"/>
+<connect gate="B" pin="2" pad="15"/>
+<connect gate="C" pin="1" pad="3"/>
+<connect gate="C" pin="2" pad="14"/>
+<connect gate="D" pin="1" pad="4"/>
+<connect gate="D" pin="2" pad="13"/>
+<connect gate="E" pin="1" pad="5"/>
+<connect gate="E" pin="2" pad="12"/>
+<connect gate="F" pin="1" pad="6"/>
+<connect gate="F" pin="2" pad="11"/>
+<connect gate="G" pin="1" pad="7"/>
+<connect gate="G" pin="2" pad="10"/>
+<connect gate="H" pin="1" pad="8"/>
+<connect gate="H" pin="2" pad="9"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="TOLERANCE" value="" constant="no"/>
+<attribute name="VALUE" value="" constant="no"/>
+</technology>
+<technology name="-JR-0710KL">
+<attribute name="TOLERANCE" value="5%" constant="no"/>
+<attribute name="VALUE" value="10k" constant="no"/>
+</technology>
+<technology name="-JR-0715KL">
+<attribute name="TOLERANCE" value="5%" constant="no"/>
+<attribute name="VALUE" value="15k" constant="no"/>
+</technology>
+<technology name="-JR-078K2L">
+<attribute name="TOLERANCE" value="5%" constant="no"/>
+<attribute name="VALUE" value="8.2k" constant="no"/>
 </technology>
 </technologies>
 </device>

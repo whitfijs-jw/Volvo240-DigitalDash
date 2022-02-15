@@ -1026,7 +1026,7 @@ Window {
                 item.minValue = gaugeMin
                 item.maxValue = gaugeMax
                 item.units = gaugeUnits
-                item.highAlarm = gaugeMax
+                item.highAlarm = gaugeHighAlarm
                 item.lowAlarm = gaugeLowAlarm
                 item.clockwise = false
 
@@ -1132,7 +1132,7 @@ Window {
                 item.minValue = 8.0
                 item.maxValue = gaugeMax
                 item.units = gaugeUnits
-                item.highAlarm = gaugeMax
+                item.highAlarm = gaugeHighAlarm
                 item.lowAlarm = gaugeLowAlarm
                 item.clockwise = false
 
@@ -1630,8 +1630,8 @@ Window {
         antialiasing: true
         smooth: true
 
-        layer.enabled: true
-        layer.samples: 16
+//        layer.enabled: true
+//        layer.samples: 16
 
         Loader {
             id: currentGauge
