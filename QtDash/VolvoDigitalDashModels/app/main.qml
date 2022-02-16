@@ -1596,6 +1596,7 @@ Window {
     Item {
         id: loading
         anchors.fill: parent
+        rotation: 180
 
         Rectangle {
             anchors.fill: parent
@@ -1629,9 +1630,7 @@ Window {
         property bool initialLoad: true
         antialiasing: true
         smooth: true
-
-        layer.enabled: true
-        layer.samples: 16
+        rotation: 180
 
         Loader {
             id: currentGauge

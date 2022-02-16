@@ -80,6 +80,8 @@ Item {
             size: needleCenterRadius * parent.width
             x: parent.width / 2 + offsetX
             y: parent.height / 2 + offset
+            antialiasing: true
+            smooth: true
 
             transform: [
                 Rotation {
@@ -113,6 +115,8 @@ Item {
             height: gauge.needleWidth
 //            radius: gauge.needleTipRadius
             antialiasing: true
+            smooth: true
+
 //            gradient: Gradient {
 //                    GradientStop { position: 0.25; color: needleColor}
 //                    GradientStop { position: 0.5; color: "white" }

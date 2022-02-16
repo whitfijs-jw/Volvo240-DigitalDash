@@ -4,6 +4,7 @@
 #include <QFont>
 #include <QFontDatabase>
 #include <QList>
+#include <QSurface>
 
 #include <config.h>
 
@@ -18,6 +19,11 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
+
+    QSurfaceFormat format;
+    format.setSamples(32);
+    QSurfaceFormat::setDefaultFormat(format);
+
 
     QFontDatabase::addApplicationFont(":/fonts/HandelGothReg.ttf");
     QFont mFont;
