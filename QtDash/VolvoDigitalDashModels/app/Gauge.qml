@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Item {
@@ -72,6 +72,7 @@ Item {
             cache: true
             rotation: 0
             anchors.fill: parent
+            mipmap: true
             z: -1
         }
 

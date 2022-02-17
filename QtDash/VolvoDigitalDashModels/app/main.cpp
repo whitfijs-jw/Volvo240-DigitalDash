@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QSurfaceFormat format;
-    format.setSamples(32);
+    format.setSamples(16);
     QSurfaceFormat::setDefaultFormat(format);
 
 
