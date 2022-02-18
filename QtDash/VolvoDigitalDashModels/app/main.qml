@@ -184,7 +184,7 @@ Window {
                 item.initialValueOffset = gaugeMin
 
                 item.minAngle = -140
-                item.maxAngle = -45
+                item.maxAngle = -41
 
                 item.height = smallGaugeSize
                 item.width = smallGaugeSize
