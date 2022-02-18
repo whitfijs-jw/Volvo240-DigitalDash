@@ -6,6 +6,7 @@ Window {
     visible: true
     width: 1280
     height: 480
+
     title: qsTr("Lolvo")
 
 
@@ -1097,6 +1098,7 @@ Window {
     Item {
         id: loading
         anchors.fill: parent
+        rotation: 180
 
         Rectangle {
             anchors.fill: parent
@@ -1127,6 +1129,7 @@ Window {
         id: gaugeItem
         anchors.fill: parent
         focus: true
+        rotation: 180
         property bool initialLoad: true
 
         Loader {
