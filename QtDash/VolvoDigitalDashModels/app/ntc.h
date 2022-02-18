@@ -32,10 +32,16 @@ public:
         qreal tKelvinInv = mCoeff.A + (mCoeff.B * lnR) +  (mCoeff.C * lnR3);
 
         // convert to desired units
-        return SensorUtils::convertTemperature(
+        qreal temp = SensorUtils::convertTemperature(
                     1 / tKelvinInv,
                     units,
                     Config::TemperatureUnits::KELVIN);
+
+        if (temp != temp) {
+            return 0;
+        } else {
+            return temp;
+        }
     }
 
     SteinhartHartCoefficients_t getCoefficients() {
