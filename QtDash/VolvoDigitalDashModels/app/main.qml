@@ -1596,8 +1596,11 @@ Window {
     Item {
         id: loading
         anchors.fill: parent
-        rotation: 180
-
+        rotation: if (RASPBERRY_PI) {
+                      180
+                  } else {
+                      0
+                  }
         Rectangle {
             anchors.fill: parent
             color: "black"
@@ -1627,10 +1630,15 @@ Window {
         id: gaugeItem
         anchors.fill: parent
         focus: true
+        rotation: if (RASPBERRY_PI) {
+                      180
+                  } else {
+                      0
+                  }
+
         property bool initialLoad: true
         antialiasing: true
         smooth: true
-        rotation: 180
 
         Loader {
             id: currentGauge
