@@ -38,12 +38,17 @@ public slots:
                 value = 0;
             }
 
+            value = (mSensorConfig.lag * value) + (1 - mSensorConfig.lag) * previousValue;
+
+            previousValue = value;
+
             emit sensorDataReady(value);
         }
     }
 
 private:
     Config::ResistiveSensorConfig_t mSensorConfig;
+    qreal previousValue;
 };
 
 #endif // SENSOR_RESISTIVE_H
