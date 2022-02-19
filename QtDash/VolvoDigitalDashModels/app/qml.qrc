@@ -16,6 +16,9 @@
         <file>Original740Layout.qml</file>
         <file>Gauge.qml</file>
         <file>Original240LayoutClock.qml</file>
+        <file>Original850R.qml</file>
+        <file>OriginalRSportLayout.qml</file>
+        <file>Needle240.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -62,5 +65,23 @@
         <file>740_speedo.png</file>
         <file>740_clock.png</file>
         <file>740_voltmeter.png</file>
+    </qresource>
+    <qresource prefix="/gauge-faces-850">
+        <file>850_unleaded_only.png</file>
+        <file>850_fuel_level.png</file>
+        <file>850_coolant.png</file>
+        <file>850_boost.png</file>
+    </qresource>
+    <qresource prefix="/gauge-faces-r-sport">
+        <file>r_sport_coolant_fahrenhet.png</file>
+        <file>r_sport_oil_pressure_5bar.png</file>
+        <file>r_sport_voltmeter.png</file>
+        <file>r_sport_coolant_celsius.png</file>
+        <file>r_sport_fuel.png</file>
+        <file>r_sport_tachometer.png</file>
+        <file>r_sport_speedo_mph.png</file>
+        <file>r_sport_coolant_fahrenheit_shroud.png</file>
+        <file>r_sport_coolant_celsius_shroud.png</file>
+        <file>r_sport_fuel_shroud.png</file>
     </qresource>
 </RCC>
