@@ -6,6 +6,7 @@ Window {
     visible: true
     width: 1280
     height: 480
+
     title: qsTr("Lolvo")
 
 
@@ -1635,7 +1636,6 @@ Window {
                   } else {
                       0
                   }
-
         property bool initialLoad: true
         antialiasing: true
         smooth: true
