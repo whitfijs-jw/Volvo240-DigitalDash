@@ -1,0 +1,4412 @@
+SplineFontDB: 3.2
+FontName: R-Cluster
+FullName: R-Cluster
+FamilyName: R-Cluster
+Weight: Book
+Copyright: 
+Version: 1.000
+ItalicAngle: 0
+UnderlinePosition: -100
+UnderlineWidth: 50
+Ascent: 750
+Descent: 250
+InvalidEm: 0
+sfntRevision: 0x00010000
+LayerCount: 2
+Layer: 0 1 "Back" 1
+Layer: 1 1 "Fore" 0
+XUID: [1021 390 1611415937 5762365]
+StyleMap: 0x0040
+FSType: 4
+OS2Version: 3
+OS2_WeightWidthSlopeOnly: 0
+OS2_UseTypoMetrics: 0
+CreationTime: 1351278240
+ModificationTime: 1644418869
+PfmFamily: 17
+TTFWeight: 400
+TTFWidth: 5
+LineGap: 0
+VLineGap: 0
+Panose: 2 0 5 3 4 0 0 2 0 4
+OS2TypoAscent: 750
+OS2TypoAOffset: 0
+OS2TypoDescent: -250
+OS2TypoDOffset: 0
+OS2TypoLinegap: 0
+OS2WinAscent: 750
+OS2WinAOffset: 0
+OS2WinDescent: 250
+OS2WinDOffset: 0
+HheadAscent: 750
+HheadAOffset: 0
+HheadDescent: -250
+HheadDOffset: 0
+OS2SubXSize: 700
+OS2SubYSize: 650
+OS2SubXOff: 0
+OS2SubYOff: 140
+OS2SupXSize: 700
+OS2SupYSize: 650
+OS2SupXOff: 0
+OS2SupYOff: 477
+OS2StrikeYSize: 50
+OS2StrikeYPos: 250
+OS2CapHeight: 700
+OS2XHeight: 500
+OS2Vendor: 'pyrs'
+OS2CodePages: 20000001.00000000
+OS2UnicodeRanges: 80000023.00000008.00000000.00000000
+Lookup: 4 0 1 "'liga' Standard Ligatures in Latin lookup 0" { "'liga' Standard Ligatures in Latin lookup 0 subtable"  } ['liga' ('DFLT' <'dflt' > 'latn' <'dflt' > ) ]
+Lookup: 258 0 0 "'kern' Horizontal Kerning in Latin lookup 0" { "'kern' Horizontal Kerning in Latin lookup 0 subtable"  } ['kern' ('DFLT' <'dflt' > 'latn' <'dflt' > ) ]
+MarkAttachClasses: 1
+DEI: 91125
+TtTable: prep
+PUSHW_1
+ 0
+CALL
+SVTCA[y-axis]
+PUSHW_3
+ 1
+ 2
+ 2
+CALL
+SVTCA[x-axis]
+PUSHW_3
+ 3
+ 1
+ 2
+CALL
+SVTCA[x-axis]
+PUSHW_8
+ 3
+ 26
+ 24
+ 19
+ 13
+ 8
+ 0
+ 8
+CALL
+SVTCA[y-axis]
+PUSHW_8
+ 1
+ 31
+ 24
+ 19
+ 13
+ 8
+ 0
+ 8
+CALL
+PUSHW_8
+ 2
+ 45
+ 37
+ 29
+ 21
+ 13
+ 0
+ 8
+CALL
+SVTCA[y-axis]
+PUSHW_3
+ 4
+ 3
+ 7
+CALL
+PUSHW_1
+ 0
+DUP
+RCVT
+RDTG
+ROUND[Black]
+RTG
+WCVTP
+EndTTInstrs
+TtTable: fpgm
+PUSHW_1
+ 0
+FDEF
+MPPEM
+PUSHW_1
+ 9
+LT
+IF
+PUSHB_2
+ 1
+ 1
+INSTCTRL
+EIF
+PUSHW_1
+ 511
+SCANCTRL
+PUSHW_1
+ 68
+SCVTCI
+PUSHW_2
+ 9
+ 3
+SDS
+SDB
+ENDF
+PUSHW_1
+ 1
+FDEF
+DUP
+DUP
+RCVT
+ROUND[Black]
+WCVTP
+PUSHB_1
+ 1
+ADD
+ENDF
+PUSHW_1
+ 2
+FDEF
+PUSHW_1
+ 1
+LOOPCALL
+POP
+ENDF
+PUSHW_1
+ 3
+FDEF
+DUP
+GC[cur]
+PUSHB_1
+ 3
+CINDEX
+GC[cur]
+GT
+IF
+SWAP
+EIF
+DUP
+ROLL
+DUP
+ROLL
+MD[grid]
+ABS
+ROLL
+DUP
+GC[cur]
+DUP
+ROUND[Grey]
+SUB
+ABS
+PUSHB_1
+ 4
+CINDEX
+GC[cur]
+DUP
+ROUND[Grey]
+SUB
+ABS
+GT
+IF
+SWAP
+NEG
+ROLL
+EIF
+MDAP[rnd]
+DUP
+PUSHB_1
+ 0
+GTEQ
+IF
+ROUND[Black]
+DUP
+PUSHB_1
+ 0
+EQ
+IF
+POP
+PUSHB_1
+ 64
+EIF
+ELSE
+ROUND[Black]
+DUP
+PUSHB_1
+ 0
+EQ
+IF
+POP
+PUSHB_1
+ 64
+NEG
+EIF
+EIF
+MSIRP[no-rp0]
+ENDF
+PUSHW_1
+ 4
+FDEF
+DUP
+GC[cur]
+PUSHB_1
+ 4
+CINDEX
+GC[cur]
+GT
+IF
+SWAP
+ROLL
+EIF
+DUP
+GC[cur]
+DUP
+ROUND[White]
+SUB
+ABS
+PUSHB_1
+ 4
+CINDEX
+GC[cur]
+DUP
+ROUND[White]
+SUB
+ABS
+GT
+IF
+SWAP
+ROLL
+EIF
+MDAP[rnd]
+MIRP[rp0,min,rnd,black]
+ENDF
+PUSHW_1
+ 5
+FDEF
+MPPEM
+DUP
+PUSHB_1
+ 3
+MINDEX
+LT
+IF
+LTEQ
+IF
+PUSHB_1
+ 128
+WCVTP
+ELSE
+PUSHB_1
+ 64
+WCVTP
+EIF
+ELSE
+POP
+POP
+DUP
+RCVT
+PUSHB_1
+ 192
+LT
+IF
+PUSHB_1
+ 192
+WCVTP
+ELSE
+POP
+EIF
+EIF
+ENDF
+PUSHW_1
+ 6
+FDEF
+DUP
+DUP
+RCVT
+ROUND[Black]
+WCVTP
+PUSHB_1
+ 1
+ADD
+DUP
+DUP
+RCVT
+RDTG
+ROUND[Black]
+RTG
+WCVTP
+PUSHB_1
+ 1
+ADD
+ENDF
+PUSHW_1
+ 7
+FDEF
+PUSHW_1
+ 6
+LOOPCALL
+ENDF
+PUSHW_1
+ 8
+FDEF
+MPPEM
+DUP
+PUSHB_1
+ 3
+MINDEX
+GTEQ
+IF
+PUSHB_1
+ 64
+ELSE
+PUSHB_1
+ 0
+EIF
+ROLL
+ROLL
+DUP
+PUSHB_1
+ 3
+MINDEX
+GTEQ
+IF
+SWAP
+POP
+PUSHB_1
+ 128
+ROLL
+ROLL
+ELSE
+ROLL
+SWAP
+EIF
+DUP
+PUSHB_1
+ 3
+MINDEX
+GTEQ
+IF
+SWAP
+POP
+PUSHW_1
+ 192
+ROLL
+ROLL
+ELSE
+ROLL
+SWAP
+EIF
+DUP
+PUSHB_1
+ 3
+MINDEX
+GTEQ
+IF
+SWAP
+POP
+PUSHW_1
+ 256
+ROLL
+ROLL
+ELSE
+ROLL
+SWAP
+EIF
+DUP
+PUSHB_1
+ 3
+MINDEX
+GTEQ
+IF
+SWAP
+POP
+PUSHW_1
+ 320
+ROLL
+ROLL
+ELSE
+ROLL
+SWAP
+EIF
+DUP
+PUSHW_1
+ 3
+MINDEX
+GTEQ
+IF
+PUSHB_1
+ 3
+CINDEX
+RCVT
+PUSHW_1
+ 384
+LT
+IF
+SWAP
+POP
+PUSHW_1
+ 384
+SWAP
+POP
+ELSE
+PUSHB_1
+ 3
+CINDEX
+RCVT
+SWAP
+POP
+SWAP
+POP
+EIF
+ELSE
+POP
+EIF
+WCVTP
+ENDF
+PUSHW_1
+ 9
+FDEF
+MPPEM
+GTEQ
+IF
+RCVT
+WCVTP
+ELSE
+POP
+POP
+EIF
+ENDF
+EndTTInstrs
+ShortTable: cvt  10
+  20
+  179
+  124
+  212
+  0
+  0
+  -111
+  0
+  669
+  0
+EndShort
+ShortTable: maxp 16
+  1
+  0
+  110
+  32
+  4
+  0
+  0
+  1
+  0
+  0
+  10
+  0
+  512
+  371
+  0
+  0
+EndShort
+LangName: 1033 "" "" "Regular" "" "" "Version 1.000" "" "" "" "" "" "" "" "" "" "" "" "" "R-Cluster"
+Encoding: ISO8859-1
+UnicodeInterp: none
+NameList: AGL For New Fonts
+DisplaySize: -48
+AntiAlias: 1
+FitToEm: 0
+WinInfo: 0 37 14
+BeginPrivate: 0
+EndPrivate
+TeXData: 1 0 0 284164 142082 94721 520094 1048576 94721 783286 444596 497025 792723 393216 433062 380633 303038 157286 324010 404750 52429 2506097 1059062 262144
+BeginChars: 267 109
+
+StartChar: NULL
+Encoding: 0 61440 0
+AltUni2: 000000.ffffffff.0
+Width: 0
+Flags: W
+LayerCount: 2
+Fore
+Validated: 1
+EndChar
+
+StartChar: nonmarkingreturn
+Encoding: 13 13 1
+Width: 271
+Flags: W
+LayerCount: 2
+Fore
+Validated: 1
+EndChar
+
+StartChar: space
+Encoding: 32 32 2
+Width: 271
+Flags: W
+LayerCount: 2
+Fore
+Validated: 1
+EndChar
+
+StartChar: one
+Encoding: 49 49 3
+Width: 364
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+300 619 m 1,0,-1
+ 300 0 l 1,1,-1
+ 150 0 l 1,2,-1
+ 150 668 l 1,3,-1
+ 300 668 l 1,4,-1
+ 300 619 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: two
+Encoding: 50 50 4
+Width: 674
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+629 392 m 1,0,-1
+ 328 150 l 1,1,-1
+ 629 150 l 1,2,-1
+ 629 0 l 1,3,-1
+ 106 0 l 1,4,-1
+ 106 150 l 1,5,-1
+ 479 442 l 1,6,-1
+ 479 518 l 1,7,-1
+ 256 518 l 1,8,-1
+ 256 442 l 1,9,-1
+ 106 442 l 1,10,-1
+ 106 668 l 1,11,-1
+ 629 668 l 1,12,-1
+ 629 392 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: three
+Encoding: 51 51 5
+Width: 680
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+483 668 m 1,0,-1
+ 640 668 l 1,1,-1
+ 640 425 l 1,2,-1
+ 590 375 l 1,3,-1
+ 640 325 l 1,4,-1
+ 640 0 l 1,5,-1
+ 100 0 l 1,6,-1
+ 100 235 l 1,7,-1
+ 250 235 l 1,8,-1
+ 250 150 l 1,9,-1
+ 488 150 l 1,10,-1
+ 488 315 l 1,11,-1
+ 350 315 l 1,12,-1
+ 350 440 l 1,13,-1
+ 490 440 l 1,14,-1
+ 490 530 l 1,15,-1
+ 250 530 l 1,16,-1
+ 250 440 l 1,17,-1
+ 100 440 l 1,18,-1
+ 100 668 l 1,19,-1
+ 483 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: four
+Encoding: 52 52 6
+Width: 674
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+168 166 m 5,0,-1
+ 168 668 l 1,1,-1
+ 308 668 l 1,2,-1
+ 308 320 l 1,3,-1
+ 430 320 l 1,4,-1
+ 430 526 l 1,5,-1
+ 565 526 l 1,6,-1
+ 565 320 l 1,7,-1
+ 629 320 l 1,8,-1
+ 629 170 l 1,9,-1
+ 565 170 l 1,10,-1
+ 565 0 l 1,11,-1
+ 432 0 l 1,12,-1
+ 432 166 l 1,13,-1
+ 168 166 l 5,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: f
+Encoding: 102 102 7
+Width: 678
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+257 668 m 257,0,-1
+ 257 323 l 1,1,-1
+ 409 496 l 1,2,-1
+ 519 496 l 1,3,-1
+ 336 268 l 5,4,-1
+ 519 0 l 1,5,-1
+ 409 0 l 1,6,-1
+ 257 219 l 1,7,-1
+ 257 0 l 1,8,-1
+ 159 0 l 257,9,-1
+ 159 668 l 257,10,-1
+ 257 668 l 257,0,-1
+EndSplineSet
+Validated: 1
+Kerns2: 60 -70 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 32 -277 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 28 -251 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 26 -248 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 11 -61 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: g
+Encoding: 103 103 8
+Width: 678
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+159 496 m 257,0,-1
+ 519 496 l 257,1,-1
+ 519 0 l 257,2,-1
+ 519 -250 l 1,3,-1
+ 389 -250 l 1,4,-1
+ 159 -250 l 1,5,-1
+ 159 -150 l 1,6,-1
+ 389 -150 l 1,7,-1
+ 389 0 l 1,8,-1
+ 159 0 l 1,9,-1
+ 159 496 l 257,0,-1
+289 380 m 5,10,-1
+ 289 101 l 5,11,-1
+ 389 101 l 5,12,-1
+ 389 380 l 5,13,-1
+ 289 380 l 5,10,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: h
+Encoding: 104 104 9
+Width: 678
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+519 2 m 257,0,-1
+ 389 2 l 1,1,-1
+ 389 380 l 1,2,-1
+ 289 380 l 1,3,-1
+ 289 0 l 1,4,-1
+ 159 2 l 257,5,-1
+ 159 376 l 257,6,-1
+ 159 668 l 5,7,-1
+ 289 668 l 1,8,-1
+ 289 496 l 1,9,-1
+ 519 496 l 1,10,-1
+ 519 2 l 257,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: i
+Encoding: 105 105 10
+Width: 364
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+250 668 m 25,0,-1
+ 250 568 l 25,1,-1
+ 150 568 l 25,2,-1
+ 150 668 l 25,3,-1
+ 250 668 l 25,0,-1
+250 350 m 1,4,-1
+ 250 0 l 1,5,-1
+ 150 0 l 1,6,-1
+ 150 468 l 1,7,-1
+ 250 468 l 1,8,-1
+ 250 350 l 1,4,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: j
+Encoding: 106 106 11
+Width: 678
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+390 396 m 25,0,-1
+ 390 496 l 25,1,-1
+ 519 496 l 25,2,-1
+ 519 396 l 25,3,-1
+ 390 396 l 25,0,-1
+390 296 m 257,4,-1
+ 519 296 l 257,5,-1
+ 519 0 l 257,6,-1
+ 519 -250 l 1,7,-1
+ 389 -250 l 1,8,-1
+ 159 -250 l 1,9,-1
+ 159 -150 l 1,10,-1
+ 389 -150 l 1,11,-1
+ 389 0 l 1,12,-1
+ 390 33 l 1,13,-1
+ 390 296 l 257,4,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: k
+Encoding: 107 107 12
+Width: 678
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+257 668 m 257,0,-1
+ 257 323 l 1,1,-1
+ 409 496 l 1,2,-1
+ 519 496 l 1,3,-1
+ 336 268 l 5,4,-1
+ 519 0 l 1,5,-1
+ 409 0 l 1,6,-1
+ 257 219 l 1,7,-1
+ 257 0 l 1,8,-1
+ 159 0 l 257,9,-1
+ 159 668 l 257,10,-1
+ 257 668 l 257,0,-1
+EndSplineSet
+Validated: 1
+Kerns2: 31 -68 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: l
+Encoding: 108 108 13
+Width: 364
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+250 619 m 1,0,-1
+ 250 0 l 5,1,-1
+ 150 0 l 1,2,-1
+ 150 668 l 1,3,-1
+ 250 668 l 1,4,-1
+ 250 619 l 1,0,-1
+EndSplineSet
+Validated: 1
+Kerns2: 80 -138 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 75 -145 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 70 -147 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 50 -270 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 43 -255 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 31 -215 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 27 -255 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: m
+Encoding: 109 109 14
+Width: 897
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+197 0 m 257,0,-1
+ 197 496 l 1,1,-1
+ 697 496 l 1,2,-1
+ 697 0 l 1,3,-1
+ 597 0 l 1,4,-1
+ 597 355 l 1,5,-1
+ 497 355 l 1,6,-1
+ 497 0 l 1,7,-1
+ 397 0 l 1,8,-1
+ 397 355 l 1,9,-1
+ 297 355 l 1,10,-1
+ 297 0 l 1,11,-1
+ 197 0 l 257,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: n
+Encoding: 110 110 15
+Width: 759
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+578 354 m 17,0,-1
+ 578 0 l 1,1,-1
+ 449 0 l 1,2,-1
+ 449 355 l 1,3,-1
+ 328 355 l 1,4,-1
+ 328 0 l 1,5,-1
+ 198 0 l 1,6,-1
+ 198 496 l 5,7,-1
+ 578 496 l 1,8,-1
+ 578 354 l 17,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: o
+Encoding: 111 111 16
+Width: 678
+Flags: W
+TtInstrs:
+PUSHW_1
+ 8
+MDAP[rnd]
+PUSHW_1
+ 4
+MDAP[rnd]
+PUSHW_2
+ 0
+ 3
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 8
+SRP0
+PUSHW_1
+ 2
+MDRP[rp0,grey]
+PUSHW_1
+ 2
+MDAP[rnd]
+PUSHW_2
+ 6
+ 3
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 0
+SRP0
+PUSHW_1
+ 9
+MDRP[rp0,min,rnd,grey]
+SVTCA[y-axis]
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 0
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 0
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 1
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 1
+ 4
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+SRP0
+PUSHW_2
+ 4
+ 1
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 1
+SRP0
+PUSHW_2
+ 6
+ 1
+MIRP[rp0,rnd,grey]
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+519 496 m 261,0,-1
+ 519 0 l 1,1,-1
+ 159 0 l 257,2,-1
+ 159 496 l 257,3,-1
+ 519 496 l 261,0,-1
+389 380 m 1,4,-1
+ 289 380 l 1,5,-1
+ 289 101 l 1,6,-1
+ 389 101 l 1,7,-1
+ 389 380 l 1,4,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: p
+Encoding: 112 112 17
+Width: 678
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+519 496 m 257,0,-1
+ 519 0 l 1,1,-1
+ 289 0 l 1,2,-1
+ 289 -250 l 1,3,-1
+ 159 -250 l 1,4,-1
+ 159 0 l 257,5,-1
+ 159 496 l 257,6,-1
+ 519 496 l 257,0,-1
+389 380 m 5,7,-1
+ 289 380 l 1,8,-1
+ 289 101 l 1,9,-1
+ 389 101 l 1,10,-1
+ 389 380 l 5,7,-1
+EndSplineSet
+Validated: 1
+Kerns2: 60 -45 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 32 -235 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 28 -239 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 26 -220 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 11 -53 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: q
+Encoding: 113 113 18
+Width: 678
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+159 496 m 257,0,-1
+ 519 496 l 257,1,-1
+ 519 0 l 257,2,-1
+ 519 -250 l 1,3,-1
+ 389 -250 l 1,4,-1
+ 389 0 l 1,5,-1
+ 159 0 l 1,6,-1
+ 159 496 l 257,0,-1
+289 380 m 5,7,-1
+ 289 101 l 5,8,-1
+ 389 101 l 5,9,-1
+ 389 380 l 5,10,-1
+ 289 380 l 5,7,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: r
+Encoding: 114 114 19
+Width: 678
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+519 496 m 257,0,-1
+ 519 380 l 1,1,-1
+ 289 380 l 1,2,-1
+ 289 248 l 1,3,-1
+ 289 94 l 1,4,-1
+ 289 0 l 1,5,-1
+ 159 0 l 257,6,-1
+ 159 496 l 257,7,-1
+ 519 496 l 257,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: s
+Encoding: 115 115 20
+Width: 678
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+519 0 m 257,0,-1
+ 159 0 l 257,1,-1
+ 159 116 l 1,2,-1
+ 389 116 l 1,3,-1
+ 389 213 l 1,4,-1
+ 161 213 l 1,5,-1
+ 159 496 l 257,6,-1
+ 519 496 l 1,7,-1
+ 519 404 l 1,8,-1
+ 289 404 l 1,9,-1
+ 289 302 l 1,10,-1
+ 519 302 l 1,11,-1
+ 519 0 l 257,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: five
+Encoding: 53 53 21
+Width: 694
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+640 668 m 1,0,-1
+ 640 530 l 1,1,-1
+ 250 530 l 1,2,-1
+ 250 440 l 1,3,-1
+ 640 440 l 1,4,-1
+ 640 0 l 257,5,-1
+ 100 0 l 1,6,-1
+ 100 248 l 1,7,-1
+ 250 249 l 1,8,-1
+ 250 150 l 1,9,-1
+ 490 150 l 5,10,-1
+ 490 315 l 1,11,-1
+ 100 315 l 1,12,-1
+ 100 668 l 1,13,-1
+ 640 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: six
+Encoding: 54 54 22
+Width: 694
+Flags: W
+TtInstrs:
+PUSHW_1
+ 12
+MDAP[rnd]
+PUSHW_1
+ 10
+MDAP[rnd]
+PUSHW_2
+ 5
+ 3
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 0
+MDRP[rp0,grey]
+PUSHW_1
+ 12
+SRP0
+PUSHW_1
+ 6
+MDRP[rp0,grey]
+PUSHW_1
+ 6
+MDAP[rnd]
+PUSHW_2
+ 9
+ 3
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 2
+MDRP[rp0,grey]
+PUSHW_1
+ 2
+MDAP[rnd]
+PUSHW_1
+ 5
+SRP0
+PUSHW_1
+ 13
+MDRP[rp0,min,rnd,grey]
+SVTCA[y-axis]
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 0
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 0
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 5
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 5
+ 4
+MIAP[no-rnd]
+EIF
+PUSHW_4
+ 3
+ 1
+ 8
+ 4
+CALL
+PUSHW_1
+ 0
+SRP0
+PUSHW_2
+ 1
+ 1
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 5
+SRP0
+PUSHW_2
+ 9
+ 1
+MIRP[rp0,rnd,grey]
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+640 668 m 1,0,-1
+ 640 530 l 1,1,-1
+ 250 530 l 1,2,-1
+ 250 440 l 1,3,-1
+ 640 440 l 1,4,-1
+ 640 0 l 1,5,-1
+ 100 0 l 1,6,-1
+ 100 668 l 1,7,-1
+ 640 668 l 1,0,-1
+250 315 m 1,8,-1
+ 250 150 l 1,9,-1
+ 490 150 l 1,10,-1
+ 490 315 l 1,11,-1
+ 250 315 l 1,8,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: seven
+Encoding: 55 55 23
+Width: 646
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+100 530 m 1,0,-1
+ 100 668 l 1,1,-1
+ 640 668 l 1,2,-1
+ 640 530 l 1,3,-1
+ 300 0 l 1,4,-1
+ 125 0 l 5,5,-1
+ 465 530 l 1,6,-1
+ 100 530 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: eight
+Encoding: 56 56 24
+Width: 683
+Flags: W
+TtInstrs:
+PUSHW_1
+ 18
+MDAP[rnd]
+PUSHW_1
+ 10
+MDAP[rnd]
+PUSHW_2
+ 2
+ 3
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 0
+MDRP[rp0,grey]
+PUSHW_1
+ 18
+SRP0
+PUSHW_1
+ 5
+MDRP[rp0,grey]
+PUSHW_1
+ 5
+MDAP[rnd]
+PUSHW_1
+ 7
+MDRP[rp0,grey]
+PUSHW_1
+ 5
+SRP0
+PUSHW_2
+ 12
+ 3
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 10
+SRP0
+PUSHW_1
+ 14
+MDRP[rp0,grey]
+PUSHW_1
+ 12
+SRP0
+PUSHW_1
+ 15
+MDRP[rp0,grey]
+PUSHW_1
+ 15
+MDAP[rnd]
+PUSHW_1
+ 2
+SRP0
+PUSHW_1
+ 19
+MDRP[rp0,min,rnd,grey]
+SVTCA[y-axis]
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 8
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 8
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 3
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 3
+ 4
+MIAP[no-rnd]
+EIF
+PUSHW_4
+ 17
+ 1
+ 10
+ 4
+CALL
+PUSHW_3
+ 6
+ 10
+ 17
+SRP1
+SRP2
+IP
+PUSHW_1
+ 3
+SRP0
+PUSHW_2
+ 12
+ 1
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 8
+SRP0
+PUSHW_2
+ 14
+ 1
+MIRP[rp0,rnd,grey]
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+640 425 m 1,0,-1
+ 590 375 l 1,1,-1
+ 640 325 l 1,2,-1
+ 640 0 l 1,3,-1
+ 100 0 l 1,4,-1
+ 100 325 l 1,5,-1
+ 150 375 l 1,6,-1
+ 100 425 l 1,7,-1
+ 100 668 l 1,8,-1
+ 640 668 l 1,9,-1
+ 640 425 l 1,0,-1
+490 315 m 1,10,-1
+ 250 315 l 1,11,-1
+ 250 150 l 1,12,-1
+ 490 150 l 1,13,-1
+ 490 315 l 1,10,-1
+490 530 m 1,14,-1
+ 250 530 l 1,15,-1
+ 250 440 l 1,16,-1
+ 490 440 l 1,17,-1
+ 490 530 l 1,14,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: nine
+Encoding: 57 57 25
+Width: 694
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+100 0 m 5,0,-1
+ 100 138 l 5,1,-1
+ 490 138 l 5,2,-1
+ 490 228 l 5,3,-1
+ 100 228 l 5,4,-1
+ 100 668 l 5,5,-1
+ 640 668 l 5,6,-1
+ 640 0 l 5,7,-1
+ 100 0 l 5,0,-1
+490 353 m 5,8,-1
+ 490 518 l 5,9,-1
+ 250 518 l 5,10,-1
+ 250 353 l 5,11,-1
+ 490 353 l 5,8,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: comma
+Encoding: 44 44 26
+Width: 300
+Flags: W
+TtInstrs:
+SVTCA[y-axis]
+PUSHW_1
+ 2
+MDAP[rnd]
+PUSHW_1
+ 0
+MDAP[rnd]
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+216 -105 m 1,0,-1
+ 6 -105 l 1,1,-1
+ 58 181 l 1,2,-1
+ 269 181 l 1,3,-1
+ 216 -105 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: quotesingle
+Encoding: 39 39 27
+Width: 304
+Flags: W
+TtInstrs:
+PUSHW_4
+ 0
+ 3
+ 3
+ 4
+CALL
+SVTCA[y-axis]
+PUSHW_1
+ 1
+MDAP[rnd]
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 0
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 0
+ 8
+MIAP[no-rnd]
+EIF
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+254 669 m 1,0,-1
+ 254 383 l 1,1,-1
+ 44 383 l 1,2,-1
+ 43 669 l 1,3,-1
+ 254 669 l 1,0,-1
+EndSplineSet
+Validated: 1
+Kerns2: 60 -48 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 11 -57 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: period
+Encoding: 46 46 28
+Width: 364
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+250 100 m 25,0,-1
+ 250 0 l 29,1,-1
+ 150 0 l 25,2,-1
+ 150 100 l 25,3,-1
+ 250 100 l 25,0,-1
+EndSplineSet
+Validated: 1
+Kerns2: 80 -146 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 75 -155 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 70 -146 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: exclam
+Encoding: 33 33 29
+Width: 307
+Flags: W
+TtInstrs:
+PUSHW_4
+ 1
+ 3
+ 0
+ 4
+CALL
+PUSHW_1
+ 1
+SRP0
+PUSHW_1
+ 4
+MDRP[rp0,grey]
+PUSHW_1
+ 0
+SRP0
+PUSHW_1
+ 6
+MDRP[rp0,grey]
+PUSHW_1
+ 1
+SRP0
+PUSHW_1
+ 9
+MDRP[rp0,min,rnd,grey]
+SVTCA[y-axis]
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 0
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 0
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 5
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 5
+ 4
+MIAP[no-rnd]
+EIF
+PUSHW_2
+ 4
+ 1
+MIRP[rp0,rnd,grey]
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+47 668 m 1,0,-1
+ 259 668 l 1,1,-1
+ 259 244 l 1,2,-1
+ 47 244 l 1,3,-1
+ 47 668 l 1,0,-1
+259 183 m 1,4,-1
+ 259 0 l 1,5,-1
+ 47 0 l 1,6,-1
+ 47 183 l 1,7,-1
+ 259 183 l 1,4,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: plus
+Encoding: 43 43 30
+Width: 465
+Flags: W
+TtInstrs:
+PUSHW_4
+ 2
+ 3
+ 3
+ 4
+CALL
+PUSHW_1
+ 3
+SRP0
+PUSHW_1
+ 7
+MDRP[rp0,grey]
+PUSHW_1
+ 2
+SRP0
+PUSHW_1
+ 9
+MDRP[rp0,grey]
+SVTCA[y-axis]
+PUSHW_1
+ 8
+MDAP[rnd]
+PUSHW_1
+ 2
+MDAP[rnd]
+PUSHW_4
+ 11
+ 1
+ 0
+ 4
+CALL
+PUSHW_1
+ 0
+SRP0
+PUSHW_1
+ 4
+MDRP[rp0,grey]
+PUSHW_1
+ 11
+SRP0
+PUSHW_1
+ 6
+MDRP[rp0,grey]
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+427 245 m 1,0,-1
+ 322 245 l 1,1,-1
+ 322 140 l 1,2,-1
+ 141 140 l 1,3,-1
+ 141 245 l 1,4,-1
+ 36 245 l 1,5,-1
+ 36 425 l 1,6,-1
+ 141 425 l 1,7,-1
+ 141 531 l 1,8,-1
+ 322 531 l 1,9,-1
+ 322 425 l 1,10,-1
+ 427 425 l 1,11,-1
+ 427 245 l 1,0,-1
+EndSplineSet
+Validated: 1
+Kerns2: 80 -68 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 70 -76 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: hyphen
+Encoding: 45 45 31
+Width: 452
+Flags: W
+TtInstrs:
+SVTCA[y-axis]
+PUSHW_4
+ 3
+ 1
+ 0
+ 4
+CALL
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+421 245 m 1,0,-1
+ 31 245 l 1,1,-1
+ 31 425 l 1,2,-1
+ 421 425 l 1,3,-1
+ 421 245 l 1,0,-1
+EndSplineSet
+Validated: 1
+Kerns2: 80 -122 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 70 -129 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: underscore
+Encoding: 95 95 32
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+Kerns2: 80 -129 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 75 -151 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 70 -151 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: percent
+Encoding: 37 37 33
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: backslash
+Encoding: 92 92 34
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: slash
+Encoding: 47 47 35
+Width: 518
+Flags: W
+TtInstrs:
+SVTCA[y-axis]
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 0
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 0
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 1
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 1
+ 4
+MIAP[no-rnd]
+EIF
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: a
+Encoding: 97 97 36
+Width: 678
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+159 0 m 257,0,-1
+ 159 302 l 1,1,-1
+ 389 302 l 1,2,-1
+ 389 404 l 1,3,-1
+ 159 404 l 1,4,-1
+ 159 496 l 1,5,-1
+ 519 496 l 257,6,-1
+ 519 0 l 257,7,-1
+ 159 0 l 257,0,-1
+289 116 m 1,8,-1
+ 389 116 l 1,9,-1
+ 389 213 l 1,10,-1
+ 289 213 l 1,11,-1
+ 289 116 l 1,8,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: b
+Encoding: 98 98 37
+Width: 678
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+519 2 m 257,0,-1
+ 159 2 l 257,1,-1
+ 159 498 l 257,2,-1
+ 159 668 l 1,3,-1
+ 289 668 l 1,4,-1
+ 289 496 l 1,5,-1
+ 519 496 l 1,6,-1
+ 519 2 l 257,0,-1
+389 101 m 5,7,-1
+ 389 380 l 1,8,-1
+ 289 380 l 1,9,-1
+ 289 101 l 1,10,-1
+ 389 101 l 5,7,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: c
+Encoding: 99 99 38
+Width: 678
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+519 496 m 257,0,-1
+ 519 340 l 1,1,-1
+ 389 340 l 1,2,-1
+ 389 380 l 1,3,-1
+ 289 380 l 1,4,-1
+ 289 101 l 1,5,-1
+ 389 101 l 1,6,-1
+ 389 151 l 1,7,-1
+ 519 151 l 1,8,-1
+ 519 0 l 5,9,-1
+ 159 0 l 257,10,-1
+ 159 496 l 257,11,-1
+ 519 496 l 257,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: d
+Encoding: 100 100 39
+Width: 678
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+159 2 m 257,0,-1
+ 159 496 l 1,1,-1
+ 389 496 l 1,2,-1
+ 389 668 l 1,3,-1
+ 519 668 l 1,4,-1
+ 519 498 l 257,5,-1
+ 519 2 l 257,6,-1
+ 159 2 l 257,0,-1
+289 101 m 5,7,-1
+ 389 101 l 1,8,-1
+ 389 380 l 1,9,-1
+ 289 380 l 1,10,-1
+ 289 101 l 5,7,-1
+EndSplineSet
+Validated: 1
+Kerns2: 28 33 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 26 57 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: e
+Encoding: 101 101 40
+Width: 678
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+519 496 m 257,0,-1
+ 519 194 l 1,1,-1
+ 289 194 l 1,2,-1
+ 289 92 l 1,3,-1
+ 519 92 l 1,4,-1
+ 519 0 l 1,5,-1
+ 159 0 l 257,6,-1
+ 159 496 l 257,7,-1
+ 519 496 l 257,0,-1
+389 380 m 1,8,-1
+ 289 380 l 1,9,-1
+ 289 283 l 1,10,-1
+ 389 283 l 5,11,-1
+ 389 380 l 1,8,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: bracketleft
+Encoding: 91 91 41
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: bracketright
+Encoding: 93 93 42
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: asterisk
+Encoding: 42 42 43
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+Kerns2: 60 -78 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 11 -85 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: ampersand
+Encoding: 38 38 44
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: asciicircum
+Encoding: 94 94 45
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+Kerns2: 60 -57 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 11 -48 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: numbersign
+Encoding: 35 35 46
+Width: 829
+Flags: W
+TtInstrs:
+PUSHW_1
+ 32
+MDAP[rnd]
+PUSHW_1
+ 6
+MDAP[rnd]
+PUSHW_2
+ 5
+ 3
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 0
+MDRP[rp0,grey]
+PUSHW_1
+ 32
+SRP0
+PUSHW_1
+ 10
+MDRP[rp0,grey]
+PUSHW_1
+ 10
+MDAP[rnd]
+PUSHW_2
+ 9
+ 3
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 10
+SRP0
+PUSHW_1
+ 14
+MDRP[rp0,grey]
+PUSHW_1
+ 10
+SRP0
+PUSHW_1
+ 18
+MDRP[rp0,grey]
+PUSHW_1
+ 9
+SRP0
+PUSHW_1
+ 20
+MDRP[rp0,grey]
+PUSHW_1
+ 6
+SRP0
+PUSHW_1
+ 22
+MDRP[rp0,grey]
+PUSHW_1
+ 5
+SRP0
+PUSHW_1
+ 24
+MDRP[rp0,grey]
+PUSHW_1
+ 6
+SRP0
+PUSHW_1
+ 28
+MDRP[rp0,grey]
+PUSHW_1
+ 9
+SRP0
+PUSHW_1
+ 29
+MDRP[rp0,grey]
+PUSHW_1
+ 5
+SRP0
+PUSHW_1
+ 33
+MDRP[rp0,min,rnd,grey]
+SVTCA[y-axis]
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 19
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 19
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 23
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 23
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 5
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 5
+ 4
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 9
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 9
+ 4
+MIAP[no-rnd]
+EIF
+PUSHW_4
+ 2
+ 1
+ 3
+ 4
+CALL
+PUSHW_4
+ 25
+ 1
+ 0
+ 4
+CALL
+PUSHW_1
+ 3
+SRP0
+PUSHW_1
+ 7
+MDRP[rp0,grey]
+PUSHW_1
+ 3
+SRP0
+PUSHW_1
+ 11
+MDRP[rp0,grey]
+PUSHW_1
+ 2
+SRP0
+PUSHW_1
+ 13
+MDRP[rp0,grey]
+PUSHW_1
+ 0
+SRP0
+PUSHW_1
+ 15
+MDRP[rp0,grey]
+PUSHW_1
+ 25
+SRP0
+PUSHW_1
+ 17
+MDRP[rp0,grey]
+PUSHW_1
+ 25
+SRP0
+PUSHW_1
+ 21
+MDRP[rp0,grey]
+PUSHW_1
+ 0
+SRP0
+PUSHW_1
+ 28
+MDRP[rp0,grey]
+PUSHW_1
+ 2
+SRP0
+PUSHW_1
+ 30
+MDRP[rp0,grey]
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+709 351 m 1,0,-1
+ 709 307 l 1,1,-1
+ 790 307 l 1,2,-1
+ 790 127 l 1,3,-1
+ 709 127 l 1,4,-1
+ 709 0 l 1,5,-1
+ 497 0 l 1,6,-1
+ 497 127 l 1,7,-1
+ 335 127 l 1,8,-1
+ 335 0 l 1,9,-1
+ 123 0 l 1,10,-1
+ 123 127 l 1,11,-1
+ 43 127 l 1,12,-1
+ 43 307 l 1,13,-1
+ 123 307 l 1,14,-1
+ 123 351 l 1,15,-1
+ 43 351 l 1,16,-1
+ 43 532 l 1,17,-1
+ 123 532 l 1,18,-1
+ 123 668 l 1,19,-1
+ 335 668 l 1,20,-1
+ 335 532 l 1,21,-1
+ 497 532 l 1,22,-1
+ 497 668 l 1,23,-1
+ 709 668 l 1,24,-1
+ 709 532 l 1,25,-1
+ 790 532 l 1,26,-1
+ 790 351 l 1,27,-1
+ 709 351 l 1,0,-1
+497 351 m 1,28,-1
+ 335 351 l 1,29,-1
+ 335 307 l 1,30,-1
+ 497 307 l 1,31,-1
+ 497 351 l 1,28,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: dollar
+Encoding: 36 36 47
+Width: 658
+Flags: W
+TtInstrs:
+PUSHW_4
+ 6
+ 3
+ 7
+ 4
+CALL
+PUSHW_3
+ 2
+ 7
+ 6
+SRP1
+SRP2
+IP
+PUSHW_3
+ 11
+ 7
+ 6
+SRP1
+SRP2
+IP
+PUSHW_1
+ 7
+SRP0
+PUSHW_1
+ 14
+MDRP[rp0,grey]
+PUSHW_1
+ 6
+SRP0
+PUSHW_1
+ 16
+MDRP[rp0,grey]
+SVTCA[y-axis]
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 13
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 13
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 17
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 17
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 4
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 4
+ 4
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 8
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 8
+ 4
+MIAP[no-rnd]
+EIF
+PUSHW_4
+ 11
+ 1
+ 7
+ 4
+CALL
+PUSHW_4
+ 16
+ 1
+ 1
+ 4
+CALL
+PUSHW_1
+ 8
+SRP0
+PUSHW_2
+ 10
+ 1
+MIRP[rp0,rnd,grey]
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+410 384 m 1,0,-1
+ 410 489 l 1,1,-1
+ 251 489 l 1,2,-1
+ 621 179 l 1,3,-1
+ 621 0 l 1,4,-1
+ 435 0 l 1,5,-1
+ 435 -58 l 1,6,-1
+ 223 -58 l 1,7,-1
+ 223 0 l 1,8,-1
+ 38 0 l 1,9,-1
+ 37 179 l 1,10,-1
+ 289 179 l 1,11,-1
+ 38 385 l 1,12,-1
+ 37 669 l 1,13,-1
+ 223 669 l 1,14,-1
+ 223 725 l 1,15,-1
+ 435 725 l 1,16,-1
+ 435 669 l 1,17,-1
+ 622 669 l 1,18,-1
+ 622 490 l 1,19,-1
+ 516 384 l 1,20,-1
+ 410 384 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: registered
+Encoding: 174 174 48
+Width: 296
+Flags: W
+TtInstrs:
+PUSHW_3
+ 20
+ 16
+ 3
+CALL
+PUSHW_3
+ 1
+ 0
+ 3
+CALL
+PUSHW_3
+ 14
+ 18
+ 3
+CALL
+PUSHW_3
+ 3
+ 0
+ 1
+SRP1
+SRP2
+IP
+PUSHW_1
+ 1
+SRP0
+PUSHW_1
+ 4
+MDRP[rp0,grey]
+PUSHW_3
+ 7
+ 0
+ 1
+SRP1
+SRP2
+IP
+PUSHW_3
+ 10
+ 0
+ 1
+SRP1
+SRP2
+IP
+PUSHW_3
+ 12
+ 0
+ 1
+SRP1
+SRP2
+IP
+PUSHW_1
+ 14
+SRP0
+PUSHW_1
+ 23
+MDRP[rp0,min,rnd,grey]
+SVTCA[y-axis]
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 14
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 14
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_3
+ 21
+ 15
+ 3
+CALL
+PUSHW_1
+ 15
+SRP0
+PUSHW_2
+ 1
+ 1
+MIRP[rp0,rnd,grey]
+PUSHW_3
+ 3
+ 15
+ 1
+SRP1
+SRP2
+IP
+PUSHW_3
+ 7
+ 15
+ 1
+SRP1
+SRP2
+IP
+PUSHW_3
+ 10
+ 15
+ 1
+SRP1
+SRP2
+IP
+PUSHW_3
+ 12
+ 15
+ 1
+SRP1
+SRP2
+IP
+PUSHW_1
+ 14
+SRP0
+PUSHW_1
+ 18
+MDRP[rp0,min,rnd,grey]
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+99 620 m 1,0,-1
+ 194 619 l 1,1,-1
+ 194 570 l 1,2,-1
+ 172 557 l 1,3,-1
+ 194 540 l 1,4,-1
+ 194 511 l 1,5,-1
+ 173 511 l 1,6,-1
+ 133 543 l 1,7,-1
+ 133 511 l 1,8,-1
+ 99 511 l 1,9,-1
+ 99 620 l 1,0,-1
+133 572 m 1,10,-1
+ 160 588 l 1,11,-1
+ 160 590 l 1,12,-1
+ 133 590 l 1,13,-1
+ 133 572 l 1,10,-1
+250 668 m 1,14,-1
+ 250 462 l 1,15,-1
+ 44 462 l 1,16,-1
+ 44 668 l 1,17,-1
+ 250 668 l 1,14,-1
+209 628 m 1,18,-1
+ 84 628 l 1,19,-1
+ 84 502 l 1,20,-1
+ 209 502 l 1,21,-1
+ 209 628 l 1,18,-1
+EndSplineSet
+Validated: 1
+Ligature2: "'liga' Standard Ligatures in Latin lookup 0 subtable" parenleft R parenright
+EndChar
+
+StartChar: w
+Encoding: 119 119 49
+Width: 897
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+197 496 m 257,0,-1
+ 297 496 l 1,1,-1
+ 297 141 l 1,2,-1
+ 397 141 l 1,3,-1
+ 397 496 l 1,4,-1
+ 497 496 l 1,5,-1
+ 497 141 l 1,6,-1
+ 597 141 l 1,7,-1
+ 597 496 l 1,8,-1
+ 697 496 l 1,9,-1
+ 697 0 l 1,10,-1
+ 197 0 l 1,11,-1
+ 197 496 l 257,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: quotedbl
+Encoding: 34 34 50
+Width: 566
+Flags: W
+TtInstrs:
+PUSHW_1
+ 8
+MDAP[rnd]
+PUSHW_1
+ 3
+MDAP[rnd]
+PUSHW_2
+ 0
+ 3
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 8
+SRP0
+PUSHW_1
+ 7
+MDRP[rp0,grey]
+PUSHW_1
+ 7
+MDAP[rnd]
+PUSHW_2
+ 4
+ 3
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 0
+SRP0
+PUSHW_1
+ 9
+MDRP[rp0,min,rnd,grey]
+SVTCA[y-axis]
+PUSHW_1
+ 1
+MDAP[rnd]
+PUSHW_1
+ 5
+MDAP[rnd]
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 0
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 0
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 4
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 4
+ 8
+MIAP[no-rnd]
+EIF
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+518 670 m 1,0,-1
+ 518 384 l 1,1,-1
+ 308 384 l 1,2,-1
+ 307 670 l 1,3,-1
+ 518 670 l 1,0,-1
+254 669 m 1,4,-1
+ 254 383 l 1,5,-1
+ 44 383 l 1,6,-1
+ 43 669 l 1,7,-1
+ 254 669 l 1,4,-1
+EndSplineSet
+Validated: 1
+Kerns2: 60 -47 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 11 -58 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: A
+Encoding: 65 65 51
+Width: 683
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+640 425 m 1,0,-1
+ 640 425 l 1,1,-1
+ 640 425 l 1,2,-1
+ 640 315 l 1,3,-1
+ 640 0 l 1,4,-1
+ 490 0 l 1,5,-1
+ 490 315 l 1,6,-1
+ 349 315 l 1,7,-1
+ 250 315 l 1,8,-1
+ 250 0 l 1,9,-1
+ 100 0 l 1,10,-1
+ 100 325 l 1,11,-1
+ 100 375 l 1,12,-1
+ 100 425 l 1,13,-1
+ 100 668 l 1,14,-1
+ 640 668 l 1,15,-1
+ 640 425 l 1,0,-1
+490 530 m 1,16,-1
+ 250 530 l 1,17,-1
+ 250 440 l 1,18,-1
+ 490 440 l 1,19,-1
+ 490 530 l 1,16,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: B
+Encoding: 66 66 52
+Width: 683
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+640 425 m 1,0,-1
+ 590 375 l 1,1,-1
+ 640 325 l 1,2,-1
+ 640 0 l 1,3,-1
+ 100 0 l 1,4,-1
+ 100 325 l 1,5,-1
+ 100 375 l 5,6,-1
+ 100 425 l 1,7,-1
+ 100 668 l 1,8,-1
+ 640 668 l 1,9,-1
+ 640 425 l 1,0,-1
+490 315 m 1,10,-1
+ 250 315 l 1,11,-1
+ 250 150 l 1,12,-1
+ 490 150 l 1,13,-1
+ 490 315 l 1,10,-1
+490 530 m 1,14,-1
+ 250 530 l 1,15,-1
+ 250 440 l 1,16,-1
+ 490 440 l 1,17,-1
+ 490 530 l 1,14,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: C
+Encoding: 67 67 53
+Width: 680
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+257 668 m 1,0,-1
+ 640 668 l 1,1,-1
+ 640 440 l 1,2,-1
+ 490 440 l 1,3,-1
+ 490 530 l 1,4,-1
+ 250 530 l 1,5,-1
+ 250 488 l 1,6,-1
+ 250 420 l 1,7,-1
+ 250 314 l 1,8,-1
+ 250 222 l 1,9,-1
+ 250 150 l 1,10,-1
+ 490 150 l 1,11,-1
+ 490 235 l 1,12,-1
+ 640 235 l 1,13,-1
+ 640 0 l 1,14,-1
+ 100 0 l 1,15,-1
+ 100 325 l 1,16,-1
+ 100 375 l 1,17,-1
+ 100 425 l 1,18,-1
+ 100 668 l 1,19,-1
+ 257 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: D
+Encoding: 68 68 54
+Width: 682
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+634 668 m 1,0,-1
+ 634 0 l 1,1,-1
+ 118 0 l 5,2,-1
+ 118 668 l 5,3,-1
+ 634 668 l 1,0,-1
+484 518 m 1,4,-1
+ 268 518 l 5,5,-1
+ 268 150 l 5,6,-1
+ 484 150 l 1,7,-1
+ 484 518 l 1,4,-1
+EndSplineSet
+Validated: 1
+Kerns2: 28 -26 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 26 -36 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: E
+Encoding: 69 69 55
+Width: 680
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+257 668 m 1,0,-1
+ 640 668 l 1,1,-1
+ 640 530 l 1,2,-1
+ 490 530 l 1,3,-1
+ 379 530 l 1,4,-1
+ 250 530 l 1,5,-1
+ 250 440 l 1,6,-1
+ 540 440 l 1,7,-1
+ 540 315 l 5,8,-1
+ 250 315 l 1,9,-1
+ 250 150 l 1,10,-1
+ 385 150 l 1,11,-1
+ 490 150 l 1,12,-1
+ 640 150 l 1,13,-1
+ 640 0 l 1,14,-1
+ 100 0 l 1,15,-1
+ 100 325 l 1,16,-1
+ 100 375 l 1,17,-1
+ 100 425 l 1,18,-1
+ 100 668 l 1,19,-1
+ 257 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: F
+Encoding: 70 70 56
+Width: 680
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+257 668 m 1,0,-1
+ 640 668 l 1,1,-1
+ 640 530 l 1,2,-1
+ 490 530 l 1,3,-1
+ 379 530 l 1,4,-1
+ 250 530 l 1,5,-1
+ 250 440 l 1,6,-1
+ 540 440 l 1,7,-1
+ 540 315 l 1,8,-1
+ 250 315 l 1,9,-1
+ 250 150 l 1,10,-1
+ 250 98 l 1,11,-1
+ 250 55 l 1,12,-1
+ 250 27 l 1,13,-1
+ 250 0 l 1,14,-1
+ 100 0 l 1,15,-1
+ 100 325 l 1,16,-1
+ 100 375 l 1,17,-1
+ 100 425 l 1,18,-1
+ 100 668 l 1,19,-1
+ 257 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+Kerns2: 60 -71 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 32 -248 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 28 -248 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 26 -262 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 11 -71 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: G
+Encoding: 71 71 57
+Width: 682
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+634 668 m 1,0,-1
+ 634 0 l 1,1,-1
+ 118 0 l 5,2,-1
+ 118 668 l 5,3,-1
+ 634 668 l 1,0,-1
+484 518 m 1,4,-1
+ 268 518 l 5,5,-1
+ 268 150 l 5,6,-1
+ 484 150 l 1,7,-1
+ 484 518 l 1,4,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: H
+Encoding: 72 72 58
+Width: 683
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+640 425 m 1,0,-1
+ 640 425 l 1,1,-1
+ 640 425 l 1,2,-1
+ 640 0 l 1,3,-1
+ 490 0 l 1,4,-1
+ 490 315 l 5,5,-1
+ 250 315 l 1,6,-1
+ 250 0 l 1,7,-1
+ 100 0 l 1,8,-1
+ 100 325 l 1,9,-1
+ 100 375 l 1,10,-1
+ 100 425 l 1,11,-1
+ 100 668 l 1,12,-1
+ 250 668 l 1,13,-1
+ 250 440 l 1,14,-1
+ 490 440 l 1,15,-1
+ 490 668 l 1,16,-1
+ 640 668 l 1,17,-1
+ 640 425 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: I
+Encoding: 73 73 59
+Width: 306
+Flags: W
+TtInstrs:
+PUSHW_4
+ 1
+ 3
+ 2
+ 4
+CALL
+PUSHW_1
+ 1
+SRP0
+PUSHW_1
+ 5
+MDRP[rp0,min,rnd,grey]
+SVTCA[y-axis]
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 0
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 0
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 1
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 1
+ 4
+MIAP[no-rnd]
+EIF
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+227 668 m 5,0,-1
+ 227 0 l 1,1,-1
+ 77 0 l 1,2,-1
+ 77 668 l 1,3,-1
+ 227 668 l 5,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: J
+Encoding: 74 74 60
+Width: 682
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+634 668 m 1,0,-1
+ 634 0 l 1,1,-1
+ 118 0 l 1,2,-1
+ 118 668 l 1,3,-1
+ 268 668 l 1,4,-1
+ 268 150 l 1,5,-1
+ 484 150 l 5,6,-1
+ 484 668 l 1,7,-1
+ 634 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: K
+Encoding: 75 75 61
+Width: 683
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+640 425 m 1,0,-1
+ 640 425 l 1,1,-1
+ 640 425 l 1,2,-1
+ 640 315 l 1,3,-1
+ 499 315 l 1,4,-1
+ 649 0 l 1,5,-1
+ 499 0 l 1,6,-1
+ 349 315 l 1,7,-1
+ 250 315 l 1,8,-1
+ 250 0 l 1,9,-1
+ 100 0 l 1,10,-1
+ 100 325 l 1,11,-1
+ 100 375 l 1,12,-1
+ 100 425 l 1,13,-1
+ 100 668 l 1,14,-1
+ 640 668 l 1,15,-1
+ 640 425 l 1,0,-1
+490 530 m 1,16,-1
+ 250 530 l 1,17,-1
+ 250 440 l 1,18,-1
+ 490 440 l 1,19,-1
+ 490 530 l 1,16,-1
+EndSplineSet
+Validated: 1
+Kerns2: 31 -53 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: L
+Encoding: 76 76 62
+Width: 682
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+634 668 m 1,0,-1
+ 634 0 l 1,1,-1
+ 118 0 l 5,2,-1
+ 118 668 l 5,3,-1
+ 634 668 l 1,0,-1
+484 518 m 1,4,-1
+ 268 518 l 5,5,-1
+ 268 150 l 5,6,-1
+ 484 150 l 1,7,-1
+ 484 518 l 1,4,-1
+EndSplineSet
+Validated: 1
+Kerns2: 80 -131 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 75 -131 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 70 -131 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 50 -255 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 43 -265 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 31 -194 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 27 -224 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: M
+Encoding: 77 77 63
+Width: 883
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+640 668 m 1,0,-1
+ 640 0 l 1,1,-1
+ 490 0 l 1,2,-1
+ 490 113 l 1,3,-1
+ 490 250 l 1,4,-1
+ 440 0 l 1,5,-1
+ 300 0 l 1,6,-1
+ 250 250 l 1,7,-1
+ 250 115 l 1,8,-1
+ 250 0 l 1,9,-1
+ 100 0 l 1,10,-1
+ 100 668 l 1,11,-1
+ 240 668 l 1,12,-1
+ 370 257 l 1,13,-1
+ 490 668 l 1,14,-1
+ 640 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: N
+Encoding: 78 78 64
+Width: 883
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+640 668 m 1,0,-1
+ 640 0 l 1,1,-1
+ 490 0 l 1,2,-1
+ 490 113 l 1,3,-1
+ 490 250 l 1,4,-1
+ 440 0 l 1,5,-1
+ 300 0 l 1,6,-1
+ 250 250 l 1,7,-1
+ 250 115 l 1,8,-1
+ 250 0 l 1,9,-1
+ 100 0 l 1,10,-1
+ 100 668 l 1,11,-1
+ 240 668 l 1,12,-1
+ 370 257 l 1,13,-1
+ 490 668 l 1,14,-1
+ 640 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: O
+Encoding: 79 79 65
+Width: 682
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+634 668 m 1,0,-1
+ 634 0 l 1,1,-1
+ 118 0 l 5,2,-1
+ 118 668 l 5,3,-1
+ 634 668 l 1,0,-1
+484 518 m 1,4,-1
+ 268 518 l 5,5,-1
+ 268 150 l 5,6,-1
+ 484 150 l 1,7,-1
+ 484 518 l 1,4,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: P
+Encoding: 80 80 66
+Width: 683
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+640 425 m 1,0,-1
+ 640 425 l 1,1,-1
+ 640 425 l 1,2,-1
+ 640 315 l 1,3,-1
+ 250 315 l 1,4,-1
+ 250 0 l 5,5,-1
+ 100 0 l 1,6,-1
+ 100 325 l 1,7,-1
+ 100 375 l 1,8,-1
+ 100 425 l 1,9,-1
+ 100 668 l 1,10,-1
+ 640 668 l 1,11,-1
+ 640 425 l 1,0,-1
+490 530 m 1,12,-1
+ 250 530 l 1,13,-1
+ 250 440 l 1,14,-1
+ 490 440 l 1,15,-1
+ 490 530 l 1,12,-1
+EndSplineSet
+Validated: 1
+Kerns2: 60 -53 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 32 -255 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 28 -227 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 26 -227 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 11 -53 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: Q
+Encoding: 81 81 67
+Width: 682
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+634 668 m 1,0,-1
+ 634 0 l 1,1,-1
+ 118 0 l 5,2,-1
+ 118 668 l 5,3,-1
+ 634 668 l 1,0,-1
+484 518 m 1,4,-1
+ 268 518 l 5,5,-1
+ 268 150 l 5,6,-1
+ 484 150 l 1,7,-1
+ 484 518 l 1,4,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: R
+Encoding: 82 82 68
+Width: 683
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+640 425 m 1,0,-1
+ 640 425 l 1,1,-1
+ 640 425 l 1,2,-1
+ 640 315 l 1,3,-1
+ 499 315 l 1,4,-1
+ 649 0 l 1,5,-1
+ 499 0 l 1,6,-1
+ 349 315 l 1,7,-1
+ 250 315 l 1,8,-1
+ 250 0 l 1,9,-1
+ 100 0 l 1,10,-1
+ 100 325 l 1,11,-1
+ 100 375 l 1,12,-1
+ 100 425 l 1,13,-1
+ 100 668 l 1,14,-1
+ 640 668 l 1,15,-1
+ 640 425 l 1,0,-1
+490 530 m 1,16,-1
+ 250 530 l 1,17,-1
+ 250 440 l 1,18,-1
+ 490 440 l 1,19,-1
+ 490 530 l 1,16,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: S
+Encoding: 83 83 69
+Width: 683
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+640 425 m 1,0,-1
+ 640 425 l 1,1,-1
+ 640 425 l 1,2,-1
+ 640 315 l 1,3,-1
+ 499 315 l 1,4,-1
+ 649 0 l 1,5,-1
+ 499 0 l 1,6,-1
+ 349 315 l 1,7,-1
+ 250 315 l 1,8,-1
+ 250 0 l 1,9,-1
+ 100 0 l 1,10,-1
+ 100 325 l 1,11,-1
+ 100 375 l 1,12,-1
+ 100 425 l 1,13,-1
+ 100 668 l 1,14,-1
+ 640 668 l 1,15,-1
+ 640 425 l 1,0,-1
+490 530 m 1,16,-1
+ 250 530 l 1,17,-1
+ 250 440 l 1,18,-1
+ 490 440 l 1,19,-1
+ 490 530 l 1,16,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: T
+Encoding: 84 84 70
+Width: 703
+Flags: W
+TtInstrs:
+PUSHW_4
+ 3
+ 3
+ 4
+ 4
+CALL
+SVTCA[y-axis]
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 0
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 0
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 3
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 3
+ 4
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+SRP0
+PUSHW_2
+ 1
+ 1
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 5
+MDRP[rp0,grey]
+PUSHW_1
+ 6
+MDRP[rp0,grey]
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+640 668 m 1,0,-1
+ 640 518 l 1,1,-1
+ 440 518 l 1,2,-1
+ 440 0 l 1,3,-1
+ 300 0 l 1,4,-1
+ 300 518 l 1,5,-1
+ 100 518 l 1,6,-1
+ 100 668 l 1,7,-1
+ 640 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+Kerns2: 60 -145 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 32 -151 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 31 -152 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 30 -84 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 28 -156 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 26 -164 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 11 -132 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: U
+Encoding: 85 85 71
+Width: 682
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+634 668 m 1,0,-1
+ 634 0 l 1,1,-1
+ 118 0 l 1,2,-1
+ 118 668 l 1,3,-1
+ 268 668 l 1,4,-1
+ 268 150 l 1,5,-1
+ 484 150 l 5,6,-1
+ 484 668 l 1,7,-1
+ 634 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: V
+Encoding: 86 86 72
+Width: 682
+Flags: W
+TtInstrs:
+PUSHW_1
+ 11
+MDAP[rnd]
+PUSHW_1
+ 9
+MDAP[rnd]
+PUSHW_2
+ 1
+ 3
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 11
+SRP0
+PUSHW_1
+ 4
+MDRP[rp0,grey]
+PUSHW_1
+ 4
+MDAP[rnd]
+PUSHW_2
+ 7
+ 3
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 1
+SRP0
+PUSHW_1
+ 12
+MDRP[rp0,min,rnd,grey]
+SVTCA[y-axis]
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 0
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 0
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 5
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 5
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 2
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 2
+ 4
+MIAP[no-rnd]
+EIF
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+640 668 m 1,0,-1
+ 440 0 l 1,1,-1
+ 368 0 l 1,2,-1
+ 324 0 l 1,3,-1
+ 300 0 l 1,4,-1
+ 100 668 l 1,5,-1
+ 122 668 l 1,6,-1
+ 250 668 l 1,7,-1
+ 370 230 l 1,8,-1
+ 490 668 l 1,9,-1
+ 564 668 l 1,10,-1
+ 640 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+Kerns2: 26 -31 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: W
+Encoding: 87 87 73
+Width: 897
+Flags: W
+TtInstrs:
+PUSHW_4
+ 5
+ 3
+ 2
+ 4
+CALL
+PUSHW_4
+ 9
+ 3
+ 6
+ 4
+CALL
+PUSHW_4
+ 1
+ 3
+ 10
+ 4
+CALL
+PUSHW_1
+ 1
+SRP0
+PUSHW_1
+ 13
+MDRP[rp0,min,rnd,grey]
+SVTCA[y-axis]
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 0
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 0
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 3
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 3
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 7
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 7
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 1
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 1
+ 4
+MIAP[no-rnd]
+EIF
+PUSHW_2
+ 5
+ 1
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 9
+MDRP[rp0,grey]
+PUSHW_1
+ 10
+MDRP[rp0,grey]
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+844 669 m 1,0,-1
+ 844 0 l 1,1,-1
+ 49 0 l 1,2,-1
+ 49 669 l 1,3,-1
+ 261 669 l 1,4,-1
+ 261 179 l 1,5,-1
+ 340 179 l 1,6,-1
+ 340 669 l 1,7,-1
+ 552 669 l 1,8,-1
+ 552 179 l 1,9,-1
+ 632 179 l 1,10,-1
+ 632 669 l 1,11,-1
+ 844 669 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: X
+Encoding: 88 88 74
+Width: 680
+Flags: W
+TtInstrs:
+PUSHW_1
+ 20
+MDAP[rnd]
+PUSHW_1
+ 4
+MDAP[rnd]
+PUSHW_2
+ 3
+ 3
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 0
+MDRP[rp0,grey]
+PUSHW_3
+ 1
+ 4
+ 3
+SRP1
+SRP2
+IP
+PUSHW_1
+ 20
+SRP0
+PUSHW_1
+ 9
+MDRP[rp0,grey]
+PUSHW_1
+ 9
+MDAP[rnd]
+PUSHW_2
+ 8
+ 3
+MIRP[rp0,rnd,grey]
+PUSHW_3
+ 11
+ 9
+ 8
+SRP1
+SRP2
+IP
+PUSHW_1
+ 9
+SRP0
+PUSHW_1
+ 12
+MDRP[rp0,grey]
+PUSHW_1
+ 8
+SRP0
+PUSHW_1
+ 14
+MDRP[rp0,grey]
+PUSHW_1
+ 4
+SRP0
+PUSHW_1
+ 17
+MDRP[rp0,grey]
+PUSHW_1
+ 3
+SRP0
+PUSHW_1
+ 21
+MDRP[rp0,min,rnd,grey]
+SVTCA[y-axis]
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 13
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 13
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 18
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 18
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 3
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 3
+ 4
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 8
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 8
+ 4
+MIAP[no-rnd]
+EIF
+PUSHW_3
+ 1
+ 3
+ 13
+SRP1
+SRP2
+IP
+PUSHW_3
+ 11
+ 3
+ 13
+SRP1
+SRP2
+IP
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+634 429 m 1,0,-1
+ 498 333 l 1,1,-1
+ 634 250 l 1,2,-1
+ 634 0 l 1,3,-1
+ 422 0 l 1,4,-1
+ 422 144 l 1,5,-1
+ 339 203 l 1,6,-1
+ 258 144 l 1,7,-1
+ 258 0 l 1,8,-1
+ 46 0 l 1,9,-1
+ 46 236 l 1,10,-1
+ 179 330 l 1,11,-1
+ 46 425 l 1,12,-1
+ 46 668 l 1,13,-1
+ 258 668 l 1,14,-1
+ 258 522 l 1,15,-1
+ 340 462 l 1,16,-1
+ 422 522 l 1,17,-1
+ 422 668 l 1,18,-1
+ 634 668 l 1,19,-1
+ 634 429 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: Y
+Encoding: 89 89 75
+Width: 670
+Flags: W
+TtInstrs:
+PUSHW_4
+ 10
+ 3
+ 7
+ 4
+CALL
+PUSHW_4
+ 1
+ 3
+ 11
+ 4
+CALL
+PUSHW_3
+ 5
+ 7
+ 10
+SRP1
+SRP2
+IP
+PUSHW_1
+ 5
+MDAP[rnd]
+PUSHW_2
+ 4
+ 3
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 1
+SRP0
+PUSHW_1
+ 14
+MDRP[rp0,min,rnd,grey]
+SVTCA[y-axis]
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 0
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 0
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 8
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 8
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 4
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 4
+ 4
+MIAP[no-rnd]
+EIF
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+627 668 m 1,0,-1
+ 627 246 l 1,1,-1
+ 627 245 l 1,2,-1
+ 436 245 l 1,3,-1
+ 436 0 l 1,4,-1
+ 224 0 l 1,5,-1
+ 224 245 l 1,6,-1
+ 39 245 l 1,7,-1
+ 39 668 l 1,8,-1
+ 251 668 l 1,9,-1
+ 251 424 l 1,10,-1
+ 415 424 l 1,11,-1
+ 415 668 l 1,12,-1
+ 627 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+Kerns2: 32 -162 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 28 -134 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 26 -163 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: Z
+Encoding: 90 90 76
+Width: 670
+Flags: W
+TtInstrs:
+PUSHW_4
+ 8
+ 3
+ 9
+ 4
+CALL
+PUSHW_1
+ 9
+SRP0
+PUSHW_1
+ 4
+MDRP[rp0,grey]
+PUSHW_1
+ 4
+MDAP[rnd]
+SVTCA[y-axis]
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 10
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 10
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 3
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 3
+ 4
+MIAP[no-rnd]
+EIF
+PUSHW_2
+ 1
+ 1
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 10
+SRP0
+PUSHW_2
+ 6
+ 1
+MIRP[rp0,rnd,grey]
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+625 392 m 1,0,-1
+ 373 179 l 1,1,-1
+ 625 179 l 1,2,-1
+ 625 0 l 1,3,-1
+ 41 0 l 1,4,-1
+ 41 179 l 1,5,-1
+ 411 489 l 1,6,-1
+ 252 489 l 1,7,-1
+ 252 384 l 1,8,-1
+ 40 384 l 1,9,-1
+ 40 669 l 1,10,-1
+ 625 669 l 1,11,-1
+ 625 392 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: grave
+Encoding: 96 96 77
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: zero
+Encoding: 48 48 78
+Width: 682
+Flags: W
+TtInstrs:
+PUSHW_1
+ 8
+MDAP[rnd]
+PUSHW_1
+ 4
+MDAP[rnd]
+PUSHW_2
+ 0
+ 3
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 8
+SRP0
+PUSHW_1
+ 2
+MDRP[rp0,grey]
+PUSHW_1
+ 2
+MDAP[rnd]
+PUSHW_2
+ 6
+ 3
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 0
+SRP0
+PUSHW_1
+ 9
+MDRP[rp0,min,rnd,grey]
+SVTCA[y-axis]
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 0
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 0
+ 8
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+RCVT
+IF
+PUSHW_1
+ 1
+MDAP[rnd]
+ELSE
+PUSHW_2
+ 1
+ 4
+MIAP[no-rnd]
+EIF
+PUSHW_1
+ 0
+SRP0
+PUSHW_2
+ 4
+ 1
+MIRP[rp0,rnd,grey]
+PUSHW_1
+ 1
+SRP0
+PUSHW_2
+ 6
+ 1
+MIRP[rp0,rnd,grey]
+IUP[y]
+IUP[x]
+EndTTInstrs
+LayerCount: 2
+Fore
+SplineSet
+634 668 m 1,0,-1
+ 634 0 l 1,1,-1
+ 118 0 l 5,2,-1
+ 118 668 l 5,3,-1
+ 634 668 l 1,0,-1
+484 518 m 1,4,-1
+ 268 518 l 5,5,-1
+ 268 150 l 5,6,-1
+ 484 150 l 1,7,-1
+ 484 518 l 1,4,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: caron
+Encoding: 266 711 79
+Width: 833
+Flags: W
+LayerCount: 2
+Fore
+Validated: 1
+EndChar
+
+StartChar: t
+Encoding: 116 116 80
+Width: 703
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+546 568 m 1,0,-1
+ 546 468 l 1,1,-1
+ 420 468 l 1,2,-1
+ 420 0 l 1,3,-1
+ 320 0 l 1,4,-1
+ 320 468 l 5,5,-1
+ 174 468 l 1,6,-1
+ 174 568 l 1,7,-1
+ 320 568 l 1,8,-1
+ 320 668 l 1,9,-1
+ 420 668 l 1,10,-1
+ 420 568 l 1,11,-1
+ 546 568 l 1,0,-1
+EndSplineSet
+Validated: 1
+Kerns2: 60 -132 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 32 -144 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 31 -142 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 30 -75 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 28 -142 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 26 -163 "'kern' Horizontal Kerning in Latin lookup 0 subtable" 11 -143 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: u
+Encoding: 117 117 81
+Width: 759
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+578 142 m 9,0,-1
+ 578 0 l 1,1,-1
+ 198 0 l 1,2,-1
+ 198 496 l 1,3,-1
+ 328 496 l 1,4,-1
+ 328 141 l 1,5,-1
+ 449 141 l 1,6,-1
+ 449 496 l 1,7,-1
+ 578 496 l 1,8,-1
+ 578 142 l 9,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: v
+Encoding: 118 118 82
+Width: 678
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+519 496 m 261,0,-1
+ 519 0 l 1,1,-1
+ 159 0 l 257,2,-1
+ 159 496 l 257,3,-1
+ 519 496 l 261,0,-1
+389 380 m 1,4,-1
+ 289 380 l 1,5,-1
+ 289 101 l 1,6,-1
+ 389 101 l 1,7,-1
+ 389 380 l 1,4,-1
+EndSplineSet
+Validated: 1
+Kerns2: 26 -36 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+EndChar
+
+StartChar: parenleft
+Encoding: 40 40 83
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: parenright
+Encoding: 41 41 84
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: NameMe.259
+Encoding: 259 -1 85
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: NameMe.260
+Encoding: 260 -1 86
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: NameMe.261
+Encoding: 261 -1 87
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: NameMe.262
+Encoding: 262 -1 88
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: NameMe.263
+Encoding: 263 -1 89
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: NameMe.265
+Encoding: 265 -1 90
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: NameMe.264
+Encoding: 264 -1 91
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: colon
+Encoding: 58 58 92
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: semicolon
+Encoding: 59 59 93
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: less
+Encoding: 60 60 94
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: equal
+Encoding: 61 61 95
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: greater
+Encoding: 62 62 96
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: question
+Encoding: 63 63 97
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: at
+Encoding: 64 64 98
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: x
+Encoding: 120 120 99
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: y
+Encoding: 121 121 100
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: z
+Encoding: 122 122 101
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: braceleft
+Encoding: 123 123 102
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: bar
+Encoding: 124 124 103
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: braceright
+Encoding: 125 125 104
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: NameMe.256
+Encoding: 256 -1 105
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: NameMe.257
+Encoding: 257 -1 106
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: NameMe.258
+Encoding: 258 -1 107
+Width: 518
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+460 668 m 1,0,-1
+ 190 0 l 1,1,-1
+ 90 0 l 1,2,-1
+ 360 668 l 1,3,-1
+ 460 668 l 1,0,-1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: degree
+Encoding: 176 176 108
+Width: 678
+Flags: WO
+LayerCount: 2
+Fore
+SplineSet
+184 610 m 257,0,-1
+ 184 486 l 1,1,-1
+ 94 486 l 257,2,-1
+ 94 610 l 257,3,-1
+ 184 610 l 257,0,-1
+151 581 m 1,4,-1
+ 126 581 l 1,5,-1
+ 126 511 l 1,6,-1
+ 151 511 l 1,7,-1
+ 151 581 l 1,4,-1
+EndSplineSet
+Validated: 1
+EndChar
+EndChars
+EndSplineFont
