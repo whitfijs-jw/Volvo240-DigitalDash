@@ -1,19 +1,22 @@
-import QtQuick 2.0
+import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Item {
     id: gauge
 
+    property bool clockwise: true
     property int maxValue: 100
     property int minValue: 0
     property real value: 0
-    property real angle: (value <= initialValueOffset) ?
+    property real internalValue: clockwise ? value : (maxValue - (value - minValue))
+    property real angle: (internalValue <= initialValueOffset) ?
                            (initialValueOffset - minValue) / (maxValue - minValue) * (maxAngle - minAngle) + minAngle :
-                           (value - minValue) / (maxValue - minValue) * (maxAngle - minAngle) + minAngle;
+                           (internalValue - minValue) / (maxValue - minValue) * (maxAngle - minAngle) + minAngle;
     property string units: "F"
     property int lowAlarm: 0
     property int highAlarm: 0
     property int offset: 0
+    property int offsetX: 0
     property int initialValueOffset: 0
 
     property int minAngle: -235
@@ -64,21 +67,22 @@ Item {
         anchors.fill: parent
         color: "transparent"
 
-
-
         Image {
             source: gauge.imageResource
             cache: true
             rotation: 0
             anchors.fill: parent
+            mipmap: true
             z: -1
         }
 
         NeedleCenter {
             id: needleCenter
             size: needleCenterRadius * parent.width
-            x: parent.width / 2
+            x: parent.width / 2 + offsetX
             y: parent.height / 2 + offset
+            antialiasing: true
+            smooth: true
 
             transform: [
                 Rotation {
@@ -101,12 +105,19 @@ Item {
         Rectangle {
             id: needle
 
-            x: parent.width / 2
+//            needleColor: gauge.needleColor
+//            needleTipRadius: gauge.needleTipRadius
+//            length: gauge.needleLength
+//            needleWidth:  gauge.needleWidth
+
+            x: parent.width / 2 + offsetX
             y: parent.height / 2 + offset
             width: gauge.needleLength
             height: gauge.needleWidth
             radius: gauge.needleTipRadius
             antialiasing: true
+            smooth: true
+
             gradient: Gradient {
                     GradientStop { position: 0.25; color: needleColor}
                     GradientStop { position: 0.5; color: "white" }
