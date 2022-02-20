@@ -32,10 +32,16 @@ public slots:
     void transform(QVariant data, int channel) override {
         if (channel == getChannel()) {
             qreal volts = data.toReal();
+
+            qreal value = mNtc->calculateTemp(volts, Config::TemperatureUnits::FAHRENHEIT);
+
+            // Check that we're not shorted to ground or VDD (could be disconnected)
+            if (!SensorUtils::isValid(volts, mNtc->getSensorConfig()->vSupply)) {
+                value = 0;
+            }
+
             //get desired temperature units from config?
-            emit sensorDataReady(
-                        mNtc->calculateTemp(volts,Config::TemperatureUnits::FAHRENHEIT)
-                        );
+            emit sensorDataReady(value);
         }
     }
 

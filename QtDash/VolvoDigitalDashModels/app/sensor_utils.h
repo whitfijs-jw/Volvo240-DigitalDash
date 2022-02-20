@@ -19,6 +19,17 @@ public:
     static constexpr qreal PSI_PER_KPA = .145038;
     static constexpr qreal BAR_PER_KPA = .01;
 
+    // Check for disconnected or shorted sensor
+    static constexpr qreal SENSOR_MAX_PCT = .95;
+
+    static constexpr bool isValid(qreal volts, qreal vSupply) {
+        if (volts > vSupply * SENSOR_MAX_PCT || volts < vSupply * (1 - SENSOR_MAX_PCT)) {
+            return false;
+        }
+
+        return true;
+    }
+
     static constexpr qreal getResistance(qreal volts, qreal vSupply, qreal rBalance) {
         qreal res = rBalance / ((vSupply / volts) - 1.0);
 

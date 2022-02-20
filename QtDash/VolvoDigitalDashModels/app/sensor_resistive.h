@@ -33,8 +33,8 @@ public slots:
                 value = 0;
             }
 
-            // If the sensor isn't connected we should be close to VDD
-            if (volts > 5.0 * MAX_PCT) {
+            // Check that we're not shorted to ground or VDD (could be disconnected)
+            if (!SensorUtils::isValid(volts, mSensorConfig.vSupply)) {
                 value = 0;
             }
 

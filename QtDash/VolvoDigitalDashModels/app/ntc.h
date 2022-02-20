@@ -48,6 +48,10 @@ public:
         return mCoeff;
     }
 
+    Config::TempSensorConfig_t * getSensorConfig() {
+        return &mConfig;
+    }
+
 private:
     void calculateCoefficients(qreal r1, qreal t1,
                          qreal r2, qreal t2,
