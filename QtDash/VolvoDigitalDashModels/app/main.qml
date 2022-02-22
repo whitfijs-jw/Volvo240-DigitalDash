@@ -6,6 +6,7 @@ Window {
     visible: true
     width: 1280
     height: 480
+
     title: qsTr("Lolvo")
 
 
@@ -184,7 +185,7 @@ Window {
                 item.initialValueOffset = gaugeMin
 
                 item.minAngle = -140
-                item.maxAngle = -45
+                item.maxAngle = -41
 
                 item.height = smallGaugeSize
                 item.width = smallGaugeSize
@@ -1596,7 +1597,11 @@ Window {
     Item {
         id: loading
         anchors.fill: parent
-
+        rotation: if (RASPBERRY_PI) {
+                      180
+                  } else {
+                      0
+                  }
         Rectangle {
             anchors.fill: parent
             color: "black"
@@ -1626,12 +1631,14 @@ Window {
         id: gaugeItem
         anchors.fill: parent
         focus: true
+        rotation: if (RASPBERRY_PI) {
+                      180
+                  } else {
+                      0
+                  }
         property bool initialLoad: true
         antialiasing: true
         smooth: true
-
-//        layer.enabled: true
-//        layer.samples: 16
 
         Loader {
             id: currentGauge

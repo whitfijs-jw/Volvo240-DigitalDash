@@ -4,6 +4,7 @@
 #include <QFont>
 #include <QFontDatabase>
 #include <QList>
+#include <QSurface>
 
 #include <config.h>
 
@@ -37,8 +38,10 @@ int main(int argc, char *argv[])
 #ifdef RASPBERRY_PI
     //Dash * dash = new Dash(&app, ctxt); //old style dash
     DashNew * dash = new DashNew(&app, ctxt); // new scheme with sensor source -> sensor -> gauge -> model
+    ctxt->setContextProperty("RASPBERRY_PI", QVariant(true));
 #else
     DashHost * dash = new DashHost(&app, ctxt);
+    ctxt->setContextProperty("RASPBERRY_PI", QVariant(false));
 #endif
     dash->init();
 

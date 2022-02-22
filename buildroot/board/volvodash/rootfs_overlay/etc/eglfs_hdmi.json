@@ -1,0 +1,12 @@
+{
+  "device": "/dev/dri/card0",
+  "hwcursor": false,
+  "pbuffers": true,
+  "outputs": [
+    {
+      "name": "HDMI1",
+      "mode": "1280x480"
+    }
+  ]
+}
+

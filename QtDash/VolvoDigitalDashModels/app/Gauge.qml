@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Item {
@@ -74,6 +74,7 @@ Item {
             cache: true
             rotation: 0
             anchors.fill: parent
+            mipmap: true
             z: -1
         }
 
@@ -82,6 +83,8 @@ Item {
             size: needleCenterRadius * parent.width
             x: parent.width / 2 + offsetX
             y: parent.height / 2 + offset
+            antialiasing: true
+            smooth: true
 
             transform: [
                 Rotation {
@@ -115,6 +118,8 @@ Item {
             height: gauge.needleWidth
             radius: gauge.needleTipRadius
             antialiasing: true
+            smooth: true
+
             gradient: Gradient {
                     GradientStop { position: 0.25; color: needleColor}
                     GradientStop { position: 0.5; color: "white" }
