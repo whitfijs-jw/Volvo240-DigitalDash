@@ -431,6 +431,7 @@ HEADERS += \
     sensor_source_gpio.h \
     sensor_source_gps.h \
     sensor_source_tach.h \
+    sensor_source_vss.h \
     sensor_speedo.h \
     sensor_tach.h \
     sensor_utils.h \
@@ -440,6 +441,7 @@ HEADERS += \
     accessory_gauge_model.h \
     speedometer_model.h \
     temp_and_fuel_gauge_model.h \
+    vss_input.h \
     warning_light_model.h
 
 INCLUDEPATH += \

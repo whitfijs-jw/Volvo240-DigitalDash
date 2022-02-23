@@ -19,6 +19,7 @@
 #include <sensor_source_adc.h>
 #include <sensor_source_gps.h>
 #include <sensor_source_tach.h>
+#include <sensor_source_vss.h>
 
 #include <sensor_map.h>
 #include <sensor_ntc.h>
@@ -95,6 +96,7 @@ private:
     AdcSource * mAdcSource;
     GpsSource * mGpsSource;
     TachSource * mTachSource;
+    VssSource * mVssSource;
 
     Map_Sensor * mMapSensor;
     NtcSensor * mCoolantTempSensor;
@@ -135,6 +137,7 @@ private:
         mAdcSource = new AdcSource(this->parent(), &mConfig);
         mGpsSource = new GpsSource(this->parent(), &mConfig);
         mTachSource = new TachSource(this->parent(), &mConfig);
+        mVssSource = new VssSource(this->parent(), &mConfig);
     }
 
     /**
