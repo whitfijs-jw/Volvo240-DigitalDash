@@ -105,7 +105,8 @@ private:
     VoltmeterSensor * mVoltmeterSensor;
     ResistiveSensor * mOilPressureSensor;
     ResistiveSensor * mFuelLevelSensor;
-    SpeedometerSensor<GpsSource> * mSpeedoSensor;
+    //SpeedometerSensor<GpsSource> * mSpeedoSensor;
+    SpeedometerSensor<VssSource> * mSpeedoSensor;
     TachSensor * mTachSensor;
 
     AccessoryGaugeModel mBoostModel;
@@ -240,9 +241,20 @@ private:
         });
 
         // speedometer
+//        mSpeedoSensor = new SpeedometerSensor(
+//                    this->parent(), &mConfig, mGpsSource,
+//                    (int) GpsSource::GpsDataChannel::SPEED_MILES_PER_HOUR);
+
         mSpeedoSensor = new SpeedometerSensor(
-                    this->parent(), &mConfig, mGpsSource,
-                    (int) GpsSource::GpsDataChannel::SPEED_MILES_PER_HOUR);
+                    this->parent(), &mConfig, mVssSource,
+                    (int) VssSource::VssDataChannel::MPH);
+
+        QObject::connect(
+                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::VERY_FAST_TIMER)),
+                    &QTimer::timeout,
+                    [=]() {
+            mTachSource->update((int) VssSource::VssDataChannel::MPH);
+        });
 
         // tacho
         mTachSensor = new TachSensor(
