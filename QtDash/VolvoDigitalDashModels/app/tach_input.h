@@ -55,7 +55,6 @@ public:
     }
 
 private:
-
     static constexpr char DEFAULT_TACH_PULSE_PATH[] = "/sys/class/volvo_dash/tach_counter/"; //!< default pulse counter location
 
     Config::TachInputConfig_t mConfig; //!< Tach configuration

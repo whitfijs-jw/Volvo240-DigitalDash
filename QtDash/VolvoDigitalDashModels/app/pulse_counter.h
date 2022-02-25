@@ -21,7 +21,6 @@ class PulseCounter {
 public:
     /**
      * @brief Constructor
-     * @param config: tach input config from Config class
      * @param path: path where the sysfs pulse_counter device is found
      */
     PulseCounter(std::string path) : mPath(path) {
@@ -62,6 +61,10 @@ public:
         }
     }
 
+    /**
+     * @brief Get the current pulse count since boot
+     * @return current pulse count
+     */
     int getPulseCount() {
         std::string fullPath = mPath + PULSE_COUNT_ATTR;
         std::ifstream ifs(fullPath, std::ios::in);
@@ -88,7 +91,13 @@ public:
         return count;
     }
 
-
+    /**
+     * @brief Set the maximum frequency for incoming pulses.
+     * This is ideally a little higher than the max expected frequency.
+     * Too high and noise will be accepted as a valid input
+     * @param freq
+     * @return: returns new value if written to sysfs.  returns -1 if failed
+     */
     int setMaxFrequency(qreal freq) {
         int nsec = (int) std::round(1.0 / freq * 1.0e9);
 
