@@ -253,7 +253,7 @@ private:
                     mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::VERY_FAST_TIMER)),
                     &QTimer::timeout,
                     [=]() {
-            mTachSource->update((int) VssSource::VssDataChannel::MPH);
+            mVssSource->update((int) VssSource::VssDataChannel::MPH);
         });
 
         // tacho
