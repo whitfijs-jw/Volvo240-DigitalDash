@@ -422,6 +422,7 @@ HEADERS += \
     map_sensor.h \
     mcp23017.h \
     ntc.h \
+    pulse_counter.h \
     sensor.h \
     sensor_map.h \
     sensor_ntc.h \

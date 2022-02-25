@@ -103,6 +103,7 @@ public:
     static constexpr char VSS_TIRE_DIAMETER_UNITS[] = "diameter_units";
     static constexpr char VSS_PULSES_PER_DISTANCE[] = "pulse_per_unit_distance";
     static constexpr char VSS_DISTANCE_UNITS[] = "distance_units";
+    static constexpr char VSS_MAX_SPEED[] = "max_speed";
 
     //expected keys for resistive sensors
     static constexpr char RES_SENSOR_TYPE[] = "type";
@@ -287,6 +288,7 @@ public:
         DistanceUnits tireDiameterUnits;
         int pulsePerUnitDistance;
         DistanceUnits distanceUnits;
+        int maxSpeed;
     } VssInputConfig_t;
 
     typedef struct GaugeConfig {
@@ -554,6 +556,7 @@ public:
         mVssInputConfig.pulsePerUnitDistance = mConfig->value(VSS_PULSES_PER_DISTANCE, 0).toInt();
         QString distanceUnits = mConfig->value(VSS_DISTANCE_UNITS, "mile").toString().toLower();
         mVssInputConfig.distanceUnits = parseDistanceUnits(distanceUnits);
+        mVssInputConfig.maxSpeed = mConfig->value(VSS_MAX_SPEED, 160).toInt();
 
         printKeys("VSS Input: ", mConfig);
 
