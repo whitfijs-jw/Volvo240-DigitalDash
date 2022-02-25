@@ -28,7 +28,8 @@ public:
         }
 
         // adjust min pulse spacing
-        setMaxFrequency(mConfig.maxSpeed * 3600.0 / mConfig.pulsePerRot); //~2000Hz
+        qDebug() << "VSS Max Frequency" << mConfig.maxSpeed / 3600.0 * mConfig.pulsePerUnitDistance;
+        setMaxFrequency(mConfig.maxSpeed / 3600.0 * mConfig.pulsePerUnitDistance);
     }
 
     qreal getMph() {
