@@ -654,10 +654,10 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="NAME" x="8.128" y="41.148" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="9.652" y="41.91" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center"/>
 </element>
-<element name="R12" library="dash_power_supply" package="R1206" value="30.9k 1%" x="10.16" y="30.48" smashed="yes" rot="R270">
-<attribute name="POWER" value=".25W" x="10.16" y="30.48" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="NAME" x="11.303" y="33.02" size="1.27" layer="25" rot="R270"/>
-<attribute name="VALUE" x="7.62" y="31.75" size="1.27" layer="27" rot="R270"/>
+<element name="R12" library="dash_power_supply" package="R1206" value="30.9k 1%" x="10.16" y="30.226" smashed="yes" rot="R270">
+<attribute name="POWER" value=".25W" x="10.16" y="30.226" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="NAME" x="11.049" y="26.162" size="0.6096" layer="25" font="vector" ratio="20" rot="R90"/>
+<attribute name="VALUE" x="7.62" y="31.496" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="R14" library="SparkFun-Resistors" package="0603" value="75k" x="18.415" y="39.37" smashed="yes" rot="R180">
 <attribute name="PROD_ID" value="RES-09737" x="18.415" y="39.37" size="1.778" layer="27" rot="R180" display="off"/>
@@ -705,12 +705,12 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 </element>
 <element name="C10" library="dash_power_supply" package="C1210" value="100u" x="5.715" y="27.94" smashed="yes" rot="R180">
 <attribute name="VOLTAGE" value="10V" x="5.715" y="27.94" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="NAME" x="7.366" y="30.861" size="1.27" layer="25" rot="R180"/>
+<attribute name="NAME" x="8.255" y="30.099" size="0.6096" layer="25" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="7.62" y="31.115" size="1.27" layer="27" rot="R180"/>
 </element>
 <element name="C11" library="dash_power_supply" package="C1210" value="100u" x="5.715" y="24.13" smashed="yes" rot="R180">
 <attribute name="VOLTAGE" value="10V" x="5.715" y="24.13" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="NAME" x="7.493" y="22.479" size="1.27" layer="25" rot="R180"/>
+<attribute name="NAME" x="8.128" y="22.479" size="0.6096" layer="25" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="7.62" y="27.305" size="1.27" layer="27" rot="R180"/>
 </element>
 <element name="C7" library="dash_power_supply" package="PANASONIC_C" value="3.3u" x="40.64" y="20.955" smashed="yes">
@@ -738,6 +738,16 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 </element>
 <element name="J2" library="SparkFun-Connectors" package="1X02_XTRA_BIG" value="" x="3.175" y="15.875" rot="R90"/>
 <element name="J1" library="SparkFun-Connectors" package="1X02_XTRA_BIG" value="" x="27.94" y="4.445"/>
+<element name="C1" library="digital_dash" package="0603" value="100n" x="12.065" y="30.226" smashed="yes" rot="R90">
+<attribute name="VOLTAGE" value="50V" x="12.065" y="30.226" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="NAME" x="12.573" y="28.194" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center"/>
+<attribute name="VALUE" x="12.827" y="30.226" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center"/>
+</element>
+<element name="C2" library="digital_dash" package="0603" value="4.7u" x="13.716" y="30.226" smashed="yes" rot="R90">
+<attribute name="VOLTAGE" value="35V" x="13.716" y="30.226" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="NAME" x="14.224" y="28.194" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center"/>
+<attribute name="VALUE" x="14.478" y="30.226" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center"/>
+</element>
 </elements>
 <signals>
 <signal name="VBATT">
@@ -830,6 +840,16 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <contactref element="J1" pad="1"/>
 <via x="34.925" y="12.065" extent="1-16" drill="0.5"/>
 <via x="33.655" y="8.636" extent="1-16" drill="0.5"/>
+<contactref element="C2" pad="2"/>
+<contactref element="C1" pad="2"/>
+<wire x1="9.865" y1="37.125" x2="11.303" y2="37.125" width="0.4064" layer="1"/>
+<wire x1="11.303" y1="37.125" x2="11.303" y2="37.084" width="0.4064" layer="1"/>
+<via x="9.906" y="35.941" extent="1-16" drill="0.5"/>
+<via x="8.763" y="35.941" extent="1-16" drill="0.5"/>
+<via x="11.176" y="35.941" extent="1-16" drill="0.5"/>
+<via x="12.065" y="32.512" extent="1-16" drill="0.5"/>
+<via x="13.716" y="32.512" extent="1-16" drill="0.5"/>
+<via x="15.113" y="31.115" extent="1-16" drill="0.5"/>
 </signal>
 <signal name="N$12">
 <contactref element="IC2" pad="8"/>
@@ -900,7 +920,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <wire x1="7.62" y1="34.29" x2="6.985" y2="33.655" width="0.3048" layer="1"/>
 <wire x1="6.985" y1="33.655" x2="6.565" y2="33.655" width="0.3048" layer="1"/>
 <wire x1="7.62" y1="34.29" x2="9.677" y2="32.385" width="0.3048" layer="1"/>
-<wire x1="9.677" y1="32.385" x2="10.16" y2="31.902" width="0.3048" layer="1"/>
+<wire x1="9.677" y1="32.385" x2="10.16" y2="31.648" width="0.3048" layer="1"/>
 </signal>
 <signal name="N$19">
 <contactref element="C12" pad="2"/>
@@ -908,8 +928,8 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <contactref element="D9" pad="2"/>
 <polygon width="0.3048" layer="1" isolate="0.3048" thermals="no" rank="2">
 <vertex x="34.29" y="29.845"/>
-<vertex x="27.305" y="29.845"/>
-<vertex x="27.305" y="19.685"/>
+<vertex x="26.67" y="29.845"/>
+<vertex x="26.67" y="19.685"/>
 <vertex x="32.000475" y="19.685"/>
 <vertex x="34.29" y="21.974525"/>
 </polygon>
@@ -929,6 +949,8 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <vertex x="6.35" y="29.845"/>
 </polygon>
 <contactref element="J2" pad="1"/>
+<contactref element="C1" pad="1"/>
+<contactref element="C2" pad="1"/>
 </signal>
 <signal name="N$11">
 <contactref element="R17" pad="2"/>
