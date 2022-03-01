@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -264,7 +264,7 @@ TS-005</description>
 <wire x1="2.565" y1="7.267" x2="-2.565" y2="7.267" width="0.2032" layer="51"/>
 <smd name="1" x="-2.54" y="-5.775" dx="1.35" dy="4.6" layer="1"/>
 <smd name="2" x="2.54" y="-5.775" dx="1.35" dy="4.6" layer="1"/>
-<smd name="3" x="0" y="3.375" dx="10.4" dy="9.4" layer="1"/>
+<smd name="3" x="0" y="4.275" dx="10.4" dy="11.4" layer="1"/>
 <text x="-3.81" y="-7.62" size="1.27" layer="25" rot="R90">&gt;NAME</text>
 <text x="5.08" y="-7.62" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
 <rectangle x1="-0.4318" y1="-2.6426" x2="0.4318" y2="-1.8806" layer="21"/>
@@ -299,11 +299,11 @@ TS-005</description>
 <circle x="-1" y="1" radius="0.25" width="0.127" layer="21"/>
 </package>
 <package name="TDSON">
-<smd name="1" x="-2.75" y="2.025" dx="1.2" dy="0.65" layer="1"/>
-<smd name="2" x="-2.75" y="0.635" dx="1.2" dy="0.65" layer="1"/>
-<smd name="3" x="-2.75" y="-0.635" dx="1.2" dy="0.65" layer="1"/>
-<smd name="4" x="-2.75" y="-2.025" dx="1.2" dy="0.65" layer="1"/>
-<smd name="5" x="1" y="0" dx="5" dy="4.7" layer="1"/>
+<smd name="1" x="-2.95" y="2.025" dx="1.2" dy="0.65" layer="1"/>
+<smd name="2" x="-2.95" y="0.635" dx="1.2" dy="0.65" layer="1"/>
+<smd name="3" x="-2.95" y="-0.635" dx="1.2" dy="0.65" layer="1"/>
+<smd name="4" x="-2.95" y="-2.025" dx="1.2" dy="0.65" layer="1"/>
+<smd name="5" x="1.2" y="0" dx="5" dy="4.7" layer="1"/>
 <wire x1="-3.075" y1="-2.575" x2="-3.075" y2="2.575" width="0.127" layer="21"/>
 <wire x1="-3.075" y1="2.575" x2="3.075" y2="2.575" width="0.127" layer="21"/>
 <wire x1="3.075" y1="2.575" x2="3.075" y2="-2.575" width="0.127" layer="21"/>
@@ -391,10 +391,10 @@ TS-005</description>
 </polygon>
 </package>
 <package name="DRQ127">
-<smd name="1" x="-4.975" y="1.5" dx="3.85" dy="2.5" layer="1"/>
-<smd name="2" x="-4.975" y="-1.5" dx="3.85" dy="2.5" layer="1"/>
-<smd name="3" x="4.975" y="-1.5" dx="3.85" dy="2.5" layer="1"/>
-<smd name="4" x="4.975" y="1.5" dx="3.85" dy="2.5" layer="1"/>
+<smd name="1" x="-5.25" y="1.5" dx="4.5" dy="2.5" layer="1"/>
+<smd name="2" x="-5.25" y="-1.5" dx="4.55" dy="2.5" layer="1"/>
+<smd name="3" x="5.25" y="-1.5" dx="4.5" dy="2.5" layer="1"/>
+<smd name="4" x="5.25" y="1.5" dx="4.5" dy="2.5" layer="1"/>
 <wire x1="-6.25" y1="6.25" x2="6.25" y2="6.25" width="0.127" layer="21"/>
 <wire x1="6.25" y1="6.25" x2="6.25" y2="-6.25" width="0.127" layer="21"/>
 <wire x1="6.25" y1="-6.25" x2="-6.25" y2="-6.25" width="0.127" layer="21"/>
@@ -1098,6 +1098,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </technology>
 <technology name="-0720KL">
 <attribute name="VALUE" value="20k" constant="no"/>
+</technology>
+<technology name="-0720RL">
+<attribute name="VALUE" value="20R" constant="no"/>
 </technology>
 <technology name="-07330KL">
 <attribute name="VALUE" value="330k" constant="no"/>
@@ -2073,7 +2076,7 @@ part number 2062-2P from STA</description>
 <part name="FRAME2" library="frames" deviceset="FRAME_A_L" device=""/>
 <part name="IC2" library="dash_power_supply" deviceset="LM3488" device=""/>
 <part name="C6" library="digital_dash" deviceset="CL" device="" technology="10B104MB8NNNC" value="100n"/>
-<part name="R10" library="digital_dash" deviceset="RC0603JR" device="" technology="-0720KL" value="20k"/>
+<part name="R10" library="digital_dash" deviceset="RC0603JR" device="" technology="-0720RL" value="20R"/>
 <part name="R11" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100RL" value="100R"/>
 <part name="R12" library="dash_power_supply" deviceset="RC1206FR" device="" technology="-0730K9L" value="30.9k 1%"/>
 <part name="R14" library="SparkFun-Resistors" deviceset="75KOHM" device="-0603-1/10W-1%" value="75k"/>
