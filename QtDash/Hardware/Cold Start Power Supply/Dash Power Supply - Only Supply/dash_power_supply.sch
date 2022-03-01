@@ -311,8 +311,8 @@ TS-005</description>
 <circle x="-1.8" y="1.5" radius="0.14141875" width="0.127" layer="21"/>
 </package>
 <package name="3216">
-<smd name="1" x="-0.7" y="0" dx="0.7" dy="4" layer="1"/>
-<smd name="2" x="0.7" y="0" dx="0.7" dy="4" layer="1"/>
+<smd name="1" x="-0.8" y="0" dx="1" dy="4" layer="1"/>
+<smd name="2" x="0.8" y="0" dx="1" dy="4" layer="1"/>
 <wire x1="-0.8" y1="2" x2="0.8" y2="2" width="0.127" layer="21"/>
 <wire x1="0.8" y1="2" x2="0.8" y2="-2" width="0.127" layer="21"/>
 <wire x1="0.8" y1="-2" x2="-0.8" y2="-2" width="0.127" layer="21"/>
@@ -607,7 +607,7 @@ TS-005</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="RC1206FR">
+<deviceset name="RC1206FR" prefix="R">
 <gates>
 <gate name="G$1" symbol="R-US" x="0" y="0"/>
 </gates>
