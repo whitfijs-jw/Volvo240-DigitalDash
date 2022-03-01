@@ -28,7 +28,7 @@ public:
     VssInput(Config::VssInputConfig_t config,
              std::string path = DEFAULT_VSS_PULSE_PATH) :
         PulseCounter(path), mConfig(config) {
-        if (mConfig.pulsePerRot <= 0 && mConfig.tireDiameter > 0) {
+        if (mConfig.pulsePerUnitDistance <= 0 && mConfig.tireDiameter > 0) {
             // we need to calculate from tire diameter
             qreal circumference = SensorUtils::toMiles(mConfig.tireDiameter, mConfig.tireDiameterUnits) * M_PI;
 
