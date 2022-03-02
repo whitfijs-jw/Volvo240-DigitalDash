@@ -43,7 +43,7 @@ public slots:
             emit dataReady(mTachInput.getRpm(), channel);
             break;
         case (int) TachDataChannel::COUNT:
-            emit dataReady(mTachInput.getTachPulseCount(), channel);
+            emit dataReady(mTachInput.getPulseCount(), channel);
         }
     }
 

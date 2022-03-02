@@ -19,6 +19,27 @@ public:
     static constexpr qreal PSI_PER_KPA = .145038;
     static constexpr qreal BAR_PER_KPA = .01;
 
+    // distance constants
+    static constexpr qreal METER_PER_IN = .0254;
+    static constexpr qreal METER_PER_FOOT = .3048;
+    static constexpr qreal METER_PER_YARD = .9144;
+    static constexpr qreal METER_PER_MILE = 1609.34;
+
+    static constexpr qreal IN_PER_MILE = 63360.0;
+    static constexpr qreal FOOT_PER_MILE = 5280.0;
+    static constexpr qreal YARD_PER_MILE = 1760.0;
+
+    // Check for disconnected or shorted sensor
+    static constexpr qreal SENSOR_MAX_PCT = .95;
+
+    static constexpr bool isValid(qreal volts, qreal vSupply) {
+        if (volts > vSupply * SENSOR_MAX_PCT || volts < vSupply * (1 - SENSOR_MAX_PCT)) {
+            return false;
+        }
+
+        return true;
+    }
+
     static constexpr qreal getResistance(qreal volts, qreal vSupply, qreal rBalance) {
         qreal res = rBalance / ((vSupply / volts) - 1.0);
 
@@ -31,6 +52,50 @@ public:
         // checks?
 
         return qSqrt(rLow * rHigh);
+    }
+
+    static constexpr qreal toMeters(qreal distance, Config::DistanceUnits units) {
+        if (units == Config::DistanceUnits::INCH) {
+            return distance * METER_PER_IN;
+        } else if (units == Config::DistanceUnits::FOOT) {
+            return distance * METER_PER_FOOT;
+        } else if (units == Config::DistanceUnits::YARD) {
+            return distance * METER_PER_YARD;
+        } else if (units == Config::DistanceUnits::MILE) {
+            return distance * METER_PER_MILE;
+        } else if (units == Config::DistanceUnits::MILLIMETER) {
+            return distance / 1000.0;
+        } else if (units == Config::DistanceUnits::CENTIMETER) {
+            return distance / 100.0;
+        } else if (units == Config::DistanceUnits::METER) {
+            return distance;
+        } else if (units == Config::DistanceUnits::KILOMETER) {
+            return distance * 1000.0 ;
+        } else {
+            return -1;
+        }
+    }
+
+    static constexpr qreal toMiles(qreal distance, Config::DistanceUnits units) {
+        if (units == Config::DistanceUnits::INCH) {
+            return distance / IN_PER_MILE;
+        } else if (units == Config::DistanceUnits::FOOT) {
+            return distance / FOOT_PER_MILE;
+        } else if (units == Config::DistanceUnits::YARD) {
+            return distance / YARD_PER_MILE;
+        } else if (units == Config::DistanceUnits::MILE) {
+            return distance;
+        } else if (units == Config::DistanceUnits::MILLIMETER) {
+            return toMeters(distance, units) / METER_PER_MILE;
+        } else if (units == Config::DistanceUnits::CENTIMETER) {
+            return toMeters(distance, units) / METER_PER_MILE;
+        } else if (units == Config::DistanceUnits::METER) {
+            return toMeters(distance, units) / METER_PER_MILE;
+        } else if (units == Config::DistanceUnits::KILOMETER) {
+            return toMeters(distance, units) / METER_PER_MILE;
+        } else {
+            return -1;
+        }
     }
 
     static constexpr qreal toKelvin(qreal temp, Config::TemperatureUnits units) {

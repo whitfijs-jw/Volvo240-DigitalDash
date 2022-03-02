@@ -25,6 +25,7 @@ public:
     static constexpr char TACH_INPUT_GROUP[] = "tach_input";
     static constexpr char RESISTIVE_SENSOR_GROUP[] = "resistive_sensor";
     static constexpr char ANALOG_INPUT_12V_GROUP[] = "12v_analog";
+    static constexpr char VSS_INPUT_GROUP[] = "vss_input";
 
     // units for sensors
     static constexpr char UNITS_KPA[] = "kpa";
@@ -34,6 +35,14 @@ public:
     static constexpr char UNITS_C[] = "C";
     static constexpr char UNITS_K[] = "K";
     static constexpr char UNITS_PCT[] = "%";
+    static constexpr char UNITS_INCH[] = "inch";
+    static constexpr char UNITS_FOOT[] = "foot";
+    static constexpr char UNITS_YARD[] = "yard";
+    static constexpr char UNITS_MILE[] = "mile";
+    static constexpr char UNITS_MILLIMETER[] = "millimeter";
+    static constexpr char UNITS_CENTIMETER[] = "centimeter";
+    static constexpr char UNITS_METER[] = "meter";
+    static constexpr char UNITS_KILOMETER[] = "kilometer";
 
     // expected sensor keys
     static constexpr char COOLANT_TEMP_KEY[] = "coolant_temp";
@@ -88,6 +97,14 @@ public:
     static constexpr char TACH_MAX_RPM[] = "max_rpm";
     static constexpr char TACH_AVG_NUM_SAMPLES[] = "avg_num_samples";
 
+    //expected keys for vss input
+    static constexpr char VSS_PULSES_PER_ROTATION[] = "pulse_per_rot";
+    static constexpr char VSS_TIRE_DIAMETER[] = "tire_diameter";
+    static constexpr char VSS_TIRE_DIAMETER_UNITS[] = "diameter_units";
+    static constexpr char VSS_PULSES_PER_DISTANCE[] = "pulse_per_unit_distance";
+    static constexpr char VSS_DISTANCE_UNITS[] = "distance_units";
+    static constexpr char VSS_MAX_SPEED[] = "max_speed";
+
     //expected keys for resistive sensors
     static constexpr char RES_SENSOR_TYPE[] = "type";
     static constexpr char RES_SENSOR_FIT_TYPE[] = "fit";
@@ -95,6 +112,8 @@ public:
     static constexpr char RES_SENSOR_Y_VALUES[] = "y";
     static constexpr char RES_SENSOR_UNITS[] = "units";
     static constexpr char RES_SENSOR_R_BALANCE[] = "r_balance";
+    static constexpr char RES_SENSOR_LAG[] = "lag";
+    static constexpr char RES_SENSOR_V_SUPPLY[] = "v_supply";
 
     static constexpr char RES_SENSOR_TYPE_FUEL_LEVEL[] = "fuel_level";
     static constexpr char RES_SENSOR_TYPE_OIL_PRESSURE[] = "oil_pressure";
@@ -153,6 +172,17 @@ public:
         FAHRENHEIT, //!< Fahrenheit
     };
 
+    enum class DistanceUnits {
+        INCH = 0,
+        FOOT,
+        YARD,
+        MILE,
+        MILLIMETER,
+        CENTIMETER,
+        METER,
+        KILOMETER,
+    };
+
     /**
      * @brief TemperatureSensorType enum
      */
@@ -176,6 +206,8 @@ public:
         int order; //polynomial only
         qreal rBalance;
         QString units;
+        qreal lag;
+        qreal vSupply;
 
         bool isValid() {
             return true; //TODO: yea
@@ -253,6 +285,15 @@ public:
         int maxRpm; //!< max valid rpm
         int avgNumSamples; //!< number of samples to average over
     }TachInputConfig_t;
+
+    typedef struct VssInputConfig {
+        int pulsePerRot;
+        qreal tireDiameter;
+        DistanceUnits tireDiameterUnits;
+        int pulsePerUnitDistance;
+        DistanceUnits distanceUnits;
+        int maxSpeed;
+    } VssInputConfig_t;
 
     typedef struct GaugeConfig {
         qreal min;
@@ -482,10 +523,19 @@ public:
                 rSensorConf.y.push_back(val.toReal());
             }
 
+            // y value units
             rSensorConf.units = mConfig->value(RES_SENSOR_UNITS, "").toString();
+
+            // lag coefficient
+            rSensorConf.lag = mConfig->value(RES_SENSOR_LAG, 1.0).toReal();
+
+            // voltage supply
+            rSensorConf.vSupply = mConfig->value(RES_SENSOR_V_SUPPLY, 5.0).toReal();
 
             mResistiveSensorConfig.insert(rSensorConf.type, rSensorConf);
             printKeys("Resistive Sensor: ", mConfig);
+
+
         }
         mConfig->endArray();
 
@@ -508,6 +558,23 @@ public:
         }
         mConfig->endArray();
 
+
+        // VSS Input Configuration
+        mConfig->beginGroup(VSS_INPUT_GROUP);
+
+        mVssInputConfig.pulsePerRot = mConfig->value(VSS_PULSES_PER_ROTATION, 12).toInt();
+        mVssInputConfig.tireDiameter = mConfig->value(VSS_TIRE_DIAMETER, 24.9).toReal();
+        QString diameterUnits =  mConfig->value(VSS_TIRE_DIAMETER_UNITS, "inch").toString().toLower();
+        mVssInputConfig.tireDiameterUnits = parseDistanceUnits(diameterUnits);
+        mVssInputConfig.pulsePerUnitDistance = mConfig->value(VSS_PULSES_PER_DISTANCE, 0).toInt();
+        QString distanceUnits = mConfig->value(VSS_DISTANCE_UNITS, "mile").toString().toLower();
+        mVssInputConfig.distanceUnits = parseDistanceUnits(distanceUnits);
+        mVssInputConfig.maxSpeed = mConfig->value(VSS_MAX_SPEED, 160).toInt();
+
+        printKeys("VSS Input: ", mConfig);
+
+        mConfig->endGroup();
+
         return keys.size() > 0;
     }
 
@@ -518,6 +585,31 @@ public:
     void printKeys(QString setting, QSettings * config) {
         for (auto key : config->childKeys()) {
             qDebug() << setting << key << ": " << config->value(key, "N/A").toStringList();
+        }
+    }
+
+    DistanceUnits parseDistanceUnits(QString units) {
+        units = units.toLower();
+
+        if (units == UNITS_INCH) {
+            return DistanceUnits::INCH;
+        } else if (units == UNITS_FOOT) {
+            return DistanceUnits::FOOT;
+        } else if (units == UNITS_YARD) {
+            return DistanceUnits::YARD;
+        } else if (units == UNITS_MILE) {
+            return DistanceUnits::MILE;
+        } else if (units == UNITS_MILLIMETER) {
+            return DistanceUnits::MILLIMETER;
+        } else if (units == UNITS_CENTIMETER) {
+            return DistanceUnits::CENTIMETER;
+        } else if (units == UNITS_METER) {
+            return DistanceUnits::METER;
+        } else if (units == UNITS_KILOMETER) {
+            return DistanceUnits::KILOMETER;
+        } else {
+            //default to meter
+            return DistanceUnits::METER;
         }
     }
 
@@ -587,6 +679,10 @@ public:
         return mAnalog12VInputConfig.value(name, empty);
     }
 
+    VssInputConfig_t getVssConfig() {
+        return mVssInputConfig;
+    }
+
     GaugeConfig_t getGaugeConfig(QString name) {
         GaugeConfig_t empty;
         return mGaugeConfigs.value(name, empty);
@@ -618,6 +714,7 @@ private:
     QMap<QString, GaugeConfig_t> mGaugeConfigs;
     SpeedoConfig_t mSpeedoGaugeConfig;
     TachoConfig_t mTachGaugeConfig;
+    VssInputConfig_t mVssInputConfig;
 
     /**
      * @brief Check that values are valid in a map

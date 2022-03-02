@@ -44,6 +44,8 @@ Item {
     property real topTextOffset: parent.height / 4.0
     property bool topValueEnabled: false
 
+    property real dir: RotationAnimation.Numerical
+
     width: smallGaugeSize
     height: smallGaugeSize
 
@@ -95,7 +97,7 @@ Item {
                     Behavior on angle {
                         RotationAnimation {
                             duration: 150
-                            direction: RotationAnimation.Shortest
+                            direction: gauge.dir
                         }
                     }
                 }
@@ -140,7 +142,7 @@ Item {
                     Behavior on angle {
                         RotationAnimation {
                             duration: 150
-                            direction: RotationAnimation.Shortest
+                            direction: gauge.dir
                         }
                     }
                 }
