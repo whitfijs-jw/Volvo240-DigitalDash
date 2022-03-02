@@ -49,7 +49,7 @@ Item
 
         units: "F"
         needleLength: parent.height * 0.4
-        needleWidth: parent.height * 0.015
+        needleWidth: parent.height * 0.02
         needleOffset: 0
 
         imageResource: "qrc:mainCluster/temp_coolant.png"
@@ -77,7 +77,7 @@ Item
         maxAngle: 25
 
         needleLength: parent.height * 0.40
-        needleWidth: parent.height * 0.015
+        needleWidth: parent.height * 0.02
         needleOffset: 0
 
         imageResource: ""

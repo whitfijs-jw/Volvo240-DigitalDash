@@ -84,4 +84,9 @@
         <file>r_sport_coolant_celsius_shroud.png</file>
         <file>r_sport_fuel_shroud.png</file>
     </qresource>
+    <qresource prefix="/needles">
+        <file>needle-240.png</file>
+        <file>needle-740-940.png</file>
+        <file>needle-rsport.png</file>
+    </qresource>
 </RCC>
