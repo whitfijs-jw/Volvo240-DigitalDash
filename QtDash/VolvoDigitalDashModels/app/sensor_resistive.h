@@ -7,6 +7,8 @@
 
 class ResistiveSensor : public Sensor {
 public:
+    static constexpr qreal MAX_PCT = .95;
+
     ResistiveSensor(QObject * parent, Config * config,
                     AdcSource * source, int channel,
                     Config::ResistiveSensorConfig_t sensorConfig) :
@@ -20,16 +22,33 @@ public slots:
     void transform(QVariant data, int channel) override {
         if (channel == getChannel()) {
             qreal volts = data.toReal();
+
             qreal resistance = SensorUtils::getResistance(
                         volts, 5.0, mSensorConfig.rBalance);
             qreal value = SensorUtils::polynomialValue(
                         resistance, mSensorConfig.coeff);
+
+            // check for nan
+            if (value != value) {
+                value = 0;
+            }
+
+            // Check that we're not shorted to ground or VDD (could be disconnected)
+            if (!SensorUtils::isValid(volts, mSensorConfig.vSupply)) {
+                value = 0;
+            }
+
+            value = (mSensorConfig.lag * value) + (1 - mSensorConfig.lag) * previousValue;
+
+            previousValue = value;
+
             emit sensorDataReady(value);
         }
     }
 
 private:
     Config::ResistiveSensorConfig_t mSensorConfig;
+    qreal previousValue;
 };
 
 #endif // SENSOR_RESISTIVE_H

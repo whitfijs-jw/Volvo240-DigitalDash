@@ -305,6 +305,8 @@ Window {
 
                 item.offset = smallGaugeSize / 4.5
 
+                item.significantDigits = 0
+
                 item.needleCenterRadius = 0.15
             }
 
@@ -356,6 +358,8 @@ Window {
                 item.needleOffset = smallGaugeSize * .25 / 2
 
                 item.offset = smallGaugeSize / 4.5
+
+                item.significantDigits = 2
 
                 item.needleCenterRadius = 0.15
             }
@@ -736,6 +740,8 @@ Window {
                 item.needleOffset = smallGaugeSize * 0.25 / 2
                 item.offset = smallGaugeSize / 4.5
 
+                item.significantDigits = 0
+
                 item.needleCenterRadius = 0.25
             }
 
@@ -786,6 +792,8 @@ Window {
                 item.needleLength = smallGaugeSize * 0.75
                 item.needleOffset = smallGaugeSize * 0.25 / 2
                 item.offset = smallGaugeSize / 4.5
+
+                item.significantDigits = 0
 
                 item.needleCenterRadius = 0.25
             }
@@ -838,6 +846,8 @@ Window {
                 item.needleOffset = smallGaugeSize * 0.25 / 2
                 item.offset = smallGaugeSize / 4.5
 
+                item.significantDigits = 2
+
                 item.needleCenterRadius = 0.25
             }
 
@@ -889,6 +899,8 @@ Window {
                 item.needleLength = smallGaugeSize * 0.50
                 item.needleOffset = smallGaugeSize * .25 / 2
 
+                item.significantDigits = 0
+
                 item.needleCenterRadius = 0.25
             }
 
@@ -939,6 +951,8 @@ Window {
                 item.needleWidth = smallGaugeSize * 0.05
                 item.needleLength = smallGaugeSize * 0.50
                 item.needleOffset = smallGaugeSize * .25 / 2
+
+                item.significantDigits = 0
 
                 item.needleCenterRadius = 0.25
             }
@@ -993,6 +1007,8 @@ Window {
                 item.needleOffset = smallGaugeSize * 0.25 / 2
                 item.offsetX = -smallGaugeSize / 7.4
 
+                item.significantDigits = 0
+
                 item.needleCenterRadius = 0.15
             }
 
@@ -1045,6 +1061,8 @@ Window {
                 item.needleLength = smallGaugeSize * 0.65
                 item.needleOffset = smallGaugeSize * 0.25 / 2
                 item.offsetX = -smallGaugeSize / 7.4
+
+                item.significantDigits = 0
 
                 item.needleCenterRadius = 0.15
             }
@@ -1151,6 +1169,8 @@ Window {
                 item.needleLength = smallGaugeSize * 0.65
                 item.needleOffset = smallGaugeSize * 0.25 / 2
                 item.offsetX = -smallGaugeSize / 4.65
+
+                item.significantDigits = 2
 
                 item.needleCenterRadius = 0.15
             }

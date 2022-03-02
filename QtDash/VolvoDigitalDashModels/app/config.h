@@ -112,6 +112,8 @@ public:
     static constexpr char RES_SENSOR_Y_VALUES[] = "y";
     static constexpr char RES_SENSOR_UNITS[] = "units";
     static constexpr char RES_SENSOR_R_BALANCE[] = "r_balance";
+    static constexpr char RES_SENSOR_LAG[] = "lag";
+    static constexpr char RES_SENSOR_V_SUPPLY[] = "v_supply";
 
     static constexpr char RES_SENSOR_TYPE_FUEL_LEVEL[] = "fuel_level";
     static constexpr char RES_SENSOR_TYPE_OIL_PRESSURE[] = "oil_pressure";
@@ -204,6 +206,8 @@ public:
         int order; //polynomial only
         qreal rBalance;
         QString units;
+        qreal lag;
+        qreal vSupply;
 
         bool isValid() {
             return true; //TODO: yea
@@ -519,10 +523,19 @@ public:
                 rSensorConf.y.push_back(val.toReal());
             }
 
+            // y value units
             rSensorConf.units = mConfig->value(RES_SENSOR_UNITS, "").toString();
+
+            // lag coefficient
+            rSensorConf.lag = mConfig->value(RES_SENSOR_LAG, 1.0).toReal();
+
+            // voltage supply
+            rSensorConf.vSupply = mConfig->value(RES_SENSOR_V_SUPPLY, 5.0).toReal();
 
             mResistiveSensorConfig.insert(rSensorConf.type, rSensorConf);
             printKeys("Resistive Sensor: ", mConfig);
+
+
         }
         mConfig->endArray();
 
