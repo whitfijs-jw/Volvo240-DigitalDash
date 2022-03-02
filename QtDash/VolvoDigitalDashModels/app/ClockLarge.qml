@@ -38,7 +38,7 @@ Item
     }
 
     Timer {
-        interval: 500; running: true; repeat: true;
+        interval: 250; running: true; repeat: true;
         onTriggered: clockLarge.timeChanged()
     }
 
@@ -78,6 +78,8 @@ Item
         needleOffset: parent.width * .15 / 2
 
         needleCenterRadius: generation === "740" ? 0.15: 0.10
+
+        dir: RotationAnimation.Shortest
     }
 
     Gauge {
@@ -111,6 +113,7 @@ Item
 
         needleCenterRadius: generation === "740" ? 0.15: 0.10
 
+        dir: RotationAnimation.Shortest
     }
 
     Gauge {
@@ -143,6 +146,7 @@ Item
 
         needleCenterRadius: generation === "740" ? 0.15: 0.10
 
+        dir: RotationAnimation.Shortest
     }
 
     Text {

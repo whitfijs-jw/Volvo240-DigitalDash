@@ -5,8 +5,19 @@
 #include <sensor_source_adc.h>
 #include <analog_12v_input.h>
 
+/**
+ * @brief Voltmeter Sensor class
+ */
 class VoltmeterSensor : public Sensor {
 public:
+    /**
+     * @brief VoltmeterSensor constructor
+     * @param parent: parent object
+     * @param config: dash config
+     * @param source: Adc sensor source
+     * @param channel: source channel
+     * @param analogConfig: 12V analog input configuration
+     */
     VoltmeterSensor(QObject * parent, Config * config,
                     AdcSource * source, int channel,
                     Config::Analog12VInputConfig_t analogConfig) :
@@ -14,6 +25,11 @@ public:
     }
 
 public slots:
+    /**
+     * @brief Transform raw adc voltage to 12V
+     * @param data: data from source
+     * @param channel: source channel
+     */
     void transform(QVariant data, int channel) override {
         if (channel == getChannel()) {
             // these are true 3.3V inputs -- remove correction factor
@@ -24,7 +40,7 @@ public slots:
     }
 
 private:
-    Analog12VInput m12VInput;
+    Analog12VInput m12VInput; // Analog 12v input class
 };
 
 #endif // SENSOR_VOLTMETER_H

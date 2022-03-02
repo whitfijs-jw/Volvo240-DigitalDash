@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -245,42 +245,6 @@
 </library>
 <library name="dash_power_supply">
 <packages>
-<package name="TO263">
-<description>&lt;b&gt;SMALL OUTLINE TRANSISTOR&lt;/b&gt;&lt;p&gt;
-TS-005</description>
-<wire x1="4.917" y1="7.165" x2="4.917" y2="-1.839" width="0.2032" layer="21"/>
-<wire x1="4.917" y1="-1.839" x2="-4.917" y2="-1.839" width="0.2032" layer="21"/>
-<wire x1="-4.917" y1="-1.839" x2="-4.917" y2="7.165" width="0.2032" layer="21"/>
-<wire x1="-4.917" y1="7.165" x2="4.917" y2="7.165" width="0.2032" layer="51"/>
-<wire x1="-5.973" y1="8.983" x2="5.973" y2="8.983" width="0.0508" layer="39"/>
-<wire x1="5.973" y1="-8.983" x2="-5.973" y2="-8.983" width="0.0508" layer="39"/>
-<wire x1="-5.973" y1="-8.983" x2="-5.973" y2="8.983" width="0.0508" layer="39"/>
-<wire x1="5.973" y1="8.983" x2="5.973" y2="-8.983" width="0.0508" layer="39"/>
-<wire x1="-2.565" y1="7.267" x2="-2.565" y2="7.678" width="0.2032" layer="51"/>
-<wire x1="-2.565" y1="7.678" x2="-2.108" y2="8.135" width="0.2032" layer="51"/>
-<wire x1="-2.108" y1="8.135" x2="2.108" y2="8.135" width="0.2032" layer="51"/>
-<wire x1="2.108" y1="8.135" x2="2.565" y2="7.678" width="0.2032" layer="51"/>
-<wire x1="2.565" y1="7.678" x2="2.565" y2="7.267" width="0.2032" layer="51"/>
-<wire x1="2.565" y1="7.267" x2="-2.565" y2="7.267" width="0.2032" layer="51"/>
-<smd name="1" x="-2.54" y="-5.775" dx="1.35" dy="4.6" layer="1"/>
-<smd name="2" x="2.54" y="-5.775" dx="1.35" dy="4.6" layer="1"/>
-<smd name="3" x="0" y="3.375" dx="10.4" dy="9.4" layer="1"/>
-<text x="-3.81" y="-7.62" size="1.27" layer="25" rot="R90">&gt;NAME</text>
-<text x="5.08" y="-7.62" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
-<rectangle x1="-0.4318" y1="-2.6426" x2="0.4318" y2="-1.8806" layer="21"/>
-<rectangle x1="-2.9901" y1="-4.7399" x2="-2.0899" y2="-1.9401" layer="21"/>
-<rectangle x1="2.0899" y1="-4.7399" x2="2.9901" y2="-1.9401" layer="21"/>
-<rectangle x1="-3" y1="-7.5001" x2="-2.1001" y2="-4.7" layer="51"/>
-<rectangle x1="2.1001" y1="-7.5001" x2="3" y2="-4.7" layer="51"/>
-<polygon width="0.2032" layer="51">
-<vertex x="-2.5654" y="7.2669"/>
-<vertex x="-2.5654" y="7.6782"/>
-<vertex x="-2.1082" y="8.1354"/>
-<vertex x="2.1082" y="8.1354"/>
-<vertex x="2.5654" y="7.6782"/>
-<vertex x="2.5654" y="7.2669"/>
-</polygon>
-</package>
 <package name="VSSOP-10">
 <smd name="1" x="-2.2" y="1" dx="1.45" dy="0.3" layer="1"/>
 <smd name="2" x="-2.2" y="0.5" dx="1.45" dy="0.3" layer="1"/>
@@ -316,30 +280,6 @@ TS-005</description>
 <text x="-1.5" y="-2.5" size="0.6096" layer="25">&gt;NAME</text>
 <text x="-1.5" y="2" size="0.6096" layer="27">&gt;VALUE</text>
 <circle x="-1" y="1" radius="0.25" width="0.127" layer="21"/>
-</package>
-<package name="TDSON">
-<smd name="1" x="-2.75" y="2.025" dx="1.2" dy="0.65" layer="1"/>
-<smd name="2" x="-2.75" y="0.635" dx="1.2" dy="0.65" layer="1"/>
-<smd name="3" x="-2.75" y="-0.635" dx="1.2" dy="0.65" layer="1"/>
-<smd name="4" x="-2.75" y="-2.025" dx="1.2" dy="0.65" layer="1"/>
-<smd name="5" x="1" y="0" dx="5" dy="4.7" layer="1"/>
-<wire x1="-3.075" y1="-2.575" x2="-3.075" y2="2.575" width="0.127" layer="21"/>
-<wire x1="-3.075" y1="2.575" x2="3.075" y2="2.575" width="0.127" layer="21"/>
-<wire x1="3.075" y1="2.575" x2="3.075" y2="-2.575" width="0.127" layer="21"/>
-<wire x1="3.075" y1="-2.575" x2="-3.075" y2="-2.575" width="0.127" layer="21"/>
-<circle x="-1.8" y="1.5" radius="0.14141875" width="0.127" layer="21"/>
-</package>
-<package name="3216">
-<smd name="1" x="-0.7" y="0" dx="0.7" dy="4" layer="1"/>
-<smd name="2" x="0.7" y="0" dx="0.7" dy="4" layer="1"/>
-<wire x1="-0.8" y1="2" x2="0.8" y2="2" width="0.127" layer="21"/>
-<wire x1="0.8" y1="2" x2="0.8" y2="-2" width="0.127" layer="21"/>
-<wire x1="0.8" y1="-2" x2="-0.8" y2="-2" width="0.127" layer="21"/>
-<wire x1="-0.8" y1="-2" x2="-0.8" y2="2" width="0.127" layer="21"/>
-<rectangle x1="-0.8" y1="-2" x2="-0.3" y2="2" layer="21"/>
-<rectangle x1="0.3" y1="-2" x2="0.8" y2="2" layer="21"/>
-<text x="-1.5" y="2.2" size="0.6096" layer="21">&gt;VALUE</text>
-<text x="1.3" y="-2.2" size="0.6096" layer="21" rot="R180">&gt;NAME</text>
 </package>
 <package name="R1206">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;</description>
@@ -408,19 +348,6 @@ TS-005</description>
 <vertex x="-1.95" y="-1.35"/>
 <vertex x="-1.6" y="-1.8"/>
 </polygon>
-</package>
-<package name="DRQ127">
-<smd name="1" x="-4.975" y="1.5" dx="3.85" dy="2.5" layer="1"/>
-<smd name="2" x="-4.975" y="-1.5" dx="3.85" dy="2.5" layer="1"/>
-<smd name="3" x="4.975" y="-1.5" dx="3.85" dy="2.5" layer="1"/>
-<smd name="4" x="4.975" y="1.5" dx="3.85" dy="2.5" layer="1"/>
-<wire x1="-6.25" y1="6.25" x2="6.25" y2="6.25" width="0.127" layer="21"/>
-<wire x1="6.25" y1="6.25" x2="6.25" y2="-6.25" width="0.127" layer="21"/>
-<wire x1="6.25" y1="-6.25" x2="-6.25" y2="-6.25" width="0.127" layer="21"/>
-<wire x1="-6.25" y1="-6.25" x2="-6.25" y2="6.25" width="0.127" layer="21"/>
-<circle x="-5.6" y="5.6" radius="0.316225" width="0.127" layer="21"/>
-<text x="-6.2" y="6.4" size="1.27" layer="21">&gt;NAME</text>
-<text x="6.2" y="-6.5" size="1.27" layer="21" rot="R180">&gt;VALUE</text>
 </package>
 <package name="SMA">
 <description>&lt;b&gt;SMA&lt;/b&gt; CASE 403D-02&lt;p&gt;
@@ -513,45 +440,81 @@ Source: http://www.onsemi.com/pub_link/Collateral/MBRA340T3-D.PDF</description>
 <rectangle x1="0.7112" y1="-1.2954" x2="1.1684" y2="-0.7112" layer="51"/>
 <rectangle x1="-1.1684" y1="-1.2954" x2="-0.7112" y2="-0.7112" layer="51"/>
 </package>
+<package name="DRQ127">
+<smd name="1" x="-5.25" y="1.5" dx="4.5" dy="2.5" layer="1"/>
+<smd name="2" x="-5.25" y="-1.5" dx="4.55" dy="2.5" layer="1"/>
+<smd name="3" x="5.25" y="-1.5" dx="4.5" dy="2.5" layer="1"/>
+<smd name="4" x="5.25" y="1.5" dx="4.5" dy="2.5" layer="1"/>
+<wire x1="-6.25" y1="6.25" x2="6.25" y2="6.25" width="0.127" layer="21"/>
+<wire x1="6.25" y1="6.25" x2="6.25" y2="-6.25" width="0.127" layer="21"/>
+<wire x1="6.25" y1="-6.25" x2="-6.25" y2="-6.25" width="0.127" layer="21"/>
+<wire x1="-6.25" y1="-6.25" x2="-6.25" y2="6.25" width="0.127" layer="21"/>
+<circle x="-5.6" y="5.6" radius="0.316225" width="0.127" layer="21"/>
+<text x="-6.2" y="6.4" size="1.27" layer="21">&gt;NAME</text>
+<text x="6.2" y="-6.5" size="1.27" layer="21" rot="R180">&gt;VALUE</text>
+</package>
+<package name="TO263">
+<description>&lt;b&gt;SMALL OUTLINE TRANSISTOR&lt;/b&gt;&lt;p&gt;
+TS-005</description>
+<wire x1="4.917" y1="7.165" x2="4.917" y2="-1.839" width="0.2032" layer="21"/>
+<wire x1="4.917" y1="-1.839" x2="-4.917" y2="-1.839" width="0.2032" layer="21"/>
+<wire x1="-4.917" y1="-1.839" x2="-4.917" y2="7.165" width="0.2032" layer="21"/>
+<wire x1="-4.917" y1="7.165" x2="4.917" y2="7.165" width="0.2032" layer="51"/>
+<wire x1="-5.973" y1="8.983" x2="5.973" y2="8.983" width="0.0508" layer="39"/>
+<wire x1="5.973" y1="-8.983" x2="-5.973" y2="-8.983" width="0.0508" layer="39"/>
+<wire x1="-5.973" y1="-8.983" x2="-5.973" y2="8.983" width="0.0508" layer="39"/>
+<wire x1="5.973" y1="8.983" x2="5.973" y2="-8.983" width="0.0508" layer="39"/>
+<wire x1="-2.565" y1="7.267" x2="-2.565" y2="7.678" width="0.2032" layer="51"/>
+<wire x1="-2.565" y1="7.678" x2="-2.108" y2="8.135" width="0.2032" layer="51"/>
+<wire x1="-2.108" y1="8.135" x2="2.108" y2="8.135" width="0.2032" layer="51"/>
+<wire x1="2.108" y1="8.135" x2="2.565" y2="7.678" width="0.2032" layer="51"/>
+<wire x1="2.565" y1="7.678" x2="2.565" y2="7.267" width="0.2032" layer="51"/>
+<wire x1="2.565" y1="7.267" x2="-2.565" y2="7.267" width="0.2032" layer="51"/>
+<smd name="1" x="-2.54" y="-5.775" dx="1.35" dy="4.6" layer="1"/>
+<smd name="2" x="2.54" y="-5.775" dx="1.35" dy="4.6" layer="1"/>
+<smd name="3" x="0" y="4.275" dx="10.4" dy="11.4" layer="1"/>
+<text x="-3.81" y="-7.62" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="5.08" y="-7.62" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+<rectangle x1="-0.4318" y1="-2.6426" x2="0.4318" y2="-1.8806" layer="21"/>
+<rectangle x1="-2.9901" y1="-4.7399" x2="-2.0899" y2="-1.9401" layer="21"/>
+<rectangle x1="2.0899" y1="-4.7399" x2="2.9901" y2="-1.9401" layer="21"/>
+<rectangle x1="-3" y1="-7.5001" x2="-2.1001" y2="-4.7" layer="51"/>
+<rectangle x1="2.1001" y1="-7.5001" x2="3" y2="-4.7" layer="51"/>
+<polygon width="0.2032" layer="51">
+<vertex x="-2.5654" y="7.2669"/>
+<vertex x="-2.5654" y="7.6782"/>
+<vertex x="-2.1082" y="8.1354"/>
+<vertex x="2.1082" y="8.1354"/>
+<vertex x="2.5654" y="7.6782"/>
+<vertex x="2.5654" y="7.2669"/>
+</polygon>
+</package>
+<package name="TDSON">
+<smd name="1" x="-2.95" y="2.025" dx="1.2" dy="0.65" layer="1"/>
+<smd name="2" x="-2.95" y="0.635" dx="1.2" dy="0.65" layer="1"/>
+<smd name="3" x="-2.95" y="-0.635" dx="1.2" dy="0.65" layer="1"/>
+<smd name="4" x="-2.95" y="-2.025" dx="1.2" dy="0.65" layer="1"/>
+<smd name="5" x="1.2" y="0" dx="5" dy="4.7" layer="1"/>
+<wire x1="-3.075" y1="-2.575" x2="-3.075" y2="2.575" width="0.127" layer="21"/>
+<wire x1="-3.075" y1="2.575" x2="3.075" y2="2.575" width="0.127" layer="21"/>
+<wire x1="3.075" y1="2.575" x2="3.075" y2="-2.575" width="0.127" layer="21"/>
+<wire x1="3.075" y1="-2.575" x2="-3.075" y2="-2.575" width="0.127" layer="21"/>
+<circle x="-1.8" y="1.5" radius="0.14141875" width="0.127" layer="21"/>
+</package>
+<package name="3216">
+<smd name="1" x="-0.8" y="0" dx="1" dy="4" layer="1"/>
+<smd name="2" x="0.8" y="0" dx="1" dy="4" layer="1"/>
+<wire x1="-0.8" y1="2" x2="0.8" y2="2" width="0.127" layer="21"/>
+<wire x1="0.8" y1="2" x2="0.8" y2="-2" width="0.127" layer="21"/>
+<wire x1="0.8" y1="-2" x2="-0.8" y2="-2" width="0.127" layer="21"/>
+<wire x1="-0.8" y1="-2" x2="-0.8" y2="2" width="0.127" layer="21"/>
+<rectangle x1="-0.8" y1="-2" x2="-0.3" y2="2" layer="21"/>
+<rectangle x1="0.3" y1="-2" x2="0.8" y2="2" layer="21"/>
+<text x="-1.5" y="2.2" size="0.6096" layer="21">&gt;VALUE</text>
+<text x="1.3" y="-2.2" size="0.6096" layer="21" rot="R180">&gt;NAME</text>
+</package>
 </packages>
 <symbols>
-<symbol name="N-MOSFET">
-<wire x1="0.762" y1="0.762" x2="0.762" y2="0" width="0.254" layer="94"/>
-<wire x1="0.762" y1="0" x2="0.762" y2="-0.762" width="0.254" layer="94"/>
-<wire x1="0.762" y1="3.175" x2="0.762" y2="2.54" width="0.254" layer="94"/>
-<wire x1="0.762" y1="2.54" x2="0.762" y2="1.905" width="0.254" layer="94"/>
-<wire x1="0.762" y1="0" x2="2.54" y2="0" width="0.1524" layer="94"/>
-<wire x1="2.54" y1="0" x2="2.54" y2="-2.54" width="0.1524" layer="94"/>
-<wire x1="0.762" y1="-1.905" x2="0.762" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="0.762" y1="-2.54" x2="0.762" y2="-3.175" width="0.254" layer="94"/>
-<wire x1="0" y1="2.54" x2="0" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="2.54" y1="-2.54" x2="0.762" y2="-2.54" width="0.1524" layer="94"/>
-<wire x1="3.81" y1="2.54" x2="3.81" y2="0.508" width="0.1524" layer="94"/>
-<wire x1="3.81" y1="0.508" x2="3.81" y2="-2.54" width="0.1524" layer="94"/>
-<wire x1="2.54" y1="-2.54" x2="3.81" y2="-2.54" width="0.1524" layer="94"/>
-<wire x1="0.762" y1="2.54" x2="3.81" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="4.572" y1="0.762" x2="4.318" y2="0.508" width="0.1524" layer="94"/>
-<wire x1="4.318" y1="0.508" x2="3.81" y2="0.508" width="0.1524" layer="94"/>
-<wire x1="3.81" y1="0.508" x2="3.302" y2="0.508" width="0.1524" layer="94"/>
-<wire x1="3.302" y1="0.508" x2="3.048" y2="0.254" width="0.1524" layer="94"/>
-<circle x="2.54" y="-2.54" radius="0.3592" width="0" layer="94"/>
-<circle x="2.54" y="2.54" radius="0.3592" width="0" layer="94"/>
-<text x="-11.43" y="0" size="1.778" layer="96">&gt;VALUE</text>
-<text x="-11.43" y="2.54" size="1.778" layer="95">&gt;NAME</text>
-<pin name="S" x="2.54" y="-5.08" visible="off" length="short" direction="pas" rot="R90"/>
-<pin name="G" x="-2.54" y="-2.54" visible="off" length="short" direction="pas"/>
-<pin name="D" x="2.54" y="5.08" visible="off" length="short" direction="pas" rot="R270"/>
-<polygon width="0.1524" layer="94">
-<vertex x="3.81" y="0.508"/>
-<vertex x="3.302" y="-0.254"/>
-<vertex x="4.318" y="-0.254"/>
-</polygon>
-<polygon width="0.1524" layer="94">
-<vertex x="1.016" y="0"/>
-<vertex x="2.032" y="0.762"/>
-<vertex x="2.032" y="-0.762"/>
-</polygon>
-</symbol>
 <symbol name="LM5060">
 <pin name="GND" x="0" y="-17.78" length="middle" rot="R90"/>
 <pin name="VIN" x="-17.78" y="10.16" length="middle"/>
@@ -627,35 +590,6 @@ Source: http://www.onsemi.com/pub_link/Collateral/MBRA340T3-D.PDF</description>
 <text x="0" y="2.54" size="0.4064" layer="99" align="center">SpiceOrder 1</text>
 <text x="0" y="-5.08" size="0.4064" layer="99" align="center">SpiceOrder 2</text>
 </symbol>
-<symbol name="L-US-DUAL">
-<wire x1="-5.08" y1="5.08" x2="-3.81" y2="3.81" width="0.254" layer="94" curve="-90" cap="flat"/>
-<wire x1="-5.08" y1="2.54" x2="-3.81" y2="3.81" width="0.254" layer="94" curve="90" cap="flat"/>
-<wire x1="-5.08" y1="2.54" x2="-3.81" y2="1.27" width="0.254" layer="94" curve="-90" cap="flat"/>
-<wire x1="-5.08" y1="0" x2="-3.81" y2="1.27" width="0.254" layer="94" curve="90" cap="flat"/>
-<wire x1="-5.08" y1="0" x2="-3.81" y2="-1.27" width="0.254" layer="94" curve="-90" cap="flat"/>
-<wire x1="-5.08" y1="-2.54" x2="-3.81" y2="-1.27" width="0.254" layer="94" curve="90" cap="flat"/>
-<wire x1="-5.08" y1="-2.54" x2="-3.81" y2="-3.81" width="0.254" layer="94" curve="-90" cap="flat"/>
-<wire x1="-5.08" y1="-5.08" x2="-3.81" y2="-3.81" width="0.254" layer="94" curve="90" cap="flat"/>
-<text x="-6.35" y="-5.08" size="1.778" layer="95" rot="R90">&gt;NAME</text>
-<text x="7.62" y="-5.08" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
-<pin name="3" x="-5.08" y="-7.62" visible="off" length="short" direction="pas" swaplevel="1" rot="R90"/>
-<pin name="1" x="-5.08" y="7.62" visible="off" length="short" direction="pas" swaplevel="1" rot="R270"/>
-<wire x1="5.08" y1="-5.08" x2="3.81" y2="-3.81" width="0.254" layer="94" curve="-90" cap="flat"/>
-<wire x1="5.08" y1="-2.54" x2="3.81" y2="-3.81" width="0.254" layer="94" curve="90" cap="flat"/>
-<wire x1="5.08" y1="-2.54" x2="3.81" y2="-1.27" width="0.254" layer="94" curve="-90" cap="flat"/>
-<wire x1="5.08" y1="0" x2="3.81" y2="-1.27" width="0.254" layer="94" curve="90" cap="flat"/>
-<wire x1="5.08" y1="0" x2="3.81" y2="1.27" width="0.254" layer="94" curve="-90" cap="flat"/>
-<wire x1="5.08" y1="2.54" x2="3.81" y2="1.27" width="0.254" layer="94" curve="90" cap="flat"/>
-<wire x1="5.08" y1="2.54" x2="3.81" y2="3.81" width="0.254" layer="94" curve="-90" cap="flat"/>
-<wire x1="5.08" y1="5.08" x2="3.81" y2="3.81" width="0.254" layer="94" curve="90" cap="flat"/>
-<pin name="2" x="5.08" y="7.62" visible="off" length="short" direction="pas" swaplevel="1" rot="R270"/>
-<pin name="4" x="5.08" y="-7.62" visible="off" length="short" direction="pas" swaplevel="1" rot="R90"/>
-<wire x1="-1.27" y1="-5.08" x2="-1.27" y2="5.08" width="0.254" layer="94"/>
-<wire x1="0" y1="-5.08" x2="0" y2="5.08" width="0.254" layer="94"/>
-<wire x1="1.27" y1="-5.08" x2="1.27" y2="5.08" width="0.254" layer="94"/>
-<circle x="-2.54" y="6.35" radius="0.762" width="0.254" layer="94"/>
-<circle x="2.54" y="6.35" radius="0.762" width="0.254" layer="94"/>
-</symbol>
 <symbol name="SCHOTTKY">
 <wire x1="-1.27" y1="-1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
 <wire x1="1.27" y1="0" x2="-1.27" y2="1.27" width="0.254" layer="94"/>
@@ -717,25 +651,74 @@ Source: http://www.onsemi.com/pub_link/Collateral/MBRA340T3-D.PDF</description>
 <pin name="E" x="2.54" y="-5.08" visible="off" length="short" direction="pas" swaplevel="3" rot="R90"/>
 <pin name="C" x="2.54" y="5.08" visible="off" length="short" direction="pas" swaplevel="2" rot="R270"/>
 </symbol>
+<symbol name="L-US-DUAL">
+<wire x1="-5.08" y1="5.08" x2="-3.81" y2="3.81" width="0.254" layer="94" curve="-90" cap="flat"/>
+<wire x1="-5.08" y1="2.54" x2="-3.81" y2="3.81" width="0.254" layer="94" curve="90" cap="flat"/>
+<wire x1="-5.08" y1="2.54" x2="-3.81" y2="1.27" width="0.254" layer="94" curve="-90" cap="flat"/>
+<wire x1="-5.08" y1="0" x2="-3.81" y2="1.27" width="0.254" layer="94" curve="90" cap="flat"/>
+<wire x1="-5.08" y1="0" x2="-3.81" y2="-1.27" width="0.254" layer="94" curve="-90" cap="flat"/>
+<wire x1="-5.08" y1="-2.54" x2="-3.81" y2="-1.27" width="0.254" layer="94" curve="90" cap="flat"/>
+<wire x1="-5.08" y1="-2.54" x2="-3.81" y2="-3.81" width="0.254" layer="94" curve="-90" cap="flat"/>
+<wire x1="-5.08" y1="-5.08" x2="-3.81" y2="-3.81" width="0.254" layer="94" curve="90" cap="flat"/>
+<text x="-6.35" y="-5.08" size="1.778" layer="95" rot="R90">&gt;NAME</text>
+<text x="7.62" y="-5.08" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
+<pin name="3" x="-5.08" y="-7.62" visible="off" length="short" direction="pas" swaplevel="1" rot="R90"/>
+<pin name="1" x="-5.08" y="7.62" visible="off" length="short" direction="pas" swaplevel="1" rot="R270"/>
+<wire x1="5.08" y1="-5.08" x2="3.81" y2="-3.81" width="0.254" layer="94" curve="-90" cap="flat"/>
+<wire x1="5.08" y1="-2.54" x2="3.81" y2="-3.81" width="0.254" layer="94" curve="90" cap="flat"/>
+<wire x1="5.08" y1="-2.54" x2="3.81" y2="-1.27" width="0.254" layer="94" curve="-90" cap="flat"/>
+<wire x1="5.08" y1="0" x2="3.81" y2="-1.27" width="0.254" layer="94" curve="90" cap="flat"/>
+<wire x1="5.08" y1="0" x2="3.81" y2="1.27" width="0.254" layer="94" curve="-90" cap="flat"/>
+<wire x1="5.08" y1="2.54" x2="3.81" y2="1.27" width="0.254" layer="94" curve="90" cap="flat"/>
+<wire x1="5.08" y1="2.54" x2="3.81" y2="3.81" width="0.254" layer="94" curve="-90" cap="flat"/>
+<wire x1="5.08" y1="5.08" x2="3.81" y2="3.81" width="0.254" layer="94" curve="90" cap="flat"/>
+<pin name="2" x="5.08" y="7.62" visible="off" length="short" direction="pas" swaplevel="1" rot="R270"/>
+<pin name="4" x="5.08" y="-7.62" visible="off" length="short" direction="pas" swaplevel="1" rot="R90"/>
+<wire x1="-1.27" y1="-5.08" x2="-1.27" y2="5.08" width="0.254" layer="94"/>
+<wire x1="0" y1="-5.08" x2="0" y2="5.08" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-5.08" x2="1.27" y2="5.08" width="0.254" layer="94"/>
+<circle x="-2.54" y="6.35" radius="0.762" width="0.254" layer="94"/>
+<circle x="2.54" y="6.35" radius="0.762" width="0.254" layer="94"/>
+</symbol>
+<symbol name="N-MOSFET">
+<wire x1="0.762" y1="0.762" x2="0.762" y2="0" width="0.254" layer="94"/>
+<wire x1="0.762" y1="0" x2="0.762" y2="-0.762" width="0.254" layer="94"/>
+<wire x1="0.762" y1="3.175" x2="0.762" y2="2.54" width="0.254" layer="94"/>
+<wire x1="0.762" y1="2.54" x2="0.762" y2="1.905" width="0.254" layer="94"/>
+<wire x1="0.762" y1="0" x2="2.54" y2="0" width="0.1524" layer="94"/>
+<wire x1="2.54" y1="0" x2="2.54" y2="-2.54" width="0.1524" layer="94"/>
+<wire x1="0.762" y1="-1.905" x2="0.762" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="0.762" y1="-2.54" x2="0.762" y2="-3.175" width="0.254" layer="94"/>
+<wire x1="0" y1="2.54" x2="0" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="2.54" y1="-2.54" x2="0.762" y2="-2.54" width="0.1524" layer="94"/>
+<wire x1="3.81" y1="2.54" x2="3.81" y2="0.508" width="0.1524" layer="94"/>
+<wire x1="3.81" y1="0.508" x2="3.81" y2="-2.54" width="0.1524" layer="94"/>
+<wire x1="2.54" y1="-2.54" x2="3.81" y2="-2.54" width="0.1524" layer="94"/>
+<wire x1="0.762" y1="2.54" x2="3.81" y2="2.54" width="0.1524" layer="94"/>
+<wire x1="4.572" y1="0.762" x2="4.318" y2="0.508" width="0.1524" layer="94"/>
+<wire x1="4.318" y1="0.508" x2="3.81" y2="0.508" width="0.1524" layer="94"/>
+<wire x1="3.81" y1="0.508" x2="3.302" y2="0.508" width="0.1524" layer="94"/>
+<wire x1="3.302" y1="0.508" x2="3.048" y2="0.254" width="0.1524" layer="94"/>
+<circle x="2.54" y="-2.54" radius="0.3592" width="0" layer="94"/>
+<circle x="2.54" y="2.54" radius="0.3592" width="0" layer="94"/>
+<text x="-11.43" y="0" size="1.778" layer="96">&gt;VALUE</text>
+<text x="-11.43" y="2.54" size="1.778" layer="95">&gt;NAME</text>
+<pin name="S" x="2.54" y="-5.08" visible="off" length="short" direction="pas" rot="R90"/>
+<pin name="G" x="-2.54" y="-2.54" visible="off" length="short" direction="pas"/>
+<pin name="D" x="2.54" y="5.08" visible="off" length="short" direction="pas" rot="R270"/>
+<polygon width="0.1524" layer="94">
+<vertex x="3.81" y="0.508"/>
+<vertex x="3.302" y="-0.254"/>
+<vertex x="4.318" y="-0.254"/>
+</polygon>
+<polygon width="0.1524" layer="94">
+<vertex x="1.016" y="0"/>
+<vertex x="2.032" y="0.762"/>
+<vertex x="2.032" y="-0.762"/>
+</polygon>
+</symbol>
 </symbols>
 <devicesets>
-<deviceset name="IPB042N10N3GATMA1" prefix="Q">
-<gates>
-<gate name="G$1" symbol="N-MOSFET" x="-2.54" y="0"/>
-</gates>
-<devices>
-<device name="" package="TO263">
-<connects>
-<connect gate="G$1" pin="D" pad="3"/>
-<connect gate="G$1" pin="G" pad="1"/>
-<connect gate="G$1" pin="S" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="LM5060" prefix="IC">
 <gates>
 <gate name="G$1" symbol="LM5060" x="2.54" y="0"/>
@@ -782,47 +765,7 @@ Source: http://www.onsemi.com/pub_link/Collateral/MBRA340T3-D.PDF</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="BSC027N04LSG" prefix="Q">
-<gates>
-<gate name="G$1" symbol="N-MOSFET" x="-2.54" y="0"/>
-</gates>
-<devices>
-<device name="" package="TDSON">
-<connects>
-<connect gate="G$1" pin="D" pad="5"/>
-<connect gate="G$1" pin="G" pad="4"/>
-<connect gate="G$1" pin="S" pad="1 2 3"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="PRL1632" prefix="R">
-<gates>
-<gate name="G$1" symbol="R-US" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="3216">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="POWER" value="" constant="no"/>
-<attribute name="VALUE" value="" constant="no"/>
-</technology>
-<technology name="-R006-F-T1">
-<attribute name="POWER" value="1W" constant="no"/>
-<attribute name="VALUE" value="6mOhm" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="RC1206FR">
+<deviceset name="RC1206FR" prefix="R">
 <gates>
 <gate name="G$1" symbol="R-US" x="0" y="0"/>
 </gates>
@@ -899,41 +842,6 @@ Source: http://www.onsemi.com/pub_link/Collateral/MBRA340T3-D.PDF</description>
 <attribute name="VALUE" value="3.3u" constant="no"/>
 <attribute name="VOLTAGE" value="80v" constant="no"/>
 </technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="DRQ127" prefix="L">
-<gates>
-<gate name="G$1" symbol="L-US-DUAL" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="DRQ127">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-<connect gate="G$1" pin="3" pad="3"/>
-<connect gate="G$1" pin="4" pad="4"/>
-</connects>
-<technologies>
-<technology name=""/>
-<technology name="-4R7-R"/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="STPS8H100G-TR" prefix="D">
-<gates>
-<gate name="G$1" symbol="SCHOTTKY" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="TO263">
-<connects>
-<connect gate="G$1" pin="A" pad="2"/>
-<connect gate="G$1" pin="C" pad="3"/>
-</connects>
-<technologies>
-<technology name=""/>
 </technologies>
 </device>
 </devices>
@@ -1054,6 +962,98 @@ Source: http://www.onsemi.com/pub_link/Collateral/MBRA340T3-D.PDF</description>
 <technologies>
 <technology name=""/>
 <technology name="-25HVL"/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="DRQ127" prefix="L">
+<gates>
+<gate name="G$1" symbol="L-US-DUAL" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="DRQ127">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="3" pad="3"/>
+<connect gate="G$1" pin="4" pad="4"/>
+</connects>
+<technologies>
+<technology name=""/>
+<technology name="-4R7-R"/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="STPS8H100G-TR" prefix="D">
+<gates>
+<gate name="G$1" symbol="SCHOTTKY" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="TO263">
+<connects>
+<connect gate="G$1" pin="A" pad="2"/>
+<connect gate="G$1" pin="C" pad="3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="IPB042N10N3GATMA1" prefix="Q">
+<gates>
+<gate name="G$1" symbol="N-MOSFET" x="-2.54" y="0"/>
+</gates>
+<devices>
+<device name="" package="TO263">
+<connects>
+<connect gate="G$1" pin="D" pad="3"/>
+<connect gate="G$1" pin="G" pad="1"/>
+<connect gate="G$1" pin="S" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="BSC027N04LSG" prefix="Q">
+<gates>
+<gate name="G$1" symbol="N-MOSFET" x="-2.54" y="0"/>
+</gates>
+<devices>
+<device name="" package="TDSON">
+<connects>
+<connect gate="G$1" pin="D" pad="5"/>
+<connect gate="G$1" pin="G" pad="4"/>
+<connect gate="G$1" pin="S" pad="1 2 3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="PRL1632" prefix="R">
+<gates>
+<gate name="G$1" symbol="R-US" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="3216">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="POWER" value="" constant="no"/>
+<attribute name="VALUE" value="" constant="no"/>
+</technology>
+<technology name="-R006-F-T1">
+<attribute name="POWER" value="1W" constant="no"/>
+<attribute name="VALUE" value="6mOhm" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -1680,51 +1680,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </device>
 </devices>
 </deviceset>
-<deviceset name="20KOHM" prefix="R">
-<description>&lt;h3&gt;20kΩ resistor&lt;/h3&gt;
-&lt;p&gt;A resistor is a passive two-terminal electrical component that implements electrical resistance as a circuit element. Resistors act to reduce current flow, and, at the same time, act to lower voltage levels within circuits. - Wikipedia&lt;/p&gt;</description>
-<gates>
-<gate name="G$1" symbol="RESISTOR" x="0" y="0"/>
-</gates>
-<devices>
-<device name="-0603-1/10W-1%" package="0603">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PROD_ID" value="RES-09383"/>
-<attribute name="VALUE" value="20k"/>
-</technology>
-</technologies>
-</device>
-<device name="-0603-1/10W-5%" package="0603">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PROD_ID" value="RES-09231"/>
-<attribute name="VALUE" value="20k"/>
-</technology>
-</technologies>
-</device>
-<device name="-0402T-1/16W-1%" package="0402-TIGHT">
-<connects>
-<connect gate="G$1" pin="1" pad="1"/>
-<connect gate="G$1" pin="2" pad="2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="PROD_ID" value="RES-15131"/>
-<attribute name="VALUE" value="20k"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="75KOHM" prefix="R">
 <description>&lt;h3&gt;75kΩ resistor&lt;/h3&gt;
 &lt;p&gt;A resistor is a passive two-terminal electrical component that implements electrical resistance as a circuit element. Resistors act to reduce current flow, and, at the same time, act to lower voltage levels within circuits. - Wikipedia&lt;/p&gt;</description>
@@ -1967,6 +1922,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <technology name="-071KL">
 <attribute name="VALUE" value="1k 1%" constant="no"/>
 </technology>
+<technology name="-0720KL">
+<attribute name="VALUE" value="20k 1%" constant="no"/>
+</technology>
 <technology name="-07270RL">
 <attribute name="VALUE" value="270 1%" constant="no"/>
 </technology>
@@ -2008,6 +1966,12 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </technology>
 <technology name="-071ML">
 <attribute name="VALUE" value="1M" constant="no"/>
+</technology>
+<technology name="-0720KL">
+<attribute name="VALUE" value="20k" constant="no"/>
+</technology>
+<technology name="-0720RL">
+<attribute name="VALUE" value="20R" constant="no"/>
 </technology>
 <technology name="-07330KL">
 <attribute name="VALUE" value="330k" constant="no"/>
@@ -2985,8 +2949,6 @@ part number 2062-2P from STA</description>
 <part name="D3" library="dash_power_supply" deviceset="5.0SMDJ" device="" technology="24A" value="24V"/>
 <part name="C1" library="dash_power_supply" deviceset="CL32" device="" technology="B104KCFNNWE" value="0.1u"/>
 <part name="C2" library="dash_power_supply" deviceset="CL32" device="" technology="B104KCFNNWE" value="0.1u"/>
-<part name="Q1" library="dash_power_supply" deviceset="IPB042N10N3GATMA1" device=""/>
-<part name="Q2" library="dash_power_supply" deviceset="IPB042N10N3GATMA1" device=""/>
 <part name="R1" library="SparkFun-Resistors" deviceset="390KOHM" device="-0603-1/10W-1%" value="390k"/>
 <part name="GND1" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="R2" library="SparkFun-Resistors" deviceset="2.0KOHM" device="-0603-1/10W-5%" value="2.0k"/>
@@ -3012,7 +2974,6 @@ part number 2062-2P from STA</description>
 <part name="FRAME3" library="frames" deviceset="FRAME_A_L" device=""/>
 <part name="IC2" library="dash_power_supply" deviceset="LM3488" device=""/>
 <part name="C6" library="digital_dash" deviceset="CL" device="" technology="10B104MB8NNNC" value="100n"/>
-<part name="R10" library="SparkFun-Resistors" deviceset="20KOHM" device="-0603-1/10W-5%" value="20k"/>
 <part name="R11" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100RL" value="100R"/>
 <part name="R12" library="dash_power_supply" deviceset="RC1206FR" device="" technology="-0730K9L" value="30.9k 1%"/>
 <part name="R14" library="SparkFun-Resistors" deviceset="75KOHM" device="-0603-1/10W-1%" value="75k"/>
@@ -3021,14 +2982,12 @@ part number 2062-2P from STA</description>
 <part name="GND9" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="GND10" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="GND11" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R15" library="dash_power_supply" deviceset="PRL1632" device="" technology="-R006-F-T1" value="6mOhm"/>
 <part name="GND12" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="GND13" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="C12" library="digital_dash" deviceset="CL" device="" technology="10A475KL8NRNC" value="4.7u"/>
 <part name="GND14" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY1" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="R17" library="SparkFun-Resistors" deviceset="0OHM" device="-0603-1/10W" value="0"/>
-<part name="Q4" library="dash_power_supply" deviceset="BSC027N04LSG" device=""/>
 <part name="C13" library="digital_dash" deviceset="CL" device="" technology="10B684KO8NFNC" value=".68u"/>
 <part name="C14" library="digital_dash" deviceset="CL" device="" technology="10B102KB8NNWC" value="1n"/>
 <part name="GND15" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
@@ -3041,8 +3000,6 @@ part number 2062-2P from STA</description>
 <part name="C7" library="dash_power_supply" deviceset="EEV-FK" device="" technology="1K3R3R" value="3.3u"/>
 <part name="C8" library="dash_power_supply" deviceset="EEV-FK" device="" technology="1K3R3R" value="3.3u"/>
 <part name="C9" library="dash_power_supply" deviceset="EEV-FK" device="" technology="1K3R3R" value="3.3u"/>
-<part name="L1" library="dash_power_supply" deviceset="DRQ127" device="" technology="-4R7-R"/>
-<part name="D9" library="dash_power_supply" deviceset="STPS8H100G-TR" device=""/>
 <part name="SUPPLY2" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="C16" library="dash_power_supply" deviceset="CL32" device="" technology="B475KCVZW6E" value="4.7u"/>
 <part name="C17" library="dash_power_supply" deviceset="CL32" device="" technology="B104KCFNNWE" value="0.1u"/>
@@ -3059,6 +3016,13 @@ part number 2062-2P from STA</description>
 <part name="GND19" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="J3" library="SparkFun-Connectors" deviceset="CONN_02" device="PTH4"/>
 <part name="GND20" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
+<part name="R10" library="digital_dash" deviceset="RC0603JR" device="" technology="-0720RL" value="20R"/>
+<part name="L1" library="dash_power_supply" deviceset="DRQ127" device="" technology="-4R7-R"/>
+<part name="D9" library="dash_power_supply" deviceset="STPS8H100G-TR" device=""/>
+<part name="Q1" library="dash_power_supply" deviceset="IPB042N10N3GATMA1" device=""/>
+<part name="Q2" library="dash_power_supply" deviceset="IPB042N10N3GATMA1" device=""/>
+<part name="Q4" library="dash_power_supply" deviceset="BSC027N04LSG" device=""/>
+<part name="R15" library="dash_power_supply" deviceset="PRL1632" device="" technology="-R006-F-T1" value="6mOhm"/>
 </parts>
 <sheets>
 <sheet>
@@ -3071,14 +3035,6 @@ part number 2062-2P from STA</description>
 <instance part="D3" gate="G$1" x="63.5" y="97.79" rot="R270"/>
 <instance part="C1" gate="G$1" x="45.72" y="130.81"/>
 <instance part="C2" gate="G$1" x="45.72" y="118.11"/>
-<instance part="Q1" gate="G$1" x="77.47" y="137.16" smashed="yes" rot="MR0">
-<attribute name="VALUE" x="78.74" y="130.81" size="1.778" layer="96" rot="MR90"/>
-<attribute name="NAME" x="73.66" y="139.7" size="1.778" layer="95" rot="MR0"/>
-</instance>
-<instance part="Q2" gate="G$1" x="77.47" y="111.76" smashed="yes" rot="R180">
-<attribute name="VALUE" x="78.74" y="111.76" size="1.778" layer="96" rot="R270"/>
-<attribute name="NAME" x="72.39" y="110.49" size="1.778" layer="95" rot="R180"/>
-</instance>
 <instance part="R1" gate="G$1" x="99.06" y="142.24" rot="R90"/>
 <instance part="GND1" gate="1" x="91.44" y="140.97"/>
 <instance part="R2" gate="G$1" x="107.95" y="99.06" rot="R270"/>
@@ -3116,6 +3072,8 @@ part number 2062-2P from STA</description>
 <instance part="GND18" gate="1" x="24.13" y="132.08"/>
 <instance part="J3" gate="G$1" x="8.89" y="102.87"/>
 <instance part="GND20" gate="1" x="19.05" y="96.52"/>
+<instance part="Q1" gate="G$1" x="77.47" y="111.76" rot="R180"/>
+<instance part="Q2" gate="G$1" x="77.47" y="137.16" rot="MR0"/>
 </instances>
 <busses>
 </busses>
@@ -3128,13 +3086,13 @@ part number 2062-2P from STA</description>
 <wire x1="45.72" y1="143.51" x2="63.5" y2="143.51" width="0.1524" layer="91"/>
 <wire x1="63.5" y1="143.51" x2="63.5" y2="137.16" width="0.1524" layer="91"/>
 <junction x="45.72" y="143.51"/>
-<pinref part="Q1" gate="G$1" pin="D"/>
 <wire x1="74.93" y1="142.24" x2="74.93" y2="143.51" width="0.1524" layer="91"/>
 <wire x1="74.93" y1="143.51" x2="63.5" y2="143.51" width="0.1524" layer="91"/>
 <junction x="63.5" y="143.51"/>
 <label x="39.37" y="143.51" size="1.27" layer="95" rot="R90" xref="yes"/>
 <pinref part="J1" gate="G$1" pin="2"/>
 <wire x1="45.72" y1="143.51" x2="21.59" y2="143.51" width="0.1524" layer="91"/>
+<pinref part="Q2" gate="G$1" pin="D"/>
 </segment>
 <segment>
 <pinref part="R3" gate="G$1" pin="2"/>
@@ -3166,7 +3124,6 @@ part number 2062-2P from STA</description>
 <pinref part="D3" gate="G$1" pin="C"/>
 <pinref part="D2" gate="G$1" pin="C"/>
 <wire x1="63.5" y1="101.6" x2="63.5" y2="105.41" width="0.1524" layer="91"/>
-<pinref part="Q2" gate="G$1" pin="D"/>
 <wire x1="63.5" y1="105.41" x2="63.5" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="74.93" y1="106.68" x2="74.93" y2="105.41" width="0.1524" layer="91"/>
 <wire x1="74.93" y1="105.41" x2="63.5" y2="105.41" width="0.1524" layer="91"/>
@@ -3182,6 +3139,7 @@ part number 2062-2P from STA</description>
 <wire x1="35.56" y1="101.6" x2="35.56" y2="105.41" width="0.1524" layer="91"/>
 <junction x="35.56" y="105.41"/>
 <pinref part="J3" gate="G$1" pin="2"/>
+<pinref part="Q1" gate="G$1" pin="D"/>
 </segment>
 <segment>
 <pinref part="R9" gate="G$1" pin="2"/>
@@ -3198,9 +3156,7 @@ part number 2062-2P from STA</description>
 <wire x1="63.5" y1="124.46" x2="63.5" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="63.5" y1="124.46" x2="74.93" y2="124.46" width="0.1524" layer="91"/>
 <junction x="63.5" y="124.46"/>
-<pinref part="Q1" gate="G$1" pin="S"/>
 <wire x1="74.93" y1="124.46" x2="74.93" y2="132.08" width="0.1524" layer="91"/>
-<pinref part="Q2" gate="G$1" pin="S"/>
 <wire x1="74.93" y1="116.84" x2="74.93" y2="118.11" width="0.1524" layer="91"/>
 <junction x="74.93" y="124.46"/>
 <wire x1="74.93" y1="118.11" x2="74.93" y2="124.46" width="0.1524" layer="91"/>
@@ -3212,6 +3168,8 @@ part number 2062-2P from STA</description>
 <junction x="88.9" y="118.11"/>
 <pinref part="D4" gate="G$1" pin="A"/>
 <pinref part="Q3" gate="G$1" pin="E"/>
+<pinref part="Q1" gate="G$1" pin="S"/>
+<pinref part="Q2" gate="G$1" pin="S"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -3321,10 +3279,8 @@ part number 2062-2P from STA</description>
 <net name="G" class="0">
 <segment>
 <wire x1="99.06" y1="102.87" x2="99.06" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="Q1" gate="G$1" pin="G"/>
 <wire x1="80.01" y1="134.62" x2="88.9" y2="134.62" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="134.62" x2="88.9" y2="133.35" width="0.1524" layer="91"/>
-<pinref part="Q2" gate="G$1" pin="G"/>
 <wire x1="80.01" y1="114.3" x2="107.95" y2="114.3" width="0.1524" layer="91"/>
 <wire x1="107.95" y1="114.3" x2="107.95" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="107.95" y1="109.22" x2="107.95" y2="104.14" width="0.1524" layer="91"/>
@@ -3337,6 +3293,8 @@ part number 2062-2P from STA</description>
 <junction x="107.95" y="109.22"/>
 <pinref part="D5" gate="G$1" pin="A"/>
 <pinref part="Q3" gate="G$1" pin="C"/>
+<pinref part="Q1" gate="G$1" pin="G"/>
+<pinref part="Q2" gate="G$1" pin="G"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -3459,7 +3417,6 @@ part number 2062-2P from STA</description>
 <instance part="FRAME2" gate="G$2" x="172.72" y="0"/>
 <instance part="IC2" gate="G$1" x="86.36" y="124.46"/>
 <instance part="C6" gate="G$1" x="45.72" y="119.38"/>
-<instance part="R10" gate="G$1" x="45.72" y="142.24" rot="R90"/>
 <instance part="R11" gate="G$1" x="121.92" y="119.38"/>
 <instance part="R12" gate="G$1" x="165.1" y="149.86" rot="R90"/>
 <instance part="R14" gate="G$1" x="93.98" y="101.6" rot="R90"/>
@@ -3468,17 +3425,12 @@ part number 2062-2P from STA</description>
 <instance part="GND9" gate="1" x="45.72" y="86.36"/>
 <instance part="GND10" gate="1" x="25.4" y="86.36"/>
 <instance part="GND11" gate="1" x="99.06" y="167.64"/>
-<instance part="R15" gate="G$1" x="129.54" y="106.68" rot="R90"/>
 <instance part="GND12" gate="1" x="129.54" y="86.36"/>
 <instance part="GND13" gate="1" x="165.1" y="86.36"/>
 <instance part="C12" gate="G$1" x="137.16" y="160.02" rot="R90"/>
 <instance part="GND14" gate="1" x="198.12" y="86.36"/>
 <instance part="SUPPLY1" gate="G$1" x="208.28" y="165.1"/>
 <instance part="R17" gate="G$1" x="114.3" y="129.54"/>
-<instance part="Q4" gate="G$1" x="127" y="132.08" smashed="yes">
-<attribute name="VALUE" x="132.08" y="133.35" size="1.778" layer="96" rot="R270"/>
-<attribute name="NAME" x="123.19" y="134.62" size="1.778" layer="95"/>
-</instance>
 <instance part="C13" gate="G$1" x="66.04" y="99.06"/>
 <instance part="C14" gate="G$1" x="58.42" y="104.14"/>
 <instance part="GND15" gate="1" x="58.42" y="86.36"/>
@@ -3491,10 +3443,13 @@ part number 2062-2P from STA</description>
 <instance part="C7" gate="G$1" x="15.24" y="121.92"/>
 <instance part="C8" gate="G$1" x="25.4" y="121.92"/>
 <instance part="C9" gate="G$1" x="35.56" y="121.92"/>
-<instance part="L1" gate="G$1" x="119.38" y="165.1" rot="R90"/>
-<instance part="D9" gate="G$1" x="154.94" y="160.02"/>
 <instance part="J2" gate="G$1" x="229.87" y="160.02" rot="R180"/>
 <instance part="GND19" gate="1" x="218.44" y="149.86"/>
+<instance part="R10" gate="G$1" x="45.72" y="142.24" rot="R90"/>
+<instance part="L1" gate="G$1" x="119.38" y="165.1" rot="R90"/>
+<instance part="D9" gate="G$1" x="154.94" y="160.02"/>
+<instance part="Q4" gate="G$1" x="127" y="132.08"/>
+<instance part="R15" gate="G$1" x="129.54" y="106.68" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -3502,12 +3457,12 @@ part number 2062-2P from STA</description>
 <net name="N$12" class="0">
 <segment>
 <pinref part="IC2" gate="G$1" pin="VIN"/>
-<pinref part="R10" gate="G$1" pin="1"/>
 <wire x1="68.58" y1="129.54" x2="45.72" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="129.54" x2="45.72" y2="137.16" width="0.1524" layer="91"/>
 <pinref part="C6" gate="G$1" pin="1"/>
 <wire x1="45.72" y1="129.54" x2="45.72" y2="124.46" width="0.1524" layer="91"/>
 <junction x="45.72" y="129.54"/>
+<pinref part="R10" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$16" class="0">
@@ -3529,19 +3484,19 @@ part number 2062-2P from STA</description>
 <wire x1="129.54" y1="119.38" x2="129.54" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="127" y1="119.38" x2="129.54" y2="119.38" width="0.1524" layer="91"/>
 <junction x="129.54" y="119.38"/>
-<pinref part="R15" gate="G$1" pin="2"/>
 <pinref part="Q4" gate="G$1" pin="S"/>
+<pinref part="R15" gate="G$1" pin="2"/>
 </segment>
 </net>
 <net name="N$18" class="0">
 <segment>
 <pinref part="C12" gate="G$1" pin="1"/>
 <wire x1="127" y1="160.02" x2="129.54" y2="160.02" width="0.1524" layer="91"/>
-<pinref part="Q4" gate="G$1" pin="D"/>
 <wire x1="129.54" y1="160.02" x2="132.08" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="129.54" y1="137.16" x2="129.54" y2="160.02" width="0.1524" layer="91"/>
 <junction x="129.54" y="160.02"/>
 <pinref part="L1" gate="G$1" pin="3"/>
+<pinref part="Q4" gate="G$1" pin="D"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -3574,9 +3529,9 @@ part number 2062-2P from STA</description>
 <pinref part="L1" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<pinref part="R15" gate="G$1" pin="1"/>
 <pinref part="GND12" gate="1" pin="GND"/>
 <wire x1="129.54" y1="88.9" x2="129.54" y2="101.6" width="0.1524" layer="91"/>
+<pinref part="R15" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="GND13" gate="1" pin="GND"/>
@@ -3640,7 +3595,6 @@ part number 2062-2P from STA</description>
 <wire x1="35.56" y1="129.54" x2="35.56" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="25.4" y1="124.46" x2="25.4" y2="129.54" width="0.1524" layer="91"/>
 <junction x="25.4" y="129.54"/>
-<pinref part="R10" gate="G$1" pin="2"/>
 <wire x1="17.78" y1="160.02" x2="25.4" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="25.4" y1="160.02" x2="45.72" y2="160.02" width="0.1524" layer="91"/>
 <wire x1="45.72" y1="160.02" x2="45.72" y2="147.32" width="0.1524" layer="91"/>
@@ -3652,6 +3606,7 @@ part number 2062-2P from STA</description>
 <pinref part="C7" gate="G$1" pin="+"/>
 <pinref part="C8" gate="G$1" pin="+"/>
 <pinref part="C9" gate="G$1" pin="+"/>
+<pinref part="R10" gate="G$1" pin="2"/>
 <pinref part="L1" gate="G$1" pin="1"/>
 </segment>
 </net>
@@ -3698,10 +3653,10 @@ part number 2062-2P from STA</description>
 <pinref part="SUPPLY1" gate="G$1" pin="5V"/>
 <pinref part="C10" gate="G$1" pin="1"/>
 <pinref part="C11" gate="G$1" pin="1"/>
-<pinref part="D9" gate="G$1" pin="C"/>
 <pinref part="J2" gate="G$1" pin="1"/>
 <wire x1="208.28" y1="160.02" x2="222.25" y2="160.02" width="0.1524" layer="91"/>
 <junction x="208.28" y="160.02"/>
+<pinref part="D9" gate="G$1" pin="C"/>
 </segment>
 </net>
 <net name="N$11" class="0">
