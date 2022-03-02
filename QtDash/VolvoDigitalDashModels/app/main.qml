@@ -1043,7 +1043,7 @@ Window {
                 item.minValue = gaugeMin
                 item.maxValue = gaugeMax
                 item.units = gaugeUnits
-                item.highAlarm = gaugeMax
+                item.highAlarm = gaugeHighAlarm
                 item.lowAlarm = gaugeLowAlarm
                 item.clockwise = false
 
@@ -1151,7 +1151,7 @@ Window {
                 item.minValue = 8.0
                 item.maxValue = gaugeMax
                 item.units = gaugeUnits
-                item.highAlarm = gaugeMax
+                item.highAlarm = gaugeHighAlarm
                 item.lowAlarm = gaugeLowAlarm
                 item.clockwise = false
 

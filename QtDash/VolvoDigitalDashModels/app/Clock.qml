@@ -26,7 +26,7 @@ Item
     }
 
     Timer {
-        interval: 1000; running: true; repeat: true;
+        interval: 250; running: true; repeat: true;
         onTriggered: clock.timeChanged()
     }
 
@@ -65,6 +65,7 @@ Item
 
         needleCenterRadius: 0.15
 
+        dir: RotationAnimation.Shortest
     }
 
     Gauge {
@@ -95,6 +96,7 @@ Item
 
         needleCenterRadius: 0.15
 
+        dir: RotationAnimation.Shortest
     }
 
     Gauge {
@@ -125,6 +127,7 @@ Item
 
         needleCenterRadius: 0.15
 
+        dir: RotationAnimation.Shortest
     }
 
     Text {
