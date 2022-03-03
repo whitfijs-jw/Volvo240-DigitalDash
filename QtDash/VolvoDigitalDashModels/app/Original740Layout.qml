@@ -35,6 +35,7 @@ Item {
             ClockLarge {
                 anchors.fill: parent
                 imageSource: "qrc:gauge-faces-740-940/740_clock.png"
+                needleResource: "qrc:needles/needle-740-940.png"
             }
         }
 

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="needles.svg">
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient933">
+      <stop
+         style="stop-color:#e61e00;stop-opacity:1"
+         offset="0"
+         id="stop929" />
+      <stop
+         id="stop937"
+         offset="0.5"
+         style="stop-color:#c81e00;stop-opacity:1" />
+      <stop
+         style="stop-color:#e61e00;stop-opacity:1"
+         offset="1"
+         id="stop931" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient933"
+       id="linearGradient935"
+       x1="832.04053"
+       y1="510.10257"
+       x2="832.04053"
+       y2="494.95993"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.24748737"
+     inkscape:cx="2924.7275"
+     inkscape:cy="-14.781348"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1848"
+     inkscape:window-height="1016"
+     inkscape:window-x="1672"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#001a00;fill-opacity:1;stroke:none;stroke-width:0.08203084;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="rect979-5"
+       width="800"
+       height="10"
+       x="308.42859"
+       y="37.535767"
+       rx="9.8771916e-18" />
+    <rect
+       style="fill:#001a00;fill-opacity:1;stroke:none;stroke-width:0.08203084;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="rect979"
+       width="800"
+       height="10"
+       x="308.42859"
+       y="7.5970345"
+       rx="9.8771916e-18" />
+    <g
+       id="g973">
+      <path
+         inkscape:export-ydpi="6.3804188"
+         inkscape:export-xdpi="6.3804188"
+         inkscape:connector-curvature="0"
+         id="path934"
+         d="M 99.938062,-20.14012 119.86667,-50.284224 99.938712,-80.435158 Z"
+         style="fill:#e6b400;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="6.3804188"
+         inkscape:export-xdpi="6.3804188"
+         inkscape:connector-curvature="0"
+         id="path932"
+         d="m 99.937712,-20.14012 10e-4,-60.295038 -19.687759,30.150474 z"
+         style="fill:#e68c00;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="6.3804188"
+         inkscape:export-xdpi="6.3804188"
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path928"
+         d="M 99.939042,715.65741 99.937712,-20.14012 80.251338,-50.284684 80.250544,715.29014 Z"
+         style="fill:#e68200;fill-opacity:1;stroke:none;stroke-width:0.39430162px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="6.3804188"
+         inkscape:export-xdpi="6.3804188"
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path930"
+         d="m 99.937712,-20.14012 19.928958,-30.144104 -0.0501,766.035024 -19.877508,-0.12883 -0.001,-692.964028"
+         style="fill:#e6be00;fill-opacity:1;stroke:none;stroke-width:0.39431775px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <g
+       id="g967"
+       transform="rotate(90,795.53495,234.50305)"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/240needle.png"
+       inkscape:export-xdpi="6.3804188"
+       inkscape:export-ydpi="6.3804188">
+      <path
+         style="fill:#e6b400;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 685.0452,-14.092505 19.92861,-30.1441 -19.92796,-30.15093 z"
+         id="path955"
+         inkscape:connector-curvature="0"
+         inkscape:export-xdpi="6.3804188"
+         inkscape:export-ydpi="6.3804188" />
+      <path
+         style="fill:#e69600;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 685.04485,-14.092505 10e-4,-60.29503 -19.68775,30.15047 z"
+         id="path957"
+         inkscape:connector-curvature="0"
+         inkscape:export-xdpi="6.3804188"
+         inkscape:export-ydpi="6.3804188" />
+      <path
+         style="fill:#e68200;fill-opacity:1;stroke:none;stroke-width:0.39430162px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 685.04615,721.70501 -10e-4,-735.797485 -19.68637,-30.14457 -7.9e-4,765.574855 z"
+         id="path959"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-xdpi="6.3804188"
+         inkscape:export-ydpi="6.3804188" />
+      <path
+         style="fill:#e6be00;fill-opacity:1;stroke:none;stroke-width:0.39431775px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 685.04483,-14.09248 19.92896,-30.1441 -0.0501,766.03498 -19.87751,-0.1288 -0.001,-692.96402"
+         id="path961"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-xdpi="6.3804188"
+         inkscape:export-ydpi="6.3804188" />
+    </g>
+    <rect
+       style="fill:#e6b400;fill-opacity:1;stroke:none;stroke-width:0.10377169;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="rect975"
+       width="800"
+       height="40"
+       x="315.91214"
+       y="-154.96416"
+       rx="9.979389e-18" />
+    <path
+       style="fill:#e61a00;fill-opacity:1;stroke:none;stroke-width:0.26443499px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 308.42859,7.5970345 c 268.40463,-0.17411 651.46836,0.0677 800.00001,9.9999995 v 19.93874 c -146.58512,10.01333 -527.77313,10.1754 -800.00001,10 z"
+       id="path977"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-xdpi="6.3499999"
+       inkscape:export-ydpi="6.3499999" />
+    <path
+       style="fill:#d2d2d2;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1032.0353,373.71899 30.1441,-19.92861 30.1509,19.92796 z"
+       id="path826"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="6.3804188"
+       inkscape:export-ydpi="6.3804188"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/needle-rsport.png" />
+    <path
+       style="fill:#c8c8c8;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1032.0353,373.71934 60.295,-10e-4 -30.1505,19.68775 z"
+       id="path828"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="6.3804188"
+       inkscape:export-ydpi="6.3804188"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/needle-rsport.png" />
+    <path
+       style="fill:#919191;fill-opacity:1;stroke:none;stroke-width:0.39430162px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 296.23776,373.71804 735.79744,0.001 30.1446,19.68637 -765.57484,7.9e-4 z"
+       id="path830"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-xdpi="6.3804188"
+       inkscape:export-ydpi="6.3804188"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/needle-rsport.png" />
+    <path
+       style="fill:#c8c8c8;fill-opacity:1;stroke:none;stroke-width:0.39431775px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1032.0353,373.71936 30.144,-19.92896 -766.03493,0.0501 0.1288,19.87751 692.96402,0.001"
+       id="path832"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-xdpi="6.3804188"
+       inkscape:export-ydpi="6.3804188"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/needle-rsport.png" />
+    <path
+       style="fill:url(#linearGradient935);fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
+       d="m 411.89286,482.64838 c 268.40463,-0.17411 651.46834,0.0677 800.00004,10 v 19.93874 c -146.5851,10.01333 -527.77316,10.1754 -800.00004,10 0,0 -7.35363,-8.66025 -7.29063,-20.12463 0.063,-11.46438 7.29063,-19.81411 7.29063,-19.81411 z"
+       id="path977-6"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccczc"
+       inkscape:export-xdpi="6.3499999"
+       inkscape:export-ydpi="6.3499999"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/needle-740-940.png" />
+  </g>
+</svg>
