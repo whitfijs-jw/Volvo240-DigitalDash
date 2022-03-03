@@ -52,9 +52,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.175"
-     inkscape:cx="1376.5724"
-     inkscape:cy="-109.13796"
+     inkscape:zoom="0.24748737"
+     inkscape:cx="2924.7275"
+     inkscape:cy="-14.781348"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -183,34 +183,38 @@
        inkscape:export-ydpi="6.3499999" />
     <path
        style="fill:#d2d2d2;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 1032.0353,373.47759 30.1441,19.92861 30.1509,-19.92796 z"
+       d="m 1032.0353,373.71899 30.1441,-19.92861 30.1509,19.92796 z"
        id="path826"
        inkscape:connector-curvature="0"
        inkscape:export-xdpi="6.3804188"
-       inkscape:export-ydpi="6.3804188" />
+       inkscape:export-ydpi="6.3804188"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/needle-rsport.png" />
     <path
        style="fill:#c8c8c8;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 1032.0353,373.47724 60.295,0.001 -30.1505,-19.68775 z"
+       d="m 1032.0353,373.71934 60.295,-10e-4 -30.1505,19.68775 z"
        id="path828"
        inkscape:connector-curvature="0"
        inkscape:export-xdpi="6.3804188"
-       inkscape:export-ydpi="6.3804188" />
+       inkscape:export-ydpi="6.3804188"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/needle-rsport.png" />
     <path
-       style="fill:#a0a0a0;fill-opacity:1;stroke:none;stroke-width:0.39430162px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 296.23776,373.47854 735.79744,-0.001 30.1446,-19.68637 -765.57484,-7.9e-4 z"
+       style="fill:#919191;fill-opacity:1;stroke:none;stroke-width:0.39430162px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 296.23776,373.71804 735.79744,0.001 30.1446,19.68637 -765.57484,7.9e-4 z"
        id="path830"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc"
        inkscape:export-xdpi="6.3804188"
-       inkscape:export-ydpi="6.3804188" />
+       inkscape:export-ydpi="6.3804188"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/needle-rsport.png" />
     <path
        style="fill:#c8c8c8;fill-opacity:1;stroke:none;stroke-width:0.39431775px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 1032.0353,373.47722 30.144,19.92896 -766.03493,-0.0501 0.1288,-19.87751 692.96402,-10e-4"
+       d="m 1032.0353,373.71936 30.144,-19.92896 -766.03493,0.0501 0.1288,19.87751 692.96402,0.001"
        id="path832"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc"
        inkscape:export-xdpi="6.3804188"
-       inkscape:export-ydpi="6.3804188" />
+       inkscape:export-ydpi="6.3804188"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/needle-rsport.png" />
     <path
        style="fill:url(#linearGradient935);fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;"
        d="m 411.89286,482.64838 c 268.40463,-0.17411 651.46834,0.0677 800.00004,10 v 19.93874 c -146.5851,10.01333 -527.77316,10.1754 -800.00004,10 0,0 -7.35363,-8.66025 -7.29063,-20.12463 0.063,-11.46438 7.29063,-19.81411 7.29063,-19.81411 z"
