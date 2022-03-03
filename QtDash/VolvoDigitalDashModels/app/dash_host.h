@@ -91,8 +91,8 @@ public slots:
      * @brief Update tachometer model
      */
     void sysfsUpdate() {
-        QString tempPath = "/sys/class/hwmon/hwmon4/temp1_input";
-        QString rpmPath = "/sys/class/hwmon/hwmon3/fan1_input";
+        QString tempPath = "/sys/class/hwmon/hwmon0/temp1_input";
+        QString rpmPath = "/sys/bus/cpu/devices/cpu0/cpufreq/scaling_cur_freq";
         QString battPath = "/sys/class/power_supply/BAT0/voltage_now";
         QString fuelLevelPath = "/sys/class/power_supply/BAT0/capacity";
 
@@ -126,9 +126,21 @@ public slots:
         {
             QString rpmString = rpmStream.readLine();
             int rpm = rpmString.toInt();
+            rpm /= 1000;
             mTachModel.setRpm(rpm);
             //mBoostModel.setCurrentValue( ((float)rpm/1000.0) * 5.0 );
             mOilPressureModel.setCurrentValue( ((float)rpm / 1000.0 * 3) );
+
+            static qreal previousValue = 1;
+
+            qreal value = (qreal)rpm / 4700.0 * 100;
+
+            qreal lag = 1.0;
+            value = (value * lag) + (previousValue * (1 - lag));
+            previousValue = value;
+
+            mFuelLevelModel.setCurrentValue(value);
+            mTempFuelModel.setFuelLevel(value);
         }
 
         if(battFile.isOpen())

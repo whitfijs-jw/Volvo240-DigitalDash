@@ -6,6 +6,7 @@ Window {
     visible: true
     width: 1280
     height: 480
+
     title: qsTr("Lolvo")
 
 
@@ -22,6 +23,8 @@ Window {
     property int warningLightHorizontalMargin: 8
 
     property int speedoMax: 120;
+
+    property int smallGaugeNeedleWidth240: smallGaugeSize * 0.04
 
     property var msg: [
         "You thought this\nwas going to work?",
@@ -91,7 +94,7 @@ Window {
 
                 item.needleColor = "orange"
 
-                item.needleWidth = smallGaugeSize * 0.03
+                item.needleWidth = smallGaugeNeedleWidth240
                 item.needleLength = smallGaugeSize * 0.55
                 item.needleOffset = smallGaugeSize * .25 / 2
 
@@ -139,6 +142,7 @@ Window {
                 item.width = smallGaugeSize
 
                 item.imageResource = "qrc:/gauge-faces-740-940/740_boost.png"
+                item.needleResource = "qrc:/needles/needle-740-940.png"
 
                 item.needleColor = "red"
 
@@ -184,12 +188,13 @@ Window {
                 item.initialValueOffset = gaugeMin
 
                 item.minAngle = -140
-                item.maxAngle = -45
+                item.maxAngle = -41
 
                 item.height = smallGaugeSize
                 item.width = smallGaugeSize
 
                 item.imageResource = "qrc:/gauge-faces-850/850_boost.png"
+                item.needleResource = "qrc:/needles/needle-740-940.png"
 
                 item.needleColor = "red"
 
@@ -246,7 +251,7 @@ Window {
 
                 item.needleColor = "orange"
 
-                item.needleWidth = smallGaugeSize * 0.03
+                item.needleWidth = smallGaugeNeedleWidth240
                 item.needleLength = smallGaugeSize * 0.65
                 item.needleOffset = smallGaugeSize * .25 / 2
 
@@ -298,11 +303,13 @@ Window {
 
                 item.needleColor = "orange"
 
-                item.needleWidth = smallGaugeSize * 0.03
+                item.needleWidth = smallGaugeNeedleWidth240
                 item.needleLength = smallGaugeSize * 0.65
                 item.needleOffset = smallGaugeSize * .25 / 2
 
                 item.offset = smallGaugeSize / 4.5
+
+                item.significantDigits = 0
 
                 item.needleCenterRadius = 0.15
             }
@@ -350,11 +357,13 @@ Window {
 
                 item.needleColor = "orange"
 
-                item.needleWidth = smallGaugeSize * 0.03
+                item.needleWidth = smallGaugeNeedleWidth240
                 item.needleLength = smallGaugeSize * 0.65
                 item.needleOffset = smallGaugeSize * .25 / 2
 
                 item.offset = smallGaugeSize / 4.5
+
+                item.significantDigits = 2
 
                 item.needleCenterRadius = 0.15
             }
@@ -428,7 +437,7 @@ Window {
 
                 item.needleColor = "orange"
 
-                item.needleWidth = smallGaugeSize * 0.05
+                item.needleWidth = tachSize * 0.02
                 item.needleLength = tachSize * 0.45
                 item.needleOffset = tachSize * 0.15 / 2
 
@@ -480,10 +489,11 @@ Window {
                 item.width = tachSize
 
                 item.imageResource = "qrc:/gauge-faces-740-940/740_tach.png"
+                item.needleResource = "qrc:/needles/needle-740-940.png"
 
                 item.needleColor = "red"
 
-                item.needleWidth = tachSize * 0.03
+                item.needleWidth = tachSize * 0.035
                 item.needleLength = tachSize * 0.45
                 item.needleOffset = tachSize * 0.15 / 2
 
@@ -545,7 +555,7 @@ Window {
 
                 item.needleColor = "orange"
 
-                item.needleWidth = speedoSize * 0.015
+                item.needleWidth = speedoSize * 0.02
                 item.needleLength = speedoSize * 0.45
                 item.needleOffset = speedoSize * 0.15 / 2
 
@@ -617,10 +627,11 @@ Window {
                 item.width = speedoSize
 
                 item.imageResource = "qrc:/gauge-faces-740-940/740_speedo.png"
+                item.needleResource = "qrc:/needles/needle-740-940.png"
 
                 item.needleColor = "red"
 
-                item.needleWidth = speedoSize * 0.025
+                item.needleWidth = speedoSize * 0.0325
                 item.needleLength = speedoSize * 0.45
                 item.needleOffset = speedoSize * 0.15 / 2
 
@@ -727,6 +738,7 @@ Window {
                 item.width = smallGaugeSize
 
                 item.imageResource = "qrc:/gauge-faces-740-940/740_coolant_temp.png"
+                item.needleResource = "qrc:/needles/needle-740-940.png"
 
                 item.needleColor = "red"
 
@@ -734,6 +746,8 @@ Window {
                 item.needleLength = smallGaugeSize * 0.75
                 item.needleOffset = smallGaugeSize * 0.25 / 2
                 item.offset = smallGaugeSize / 4.5
+
+                item.significantDigits = 0
 
                 item.needleCenterRadius = 0.25
             }
@@ -778,6 +792,7 @@ Window {
                 item.width = smallGaugeSize
 
                 item.imageResource = "qrc:/gauge-faces-740-940/740_fuel.png"
+                item.needleResource = "qrc:/needles/needle-740-940.png"
 
                 item.needleColor = "red"
 
@@ -785,6 +800,8 @@ Window {
                 item.needleLength = smallGaugeSize * 0.75
                 item.needleOffset = smallGaugeSize * 0.25 / 2
                 item.offset = smallGaugeSize / 4.5
+
+                item.significantDigits = 0
 
                 item.needleCenterRadius = 0.25
             }
@@ -829,6 +846,7 @@ Window {
                 item.width = smallGaugeSize
 
                 item.imageResource = "qrc:/gauge-faces-740-940/740_voltmeter.png"
+                item.needleResource = "qrc:/needles/needle-740-940.png"
 
                 item.needleColor = "red"
 
@@ -836,6 +854,8 @@ Window {
                 item.needleLength = smallGaugeSize * 0.75
                 item.needleOffset = smallGaugeSize * 0.25 / 2
                 item.offset = smallGaugeSize / 4.5
+
+                item.significantDigits = 2
 
                 item.needleCenterRadius = 0.25
             }
@@ -881,12 +901,15 @@ Window {
                 item.width = smallGaugeSize
 
                 item.imageResource = "qrc:/gauge-faces-850/850_coolant.png"
+                item.needleResource = "qrc:/needles/needle-740-940.png"
 
                 item.needleColor = "red"
 
                 item.needleWidth = smallGaugeSize * 0.05
                 item.needleLength = smallGaugeSize * 0.50
                 item.needleOffset = smallGaugeSize * .25 / 2
+
+                item.significantDigits = 0
 
                 item.needleCenterRadius = 0.25
             }
@@ -932,12 +955,15 @@ Window {
                 item.width = smallGaugeSize
 
                 item.imageResource = "qrc:/gauge-faces-850/850_fuel_level.png"
+                item.needleResource = "qrc:/needles/needle-740-940.png"
 
                 item.needleColor = "red"
 
                 item.needleWidth = smallGaugeSize * 0.05
                 item.needleLength = smallGaugeSize * 0.50
                 item.needleOffset = smallGaugeSize * .25 / 2
+
+                item.significantDigits = 0
 
                 item.needleCenterRadius = 0.25
             }
@@ -984,6 +1010,7 @@ Window {
                 item.width = smallGaugeSize
 
                 item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_fuel.png"
+                item.needleResource = "qrc:/needles/needle-rsport.png"
 
                 item.needleColor = "burlywood"
 
@@ -991,6 +1018,8 @@ Window {
                 item.needleLength = smallGaugeSize * 0.65
                 item.needleOffset = smallGaugeSize * 0.25 / 2
                 item.offsetX = -smallGaugeSize / 7.4
+
+                item.significantDigits = 0
 
                 item.needleCenterRadius = 0.15
             }
@@ -1026,7 +1055,7 @@ Window {
                 item.minValue = gaugeMin
                 item.maxValue = gaugeMax
                 item.units = gaugeUnits
-                item.highAlarm = gaugeMax
+                item.highAlarm = gaugeHighAlarm
                 item.lowAlarm = gaugeLowAlarm
                 item.clockwise = false
 
@@ -1037,6 +1066,7 @@ Window {
                 item.width = smallGaugeSize
 
                 item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_coolant_fahrenhet.png"
+                item.needleResource = "qrc:/needles/needle-rsport.png"
 
                 item.needleColor = "burlywood"
 
@@ -1044,6 +1074,8 @@ Window {
                 item.needleLength = smallGaugeSize * 0.65
                 item.needleOffset = smallGaugeSize * 0.25 / 2
                 item.offsetX = -smallGaugeSize / 7.4
+
+                item.significantDigits = 0
 
                 item.needleCenterRadius = 0.15
             }
@@ -1090,6 +1122,7 @@ Window {
                 item.width = smallGaugeSize
 
                 item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_oil_pressure_5bar.png"
+                item.needleResource = "qrc:/needles/needle-rsport.png"
 
                 item.needleColor = "burlywood"
 
@@ -1132,7 +1165,7 @@ Window {
                 item.minValue = 8.0
                 item.maxValue = gaugeMax
                 item.units = gaugeUnits
-                item.highAlarm = gaugeMax
+                item.highAlarm = gaugeHighAlarm
                 item.lowAlarm = gaugeLowAlarm
                 item.clockwise = false
 
@@ -1143,6 +1176,7 @@ Window {
                 item.width = smallGaugeSize
 
                 item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_voltmeter.png"
+                item.needleResource = "qrc:/needles/needle-rsport.png"
 
                 item.needleColor = "burlywood"
 
@@ -1150,6 +1184,8 @@ Window {
                 item.needleLength = smallGaugeSize * 0.65
                 item.needleOffset = smallGaugeSize * 0.25 / 2
                 item.offsetX = -smallGaugeSize / 4.65
+
+                item.significantDigits = 2
 
                 item.needleCenterRadius = 0.15
             }
@@ -1202,10 +1238,11 @@ Window {
                 item.width = speedoSize
 
                 item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_speedo_mph.png"
+                item.needleResource = "qrc:/needles/needle-rsport.png"
 
                 item.needleColor = "burlywood"
 
-                item.needleWidth = speedoSize * 0.02
+                item.needleWidth = speedoSize * 0.025
                 item.needleLength = speedoSize * 0.525
                 item.needleOffset = speedoSize * 0.2 / 2
 
@@ -1270,10 +1307,11 @@ Window {
                 item.width = tachSize
 
                 item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_tachometer.png"
+                item.needleResource = "qrc:/needles/needle-rsport.png"
 
                 item.needleColor = "burlywood"
 
-                item.needleWidth = tachSize * 0.02
+                item.needleWidth = tachSize * 0.025
                 item.needleLength = tachSize * 0.525
                 item.needleOffset = tachSize * 0.2 / 2
 
@@ -1596,8 +1634,11 @@ Window {
     Item {
         id: loading
         anchors.fill: parent
-        rotation: 180
-
+        rotation: if (RASPBERRY_PI) {
+                      180
+                  } else {
+                      0
+                  }
         Rectangle {
             anchors.fill: parent
             color: "black"
@@ -1627,10 +1668,14 @@ Window {
         id: gaugeItem
         anchors.fill: parent
         focus: true
+        rotation: if (RASPBERRY_PI) {
+                      180
+                  } else {
+                      0
+                  }
         property bool initialLoad: true
         antialiasing: true
         smooth: true
-        rotation: 180
 
         Loader {
             id: currentGauge

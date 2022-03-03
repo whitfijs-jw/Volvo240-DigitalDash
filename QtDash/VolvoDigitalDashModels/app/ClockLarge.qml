@@ -17,6 +17,7 @@ Item
     property bool enableSeconds: true
 
     property string imageSource: ""
+    property string needleResource: ""
 
     property string generation: "740"
 
@@ -38,7 +39,7 @@ Item
     }
 
     Timer {
-        interval: 500; running: true; repeat: true;
+        interval: 250; running: true; repeat: true;
         onTriggered: clockLarge.timeChanged()
     }
 
@@ -70,6 +71,7 @@ Item
         textEnabled: false
 
         imageResource: generation === "740" ? imageSource : ""
+        needleResource: clockLarge.needleResource
 
         needleColor: generation === "740" ? "red" : "orange"
 
@@ -78,6 +80,8 @@ Item
         needleOffset: parent.width * .15 / 2
 
         needleCenterRadius: generation === "740" ? 0.15: 0.10
+
+        dir: RotationAnimation.Shortest
     }
 
     Gauge {
@@ -102,15 +106,17 @@ Item
         textEnabled: false
 
         imageResource: generation === "740" ? "" : imageSource
+        needleResource: clockLarge.needleResource
 
         needleColor: generation === "740" ? "red" : "orange"
 
-        needleWidth: generation === "740" ? parent.width * 0.015 : parent.width * 0.010
+        needleWidth: generation === "740" ? parent.width * 0.02 : parent.width * 0.015
         needleLength: generation === "740" ? parent.width * 0.525 : parent.width * 0.425
         needleOffset: parent.width * .15 / 2
 
         needleCenterRadius: generation === "740" ? 0.15: 0.10
 
+        dir: RotationAnimation.Shortest
     }
 
     Gauge {
@@ -136,6 +142,7 @@ Item
         imageResource: ""
 
         needleColor: generation === "740" ? "red" : "orange"
+        needleResource: clockLarge.needleResource
 
         needleWidth: generation === "740" ? parent.width * 0.035 : parent.width * 0.020
         needleLength: generation === "740" ? parent.width * 0.425 : parent.width * 0.275
@@ -143,6 +150,7 @@ Item
 
         needleCenterRadius: generation === "740" ? 0.15: 0.10
 
+        dir: RotationAnimation.Shortest
     }
 
     Text {
