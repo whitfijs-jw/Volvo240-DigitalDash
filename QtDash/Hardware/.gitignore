@@ -1,0 +1,3 @@
+**/*.epf
+**/sym-lib-table
+**/*-backups
