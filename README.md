@@ -15,6 +15,7 @@ minimize extra wiring effort and installation of superfluous sensors.
 - Cheap USB GPS for speedometer and heading (leaving the original speedo behind the dash? Not planning on implementing a validated odometer)
 
 ## Current parts (mainly driven by availability):
+- HSD123KPW2-D10 12.3" TFT 1920x720 LCD Display w/ HDMI conversion board and custom mounts
 - MCP3208 for ADC inputs
 - MCP23017SS for dash warning lights and left/right blinkers
 - ILQ1 for isolated I/O inputs (3 for 12 inputs) add one more to completely fill the MCP23017
@@ -22,6 +23,9 @@ minimize extra wiring effort and installation of superfluous sensors.
 - lM358D for driving IL300 12V isolated analog inputs
 - LMV324 & TVS912D for 5V to 3.3V analog sensor inputs
 - VK-162 USB GPS module -- needs to be manually configured with u-blox u-center to get 10Hz update rate.
+- (optional and separate) LM3488 switching power supply to maintain 5.1V out from 3V-24V input
+- (optional) MAX9924 VSS conditioning circuit
+- (separate) optocoupler tach pulse input.
 
 ![alt text](https://github.com/whitfijs-jw/Volvo240-DigitalDash/blob/develop/QtDash/project_preview.jpg?raw=true)
 
@@ -58,7 +62,7 @@ After writing has completed you can plug the SD card into the pi and boot. The d
 
 1. SSH (ethernet)
 
-**TODO: More and better information here** After boot the pi will be configured with a static ip address of 192.168.42.2.
+After boot the pi will be configured with a static ip address of 192.168.42.2.
 Assuming you're running a version of linux that has network-manager you can run some variation of the following after connecting the pi to your computer with an ethernet cable:
 
 `nmcli con add con-name dash-target type ethernet ifname <your-ethernet-interface> ip4 192.168.42.1/24`
@@ -81,9 +85,102 @@ on the host machine and then run:
 
 and enter the default credentials
 
-2. Serial (serial to USB adapter)
+## Dash Configuration
 
-**TODO: More and better information here**
+After linux is done booting and loading kernel modules, the init system will automatically start the Qt app stored in the /opt directory.  When the app is initializing it will load two configuration files from the /opt directory:
 
-Information on how to connect a serial to USB connection can be found [here](https://elinux.org/RPi_Serial_Connection). The output baud rate is 115200. You can use screen, minicom, picocom on /dev/ttyUSB0/1/2/3/4 (wherever your serial to usb get placed).
+- config.ini
+- config_gauges.ini
+
+These files are parsed using QSettings ([more info here](https://doc.qt.io/qt-5/qsettings.html).
+
+### Sensor input configuration (config.ini)
+
+The sensor configuration file contains the configuration for the analog sensor inputs, dash light inputs, tach inputs, vss inputs, and the isolated 12V inputs
+
+#### Sensor channels
+
+Under the [sensor_channel] section the following inputs can be configured:
+
+- *coolant_temp* -- Stock Volvo coolant temperature sensor/sender.
+- *fuel_level* -- Stock Volvo Fuel Level sender
+- *oil_pressure* -- Oil Pressure sender 
+- *oil_temp* -- Oil temperature sender
+- *map_sensor* -- MAP sensor sensor (GM 0-5V)
+- *ambient_temp* -- Ambient Temperature sender (any NTC sensor can be used)
+- *dimmer_voltage* -- Dimmer Rheostat output voltage
+- *fuse8_12v* -- Volvo Fuse 8 to measure battery voltage
+
+The default configuration is as follows:
+```
+[sensor_channels]
+coolant_temp=0
+fuel_level=1
+oil_pressure=2
+oil_temp=3
+map_sensor=4
+ambient_temp=5
+dimmer_voltage=6
+fuse8_12v=7
+```
+
+#### Dash Light Inputs
+
+Under the [dash_lights] section the following inputs can be configured:
+
+- *oil_pressure_sw* -- Stock oil pressure switch
+- *od_lamp* -- Overdrive lamp
+- *high_beam* -- High beam indication
+- *brake_failure* -- brake failure indication
+- *bulb_failure* -- bulb failure indication
+- *charging* -- Alternator D+/Battery charge failure indication
+- *blinker_left* -- Left blinker indication
+- *blinker_right* -- Right blinker indication
+- *od_lamp_auto* -- auto trans OD lamp
+- *check_engine* -- Check Engine indication
+- *parking_brake* -- Parking Brake engagement indication
+- *conn_32_pin3* -- Half moon connector pin 3 (ABS light in newer 240s)
+
+and one additional option:
+
+- *active_low* -- Optoisolator outputs are open collector so this should be set to 1 unless changes to the hardware have been made
+
+The default configuration is as follows:
+
+```
+[dash_lights]
+active_low=1
+oil_pressure_sw=0
+od_lamp=1
+high_beam=2
+brake_failure=3
+bulb_failure=7
+charging=6
+blinker_left=5
+blinker_right=4
+od_lamp_auto=8
+check_engine=9
+parking_brake=10
+conn_32_pin3=11
+```
+
+#### MAP Sensor configuration
+
+Designed for a GM style 0-5V output MAP sensor (1 bar, 2 bar, 3 bar). Under the [map_sensor] section the following parameters can be configured:
+
+- *p_0v* -- pressure when sensor output is 0V
+- *p_5v* -- pressure when sensor output is 5V
+- *units* -- pressure units used for above values.  "kPa", "psi" or "bar" should be used
+
+The default configuration is for a 3 bar GM style map sensor:
+
+```
+[map_sensor]
+p_0v=3.6
+p_5v=315
+units="kPa"
+```
+
+#### Temperature Sensor (NTC) Configuration
+
 
