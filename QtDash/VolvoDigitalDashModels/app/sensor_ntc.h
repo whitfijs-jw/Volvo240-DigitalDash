@@ -5,9 +5,19 @@
 #include <sensor_source_adc.h>
 #include <ntc.h>
 
-
+/**
+ * @brief The NtcSensor class
+ */
 class NtcSensor : public Sensor {
 public:
+    /**
+     * @brief NtcSensor constructor
+     * @param parent: parent object
+     * @param config: dash config
+     * @param source: adc source
+     * @param channel: adc channel
+     * @param type: type of ntc sensor
+     */
     NtcSensor(QObject * parent, Config * config,
               AdcSource * source, int channel,
               Config::TemperatureSensorType type) :
@@ -29,6 +39,11 @@ public:
     }
 
 public slots:
+    /**
+     * @brief transform adc votlage into temperature
+     * @param data: adc votlage from adc source
+     * @param channel: adc channel
+     */
     void transform(QVariant data, int channel) override {
         if (channel == getChannel()) {
             qreal volts = data.toReal();

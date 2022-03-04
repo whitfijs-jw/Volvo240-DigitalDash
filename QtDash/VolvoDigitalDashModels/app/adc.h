@@ -116,22 +116,30 @@ public:
         return -1.0;
     }
 
+    /**
+     * @brief Get number of channels
+     * @return number of channels
+     */
     int getNumChannels() {
         return mNumChannels;
     }
 
+    /**
+     * @brief Get device name
+     * @return Device name.  MCP3208, ADS1115, etc
+     */
     std::string getDeviceName() {
         return mDeviceName;
     }
 
 private:
-    static constexpr char IIO_DEVICE_PATH[] = "/sys/bus/iio/devices/";
-    static constexpr char IIO_DEVICE_BASENAME[] = "iio:device";
-    static constexpr char CHANNEL_DATA_PATH[] = "in_voltageX_raw";
+    static constexpr char IIO_DEVICE_PATH[] = "/sys/bus/iio/devices/"; //!< Default iio device path
+    static constexpr char IIO_DEVICE_BASENAME[] = "iio:device"; //!< default iio device base name
+    static constexpr char CHANNEL_DATA_PATH[] = "in_voltageX_raw"; //!< raw data channel X is replaced by the channel number
 
-    static constexpr char MCP3208[] = "mcp3208";
-    static constexpr char ADS1115[] = "ads1115";
-    static constexpr char MCP3008[] = "mcp3008";
+    static constexpr char MCP3208[] = "mcp3208"; //!< MCP3208
+    static constexpr char ADS1115[] = "ads1115"; //!< ADS1115
+    static constexpr char MCP3008[] = "mcp3008"; //!< MCP3008
 
     /**
      * @brief Find the iio device given the expected name

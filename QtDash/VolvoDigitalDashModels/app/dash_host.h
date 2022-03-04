@@ -128,7 +128,7 @@ public slots:
             int rpm = rpmString.toInt();
             rpm /= 1000;
             mTachModel.setRpm(rpm);
-            //mBoostModel.setCurrentValue( ((float)rpm/1000.0) * 5.0 );
+            mBoostModel.setCurrentValue( ((float)rpm/1000.0) * 5.0 );
             mOilPressureModel.setCurrentValue( ((float)rpm / 1000.0 * 3) );
 
             static qreal previousValue = 1;
@@ -159,23 +159,23 @@ public slots:
         }
 
 
-        mBoostModel.setCurrentValue(mBoostModel.currentValue() + 1);
-        mFuelLevelModel.setCurrentValue(mFuelLevelModel.currentValue() + 1);
-        mCoolantTempModel.setCurrentValue(mCoolantTempModel.currentValue() + 1);
+//        mBoostModel.setCurrentValue(mBoostModel.currentValue() + 1);
+//        mFuelLevelModel.setCurrentValue(mFuelLevelModel.currentValue() + 1);
+//        mCoolantTempModel.setCurrentValue(mCoolantTempModel.currentValue() + 1);
 
-        if (mBoostModel.currentValue() > mBoostModel.maxValue()) {
-            mBoostModel.setCurrentValue(-25.0);
-        }
-
-
-        if (mFuelLevelModel.currentValue() > mFuelLevelModel.maxValue()) {
-            mFuelLevelModel.setCurrentValue(0);
-        }
+//        if (mBoostModel.currentValue() > mBoostModel.maxValue()) {
+//            mBoostModel.setCurrentValue(-25.0);
+//        }
 
 
-        if (mCoolantTempModel.currentValue() > mCoolantTempModel.maxValue()) {
-            mCoolantTempModel.setCurrentValue(120);
-        }
+//        if (mFuelLevelModel.currentValue() > mFuelLevelModel.maxValue()) {
+//            mFuelLevelModel.setCurrentValue(0);
+//        }
+
+
+//        if (mCoolantTempModel.currentValue() > mCoolantTempModel.maxValue()) {
+//            mCoolantTempModel.setCurrentValue(120);
+//        }
 
         tempFile.close();
         rpmFile.close();

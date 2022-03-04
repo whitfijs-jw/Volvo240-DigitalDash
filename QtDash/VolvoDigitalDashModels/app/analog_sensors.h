@@ -13,6 +13,7 @@
 #include <sensor_utils.h>
 #include <analog_12v_input.h>
 
+
 class AnalogSensors : public QObject {
     Q_OBJECT
 public:

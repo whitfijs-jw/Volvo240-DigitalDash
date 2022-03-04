@@ -4,8 +4,20 @@
 #include <gauge.h>
 #include <speedometer_model.h>
 
+/**
+ * @brief The SpeedometerGauge class
+ */
 class SpeedometerGauge: public Gauge {
 public:
+    /**
+     * @brief SpeedometerGauge constructor
+     * @param parent: parent object
+     * @param config: Dash config
+     * @param sensors: list of sensors
+     * @param model: Speedometer QML model
+     * @param modelName: model name
+     * @param context: QML context to register model
+     */
     SpeedometerGauge(QObject * parent, Config * config, QList<Sensor *> sensors,
                    SpeedometerModel * model, QString modelName, QQmlContext * context) :
     Gauge(parent, config, sensors, model, modelName, context) {

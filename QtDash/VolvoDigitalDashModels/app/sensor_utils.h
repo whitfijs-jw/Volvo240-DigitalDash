@@ -7,31 +7,40 @@
 #include <config.h>
 #include <../../eigen/Eigen/Dense>
 
+/**
+ * @brief The SensorUtils class
+ */
 class SensorUtils {
 public:
 
     // temperature constant values
-    static constexpr qreal C_CONST = 9.0 / 5.0;
-    static constexpr qreal T0_K = 273.15;
-    static constexpr qreal T0_F = 32.0;
+    static constexpr qreal C_CONST = 9.0 / 5.0; //!< Celcius to fahrenheit constant
+    static constexpr qreal T0_K = 273.15; //!< 0C in kelvin
+    static constexpr qreal T0_F = 32.0; //!< 0C in fahrenheit
 
     // pressure constants
-    static constexpr qreal PSI_PER_KPA = .145038;
-    static constexpr qreal BAR_PER_KPA = .01;
+    static constexpr qreal PSI_PER_KPA = .145038; //!< psi per kpa
+    static constexpr qreal BAR_PER_KPA = .01; //!< bar per kpa
 
     // distance constants
-    static constexpr qreal METER_PER_IN = .0254;
-    static constexpr qreal METER_PER_FOOT = .3048;
-    static constexpr qreal METER_PER_YARD = .9144;
-    static constexpr qreal METER_PER_MILE = 1609.34;
+    static constexpr qreal METER_PER_IN = .0254; //!< meters per in
+    static constexpr qreal METER_PER_FOOT = .3048; //!< meters per foot
+    static constexpr qreal METER_PER_YARD = .9144; //!< meters per yard
+    static constexpr qreal METER_PER_MILE = 1609.34; //!< meters per mile
 
-    static constexpr qreal IN_PER_MILE = 63360.0;
-    static constexpr qreal FOOT_PER_MILE = 5280.0;
-    static constexpr qreal YARD_PER_MILE = 1760.0;
+    static constexpr qreal IN_PER_MILE = 63360.0; //!< inches per mile
+    static constexpr qreal FOOT_PER_MILE = 5280.0; //!< feet per mile
+    static constexpr qreal YARD_PER_MILE = 1760.0; //!< yard per mile
 
     // Check for disconnected or shorted sensor
-    static constexpr qreal SENSOR_MAX_PCT = .95;
+    static constexpr qreal SENSOR_MAX_PCT = .95; //!< above this percentage and an error is assumed
 
+    /**
+     * @brief Is sensor reading valid
+     * @param volts: adc voltage
+     * @param vSupply: supply voltage
+     * @return: true if sensor output is valid
+     */
     static constexpr bool isValid(qreal volts, qreal vSupply) {
         if (volts > vSupply * SENSOR_MAX_PCT || volts < vSupply * (1 - SENSOR_MAX_PCT)) {
             return false;
@@ -40,6 +49,13 @@ public:
         return true;
     }
 
+    /**
+     * @brief Get resistance from sensor output
+     * @param volts: ADC voltage
+     * @param vSupply: ADC supply
+     * @param rBalance: balance resistor
+     * @return sensor resistance value
+     */
     static constexpr qreal getResistance(qreal volts, qreal vSupply, qreal rBalance) {
         qreal res = rBalance / ((vSupply / volts) - 1.0);
 
@@ -48,12 +64,24 @@ public:
         return res;
     }
 
+    /**
+     * @brief Estimate optimal balance resistor (largest range)
+     * @param rLow: lowest sensor resistance
+     * @param rHigh: highest sensor resistance
+     * @return balance resistor value
+     */
     static qreal estimateOptimalBalanceResistor(qreal rLow, qreal rHigh) {
         // checks?
 
         return qSqrt(rLow * rHigh);
     }
 
+    /**
+     * @brief Convert distance to meters
+     * @param distance: input distance
+     * @param units: input units
+     * @return distance in meters
+     */
     static constexpr qreal toMeters(qreal distance, Config::DistanceUnits units) {
         if (units == Config::DistanceUnits::INCH) {
             return distance * METER_PER_IN;
@@ -76,6 +104,12 @@ public:
         }
     }
 
+    /**
+     * @brief Convert distance to miles
+     * @param distance: input distance
+     * @param units: input units
+     * @return distance in miles
+     */
     static constexpr qreal toMiles(qreal distance, Config::DistanceUnits units) {
         if (units == Config::DistanceUnits::INCH) {
             return distance / IN_PER_MILE;
@@ -98,6 +132,12 @@ public:
         }
     }
 
+    /**
+     * @brief Convert temperature to kelvin
+     * @param temp: input temperature
+     * @param units: input units
+     * @return temperature in kelvin
+     */
     static constexpr qreal toKelvin(qreal temp, Config::TemperatureUnits units) {
         if (units == Config::TemperatureUnits::FAHRENHEIT) {
             return ((temp - T0_F) / C_CONST) + T0_K;
@@ -108,10 +148,22 @@ public:
         }
     }
 
+    /**
+     * @brief Convert temperature to celsius
+     * @param temp: input temperature
+     * @param units: input units
+     * @return temperature in celsius
+     */
     static constexpr qreal toCelsius(qreal temp, Config::TemperatureUnits units) {
         return toKelvin(temp, units) - T0_K;
     }
 
+    /**
+     * @brief Convert temperature to fahrenheit
+     * @param temp: input temperature
+     * @param units: input units
+     * @return temperature in fahrenheit
+     */
     static constexpr qreal toFahrenheit(qreal temp, Config::TemperatureUnits units) {
         if (units == Config::TemperatureUnits::KELVIN) {
             return ((temp - T0_K) * C_CONST) + T0_F;
@@ -122,6 +174,13 @@ public:
         }
     }
 
+    /**
+     * @brief Convert temperature
+     * @param temp: input temperature
+     * @param to: units to convert to
+     * @param from: units to convert from
+     * @return temperature in "to" units
+     */
     static constexpr qreal convertTemperature(qreal temp,
                                    Config::TemperatureUnits to,
                                    Config::TemperatureUnits from) {
@@ -140,6 +199,12 @@ public:
         return 0;
     }
 
+    /**
+     * @brief Convert pressure to kPa
+     * @param pressure: input pressure
+     * @param units: input pressure units
+     * @return pressure in kPa
+     */
     static constexpr qreal toKpa(qreal pressure, Config::PressureUnits units) {
         if (units == Config::PressureUnits::PSI) {
             return pressure / PSI_PER_KPA;
@@ -151,6 +216,12 @@ public:
         }
     }
 
+    /**
+     * @brief Convert pressure to psi
+     * @param pressure: input pressure
+     * @param units: input pressure units
+     * @return pressure in psi
+     */
     static constexpr qreal toPsi(qreal pressure, Config::PressureUnits units) {
         if (units == Config::PressureUnits::PSI) {
             return pressure;
@@ -162,6 +233,12 @@ public:
         }
     }
 
+    /**
+     * @brief Convert pressure to bar
+     * @param pressure: input pressure
+     * @param units: input pressure units
+     * @return pressure in bar
+     */
     static constexpr qreal toBar(qreal pressure, Config::PressureUnits units) {
         if (units == Config::PressureUnits::PSI) {
             return (pressure / PSI_PER_KPA) * BAR_PER_KPA;
@@ -173,6 +250,13 @@ public:
         }
     }
 
+    /**
+     * @brief convert pressure
+     * @param pressure: input pressure
+     * @param to: units to convert to
+     * @param from: units to convert from
+     * @return pressure in desired units
+     */
     static constexpr qreal convertPressure(
             qreal pressure, Config::PressureUnits to, Config::PressureUnits from) {
         switch (to) {
@@ -190,11 +274,27 @@ public:
         }
     }
 
+    /**
+     * @brief interpolate
+     * @param x: interpolation x value
+     * @param x0: x0 value
+     * @param y0: y0 value
+     * @param x1: x1 value
+     * @param y1: y1 value
+     * @return y value interpolated at x
+     */
     static constexpr qreal interp(qreal x, qreal x0, qreal y0, qreal x1, qreal y1) {
         qreal diff = (x - x0) / (x1 - x0);
         return  (y0 * (1 - diff) + y1 * diff);
     }
 
+    /**
+     * @brief Polynomial regression of input values
+     * @param x: x values
+     * @param y: y values
+     * @param order: polynomial order
+     * @return QList of polynomial coefficients of length (order + 1)
+     */
     static QList<qreal> polynomialRegression(QList<qreal> x, QList<qreal> y, int order) {
         if (x.length() != y.length()) {
             // problem
@@ -229,6 +329,12 @@ public:
         return coeff;
     }
 
+    /**
+     * @brief calculate polynomial value given coefficients and x value
+     * @param x: x value
+     * @param coeff: polynomial coefficients
+     * @return value of polynomial at x
+     */
     static qreal polynomialValue(qreal x, QList<qreal> coeff) {
         qreal sum = 0;
         // sum terms

@@ -39,15 +39,15 @@
 class DashNew : public QObject {
     Q_OBJECT
 public:
-    static constexpr char COOLANT_TEMP_MODEL_NAME[] = "coolantTempModel";
-    static constexpr char FUEL_LEVEL_MODEL_NAME[] = "fuelLevelModel";
-    static constexpr char OIL_PRESSURE_MODEL_NAME[] = "oilPModel";
-    static constexpr char OIL_TEMPERATURE_MODEL_NAME[] = "oilTModel";
-    static constexpr char BOOST_GAUGE_MODEL_NAME[] = "boostModel";
-    static constexpr char VOLT_METER_MODEL_NAME[] = "voltMeterModel";
-    static constexpr char TACH_MODEL_NAME[] = "rpmModel";
-    static constexpr char SPEEDO_MODEL_NAME[] = "speedoModel";
-    static constexpr char TEMP_FUEL_CLUSTER_MODEL_NAME[] = "tempFuelModel";
+    static constexpr char COOLANT_TEMP_MODEL_NAME[] = "coolantTempModel"; //!< coolant temp model name
+    static constexpr char FUEL_LEVEL_MODEL_NAME[] = "fuelLevelModel"; //!< fuel level model name
+    static constexpr char OIL_PRESSURE_MODEL_NAME[] = "oilPModel"; //!< oil pressure model name
+    static constexpr char OIL_TEMPERATURE_MODEL_NAME[] = "oilTModel"; //!< oil temperature model name
+    static constexpr char BOOST_GAUGE_MODEL_NAME[] = "boostModel"; //!< boost pressure model name
+    static constexpr char VOLT_METER_MODEL_NAME[] = "voltMeterModel"; //!< voltmeter model name
+    static constexpr char TACH_MODEL_NAME[] = "rpmModel"; //!< rpm/tacho model name
+    static constexpr char SPEEDO_MODEL_NAME[] = "speedoModel"; //!< speedometer model name
+    static constexpr char TEMP_FUEL_CLUSTER_MODEL_NAME[] = "tempFuelModel"; //!< 240 combined temp/fuel model name
 
     /**
      * @brief Constructor
@@ -87,49 +87,49 @@ public:
     }
 
 private:
-    QQmlContext * mContext;
-    EventTimers mEventTiming;
-    Config mConfig;
+    QQmlContext * mContext; //!< QML Context
+    EventTimers mEventTiming; //!< Event Timer
+    Config mConfig; //!< Dash Config
 
-    DashLights * mDashLights;
+    DashLights * mDashLights; //!< Dash lights
 
-    AdcSource * mAdcSource;
-    GpsSource * mGpsSource;
-    TachSource * mTachSource;
-    VssSource * mVssSource;
+    AdcSource * mAdcSource; //!< ADC source
+    GpsSource * mGpsSource; //!< GPS speed/position/heading source
+    TachSource * mTachSource; //!< tach source (pulse counter)
+    VssSource * mVssSource; //!< vehicle speed sensor source (pulse counter)
 
-    Map_Sensor * mMapSensor;
-    NtcSensor * mCoolantTempSensor;
-    NtcSensor * mAmbientTempSensor;
-    NtcSensor * mOilTempSensor;
-    VoltmeterSensor * mVoltmeterSensor;
-    ResistiveSensor * mOilPressureSensor;
-    ResistiveSensor * mFuelLevelSensor;
-    //SpeedometerSensor<GpsSource> * mSpeedoSensor;
-    SpeedometerSensor<VssSource> * mSpeedoSensor;
-    TachSensor * mTachSensor;
+    Map_Sensor * mMapSensor; //!< map sensor
+    NtcSensor * mCoolantTempSensor; //!< coolant temp sensor
+    NtcSensor * mAmbientTempSensor; //!< ambient temp sensor
+    NtcSensor * mOilTempSensor; //!< oil temp sensor
+    VoltmeterSensor * mVoltmeterSensor; //!< voltmeter sensor
+    ResistiveSensor * mOilPressureSensor; //!< oil pressure sensor
+    ResistiveSensor * mFuelLevelSensor; //!< fuel level sensor
+    //SpeedometerSensor<GpsSource> * mSpeedoSensor; //!< speedometer w/ gps input
+    SpeedometerSensor<VssSource> * mSpeedoSensor; //!< speedometer w/ vss input
+    TachSensor * mTachSensor; //!< tachometer sensor
 
-    AccessoryGaugeModel mBoostModel;
-    AccessoryGaugeModel mOilTemperatureModel;
-    AccessoryGaugeModel mCoolantTempModel;
-    AccessoryGaugeModel mOilPressureModel;
-    AccessoryGaugeModel mFuelLevelModel;
-    AccessoryGaugeModel mVoltMeterModel;
-    TempAndFuelGaugeModel mTempFuelModel;
+    AccessoryGaugeModel mBoostModel; //!< boost pressure QML model
+    AccessoryGaugeModel mOilTemperatureModel; //!< oil temperature QML model
+    AccessoryGaugeModel mCoolantTempModel; //!< coolant temperature QML model
+    AccessoryGaugeModel mOilPressureModel; //!< oil pressure QML model
+    AccessoryGaugeModel mFuelLevelModel; //!< fuel level QML model
+    AccessoryGaugeModel mVoltMeterModel; //!< voltmeter QML model
+    TempAndFuelGaugeModel mTempFuelModel; //!< 240 combined temp/fuel QML model
 
-    SpeedometerModel mSpeedoModel;
-    TachometerModel mTachoModel;
+    SpeedometerModel mSpeedoModel; //!< speedometer QML model
+    TachometerModel mTachoModel; //!< Tachometer QML model
 
-    AccessoryGauge * mBoostGauge;
-    AccessoryGauge * mCoolantTempGauge;
-    AccessoryGauge * mOilTempGauge;
-    AccessoryGauge * mVoltmeterGauge;
-    AccessoryGauge * mOilPressureGauge;
-    AccessoryGauge * mFuelLevelGauge;
-    TempFuelClusterGauge * mTempFuelClusterGauge;
+    AccessoryGauge * mBoostGauge; //!< boost pressure gauge
+    AccessoryGauge * mCoolantTempGauge; //!< coolant temp gauge
+    AccessoryGauge * mOilTempGauge; //!< oil temp gauge
+    AccessoryGauge * mVoltmeterGauge; //!< voltmeter gauge
+    AccessoryGauge * mOilPressureGauge; //!< oil pressure gauge
+    AccessoryGauge * mFuelLevelGauge; //!< fuel level gauge
+    TempFuelClusterGauge * mTempFuelClusterGauge; //!< 240 combined temp/fuel gauge
 
-    SpeedometerGauge * mSpeedoGauge;
-    TachometerGauge * mTachoGauge;
+    SpeedometerGauge * mSpeedoGauge; //!< speedometer gauge
+    TachometerGauge * mTachoGauge; //!< tachometer gauge
 
     /**
      * @brief Initialize sensor sources

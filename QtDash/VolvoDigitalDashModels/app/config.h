@@ -172,15 +172,18 @@ public:
         FAHRENHEIT, //!< Fahrenheit
     };
 
+    /**
+     * @brief The DistanceUnits enum
+     */
     enum class DistanceUnits {
-        INCH = 0,
-        FOOT,
-        YARD,
-        MILE,
-        MILLIMETER,
-        CENTIMETER,
-        METER,
-        KILOMETER,
+        INCH = 0, //!< inches
+        FOOT,   //!< feet
+        YARD,   //!< yards
+        MILE, //!< miles
+        MILLIMETER, //!< millimeters
+        CENTIMETER, //!< centimeters
+        METER, //!< meters
+        KILOMETER, //!< kilometer
     };
 
     /**
@@ -192,36 +195,53 @@ public:
         AMBIENT, //!< Outside/Ambient temp sensor
     };
 
+    /**
+     * @brief The ResistiveSensorType enum
+     */
     enum class ResistiveSensorType {
-        INTERPOLATION = 0,
-        POLYNOMIAL,
+        INTERPOLATION = 0, //!< interpolate calibration data
+        POLYNOMIAL, //!< fit polynomial to calibration data
     };
 
+    /**
+     * @struct Resistive Sensor config
+     */
     typedef struct ResistiveSensorConfig {
-        QString type;
-        ResistiveSensorType fitType;
-        QList<qreal> x;
-        QList<qreal> y;
-        QList<qreal> coeff; // polynomial only
-        int order; //polynomial only
-        qreal rBalance;
-        QString units;
-        qreal lag;
-        qreal vSupply;
+        QString type; //!< sensor type
+        ResistiveSensorType fitType; //!< @ref ResistiveSensorType
+        QList<qreal> x; //!< calibration x data
+        QList<qreal> y; //!< calibration y data
+        QList<qreal> coeff; //!< coefficients for polynomial fit only
+        int order; //!< polynomial order -- polynomial only
+        qreal rBalance; //!< balance resistor value in ohms
+        QString units; //!< calibration data units
+        qreal lag; //!< filtering value (0-1)
+        qreal vSupply; //!< supply voltage
 
+        /**
+         * @brief isValid
+         * @return is config valid
+         */
         bool isValid() {
             return true; //TODO: yea
         }
     } ResistiveSensorConfig_t;
 
+    /**
+     * @struct 12V analog input configuration
+     */
     typedef struct Analog12VInputConfig{
-        QString type; // name?
-        qreal optoR1; // opto R1 resistance
-        qreal optoR2; // opto R2 resistance
-        qreal inputR1; // input voltage divided R1
-        qreal inputR2; // input voltage divider R2
-        qreal gainK3; // opto transfer gain K3
+        QString type; //!< input type
+        qreal optoR1; //!< opto R1 resistance
+        qreal optoR2; //!< opto R2 resistance
+        qreal inputR1; //!< input voltage divided R1
+        qreal inputR2; //!< input voltage divider R2
+        qreal gainK3; //!< opto transfer gain K3
 
+        /**
+         * @brief isValid
+         * @return is config valid
+         */
         bool isValid() {
             return true; //TODO: yea
         }
@@ -286,32 +306,44 @@ public:
         int avgNumSamples; //!< number of samples to average over
     }TachInputConfig_t;
 
+    /**
+     * @struct VssInputConfig
+     */
     typedef struct VssInputConfig {
-        int pulsePerRot;
-        qreal tireDiameter;
-        DistanceUnits tireDiameterUnits;
-        int pulsePerUnitDistance;
-        DistanceUnits distanceUnits;
-        int maxSpeed;
+        int pulsePerRot; //!< Number of pulses from VSS sensor per rotation of the tire
+        qreal tireDiameter; //!< tire diameter
+        DistanceUnits tireDiameterUnits; //!< tire diameter units @ref DistanceUnits
+        int pulsePerUnitDistance; //!< Pulses per unit distance.  Will be calculated from tire diameter if left empty
+        DistanceUnits distanceUnits; //!< unit of distance for pulsePerUnitDistance
+        int maxSpeed; //!< Max speed -- lowest possible value it best will filter out noisy signals better
     } VssInputConfig_t;
 
+    /**
+     * @struct GaugeConfig
+     */
     typedef struct GaugeConfig {
-        qreal min;
-        qreal max;
-        qreal lowAlarm;
-        qreal highAlarm;
-        QString displayUnits;
+        qreal min; //!< minimum gauge value
+        qreal max; //!< maxuimum gauge value
+        qreal lowAlarm; //!< low alarm
+        qreal highAlarm; //!< high alarm
+        QString displayUnits; //!< display units
     } GaugeConfig_t;
 
+    /**
+     * @struct SpeedoConfig
+     */
     typedef struct SpeedoConfig {
-        GaugeConfig_t gaugeConfig;
-        QString topSource;
-        QString topUnits;
+        GaugeConfig_t gaugeConfig; //!< Gauge config
+        QString topSource; //!< secondary display source
+        QString topUnits; //!< secondary display units
     } SpeedoConfig_t;
 
+    /**
+     * @struct TachoConfig
+     */
     typedef struct TachoConfig {
-        qreal maxRpm;
-        qreal redline;
+        qreal maxRpm; //!< maximum rpm -- lowest possible value will help filter out noisier data
+        qreal redline; //!< defines when numerical RPM indication will turn red
     } TachoConfig_t ;
 
     /**
@@ -328,6 +360,10 @@ public:
         loadGaugeConfigs();
     }
 
+    /**
+     * @brief Load gauge configs from the .ini file
+     * @return true if successful
+     */
     bool loadGaugeConfigs() {
         // accessory gauges
         mGaugeConfigs.insert(BOOST_GAUGE_GROUP, loadGaugeConfig(BOOST_GAUGE_GROUP));
@@ -359,6 +395,11 @@ public:
         return true;
     }
 
+    /**
+     * @brief Load individual gauge config
+     * @param groupName: Gauge group name
+     * @return gauge config
+     */
     GaugeConfig_t loadGaugeConfig(QString groupName) {
         mGaugeConfig->beginGroup(groupName);
 
@@ -588,6 +629,11 @@ public:
         }
     }
 
+    /**
+     * @brief parseDistanceUnits
+     * @param units: unit string
+     * @return @ref DistanceUnits
+     */
     DistanceUnits parseDistanceUnits(QString units) {
         units = units.toLower();
 
@@ -669,29 +715,56 @@ public:
         return isMapConfigValid(&mDashLightConfig);
     }
 
+    /**
+     * @brief Get resistive sensor config
+     * @param name: resistive sensor name
+     * @return Sensor Config
+     */
     ResistiveSensorConfig_t getResistiveSensorConfig(QString name) {
         ResistiveSensorConfig_t empty;
         return mResistiveSensorConfig.value(name, empty);
     }
 
+    /**
+     * @brief Get 12V analog input config
+     * @param name: 12 analog input name
+     * @return input config
+     */
     Analog12VInputConfig_t getAnalog12VInputConfig(QString name) {
         Analog12VInputConfig_t empty;
         return mAnalog12VInputConfig.value(name, empty);
     }
 
+    /**
+     * @brief Get vehicle speed sensor config
+     * @return
+     */
     VssInputConfig_t getVssConfig() {
         return mVssInputConfig;
     }
 
+    /**
+     * @brief Get gauge config
+     * @param name: gauge name
+     * @return Gauge config
+     */
     GaugeConfig_t getGaugeConfig(QString name) {
         GaugeConfig_t empty;
         return mGaugeConfigs.value(name, empty);
     }
 
+    /**
+     * @brief Get speedo gauge config
+     * @return Speedo gauge config
+     */
     SpeedoConfig_t getSpeedoConfig() {
         return mSpeedoGaugeConfig;
     }
 
+    /**
+     * @brief Get tachometer gauge config
+     * @return Tachometer gauge config
+     */
     TachoConfig_t getTachGaugeConfig() {
         return mTachGaugeConfig;
     }
@@ -707,14 +780,14 @@ private:
     MapSensorConfig_t mMapSensorConfig; //!< MAP sensor configuration
     QList<TempSensorConfig_t> mTempSensorConfigs; //!< Temp sensor configurations
     TachInputConfig_t mTachConfig; //!< Tach signal input configuration
-    QMap<QString, ResistiveSensorConfig_t> mResistiveSensorConfig;
-    QMap<QString, Analog12VInputConfig_t> mAnalog12VInputConfig;
+    QMap<QString, ResistiveSensorConfig_t> mResistiveSensorConfig; //!< Resistive sensor configs
+    QMap<QString, Analog12VInputConfig_t> mAnalog12VInputConfig; //!< 12V analog configs
 
-    QSettings * mGaugeConfig = nullptr;
-    QMap<QString, GaugeConfig_t> mGaugeConfigs;
-    SpeedoConfig_t mSpeedoGaugeConfig;
-    TachoConfig_t mTachGaugeConfig;
-    VssInputConfig_t mVssInputConfig;
+    QSettings * mGaugeConfig = nullptr; //!< Gauge config QSettings
+    QMap<QString, GaugeConfig_t> mGaugeConfigs; //!< map of gauge configs
+    SpeedoConfig_t mSpeedoGaugeConfig; //!< speedo gauge config
+    TachoConfig_t mTachGaugeConfig; //!< tacho gauge config
+    VssInputConfig_t mVssInputConfig; //!< vehicle speed sensor config
 
     /**
      * @brief Check that values are valid in a map
