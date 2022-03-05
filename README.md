@@ -102,14 +102,16 @@ The sensor configuration file contains the configuration for the analog sensor i
 
 Under the [sensor_channel] section the following inputs can be configured:
 
-- *coolant_temp* -- Stock Volvo coolant temperature sensor/sender.
-- *fuel_level* -- Stock Volvo Fuel Level sender
-- *oil_pressure* -- Oil Pressure sender 
-- *oil_temp* -- Oil temperature sender
-- *map_sensor* -- MAP sensor sensor (GM 0-5V)
-- *ambient_temp* -- Ambient Temperature sender (any NTC sensor can be used)
-- *dimmer_voltage* -- Dimmer Rheostat output voltage
-- *fuse8_12v* -- Volvo Fuse 8 to measure battery voltage
+| Parameter | Description |
+|---|---|
+| *coolant_temp* | Stock Volvo coolant temperature sensor/sender. |
+| *fuel_level* | Stock Volvo Fuel Level sender |
+| *oil_pressure* | Oil Pressure sender |
+| *oil_temp* | Oil temperature sender |
+| *map_sensor* | MAP sensor sensor (GM 0-5V) |
+| *ambient_temp* | Ambient Temperature sender (any NTC sensor can be used) |
+| *dimmer_voltage* | Dimmer Rheostat output voltage |
+| *fuse8_12v* | Volvo Fuse 8 to measure battery voltage |
 
 The default configuration is as follows:
 ```
@@ -126,20 +128,22 @@ fuse8_12v=7
 
 #### Dash Light Inputs
 
-Under the [dash_lights] section the following inputs can be configured:
+Under the **[dash_lights]** section the following inputs can be configured:
 
-- *oil_pressure_sw* -- Stock oil pressure switch
-- *od_lamp* -- Overdrive lamp
-- *high_beam* -- High beam indication
-- *brake_failure* -- brake failure indication
-- *bulb_failure* -- bulb failure indication
-- *charging* -- Alternator D+/Battery charge failure indication
-- *blinker_left* -- Left blinker indication
-- *blinker_right* -- Right blinker indication
-- *od_lamp_auto* -- auto trans OD lamp
-- *check_engine* -- Check Engine indication
-- *parking_brake* -- Parking Brake engagement indication
-- *conn_32_pin3* -- Half moon connector pin 3 (ABS light in newer 240s)
+| Parameter | Description |
+|---|---|
+| *oil_pressure_sw* | Stock oil pressure switch |
+| *od_lamp* | Overdrive lamp |
+| *high_beam* | High beam indication |
+| *brake_failure* | brake failure indication |
+| *bulb_failure* | bulb failure indication |
+| *charging* | Alternator D+/Battery charge failure indication |
+| *blinker_left* | Left blinker indication |
+| *blinker_right* | Right blinker indication |
+| *od_lamp_auto* | auto trans OD lamp |
+| *check_engine* | Check Engine indication |
+| *parking_brake* | Parking Brake engagement indication |
+| *conn_32_pin3* | Half moon connector pin 3 (ABS light in newer 240s) |
 
 and one additional option:
 
@@ -166,11 +170,13 @@ conn_32_pin3=11
 
 #### MAP Sensor configuration
 
-Designed for a GM style 0-5V output MAP sensor (1 bar, 2 bar, 3 bar). Under the [map_sensor] section the following parameters can be configured:
+Designed for a GM style 0-5V output MAP sensor (1 bar, 2 bar, 3 bar). Under the **[map_sensor]** section the following parameters can be configured:
 
-- *p_0v* -- pressure when sensor output is 0V
-- *p_5v* -- pressure when sensor output is 5V
-- *units* -- pressure units used for above values.  "kPa", "psi" or "bar" should be used
+| Parameter | Description |
+|---|---|
+| *p_0v* | pressure when sensor output is 0V |
+| *p_5v* | pressure when sensor output is 5V |
+| *units* | pressure units used for above values.  "kPa", "psi" or "bar" should be used |
 
 The default configuration is for a 3 bar GM style map sensor:
 
@@ -183,4 +189,180 @@ units="kPa"
 
 #### Temperature Sensor (NTC) Configuration
 
+An array of NTC sensor configurations. Calibration curves are calculated using the [Steinhart-Hart equation](https://en.wikipedia.org/wiki/Steinhart%E2%80%93Hart_equation). Under the **[temp_sensor]** the following parameters can be configured:
 
+| Parameter | Description |
+|---|---|
+| *type* | Sensor type.  Options are "coolant", "oil", and "ambient" |
+| *r_balance* | Resistance of the balance resistor. This can be calculated based on the high and low resistances expected during operation. |
+| *v_supply* 	| Sensor circuit supply voltage (5V for Rev A and B hardware) |
+| *t1_temp* 	|  Temperature at first calibration point |
+| *t1_R* 		| Resistance at first calibration point |
+| *t2_temp* 	| Temperature at second calibration point |
+| *t2_R* 		| Resistance at second calibration point |
+| *t3_temp* 	| Temperature at third calibration point |
+| *t3_R* 		| Resistance at third valibration point |
+| units | Temperature units used.  Options are "C", "K", "F" |
+
+The default configuration is designed for an early type stock 240 coolant temp sensor, a VDO 325-905 Oil temperature sender, and a random ambient temp sensor for a BMW off Amazon.
+
+```
+[temp_sensor]
+size=3
+[temp_sensor/1]
+type="coolant"
+r_balance=470
+v_supply=5
+t1_temp=60
+t1_R=217
+t2_temp=90
+t2_R=87
+t3_temp=100
+t3_R=67
+units="C"
+[temp_sensor/2]
+type="oil"
+r_balance=150.0
+v_supply=5
+t1_temp=19.5
+t1_R=1325
+t2_temp=100
+t2_R=78.5
+t3_temp=157
+t3_R=40.5
+units="C"
+[temp_sensor/3]
+type="ambient"
+r_balance=6490
+v_supply=5
+t1_temp=1.0
+t1_R=15800
+t2_temp=20
+t2_R=6400
+t3_temp=36
+t3_R=3360
+units="C"
+```
+
+#### Resistive Sensor Configuration
+
+An array of resistive sensor configurations. Calibration values can be interpolated (not advised unless a lot of data points are available) or can be fitted with a polynomial of an arbitray order.  Usually a 2nd order polynomial is good enough.  The following parameters can be configured:
+
+| Parameter | Description |
+|---|---|
+| *type* | Sensor type.  Options are "coolant", "oil", and "ambient" |
+| *fit* | Type of fit. Options are "interpolate" or "polynomial, N" with N as the polynomial order.
+| *r_balance* | Resistance of the balance resistor. This can be calculated based on the high and low resistances expected during operation. |
+| *r* | Calibration resistance values.|
+| *y* | Calibration y values |
+| *units* | Units of calibration y values |
+| *lag* | Lag factor (0-1).  Used to filter values with the difference equation: **y[n] = lag \* x[n] + (1 - lag) \* y[n-1]** |
+| *v_supply* | Sensor circuit supply voltage (5V for Rev A and B hardware) |
+
+The default configuration is designed for a VDO 360-028 Oil pressure sender and a 240-33Ohm Volvo 240 Fuel level sender.
+
+```
+[resistive_sensor]
+size=2
+[resistive_sensor/1]
+type="oil_pressure"
+fit=polynomial,2
+r_balance=43.0
+r=10.0,48.0,82.0,116.0,184.0
+y=0.0,1.0,2.0,3.0,5.0
+units="bar"
+lag=1.0
+v_supply=5
+[resistive_sensor/2]
+type="fuel_level"
+fit=polynomial,3
+r_balance=91.0
+r=240,196,153,125,103,87,67,45,33
+y=0.0,12.5,25.0,37.5,50.0,62.5,75.0,87.5,100
+units="%"
+lag=0.2
+v_supply=5
+```
+
+#### Analog 12V inputs.
+
+To measure signals that are inherently tied to battery voltage there are 2 linearized opto-isolated inputs.  The following parameters can be configured:
+
+
+| Parameter | Description |
+|---|---|
+| name | Sensor name.  "voltmeter" is the only one currently used |
+| opto_r1 | Isolated side (R59 in schematic below) |
+| opto_r2 | Opto-isolator gain resistor R2 (R62 in schematic below) |
+| input_r1 | High side resistor of voltage divider for input into opto-isolator. (R71 in schematic below) |
+| input_r2 | Low side resistor of voltage divivider for input into opto-isolator. (R72 in schematic below) |
+| k3 | Opto-isolator K3 gain (defined by linearized opto-isolator used and will have to be measured) |
+
+![alt text](https://github.com/whitfijs-jw/Volvo240-DigitalDash/blob/develop/QtDash/analog-iso-12V-input?raw=true)
+
+##### How to determine K3 value (TODO)
+
+The default configuration is as follows:
+
+```
+[12v_analog]
+size=2
+[12v_analog/1]
+name="voltmeter"
+opto_r1=490000.0
+opto_r2=100000.0
+input_r1=100000.0
+input_r2=100000.0
+k3=1.8566
+[12v_analog/2]
+name="rheostat"
+opto_r1=490000.0
+opto_r2=100000.0
+input_r1=100000.0
+input_r2=100000.0
+k3=1.8566
+```
+
+#### Tach Input Configuration
+
+RPM is estimated by measuring the time difference between pulses from the negative terminal of the ignition coil.  The following parameters can be configured:
+
+| Parameter | Description |
+|---|---|
+| pulse_per_rot | Number of tach pulses per rotation (number of cylinders / 2) |
+| max_rpm | Maximum RPM to resolve.  This should be as low as possible. |
+| avg_num_samples | Number of samples to average over to estimate RPM |
+
+The default configuration is as follows:
+
+```
+[tach_input]
+pulse_per_rot=2
+max_rpm=9000
+avg_num_samples=4
+```
+
+#### Vehicle speed sensor input
+
+Designed to used the stock 240 diff cover VSS. The vehicle speed can be estimated using the number of pulses coming from the VSS sensor for every rotation of the rear diff. The following parameters can be configured:
+
+| Parameter | Description |
+|---|---|
+| pulse_per_rot | Number of VSS pulses per rotation (12 for non-ABS and 48 for ABS equipped 240s) |
+| tire_diameter | Tire diameter (can be used to calculate pulses per unit distance) |
+| diameter_units | Tire diameter units: "inch", "centimeter", "millimeter", "foot", etc  |
+| pulse_per_unit_distance | Number of pulses per units distance.   |
+| distance_units | Distance units for pulses per unit distance:  "mile", "kilometer  |
+| max_speed | max speed (distance_units / hour).  Keep as low as possible to avoid picking up noise as VSS pulses |
+
+The default configuration is as follows:
+
+```
+[vss_input]
+pulse_per_rot=12
+tire_diameter=24.9
+diameter_units="inch"
+pulse_per_unit_distance=9720
+distance_units="mile"
+max_speed="185"
+```
