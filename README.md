@@ -298,7 +298,7 @@ To measure signals that are inherently tied to battery voltage there are 2 linea
 | input_r2 | Low side resistor of voltage divivider for input into opto-isolator. (R72 in schematic below) |
 | k3 | Opto-isolator K3 gain (defined by linearized opto-isolator used and will have to be measured) |
 
-![alt text](https://github.com/whitfijs-jw/Volvo240-DigitalDash/blob/develop/QtDash/analog-iso-12V-input?raw=true)
+![alt text](https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/674c8c60d166528e17125b2d5b143e245dce94cc/QtDash/analog-iso-12v-input.png)
 
 ##### How to determine K3 value (TODO)
 
