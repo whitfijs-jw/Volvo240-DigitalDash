@@ -10,6 +10,8 @@
  */
 class NtcSensor : public Sensor {
 public:
+    static constexpr Config::TemperatureUnits NTC_INTERNAL_UNITS = Config::TemperatureUnits::FAHRENHEIT;
+
     /**
      * @brief NtcSensor constructor
      * @param parent: parent object
@@ -48,7 +50,7 @@ public slots:
         if (channel == getChannel()) {
             qreal volts = data.toReal();
 
-            qreal value = mNtc->calculateTemp(volts, Config::TemperatureUnits::FAHRENHEIT);
+            qreal value = mNtc->calculateTemp(volts, NTC_INTERNAL_UNITS);
 
             // Check that we're not shorted to ground or VDD (could be disconnected)
             if (!SensorUtils::isValid(volts, mNtc->getSensorConfig()->vSupply)) {

@@ -3,6 +3,8 @@
 
 #include <gauge.h>
 #include <speedometer_model.h>
+#include <sensor_utils.h>
+#include <sensor_ntc.h>
 
 /**
  * @brief The SpeedometerGauge class
@@ -40,10 +42,25 @@ public:
             ((SpeedometerModel *)mModel)->setCurrentValue(data.toReal());
         });
 
+        if (std::is_base_of<T, NtcSensor>::value) {
+
+        }
+
         // connect the secondary values
         QObject::connect(
                     sensors.at(1), &Sensor::sensorDataReady,
                     [=](QVariant data) {
+            // Check top source
+            qreal val = data.toReal();
+            if (speedoConfig.topSource == Config::TEMP_TYPE_AMBIENT ||
+                    speedoConfig.topSource == Config::TEMP_TYPE_COOLANT ||
+                    speedoConfig.topSource == Config::TEMP_TYPE_OIL) {
+                val = SensorUtils::convertTemperature(val,
+                    Config::getTempUnits(speedoConfig.topUnits),
+                    );
+
+            }
+
             ((SpeedometerModel *)mModel)->setTopValue(data.toReal());
         });
     }

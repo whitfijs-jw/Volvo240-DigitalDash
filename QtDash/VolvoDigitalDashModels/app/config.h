@@ -154,6 +154,16 @@ public:
     static constexpr char MAX_RPM[] = "max_rpm";
     static constexpr char REDLINE[] = "redline";
 
+    enum class UnitType {
+        PRESSURE = 0,
+        TEMPERATURE,
+        DISTANCE,
+        PERCENTAGE,
+        TIME,
+        COUNT,
+
+    };
+
     /**
      * @brief The PressureUnits enum
      */
@@ -171,6 +181,17 @@ public:
         CELSIUS, //!< Celsius
         FAHRENHEIT, //!< Fahrenheit
     };
+
+    static TemperatureUnits getTempUnits(QString units) {
+        if (units == UNITS_C) {
+            return TemperatureUnits::CELSIUS;
+        } else if (units == UNITS_K) {
+            return TemperatureUnits::KELVIN;
+        } else {
+            //default to f
+            return TemperatureUnits::FAHRENHEIT;
+        }
+    }
 
     /**
      * @brief The DistanceUnits enum
@@ -346,17 +367,22 @@ public:
         qreal redline; //!< defines when numerical RPM indication will turn red
     } TachoConfig_t ;
 
+    static constexpr char DEFAULT_CONFIG_PATH[] = "/opt/config.ini";
+    static constexpr char DEFAULT_GAUGE_CONFIG_PATH[] = "/opt/config_gauges.ini";
+
     /**
      * @brief Constructor
      * @param parent: Parent QObject
      * @param configPath: path to config.ini file (default is /opt/config.ini)
      */
-    Config(QObject * parent, QString configPath = "/opt/config.ini") :
+    Config(QObject * parent,
+           QString configPath = DEFAULT_CONFIG_PATH,
+           QString gaugeConfigPath = DEFAULT_GAUGE_CONFIG_PATH) :
         QObject(parent) {
         mConfig = new QSettings(configPath, QSettings::IniFormat);
         loadConfig();
 
-        mGaugeConfig = new QSettings("/opt/config_gauges.ini", QSettings::IniFormat);
+        mGaugeConfig = new QSettings(gaugeConfigPath, QSettings::IniFormat);
         loadGaugeConfigs();
     }
 
