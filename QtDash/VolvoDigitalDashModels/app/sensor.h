@@ -38,6 +38,12 @@ public:
         return mChannel;
     }
 
+    /**
+     * @brief getUnits
+     * @return Expected units
+     */
+    virtual QString getUnits() = 0;
+
 signals:
     /**
      * @brief Signal to emit when the data has been transformed -- picked up by the gauge

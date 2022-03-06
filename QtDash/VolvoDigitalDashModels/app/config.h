@@ -43,6 +43,9 @@ public:
     static constexpr char UNITS_CENTIMETER[] = "centimeter";
     static constexpr char UNITS_METER[] = "meter";
     static constexpr char UNITS_KILOMETER[] = "kilometer";
+    static constexpr char UNITS_MPH[] = "mph";
+    static constexpr char UNITS_KPH[] = "kph";
+    static constexpr char UNITS_METERS_PER_SECOND[] = "m/s";
 
     // expected sensor keys
     static constexpr char COOLANT_TEMP_KEY[] = "coolant_temp";
@@ -158,10 +161,12 @@ public:
         PRESSURE = 0,
         TEMPERATURE,
         DISTANCE,
+        POTENTIAL,
+        AMPERAGE,
+        RESISTANCE,
         PERCENTAGE,
         TIME,
         COUNT,
-
     };
 
     /**
@@ -172,6 +177,17 @@ public:
         PSI, //!< pounds per square inch
         BAR, //!< Bar
     };
+
+    static PressureUnits getPressureUnits(QString units) {
+        if (units == UNITS_BAR) {
+            return PressureUnits::BAR;
+        } else if (units == UNITS_KPA) {
+            return PressureUnits::KPA;
+        } else {
+            //default to psi
+            return PressureUnits::PSI;
+        }
+    }
 
     /**
      * @brief The TemperatureUnits enum
@@ -206,6 +222,48 @@ public:
         METER, //!< meters
         KILOMETER, //!< kilometer
     };
+
+    static DistanceUnits getDistanceUnits(QString units) {
+        if (units == UNITS_INCH) {
+            return DistanceUnits::INCH;
+        } else if (units == UNITS_FOOT) {
+            return DistanceUnits::FOOT;
+        } else if (units == UNITS_YARD) {
+            return DistanceUnits::YARD;
+        } else if (units == UNITS_MILE) {
+            return DistanceUnits::MILE;
+        } else if (units == UNITS_MILLIMETER) {
+            return DistanceUnits::MILLIMETER;
+        } else if (units == UNITS_CENTIMETER) {
+            return DistanceUnits::CENTIMETER;
+        } else if (units == UNITS_METER) {
+            return DistanceUnits::METER;
+        } else if (units == UNITS_KILOMETER) {
+            return DistanceUnits::KILOMETER;
+        }
+
+        // default to mm:
+        return DistanceUnits::MILLIMETER;
+    }
+
+    enum class SpeedUnits {
+        MPH,
+        KPH,
+        METER_PER_SECOND,
+    };
+
+    static SpeedUnits getSpeedUnits(QString units) {
+        if (units == UNITS_MPH) {
+            return SpeedUnits::MPH;
+        } else if (units == UNITS_KPH) {
+            return SpeedUnits::KPH;
+        } else if (units == UNITS_METERS_PER_SECOND) {
+            return SpeedUnits::METER_PER_SECOND;
+        }
+
+        //default to mph
+        return SpeedUnits::MPH;
+    }
 
     /**
      * @brief TemperatureSensorType enum

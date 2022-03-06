@@ -25,6 +25,11 @@ public:
 
     }
 
+    QString getUnits() override {
+        // pass through the units
+        return mSource->getUnits(getChannel());
+    }
+
 public slots:
     /**
      * @brief transform data for the gauge

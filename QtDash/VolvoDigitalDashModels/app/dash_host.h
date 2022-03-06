@@ -93,7 +93,7 @@ public slots:
      * @brief Update tachometer model
      */
     void sysfsUpdate() {
-        QString tempPath = "/sys/class/hwmon/hwmon0/temp1_input";
+        QString tempPath = "/sys/class/hwmon/hwmon4/temp1_input";
         QString rpmPath = "/sys/bus/cpu/devices/cpu0/cpufreq/scaling_cur_freq";
         QString battPath = "/sys/class/power_supply/BAT0/voltage_now";
         QString fuelLevelPath = "/sys/class/power_supply/BAT0/capacity";

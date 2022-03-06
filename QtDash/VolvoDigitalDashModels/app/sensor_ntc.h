@@ -40,6 +40,12 @@ public:
         }
     }
 
+
+    QString getUnits() override {
+        return Config::UNITS_F;
+    }
+
+
 public slots:
     /**
      * @brief transform adc votlage into temperature
@@ -57,7 +63,6 @@ public slots:
                 value = 0;
             }
 
-            //get desired temperature units from config?
             emit sensorDataReady(value);
         }
     }

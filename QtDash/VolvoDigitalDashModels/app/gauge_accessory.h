@@ -3,6 +3,7 @@
 
 #include <gauge.h>
 #include <accessory_gauge_model.h>
+#include <sensor_utils.h>
 
 /**
  * @brief The AccessoryGauge class
@@ -48,7 +49,18 @@ public:
         QObject::connect(
                     sensors.at(0), &Sensor::sensorDataReady,
                     [=](QVariant data) {
-            ((AccessoryGaugeModel *)mModel)->setCurrentValue(data.toReal());
+
+            // get raw value
+            qreal val = data.toReal();
+            Sensor * sensor = sensors.at(0);
+
+            // get units
+            QString units = sensor->getUnits();
+            QString displayUnits = gaugeConfig.displayUnits;
+
+            val = SensorUtils::convert(val, displayUnits, units);
+
+            ((AccessoryGaugeModel *)mModel)->setCurrentValue(val);
         });
     }
 

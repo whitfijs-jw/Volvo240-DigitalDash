@@ -12,6 +12,7 @@
 
 #include <config.h>
 #include <sensor.h>
+#include <sensor_utils.h>
 
 /**
  * @brief The Gauge class initializes the gauge model and

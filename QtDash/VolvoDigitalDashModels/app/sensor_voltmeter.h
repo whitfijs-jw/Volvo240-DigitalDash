@@ -24,6 +24,10 @@ public:
         Sensor(parent, config, source, channel), m12VInput(analogConfig) {
     }
 
+    QString getUnits() override {
+        return "V";
+    }
+
 public slots:
     /**
      * @brief Transform raw adc voltage to 12V

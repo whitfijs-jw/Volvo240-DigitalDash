@@ -27,6 +27,10 @@ public:
                     mSensorConfig.x, mSensorConfig.y, mSensorConfig.order);
     }
 
+    QString getUnits() override {
+        return mSensorConfig.units;
+    }
+
 public slots:
     /**
      * @brief transform adc voltage into desired output
@@ -38,7 +42,7 @@ public slots:
             qreal volts = data.toReal();
 
             qreal resistance = SensorUtils::getResistance(
-                        volts, 5.0, mSensorConfig.rBalance);
+                        volts, mSensorConfig.vSupply, mSensorConfig.rBalance);
             qreal value = SensorUtils::polynomialValue(
                         resistance, mSensorConfig.coeff);
 

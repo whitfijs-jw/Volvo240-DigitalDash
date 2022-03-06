@@ -32,6 +32,10 @@ public:
     static constexpr qreal FOOT_PER_MILE = 5280.0; //!< feet per mile
     static constexpr qreal YARD_PER_MILE = 1760.0; //!< yard per mile
 
+    //speed constants
+    static constexpr qreal MPH_TO_KPH = METER_PER_MILE / 1000.0;
+    static constexpr qreal KPH_TO_METERS_PER_SEC = 1000.0 / 3600.0;
+
     // Check for disconnected or shorted sensor
     static constexpr qreal SENSOR_MAX_PCT = .95; //!< above this percentage and an error is assumed
 
@@ -130,6 +134,28 @@ public:
         } else {
             return -1;
         }
+    }
+
+    static constexpr qreal convertDistance(
+            qreal distance,
+            Config::DistanceUnits to,
+            Config::DistanceUnits from) {
+
+        switch (to) {
+        case Config::DistanceUnits::MILE:
+            return toMiles(distance, from);
+        case Config::DistanceUnits::KILOMETER:
+            return toMeters(distance, from) / 1000.0;
+        case Config::DistanceUnits::METER:
+            return toMeters(distance, from);
+        case Config::DistanceUnits::CENTIMETER:
+            return toMeters(distance, from) * 100.0;
+        case Config::DistanceUnits::MILLIMETER:
+            return toMeters(distance, from) * 1000.0;
+        case Config::DistanceUnits::
+        }
+
+        return 0;
     }
 
     /**
@@ -258,7 +284,8 @@ public:
      * @return pressure in desired units
      */
     static constexpr qreal convertPressure(
-            qreal pressure, Config::PressureUnits to, Config::PressureUnits from) {
+            qreal pressure, Config::PressureUnits to,
+            Config::PressureUnits from) {
         switch (to) {
         case Config::PressureUnits::PSI:
             return toPsi(pressure, from);
@@ -272,6 +299,99 @@ public:
         default:
             return 0;
         }
+    }
+
+
+    static constexpr qreal toMph(qreal speed, Config::SpeedUnits units) {
+        if (units == Config::SpeedUnits::MPH) {
+            return speed;
+        } else if (units == Config::SpeedUnits::KPH) {
+            return speed / MPH_TO_KPH;
+        } else if (units == Config::SpeedUnits::METER_PER_SECOND) {
+            return speed / MPH_TO_KPH / KPH_TO_METERS_PER_SEC;
+        }
+
+        return 0;
+    }
+
+    static constexpr qreal toKph(qreal speed, Config::SpeedUnits units) {
+        if (units == Config::SpeedUnits::MPH) {
+            return speed * MPH_TO_KPH;
+        } else if (units == Config::SpeedUnits::KPH) {
+            return speed;
+        } else if (units == Config::SpeedUnits::METER_PER_SECOND) {
+            return speed / KPH_TO_METERS_PER_SEC;
+        }
+
+        return 0;
+    }
+
+    static constexpr qreal toMetersPerSecond(qreal speed, Config::SpeedUnits units) {
+        if (units == Config::SpeedUnits::MPH) {
+            return speed * MPH_TO_KPH * KPH_TO_METERS_PER_SEC;
+        } else if (units == Config::SpeedUnits::KPH) {
+            return speed * KPH_TO_METERS_PER_SEC;
+        } else if (units == Config::SpeedUnits::METER_PER_SECOND) {
+            return speed;
+        }
+
+        return 0;
+    }
+
+    static constexpr qreal convertSpeed(qreal speed,
+                                  Config::SpeedUnits to,
+                                  Config::SpeedUnits from) {
+        switch (to) {
+        case Config::SpeedUnits::MPH:
+            return toMph(speed, from);
+        case Config::SpeedUnits::KPH:
+            return toKph(speed, from);
+        case Config::SpeedUnits::METER_PER_SECOND:
+            return toMetersPerSecond(speed, from);
+        }
+
+        return 0.0;
+    }
+
+    static qreal convert(qreal value, QString to, QString from) {
+        if (to == from) {
+            return value;
+        }
+
+        qreal val = value;
+        // Check sensor type
+        if (from == Config::UNITS_C ||
+            from == Config::UNITS_F ||
+            from == Config::UNITS_K) {
+            // temperature sensor
+            val = SensorUtils::convertTemperature(value,
+                  Config::getTempUnits(to),
+                  Config::getTempUnits(from));
+        } else if (from == Config::UNITS_PSI ||
+                   from == Config::UNITS_BAR ||
+                   from == Config::UNITS_KPA) {
+            // pressure sensor
+            val = SensorUtils::convertPressure(value,
+                        Config::getPressureUnits(to),
+                        Config::getPressureUnits(from)
+                        );
+        } else if (from == Config::UNITS_MPH ||
+                   from == Config::UNITS_KPH ||
+                   from == Config::UNITS_METERS_PER_SECOND) {
+            // speed sensor
+            val = SensorUtils::convertSpeed(value,
+                        Config::getSpeedUnits(to),
+                        Config::getSpeedUnits(from)
+                        );
+        } else if (from == Config::UNITS_MILE ||
+                   from == Config::UNITS_KILOMETER) {
+            val = SensorUtils::convertDistance(value,
+                  Config::getDistanceUnits(to),
+                  Config::getDistanceUnits(from)
+                  );
+        }
+
+        return val;
     }
 
     /**
