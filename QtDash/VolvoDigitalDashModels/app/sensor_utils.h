@@ -152,7 +152,6 @@ public:
             return toMeters(distance, from) * 100.0;
         case Config::DistanceUnits::MILLIMETER:
             return toMeters(distance, from) * 1000.0;
-        case Config::DistanceUnits::
         }
 
         return 0;

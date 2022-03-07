@@ -56,6 +56,7 @@ public:
     static constexpr char AMBIENT_TEMP_KEY[] =  "ambient_temp";
     static constexpr char DIMMER_VOLTAGE_KEY[] =  "dimmer_voltage";
     static constexpr char FUSE8_12V_KEY[] = "fuse8_12v";
+    static constexpr char REFERENCE_MEASUREMENT[] = "reference";
 
     // expected dash light keys
     static constexpr char ACTIVE_LOW[] = "active_low";

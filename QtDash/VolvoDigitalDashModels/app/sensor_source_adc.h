@@ -18,6 +18,9 @@ public:
      */
     AdcSource(QObject * parent, Config * config, QString name = "adc") :
         SensorSource(parent, config, name) {
+
+        int refChannel = mConfig->getSensorConfig().value(Config::REFERENCE_MEASUREMENT, -1);
+        mAdc = new Adc(Adc::MCP3208, Adc::IIO_DEVICE_PATH, 5.0, refChannel);
     }
 
     /**
@@ -33,7 +36,7 @@ public:
      * @return number of ADC channels
      */
     int getNumChannels() {
-        return mAdc.getNumChannels();
+        return mAdc->getNumChannels();
     }
 
     /**
@@ -46,12 +49,16 @@ public:
         return "volts";
     }
 
+    qreal getVRef() {
+        return mAdc->getVRef();
+    }
+
 public slots:
     /**
      * @brief update all channels and emit dataReady
      */
     void updateAll() {
-        for (int i = 0; i < mAdc.getNumChannels(); i++) {
+        for (int i = 0; i < mAdc->getNumChannels(); i++) {
             update(i);
         }
 
@@ -62,12 +69,12 @@ public slots:
      * @param channel: adc channel
      */
     void update(int channel) {
-        qreal volts = mAdc.readValue(channel);
+        qreal volts = mAdc->readValue(channel);
         emit dataReady(volts, channel);
     }
 
 private:
-    Adc mAdc; //!< ADC object
+    Adc * mAdc; //!< ADC object
 };
 
 #endif // SENSOR_SOURCE_ADC_H

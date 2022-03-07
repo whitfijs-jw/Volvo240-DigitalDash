@@ -331,8 +331,31 @@ private:
      * @brief Initialize the speedometer
      */
     void initSpeedo() {
-        // init gauge+
-        QList<Sensor *> speedoSensors = {mSpeedoSensor, mAmbientTempSensor};
+        // init gauge
+        QList<Sensor *> speedoSensors = {mSpeedoSensor};
+
+        // Speedometer has a secondary output -- assign it now
+        QString topSource = mConfig.getSpeedoConfig().topSource;
+        if (topSource == Config::AMBIENT_TEMP_KEY) {
+            speedoSensors.append(mAmbientTempSensor);
+        } else if (topSource == Config::COOLANT_TEMP_KEY) {
+            speedoSensors.append(mCoolantTempSensor);
+        } else if (topSource == Config::OIL_TEMP_KEY) {
+            speedoSensors.append(mOilTempSensor);
+        } else if (topSource == Config::OIL_PRESSURE_KEY) {
+            speedoSensors.append(mOilPressureSensor);
+        } else if (topSource == Config::MAP_SENSOR_KEY) {
+            speedoSensors.append(mMapSensor);
+        } else if (topSource == Config::ANALOG_INPUT_12V_VOLTMETER) {
+            speedoSensors.append(mVoltmeterSensor);
+        } else if (topSource == Config::FUEL_LEVEL_KEY) {
+            speedoSensors.append(mFuelLevelSensor);
+        } else {
+            // default to ambient
+            speedoSensors.append(mAmbientTempSensor);
+        }
+
+
         mSpeedoGauge = new SpeedometerGauge(
                     this->parent(), &mConfig, speedoSensors,
                     &mSpeedoModel, SpeedometerModel::SPEEDO_MODEL_NAME,
