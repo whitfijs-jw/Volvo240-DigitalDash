@@ -302,6 +302,7 @@ To measure signals that are inherently tied to battery voltage there are 2 linea
 | *offset* | Offset to voltage calculation, the linearized opto-isolator usually has an offset that will need to be accounted for. |
 | *x* | Linearized opto-isolator input voltage calibration measurements.  This is the high voltage side.  The more measurement points the better.   |
 | *y* | Output voltage calibration measurements.  This is the low voltage side.  Ideally if there was zero offset and a K3 gain of 1.0 these should be x / 10.  This is unlikely to be the case given the binning of the IL300 and LOC11x series. |
+
 ![alt text](https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/674c8c60d166528e17125b2d5b143e245dce94cc/QtDash/analog-iso-12v-input.png)
 
 ##### How to determine K3 value (still need to test on car -- likely to change)
