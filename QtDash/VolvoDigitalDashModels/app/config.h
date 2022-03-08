@@ -132,6 +132,9 @@ public:
     static constexpr char ANALOG_INPUT_12V_INPUT_R1[] = "input_r1";
     static constexpr char ANALOG_INPUT_12V_INPUT_R2[] = "input_r2";
     static constexpr char ANALOG_INPUT_12V_OPTO_GAIN_K3[] = "k3";
+    static constexpr char ANALOG_INPUT_12V_OFFSET[] = "offset";
+    static constexpr char ANALOG_INPUT_12V_X_VALUES[] = "x";
+    static constexpr char ANALOG_INPUT_12V_Y_VALUES[] = "y";
 
     static constexpr char ANALOG_INPUT_12V_VOLTMETER[] = "voltmeter";
     static constexpr char ANALOG_INPUT_12V_RHEOSTAT[] = "rheostat";
@@ -317,6 +320,13 @@ public:
         qreal inputR1; //!< input voltage divided R1
         qreal inputR2; //!< input voltage divider R2
         qreal gainK3; //!< opto transfer gain K3
+        qreal offset;
+
+        // polynomial fit (if the fit isn't perfectly linear)
+        QList<qreal> x; //!< input voltage (battery voltage)
+        QList<qreal> y; //!< measured voltage
+        QList<qreal> coeff;
+        int order;
 
         /**
          * @brief isValid
@@ -673,11 +683,29 @@ public:
             Analog12VInputConfig_t conf;
 
             conf.type = mConfig->value(ANALOG_INPUT_12V_NAME, "").toString();
-            conf.optoR1 = mConfig->value(ANALOG_INPUT_12V_OPTO_R1, "").toReal();
-            conf.optoR2 = mConfig->value(ANALOG_INPUT_12V_OPTO_R2, "").toReal();
-            conf.inputR1 = mConfig->value(ANALOG_INPUT_12V_INPUT_R1, "").toReal();
-            conf.inputR2 = mConfig->value(ANALOG_INPUT_12V_INPUT_R2, "").toReal();
-            conf.gainK3 = mConfig->value(ANALOG_INPUT_12V_OPTO_GAIN_K3, "").toReal();
+            conf.optoR1 = mConfig->value(ANALOG_INPUT_12V_OPTO_R1, 1).toReal();
+            conf.optoR2 = mConfig->value(ANALOG_INPUT_12V_OPTO_R2, 1).toReal();
+            conf.inputR1 = mConfig->value(ANALOG_INPUT_12V_INPUT_R1, 1).toReal();
+            conf.inputR2 = mConfig->value(ANALOG_INPUT_12V_INPUT_R2, 1).toReal();
+            conf.gainK3 = mConfig->value(ANALOG_INPUT_12V_OPTO_GAIN_K3, 1).toReal();
+            conf.offset = mConfig->value(ANALOG_INPUT_12V_OFFSET, 0).toReal();
+
+            // resistance values
+            QList r = mConfig->value(ANALOG_INPUT_12V_X_VALUES, "").toList();
+            for (QVariant val : r) {
+                conf.x.push_back(val.toReal());
+            }
+
+            // y values (fuel level, pressure, etc)
+            QList y = mConfig->value(ANALOG_INPUT_12V_Y_VALUES, "").toList();
+            for (QVariant val : y) {
+                conf.y.push_back(val.toReal());
+            }
+            if (conf.x.length() > 0) {
+                conf.order = 1;
+            } else {
+                conf.order = 0;
+            }
 
             mAnalog12VInputConfig.insert(conf.type, conf);
             printKeys("Analog 12V input: ", mConfig);
