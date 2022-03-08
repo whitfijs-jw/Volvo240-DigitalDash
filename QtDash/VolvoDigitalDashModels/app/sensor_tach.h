@@ -21,6 +21,10 @@ public:
            Sensor(parent, config, source, channel) {
     }
 
+    QString getUnits() override {
+        return "rpm";
+    }
+
 public slots:
     /**
      * @brief Transform incoming data for the gauge

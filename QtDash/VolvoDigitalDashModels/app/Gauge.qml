@@ -191,7 +191,7 @@ Item {
             fontSizeMode: Text.Fit
             font.pixelSize: gauge.topTextSize
 
-            text: Number(gauge.topValue).toFixed(significantDigits).toLocaleString(Qt.locale("en_US")) + " " + gauge.topUnits
+            text: Number(gauge.topValue).toFixed(1).toLocaleString(Qt.locale("en_US")) + " " + gauge.topUnits
             color: "white"
         }
     }

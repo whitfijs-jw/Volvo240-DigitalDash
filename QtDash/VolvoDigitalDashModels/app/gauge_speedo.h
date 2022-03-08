@@ -3,6 +3,10 @@
 
 #include <gauge.h>
 #include <speedometer_model.h>
+#include <sensor_utils.h>
+#include <sensor_ntc.h>
+#include <sensor_map.h>
+#include <sensor_resistive.h>
 
 /**
  * @brief The SpeedometerGauge class
@@ -44,10 +48,21 @@ public:
         QObject::connect(
                     sensors.at(1), &Sensor::sensorDataReady,
                     [=](QVariant data) {
-            ((SpeedometerModel *)mModel)->setTopValue(data.toReal());
+            // get raw value
+            qreal val = data.toReal();
+            Sensor * sensor = sensors.at(1);
+
+            // get units
+            QString units = sensor->getUnits();
+            QString displayUnits = speedoConfig.topUnits;
+
+            val = SensorUtils::convert(val, displayUnits, units);
+
+            ((SpeedometerModel *)mModel)->setTopValue(val);
         });
     }
 
+private:
 };
 
 #endif // GAUGE_SPEEDO_H

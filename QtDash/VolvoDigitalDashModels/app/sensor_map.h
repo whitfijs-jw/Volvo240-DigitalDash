@@ -28,7 +28,9 @@ public:
                     );
     }
 
-
+    QString getUnits() override {
+        return Config::UNITS_PSI;
+    }
 
 public slots:
     /**

@@ -40,7 +40,18 @@ public:
         QObject::connect(
                     sensors.at(0), &Sensor::sensorDataReady,
                     [=](QVariant data) {
-            ((TempAndFuelGaugeModel *)mModel)->setCurrentTemp(data.toReal());
+
+            // get raw value
+            qreal val = data.toReal();
+            Sensor * sensor = sensors.at(0);
+
+            // get units
+            QString units = sensor->getUnits();
+            QString displayUnits = coolantConfig.displayUnits;
+
+            val = SensorUtils::convert(val, displayUnits, units);
+
+            ((TempAndFuelGaugeModel *)mModel)->setCurrentTemp(val);
         });
 
         // connect the secondary values

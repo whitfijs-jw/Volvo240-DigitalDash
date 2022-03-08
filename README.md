@@ -112,6 +112,7 @@ Under the [sensor_channel] section the following inputs can be configured:
 | *ambient_temp* | Ambient Temperature sender (any NTC sensor can be used) |
 | *dimmer_voltage* | Dimmer Rheostat output voltage |
 | *fuse8_12v* | Volvo Fuse 8 to measure battery voltage |
+| *reference* | A channel configured to measure the unregulated pi 5V supply to decrease measurment error.  If this is not used it is assumed that the supply is exactly 5V. You can alternatively measure your 5V power rail and provide that in the configurations below.|
 
 The default configuration is as follows:
 ```
@@ -121,9 +122,10 @@ fuel_level=1
 oil_pressure=2
 oil_temp=3
 map_sensor=4
-ambient_temp=5
+ambient_temp=-1
 dimmer_voltage=6
 fuse8_12v=7
+reference=5
 ```
 
 #### Dash Light Inputs
@@ -291,16 +293,30 @@ To measure signals that are inherently tied to battery voltage there are 2 linea
 
 | Parameter | Description |
 |---|---|
-| name | Sensor name.  "voltmeter" is the only one currently used |
-| opto_r1 | Isolated side (R59 in schematic below) |
-| opto_r2 | Opto-isolator gain resistor R2 (R62 in schematic below) |
-| input_r1 | High side resistor of voltage divider for input into opto-isolator. (R71 in schematic below) |
-| input_r2 | Low side resistor of voltage divivider for input into opto-isolator. (R72 in schematic below) |
-| k3 | Opto-isolator K3 gain (defined by linearized opto-isolator used and will have to be measured) |
-
+| *name* | Sensor name.  "voltmeter" is the only one currently used |
+| *opto_r1* | Isolated side (R59 in schematic below) |
+| *opto_r2* | Opto-isolator gain resistor R2 (R62 in schematic below) |
+| *input_r1* | High side resistor of voltage divider for input into opto-isolator. (R71 in schematic below) |
+| *input_r2* | Low side resistor of voltage divivider for input into opto-isolator. (R72 in schematic below) |
+| *k3* | Opto-isolator K3 gain (defined by linearized opto-isolator used and will have to be measured) |
+| *offset* | Offset to voltage calculation, the linearized opto-isolator usually has an offset that will need to be accounted for. |
+| *x* | Linearized opto-isolator input voltage calibration measurements.  This is the high voltage side.  The more measurement points the better.   |
+| *y* | Output voltage calibration measurements.  This is the low voltage side.  Ideally if there was zero offset and a K3 gain of 1.0 these should be x / 10.  This is unlikely to be the case given the binning of the IL300 and LOC11x series. |
 ![alt text](https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/674c8c60d166528e17125b2d5b143e245dce94cc/QtDash/analog-iso-12v-input.png)
 
-##### How to determine K3 value (TODO)
+##### How to determine K3 value (still need to test on car -- likely to change)
+1. In the config.ini file, set *opto_r1*, *opto_r2*, *input_r1*, *input_r2*, and *k3* to 1.0.
+2. In the config.ini file, set *offset* to 0.0.
+3. Reboot the dash.
+4. The output for the voltmeters will now be the real input to the ADC. Usually between 1V-2V for inputs from 8V to 16V.
+5. With the car on but not running, measure the voltage at fuse 8.  This will be your first x value.  Take the output of the voltmeter (somewhere between 1V-2V).  This will be your first y value.
+6. Start the car and repeat the above step.  These will be your second x and y values.
+7. Enter the values determined above in the config.ini file.
+8. Reset the *opto_r1*, *opto_r2*, *input_r1*, *input_r2* to their previous values.  You can leave *offset* and *k3* alone.  The software will use your calibration values to calculate the k3 gain and offset.
+9. Reboot the dash and verify that the voltages with the car on and running match what you had measured before.
+
+*Note on K3 gain calibration values:*
+*Ideally, you would want way more than just 2 points to calibrate with.  If you have access to an adjustable power supply it is recommended to take 5+ measurements from 8V-16V.*
 
 The default configuration is as follows:
 
@@ -313,14 +329,20 @@ opto_r1=490000.0
 opto_r2=100000.0
 input_r1=100000.0
 input_r2=100000.0
-k3=1.8566
+k3=1.1536
+offset=.087985
+x=8.25, 9.05, 9.87, 10.67, 11.52, 12.37, 13.30, 14.15, 14.96, 15.78, 16.78
+y=1.05, 1.15, 1.25, 1.35, 1.45, 1.55, 1.65, 1.76, 1.85, 1.95, 2.05
 [12v_analog/2]
 name="rheostat"
 opto_r1=490000.0
 opto_r2=100000.0
 input_r1=100000.0
 input_r2=100000.0
-k3=1.8566
+k3=1.1536
+offset=.087985
+x=8.25, 9.05, 9.87, 10.67, 11.52, 12.37, 13.30, 14.15, 14.96, 15.78, 16.78
+y=1.05, 1.15, 1.25, 1.35, 1.45, 1.55, 1.65, 1.76, 1.85, 1.95, 2.05
 ```
 
 #### Tach Input Configuration
@@ -329,9 +351,9 @@ RPM is estimated by measuring the time difference between pulses from the negati
 
 | Parameter | Description |
 |---|---|
-| pulse_per_rot | Number of tach pulses per rotation (number of cylinders / 2) |
-| max_rpm | Maximum RPM to resolve.  This should be as low as possible. |
-| avg_num_samples | Number of samples to average over to estimate RPM |
+| *pulse_per_rot* | Number of tach pulses per rotation (number of cylinders / 2) |
+| *max_rpm* | Maximum RPM to resolve.  This should be as low as possible. |
+| *avg_num_samples* | Number of samples to average over to estimate RPM |
 
 The default configuration is as follows:
 
@@ -348,12 +370,12 @@ Designed to used the stock 240 diff cover VSS. The vehicle speed can be estimate
 
 | Parameter | Description |
 |---|---|
-| pulse_per_rot | Number of VSS pulses per rotation (12 for non-ABS and 48 for ABS equipped 240s) |
-| tire_diameter | Tire diameter (can be used to calculate pulses per unit distance) |
-| diameter_units | Tire diameter units: "inch", "centimeter", "millimeter", "foot", etc  |
-| pulse_per_unit_distance | Number of pulses per units distance.   |
-| distance_units | Distance units for pulses per unit distance:  "mile", "kilometer  |
-| max_speed | max speed (distance_units / hour).  Keep as low as possible to avoid picking up noise as VSS pulses |
+| *pulse_per_rot* | Number of VSS pulses per rotation (12 for non-ABS and 48 for ABS equipped 240s) |
+| *tire_diameter* | Tire diameter (can be used to calculate pulses per unit distance) |
+| *diameter_units* | Tire diameter units: "inch", "centimeter", "millimeter", "foot", etc  |
+| *pulse_per_unit_distance* | Number of pulses per units distance.   |
+| *distance_units* | Distance units for pulses per unit distance:  "mile", "kilometer  |
+| *max_speed* | max speed (distance_units / hour).  Keep as low as possible to avoid picking up noise as VSS pulses |
 
 The default configuration is as follows:
 

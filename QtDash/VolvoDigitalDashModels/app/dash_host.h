@@ -44,7 +44,9 @@ public:
      * @param context: qml context to link the gauge models to their respective c++ model
      */
     DashHost(QObject * parent, QQmlContext * context) :
-        QObject(parent), mContext(context), mEventTiming(parent), mConfig(parent, "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config.ini") {
+        QObject(parent), mContext(context), mEventTiming(parent),
+        mConfig(parent, "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config.ini",
+                "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config_gauges.ini") {
 
         // populate accessory gauge model map
         mAccessoryGaugeModelMap.insert(COOLANT_TEMP_MODEL_NAME, &mCoolantTempModel);
@@ -91,7 +93,7 @@ public slots:
      * @brief Update tachometer model
      */
     void sysfsUpdate() {
-        QString tempPath = "/sys/class/hwmon/hwmon0/temp1_input";
+        QString tempPath = "/sys/class/hwmon/hwmon4/temp1_input";
         QString rpmPath = "/sys/bus/cpu/devices/cpu0/cpufreq/scaling_cur_freq";
         QString battPath = "/sys/class/power_supply/BAT0/voltage_now";
         QString fuelLevelPath = "/sys/class/power_supply/BAT0/capacity";
@@ -235,12 +237,12 @@ private:
                     QString speedUnits = "mph",
                     QString topUnits = "°F") {
         //Init Speedo
-        mSpeedoModel.setMaxValue(maxSpeed);
-        mSpeedoModel.setMinValue(0);
-        mSpeedoModel.setUnits(speedUnits);
+        mSpeedoModel.setMaxValue(mConfig.getSpeedoConfig().gaugeConfig.max);
+        mSpeedoModel.setMinValue(mConfig.getSpeedoConfig().gaugeConfig.min);
+        mSpeedoModel.setUnits(mConfig.getSpeedoConfig().gaugeConfig.displayUnits);
         mSpeedoModel.setCurrentValue(0);
         mSpeedoModel.setTopValue(0);
-        mSpeedoModel.setTopUnits(topUnits); // "°F"
+        mSpeedoModel.setTopUnits(mConfig.getSpeedoConfig().topUnits); // "°F"
 
         // init speedo input
         mGpsHelper = new GpsHelper(this->parent());
