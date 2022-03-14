@@ -90,6 +90,16 @@ public:
     }
 
     /**
+     * @brief Update internal reference with measurement using channel configured to measure
+     * the voltage used to drive the sensor inputs
+     */
+    void updateReference() {
+        if (mRefChannel > 0 && mRefChannel < mNumChannels) {
+            mVref = readValue(mRefChannel, 3.3) / REFERENCE_VOLTAGE_DIVIDER;
+        }
+    }
+
+    /**
      * @brief Read scaled ADC value
      * @param channel: adc channel to read
      * @return current measured voltage
@@ -98,6 +108,7 @@ public:
         double volts = ((double)readRawValue(channel) / (double)mMaxVal);
 
         if (vRef < 0) {
+            updateReference();
             return volts * mVref * VOLTAGE_CONVERSION_CORRECTION_FACTOR;
         } else {
             return volts * vRef;

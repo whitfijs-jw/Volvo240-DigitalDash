@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -7863,12 +7863,12 @@ Switches electronic signals</description>
 <part name="SUPPLY40" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="IC5" library="digital_dash" deviceset="IL300" device=""/>
 <part name="SUPPLY38" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R53" library="digital_dash" deviceset="RC0603FR" device="" technology="-07499KL" value="499k 1%"/>
+<part name="R53" library="digital_dash" deviceset="RC0603FR" device="" technology="-10100KL" value="100k 1%"/>
 <part name="SUPPLY39" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R55" library="digital_dash" deviceset="RC0603JR" device="" technology="-1310RL" value="10R"/>
+<part name="R55" library="digital_dash" deviceset="RC0603FR" device="" technology="-07270RL" value="270 1%"/>
 <part name="GND54" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="GND55" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R56" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100KL" value="100k"/>
+<part name="R56" library="digital_dash" deviceset="RC0603FR" device="" technology="-0720KL" value="20k 1%"/>
 <part name="IC6" library="digital_dash" deviceset="TSV912" device="D"/>
 <part name="GND56" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="C11" library="digital_dash" deviceset="CL" device="" technology="10B104MB8NNNC" value="100n"/>
@@ -7877,13 +7877,13 @@ Switches electronic signals</description>
 <part name="GND57" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="R58" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100RL" value="100R"/>
 <part name="SUPPLY43" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R59" library="digital_dash" deviceset="RC0603FR" device="" technology="-07499KL" value="499k 1%"/>
+<part name="R59" library="digital_dash" deviceset="RC0603FR" device="" technology="-10100KL" value="100k 1%"/>
 <part name="IC7" library="digital_dash" deviceset="IL300" device=""/>
 <part name="SUPPLY41" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R61" library="digital_dash" deviceset="RC0603JR" device="" technology="-1310RL" value="10R"/>
+<part name="R61" library="digital_dash" deviceset="RC0603FR" device="" technology="-07270RL" value="270 1%"/>
 <part name="GND61" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="GND62" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R62" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100KL" value="100k"/>
+<part name="R62" library="digital_dash" deviceset="RC0603FR" device="" technology="-0720KL" value="20k 1%"/>
 <part name="IC4" library="digital_dash" deviceset="LM358" device="D"/>
 <part name="GND-ISO1" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
 <part name="GND-ISO2" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
