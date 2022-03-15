@@ -8217,7 +8217,7 @@ conditioning circuit to here.</text>
 <instance part="SUPPLY38" gate="G$1" x="215.9" y="370.84"/>
 <instance part="R53" gate="G$1" x="232.41" y="336.55" rot="R90"/>
 <instance part="SUPPLY39" gate="G$1" x="274.32" y="351.155" rot="R90"/>
-<instance part="R55" gate="G$1" x="257.81" y="354.33"/>
+<instance part="R55" gate="G$1" x="260.35" y="354.33"/>
 <instance part="GND54" gate="1" x="298.45" y="334.01" rot="MR0"/>
 <instance part="GND55" gate="1" x="300.355" y="356.235" rot="MR90"/>
 <instance part="R56" gate="G$1" x="317.5" y="337.82"/>
@@ -8233,7 +8233,7 @@ conditioning circuit to here.</text>
 <instance part="R59" gate="G$1" x="232.41" y="273.05" rot="R90"/>
 <instance part="IC7" gate="G$1" x="287.02" y="288.925"/>
 <instance part="SUPPLY41" gate="G$1" x="274.32" y="287.655" rot="R90"/>
-<instance part="R61" gate="G$1" x="257.81" y="290.83"/>
+<instance part="R61" gate="G$1" x="260.35" y="290.83"/>
 <instance part="GND61" gate="1" x="298.45" y="270.51" rot="MR0"/>
 <instance part="GND62" gate="1" x="300.355" y="292.735" rot="MR90"/>
 <instance part="R62" gate="G$1" x="316.865" y="275.59"/>
@@ -10174,7 +10174,7 @@ conditioning circuit to here.</text>
 <net name="N$20" class="0">
 <segment>
 <pinref part="R55" gate="G$1" pin="1"/>
-<wire x1="250.19" y1="354.33" x2="252.73" y2="354.33" width="0.1524" layer="91"/>
+<wire x1="250.19" y1="354.33" x2="255.27" y2="354.33" width="0.1524" layer="91"/>
 <pinref part="IC4" gate="A" pin="OUT"/>
 </segment>
 </net>
@@ -10182,7 +10182,7 @@ conditioning circuit to here.</text>
 <segment>
 <pinref part="R55" gate="G$1" pin="2"/>
 <pinref part="IC5" gate="G$1" pin="A2"/>
-<wire x1="262.89" y1="354.33" x2="278.13" y2="354.33" width="0.1524" layer="91"/>
+<wire x1="265.43" y1="354.33" x2="278.13" y2="354.33" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SIG_3V3_IN1" class="0">
@@ -10231,7 +10231,7 @@ conditioning circuit to here.</text>
 <net name="N$21" class="0">
 <segment>
 <pinref part="R61" gate="G$1" pin="1"/>
-<wire x1="250.19" y1="290.83" x2="252.73" y2="290.83" width="0.1524" layer="91"/>
+<wire x1="250.19" y1="290.83" x2="255.27" y2="290.83" width="0.1524" layer="91"/>
 <pinref part="IC4" gate="B" pin="OUT"/>
 </segment>
 </net>
@@ -10239,7 +10239,7 @@ conditioning circuit to here.</text>
 <segment>
 <pinref part="R61" gate="G$1" pin="2"/>
 <pinref part="IC7" gate="G$1" pin="A2"/>
-<wire x1="262.89" y1="290.83" x2="278.13" y2="290.83" width="0.1524" layer="91"/>
+<wire x1="265.43" y1="290.83" x2="278.13" y2="290.83" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SIG_3V3_IN2" class="0">

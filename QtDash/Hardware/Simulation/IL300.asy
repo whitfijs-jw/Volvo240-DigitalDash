@@ -4,10 +4,10 @@ RECTANGLE Normal -96 -72 96 72
 WINDOW 0 0 -72 Bottom 2
 WINDOW 3 0 72 Top 2
 WINDOW 39 0 96 Top 2
-SYMATTR Prefix X
 SYMATTR Value IL300
-SYMATTR ModelFile Z:\home\whitfijs\Downloads\spiceil300\Spice Model_IL300\IL300.lib
 SYMATTR SpiceLine K1=0.012 K3=1
+SYMATTR Prefix X
+SYMATTR ModelFile Z:\home\whitfijs\Downloads\spiceil300\Spice Model_IL300\IL300.lib
 PIN -96 -48 LEFT 8
 PINATTR PinName LEDC
 PINATTR SpiceOrder 1
