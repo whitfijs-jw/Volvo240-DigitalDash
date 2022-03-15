@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -7863,12 +7863,12 @@ Switches electronic signals</description>
 <part name="SUPPLY40" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="IC5" library="digital_dash" deviceset="IL300" device=""/>
 <part name="SUPPLY38" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R53" library="digital_dash" deviceset="RC0603FR" device="" technology="-07499KL" value="499k 1%"/>
+<part name="R53" library="digital_dash" deviceset="RC0603FR" device="" technology="-10100KL" value="100k 1%"/>
 <part name="SUPPLY39" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R55" library="digital_dash" deviceset="RC0603JR" device="" technology="-1310RL" value="10R"/>
+<part name="R55" library="digital_dash" deviceset="RC0603FR" device="" technology="-07270RL" value="270 1%"/>
 <part name="GND54" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="GND55" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R56" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100KL" value="100k"/>
+<part name="R56" library="digital_dash" deviceset="RC0603FR" device="" technology="-0720KL" value="20k 1%"/>
 <part name="IC6" library="digital_dash" deviceset="TSV912" device="D"/>
 <part name="GND56" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="C11" library="digital_dash" deviceset="CL" device="" technology="10B104MB8NNNC" value="100n"/>
@@ -7877,13 +7877,13 @@ Switches electronic signals</description>
 <part name="GND57" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="R58" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100RL" value="100R"/>
 <part name="SUPPLY43" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R59" library="digital_dash" deviceset="RC0603FR" device="" technology="-07499KL" value="499k 1%"/>
+<part name="R59" library="digital_dash" deviceset="RC0603FR" device="" technology="-10100KL" value="100k 1%"/>
 <part name="IC7" library="digital_dash" deviceset="IL300" device=""/>
 <part name="SUPPLY41" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R61" library="digital_dash" deviceset="RC0603JR" device="" technology="-1310RL" value="10R"/>
+<part name="R61" library="digital_dash" deviceset="RC0603FR" device="" technology="-07270RL" value="270 1%"/>
 <part name="GND61" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="GND62" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R62" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100KL" value="100k"/>
+<part name="R62" library="digital_dash" deviceset="RC0603FR" device="" technology="-0720KL" value="20k 1%"/>
 <part name="IC4" library="digital_dash" deviceset="LM358" device="D"/>
 <part name="GND-ISO1" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
 <part name="GND-ISO2" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
@@ -8217,7 +8217,7 @@ conditioning circuit to here.</text>
 <instance part="SUPPLY38" gate="G$1" x="215.9" y="370.84"/>
 <instance part="R53" gate="G$1" x="232.41" y="336.55" rot="R90"/>
 <instance part="SUPPLY39" gate="G$1" x="274.32" y="351.155" rot="R90"/>
-<instance part="R55" gate="G$1" x="257.81" y="354.33"/>
+<instance part="R55" gate="G$1" x="260.35" y="354.33"/>
 <instance part="GND54" gate="1" x="298.45" y="334.01" rot="MR0"/>
 <instance part="GND55" gate="1" x="300.355" y="356.235" rot="MR90"/>
 <instance part="R56" gate="G$1" x="317.5" y="337.82"/>
@@ -8233,7 +8233,7 @@ conditioning circuit to here.</text>
 <instance part="R59" gate="G$1" x="232.41" y="273.05" rot="R90"/>
 <instance part="IC7" gate="G$1" x="287.02" y="288.925"/>
 <instance part="SUPPLY41" gate="G$1" x="274.32" y="287.655" rot="R90"/>
-<instance part="R61" gate="G$1" x="257.81" y="290.83"/>
+<instance part="R61" gate="G$1" x="260.35" y="290.83"/>
 <instance part="GND61" gate="1" x="298.45" y="270.51" rot="MR0"/>
 <instance part="GND62" gate="1" x="300.355" y="292.735" rot="MR90"/>
 <instance part="R62" gate="G$1" x="316.865" y="275.59"/>
@@ -10174,7 +10174,7 @@ conditioning circuit to here.</text>
 <net name="N$20" class="0">
 <segment>
 <pinref part="R55" gate="G$1" pin="1"/>
-<wire x1="250.19" y1="354.33" x2="252.73" y2="354.33" width="0.1524" layer="91"/>
+<wire x1="250.19" y1="354.33" x2="255.27" y2="354.33" width="0.1524" layer="91"/>
 <pinref part="IC4" gate="A" pin="OUT"/>
 </segment>
 </net>
@@ -10182,7 +10182,7 @@ conditioning circuit to here.</text>
 <segment>
 <pinref part="R55" gate="G$1" pin="2"/>
 <pinref part="IC5" gate="G$1" pin="A2"/>
-<wire x1="262.89" y1="354.33" x2="278.13" y2="354.33" width="0.1524" layer="91"/>
+<wire x1="265.43" y1="354.33" x2="278.13" y2="354.33" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SIG_3V3_IN1" class="0">
@@ -10231,7 +10231,7 @@ conditioning circuit to here.</text>
 <net name="N$21" class="0">
 <segment>
 <pinref part="R61" gate="G$1" pin="1"/>
-<wire x1="250.19" y1="290.83" x2="252.73" y2="290.83" width="0.1524" layer="91"/>
+<wire x1="250.19" y1="290.83" x2="255.27" y2="290.83" width="0.1524" layer="91"/>
 <pinref part="IC4" gate="B" pin="OUT"/>
 </segment>
 </net>
@@ -10239,7 +10239,7 @@ conditioning circuit to here.</text>
 <segment>
 <pinref part="R61" gate="G$1" pin="2"/>
 <pinref part="IC7" gate="G$1" pin="A2"/>
-<wire x1="262.89" y1="290.83" x2="278.13" y2="290.83" width="0.1524" layer="91"/>
+<wire x1="265.43" y1="290.83" x2="278.13" y2="290.83" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SIG_3V3_IN2" class="0">

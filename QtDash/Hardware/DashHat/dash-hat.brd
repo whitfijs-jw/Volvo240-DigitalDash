@@ -8,8 +8,8 @@
 </settings>
 <grid distance="5" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="1" altunitdist="mil" altunit="mil"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
-<layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
+<layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
 <layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
 <layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
 <layer number="5" name="Route5" color="4" fill="4" visible="no" active="no"/>
@@ -22,34 +22,34 @@
 <layer number="12" name="Route12" color="1" fill="5" visible="no" active="no"/>
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
-<layer number="15" name="Route15" color="4" fill="6" visible="yes" active="yes"/>
+<layer number="15" name="Route15" color="4" fill="6" visible="no" active="yes"/>
 <layer number="16" name="Bottom" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="54" fill="1" visible="yes" active="yes"/>
-<layer number="22" name="bPlace" color="54" fill="1" visible="no" active="yes"/>
-<layer number="23" name="tOrigins" color="55" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="55" fill="1" visible="no" active="yes"/>
-<layer number="25" name="tNames" color="58" fill="1" visible="yes" active="yes"/>
-<layer number="26" name="bNames" color="58" fill="1" visible="no" active="yes"/>
+<layer number="21" name="tPlace" color="54" fill="1" visible="no" active="yes"/>
+<layer number="22" name="bPlace" color="54" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="55" fill="1" visible="no" active="yes"/>
+<layer number="24" name="bOrigins" color="55" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="58" fill="1" visible="no" active="yes"/>
+<layer number="26" name="bNames" color="58" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
-<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
-<layer number="31" name="tCream" color="7" fill="4" visible="yes" active="yes"/>
-<layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
+<layer number="32" name="bCream" color="7" fill="5" visible="yes" active="yes"/>
 <layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
 <layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
 <layer number="35" name="tGlue" color="7" fill="4" visible="no" active="yes"/>
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
-<layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
-<layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
@@ -1837,11 +1837,11 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 </element>
 <element name="R57" library="digital_dash" package="0603" value="100R" x="83.312" y="20.574" rot="MR0"/>
 <element name="IC5" library="digital_dash" package="DIL8-SMD" value="IL300" x="62.23" y="14.986" rot="MR0"/>
-<element name="R53" library="digital_dash" package="0603" value="499k 1%" x="69.723" y="10.414" rot="MR90"/>
-<element name="R55" library="digital_dash" package="0603" value="10R" x="70.358" y="16.256" rot="MR0"/>
-<element name="R56" library="digital_dash" package="0603" value="100k" x="52.578" y="18.288" smashed="yes" rot="MR180">
+<element name="R53" library="digital_dash" package="0603" value="100k 1%" x="69.723" y="10.414" rot="MR90"/>
+<element name="R55" library="digital_dash" package="0603" value="270 1%" x="70.358" y="16.256" rot="MR0"/>
+<element name="R56" library="digital_dash" package="0603" value="20k 1%" x="52.578" y="18.288" smashed="yes" rot="MR180">
 <attribute name="NAME" x="50.038" y="18.288" size="0.6096" layer="26" font="vector" ratio="20" rot="MR180" align="bottom-center"/>
-<attribute name="VALUE" x="49.784" y="18.542" size="0.6096" layer="28" font="vector" ratio="20" rot="MR180" align="top-center"/>
+<attribute name="VALUE" value="20k 1%" x="49.784" y="18.542" size="0.6096" layer="28" font="vector" ratio="20" rot="MR180" align="top-center"/>
 </element>
 <element name="IC6" library="digital_dash" package="SO08" value="TSV912D" x="51.308" y="23.368" smashed="yes" rot="MR90">
 <attribute name="NAME" x="48.641" y="25.019" size="1.27" layer="26" rot="MR270"/>
@@ -1861,15 +1861,15 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="NAME" x="83.312" y="30.607" size="0.6096" layer="26" font="vector" ratio="20" rot="MR0" align="bottom-center"/>
 <attribute name="VALUE" x="82.55" y="31.242" size="0.6096" layer="28" font="vector" ratio="20" rot="MR0" align="top-center"/>
 </element>
-<element name="R59" library="digital_dash" package="0603" value="499k 1%" x="67.945" y="23.241" smashed="yes" rot="MR90">
+<element name="R59" library="digital_dash" package="0603" value="100k 1%" x="67.945" y="23.241" smashed="yes" rot="MR90">
 <attribute name="NAME" x="68.834" y="23.241" size="0.6096" layer="26" font="vector" ratio="20" rot="MR90" align="bottom-center"/>
-<attribute name="VALUE" value="499k 1%" x="67.183" y="23.241" size="0.6096" layer="28" font="vector" ratio="20" rot="MR90" align="top-center"/>
+<attribute name="VALUE" value="100k 1%" x="67.183" y="23.241" size="0.6096" layer="28" font="vector" ratio="20" rot="MR90" align="top-center"/>
 </element>
 <element name="IC7" library="digital_dash" package="DIL8-SMD" value="IL300" x="62.484" y="29.972" rot="MR0"/>
-<element name="R61" library="digital_dash" package="0603" value="10R" x="70.866" y="31.242" rot="MR0"/>
-<element name="R62" library="digital_dash" package="0603" value="100k" x="51.308" y="28.448" smashed="yes" rot="MR180">
+<element name="R61" library="digital_dash" package="0603" value="270 1%" x="70.866" y="31.242" rot="MR0"/>
+<element name="R62" library="digital_dash" package="0603" value="20k 1%" x="51.308" y="28.448" smashed="yes" rot="MR180">
 <attribute name="NAME" x="48.768" y="28.702" size="0.6096" layer="26" font="vector" ratio="20" rot="MR180" align="bottom-center"/>
-<attribute name="VALUE" x="48.514" y="27.686" size="0.6096" layer="28" font="vector" ratio="20" rot="MR180" align="top-center"/>
+<attribute name="VALUE" value="20k 1%" x="48.514" y="27.686" size="0.6096" layer="28" font="vector" ratio="20" rot="MR180" align="top-center"/>
 </element>
 <element name="IC4" library="digital_dash" package="SO08" value="LM358D" x="77.47" y="22.098" smashed="yes" rot="MR90">
 <attribute name="NAME" x="74.041" y="22.86" size="0.8128" layer="26" rot="MR90"/>
