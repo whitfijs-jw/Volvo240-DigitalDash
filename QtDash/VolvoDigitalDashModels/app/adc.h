@@ -27,8 +27,8 @@ public:
     static constexpr char MCP3008[] = "mcp3008"; //!< MCP3008
 
     /* 5V inputs go through voltage divider for 3.3V ADC inputs -- not quite 100% */
-    static constexpr double REFERENCE_VOLTAGE_DIVIDER = (20.0 / (20.0 + 20.0));
-    static constexpr double INPUT_VOLTAGE_DIVIDER = (620.0 / (620.0 + 330.0));
+    static constexpr double REFERENCE_VOLTAGE_DIVIDER = (15.0e3 / (15.0e3 + 8.2e3));
+    static constexpr double INPUT_VOLTAGE_DIVIDER = (15.0e3 / (15.0e3 + 8.2e3));
     static constexpr double VOLTAGE_CONVERSION_CORRECTION_FACTOR = 3.3 / (INPUT_VOLTAGE_DIVIDER * 5.0);
 
     /**
