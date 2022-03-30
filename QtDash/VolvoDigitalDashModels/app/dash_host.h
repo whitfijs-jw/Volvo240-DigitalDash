@@ -47,7 +47,8 @@ public:
     DashHost(QObject * parent, QQmlContext * context) :
         QObject(parent), mContext(context), mEventTiming(parent),
         mConfig(parent, "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config.ini",
-                "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config_gauges.ini") {
+                "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config_gauges.ini",
+                "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config_odo.ini") {
 
         // populate accessory gauge model map
         mAccessoryGaugeModelMap.insert(COOLANT_TEMP_MODEL_NAME, &mCoolantTempModel);
@@ -130,6 +131,21 @@ public slots:
         mOdometerModel.setOdometerValue(mOdometerModel.odometerValue() + 0.1);
         mOdometerModel.setTripAValue(mOdometerModel.tripAValue() + 0.1);
         mOdometerModel.setTripBValue(mOdometerModel.tripBValue() + 0.1);
+
+        static int i = 0;
+        if (++i % 100 == 0) {
+            Config::OdometerConfig_t c = mConfig.getOdometerConfig(Config::ODO_NAME_ODOMETER);
+            c.value = mOdometerModel.odometerValue();
+            mConfig.writeOdometerConfig(Config::ODO_NAME_ODOMETER, c);
+
+            c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA);
+            c.value = mOdometerModel.tripAValue();
+            mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPA, c);
+
+            c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB);
+            c.value = mOdometerModel.tripBValue();
+            mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPB, c);
+        }
 
 
         if(rpmFile.isOpen())
@@ -222,9 +238,9 @@ private:
     }
 
     void initOdometer() {
-        mOdometerModel.setOdometerValue(269000.0);
-        mOdometerModel.setTripAValue(999.0);
-        mOdometerModel.setTripBValue(90.1);
+        mOdometerModel.setOdometerValue(mConfig.getOdometerConfig(Config::ODO_NAME_ODOMETER).value);
+        mOdometerModel.setTripAValue(mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA).value);
+        mOdometerModel.setTripBValue(mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB).value);
 
         mContext->setContextProperty(OdometerModel::ODOMETER_MODEL_NAME,
                                      &mOdometerModel);

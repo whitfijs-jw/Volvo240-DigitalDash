@@ -27,7 +27,7 @@ public:
             mOdoConfig = *odoConfig;
         } else {
             // use the odo values from the config file
-            mOdoConfig = mConfig->getOdometerConfig();
+            mOdoConfig = mConfig->getOdometerConfig(Config::ODO_NAME_ODOMETER);
         }
     }
 

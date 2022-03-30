@@ -290,14 +290,15 @@ private:
         });
 
         // trip counter
-        Config::OdometerConfig_t conf = {Config::DistanceUnits::MILE, 0, 2000};
+        Config::OdometerConfig_t confA = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA);
         mTripAOdoSensor = new OdometerSensor (
                     this->parent(), &mConfig, mVssSource,
-                    (int) VssSource::VssDataChannel::PULSE_COUNT, &conf);
+                    (int) VssSource::VssDataChannel::PULSE_COUNT, &confA);
 
+        Config::OdometerConfig_t confB = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB);
         mTripBOdoSensor = new OdometerSensor (
                     this->parent(), &mConfig, mVssSource,
-                    (int) VssSource::VssDataChannel::PULSE_COUNT, &conf);
+                    (int) VssSource::VssDataChannel::PULSE_COUNT, &confB);
     }
 
     /**

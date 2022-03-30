@@ -21,12 +21,14 @@ public:
     OdometerGauge(QObject * parent, Config * config, QList<Sensor *> sensors,
                    OdometerModel * model, QString modelName, QQmlContext * context) :
     Gauge(parent, config, sensors, model, modelName, context) {
-        Config::OdometerConfig_t odoConfig = mConfig->getOdometerConfig();
+        Config::OdometerConfig_t odoConfig = mConfig->getOdometerConfig(Config::ODO_NAME_ODOMETER);
+        Config::OdometerConfig_t tripAConfig = mConfig->getOdometerConfig(Config::ODO_NAME_TRIPA);
+        Config::OdometerConfig_t tripBConfig = mConfig->getOdometerConfig(Config::ODO_NAME_TRIPB);
 
         //setup odo
         ((OdometerModel *)mModel)->setOdometerValue(odoConfig.value);
-        ((OdometerModel *)mModel)->setTripAValue(0.0); //!< TODO: read from config
-        ((OdometerModel *)mModel)->setTripBValue(0.0); //!< TODO: read from config
+        ((OdometerModel *)mModel)->setTripAValue(tripAConfig.value);
+        ((OdometerModel *)mModel)->setTripBValue(tripBConfig.value);
 
         // connect the odo to the model value
         QObject::connect(

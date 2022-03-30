@@ -141,9 +141,14 @@ public:
     static constexpr char ANALOG_INPUT_12V_RHEOSTAT[] = "rheostat";
 
     //expected odometer keys
+    static constexpr char ODO_NAME[] = "name";
     static constexpr char ODO_UNITS[] = "units";
     static constexpr char ODO_VALUE[] = "value";
     static constexpr char ODO_WRITE_INTERVAL[] = "interval";
+
+    static constexpr char ODO_NAME_ODOMETER[] = "odometer";
+    static constexpr char ODO_NAME_TRIPA[] = "tripA";
+    static constexpr char ODO_NAME_TRIPB[] = "tripB";
 
     //gauge config groups
     static constexpr char BOOST_GAUGE_GROUP[] = "boost";
@@ -418,6 +423,7 @@ public:
         DistanceUnits units; //!< odometer internal units
         qreal value; //!< odometer value (in above units)
         int writeInterval; //!< number of pulses between writing to back to non-volatile memory
+        QString name;
     } OdometerConfig_t;
 
     /**
@@ -450,6 +456,7 @@ public:
 
     static constexpr char DEFAULT_CONFIG_PATH[] = "/opt/config.ini";
     static constexpr char DEFAULT_GAUGE_CONFIG_PATH[] = "/opt/config_gauges.ini";
+    static constexpr char DEFAULT_ODO_CONFIG_PATH[] = "/opt/config_odo.ini";
 
     /**
      * @brief Constructor
@@ -458,13 +465,60 @@ public:
      */
     Config(QObject * parent,
            QString configPath = DEFAULT_CONFIG_PATH,
-           QString gaugeConfigPath = DEFAULT_GAUGE_CONFIG_PATH) :
+           QString gaugeConfigPath = DEFAULT_GAUGE_CONFIG_PATH,
+           QString odoConfigPath = DEFAULT_ODO_CONFIG_PATH) :
         QObject(parent) {
         mConfig = new QSettings(configPath, QSettings::IniFormat);
         loadConfig();
 
         mGaugeConfig = new QSettings(gaugeConfigPath, QSettings::IniFormat);
         loadGaugeConfigs();
+
+        mOdometerConfig = new QSettings(odoConfigPath, QSettings::IniFormat);
+        loadOdometerConfigs();
+    }
+
+    bool loadOdometerConfigs() {
+
+        mOdometerConfig->beginGroup("start");
+        bool use = mOdometerConfig->value("use", false).toBool();
+        mOdometerConfig->endGroup();
+
+        mOdometerConfig->beginGroup(ODOMETER_GROUP);
+        printKeys("odo", mOdometerConfig);
+        mOdometerConfig->endGroup();
+
+        int size = mOdometerConfig->beginReadArray(ODOMETER_GROUP);
+        for (int i = 0; i < size; ++i) {
+            OdometerConfig_t conf;
+            mOdometerConfig->setArrayIndex(i);
+
+            QString odoUnits = mOdometerConfig->value(ODO_UNITS, UNITS_MILE).toString();
+            conf.units = getDistanceUnits(odoUnits);
+            conf.value = mOdometerConfig->value(ODO_VALUE, 0.0).toReal();
+            conf.writeInterval = mOdometerConfig->value(ODO_WRITE_INTERVAL, 2000).toInt();
+            conf.name = mOdometerConfig->value(ODO_NAME, "").toString();
+
+            mOdoConfig.push_back(conf);
+        }
+
+        mOdometerConfig->endArray();
+        return true;
+    }
+
+    bool writeOdometerConfig(QString name, OdometerConfig_t conf) {
+        //write to disk
+        mOdometerConfig->beginWriteArray(ODOMETER_GROUP);
+        for (int i = 0; i < mOdoConfig.size(); i++) {
+            mOdometerConfig->setArrayIndex(i);
+
+            if (mOdometerConfig->value(ODO_NAME, "").toString() == name) {
+                mOdometerConfig->setValue(ODO_VALUE, conf.value);
+                mOdometerConfig->sync();
+            }
+        }
+        mOdometerConfig->endArray();
+        return true;
     }
 
     /**
@@ -741,13 +795,6 @@ public:
 
         mConfig->endGroup();
 
-        mConfig->beginGroup(ODOMETER_GROUP);
-        QString odoUnits = mConfig->value(ODO_UNITS, UNITS_MILE).toString();
-        mOdoConfig.units = getDistanceUnits(odoUnits);
-        mOdoConfig.value = mConfig->value(ODO_VALUE, 0.0).toReal();
-        mOdoConfig.writeInterval = mConfig->value(ODO_WRITE_INTERVAL, 2000).toInt();
-        mConfig->endGroup();
-
         return keys.size() > 0;
     }
 
@@ -901,8 +948,13 @@ public:
         return mTachGaugeConfig;
     }
 
-    OdometerConfig_t getOdometerConfig() {
-        return mOdoConfig;
+    OdometerConfig_t getOdometerConfig(QString name) {
+        for (auto conf : mOdoConfig) {
+            if (conf.name == name) {
+                return conf;
+            }
+        }
+        return {DistanceUnits::MILE, 0, 0, ""};
     }
 
 signals:
@@ -924,7 +976,10 @@ private:
     SpeedoConfig_t mSpeedoGaugeConfig; //!< speedo gauge config
     TachoConfig_t mTachGaugeConfig; //!< tacho gauge config
     VssInputConfig_t mVssInputConfig; //!< vehicle speed sensor config
-    OdometerConfig_t mOdoConfig;
+
+    QSettings * mOdometerConfig = nullptr;
+    QList<OdometerConfig_t> mOdoConfig;
+
 
     /**
      * @brief Check that values are valid in a map
