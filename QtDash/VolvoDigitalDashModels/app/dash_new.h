@@ -289,16 +289,40 @@ private:
             mVssSource->update((int) VssSource::VssDataChannel::PULSE_COUNT);
         });
 
-        // trip counter
+        QObject::connect(
+                    mOdoSensor, &OdometerSensor::writeOdoValue,
+                    [=](qreal value) {
+            Config::OdometerConfig_t c = mConfig.getOdometerConfig(Config::ODO_NAME_ODOMETER);
+            c.value = value;
+            mConfig.writeOdometerConfig(Config::ODO_NAME_ODOMETER, c);
+        });
+
+        // trip counters
         Config::OdometerConfig_t confA = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA);
         mTripAOdoSensor = new OdometerSensor (
                     this->parent(), &mConfig, mVssSource,
                     (int) VssSource::VssDataChannel::PULSE_COUNT, &confA);
 
+        QObject::connect(
+                    mTripAOdoSensor, &OdometerSensor::writeOdoValue,
+                    [=](qreal value) {
+            Config::OdometerConfig_t c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA);
+            c.value = value;
+            mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPA, c);
+        });
+
         Config::OdometerConfig_t confB = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB);
         mTripBOdoSensor = new OdometerSensor (
                     this->parent(), &mConfig, mVssSource,
                     (int) VssSource::VssDataChannel::PULSE_COUNT, &confB);
+
+        QObject::connect(
+                    mTripBOdoSensor, &OdometerSensor::writeOdoValue,
+                    [=](qreal value) {
+            Config::OdometerConfig_t c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB);
+            c.value = value;
+            mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPB, c);
+        });
     }
 
     /**

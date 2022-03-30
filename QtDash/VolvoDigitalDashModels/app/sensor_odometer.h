@@ -8,6 +8,7 @@
  * @brief Odometer Sensor
  */
 class OdometerSensor : public Sensor {
+Q_OBJECT
 public:
     /**
      * @brief OdometerSensor constructor
