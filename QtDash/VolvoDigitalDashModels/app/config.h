@@ -417,7 +417,7 @@ public:
     typedef struct OdometerConfig {
         DistanceUnits units; //!< odometer internal units
         qreal value; //!< odometer value (in above units)
-        qreal writeInterval; //!< number of pulses between writing to back to non-volatile memory
+        int writeInterval; //!< number of pulses between writing to back to non-volatile memory
     } OdometerConfig_t;
 
     /**

@@ -27,6 +27,7 @@
 #include <sensor_resistive.h>
 #include <sensor_speedo.h>
 #include <sensor_tach.h>
+#include <sensor_odometer.h>
 
 #include <gauge_accessory.h>
 #include <gauge_speedo.h>
@@ -108,6 +109,9 @@ private:
     SpeedometerSensor<GpsSource> * mGpsSpeedoSensor; //!< speedometer w/ gps input
     SpeedometerSensor<VssSource> * mSpeedoSensor; //!< speedometer w/ vss input
     TachSensor * mTachSensor; //!< tachometer sensor
+    OdometerSensor * mOdoSensor; //!< odometer
+    OdometerSensor * mTripAOdoSensor; //!< trip a counter
+    OdometerSensor * mTripBOdoSensor; //!< trip b counter
 
     AccessoryGaugeModel mBoostModel; //!< boost pressure QML model
     AccessoryGaugeModel mOilTemperatureModel; //!< oil temperature QML model
@@ -267,6 +271,27 @@ private:
                     [=]() {
             mTachSource->update((int) TachSource::TachDataChannel::RPM_CHANNEL);
         });
+
+        mOdoSensor = new OdometerSensor (
+                    this->parent(), &mConfig, mVssSource,
+                    (int) VssSource::VssDataChannel::PULSE_COUNT);
+
+        QObject::connect(
+                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::SLOW_TIMER)),
+                    &QTimer::timeout,
+                    [=]() {
+            mVssSource->update((int) VssSource::VssDataChannel::PULSE_COUNT);
+        });
+
+        // trip counter
+        Config::OdometerConfig_t conf = {Config::DistanceUnits::MILE, 0, 2000};
+        mTripAOdoSensor = new OdometerSensor (
+                    this->parent(), &mConfig, mVssSource,
+                    (int) VssSource::VssDataChannel::PULSE_COUNT, &conf);
+
+        mTripBOdoSensor = new OdometerSensor (
+                    this->parent(), &mConfig, mVssSource,
+                    (int) VssSource::VssDataChannel::PULSE_COUNT, &conf);
     }
 
     /**
