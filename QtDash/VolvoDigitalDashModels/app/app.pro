@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp \
     indicator_model.cpp \
+    odometer_model.cpp \
     tachometer_model.cpp \
     accessory_gauge_model.cpp \
     speedometer_model.cpp \
@@ -414,6 +415,7 @@ HEADERS += \
     event_timers.h \
     gauge.h \
     gauge_accessory.h \
+    gauge_odo.h \
     gauge_speedo.h \
     gauge_tach.h \
     gauge_temp_fuel_cluster.h \
@@ -422,6 +424,7 @@ HEADERS += \
     map_sensor.h \
     mcp23017.h \
     ntc.h \
+    odometer_model.h \
     pulse_counter.h \
     sensor.h \
     sensor_map.h \

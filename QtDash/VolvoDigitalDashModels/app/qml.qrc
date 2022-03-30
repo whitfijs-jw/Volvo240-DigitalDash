@@ -19,6 +19,7 @@
         <file>Original850R.qml</file>
         <file>OriginalRSportLayout.qml</file>
         <file>Needle240.qml</file>
+        <file>Odometer.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>

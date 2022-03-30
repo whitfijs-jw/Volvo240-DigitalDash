@@ -12,6 +12,7 @@
 #include <temp_and_fuel_gauge_model.h>
 #include <indicator_model.h>
 #include <warning_light_model.h>
+#include <odometer_model.h>
 
 #include <config.h>
 #include <gps_helper.h>
@@ -72,6 +73,7 @@ public:
         initAccessoryGuage(BOOST_GAUGE_MODEL_NAME, -20.0, 30.0, "psi", -50.0, 18.0);
         initAccessoryGuage(VOLT_METER_MODEL_NAME, 10.0, 16.0, "V", 12.0, 15.0);
         initDashLights();
+        initOdometer();
 
         // initialize sensor inputs
         initSensorInputs();
@@ -124,6 +126,12 @@ public slots:
             mCoolantTempModel.setCurrentValue(tempF);
         }
 
+
+        mOdometerModel.setOdometerValue(mOdometerModel.odometerValue() + 0.1);
+        mOdometerModel.setTripAValue(mOdometerModel.tripAValue() + 0.1);
+        mOdometerModel.setTripBValue(mOdometerModel.tripBValue() + 0.1);
+
+
         if(rpmFile.isOpen())
         {
             QString rpmString = rpmStream.readLine();
@@ -143,6 +151,7 @@ public slots:
 
             mFuelLevelModel.setCurrentValue(value);
             mTempFuelModel.setFuelLevel(value);
+
         }
 
         if(battFile.isOpen())
@@ -210,6 +219,15 @@ private:
      * @brief Initialize sensor inputs and connect updates to respective models
      */
     void initSensorInputs() {
+    }
+
+    void initOdometer() {
+        mOdometerModel.setOdometerValue(269000.0);
+        mOdometerModel.setTripAValue(999.0);
+        mOdometerModel.setTripBValue(90.1);
+
+        mContext->setContextProperty(OdometerModel::ODOMETER_MODEL_NAME,
+                                     &mOdometerModel);
     }
 
     /**
@@ -346,6 +364,7 @@ private:
     AccessoryGaugeModel mFuelLevelModel;
     DashLights * mDashLights;
     QMap<QString, AccessoryGaugeModel*> mAccessoryGaugeModelMap;
+    OdometerModel mOdometerModel;
 
     // Inputs
     GpsHelper * mGpsHelper;

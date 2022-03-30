@@ -11,6 +11,7 @@
 #include <temp_and_fuel_gauge_model.h>
 #include <indicator_model.h>
 #include <warning_light_model.h>
+#include <odometer_model.h>
 
 #include <config.h>
 #include <event_timers.h>
@@ -33,6 +34,7 @@
 #include <gauge_speedo.h>
 #include <gauge_tach.h>
 #include <gauge_temp_fuel_cluster.h>
+#include <gauge_odo.h>
 
 /**
  * @brief A class to run the digital dash
@@ -49,6 +51,7 @@ public:
     static constexpr char TACH_MODEL_NAME[] = "rpmModel"; //!< rpm/tacho model name
     static constexpr char SPEEDO_MODEL_NAME[] = "speedoModel"; //!< speedometer model name
     static constexpr char TEMP_FUEL_CLUSTER_MODEL_NAME[] = "tempFuelModel"; //!< 240 combined temp/fuel model name
+    static constexpr char ODOMETER_MODEL_NAME[] = "odometerModel";
 
     /**
      * @brief Constructor
@@ -69,6 +72,7 @@ public:
         initAccessoryGauges();
         initSpeedo();
         initTacho();
+        initOdometer();
 
         initDashLights();
     }
@@ -120,6 +124,7 @@ private:
     AccessoryGaugeModel mFuelLevelModel; //!< fuel level QML model
     AccessoryGaugeModel mVoltMeterModel; //!< voltmeter QML model
     TempAndFuelGaugeModel mTempFuelModel; //!< 240 combined temp/fuel QML model
+    OdometerModel mOdometerModel; //!< odometer QML model
 
     SpeedometerModel mSpeedoModel; //!< speedometer QML model
     TachometerModel mTachoModel; //!< Tachometer QML model
@@ -134,6 +139,7 @@ private:
 
     SpeedometerGauge * mSpeedoGauge; //!< speedometer gauge
     TachometerGauge * mTachoGauge; //!< tachometer gauge
+    OdometerGauge * mOdoGauge; //!< odometer gauge
 
     /**
      * @brief Initialize sensor sources
@@ -395,6 +401,15 @@ private:
         mTachoGauge = new TachometerGauge(
                     this->parent(), &mConfig, tachSensors,
                     &mTachoModel, TachometerModel::TACH_MODEL_NAME,
+                    mContext
+                    );
+    }
+
+    void initOdometer() {
+        QList<Sensor *> odoSensors = {mOdoSensor, mTripAOdoSensor, mTripBOdoSensor};
+        mOdoGauge = new OdometerGauge(
+                    this->parent(), &mConfig, odoSensors,
+                    &mOdometerModel, OdometerModel::ODOMETER_MODEL_NAME,
                     mContext
                     );
     }
