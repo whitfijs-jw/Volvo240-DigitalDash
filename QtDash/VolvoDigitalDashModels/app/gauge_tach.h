@@ -4,8 +4,20 @@
 #include <gauge.h>
 #include <tachometer_model.h>
 
+/**
+ * @brief The TachometerGauge class
+ */
 class TachometerGauge : public Gauge {
 public:
+    /**
+     * @brief TachometerGauge constructor
+     * @param parent: parent object
+     * @param config: dash config
+     * @param sensors: list of sensor inputs
+     * @param model: Tachometer QML model
+     * @param modelName: model name
+     * @param context: QML context to register model
+     */
     TachometerGauge(QObject * parent, Config * config, QList<Sensor *> sensors,
                    TachometerModel * model, QString modelName, QQmlContext * context) :
     Gauge(parent, config, sensors, model, modelName, context) {

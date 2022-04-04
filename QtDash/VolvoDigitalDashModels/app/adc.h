@@ -18,8 +18,18 @@
 class Adc
 {
 public:
+    static constexpr char IIO_DEVICE_PATH[] = "/sys/bus/iio/devices/"; //!< Default iio device path
+    static constexpr char IIO_DEVICE_BASENAME[] = "iio:device"; //!< default iio device base name
+    static constexpr char CHANNEL_DATA_PATH[] = "in_voltageX_raw"; //!< raw data channel X is replaced by the channel number
+
+    static constexpr char MCP3208[] = "mcp3208"; //!< MCP3208
+    static constexpr char ADS1115[] = "ads1115"; //!< ADS1115
+    static constexpr char MCP3008[] = "mcp3008"; //!< MCP3008
+
     /* 5V inputs go through voltage divider for 3.3V ADC inputs -- not quite 100% */
-    static constexpr double VOLTAGE_CONVERSION_CORRECTION_FACTOR = 3.3 / ((620.0 / (620.0 + 330.0)) * 5.0);
+    static constexpr double REFERENCE_VOLTAGE_DIVIDER = (20.0 / (20.0 + 20.0));
+    static constexpr double INPUT_VOLTAGE_DIVIDER = (620.0 / (620.0 + 330.0));
+    static constexpr double VOLTAGE_CONVERSION_CORRECTION_FACTOR = 3.3 / (INPUT_VOLTAGE_DIVIDER * 5.0);
 
     /**
      * @brief Constructor
@@ -29,8 +39,9 @@ public:
      */
     Adc(std::string name = "mcp3208",
                 std::string path = IIO_DEVICE_PATH,
-                double vRef = 5.0) :
-        mDeviceName(name), mVref(vRef) {
+                double vRef = 5.0,
+                int referenceChannel = -1) :
+        mDeviceName(name), mVref(vRef), mRefChannel(referenceChannel) {
         // search in path for the given device.
         mPath = findDevicePath(path, name);
 
@@ -71,6 +82,21 @@ public:
                 std::cout << "Channel data path: " << mChannelMap.at(i) << std::endl;
             }
         }
+
+        if (mRefChannel > 0 && mRefChannel < mNumChannels) {
+            mVref = readValue(mRefChannel, 3.3) / REFERENCE_VOLTAGE_DIVIDER;
+            std::cout << "Reference Voltage measured:" << mVref << std::endl;
+        }
+    }
+
+    /**
+     * @brief Update internal reference with measurement using channel configured to measure
+     * the voltage used to drive the sensor inputs
+     */
+    void updateReference() {
+        if (mRefChannel > 0 && mRefChannel < mNumChannels) {
+            mVref = readValue(mRefChannel, 3.3) / REFERENCE_VOLTAGE_DIVIDER;
+        }
     }
 
     /**
@@ -78,16 +104,14 @@ public:
      * @param channel: adc channel to read
      * @return current measured voltage
      */
-    double readValue(int channel) {
-        return readValue(channel, mVref);
-    }
+    double readValue(int channel, double vRef = -1) {
+        double volts = ((double)readRawValue(channel) / (double)mMaxVal);
 
-    double readValue(int channel, double vRef) {
-        double volts = ((double)readRawValue(channel) / (double)mMaxVal) * mVref;
-        if (vRef == 5.0) {
-            return volts * VOLTAGE_CONVERSION_CORRECTION_FACTOR;
+        if (vRef < 0) {
+            updateReference();
+            return volts * mVref * VOLTAGE_CONVERSION_CORRECTION_FACTOR;
         } else {
-            return volts;
+            return volts * vRef;
         }
     }
 
@@ -116,22 +140,27 @@ public:
         return -1.0;
     }
 
+    /**
+     * @brief Get number of channels
+     * @return number of channels
+     */
     int getNumChannels() {
         return mNumChannels;
     }
 
+    /**
+     * @brief Get device name
+     * @return Device name.  MCP3208, ADS1115, etc
+     */
     std::string getDeviceName() {
         return mDeviceName;
     }
 
-private:
-    static constexpr char IIO_DEVICE_PATH[] = "/sys/bus/iio/devices/";
-    static constexpr char IIO_DEVICE_BASENAME[] = "iio:device";
-    static constexpr char CHANNEL_DATA_PATH[] = "in_voltageX_raw";
+    double getVRef() {
+        return mVref;
+    }
 
-    static constexpr char MCP3208[] = "mcp3208";
-    static constexpr char ADS1115[] = "ads1115";
-    static constexpr char MCP3008[] = "mcp3008";
+private:
 
     /**
      * @brief Find the iio device given the expected name
@@ -171,6 +200,7 @@ private:
     double mVref = 0.0f; //!< voltage reference
     int mMaxVal = 0; //!< max adc value
     std::map<int, std::string> mChannelMap; //!< map of channels and their respective paths
+    int mRefChannel = -1;
 };
 
 #endif // ANALOG_INPUT_H

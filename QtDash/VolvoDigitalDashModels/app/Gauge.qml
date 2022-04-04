@@ -30,6 +30,7 @@ Item {
     property real needleCenterRadius: 0.15
 
     property string imageResource
+    property string needleResource: "qrc:/needles/needle-240.png"
 
     property color needleColor: "orange"
 
@@ -104,7 +105,7 @@ Item {
             ]
         }
 
-        Rectangle {
+        Image {
             id: needle
 
 //            needleColor: gauge.needleColor
@@ -116,15 +117,17 @@ Item {
             y: parent.height / 2 + offset
             width: gauge.needleLength
             height: gauge.needleWidth
-            radius: gauge.needleTipRadius
+
             antialiasing: true
             smooth: true
+            source: needleResource
 
-            gradient: Gradient {
-                    GradientStop { position: 0.25; color: needleColor}
-                    GradientStop { position: 0.5; color: "white" }
-                    GradientStop { position: 0.75; color: needleColor }
-            }
+//            radius: gauge.needleTipRadius
+//            gradient: Gradient {
+//                    GradientStop { position: 0.25; color: needleColor}
+//                    GradientStop { position: 0.5; color: "white" }
+//                    GradientStop { position: 0.75; color: needleColor }
+//            }
 
             transform: [
                 Translate {
@@ -188,7 +191,7 @@ Item {
             fontSizeMode: Text.Fit
             font.pixelSize: gauge.topTextSize
 
-            text: Number(gauge.topValue).toFixed(significantDigits).toLocaleString(Qt.locale("en_US")) + " " + gauge.topUnits
+            text: Number(gauge.topValue).toFixed(1).toLocaleString(Qt.locale("en_US")) + " " + gauge.topUnits
             color: "white"
         }
     }

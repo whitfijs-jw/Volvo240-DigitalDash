@@ -4,8 +4,20 @@
 #include <gauge.h>
 #include <temp_and_fuel_gauge_model.h>
 
+/**
+ * @brief The TempFuelClusterGauge class
+ */
 class TempFuelClusterGauge : public Gauge {
 public:
+    /**
+     * @brief TempFuelClusterGauge constructor
+     * @param parent: parent object
+     * @param config: dash config
+     * @param sensors: list of sensor inputs
+     * @param model: temp/fuel QML model
+     * @param modelName: model name
+     * @param context: QML context to register model
+     */
     TempFuelClusterGauge(QObject * parent, Config * config, QList<Sensor *> sensors,
                          TempAndFuelGaugeModel * model, QString modelName, QQmlContext * context) :
           Gauge(parent, config, sensors, model, modelName, context) {
@@ -28,7 +40,18 @@ public:
         QObject::connect(
                     sensors.at(0), &Sensor::sensorDataReady,
                     [=](QVariant data) {
-            ((TempAndFuelGaugeModel *)mModel)->setCurrentTemp(data.toReal());
+
+            // get raw value
+            qreal val = data.toReal();
+            Sensor * sensor = sensors.at(0);
+
+            // get units
+            QString units = sensor->getUnits();
+            QString displayUnits = coolantConfig.displayUnits;
+
+            val = SensorUtils::convert(val, displayUnits, units);
+
+            ((TempAndFuelGaugeModel *)mModel)->setCurrentTemp(val);
         });
 
         // connect the secondary values

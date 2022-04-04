@@ -17,6 +17,7 @@ Item
     property bool enableSeconds: true
 
     property string imageSource: ""
+    property string needleResource: ""
 
     property string generation: "740"
 
@@ -70,6 +71,7 @@ Item
         textEnabled: false
 
         imageResource: generation === "740" ? imageSource : ""
+        needleResource: clockLarge.needleResource
 
         needleColor: generation === "740" ? "red" : "orange"
 
@@ -104,10 +106,11 @@ Item
         textEnabled: false
 
         imageResource: generation === "740" ? "" : imageSource
+        needleResource: clockLarge.needleResource
 
         needleColor: generation === "740" ? "red" : "orange"
 
-        needleWidth: generation === "740" ? parent.width * 0.015 : parent.width * 0.010
+        needleWidth: generation === "740" ? parent.width * 0.02 : parent.width * 0.015
         needleLength: generation === "740" ? parent.width * 0.525 : parent.width * 0.425
         needleOffset: parent.width * .15 / 2
 
@@ -139,6 +142,7 @@ Item
         imageResource: ""
 
         needleColor: generation === "740" ? "red" : "orange"
+        needleResource: clockLarge.needleResource
 
         needleWidth: generation === "740" ? parent.width * 0.035 : parent.width * 0.020
         needleLength: generation === "740" ? parent.width * 0.425 : parent.width * 0.275
