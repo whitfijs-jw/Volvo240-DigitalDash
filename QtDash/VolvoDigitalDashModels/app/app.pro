@@ -407,6 +407,7 @@ HEADERS += \
     adc.h \
     analog_12v_input.h \
     analog_sensors.h \
+    backlight_control.h \
     config.h \
     dash.h \
     dash_host.h \

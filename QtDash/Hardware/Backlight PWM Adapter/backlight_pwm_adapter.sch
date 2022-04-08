@@ -1051,6 +1051,17 @@ Alternate pin configuration
 <smd name="5" x="-3" y="0" dx="1" dy="3.5" layer="1" rot="R180"/>
 <smd name="6" x="-5" y="0" dx="1" dy="3.5" layer="1" rot="R180"/>
 <smd name="1" x="5" y="0" dx="1" dy="3.5" layer="1" rot="R180"/>
+<wire x1="-8" y1="8" x2="8" y2="8" width="0.127" layer="51"/>
+<wire x1="8" y1="8" x2="8" y2="1" width="0.127" layer="51"/>
+<wire x1="8" y1="1" x2="-8" y2="1" width="0.127" layer="51"/>
+<wire x1="-8" y1="1" x2="-8" y2="8" width="0.127" layer="51"/>
+<wire x1="-5.6" y1="1" x2="-8" y2="1" width="0.127" layer="21"/>
+<wire x1="-8" y1="1" x2="-8" y2="3.9" width="0.127" layer="21"/>
+<wire x1="5.7" y1="1" x2="8" y2="1" width="0.127" layer="21"/>
+<wire x1="8" y1="1" x2="8" y2="3.9" width="0.127" layer="21"/>
+<wire x1="-8" y1="7.5" x2="-8" y2="8" width="0.127" layer="21"/>
+<wire x1="-8" y1="8" x2="8" y2="8" width="0.127" layer="21"/>
+<wire x1="8" y1="8" x2="8" y2="7.5" width="0.127" layer="21"/>
 </package>
 </packages>
 <symbols>

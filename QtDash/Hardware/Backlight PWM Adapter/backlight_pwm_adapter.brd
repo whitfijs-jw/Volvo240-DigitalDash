@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="10" unitdist="mil" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -52,7 +52,7 @@
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
@@ -192,6 +192,15 @@
 <wire x1="40.62" y1="0" x2="40.62" y2="19.482" width="0" layer="20"/>
 <wire x1="40.62" y1="19.482" x2="0.254" y2="19.482" width="0" layer="20"/>
 <wire x1="0.254" y1="19.482" x2="0.254" y2="0" width="0" layer="20"/>
+<hole x="10.922" y="17.78" drill="2.5"/>
+<hole x="29.972" y="17.78" drill="2.5"/>
+<circle x="10.922" y="17.78" radius="1.27" width="0.4064" layer="41"/>
+<circle x="10.922" y="17.78" radius="1.27" width="0.4064" layer="42"/>
+<circle x="29.972" y="17.78" radius="1.27" width="0.4064" layer="42"/>
+<circle x="29.972" y="17.78" radius="1.27" width="0.4064" layer="41"/>
+<text x="15.24" y="13.716" size="1.016" layer="21" font="vector" ratio="15">PWM Adapter
+Rev A. Apr. 2022
+@whitfijs</text>
 </plain>
 <libraries>
 <library name="backlight_pwm_adapter">
@@ -205,6 +214,17 @@
 <smd name="5" x="-3" y="0" dx="1" dy="3.5" layer="1" rot="R180"/>
 <smd name="6" x="-5" y="0" dx="1" dy="3.5" layer="1" rot="R180"/>
 <smd name="1" x="5" y="0" dx="1" dy="3.5" layer="1" rot="R180"/>
+<wire x1="-8" y1="8" x2="8" y2="8" width="0.127" layer="51"/>
+<wire x1="8" y1="8" x2="8" y2="1" width="0.127" layer="51"/>
+<wire x1="8" y1="1" x2="-8" y2="1" width="0.127" layer="51"/>
+<wire x1="-8" y1="1" x2="-8" y2="8" width="0.127" layer="51"/>
+<wire x1="-5.6" y1="1" x2="-8" y2="1" width="0.127" layer="21"/>
+<wire x1="-8" y1="1" x2="-8" y2="3.9" width="0.127" layer="21"/>
+<wire x1="5.7" y1="1" x2="8" y2="1" width="0.127" layer="21"/>
+<wire x1="8" y1="1" x2="8" y2="3.9" width="0.127" layer="21"/>
+<wire x1="-8" y1="7.5" x2="-8" y2="8" width="0.127" layer="21"/>
+<wire x1="-8" y1="8" x2="8" y2="8" width="0.127" layer="21"/>
+<wire x1="8" y1="8" x2="8" y2="7.5" width="0.127" layer="21"/>
 </package>
 </packages>
 </library>
@@ -349,41 +369,35 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <class number="0" name="default" width="0" drill="0">
 </class>
 </classes>
-<designrules name="default">
-<description language="de">&lt;b&gt;EAGLE Design Rules&lt;/b&gt;
+<designrules name="oshpark-2layer">
+<description language="en">&lt;b&gt;OSH Park Design Rules&lt;/b&gt;
 &lt;p&gt;
-Die Standard-Design-Rules sind so gewählt, dass sie für 
-die meisten Anwendungen passen. Sollte ihre Platine 
-besondere Anforderungen haben, treffen Sie die erforderlichen
-Einstellungen hier und speichern die Design Rules unter 
-einem neuen Namen ab.</description>
-<description language="en">&lt;b&gt;EAGLE Design Rules&lt;/b&gt;
+Please make sure your boards conform to these design rules.
+&lt;/p&gt;
 &lt;p&gt;
-The default Design Rules have been set to cover
-a wide range of applications. Your particular design
-may have different requirements, so please make the
-necessary adjustments and save your customized
-design rules under a new name.</description>
+Note, that not all DRC settings must be set by the manufacturer. Several can be adjusted for the design, including those listed on our docs page here. 
+&lt;a href=&quot;http://docs.oshpark.com/design-tools/eagle/design-rules-files/&quot;&gt;Adjustable Settings&lt;/a&gt;
+&lt;/p&gt;</description>
 <param name="layerSetup" value="(1*16)"/>
-<param name="mtCopper" value="0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm"/>
-<param name="mtIsolate" value="1.5mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm"/>
-<param name="mdWireWire" value="8mil"/>
-<param name="mdWirePad" value="8mil"/>
-<param name="mdWireVia" value="8mil"/>
-<param name="mdPadPad" value="8mil"/>
-<param name="mdPadVia" value="8mil"/>
-<param name="mdViaVia" value="8mil"/>
-<param name="mdSmdPad" value="8mil"/>
-<param name="mdSmdVia" value="8mil"/>
-<param name="mdSmdSmd" value="8mil"/>
+<param name="mtCopper" value="0.035559375mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.0356mm 0.035559375mm"/>
+<param name="mtIsolate" value="1.6mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm 0.1499mm 0.2007mm"/>
+<param name="mdWireWire" value="6mil"/>
+<param name="mdWirePad" value="6mil"/>
+<param name="mdWireVia" value="6mil"/>
+<param name="mdPadPad" value="6mil"/>
+<param name="mdPadVia" value="6mil"/>
+<param name="mdViaVia" value="6mil"/>
+<param name="mdSmdPad" value="6mil"/>
+<param name="mdSmdVia" value="6mil"/>
+<param name="mdSmdSmd" value="6mil"/>
 <param name="mdViaViaSameLayer" value="8mil"/>
 <param name="mnLayersViaInSmd" value="2"/>
-<param name="mdCopperDimension" value="40mil"/>
-<param name="mdDrill" value="8mil"/>
+<param name="mdCopperDimension" value="15mil"/>
+<param name="mdDrill" value="6mil"/>
 <param name="mdSmdStop" value="0mil"/>
-<param name="msWidth" value="10mil"/>
-<param name="msDrill" value="24mil"/>
-<param name="msMicroVia" value="9.99mm"/>
+<param name="msWidth" value="6mil"/>
+<param name="msDrill" value="10mil"/>
+<param name="msMicroVia" value="10mil"/>
 <param name="msBlindViaRatio" value="0.5"/>
 <param name="rvPadTop" value="0.25"/>
 <param name="rvPadInner" value="0.25"/>
@@ -392,19 +406,19 @@ design rules under a new name.</description>
 <param name="rvViaInner" value="0.25"/>
 <param name="rvMicroViaOuter" value="0.25"/>
 <param name="rvMicroViaInner" value="0.25"/>
-<param name="rlMinPadTop" value="10mil"/>
+<param name="rlMinPadTop" value="5mil"/>
 <param name="rlMaxPadTop" value="20mil"/>
-<param name="rlMinPadInner" value="10mil"/>
+<param name="rlMinPadInner" value="5mil"/>
 <param name="rlMaxPadInner" value="20mil"/>
-<param name="rlMinPadBottom" value="10mil"/>
+<param name="rlMinPadBottom" value="5mil"/>
 <param name="rlMaxPadBottom" value="20mil"/>
-<param name="rlMinViaOuter" value="8mil"/>
+<param name="rlMinViaOuter" value="5mil"/>
 <param name="rlMaxViaOuter" value="20mil"/>
-<param name="rlMinViaInner" value="8mil"/>
+<param name="rlMinViaInner" value="5mil"/>
 <param name="rlMaxViaInner" value="20mil"/>
-<param name="rlMinMicroViaOuter" value="4mil"/>
+<param name="rlMinMicroViaOuter" value="5mil"/>
 <param name="rlMaxMicroViaOuter" value="20mil"/>
-<param name="rlMinMicroViaInner" value="4mil"/>
+<param name="rlMinMicroViaInner" value="5mil"/>
 <param name="rlMaxMicroViaInner" value="20mil"/>
 <param name="psTop" value="-1"/>
 <param name="psBottom" value="-1"/>
@@ -413,8 +427,8 @@ design rules under a new name.</description>
 <param name="psElongationOffset" value="100"/>
 <param name="mvStopFrame" value="1"/>
 <param name="mvCreamFrame" value="0"/>
-<param name="mlMinStopFrame" value="4mil"/>
-<param name="mlMaxStopFrame" value="4mil"/>
+<param name="mlMinStopFrame" value="2.5mil"/>
+<param name="mlMaxStopFrame" value="2.5mil"/>
 <param name="mlMinCreamFrame" value="0mil"/>
 <param name="mlMaxCreamFrame" value="0mil"/>
 <param name="mlViaStopLimit" value="0mil"/>
@@ -573,6 +587,15 @@ design rules under a new name.</description>
 <vertex x="0" y="0"/>
 <vertex x="0" y="19.558"/>
 </polygon>
+<via x="28.702" y="6.096" extent="1-16" drill="0.5"/>
+<via x="28.702" y="4.572" extent="1-16" drill="0.5"/>
+<via x="28.702" y="3.048" extent="1-16" drill="0.5"/>
+<via x="30.226" y="3.048" extent="1-16" drill="0.5"/>
+<via x="31.75" y="3.048" extent="1-16" drill="0.5"/>
+<via x="11.938" y="4.572" extent="1-16" drill="0.5"/>
+<via x="11.938" y="6.096" extent="1-16" drill="0.5"/>
+<via x="10.668" y="2.794" extent="1-16" drill="0.5"/>
+<via x="9.144" y="2.794" extent="1-16" drill="0.5"/>
 </signal>
 <signal name="PI_PWM_OUT">
 <contactref element="Q2" pad="3"/>
@@ -588,8 +611,7 @@ design rules under a new name.</description>
 <contactref element="R2" pad="2"/>
 <contactref element="J2" pad="6"/>
 <contactref element="J1" pad="1"/>
-<wire x1="8.636" y1="14.652" x2="12.526" y2="14.652" width="1.016" layer="1"/>
-<wire x1="12.526" y1="14.652" x2="13.208" y2="14.652" width="1.016" layer="1"/>
+<wire x1="8.636" y1="14.652" x2="13.208" y2="14.652" width="1.016" layer="1"/>
 <wire x1="13.208" y1="14.652" x2="32.004" y2="14.652" width="1.016" layer="1"/>
 <wire x1="18.2" y1="5.588" x2="18.2" y2="8.128" width="0.4064" layer="1"/>
 <wire x1="18.2" y1="8.128" x2="16.764" y2="8.128" width="0.4064" layer="1"/>
@@ -597,7 +619,8 @@ design rules under a new name.</description>
 <wire x1="16.764" y1="8.128" x2="14.224" y2="10.668" width="0.4064" layer="16"/>
 <wire x1="14.224" y1="10.668" x2="14.224" y2="12.954" width="0.4064" layer="16"/>
 <via x="14.224" y="12.954" extent="1-16" drill="0.5"/>
-<wire x1="14.224" y1="12.954" x2="12.526" y2="14.652" width="0.4064" layer="1"/>
+<wire x1="14.224" y1="12.954" x2="14.224" y2="13.636" width="0.4064" layer="1"/>
+<wire x1="14.224" y1="13.636" x2="13.208" y2="14.652" width="0.4064" layer="1"/>
 </signal>
 <signal name="3.3V">
 <contactref element="J2" pad="4"/>
@@ -636,4 +659,10 @@ design rules under a new name.</description>
 </signals>
 </board>
 </drawing>
+<compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
+</compatibility>
 </eagle>

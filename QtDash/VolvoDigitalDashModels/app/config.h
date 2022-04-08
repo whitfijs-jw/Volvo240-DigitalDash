@@ -27,6 +27,7 @@ public:
     static constexpr char ANALOG_INPUT_12V_GROUP[] = "12v_analog";
     static constexpr char VSS_INPUT_GROUP[] = "vss_input";
     static constexpr char ODOMETER_GROUP[] = "odometer";
+    static constexpr char BACKLIGHT_GROUP[] = "backlight";
 
     // units for sensors
     static constexpr char UNITS_KPA[] = "kpa";
@@ -149,6 +150,12 @@ public:
     static constexpr char ODO_NAME_ODOMETER[] = "odometer";
     static constexpr char ODO_NAME_TRIPA[] = "tripA";
     static constexpr char ODO_NAME_TRIPB[] = "tripB";
+
+    static constexpr char BACKLIGHT_MAX_DUTY_CYCLE[] = "max_duty_cycle";
+    static constexpr char BACKLIGHT_MIN_DUTY_CYCLE[] = "min_duty_cycle";
+    static constexpr char BACKLIGHT_LIGHTS_OFF_DUTY_CYCLE[] = "lights_off_duty_cycle";
+    static constexpr char BACKLIGHT_LIGHTS_ON_DUTY_CYCLE[] = "lights_on_duty_cycle";
+    static constexpr char BACKLIGHT_ACTIVE_LOW[] = "active_low";
 
     //gauge config groups
     static constexpr char BOOST_GAUGE_GROUP[] = "boost";
@@ -425,6 +432,14 @@ public:
         int writeInterval; //!< number of pulses between writing to back to non-volatile memory
         QString name;
     } OdometerConfig_t;
+
+    typedef struct {
+        qreal minDutyCycle;
+        qreal maxDutyCycle;
+        qreal lightsOffDutyCycle;
+        qreal lightsOnDutyCycle;
+        bool activeLow;
+    } BacklightControlConfig_t;
 
     /**
      * @struct GaugeConfig
@@ -795,6 +810,14 @@ public:
 
         mConfig->endGroup();
 
+        mConfig->beginGroup(BACKLIGHT_GROUP);
+        mBacklightConfig.minDutyCycle = mConfig->value(BACKLIGHT_MIN_DUTY_CYCLE, 0.2).toReal();
+        mBacklightConfig.maxDutyCycle = mConfig->value(BACKLIGHT_MAX_DUTY_CYCLE, 0.8).toReal();
+        mBacklightConfig.lightsOffDutyCycle = mConfig->value(BACKLIGHT_LIGHTS_OFF_DUTY_CYCLE, 0.6).toReal();
+        mBacklightConfig.lightsOnDutyCycle = mConfig->value(BACKLIGHT_LIGHTS_ON_DUTY_CYCLE, 0.4).toReal();
+        mBacklightConfig.activeLow = mConfig->value(BACKLIGHT_ACTIVE_LOW, false).toBool();
+        mConfig->endGroup();
+
         return keys.size() > 0;
     }
 
@@ -957,6 +980,10 @@ public:
         return {DistanceUnits::MILE, 0, 0, ""};
     }
 
+    BacklightControlConfig_t getBackLightConfig() {
+        return mBacklightConfig;
+    }
+
 signals:
 
 public slots:
@@ -980,6 +1007,7 @@ private:
     QSettings * mOdometerConfig = nullptr;
     QList<OdometerConfig_t> mOdoConfig;
 
+    BacklightControlConfig_t mBacklightConfig;
 
     /**
      * @brief Check that values are valid in a map

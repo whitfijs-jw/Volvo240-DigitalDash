@@ -16,6 +16,7 @@
 #include <config.h>
 #include <event_timers.h>
 #include <dash_lights.h>
+#include <backlight_control.h>
 
 #include <sensor_source_adc.h>
 #include <sensor_source_gps.h>
@@ -73,6 +74,7 @@ public:
         initSpeedo();
         initTacho();
         initOdometer();
+        initBackLightControl();
 
         initDashLights();
     }
@@ -108,6 +110,7 @@ private:
     NtcSensor * mAmbientTempSensor; //!< ambient temp sensor
     NtcSensor * mOilTempSensor; //!< oil temp sensor
     VoltmeterSensor * mVoltmeterSensor; //!< voltmeter sensor
+    VoltmeterSensor * mDimmerVoltageSensor; //!< rheostat dimmer voltage
     ResistiveSensor * mOilPressureSensor; //!< oil pressure sensor
     ResistiveSensor * mFuelLevelSensor; //!< fuel level sensor
     SpeedometerSensor<GpsSource> * mGpsSpeedoSensor; //!< speedometer w/ gps input
@@ -140,6 +143,8 @@ private:
     SpeedometerGauge * mSpeedoGauge; //!< speedometer gauge
     TachometerGauge * mTachoGauge; //!< tachometer gauge
     OdometerGauge * mOdoGauge; //!< odometer gauge
+
+    BackLightControl * mBacklightControl;
 
     /**
      * @brief Initialize sensor sources
@@ -248,6 +253,20 @@ private:
                     &QTimer::timeout,
                     [=]() {
             mAdcSource->update(mVoltmeterSensor->getChannel());
+        });
+
+        // rheostat/dimmer voltage
+        mDimmerVoltageSensor = new VoltmeterSensor(
+                    this->parent(), &mConfig, mAdcSource,
+                    mConfig.getSensorConfig().value(Config::DIMMER_VOLTAGE_KEY),
+                    mConfig.getAnalog12VInputConfig(Config::ANALOG_INPUT_12V_RHEOSTAT)
+                    );
+
+        QObject::connect(
+                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
+                    &QTimer::timeout,
+                    [=]() {
+            mAdcSource->update(mDimmerVoltageSensor->getChannel());
         });
 
         // speedometer
@@ -404,6 +423,8 @@ private:
             speedoSensors.append(mMapSensor);
         } else if (topSource == Config::ANALOG_INPUT_12V_VOLTMETER) {
             speedoSensors.append(mVoltmeterSensor);
+        } else if (topSource == Config::ANALOG_INPUT_12V_RHEOSTAT) {
+            speedoSensors.append(mDimmerVoltageSensor);
         } else if (topSource == Config::FUEL_LEVEL_KEY) {
             speedoSensors.append(mFuelLevelSensor);
         } else {
@@ -467,6 +488,21 @@ private:
                     &QTimer::timeout,
                     mDashLights,
                     &DashLights::update
+                    );
+    }
+
+    void initBackLightControl() {
+        mBacklightControl = new BackLightControl(
+                    this,
+                    &mConfig,
+                    mVoltmeterSensor,
+                    mDimmerVoltageSensor);
+
+        QObject::connect(
+                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::SLOW_TIMER)),
+                    &QTimer::timeout,
+                    mBacklightControl,
+                    &BackLightControl::updateBacklightPwm
                     );
     }
 };

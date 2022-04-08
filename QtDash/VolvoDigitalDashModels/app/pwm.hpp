@@ -15,19 +15,22 @@ public:
         std::string dev = DEFAULT_DEVICE,
         int periodNsec = DEFAULT_PERIOD,
         float dutyCycle = 0.5) :
-        mPath(path), mDev(dev), mPeriod(period), mDutyCycle(dutyCycle) {
+        mPath(path), mDev(dev), mPeriod(periodNsec), mDutyCycle(dutyCycle) {
         // make sure pwm0 is enabled
         writeAttribute("export", 0);
 
         //check that the device is there now
         if (std::filesystem::exists(mPath + dev + "/")) {
+            std::cout << "pwm0 exported" << std::endl;
             // update path
-            mPath += mDev;
+            mPath += mDev + "/";
 
             // set up period (will configure duty cycle)
+            std::cout << "pwm: setting period" << std::endl;
             setPeriod(mPeriod);
 
             // enable
+            std::cout << "pwm: enabled" << std::endl;
             enable(true);
         }
     }
@@ -98,7 +101,7 @@ private:
         ofs << value;
         ofs.close();
 
-        std::cout << attr << " set to: " << value <<  std::endl;
+        //std::cout << attr << " set to: " << value <<  std::endl;
 
         return value;
     }
