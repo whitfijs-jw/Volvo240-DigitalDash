@@ -16,6 +16,7 @@ public:
     enum class VssDataChannel {
         MPH = 0, //!< miles per hour
         KPH, //!< kilometers per hour
+        PULSE_COUNT, //!< total number of pulses
     };
 
     /**
@@ -58,6 +59,9 @@ public:
         case (int) VssDataChannel::KPH:
             return "kph";
             break;
+        case (int) VssDataChannel::PULSE_COUNT:
+            // pulse
+            return "";
         default:
             return "";
         }
@@ -85,6 +89,8 @@ public slots:
         case (int) VssDataChannel::KPH:
             emit dataReady(mVssInput.getKph(), channel);
             break;
+        case (int) VssDataChannel::PULSE_COUNT:
+            emit dataReady(mVssInput.getPulseCount(), channel);
         }
     }
 
@@ -102,6 +108,8 @@ private:
             return mVssInput.getMph();
         case (int) VssDataChannel::KPH:
             return mVssInput.getKph();
+        case (int) VssDataChannel::PULSE_COUNT:
+            emit dataReady(mVssInput.getPulseCount(), channel);
         default:
             return 0;
         }
