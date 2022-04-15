@@ -1,10 +1,65 @@
 # DigitalDash
 
-Volvo 240 Digital Dash Project.  Designed to use existing dash connectors (circular connectors w/ 2mm pins and various spades) to
+Volvo 240 Digital Dash Project.  Designed to use existing dash connectors (circular connectors w/ 2mm pins, vehicle speed sensor (VSS) connector, and various spade connectors) to
 minimize extra wiring effort and installation of superfluous sensors.
 
+## Project Structure:
+### /QtDash
+
+This directory contains the hardware and software components that makeup the dash. There are also various visual/graphical assets that are used in the dash app.
+
+#### /QtDash/VolvoDigitalDashModels
+
+This directory contains the Qt app and related unit tests.  It is advised to use [QtCreator](https://www.qt.io/product/development-tools) to edit and compile the app. Using QtCreator to `QtDash/VolvoDigitalDashModels/subdirs.pro` will load both the app and the unit tests. The app is written using C/C++ for interfacing with the various sensors and QML for the UI. 
+
+#### /QtDash/Hardware
+
+This directory contains the hardware that has been designed for this project.  Most of the PCBs have been designed using Eagle 7.7 as this is what I am most familiar with. The future of Eagle is questionable as an open source/free tool, so Kicad 6 will be used more and more as I become more familiar with it.
+
+##### /QtDash/Hardware/DashHat
+
+This directory contains the schematics and board files for the PCB that directly interfaces with the Raspberry Pi 40 pin header.  The board is split up into a low voltage (3.3/5V) that is powered from the Pi header and a high voltage (car battery voltage 8-16V) that is powered from the 240 ignition switch via the VSS connector.  The high voltage side is optically isolated from the low voltage side using 
+
+##### /QtDash/Hardware/Cold Start Power Supply
+
+This directory contains the schematics and board files for the cold start tolerant power supply design based around the LM3488. The input range is ~3V-24V and the output is ~5V rated at 3A.  During bench testing the input power needs to be above 5V when first powering up, and then could drop to ~3V while still continuously powering the Pi. This is a little overkill as the battery voltage during cranking only momentarily drops to 3V-4V before recovering very quickly to >10V.
+
+##### /QtDash/Hardware/Screen Mounting
+
+This directory contains the `.stl` files for mounting the HSD123KPW2-D10 12.3" TFT LCD using the stock 240 dash mounting holes.  These mounts will put the screen flush with the surrounding dash. The mounts and all other 3D modeling/CAD has been done using [Onshape](https://cad.onshape.com/documents/a41976d465f773bfdcbe5a50/w/2aee2fa256d8f08e0c531410/e/f563da56c6a88e94f86205e9). Included in the public OnShape document are models of the main PCB, HSD123KPW2-D10 LCD, screen mounts, etc. 
+
+##### /QtDash/Hardware/Simulation
+
+This directory contains SPICE simulations of various circuits used in the dash. This is more of a scratchpad than it is a serious attempt at accurate real-life simulations.
+
+##### /QtDash/Hardware/TachAdapter
+
+This directory contains the schematics and board files for the tach signal adapter.  This board takes the high voltage pulses (>30V on my 88 245) and converts them to a square wave that can be used by the dash software to calculate RPM. The high voltage pulses are optically isolated from the dash/pi side to prevent any unwanted noise or damage to the pi or other hardware.
+
+##### /QtDash/Hardware/VSS Adapter
+
+This directory contains the schematics and board files for the VSS signal adapter. This board is based on the MAX9924 VR signal conditioning IC and takes the VR signal from the stock Volvo differential cover sensor and converts it into a square wave to be used by the dash software to calculated speed.
+
+### /buildroot
+
+This directory contains Buildroot, a tool used to generate a custom embedded Linux system that runs on the Pi. Buildroot allows us to generate a stripped down Linux system that has just enough to get the dash running.  This is the directory where you'll need to be to start linux image builds.
+
+Below are relevant directories for this project within the buildroot directory structure:
+
+#### /buildroot/board/volvodash
+
+This directory contains the rootfs overlay for the dash as well as the custom scripts and configurations used whilst building the dash linux image. 
+
+#### /buildroot/configs
+
+This directory contains the configuration files for various boards. The relevant files for this project are `volvodash_defconfig` and `volvodash_rpi4_defconfig`.
+
+#### /buildroot/output/images
+
+This directory contains the outputs of the buildroot compilation process. After buildroot is done compiling the custom linux image, compiling the specified target packages, and constructing the target rootfs and bootfs, an image that can be flashed on to an SD card is placed here.  `sdcard.img` can then be flashed on to an SD card to be used on a pi.  As a part of the compilation/building the Qt Dash app should be compiled and placed within this image.  For more detailed information see *Setting Up Buildroot* below.
+
 ## Project components:
-- Raspberry Pi 3
+- Raspberry Pi 3 or Raspberry Pi 4/400
 - 12.3" bar TFT LCD
 - Qt Quick w/ EGLFS project to display renders of gauges
 - Buildroot linux to cut down on footprint and boot time
@@ -31,7 +86,7 @@ minimize extra wiring effort and installation of superfluous sensors.
 
 ## Setting up buildroot
 
-Buildroot will build the custom linux image.  The image being build is based on the raspberry-pi3 image provided from the buildroot project.  Right now there is only support for raspberry pi 3.  Things are still a bit of a mess here and depending on your flavor of Linux you might have to setup your system a little differently than others.  You can find a lot of good information here on host packages that are absolutely necessary: [Buildroot System Requirements](https://buildroot.org/downloads/manual/manual.html#requirement)
+Buildroot will build the custom linux image.  The image being build is based on the raspberry-piX 32-bit images provided from the buildroot project.  Right now there is only support for raspberry pi 3 and pi 4/400.  Things are still a bit of a mess here and depending on your flavor of Linux you might have to setup your system a little differently than others.  You can find a lot of good information here on host packages that are absolutely necessary: [Buildroot System Requirements](https://buildroot.org/downloads/manual/manual.html#requirement)
 
 
 1. To get things started:
@@ -40,7 +95,14 @@ From within the main project directory:
 
 `cd buildroot`
 
+For Raspberry Pi 3B/3B+:
+
 `make volvodash_defconfig`
+
+For Raspberry Pi 4 or Pi 400:
+
+`make volvodash_rpi4_defconfig`
+
 
 This will get buildroot configured to build the linux image. 
 
@@ -49,7 +111,7 @@ This will get buildroot configured to build the linux image.
 
 `make` 
 
-This will take a while, go get a coffee or if you're on a laptop run it before going to bed. You might be missing packages dependencies here and there. Check the output and use your package manager to install what's missing. This will also build the host tools for building the qt app that actually runs the dash. As one of the last steps of this process the Qt App, called VolvoDigitalDashModels (for now), is built and copied to the target /opt directory along with the config.ini file.
+This will take a while, go get a coffee or if you're on a laptop run it before going to bed. You might be missing packages dependencies here and there. Check the output and use your package manager to install what's missing. This will also build the host tools for building the qt app that actually runs the dash. As one of the last steps of this process the Qt App, called VolvoDigitalDashModels, is built and copied to the target /opt directory along with the config files.
 
 
 3. Flash Image onto
@@ -91,6 +153,7 @@ After linux is done booting and loading kernel modules, the init system will aut
 
 - config.ini
 - config_gauges.ini
+- config_odo.ini
 
 These files are parsed using QSettings ([more info here](https://doc.qt.io/qt-5/qsettings.html).
 
@@ -121,11 +184,11 @@ coolant_temp=0
 fuel_level=1
 oil_pressure=2
 oil_temp=3
-map_sensor=4
-ambient_temp=-1
+map_sensor=5
+ambient_temp=4
 dimmer_voltage=6
 fuse8_12v=7
-reference=5
+reference=-1
 ```
 
 #### Dash Light Inputs
