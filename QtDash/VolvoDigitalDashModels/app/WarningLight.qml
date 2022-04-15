@@ -36,6 +36,9 @@ Item {
         verticalAlignment: Text.AlignVCenter
 
         font.bold: false
+
+        fontSizeMode: Text.Fit
+        font.pixelSize: parent.height / 4.0
     }
 
     Image {

@@ -26,6 +26,7 @@ public:
     static constexpr char RESISTIVE_SENSOR_GROUP[] = "resistive_sensor";
     static constexpr char ANALOG_INPUT_12V_GROUP[] = "12v_analog";
     static constexpr char VSS_INPUT_GROUP[] = "vss_input";
+    static constexpr char ODOMETER_GROUP[] = "odometer";
 
     // units for sensors
     static constexpr char UNITS_KPA[] = "kpa";
@@ -138,6 +139,11 @@ public:
 
     static constexpr char ANALOG_INPUT_12V_VOLTMETER[] = "voltmeter";
     static constexpr char ANALOG_INPUT_12V_RHEOSTAT[] = "rheostat";
+
+    //expected odometer keys
+    static constexpr char ODO_UNITS[] = "units";
+    static constexpr char ODO_VALUE[] = "value";
+    static constexpr char ODO_WRITE_INTERVAL[] = "interval";
 
     //gauge config groups
     static constexpr char BOOST_GAUGE_GROUP[] = "boost";
@@ -407,6 +413,12 @@ public:
         DistanceUnits distanceUnits; //!< unit of distance for pulsePerUnitDistance
         int maxSpeed; //!< Max speed -- lowest possible value it best will filter out noisy signals better
     } VssInputConfig_t;
+
+    typedef struct OdometerConfig {
+        DistanceUnits units; //!< odometer internal units
+        qreal value; //!< odometer value (in above units)
+        qreal writeInterval; //!< number of pulses between writing to back to non-volatile memory
+    } OdometerConfig_t;
 
     /**
      * @struct GaugeConfig
@@ -729,6 +741,13 @@ public:
 
         mConfig->endGroup();
 
+        mConfig->beginGroup(ODOMETER_GROUP);
+        QString odoUnits = mConfig->value(ODO_UNITS, UNITS_MILE).toString();
+        mOdoConfig.units = getDistanceUnits(odoUnits);
+        mOdoConfig.value = mConfig->value(ODO_VALUE, 0.0).toReal();
+        mOdoConfig.writeInterval = mConfig->value(ODO_WRITE_INTERVAL, 2000).toInt();
+        mConfig->endGroup();
+
         return keys.size() > 0;
     }
 
@@ -882,6 +901,10 @@ public:
         return mTachGaugeConfig;
     }
 
+    OdometerConfig_t getOdometerConfig() {
+        return mOdoConfig;
+    }
+
 signals:
 
 public slots:
@@ -901,6 +924,7 @@ private:
     SpeedoConfig_t mSpeedoGaugeConfig; //!< speedo gauge config
     TachoConfig_t mTachGaugeConfig; //!< tacho gauge config
     VssInputConfig_t mVssInputConfig; //!< vehicle speed sensor config
+    OdometerConfig_t mOdoConfig;
 
     /**
      * @brief Check that values are valid in a map

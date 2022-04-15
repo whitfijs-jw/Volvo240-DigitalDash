@@ -105,7 +105,7 @@ private:
     VoltmeterSensor * mVoltmeterSensor; //!< voltmeter sensor
     ResistiveSensor * mOilPressureSensor; //!< oil pressure sensor
     ResistiveSensor * mFuelLevelSensor; //!< fuel level sensor
-    //SpeedometerSensor<GpsSource> * mSpeedoSensor; //!< speedometer w/ gps input
+    SpeedometerSensor<GpsSource> * mGpsSpeedoSensor; //!< speedometer w/ gps input
     SpeedometerSensor<VssSource> * mSpeedoSensor; //!< speedometer w/ vss input
     TachSensor * mTachSensor; //!< tachometer sensor
 
@@ -241,9 +241,9 @@ private:
         });
 
         // speedometer
-//        mSpeedoSensor = new SpeedometerSensor(
-//                    this->parent(), &mConfig, mGpsSource,
-//                    (int) GpsSource::GpsDataChannel::SPEED_MILES_PER_HOUR);
+        mGpsSpeedoSensor = new SpeedometerSensor(
+                    this->parent(), &mConfig, mGpsSource,
+                    (int) GpsSource::GpsDataChannel::SPEED_MILES_PER_HOUR);
 
         mSpeedoSensor = new SpeedometerSensor(
                     this->parent(), &mConfig, mVssSource,
@@ -354,7 +354,6 @@ private:
             // default to ambient
             speedoSensors.append(mAmbientTempSensor);
         }
-
 
         mSpeedoGauge = new SpeedometerGauge(
                     this->parent(), &mConfig, speedoSensors,
