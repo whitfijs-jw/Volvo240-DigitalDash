@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -1953,6 +1953,16 @@ Switches electronic signals</description>
 <pin name="2" x="5.08" y="0" visible="off" length="short" direction="pas" swaplevel="1" rot="R180"/>
 <pin name="1" x="-5.08" y="0" visible="off" length="short" direction="pas" swaplevel="1"/>
 </symbol>
+<symbol name="CAP">
+<wire x1="0" y1="2.54" x2="0" y2="2.032" width="0.1524" layer="94"/>
+<wire x1="0" y1="0" x2="0" y2="0.508" width="0.1524" layer="94"/>
+<text x="1.524" y="2.921" size="1.778" layer="95" font="vector">&gt;NAME</text>
+<text x="1.524" y="-2.159" size="1.778" layer="96" font="vector">&gt;VALUE</text>
+<rectangle x1="-2.032" y1="0.508" x2="2.032" y2="1.016" layer="94"/>
+<rectangle x1="-2.032" y1="1.524" x2="2.032" y2="2.032" layer="94"/>
+<pin name="1" x="0" y="5.08" visible="off" length="short" direction="pas" swaplevel="1" rot="R270"/>
+<pin name="2" x="0" y="-2.54" visible="off" length="short" direction="pas" swaplevel="1" rot="R90"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="RC0603JR" prefix="R">
@@ -1998,6 +2008,53 @@ Switches electronic signals</description>
 </technology>
 <technology name="-1310RL">
 <attribute name="VALUE" value="10R" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="CL" prefix="C">
+<gates>
+<gate name="G$1" symbol="CAP" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="0603">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="VALUE" value="" constant="no"/>
+<attribute name="VOLTAGE" value="" constant="no"/>
+</technology>
+<technology name="10A105KA8NNNC">
+<attribute name="VALUE" value="1u" constant="no"/>
+<attribute name="VOLTAGE" value="25V" constant="no"/>
+</technology>
+<technology name="10A475KL8NRNC">
+<attribute name="VALUE" value="4.7u" constant="no"/>
+<attribute name="VOLTAGE" value="35V" constant="no"/>
+</technology>
+<technology name="10B102KB8NNWC">
+<attribute name="VALUE" value="1n" constant="no"/>
+<attribute name="VOLTAGE" value="50V" constant="no"/>
+</technology>
+<technology name="10B103KB8NNNC">
+<attribute name="VALUE" value="10n" constant="no"/>
+<attribute name="VOLTAGE" value="50V" constant="no"/>
+</technology>
+<technology name="10B104MB8NNNC">
+<attribute name="VALUE" value="100n" constant="no"/>
+<attribute name="VOLTAGE" value="50V" constant="no"/>
+</technology>
+<technology name="10B106MQ8NRNC">
+<attribute name="VALUE" value="10u" constant="no"/>
+<attribute name="VOLTAGE" value="6.3V" constant="no"/>
+</technology>
+<technology name="10B684KO8NFNC">
+<attribute name="VALUE" value=".68u" constant="no"/>
+<attribute name="VOLTAGE" value="16V" constant="no"/>
 </technology>
 </technologies>
 </device>
@@ -3066,6 +3123,10 @@ part number 2062-2P from STA</description>
 <part name="J3" library="SparkFun-Connectors" deviceset="CONN_02" device=""/>
 <part name="R3" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="GND4" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
+<part name="C1" library="digital_dash" deviceset="CL" device="" technology="10B104MB8NNNC" value="100n"/>
+<part name="C2" library="digital_dash" deviceset="CL" device="" technology="10A105KA8NNNC" value="1u"/>
+<part name="SUPPLY7" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
+<part name="GND5" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -3093,6 +3154,10 @@ part number 2062-2P from STA</description>
 <instance part="J3" gate="G$1" x="30.48" y="27.94"/>
 <instance part="R3" gate="G$1" x="50.8" y="30.48" rot="R180"/>
 <instance part="GND4" gate="1" x="40.64" y="22.86"/>
+<instance part="C1" gate="G$1" x="72.39" y="78.74"/>
+<instance part="C2" gate="G$1" x="64.77" y="78.74"/>
+<instance part="SUPPLY7" gate="G$1" x="68.58" y="87.63"/>
+<instance part="GND5" gate="1" x="68.58" y="68.58"/>
 </instances>
 <busses>
 </busses>
@@ -3138,6 +3203,17 @@ part number 2062-2P from STA</description>
 <pinref part="J1" gate="G$1" pin="6"/>
 <wire x1="43.18" y1="66.04" x2="40.64" y2="66.04" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="C2" gate="G$1" pin="2"/>
+<wire x1="64.77" y1="76.2" x2="64.77" y2="73.66" width="0.1524" layer="91"/>
+<pinref part="C1" gate="G$1" pin="2"/>
+<wire x1="64.77" y1="73.66" x2="68.58" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="73.66" x2="72.39" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="72.39" y1="73.66" x2="72.39" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="73.66" x2="68.58" y2="71.12" width="0.1524" layer="91"/>
+<junction x="68.58" y="73.66"/>
+<pinref part="GND5" gate="1" pin="GND"/>
+</segment>
 </net>
 <net name="PI_PWM_OUT" class="0">
 <segment>
@@ -3177,6 +3253,17 @@ part number 2062-2P from STA</description>
 <pinref part="SUPPLY2" gate="G$1" pin="5V"/>
 <wire x1="124.46" y1="81.28" x2="119.38" y2="81.28" width="0.1524" layer="91"/>
 <wire x1="119.38" y1="81.28" x2="119.38" y2="86.36" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="C2" gate="G$1" pin="1"/>
+<wire x1="64.77" y1="83.82" x2="64.77" y2="85.09" width="0.1524" layer="91"/>
+<pinref part="SUPPLY7" gate="G$1" pin="5V"/>
+<wire x1="64.77" y1="85.09" x2="68.58" y2="85.09" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="85.09" x2="68.58" y2="87.63" width="0.1524" layer="91"/>
+<pinref part="C1" gate="G$1" pin="1"/>
+<wire x1="72.39" y1="83.82" x2="72.39" y2="85.09" width="0.1524" layer="91"/>
+<wire x1="72.39" y1="85.09" x2="68.58" y2="85.09" width="0.1524" layer="91"/>
+<junction x="68.58" y="85.09"/>
 </segment>
 </net>
 <net name="3.3V" class="0">

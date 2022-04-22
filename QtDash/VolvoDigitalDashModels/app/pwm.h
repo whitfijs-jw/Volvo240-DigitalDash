@@ -1,7 +1,6 @@
-#ifndef PWM_HPP
-#define PWM_HPP
+#ifndef PWM_H
+#define PWM_H
 
-#include <config.h>
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -81,7 +80,7 @@ private:
     static constexpr char ENABLE[] = "enable";
     static constexpr char DUTY_CYCLE[] = "duty_cycle";
     static constexpr char PERIOD[] = "period";
-    static constexpr int DEFAULT_PERIOD = 151515; //!< 6.6kHz
+    static constexpr int DEFAULT_PERIOD = 33333;//151515; //!< 6.6kHz
 
     /**
      * @brief Write attribute in the tach input sysfs
@@ -112,4 +111,4 @@ private:
     float mDutyCycle = 0.5;
 };
 
-#endif // PWM_HPP
+#endif // PWM_H

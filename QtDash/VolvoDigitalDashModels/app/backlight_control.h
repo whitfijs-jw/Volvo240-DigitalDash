@@ -6,7 +6,7 @@
 #include <QDebug>
 
 #include <sensor_voltmeter.h>
-#include <pwm.hpp>
+#include <pwm.h>
 #include <config.h>
 
 

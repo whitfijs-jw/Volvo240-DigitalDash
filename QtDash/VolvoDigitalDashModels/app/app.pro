@@ -427,7 +427,7 @@ HEADERS += \
     ntc.h \
     odometer_model.h \
     pulse_counter.h \
-    pwm.hpp \
+    pwm.h \
     sensor.h \
     sensor_map.h \
     sensor_ntc.h \
