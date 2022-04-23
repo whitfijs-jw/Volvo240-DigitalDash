@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -3121,12 +3121,14 @@ part number 2062-2P from STA</description>
 <part name="SUPPLY6" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="JP1" library="SparkFun-Jumpers" deviceset="JUMPER-SMT_3_NO" device="_SILK"/>
 <part name="J3" library="SparkFun-Connectors" deviceset="CONN_02" device=""/>
-<part name="R3" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
+<part name="R3" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100RL" value="100R"/>
 <part name="GND4" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="C1" library="digital_dash" deviceset="CL" device="" technology="10B104MB8NNNC" value="100n"/>
 <part name="C2" library="digital_dash" deviceset="CL" device="" technology="10A105KA8NNNC" value="1u"/>
 <part name="SUPPLY7" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="GND5" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
+<part name="R4" library="digital_dash" deviceset="RC0603JR" device="" technology="-0720KL" value="20k"/>
+<part name="SUPPLY8" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -3152,12 +3154,14 @@ part number 2062-2P from STA</description>
 <instance part="SUPPLY6" gate="G$1" x="68.58" y="55.88"/>
 <instance part="JP1" gate="G$1" x="78.74" y="116.84" rot="R180"/>
 <instance part="J3" gate="G$1" x="30.48" y="27.94"/>
-<instance part="R3" gate="G$1" x="50.8" y="30.48" rot="R180"/>
+<instance part="R3" gate="G$1" x="48.26" y="30.48" rot="R180"/>
 <instance part="GND4" gate="1" x="40.64" y="22.86"/>
 <instance part="C1" gate="G$1" x="72.39" y="78.74"/>
 <instance part="C2" gate="G$1" x="64.77" y="78.74"/>
 <instance part="SUPPLY7" gate="G$1" x="68.58" y="87.63"/>
 <instance part="GND5" gate="1" x="68.58" y="68.58"/>
+<instance part="R4" gate="G$1" x="55.88" y="38.1" rot="R90"/>
+<instance part="SUPPLY8" gate="G$1" x="55.88" y="45.72"/>
 </instances>
 <busses>
 </busses>
@@ -3279,6 +3283,11 @@ part number 2062-2P from STA</description>
 <wire x1="124.46" y1="76.2" x2="111.76" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="76.2" x2="111.76" y2="86.36" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="R4" gate="G$1" pin="2"/>
+<wire x1="55.88" y1="43.18" x2="55.88" y2="45.72" width="0.1524" layer="91"/>
+<pinref part="SUPPLY8" gate="G$1" pin="3.3V"/>
+</segment>
 </net>
 <net name="LCD_PWM_IN" class="0">
 <segment>
@@ -3308,7 +3317,7 @@ part number 2062-2P from STA</description>
 <segment>
 <pinref part="J3" gate="G$1" pin="2"/>
 <pinref part="R3" gate="G$1" pin="2"/>
-<wire x1="45.72" y1="30.48" x2="38.1" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="30.48" x2="38.1" y2="30.48" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -3316,6 +3325,10 @@ part number 2062-2P from STA</description>
 <pinref part="Q1" gate="NMOS" pin="G"/>
 <wire x1="60.96" y1="30.48" x2="55.88" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="R3" gate="G$1" pin="1"/>
+<pinref part="R4" gate="G$1" pin="1"/>
+<wire x1="55.88" y1="30.48" x2="53.34" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="30.48" x2="55.88" y2="33.02" width="0.1524" layer="91"/>
+<junction x="55.88" y="30.48"/>
 </segment>
 </net>
 </nets>
