@@ -43,7 +43,7 @@ public slots:
         //qDebug() << "Ratio: " << mCurrentDimmerVoltage / mCurrentBatteryVoltage;
 
         if (mCurrentDimmerVoltage > 5.0) {
-            if (mBacklightConfig.useDimmer) {
+            if (!mBacklightConfig.useDimmer) {
                 mPwm->setDutyCycle(mBacklightConfig.lightsOnDutyCycle);
             } else {
                 //dimmer has power -- parking lights or headlights are on

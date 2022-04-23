@@ -67,7 +67,7 @@ public:
         int dc = std::round((float) mPeriod * dutyCycle);
 
         if (dc == mDutyCycle) {
-            std::cout << "duty cycle already set" << std::endl;
+            //std::cout << "duty cycle already set" << std::endl;
             return dc;
         }
 
