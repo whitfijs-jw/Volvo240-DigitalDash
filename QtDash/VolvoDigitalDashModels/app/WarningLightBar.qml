@@ -14,6 +14,21 @@ Item {
         color: "transparent"
 
         Rectangle {
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: checkEngineLight.top
+            color: "transparent"
+            width: deadSpaceMiddle
+            height: warningLightWidth
+
+
+            ListView {
+                model: odometerModel
+                delegate: odometerDelegate
+                anchors.fill: parent
+            }
+        }
+
+        Rectangle {
             id: serviceLight
             anchors.right: checkEngineLight.left
             anchors.top: checkEngineLight.top

@@ -54,3 +54,6 @@ cp "${PROJECT_DIR}/config.ini" "${QT_EXEC_TARGET_DIR}"
 
 echo "Copying Gauge Config from QtDash"
 cp "${PROJECT_DIR}/config_gauges.ini" "${QT_EXEC_TARGET_DIR}"
+
+echo "Copying Odo Config from QtDash"
+cp "${PROJECT_DIR}/config_odo.ini" "${QT_EXEC_TARGET_DIR}"

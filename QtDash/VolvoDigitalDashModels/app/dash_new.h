@@ -11,10 +11,12 @@
 #include <temp_and_fuel_gauge_model.h>
 #include <indicator_model.h>
 #include <warning_light_model.h>
+#include <odometer_model.h>
 
 #include <config.h>
 #include <event_timers.h>
 #include <dash_lights.h>
+#include <backlight_control.h>
 
 #include <sensor_source_adc.h>
 #include <sensor_source_gps.h>
@@ -27,11 +29,13 @@
 #include <sensor_resistive.h>
 #include <sensor_speedo.h>
 #include <sensor_tach.h>
+#include <sensor_odometer.h>
 
 #include <gauge_accessory.h>
 #include <gauge_speedo.h>
 #include <gauge_tach.h>
 #include <gauge_temp_fuel_cluster.h>
+#include <gauge_odo.h>
 
 /**
  * @brief A class to run the digital dash
@@ -48,6 +52,7 @@ public:
     static constexpr char TACH_MODEL_NAME[] = "rpmModel"; //!< rpm/tacho model name
     static constexpr char SPEEDO_MODEL_NAME[] = "speedoModel"; //!< speedometer model name
     static constexpr char TEMP_FUEL_CLUSTER_MODEL_NAME[] = "tempFuelModel"; //!< 240 combined temp/fuel model name
+    static constexpr char ODOMETER_MODEL_NAME[] = "odometerModel";
 
     /**
      * @brief Constructor
@@ -68,6 +73,8 @@ public:
         initAccessoryGauges();
         initSpeedo();
         initTacho();
+        initOdometer();
+        initBackLightControl();
 
         initDashLights();
     }
@@ -103,11 +110,15 @@ private:
     NtcSensor * mAmbientTempSensor; //!< ambient temp sensor
     NtcSensor * mOilTempSensor; //!< oil temp sensor
     VoltmeterSensor * mVoltmeterSensor; //!< voltmeter sensor
+    VoltmeterSensor * mDimmerVoltageSensor; //!< rheostat dimmer voltage
     ResistiveSensor * mOilPressureSensor; //!< oil pressure sensor
     ResistiveSensor * mFuelLevelSensor; //!< fuel level sensor
     SpeedometerSensor<GpsSource> * mGpsSpeedoSensor; //!< speedometer w/ gps input
     SpeedometerSensor<VssSource> * mSpeedoSensor; //!< speedometer w/ vss input
     TachSensor * mTachSensor; //!< tachometer sensor
+    OdometerSensor * mOdoSensor; //!< odometer
+    OdometerSensor * mTripAOdoSensor; //!< trip a counter
+    OdometerSensor * mTripBOdoSensor; //!< trip b counter
 
     AccessoryGaugeModel mBoostModel; //!< boost pressure QML model
     AccessoryGaugeModel mOilTemperatureModel; //!< oil temperature QML model
@@ -116,6 +127,7 @@ private:
     AccessoryGaugeModel mFuelLevelModel; //!< fuel level QML model
     AccessoryGaugeModel mVoltMeterModel; //!< voltmeter QML model
     TempAndFuelGaugeModel mTempFuelModel; //!< 240 combined temp/fuel QML model
+    OdometerModel mOdometerModel; //!< odometer QML model
 
     SpeedometerModel mSpeedoModel; //!< speedometer QML model
     TachometerModel mTachoModel; //!< Tachometer QML model
@@ -130,6 +142,9 @@ private:
 
     SpeedometerGauge * mSpeedoGauge; //!< speedometer gauge
     TachometerGauge * mTachoGauge; //!< tachometer gauge
+    OdometerGauge * mOdoGauge; //!< odometer gauge
+
+    BackLightControl * mBacklightControl;
 
     /**
      * @brief Initialize sensor sources
@@ -240,6 +255,20 @@ private:
             mAdcSource->update(mVoltmeterSensor->getChannel());
         });
 
+        // rheostat/dimmer voltage
+        mDimmerVoltageSensor = new VoltmeterSensor(
+                    this->parent(), &mConfig, mAdcSource,
+                    mConfig.getSensorConfig().value(Config::DIMMER_VOLTAGE_KEY),
+                    mConfig.getAnalog12VInputConfig(Config::ANALOG_INPUT_12V_RHEOSTAT)
+                    );
+
+        QObject::connect(
+                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
+                    &QTimer::timeout,
+                    [=]() {
+            mAdcSource->update(mDimmerVoltageSensor->getChannel());
+        });
+
         // speedometer
         mGpsSpeedoSensor = new SpeedometerSensor(
                     this->parent(), &mConfig, mGpsSource,
@@ -266,6 +295,52 @@ private:
                     &QTimer::timeout,
                     [=]() {
             mTachSource->update((int) TachSource::TachDataChannel::RPM_CHANNEL);
+        });
+
+        mOdoSensor = new OdometerSensor (
+                    this->parent(), &mConfig, mVssSource,
+                    (int) VssSource::VssDataChannel::PULSE_COUNT);
+
+        QObject::connect(
+                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::SLOW_TIMER)),
+                    &QTimer::timeout,
+                    [=]() {
+            mVssSource->update((int) VssSource::VssDataChannel::PULSE_COUNT);
+        });
+
+        QObject::connect(
+                    mOdoSensor, &OdometerSensor::writeOdoValue,
+                    [=](qreal value) {
+            Config::OdometerConfig_t c = mConfig.getOdometerConfig(Config::ODO_NAME_ODOMETER);
+            c.value = value;
+            mConfig.writeOdometerConfig(Config::ODO_NAME_ODOMETER, c);
+        });
+
+        // trip counters
+        Config::OdometerConfig_t confA = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA);
+        mTripAOdoSensor = new OdometerSensor (
+                    this->parent(), &mConfig, mVssSource,
+                    (int) VssSource::VssDataChannel::PULSE_COUNT, &confA);
+
+        QObject::connect(
+                    mTripAOdoSensor, &OdometerSensor::writeOdoValue,
+                    [=](qreal value) {
+            Config::OdometerConfig_t c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA);
+            c.value = value;
+            mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPA, c);
+        });
+
+        Config::OdometerConfig_t confB = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB);
+        mTripBOdoSensor = new OdometerSensor (
+                    this->parent(), &mConfig, mVssSource,
+                    (int) VssSource::VssDataChannel::PULSE_COUNT, &confB);
+
+        QObject::connect(
+                    mTripBOdoSensor, &OdometerSensor::writeOdoValue,
+                    [=](qreal value) {
+            Config::OdometerConfig_t c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB);
+            c.value = value;
+            mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPB, c);
         });
     }
 
@@ -348,6 +423,8 @@ private:
             speedoSensors.append(mMapSensor);
         } else if (topSource == Config::ANALOG_INPUT_12V_VOLTMETER) {
             speedoSensors.append(mVoltmeterSensor);
+        } else if (topSource == Config::ANALOG_INPUT_12V_RHEOSTAT) {
+            speedoSensors.append(mDimmerVoltageSensor);
         } else if (topSource == Config::FUEL_LEVEL_KEY) {
             speedoSensors.append(mFuelLevelSensor);
         } else {
@@ -370,6 +447,15 @@ private:
         mTachoGauge = new TachometerGauge(
                     this->parent(), &mConfig, tachSensors,
                     &mTachoModel, TachometerModel::TACH_MODEL_NAME,
+                    mContext
+                    );
+    }
+
+    void initOdometer() {
+        QList<Sensor *> odoSensors = {mOdoSensor, mTripAOdoSensor, mTripBOdoSensor};
+        mOdoGauge = new OdometerGauge(
+                    this->parent(), &mConfig, odoSensors,
+                    &mOdometerModel, OdometerModel::ODOMETER_MODEL_NAME,
                     mContext
                     );
     }
@@ -402,6 +488,21 @@ private:
                     &QTimer::timeout,
                     mDashLights,
                     &DashLights::update
+                    );
+    }
+
+    void initBackLightControl() {
+        mBacklightControl = new BackLightControl(
+                    this,
+                    &mConfig,
+                    mVoltmeterSensor,
+                    mDimmerVoltageSensor);
+
+        QObject::connect(
+                    mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::SLOW_TIMER)),
+                    &QTimer::timeout,
+                    mBacklightControl,
+                    &BackLightControl::updateBacklightPwm
                     );
     }
 };

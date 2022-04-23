@@ -8,6 +8,7 @@
  * @brief Odometer Sensor
  */
 class OdometerSensor : public Sensor {
+Q_OBJECT
 public:
     /**
      * @brief OdometerSensor constructor
@@ -17,14 +18,24 @@ public:
      * @param channel
      */
     OdometerSensor(QObject * parent, Config * config,
-               VssSource * source, int channel) :
+                   VssSource * source, int channel,
+                   Config::OdometerConfig_t * odoConfig = nullptr) :
            Sensor(parent, config, source, channel) {
+
+        // Check if the optional input
+        if (odoConfig != nullptr) {
+            // this has its own config -- likely a trip counter
+            mOdoConfig = *odoConfig;
+        } else {
+            // use the odo values from the config file
+            mOdoConfig = mConfig->getOdometerConfig(Config::ODO_NAME_ODOMETER);
+        }
     }
 
     QString getUnits() override {
-        Config::DistanceUnits units = mConfig->getOdometerConfig().units;
+        Config::DistanceUnits units = mOdoConfig.units;
 
-        switch (units) {
+        switch ((int) units) {
         case (int) Config::DistanceUnits::MILE:
             return Config::UNITS_MILE;
         case (int) Config::DistanceUnits::KILOMETER:
@@ -45,24 +56,35 @@ public slots:
      */
     void transform(QVariant data, int channel) override {
         if (channel == getChannel()) {
+            // Calculate distance traveled
             int pulseCount = data.toInt();
             int diff = pulseCount - mLastPulseCount;
+
+            // calculate distance
             qreal distance = (qreal)diff / (qreal)mConfig->getVssConfig().pulsePerUnitDistance;
 
-            sensorDataReady(distance + mLastDistance);
+            // convert to odo units
+            qreal distanceConverted = SensorUtils::convertDistance(distance,
+                                                                   mOdoConfig.units,
+                                                                   mConfig->getVssConfig().distanceUnits);
+            // emit
+            emit sensorDataReady(distanceConverted + mOdoConfig.value);
 
+            // update internal values and emit write signal
             mLastPulseCount = pulseCount;
-            mLastDistance += distance;
+            mOdoConfig.value += distance;
 
-            if (mLastPulseCount % mConfig->getOdometerConfig().writeInterval) {
-                writeOdoValue(mLastDistance);
+            if (mLastPulseCount - mUpdatePulseCount > mOdoConfig.writeInterval) {
+                emit writeOdoValue(mOdoConfig.value);
+                mUpdatePulseCount = mLastPulseCount;
             }
         }
     }
 
 private:
-    int mLastPulseCount;
-    qreal mLastDistance;
+    Config::OdometerConfig_t mOdoConfig;
+    int mLastPulseCount = 0;
+    int mUpdatePulseCount = 0;
 };
 
 #endif // SENSOR_TACH_H
