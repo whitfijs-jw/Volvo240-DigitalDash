@@ -12,6 +12,7 @@
 #include <temp_and_fuel_gauge_model.h>
 #include <indicator_model.h>
 #include <warning_light_model.h>
+#include <odometer_model.h>
 
 #include <config.h>
 #include <gps_helper.h>
@@ -46,7 +47,8 @@ public:
     DashHost(QObject * parent, QQmlContext * context) :
         QObject(parent), mContext(context), mEventTiming(parent),
         mConfig(parent, "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config.ini",
-                "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config_gauges.ini") {
+                "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config_gauges.ini",
+                "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config_odo.ini") {
 
         // populate accessory gauge model map
         mAccessoryGaugeModelMap.insert(COOLANT_TEMP_MODEL_NAME, &mCoolantTempModel);
@@ -72,6 +74,7 @@ public:
         initAccessoryGuage(BOOST_GAUGE_MODEL_NAME, -20.0, 30.0, "psi", -50.0, 18.0);
         initAccessoryGuage(VOLT_METER_MODEL_NAME, 10.0, 16.0, "V", 12.0, 15.0);
         initDashLights();
+        initOdometer();
 
         // initialize sensor inputs
         initSensorInputs();
@@ -124,6 +127,27 @@ public slots:
             mCoolantTempModel.setCurrentValue(tempF);
         }
 
+
+        mOdometerModel.setOdometerValue(mOdometerModel.odometerValue() + 0.1);
+        mOdometerModel.setTripAValue(mOdometerModel.tripAValue() + 0.1);
+        mOdometerModel.setTripBValue(mOdometerModel.tripBValue() + 0.1);
+
+        static int i = 0;
+        if (++i % 100 == 0) {
+            Config::OdometerConfig_t c = mConfig.getOdometerConfig(Config::ODO_NAME_ODOMETER);
+            c.value = mOdometerModel.odometerValue();
+            mConfig.writeOdometerConfig(Config::ODO_NAME_ODOMETER, c);
+
+            c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA);
+            c.value = mOdometerModel.tripAValue();
+            mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPA, c);
+
+            c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB);
+            c.value = mOdometerModel.tripBValue();
+            mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPB, c);
+        }
+
+
         if(rpmFile.isOpen())
         {
             QString rpmString = rpmStream.readLine();
@@ -143,6 +167,7 @@ public slots:
 
             mFuelLevelModel.setCurrentValue(value);
             mTempFuelModel.setFuelLevel(value);
+
         }
 
         if(battFile.isOpen())
@@ -210,6 +235,15 @@ private:
      * @brief Initialize sensor inputs and connect updates to respective models
      */
     void initSensorInputs() {
+    }
+
+    void initOdometer() {
+        mOdometerModel.setOdometerValue(mConfig.getOdometerConfig(Config::ODO_NAME_ODOMETER).value);
+        mOdometerModel.setTripAValue(mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA).value);
+        mOdometerModel.setTripBValue(mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB).value);
+
+        mContext->setContextProperty(OdometerModel::ODOMETER_MODEL_NAME,
+                                     &mOdometerModel);
     }
 
     /**
@@ -346,6 +380,7 @@ private:
     AccessoryGaugeModel mFuelLevelModel;
     DashLights * mDashLights;
     QMap<QString, AccessoryGaugeModel*> mAccessoryGaugeModelMap;
+    OdometerModel mOdometerModel;
 
     // Inputs
     GpsHelper * mGpsHelper;

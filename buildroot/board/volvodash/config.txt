@@ -41,6 +41,8 @@ dtparam=addr=0x20
 dtparam=spi=on
 dtoverlay=mcp3208:spi0-0-present
 
+dtoverlay=pwm
+
 #hdmi_safe=1
 hdmi_cvt 1280 480 60 5 0 0 0
 hdmi_group=2

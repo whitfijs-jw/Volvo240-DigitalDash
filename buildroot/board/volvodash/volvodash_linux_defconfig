@@ -2,7 +2,7 @@
 # Automatically generated file; DO NOT EDIT.
 # Linux/arm 5.10.1 Kernel Configuration
 #
-CONFIG_CC_VERSION_TEXT="arm-buildroot-linux-uclibcgnueabihf-gcc.br_real (Buildroot -g8290a981-dirty) 9.3.0"
+CONFIG_CC_VERSION_TEXT="arm-buildroot-linux-uclibcgnueabihf-gcc.br_real (Buildroot -gb53fa205-dirty) 9.3.0"
 CONFIG_CC_IS_GCC=y
 CONFIG_GCC_VERSION=90300
 CONFIG_LD_VERSION=235020000
@@ -6055,7 +6055,7 @@ CONFIG_MAX31856=m
 CONFIG_PWM=y
 CONFIG_PWM_SYSFS=y
 # CONFIG_PWM_DEBUG is not set
-CONFIG_PWM_BCM2835=m
+CONFIG_PWM_BCM2835=y
 # CONFIG_PWM_FSL_FTM is not set
 CONFIG_PWM_PCA9685=m
 # CONFIG_PWM_STMPE is not set
