@@ -36,7 +36,7 @@ public:
         addTimer(static_cast<int>(DataTimers::VERY_FAST_TIMER), VERY_FAST_TIMER_TIMEOUT_MSEC);
         addTimer(static_cast<int>(DataTimers::FAST_TIMER), FAST_TIMER_TIMEOUT_MSEC);
         addTimer(static_cast<int>(DataTimers::MEDIUM_TIMER), MEDIUM_TIMER_TIMEOUT_MSEC);
-        addTimer(static_cast<int>(DataTimers::SLOW_TIMER), MEDIUM_TIMER_TIMEOUT_MSEC);
+        addTimer(static_cast<int>(DataTimers::SLOW_TIMER), SLOW_TIMER_TIMEOUT_MSEC);
     }
 
     /**

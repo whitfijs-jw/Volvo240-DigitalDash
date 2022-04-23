@@ -65,6 +65,12 @@ public:
         }
 
         int dc = std::round((float) mPeriod * dutyCycle);
+
+        if (dc == mDutyCycle) {
+            std::cout << "duty cycle already set" << std::endl;
+            return dc;
+        }
+
         if (writeAttribute(DUTY_CYCLE, dc) == dc) {
             mDutyCycle = dc;
 
@@ -80,7 +86,7 @@ private:
     static constexpr char ENABLE[] = "enable";
     static constexpr char DUTY_CYCLE[] = "duty_cycle";
     static constexpr char PERIOD[] = "period";
-    static constexpr int DEFAULT_PERIOD = 33333;//151515; //!< 6.6kHz
+    static constexpr int DEFAULT_PERIOD = 33333; //!< 30kHz
 
     /**
      * @brief Write attribute in the tach input sysfs

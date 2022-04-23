@@ -155,6 +155,9 @@ public:
     static constexpr char BACKLIGHT_MIN_DUTY_CYCLE[] = "min_duty_cycle";
     static constexpr char BACKLIGHT_LIGHTS_OFF_DUTY_CYCLE[] = "lights_off_duty_cycle";
     static constexpr char BACKLIGHT_LIGHTS_ON_DUTY_CYCLE[] = "lights_on_duty_cycle";
+    static constexpr char BACKLIGHT_MIN_DIMMER_RATIO[] = "min_dimmer_ratio";
+    static constexpr char BACKLIGHT_MAX_DIMMER_RATIO[] = "max_dimmer_ratio";
+    static constexpr char BACKLIGHT_USE_DIMMER[] = "use_dimmer";
     static constexpr char BACKLIGHT_ACTIVE_LOW[] = "active_low";
 
     //gauge config groups
@@ -438,6 +441,9 @@ public:
         qreal maxDutyCycle;
         qreal lightsOffDutyCycle;
         qreal lightsOnDutyCycle;
+        qreal minDimmerRatio;
+        qreal maxDimmerRatio;
+        bool useDimmer;
         bool activeLow;
     } BacklightControlConfig_t;
 
@@ -812,10 +818,16 @@ public:
 
         mConfig->beginGroup(BACKLIGHT_GROUP);
         mBacklightConfig.minDutyCycle = mConfig->value(BACKLIGHT_MIN_DUTY_CYCLE, 0.2).toReal();
-        mBacklightConfig.maxDutyCycle = mConfig->value(BACKLIGHT_MAX_DUTY_CYCLE, 0.8).toReal();
-        mBacklightConfig.lightsOffDutyCycle = mConfig->value(BACKLIGHT_LIGHTS_OFF_DUTY_CYCLE, 0.6).toReal();
-        mBacklightConfig.lightsOnDutyCycle = mConfig->value(BACKLIGHT_LIGHTS_ON_DUTY_CYCLE, 0.4).toReal();
+        mBacklightConfig.maxDutyCycle = mConfig->value(BACKLIGHT_MAX_DUTY_CYCLE, 1.0).toReal();
+        mBacklightConfig.lightsOffDutyCycle = mConfig->value(BACKLIGHT_LIGHTS_OFF_DUTY_CYCLE, 1.0).toReal();
+        mBacklightConfig.lightsOnDutyCycle = mConfig->value(BACKLIGHT_LIGHTS_ON_DUTY_CYCLE, 0.6).toReal();
+        mBacklightConfig.minDimmerRatio = mConfig->value(BACKLIGHT_MIN_DIMMER_RATIO, 0.82).toReal();
+        mBacklightConfig.maxDimmerRatio = mConfig->value(BACKLIGHT_MAX_DIMMER_RATIO, 0.93).toReal();
+        mBacklightConfig.useDimmer = mConfig->value(BACKLIGHT_USE_DIMMER, true).toBool();
         mBacklightConfig.activeLow = mConfig->value(BACKLIGHT_ACTIVE_LOW, false).toBool();
+
+        printKeys("Backlight Config: ", mConfig);
+
         mConfig->endGroup();
 
         return keys.size() > 0;

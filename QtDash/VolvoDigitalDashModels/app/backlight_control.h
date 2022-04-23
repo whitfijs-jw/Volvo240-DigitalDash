@@ -39,12 +39,17 @@ signals:
 
 public slots:
     void updateBacklightPwm() {
-        if (mCurrentDimmerVoltage > 5.0) {
-            //Temp -- just set to fixed value
-            mPwm->setDutyCycle(mBacklightConfig.lightsOnDutyCycle);
+        //qDebug() << "Dimmer: " << mCurrentDimmerVoltage << " Battery: " << mCurrentBatteryVoltage;
+        //qDebug() << "Ratio: " << mCurrentDimmerVoltage / mCurrentBatteryVoltage;
 
-            //dimmer has power -- parking lights or headlights are on
-            qreal ratio = mCurrentDimmerVoltage / mCurrentBatteryVoltage;
+        if (mCurrentDimmerVoltage > 5.0) {
+            if (mBacklightConfig.useDimmer) {
+                mPwm->setDutyCycle(mBacklightConfig.lightsOnDutyCycle);
+            } else {
+                //dimmer has power -- parking lights or headlights are on
+                qreal ratio = mCurrentDimmerVoltage / mCurrentBatteryVoltage;
+                mPwm->setDutyCycle(dutyCycleFromDimmer(ratio));
+            }
         } else {
             // dimmer doesn't have power -- default to daytime PWM value
             mPwm->setDutyCycle(mBacklightConfig.lightsOffDutyCycle);
@@ -68,6 +73,13 @@ private:
     qreal mCurrentBatteryVoltage = 0.0;
     qreal mCurrentDimmerVoltage = 0.0;
     Pwm * mPwm;
+
+    float dutyCycleFromDimmer(qreal ratio) {
+        // scale ratio to min/max duty cycles
+        return (ratio - mBacklightConfig.minDimmerRatio) /
+                (mBacklightConfig.maxDimmerRatio - mBacklightConfig.minDimmerRatio) *
+                (mBacklightConfig.maxDutyCycle - mBacklightConfig.minDutyCycle) + mBacklightConfig.minDutyCycle;
+    }
 };
 
 #endif // BACKLIGHT_CONTROL_H
