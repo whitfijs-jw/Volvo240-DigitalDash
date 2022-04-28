@@ -5732,6 +5732,71 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <smd name="2" x="0" y="0" dx="0.635" dy="1.27" layer="1" cream="no"/>
 <smd name="3" x="0.8128" y="0" dx="0.635" dy="1.27" layer="1" cream="no"/>
 </package>
+<package name="SMT-JUMPER_2_NO_NO-SILK">
+<text x="0" y="1.143" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-1.143" size="0.6096" layer="27" font="vector" ratio="20" align="top-center">&gt;VALUE</text>
+<smd name="1" x="-0.4064" y="0" dx="0.635" dy="1.27" layer="1" cream="no"/>
+<smd name="2" x="0.4064" y="0" dx="0.635" dy="1.27" layer="1" cream="no"/>
+</package>
+<package name="SMT-JUMPER_2_NO_NO-SILK_ROUND">
+<smd name="1" x="-1.27" y="0" dx="0.3048" dy="0.1524" layer="1" roundness="20" rot="R270" stop="no" thermals="no" cream="no"/>
+<smd name="2" x="1.27" y="0" dx="0.3048" dy="0.1524" layer="1" roundness="20" rot="R90" stop="no" thermals="no" cream="no"/>
+<text x="0" y="1.9685" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-1.9685" size="0.6096" layer="27" font="vector" ratio="20" align="top-center">&gt;VALUE</text>
+<polygon width="0.00508125" layer="1">
+<vertex x="0.111125" y="-1.42875" curve="85"/>
+<vertex x="1.381125" y="0" curve="85"/>
+<vertex x="0.111125" y="1.42875"/>
+</polygon>
+<polygon width="0.00508125" layer="1">
+<vertex x="-0.111125" y="1.42875"/>
+<vertex x="-0.111125" y="-1.42875" curve="-85"/>
+<vertex x="-1.381125" y="0" curve="-85"/>
+</polygon>
+<polygon width="0.2032" layer="29">
+<vertex x="0" y="1.42875" curve="-90"/>
+<vertex x="1.42875" y="0" curve="-90"/>
+<vertex x="0" y="-1.42875" curve="-90"/>
+<vertex x="-1.42875" y="0" curve="-90"/>
+</polygon>
+</package>
+<package name="SMT-JUMPER_2_NO_SILK">
+<text x="0" y="1.143" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-1.143" size="0.6096" layer="27" font="vector" ratio="20" align="top-center">&gt;VALUE</text>
+<wire x1="0.8636" y1="-1.016" x2="-0.8636" y2="-1.016" width="0.1524" layer="21"/>
+<wire x1="0.8636" y1="1.016" x2="1.1176" y2="0.762" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-1.1176" y1="0.762" x2="-0.8636" y2="1.016" width="0.1524" layer="21" curve="-90"/>
+<wire x1="-1.1176" y1="-0.762" x2="-0.8636" y2="-1.016" width="0.1524" layer="21" curve="90"/>
+<wire x1="0.8636" y1="-1.016" x2="1.1176" y2="-0.762" width="0.1524" layer="21" curve="90"/>
+<wire x1="1.1176" y1="-0.762" x2="1.1176" y2="0.762" width="0.1524" layer="21"/>
+<wire x1="-1.1176" y1="-0.762" x2="-1.1176" y2="0.762" width="0.1524" layer="21"/>
+<wire x1="-0.8636" y1="1.016" x2="0.8636" y2="1.016" width="0.1524" layer="21"/>
+<smd name="1" x="-0.4064" y="0" dx="0.635" dy="1.27" layer="1" cream="no"/>
+<smd name="2" x="0.4064" y="0" dx="0.635" dy="1.27" layer="1" cream="no"/>
+</package>
+<package name="SMT-JUMPER_2_NO_SILK_ROUND">
+<smd name="1" x="-1.27" y="0" dx="0.3048" dy="0.1524" layer="1" roundness="20" rot="R270" stop="no" thermals="no" cream="no"/>
+<smd name="2" x="1.27" y="0" dx="0.3048" dy="0.1524" layer="1" roundness="20" rot="R90" stop="no" thermals="no" cream="no"/>
+<text x="0" y="1.9685" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-1.9685" size="0.6096" layer="27" font="vector" ratio="20" align="top-center">&gt;VALUE</text>
+<polygon width="0.00508125" layer="1">
+<vertex x="0.111125" y="-1.42875" curve="85"/>
+<vertex x="1.381125" y="0" curve="85"/>
+<vertex x="0.111125" y="1.42875"/>
+</polygon>
+<polygon width="0.00508125" layer="1">
+<vertex x="-0.111125" y="1.42875"/>
+<vertex x="-0.111125" y="-1.42875" curve="-85"/>
+<vertex x="-1.381125" y="0" curve="-85"/>
+</polygon>
+<polygon width="0.2032" layer="29">
+<vertex x="0" y="1.42875" curve="-90"/>
+<vertex x="1.42875" y="0" curve="-90"/>
+<vertex x="0" y="-1.42875" curve="-90"/>
+<vertex x="-1.42875" y="0" curve="-90"/>
+</polygon>
+<circle x="0" y="0" radius="1.74625" width="0.2032" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="SMT-JUMPER_3_NO">
@@ -5749,6 +5814,16 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pin name="3" x="0" y="-5.08" visible="off" length="short" direction="pas" rot="R90"/>
 <pin name="1" x="0" y="5.08" visible="off" length="short" direction="pas" rot="R270"/>
 <pin name="2" x="-5.08" y="0" visible="off" length="short" direction="pas"/>
+</symbol>
+<symbol name="SMT-JUMPER_2_NO">
+<wire x1="0.381" y1="0.635" x2="0.381" y2="-0.635" width="1.27" layer="94" curve="-180" cap="flat"/>
+<wire x1="-0.381" y1="-0.635" x2="-0.381" y2="0.635" width="1.27" layer="94" curve="-180" cap="flat"/>
+<wire x1="2.54" y1="0" x2="1.651" y2="0" width="0.1524" layer="94"/>
+<wire x1="-2.54" y1="0" x2="-1.651" y2="0" width="0.1524" layer="94"/>
+<text x="-2.54" y="2.54" size="1.778" layer="95" font="vector">&gt;NAME</text>
+<text x="-2.54" y="-2.54" size="1.778" layer="96" font="vector" align="top-left">&gt;VALUE</text>
+<pin name="2" x="5.08" y="0" visible="off" length="short" direction="pas" swaplevel="1" rot="R180"/>
+<pin name="1" x="-5.08" y="0" visible="off" length="short" direction="pas" swaplevel="1"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -5774,6 +5849,56 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <connect gate="G$1" pin="1" pad="1"/>
 <connect gate="G$1" pin="2" pad="2"/>
 <connect gate="G$1" pin="3" pad="3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="JUMPER-SMT_2_NO" prefix="JP">
+<description>&lt;h3&gt;Normally open jumper&lt;/h3&gt;
+&lt;p&gt;This jumper has two pads in close proximity to each other. Apply solder to close the connection.&lt;/p&gt;
+
+&lt;p&gt;Round pads are easier to solder for beginners, but are a lot larger.&lt;/p&gt;
+&lt;p&gt;SparkFun Product that uses the round pads:
+&lt;ul&gt;&lt;li&gt;&lt;a href="https://www.sparkfun.com/products/12781"&gt;SparkFun EL Sequencer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;</description>
+<gates>
+<gate name="G$1" symbol="SMT-JUMPER_2_NO" x="0" y="0"/>
+</gates>
+<devices>
+<device name="_NO-SILK" package="SMT-JUMPER_2_NO_NO-SILK">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_NO-SILK_ROUND" package="SMT-JUMPER_2_NO_NO-SILK_ROUND">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_SILK" package="SMT-JUMPER_2_NO_SILK">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="_SILK_ROUND" package="SMT-JUMPER_2_NO_SILK_ROUND">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -8077,6 +8202,8 @@ Switches electronic signals</description>
 <part name="SUPPLY52" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="GND52" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="J2" library="digital_dash" deviceset="CONN_04X2" device=""/>
+<part name="JP15" library="SparkFun-Jumpers" deviceset="JUMPER-SMT_2_NO" device="_SILK" value="VSS- Jumper"/>
+<part name="GND-ISO30" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8437,16 +8564,18 @@ conditioning circuit to here.</text>
 <instance part="R54" gate="G$1" x="506.73" y="231.14" rot="R90"/>
 <instance part="SUPPLY61" gate="G$1" x="506.73" y="237.49"/>
 <instance part="GND45" gate="1" x="494.03" y="198.12" rot="MR0"/>
-<instance part="SUPPLY52" gate="G$1" x="271.78" y="416.56"/>
-<instance part="GND52" gate="1" x="271.78" y="391.16"/>
-<instance part="J2" gate="1" x="279.4" y="414.02"/>
-<instance part="J2" gate="2" x="279.4" y="411.48"/>
-<instance part="J2" gate="3" x="279.4" y="408.94"/>
-<instance part="J2" gate="4" x="279.4" y="406.4"/>
-<instance part="J2" gate="5" x="279.4" y="403.86"/>
-<instance part="J2" gate="6" x="279.4" y="401.32"/>
-<instance part="J2" gate="7" x="279.4" y="398.78"/>
-<instance part="J2" gate="8" x="279.4" y="396.24"/>
+<instance part="SUPPLY52" gate="G$1" x="40.64" y="401.32"/>
+<instance part="GND52" gate="1" x="58.42" y="388.62"/>
+<instance part="J2" gate="1" x="66.04" y="411.48"/>
+<instance part="J2" gate="2" x="66.04" y="408.94"/>
+<instance part="J2" gate="3" x="66.04" y="406.4"/>
+<instance part="J2" gate="4" x="66.04" y="403.86"/>
+<instance part="J2" gate="5" x="66.04" y="401.32"/>
+<instance part="J2" gate="6" x="66.04" y="398.78"/>
+<instance part="J2" gate="7" x="66.04" y="396.24"/>
+<instance part="J2" gate="8" x="66.04" y="393.7"/>
+<instance part="JP15" gate="G$1" x="403.86" y="274.32" rot="R270"/>
+<instance part="GND-ISO30" gate="G$1" x="403.86" y="266.7"/>
 </instances>
 <busses>
 </busses>
@@ -8459,8 +8588,8 @@ conditioning circuit to here.</text>
 </segment>
 <segment>
 <pinref part="J2" gate="4" pin="S"/>
-<wire x1="276.86" y1="406.4" x2="271.78" y2="406.4" width="0.1524" layer="91"/>
-<label x="271.78" y="406.4" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="63.5" y1="403.86" x2="58.42" y2="403.86" width="0.1524" layer="91"/>
+<label x="58.42" y="403.86" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="SENSOR2_IN" class="0">
@@ -8471,8 +8600,8 @@ conditioning circuit to here.</text>
 </segment>
 <segment>
 <pinref part="J2" gate="3" pin="S"/>
-<wire x1="276.86" y1="408.94" x2="271.78" y2="408.94" width="0.1524" layer="91"/>
-<label x="271.78" y="408.94" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="63.5" y1="406.4" x2="58.42" y2="406.4" width="0.1524" layer="91"/>
+<label x="58.42" y="406.4" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="SENSOR3_IN" class="0">
@@ -8487,8 +8616,8 @@ conditioning circuit to here.</text>
 </segment>
 <segment>
 <pinref part="J2" gate="2" pin="S"/>
-<wire x1="276.86" y1="411.48" x2="271.78" y2="411.48" width="0.1524" layer="91"/>
-<label x="271.78" y="411.48" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="63.5" y1="408.94" x2="58.42" y2="408.94" width="0.1524" layer="91"/>
+<label x="58.42" y="408.94" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="SENSOR4_IN" class="0">
@@ -8502,9 +8631,9 @@ conditioning circuit to here.</text>
 <junction x="48.26" y="261.62"/>
 </segment>
 <segment>
-<wire x1="276.86" y1="403.86" x2="271.78" y2="403.86" width="0.1524" layer="91"/>
-<label x="271.78" y="403.86" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J2" gate="5" pin="S"/>
+<pinref part="J2" gate="1" pin="S"/>
+<wire x1="63.5" y1="411.48" x2="58.42" y2="411.48" width="0.1524" layer="91"/>
+<label x="58.42" y="411.48" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -8862,8 +8991,8 @@ conditioning circuit to here.</text>
 <junction x="494.03" y="203.2"/>
 </segment>
 <segment>
-<wire x1="276.86" y1="396.24" x2="271.78" y2="396.24" width="0.1524" layer="91"/>
-<wire x1="271.78" y1="396.24" x2="271.78" y2="393.7" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="393.7" x2="58.42" y2="393.7" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="393.7" x2="58.42" y2="391.16" width="0.1524" layer="91"/>
 <pinref part="GND52" gate="1" pin="GND"/>
 <pinref part="J2" gate="8" pin="S"/>
 </segment>
@@ -8975,9 +9104,9 @@ conditioning circuit to here.</text>
 </segment>
 <segment>
 <pinref part="SUPPLY52" gate="G$1" pin="5V"/>
-<wire x1="276.86" y1="414.02" x2="271.78" y2="414.02" width="0.1524" layer="91"/>
-<wire x1="271.78" y1="414.02" x2="271.78" y2="416.56" width="0.1524" layer="91"/>
-<pinref part="J2" gate="1" pin="S"/>
+<wire x1="40.64" y1="396.24" x2="40.64" y2="401.32" width="0.1524" layer="91"/>
+<pinref part="J2" gate="7" pin="S"/>
+<wire x1="63.5" y1="396.24" x2="40.64" y2="396.24" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -10460,6 +10589,10 @@ conditioning circuit to here.</text>
 <wire x1="391.16" y1="217.17" x2="391.16" y2="212.09" width="0.1524" layer="91"/>
 <pinref part="GND-ISO29" gate="G$1" pin="GND-ISO"/>
 </segment>
+<segment>
+<pinref part="JP15" gate="G$1" pin="2"/>
+<pinref part="GND-ISO30" gate="G$1" pin="GND-ISO"/>
+</segment>
 </net>
 <net name="BRAKE_FAILURE_N" class="0">
 <segment>
@@ -10751,9 +10884,9 @@ conditioning circuit to here.</text>
 <junction x="52.07" y="217.17"/>
 </segment>
 <segment>
-<wire x1="276.86" y1="401.32" x2="271.78" y2="401.32" width="0.1524" layer="91"/>
-<label x="271.78" y="401.32" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J2" gate="6" pin="S"/>
+<pinref part="J2" gate="5" pin="S"/>
+<wire x1="63.5" y1="401.32" x2="58.42" y2="401.32" width="0.1524" layer="91"/>
+<label x="58.42" y="401.32" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="SENSOR6_IN" class="0">
@@ -10767,9 +10900,9 @@ conditioning circuit to here.</text>
 <junction x="52.07" y="180.34"/>
 </segment>
 <segment>
-<wire x1="276.86" y1="398.78" x2="271.78" y2="398.78" width="0.1524" layer="91"/>
-<label x="271.78" y="398.78" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="J2" gate="7" pin="S"/>
+<pinref part="J2" gate="6" pin="S"/>
+<wire x1="63.5" y1="398.78" x2="58.42" y2="398.78" width="0.1524" layer="91"/>
+<label x="58.42" y="398.78" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="N$28" class="0">
@@ -11057,20 +11190,27 @@ conditioning circuit to here.</text>
 <junction x="410.21" y="240.03"/>
 </segment>
 </net>
-<net name="N$48" class="0">
+<net name="VSS+" class="0">
 <segment>
 <pinref part="J11" gate="G$1" pin="VSS+"/>
 <pinref part="R5" gate="G$1" pin="1"/>
 <wire x1="386.08" y1="241.3" x2="388.62" y2="241.3" width="0.1524" layer="91"/>
 <wire x1="388.62" y1="241.3" x2="397.51" y2="250.19" width="0.1524" layer="91"/>
+<label x="388.62" y="241.3" size="1.27" layer="95" rot="R270" xref="yes"/>
 </segment>
 </net>
-<net name="N$49" class="0">
+<net name="VSS-" class="0">
 <segment>
 <pinref part="J11" gate="G$1" pin="VSS-"/>
 <wire x1="386.08" y1="248.92" x2="388.62" y2="248.92" width="0.1524" layer="91"/>
 <pinref part="R7" gate="G$1" pin="1"/>
 <wire x1="388.62" y1="248.92" x2="397.51" y2="240.03" width="0.1524" layer="91"/>
+<label x="388.62" y="248.92" size="1.27" layer="95" rot="R90" xref="yes"/>
+</segment>
+<segment>
+<pinref part="JP15" gate="G$1" pin="1"/>
+<wire x1="403.86" y1="279.4" x2="403.86" y2="281.94" width="0.1524" layer="91"/>
+<label x="403.86" y="281.94" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="N$50" class="0">
