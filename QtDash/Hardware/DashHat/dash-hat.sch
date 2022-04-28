@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -3892,6 +3892,23 @@ reflow soldering</description>
 <rectangle x1="-1.1684" y1="-1.2954" x2="-0.7112" y2="-0.7112" layer="51"/>
 <rectangle x1="-0.5001" y1="-0.3" x2="0.5001" y2="0.3" layer="35"/>
 </package>
+<package name="MOLEX-1053102108">
+<pad name="1" x="3.75" y="1.25" drill="1.2"/>
+<hole x="0" y="2.59" drill="1.3"/>
+<pad name="2" x="1.25" y="1.25" drill="1.2"/>
+<pad name="3" x="-1.25" y="1.25" drill="1.2"/>
+<pad name="4" x="-3.75" y="1.25" drill="1.2"/>
+<pad name="8" x="-3.75" y="-1.25" drill="1.2"/>
+<pad name="7" x="-1.25" y="-1.25" drill="1.2"/>
+<pad name="6" x="1.25" y="-1.25" drill="1.2"/>
+<pad name="5" x="3.75" y="-1.25" drill="1.2"/>
+<wire x1="-5.47" y1="2.99" x2="5.47" y2="2.99" width="0.127" layer="51"/>
+<wire x1="5.47" y1="2.99" x2="5.47" y2="-2.99" width="0.127" layer="51"/>
+<wire x1="5.47" y1="-2.99" x2="2.6" y2="-2.99" width="0.127" layer="51"/>
+<wire x1="2.6" y1="-2.99" x2="-2.6" y2="-2.99" width="0.127" layer="51"/>
+<wire x1="-2.6" y1="-2.99" x2="-5.47" y2="-2.99" width="0.127" layer="51"/>
+<wire x1="-5.47" y1="-2.99" x2="-5.47" y2="2.99" width="0.127" layer="51"/>
+</package>
 </packages>
 <symbols>
 <symbol name="OP-AMP+-">
@@ -4275,6 +4292,11 @@ reflow soldering</description>
 <wire x1="10.16" y1="-7.62" x2="-10.16" y2="-7.62" width="0.254" layer="94"/>
 <text x="4.318" y="-9.398" size="1.27" layer="94">&gt;NAME</text>
 <text x="-10.16" y="5.588" size="1.27" layer="94">&gt;VALUE</text>
+</symbol>
+<symbol name="M">
+<wire x1="1.27" y1="0" x2="0" y2="0" width="0.6096" layer="94"/>
+<text x="2.54" y="-0.762" size="1.524" layer="95">&gt;NAME</text>
+<pin name="S" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -4919,6 +4941,35 @@ Source: http://cache.national.com/ds/LM/LM158.pdf</description>
 <technologies>
 <technology name=""/>
 <technology name="FQ"/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="CONN_04X2" prefix="J">
+<gates>
+<gate name="1" symbol="M" x="2.54" y="10.16"/>
+<gate name="2" symbol="M" x="2.54" y="7.62"/>
+<gate name="3" symbol="M" x="2.54" y="5.08"/>
+<gate name="4" symbol="M" x="2.54" y="2.54"/>
+<gate name="5" symbol="M" x="2.54" y="0"/>
+<gate name="6" symbol="M" x="2.54" y="-2.54"/>
+<gate name="7" symbol="M" x="2.54" y="-5.08"/>
+<gate name="8" symbol="M" x="2.54" y="-7.62"/>
+</gates>
+<devices>
+<device name="" package="MOLEX-1053102108">
+<connects>
+<connect gate="1" pin="S" pad="1"/>
+<connect gate="2" pin="S" pad="2"/>
+<connect gate="3" pin="S" pad="3"/>
+<connect gate="4" pin="S" pad="4"/>
+<connect gate="5" pin="S" pad="5"/>
+<connect gate="6" pin="S" pad="6"/>
+<connect gate="7" pin="S" pad="7"/>
+<connect gate="8" pin="S" pad="8"/>
+</connects>
+<technologies>
+<technology name=""/>
 </technologies>
 </device>
 </devices>
@@ -7709,98 +7760,6 @@ Switches electronic signals</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="con-molex">
-<description>&lt;b&gt;Molex Connectors&lt;/b&gt;&lt;p&gt;
-&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
-<packages>
-<package name="5566-8">
-<description>&lt;b&gt;Mini FIT connector 8 pol&lt;/b&gt;&lt;p&gt;
-Source: http://www.molex.com</description>
-<wire x1="-8.9" y1="4.5" x2="8.9" y2="4.5" width="0.254" layer="21"/>
-<wire x1="8.9" y1="4.5" x2="8.9" y2="-2.2" width="0.254" layer="21"/>
-<wire x1="8.9" y1="-3.3" x2="8.9" y2="-4.9" width="0.254" layer="21"/>
-<wire x1="8.9" y1="-4.9" x2="-8.9" y2="-4.9" width="0.254" layer="21"/>
-<wire x1="-8.9" y1="-4.9" x2="-8.9" y2="4.5" width="0.254" layer="21"/>
-<wire x1="-12.4" y1="3.2" x2="-9.6" y2="3.2" width="0.254" layer="21" curve="-114.529547"/>
-<wire x1="-12.4" y1="1.4" x2="-9.6" y2="1.4" width="0.254" layer="21" curve="114.529547"/>
-<wire x1="-12.4" y1="3.2" x2="-12.4" y2="1.4" width="0.254" layer="21"/>
-<wire x1="-9.7" y1="3.3" x2="-9" y2="3.3" width="0.254" layer="21"/>
-<wire x1="-9.7" y1="1.3" x2="-9" y2="1.3" width="0.254" layer="21"/>
-<wire x1="9.6" y1="1.4" x2="12.4" y2="1.4" width="0.254" layer="21" curve="114.529547"/>
-<wire x1="9.6" y1="3.2" x2="12.4" y2="3.2" width="0.254" layer="21" curve="-114.529547"/>
-<wire x1="12.4" y1="1.4" x2="12.4" y2="3.2" width="0.254" layer="21"/>
-<wire x1="9.7" y1="1.3" x2="9" y2="1.3" width="0.254" layer="21"/>
-<wire x1="9.7" y1="3.3" x2="9" y2="3.3" width="0.254" layer="21"/>
-<wire x1="8.9" y1="-2.2" x2="8.9" y2="-3.3" width="0.254" layer="21" curve="-180"/>
-<wire x1="-2.1" y1="6.3" x2="2.1" y2="6.3" width="0.254" layer="27"/>
-<wire x1="-2.1" y1="6.3" x2="-2.1" y2="4.6" width="0.254" layer="27"/>
-<wire x1="2.1" y1="6.3" x2="2.1" y2="4.6" width="0.254" layer="27"/>
-<pad name="1" x="6.3" y="-2.75" drill="1.4" shape="square"/>
-<pad name="2" x="2.1" y="-2.75" drill="1.4" shape="square"/>
-<pad name="3" x="-2.1" y="-2.75" drill="1.4" shape="square"/>
-<pad name="4" x="-6.3" y="-2.75" drill="1.4" shape="square"/>
-<pad name="8" x="-6.3" y="2.75" drill="1.4" shape="square"/>
-<pad name="7" x="-2.1" y="2.75" drill="1.4" shape="square"/>
-<pad name="6" x="2.1" y="2.75" drill="1.4" shape="square"/>
-<pad name="5" x="6.3" y="2.75" drill="1.4" shape="square"/>
-<text x="2.54" y="-6.985" size="1.27" layer="25">&gt;NAME</text>
-<text x="-2.54" y="6.985" size="1.27" layer="27">&gt;VALUE</text>
-<hole x="11" y="2.29" drill="3"/>
-<hole x="-11" y="2.29" drill="3"/>
-</package>
-</packages>
-<symbols>
-<symbol name="MV">
-<wire x1="1.27" y1="0" x2="0" y2="0" width="0.6096" layer="94"/>
-<text x="2.54" y="-0.762" size="1.524" layer="95">&gt;NAME</text>
-<text x="-0.762" y="1.397" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="S" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
-</symbol>
-<symbol name="M">
-<wire x1="1.27" y1="0" x2="0" y2="0" width="0.6096" layer="94"/>
-<text x="2.54" y="-0.762" size="1.524" layer="95">&gt;NAME</text>
-<pin name="S" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="5566-8" prefix="X">
-<description>&lt;b&gt;Mini FIT connector 8 pol&lt;/b&gt;&lt;p&gt;
-Source: http://www.molex.com</description>
-<gates>
-<gate name="-1" symbol="MV" x="0" y="7.62" addlevel="always"/>
-<gate name="-2" symbol="M" x="0" y="5.08" addlevel="always"/>
-<gate name="-3" symbol="M" x="0" y="2.54" addlevel="always"/>
-<gate name="-4" symbol="M" x="0" y="0" addlevel="always"/>
-<gate name="-5" symbol="M" x="0" y="-2.54" addlevel="always"/>
-<gate name="-6" symbol="M" x="0" y="-5.08" addlevel="always"/>
-<gate name="-7" symbol="M" x="0" y="-7.62" addlevel="always"/>
-<gate name="-8" symbol="M" x="0" y="-10.16" addlevel="always"/>
-</gates>
-<devices>
-<device name="" package="5566-8">
-<connects>
-<connect gate="-1" pin="S" pad="1"/>
-<connect gate="-2" pin="S" pad="2"/>
-<connect gate="-3" pin="S" pad="3"/>
-<connect gate="-4" pin="S" pad="4"/>
-<connect gate="-5" pin="S" pad="5"/>
-<connect gate="-6" pin="S" pad="6"/>
-<connect gate="-7" pin="S" pad="7"/>
-<connect gate="-8" pin="S" pad="8"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="MF" value="" constant="no"/>
-<attribute name="MPN" value="" constant="no"/>
-<attribute name="OC_FARNELL" value="unknown" constant="no"/>
-<attribute name="OC_NEWARK" value="unknown" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 </libraries>
 <attributes>
 </attributes>
@@ -8115,9 +8074,9 @@ Source: http://www.molex.com</description>
 <part name="R54" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="SUPPLY61" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="GND45" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="X1" library="con-molex" deviceset="5566-8" device=""/>
 <part name="SUPPLY52" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="GND52" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
+<part name="J2" library="digital_dash" deviceset="CONN_04X2" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8478,16 +8437,16 @@ conditioning circuit to here.</text>
 <instance part="R54" gate="G$1" x="506.73" y="231.14" rot="R90"/>
 <instance part="SUPPLY61" gate="G$1" x="506.73" y="237.49"/>
 <instance part="GND45" gate="1" x="494.03" y="198.12" rot="MR0"/>
-<instance part="X1" gate="-1" x="279.4" y="414.02"/>
-<instance part="X1" gate="-2" x="279.4" y="411.48"/>
-<instance part="X1" gate="-3" x="279.4" y="408.94"/>
-<instance part="X1" gate="-4" x="279.4" y="406.4"/>
-<instance part="X1" gate="-5" x="279.4" y="403.86"/>
-<instance part="X1" gate="-6" x="279.4" y="401.32"/>
-<instance part="X1" gate="-7" x="279.4" y="398.78"/>
-<instance part="X1" gate="-8" x="279.4" y="396.24"/>
 <instance part="SUPPLY52" gate="G$1" x="271.78" y="416.56"/>
 <instance part="GND52" gate="1" x="271.78" y="391.16"/>
+<instance part="J2" gate="1" x="279.4" y="414.02"/>
+<instance part="J2" gate="2" x="279.4" y="411.48"/>
+<instance part="J2" gate="3" x="279.4" y="408.94"/>
+<instance part="J2" gate="4" x="279.4" y="406.4"/>
+<instance part="J2" gate="5" x="279.4" y="403.86"/>
+<instance part="J2" gate="6" x="279.4" y="401.32"/>
+<instance part="J2" gate="7" x="279.4" y="398.78"/>
+<instance part="J2" gate="8" x="279.4" y="396.24"/>
 </instances>
 <busses>
 </busses>
@@ -8499,9 +8458,9 @@ conditioning circuit to here.</text>
 <label x="31.75" y="359.41" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="X1" gate="-2" pin="S"/>
-<wire x1="276.86" y1="411.48" x2="271.78" y2="411.48" width="0.1524" layer="91"/>
-<label x="271.78" y="411.48" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="J2" gate="4" pin="S"/>
+<wire x1="276.86" y1="406.4" x2="271.78" y2="406.4" width="0.1524" layer="91"/>
+<label x="271.78" y="406.4" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="SENSOR2_IN" class="0">
@@ -8511,7 +8470,7 @@ conditioning circuit to here.</text>
 <label x="30.48" y="325.12" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="X1" gate="-3" pin="S"/>
+<pinref part="J2" gate="3" pin="S"/>
 <wire x1="276.86" y1="408.94" x2="271.78" y2="408.94" width="0.1524" layer="91"/>
 <label x="271.78" y="408.94" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -8527,9 +8486,9 @@ conditioning circuit to here.</text>
 <junction x="48.26" y="295.91"/>
 </segment>
 <segment>
-<pinref part="X1" gate="-4" pin="S"/>
-<wire x1="276.86" y1="406.4" x2="271.78" y2="406.4" width="0.1524" layer="91"/>
-<label x="271.78" y="406.4" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="J2" gate="2" pin="S"/>
+<wire x1="276.86" y1="411.48" x2="271.78" y2="411.48" width="0.1524" layer="91"/>
+<label x="271.78" y="411.48" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="SENSOR4_IN" class="0">
@@ -8543,9 +8502,9 @@ conditioning circuit to here.</text>
 <junction x="48.26" y="261.62"/>
 </segment>
 <segment>
-<pinref part="X1" gate="-5" pin="S"/>
 <wire x1="276.86" y1="403.86" x2="271.78" y2="403.86" width="0.1524" layer="91"/>
 <label x="271.78" y="403.86" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="J2" gate="5" pin="S"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -8903,10 +8862,10 @@ conditioning circuit to here.</text>
 <junction x="494.03" y="203.2"/>
 </segment>
 <segment>
-<pinref part="X1" gate="-8" pin="S"/>
 <wire x1="276.86" y1="396.24" x2="271.78" y2="396.24" width="0.1524" layer="91"/>
 <wire x1="271.78" y1="396.24" x2="271.78" y2="393.7" width="0.1524" layer="91"/>
 <pinref part="GND52" gate="1" pin="GND"/>
+<pinref part="J2" gate="8" pin="S"/>
 </segment>
 </net>
 <net name="5V" class="0">
@@ -9015,10 +8974,10 @@ conditioning circuit to here.</text>
 <pinref part="SUPPLY56" gate="G$1" pin="5V"/>
 </segment>
 <segment>
-<pinref part="X1" gate="-1" pin="S"/>
 <pinref part="SUPPLY52" gate="G$1" pin="5V"/>
 <wire x1="276.86" y1="414.02" x2="271.78" y2="414.02" width="0.1524" layer="91"/>
 <wire x1="271.78" y1="414.02" x2="271.78" y2="416.56" width="0.1524" layer="91"/>
+<pinref part="J2" gate="1" pin="S"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -10792,9 +10751,9 @@ conditioning circuit to here.</text>
 <junction x="52.07" y="217.17"/>
 </segment>
 <segment>
-<pinref part="X1" gate="-6" pin="S"/>
 <wire x1="276.86" y1="401.32" x2="271.78" y2="401.32" width="0.1524" layer="91"/>
 <label x="271.78" y="401.32" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="J2" gate="6" pin="S"/>
 </segment>
 </net>
 <net name="SENSOR6_IN" class="0">
@@ -10808,9 +10767,9 @@ conditioning circuit to here.</text>
 <junction x="52.07" y="180.34"/>
 </segment>
 <segment>
-<pinref part="X1" gate="-7" pin="S"/>
 <wire x1="276.86" y1="398.78" x2="271.78" y2="398.78" width="0.1524" layer="91"/>
 <label x="271.78" y="398.78" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="J2" gate="7" pin="S"/>
 </segment>
 </net>
 <net name="N$28" class="0">
