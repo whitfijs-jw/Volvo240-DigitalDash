@@ -78,6 +78,7 @@ public:
     }
 
 signals:
+    void userInputActive(uint8_t input);
 
 public slots:
     /**
@@ -113,6 +114,28 @@ public slots:
         // not used at the moment?
         mShiftUpLightModel.setOn(0);
         mServiceLightModel.setOn(0);
+
+        bool userInput1 = readPin(12, inputs, activeLow);
+        bool userInput2 = readPin(13, inputs, activeLow);
+        bool userInput3 = readPin(14, inputs, activeLow);
+        bool userInput4 = readPin(15, inputs, activeLow);
+
+        if (userInput1) {
+            emit userInputActive(1);
+        }
+
+        if (userInput2) {
+            emit userInputActive(2);
+        }
+
+        if (userInput3) {
+            emit userInputActive(3);
+        }
+
+        if (userInput4) {
+            emit userInputActive(4);
+        }
+
 #else
         mLeftBlinkerModel.setOn(true);
         mRightBlinkerModel.setOn(true);
