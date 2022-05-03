@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -8210,7 +8210,7 @@ Switches electronic signals</description>
 <part name="J16" library="SparkFun-Connectors" deviceset="CONN_03" device="" value="TACH_IN"/>
 <part name="SUPPLY55" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="GND50" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
-<part name="R76" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
+<part name="R76" library="digital_dash" deviceset="RC0603JR" device="" technology="-0720KL" value="20k"/>
 <part name="R82" library="digital_dash" deviceset="RES_D+" device=""/>
 <part name="J20" library="SparkFun-Connectors" deviceset="CONN_02" device="PTH4"/>
 <part name="J21" library="SparkFun-Connectors" deviceset="CONN_02" device="PTH4"/>
@@ -8251,8 +8251,8 @@ Switches electronic signals</description>
 <part name="Q2" library="SparkFun-DiscreteSemi" deviceset="MOSFET-NCH" device="-2N7002PW" value="310mA/60V/1.6Ω"/>
 <part name="SUPPLY60" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="R15" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
-<part name="R16" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
-<part name="R54" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
+<part name="R16" library="digital_dash" deviceset="RC0603JR" device="" technology="-0720KL" value="20k"/>
+<part name="R54" library="digital_dash" deviceset="RC0603JR" device="" technology="-0720KL" value="20k"/>
 <part name="SUPPLY61" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="GND45" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY52" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
