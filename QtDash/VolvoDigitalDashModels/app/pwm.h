@@ -126,11 +126,13 @@ private:
         std::ofstream ofs(fullPath, std::ofstream::out);
         if (!ofs.is_open()) {
             std::cout << "Error opening " << attr << std::endl;
-            return -1.0;
+            return false;
         }
 
         ofs << value;
         ofs.close();
+
+        std::cout << "Set " << attr << " to: " << value << std::endl;
 
         return true;
     }
