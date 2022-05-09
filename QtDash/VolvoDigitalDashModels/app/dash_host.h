@@ -153,9 +153,9 @@ public slots:
             QString rpmString = rpmStream.readLine();
             int rpm = rpmString.toInt();
             rpm /= 1000;
-            mTachModel.setRpm(rpm);
+            //mTachModel.setRpm(rpm);
             mBoostModel.setCurrentValue( ((float)rpm/1000.0) * 5.0 );
-            mOilPressureModel.setCurrentValue( ((float)rpm / 1000.0 * 3) );
+            mOilPressureModel.setCurrentValue( ((float)rpm / 1000.0) );
 
             static qreal previousValue = 1;
 
@@ -183,6 +183,16 @@ public slots:
             int level = fuelLevel.toInt();
             mTempFuelModel.setFuelLevel(level);
             mFuelLevelModel.setCurrentValue(level);
+        }
+
+        mSpeedoModel.setCurrentValue(mSpeedoModel.currentValue() + 0.5);
+        if (mSpeedoModel.currentValue() > mSpeedoModel.maxValue()) {
+            mSpeedoModel.setCurrentValue(0.0);
+        }
+
+        mTachModel.setRpm(mTachModel.rpm() + 100);
+        if (mTachModel.rpm() > mTachModel.maxRpm()) {
+            mTachModel.setRpm(0);
         }
 
 

@@ -15,6 +15,8 @@ Window {
     property int speedoSize: 440
     property int tempFuelSize: 400
     property int blinkerSize: 50;
+    property int linearSpeedoWidth: 1100
+    property int linearSpeedoHeight: 65
 
     property int warningLightHeight: 50;
     property int warningLightWidth: 70;
@@ -1386,6 +1388,339 @@ Window {
         }
     }
 
+    Component {
+        id: speedoDelegate544
+
+        Loader {
+            source: "qrc:/LinearGauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = minValue
+                item.maxValue = speedoMax
+                item.units = speedUnits
+                item.lowAlarm = minValue
+                item.highAlarm = speedoMax
+
+                item.height = linearSpeedoHeight
+                item.width = linearSpeedoWidth
+
+                item.imageResource = "qrc:/gauge-faces-544/speedo-544-large.png"
+
+                item.needleColor = "red"
+
+                item.needleWidth = item.height * 0.4
+                item.needleLength = item.width * 0.9
+
+                item.offset = item.height * .675
+                item.offsetX = item.width * 0.035
+
+                item.textSize = speedoSize * .15 / 2
+                item.textOffset = speedoSize / 6
+                item.significantDigits = 0
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue;
+            }
+
+            Binding {
+                target: item
+                property: "maxValue"
+                value: speedoMax
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: linearSpeedoWidth
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: linearSpeedoHeight
+            }
+        }
+    }
+
+    Component {
+        id: rpmDelegate544
+
+        Loader {
+            source: "qrc:/LinearGauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = 0
+                item.maxValue = maxRpm
+                item.units = "rpm"
+                item.highAlarm = redLine
+                item.lowAlarm = 0
+
+                item.height = 64
+                item.width = 600
+
+                item.imageResource = "qrc:/gauge-faces-544/tachometer-544.png"
+
+                item.needleColor = "red"
+
+                item.needleWidth = item.height * 0.4
+                item.needleLength = item.width * 0.775
+
+                item.offset = item.height * .625
+                item.offsetX = item.width * 0.15
+
+                item.textSize = speedoSize * .15 / 2
+                item.textOffset = - speedoSize / 8
+                item.significantDigits = 0
+
+                item.blockWidth = item.width * 0.15
+
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: rpm
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: 600
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: 64
+            }
+        }
+    }
+
+    Component {
+        id: voltMeterDelegate544
+
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeHighAlarm
+                item.lowAlarm = gaugeLowAlarm
+                item.clockwise = true
+
+                item.minAngle = -130
+                item.maxAngle = -55
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-544/battery-544.png"
+                item.needleResource = "qrc:/needles/needle-544-140.png"
+
+                item.needleWidth = smallGaugeSize * 0.05
+                item.needleLength = smallGaugeSize * 0.75
+                item.needleOffset = smallGaugeSize * 0.25 / 2
+                item.offset = smallGaugeSize / 4.0
+
+                item.textOffset = -item.height / 2.0
+
+                item.significantDigits = 2
+
+                item.needleCenterRadius = 0.15
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
+        }
+    }
+
+    Component {
+        id: fuelLevelDelegate544
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeHighAlarm
+                item.lowAlarm = gaugeLowAlarm
+                item.clockwise = true
+
+                item.minAngle = -130
+                item.maxAngle = -55
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-544/fuel-544.png"
+                item.needleResource = "qrc:/needles/needle-544-140.png"
+
+                item.needleWidth = smallGaugeSize * 0.05
+                item.needleLength = smallGaugeSize * 0.75
+                item.needleOffset = smallGaugeSize * 0.25 / 2
+                item.offset = smallGaugeSize / 4.0
+
+                item.textOffset = -item.height / 2.0
+
+                item.significantDigits = 1
+
+                item.needleCenterRadius = 0.15
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
+        }
+    }
+
+    Component {
+        id: coolantTempDelegate544
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeHighAlarm
+                item.lowAlarm = gaugeLowAlarm
+                item.clockwise = true
+
+                item.minAngle = -130
+                item.maxAngle = -55
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-544/coolant-temp-544.png"
+                item.needleResource = "qrc:/needles/needle-544-140.png"
+
+                item.needleWidth = smallGaugeSize * 0.05
+                item.needleLength = smallGaugeSize * 0.75
+                item.needleOffset = smallGaugeSize * 0.25 / 2
+                item.offset = smallGaugeSize / 4.0
+
+                item.textOffset = -item.height / 2.0
+
+                item.significantDigits = 1
+
+                item.needleCenterRadius = 0.15
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
+        }
+    }
+
+    Component {
+        id: oilPressureDelegate544
+
+        Loader {
+            source: "qrc:/Gauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.highAlarm = gaugeHighAlarm
+                item.lowAlarm = gaugeLowAlarm
+                item.clockwise = true
+
+                item.minAngle = -130
+                item.maxAngle = -55
+
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
+
+                item.imageResource = "qrc:/gauge-faces-544/oil-pressure-544.png"
+                item.needleResource = "qrc:/needles/needle-544-140.png"
+
+                item.needleWidth = smallGaugeSize * 0.05
+                item.needleLength = smallGaugeSize * 0.75
+                item.needleOffset = smallGaugeSize * 0.25 / 2
+                item.offset = smallGaugeSize / 4.0
+
+
+                item.textOffset = -item.height / 2.0
+
+                item.significantDigits = 1
+
+                item.needleCenterRadius = 0.15
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: smallGaugeSize
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: smallGaugeSize
+            }
+        }
+    }
+
 
     Component {
         id: leftBlinkerDelegate
@@ -1820,6 +2155,9 @@ Window {
                     setSpeedoMax(130);
                     break;
 
+                case Qt.Key_7:
+                    currentGauge.source = "qrc:/Original544Layout.qml"
+                    break;
                 case Qt.Key_Escape:
                     Qt.quit();
                     break;

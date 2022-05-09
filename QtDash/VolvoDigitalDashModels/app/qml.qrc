@@ -20,6 +20,8 @@
         <file>OriginalRSportLayout.qml</file>
         <file>Needle240.qml</file>
         <file>Odometer.qml</file>
+        <file>LinearGauge.qml</file>
+        <file>Original544Layout.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -89,5 +91,17 @@
         <file>needle-240.png</file>
         <file>needle-740-940.png</file>
         <file>needle-rsport.png</file>
+        <file>needle-544-140.png</file>
+    </qresource>
+    <qresource prefix="/gauge-faces-544">
+        <file>speedo-544.png</file>
+        <file>battery-544.png</file>
+        <file>fuel-544.png</file>
+        <file>oil-pressure-544.png</file>
+        <file>speedo-544-large.png</file>
+        <file>coolant-temp-544.png</file>
+        <file>speedo-outline-544.png</file>
+        <file>small-gauge-shroud-544.png</file>
+        <file>tachometer-544.png</file>
     </qresource>
 </RCC>
