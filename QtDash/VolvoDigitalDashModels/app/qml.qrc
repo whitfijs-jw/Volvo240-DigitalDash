@@ -22,6 +22,7 @@
         <file>Odometer.qml</file>
         <file>LinearGauge.qml</file>
         <file>Original544Layout.qml</file>
+        <file>OriginalP1800Layout.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -103,5 +104,11 @@
         <file>speedo-outline-544.png</file>
         <file>small-gauge-shroud-544.png</file>
         <file>tachometer-544.png</file>
+    </qresource>
+    <qresource prefix="/gauge-faces-p1800">
+        <file>tach-p1800.png</file>
+        <file>center-cover-p1800.png</file>
+        <file>speedo-mph-p1800.png</file>
+        <file>oil-coolant-temp-p1800.png</file>
     </qresource>
 </RCC>

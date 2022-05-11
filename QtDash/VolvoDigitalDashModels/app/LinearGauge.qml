@@ -5,9 +5,9 @@ import QtQuick.Controls 2.15
 Item {
     id: gauge
 
-    property int maxValue: 120
+    property int maxValue: 1000
     property int minValue: 0
-    property real value: 0
+    property real value: 500
 
     property string units: "F"
     property int lowAlarm: 0
@@ -23,8 +23,11 @@ Item {
     property int needleLength: width * 0.82
 
     property real textOffset:  parent.height / 10.0
+    property real textOffsetY: 0.0
     property real textSize: parent.height / 10.0
     property bool textEnabled: true
+    property real textRotation: 0.0
+
     property int significantDigits: 1
     width: linearSpeedoWidth
     height: linearSpeedoHeight
@@ -33,6 +36,7 @@ Item {
 
     property real shear: -1.25
     property real blockWidth: width * 0.0875
+    property real barRadius: 5
 
     Rectangle {
         id: back
@@ -65,7 +69,7 @@ Item {
 
         contentItem: Rectangle {
             id: bar
-            width: control.visualPosition * parent.width
+            width: control.visualPosition > 0.0 ? control.visualPosition * parent.width : 0.0
             antialiasing: true
             smooth: true
             height: parent.height
@@ -76,11 +80,18 @@ Item {
                              0, 0, 1, 0,
                              0, 0, 0, 1)
             }
-            radius: 5
+            radius: gauge.barRadius
             gradient: Gradient {
                     GradientStop { position: -0.5; color: "white"}
                     GradientStop { position: 0.5; color: needleColor }
                     GradientStop { position: 1.5; color: "white" }
+            }
+
+
+            Behavior on width {
+                NumberAnimation {
+                    duration: 150
+                }
             }
         }
     }
@@ -112,9 +123,11 @@ Item {
 
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
-        anchors.horizontalCenterOffset: 0
+
+        rotation: gauge.textRotation
 
         anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenterOffset: gauge.textOffsetY
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: gauge.textOffset
 

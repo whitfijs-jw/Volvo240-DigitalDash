@@ -198,7 +198,8 @@ public slots:
 
 //        mBoostModel.setCurrentValue(mBoostModel.currentValue() + 1);
 //        mFuelLevelModel.setCurrentValue(mFuelLevelModel.currentValue() + 1);
-//        mCoolantTempModel.setCurrentValue(mCoolantTempModel.currentValue() + 1);
+        mCoolantTempModel.setCurrentValue(mCoolantTempModel.currentValue() + 1);
+        mOilTemperatureModel.setCurrentValue(mOilTemperatureModel.currentValue() + 1);
 
 //        if (mBoostModel.currentValue() > mBoostModel.maxValue()) {
 //            mBoostModel.setCurrentValue(-25.0);
@@ -210,9 +211,15 @@ public slots:
 //        }
 
 
-//        if (mCoolantTempModel.currentValue() > mCoolantTempModel.maxValue()) {
-//            mCoolantTempModel.setCurrentValue(120);
-//        }
+        if (mCoolantTempModel.currentValue() > mCoolantTempModel.maxValue()) {
+            mCoolantTempModel.setCurrentValue(90);
+        }
+
+        if (mOilTemperatureModel.currentValue() > mOilTemperatureModel.maxValue()) {
+            mOilTemperatureModel.setCurrentValue(140);
+        }
+
+
 
         tempFile.close();
         rpmFile.close();
@@ -341,7 +348,7 @@ private:
         if (gauge != nullptr) {
             gauge->setMinValue(minValue);
             gauge->setMaxValue(maxValue);
-            gauge->setUnits(units);;
+            gauge->setUnits(units);
             gauge->setHighAlarm(highAlarm);
             gauge->setLowAlarm(lowAlarm);
 
