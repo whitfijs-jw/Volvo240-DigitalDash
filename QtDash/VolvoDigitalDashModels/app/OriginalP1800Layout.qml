@@ -100,17 +100,22 @@ Item {
 
         Rectangle {
             id: fuelLevelContainer
-            width: 200
-            height: 200
+            implicitWidth: 220
+            implicitHeight: 220
 
-            anchors.horizontalCenter: speedoContainer.horizontalCenter
-            anchors.left: speedoContainer.right
-            anchors.leftMargin: -30
+            anchors.right: parent.right
+            anchors.top: parent.top
 
             color: "transparent"
 
+            ListView {
+                model: fuelLevelModel
+                delegate: fuelLevelDelegateP1800
+            }
+
             Image {
-                source: "qrc:/gauge-faces-p1800/fuel-level-p1800.png"
+                anchors.centerIn: parent
+                source: "qrc:/gauge-faces-p1800/center-cover-small-p1800.png"
             }
 
 
@@ -118,20 +123,23 @@ Item {
 
         Rectangle {
             id: oilPressureContainer
-            width: 200
-            height:200
+            implicitWidth: 220
+            implicitHeight: 220
 
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.right: container.right
+            anchors.left: parent.left
+            anchors.top: parent.top
 
             color: "transparent"
 
-            Image {
-                width: 200
-                height:200
-                source: "qrc:/gauge-faces-p1800/oil-pressure-p1800.png"
+            ListView {
+                model: oilPModel
+                delegate: oilPressureDelegateP1800
             }
 
+            Image {
+                anchors.centerIn: parent
+                source: "qrc:/gauge-faces-p1800/center-cover-small-p1800.png"
+            }
         }
 
         Rectangle {
