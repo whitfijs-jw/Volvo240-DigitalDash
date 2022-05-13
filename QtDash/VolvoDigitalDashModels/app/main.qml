@@ -1754,7 +1754,7 @@ Window {
                 item.needleColor = "burlywood"
 
                 item.needleWidth = item.width * 0.025
-                item.needleLength = item.width * 0.35
+                item.needleLength = item.width * 0.375
                 item.needleOffset = 0
 
                 item.needleCenterRadius = 0.125
@@ -1823,7 +1823,7 @@ Window {
                 item.needleColor = "burlywood"
 
                 item.needleWidth = item.width * 0.025
-                item.needleLength = item.width * 0.35
+                item.needleLength = item.width * 0.375
                 item.needleOffset = 0
 
                 item.needleCenterRadius = 0.125

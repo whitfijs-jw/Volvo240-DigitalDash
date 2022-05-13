@@ -110,5 +110,8 @@
         <file>center-cover-p1800.png</file>
         <file>speedo-mph-p1800.png</file>
         <file>oil-coolant-temp-p1800.png</file>
+        <file>center-cover-small-p1800.png</file>
+        <file>oil-pressure-p1800.png</file>
+        <file>fuel-level-p1800.png</file>
     </qresource>
 </RCC>

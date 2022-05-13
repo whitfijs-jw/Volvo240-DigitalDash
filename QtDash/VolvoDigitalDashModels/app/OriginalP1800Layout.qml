@@ -5,6 +5,7 @@ Item {
     property int smallGaugeSpacing: 50
 
     Rectangle {
+        id: container
         width: 1280
         height: 480
         color: "transparent"
@@ -15,7 +16,7 @@ Item {
             width: speedoSize
             height: speedoSize
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: width * 0.75
+            anchors.horizontalCenterOffset: width * 0.575
             anchors.verticalCenter: parent.verticalCenter
 
             color: "transparent"
@@ -38,7 +39,7 @@ Item {
             width: speedoSize
             height: speedoSize
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: -width * 0.75
+            anchors.horizontalCenterOffset: -width * 0.575
             anchors.verticalCenter: parent.verticalCenter
 
             color: "transparent"
@@ -98,12 +99,48 @@ Item {
         }
 
         Rectangle {
+            id: fuelLevelContainer
+            width: 200
+            height: 200
+
+            anchors.horizontalCenter: speedoContainer.horizontalCenter
+            anchors.left: speedoContainer.right
+            anchors.leftMargin: -30
+
+            color: "transparent"
+
+            Image {
+                source: "qrc:/gauge-faces-p1800/fuel-level-p1800.png"
+            }
+
+
+        }
+
+        Rectangle {
+            id: oilPressureContainer
+            width: 200
+            height:200
+
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.right: container.right
+
+            color: "transparent"
+
+            Image {
+                width: 200
+                height:200
+                source: "qrc:/gauge-faces-p1800/oil-pressure-p1800.png"
+            }
+
+        }
+
+        Rectangle {
             id: rightBlinker
             width: blinkerSize * 2
             anchors.top: parent.top
             anchors.topMargin: 20
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: parent.width / 6
+            anchors.horizontalCenterOffset: parent.width / 8
             color: "transparent"
 
             ListView {
@@ -116,7 +153,7 @@ Item {
             id: leftBlinker
             width: blinkerSize * 2
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: -parent.width / 8
+            anchors.horizontalCenterOffset: -parent.width / 8 + (blinkerSize)
             anchors.verticalCenter: rightBlinker.verticalCenter
             color: "transparent"
 
