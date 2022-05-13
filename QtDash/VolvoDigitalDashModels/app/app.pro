@@ -1,4 +1,4 @@
-QT += quick serialport positioning
+QT += quick serialport positioning serialbus
 CONFIG += c++17 qtquickcompiler staticlib
 
 TARGET = VolvoDigitalDashModels
