@@ -1981,8 +1981,8 @@ Window {
                 item.minAngle = -145
                 item.maxAngle = -35
 
-                item.height = 220
-                item.width = 220
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
 
                 item.imageResource = "qrc:/gauge-faces-p1800/oil-pressure-p1800.png"
                 item.needleResource = "qrc:/needles/needle-rsport.png"
@@ -2008,13 +2008,13 @@ Window {
             Binding {
                 target: item
                 property: "width"
-                value: 220
+                value: smallGaugeSize
             }
 
             Binding {
                 target: item
                 property: "height"
-                value: 220
+                value: smallGaugeSize
             }
         }
     }
@@ -2035,8 +2035,8 @@ Window {
                 item.minAngle = -145
                 item.maxAngle = -35
 
-                item.height = 220
-                item.width = 220
+                item.height = smallGaugeSize
+                item.width = smallGaugeSize
 
                 item.imageResource = "qrc:/gauge-faces-p1800/fuel-level-p1800.png"
                 item.needleResource = "qrc:/needles/needle-rsport.png"
@@ -2060,13 +2060,13 @@ Window {
             Binding {
                 target: item
                 property: "width"
-                value: 220
+                value: smallGaugeSize
             }
 
             Binding {
                 target: item
                 property: "height"
-                value: 220
+                value: smallGaugeSize
             }
         }
     }
@@ -2408,7 +2408,7 @@ Window {
         Loader {
             id: currentGauge
             anchors.fill: parent
-            source: "qrc:/OriginalP1800Layout.qml"
+            source: "qrc:/Original240Layout.qml"
             asynchronous: true
             visible: false
             onStatusChanged: {
@@ -2514,7 +2514,7 @@ Window {
                     break;
                 case Qt.Key_8:
                     currentGauge.source = "qrc:/OriginalP1800Layout.qml"
-                    setSmallGaugeSize(200);
+                    setSmallGaugeSize(220);
                     setTachSize(350);
                     setSpeedoSize(440);
                     setSpeedoMax(120);

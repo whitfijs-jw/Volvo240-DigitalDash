@@ -27,9 +27,8 @@ Item {
             }
 
             Image {
-                source: "qrc:/gauge-faces-544/speedo-outline-544.png"
-                fillMode: Image.PreserveAspectFit
-                scale: 1.15
+                source: "qrc:/gauge-faces-544/speedo-544-outer.png"
+                anchors.fill: parent
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
 
@@ -183,6 +182,15 @@ Item {
             ListView {
                 model: rpmModel
                 delegate: rpmDelegate544
+            }
+
+
+            Image {
+                source: "qrc:/gauge-faces-544/tachometer-544-outer.png"
+                anchors.fill: parent
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+
             }
 
         }

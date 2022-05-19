@@ -50,7 +50,7 @@ Item {
         x: gauge.offsetX
         y: gauge.offset
         width: needleLength
-        z: -1
+        z: 0
         //anchors.fill: parent
         implicitWidth: 200
         implicitHeight: 20
@@ -112,7 +112,7 @@ Item {
         anchors.fill: parent
         source: imageResource
         mipmap: true
-        z: 0
+        z: -1
     }
 
     Text {

@@ -104,6 +104,8 @@
         <file>speedo-outline-544.png</file>
         <file>small-gauge-shroud-544.png</file>
         <file>tachometer-544.png</file>
+        <file>speedo-544-outer.png</file>
+        <file>tachometer-544-outer.png</file>
     </qresource>
     <qresource prefix="/gauge-faces-p1800">
         <file>tach-p1800.png</file>
