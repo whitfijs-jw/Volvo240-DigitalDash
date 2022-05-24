@@ -408,6 +408,7 @@ HEADERS += \
     analog_12v_input.h \
     analog_sensors.h \
     backlight_control.h \
+    can_frame_config.h \
     config.h \
     dash.h \
     dash_host.h \
@@ -435,6 +436,7 @@ HEADERS += \
     sensor_resistive.h \
     sensor_source.h \
     sensor_source_adc.h \
+    sensor_source_can.h \
     sensor_source_gpio.h \
     sensor_source_gps.h \
     sensor_source_tach.h \
