@@ -430,6 +430,7 @@ HEADERS += \
     pulse_counter.h \
     pwm.h \
     sensor.h \
+    sensor_can.h \
     sensor_map.h \
     sensor_ntc.h \
     sensor_odometer.h \

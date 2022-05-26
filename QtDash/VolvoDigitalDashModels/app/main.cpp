@@ -5,7 +5,6 @@
 #include <QFontDatabase>
 #include <QList>
 #include <QSurface>
-#include <QtSerialBus>
 
 #include <config.h>
 
@@ -41,46 +40,17 @@ int main(int argc, char *argv[])
 #endif
     dash->init();
 
-    if (QCanBus::instance()->plugins().contains(QStringLiteral("socketcan"))) {
-        qDebug() << "found socketcan";
-        QString errorString;
 
-        const QList<QCanBusDeviceInfo> devices =
-                QCanBus::instance()->availableDevices(QStringLiteral("socketcan"), &errorString);
-        if (!errorString.isEmpty()) qDebug() << errorString;
-        foreach (QCanBusDeviceInfo info, devices) {
-            qDebug() << info.name();
-        }
+    // load main.qml
+    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
+    if (engine.rootObjects().isEmpty())
+        return -1;
 
-        QCanBusDevice *device = QCanBus::instance()->createDevice(
-            QStringLiteral("socketcan"), QStringLiteral("can0"), &errorString);
-        if (!device) {
-            qDebug() << "Error String: " << errorString;
-        } else {
-            qDebug() << "Attempting connection";
-            device->connectDevice();
+    // connect quit
+    QObject::connect(&engine, SIGNAL(quit()), &app, SLOT(quit()));
 
-            QObject::connect(device,  &QCanBusDevice::stateChanged,
-                    [=](QCanBusDevice::CanBusDeviceState state) {
-                qDebug() << "CAN State changed: " << state;
-            }
-            );
-        }
-
-    }
-
-
-
-//    // load main.qml
-//    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
-//    if (engine.rootObjects().isEmpty())
-//        return -1;
-
-//    // connect quit
-//    QObject::connect(&engine, SIGNAL(quit()), &app, SLOT(quit()));
-
-//    // Start Dash
-//    dash->start();
+    // Start Dash
+    dash->start();
 
     return app.exec();
 }

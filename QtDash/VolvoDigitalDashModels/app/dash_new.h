@@ -37,6 +37,9 @@
 #include <gauge_temp_fuel_cluster.h>
 #include <gauge_odo.h>
 
+#include <sensor_source_can.h>
+#include <sensor_can.h>
+
 /**
  * @brief A class to run the digital dash
  */
@@ -70,6 +73,7 @@ public:
     void init() {
         initSensorSources();
         initSensors();
+        initCanSensors();
         initAccessoryGauges();
         initSpeedo();
         initTacho();
@@ -104,6 +108,7 @@ private:
     GpsSource * mGpsSource; //!< GPS speed/position/heading source
     TachSource * mTachSource; //!< tach source (pulse counter)
     VssSource * mVssSource; //!< vehicle speed sensor source (pulse counter)
+    CanSource * mCanSource; //!< can data source
 
     Map_Sensor * mMapSensor; //!< map sensor
     NtcSensor * mCoolantTempSensor; //!< coolant temp sensor
@@ -146,20 +151,47 @@ private:
 
     BackLightControl * mBacklightControl;
 
+    QVector<CanSensor *> mCanSensors;
+
     /**
      * @brief Initialize sensor sources
      */
     void initSensorSources() {
+        qDebug() << "Sensor Source Init";
         mAdcSource = new AdcSource(this->parent(), &mConfig);
         mGpsSource = new GpsSource(this->parent(), &mConfig);
         mTachSource = new TachSource(this->parent(), &mConfig);
         mVssSource = new VssSource(this->parent(), &mConfig);
+        mCanSource = new CanSource(this->parent(), &mConfig);
+    }
+
+    void initCanSensors() {
+        for (int channel : mCanSource->getChannelConfigs()->keys()) {
+            qDebug() << "CAN Sensor Channel: " << channel;
+            CanSensor * sensor = new CanSensor(this->parent(), &mConfig,
+                                               mCanSource, channel);
+            qDebug() << "CAN Sensor: " << sensor->getGuage();
+            mCanSensors.push_back(sensor);
+        }
+    }
+
+    CanSensor * getCanSensor(QString gaugeName) {
+        // check if we have a can sensor
+        qDebug() << "Get Can Sensor for: " << gaugeName;
+        for (CanSensor * sensor : mCanSensors) {
+            qDebug() << "Sensor found: " << sensor->getGuage();
+            if (sensor->getGuage().toLower() == gaugeName) {
+                return sensor;
+            }
+        }
+        return nullptr;
     }
 
     /**
      * @brief Initialize sensors
      */
     void initSensors() {
+        qDebug() << "Sensor Init";
         //map sensor
         mMapSensor = new Map_Sensor(
                     this->parent(), &mConfig, mAdcSource,
@@ -348,29 +380,59 @@ private:
      * @brief Initialize the accessory gauges (coolant, fuel level, oil pressure/temp, etc)
      */
     void initAccessoryGauges() {
+        qDebug() << "Accessory Gauge Models Init";
         // boost gauge
-        QList<Sensor *> boostSensors = {mMapSensor};
+        CanSensor * sensor = getCanSensor(Config::BOOST_GAUGE_GROUP);
+
+        QList<Sensor *> boostSensors;
+        if (sensor != nullptr) {
+            boostSensors.push_back(sensor);
+        } else {
+            boostSensors.push_back(mMapSensor);
+        }
+
         mBoostGauge = new AccessoryGauge(
                     this->parent(), &mConfig, boostSensors, &mBoostModel,
                     AccessoryGaugeModel::BOOST_GAUGE_MODEL_NAME,
                     mContext);
 
         // coolant temp gauge
-        QList<Sensor *> coolantSensors = {mCoolantTempSensor};
+        sensor = getCanSensor(Config::COOLANT_TEMP_GAUGE_GROUP);
+        QList<Sensor *> coolantSensors;
+        if (sensor != nullptr) {
+            coolantSensors.push_back(sensor);
+        } else {
+            coolantSensors.push_back(mCoolantTempSensor);
+        }
+
         mCoolantTempGauge = new AccessoryGauge(
                     this->parent(), &mConfig, coolantSensors,
                     &mCoolantTempModel, AccessoryGaugeModel::COOLANT_TEMP_MODEL_NAME,
                     mContext);
 
         // oil temp gauge
-        QList<Sensor *> oilTempSensors = {mOilTempSensor};
+        sensor = getCanSensor(Config::OIL_TEMPERATURE_GAUGE_GROUP);
+        QList<Sensor *> oilTempSensors;
+        if (sensor != nullptr) {
+            oilTempSensors.push_back(sensor);
+        } else {
+            oilTempSensors.push_back(mOilTempSensor);
+        }
+
         mOilTempGauge = new AccessoryGauge(
                     this->parent(), &mConfig, oilTempSensors,
                     &mOilTemperatureModel, AccessoryGaugeModel::OIL_TEMPERATURE_MODEL_NAME,
                     mContext);
 
         // voltmeter
-        QList<Sensor *> voltmeterSensors = {mVoltmeterSensor};
+        sensor = getCanSensor(Config::VOLTMETER_GAUGE_GROUP);
+        QList<Sensor *> voltmeterSensors;
+        if (sensor != nullptr) {
+            voltmeterSensors.push_back(sensor);
+        } else {
+            voltmeterSensors.push_back(mVoltmeterSensor);
+        }
+
         mVoltmeterGauge = new AccessoryGauge(
                     this->parent(), &mConfig, voltmeterSensors,
                     &mVoltMeterModel, AccessoryGaugeModel::VOLT_METER_MODEL_NAME,
@@ -378,7 +440,14 @@ private:
                     );
 
         // fuel level (acc gauge)
-        QList<Sensor *> fuelGaugeSensors = {mFuelLevelSensor};
+        sensor = getCanSensor(Config::FUEL_GAUGE_GROUP);
+        QList<Sensor *> fuelGaugeSensors;
+        if (sensor != nullptr) {
+            fuelGaugeSensors.push_back(sensor);
+        } else {
+            fuelGaugeSensors.push_back(mFuelLevelSensor);
+        }
+
         mFuelLevelGauge = new AccessoryGauge(
                     this->parent(), &mConfig, fuelGaugeSensors,
                     &mFuelLevelModel, AccessoryGaugeModel::FUEL_LEVEL_MODEL_NAME,
@@ -386,7 +455,14 @@ private:
                     );
 
         // oil pressure gauge
-        QList<Sensor *> oilPressureSensors = {mOilPressureSensor};
+        sensor = getCanSensor(Config::OIL_PRESSURE_GAUGE_GROUP);
+        QList<Sensor *> oilPressureSensors;
+        if (sensor != nullptr) {
+            oilPressureSensors.push_back(sensor);
+        } else {
+            oilPressureSensors.push_back(mOilPressureSensor);
+        }
+
         mOilPressureGauge = new AccessoryGauge(
                     this->parent(), &mConfig, oilPressureSensors,
                     &mOilPressureModel, AccessoryGaugeModel::OIL_PRESSURE_MODEL_NAME,
@@ -394,7 +470,7 @@ private:
                     );
 
         //temp and fuel cluster
-        QList<Sensor *> tempAndFuelSensors = {mCoolantTempSensor, mFuelLevelSensor};
+        QList<Sensor *> tempAndFuelSensors = {coolantSensors.at(0), fuelGaugeSensors.at(0)};
         mTempFuelClusterGauge = new TempFuelClusterGauge(
                     this->parent(), &mConfig, tempAndFuelSensors,
                     &mTempFuelModel, TempAndFuelGaugeModel::TEMP_FUEL_CLUSTER_MODEL_NAME,
@@ -406,6 +482,8 @@ private:
      * @brief Initialize the speedometer
      */
     void initSpeedo() {
+        qDebug() << "Speedometer Gauge Model Init";
+
         // init gauge
         QList<Sensor *> speedoSensors = {mSpeedoSensor};
 
@@ -443,13 +521,30 @@ private:
      * @brief Initialize the tachometer
      */
     void initTacho() {
-        QList<Sensor *> tachSensors = {mTachSensor};
+        qDebug() << "Tachometer Gauge Model Init";
+        QList<Sensor *> tachSensors;
+
+        // check if we have a can sensor
+        for (CanSensor * sensor : mCanSensors) {
+            if (sensor->getGuage().toLower() == Config::TACHOMETER_GAUGE_GROUP) {
+                tachSensors.push_back(sensor);
+            }
+        }
+
+        // If no can source is available -- use the kernel module tach sensor
+        if (tachSensors.isEmpty()) {
+            tachSensors.push_back(mTachSensor);
+        }
+
+        // initialize
         mTachoGauge = new TachometerGauge(
                     this->parent(), &mConfig, tachSensors,
                     &mTachoModel, TachometerModel::TACH_MODEL_NAME,
                     mContext
                     );
     }
+
+
 
     void initOdometer() {
         QList<Sensor *> odoSensors = {mOdoSensor, mTripAOdoSensor, mTripBOdoSensor};

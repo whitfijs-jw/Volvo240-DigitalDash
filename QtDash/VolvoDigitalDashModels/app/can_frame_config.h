@@ -1,7 +1,6 @@
 #ifndef CAN_FRAME_CONFIG_H
 #define CAN_FRAME_CONFIG_H
 
-#include <QtSerialBus>
 #include <QString>
 #include <QDataStream>
 
@@ -19,10 +18,39 @@ public:
     } Operation_t;
 
     CanFrameConfig(uint16_t frameId, uint8_t offset,
-                   uint8_t size, bool sign, QString units) :
+                   uint8_t size, bool sign, QString units,
+                   QString name, QString gaugeName = "none") :
         mFrameId(frameId), mOffset(offset), mSize(size), mSigned(sign),
-        mUnits(units) {
+        mName(name), mUnits(units), mGaugeName(gaugeName) {
 
+    }
+
+    uint16_t getFrameId() {
+        return mFrameId;
+    }
+
+    uint8_t getOffset() {
+        return mOffset;
+    }
+
+    uint8_t getSize() {
+        return mSize;
+    }
+
+    QString getName() {
+        return mName;
+    }
+
+    QString getUnits() {
+        return mUnits;
+    }
+
+    bool isSigned() {
+        return mSigned;
+    }
+
+    QString getGauge() {
+        return mGaugeName;
     }
 
     int addOperation(OperationType type, qreal value) {
@@ -81,18 +109,6 @@ public:
             }
         }
             break;
-        case 8:{
-            if (mSigned) {
-                int64_t value;
-                ds >> value;
-                ret = (qreal)value;
-            } else {
-                uint64_t value;
-                ds >> value;
-                ret = (qreal)value;
-            }
-        }
-            break;
         }
 
         for (Operation_t ops : mOperations) {
@@ -120,6 +136,7 @@ private:
     QString mName;
     QString mUnits;
     QVector<Operation_t> mOperations;
+    QString mGaugeName;
 };
 
 #endif // CAN_FRAME_CONFIG_H

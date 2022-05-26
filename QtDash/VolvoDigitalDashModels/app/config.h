@@ -6,6 +6,8 @@
 #include <QDebug>
 #include <iostream>
 
+#include <can_frame_config.h>
+
 /**
  * @brief Dash config class
  *
@@ -181,6 +183,19 @@ public:
     static constexpr char TOP_VALUE_UNITS[] = "top_value_units";
     static constexpr char MAX_RPM[] = "max_rpm";
     static constexpr char REDLINE[] = "redline";
+
+    //can config keys
+    static constexpr char CAN_FRAME[] = "can_frame";
+    static constexpr char CAN_FRAME_ID[] = "frame_id";
+    static constexpr char CAN_FRAME_OFFSET[] = "offset";
+    static constexpr char CAN_FRAME_SIZE[] = "data_size";
+    static constexpr char CAN_FRAME_SIGNED[] = "signed";
+    static constexpr char CAN_FRAME_NAME[] = "name";
+    static constexpr char CAN_FRAME_UNITS[] = "units";
+    static constexpr char CAN_FRAME_MULTIPLY[] = "multiply";
+    static constexpr char CAN_FRAME_DIVIDE[] = "divide";
+    static constexpr char CAN_FRAME_ADD[] = "add";
+    static constexpr char CAN_FRAME_GAUGE[] = "gauge";
 
     enum class UnitType {
         PRESSURE = 0,
@@ -478,6 +493,7 @@ public:
     static constexpr char DEFAULT_CONFIG_PATH[] = "/opt/config.ini";
     static constexpr char DEFAULT_GAUGE_CONFIG_PATH[] = "/opt/config_gauges.ini";
     static constexpr char DEFAULT_ODO_CONFIG_PATH[] = "/opt/config_odo.ini";
+    static constexpr char DEFAULT_CAN_CONFIG_PATH[] = "/opt/config_can.ini";
 
     /**
      * @brief Constructor
@@ -487,7 +503,8 @@ public:
     Config(QObject * parent,
            QString configPath = DEFAULT_CONFIG_PATH,
            QString gaugeConfigPath = DEFAULT_GAUGE_CONFIG_PATH,
-           QString odoConfigPath = DEFAULT_ODO_CONFIG_PATH) :
+           QString odoConfigPath = DEFAULT_ODO_CONFIG_PATH,
+           QString canConfigPath = DEFAULT_CAN_CONFIG_PATH) :
         QObject(parent) {
         mConfig = new QSettings(configPath, QSettings::IniFormat);
         loadConfig();
@@ -497,6 +514,53 @@ public:
 
         mOdometerConfig = new QSettings(odoConfigPath, QSettings::IniFormat);
         loadOdometerConfigs();
+
+        mCanConfig = new QSettings(canConfigPath, QSettings::IniFormat);
+        loadCanFrameConfigs();
+    }
+
+    bool loadCanFrameConfigs() {
+        mCanConfig->beginGroup(CAN_FRAME);
+        printKeys("can", mCanConfig);
+        mCanConfig->endGroup();
+
+        int size = mCanConfig->beginReadArray(CAN_FRAME);
+        for (int i = 0; i < size; ++i) {
+            mCanConfig->setArrayIndex(i);
+
+            uint16_t frameId = mCanConfig->value(CAN_FRAME_ID, 0).toUInt();
+            uint8_t offset = mCanConfig->value(CAN_FRAME_OFFSET, 0).toInt();
+            uint8_t size = mCanConfig->value(CAN_FRAME_SIZE, 0).toInt();
+            bool sign = mCanConfig->value(CAN_FRAME_SIGNED, false).toBool();
+            QString units = mCanConfig->value(CAN_FRAME_UNITS, "").toString();
+            QString name = mCanConfig->value(CAN_FRAME_NAME, "").toString();
+            QString gauge = mCanConfig->value(CAN_FRAME_GAUGE, "none").toString();
+
+            // create new can frame config
+            CanFrameConfig config(frameId, offset, size, sign, units, name, gauge);
+
+            qreal multiply = mCanConfig->value(CAN_FRAME_MULTIPLY, 1).toReal();
+            qreal divide = mCanConfig->value(CAN_FRAME_DIVIDE, 1).toReal();
+            qreal add = mCanConfig->value(CAN_FRAME_ADD, 0).toReal();
+
+            if (multiply != 1) {
+                config.addOperation(CanFrameConfig::OperationType::MULTIPLY, multiply);
+            }
+
+            if (divide != 1) {
+                config.addOperation(CanFrameConfig::OperationType::DIVIDE, divide);
+            }
+
+            if (add != 0) {
+                config.addOperation(CanFrameConfig::OperationType::ADD, add);
+            }
+
+            mCanFrameConfigs.append(config);
+            printKeys("can: ", mCanConfig);
+        }
+        mCanConfig->endArray();
+
+        return true;
     }
 
     bool loadOdometerConfigs() {
@@ -996,6 +1060,18 @@ public:
         return mBacklightConfig;
     }
 
+    QList<CanFrameConfig> getCanFrameConfigs() {
+        return mCanFrameConfigs;
+    }
+
+    CanFrameConfig getCanFrameConfig(QString name) {
+        for (CanFrameConfig conf : mCanFrameConfigs) {
+            if (conf.getName() == name) {
+                return conf;
+            }
+        }
+    }
+
 signals:
 
 public slots:
@@ -1020,6 +1096,9 @@ private:
     QList<OdometerConfig_t> mOdoConfig;
 
     BacklightControlConfig_t mBacklightConfig;
+
+    QSettings * mCanConfig;
+    QList<CanFrameConfig> mCanFrameConfigs;
 
     /**
      * @brief Check that values are valid in a map
