@@ -9267,7 +9267,7 @@ SOIC, 0.3 inch width</description>
 <attributes>
 </attributes>
 <variantdefs>
-<variantdef name="REVC" current="yes"/>
+<variantdef name="REVC"/>
 </variantdefs>
 <classes>
 <class number="0" name="default" width="0" drill="0">
@@ -9619,7 +9619,7 @@ SOIC, 0.3 inch width</description>
 <part name="R68" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="R70" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="SUPPLY56" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
-<part name="U1" library="SparkFun-IC-Comms" deviceset="MCP2515(MCP2510)" device="SO" value="MCP2515"/>
+<part name="IC13" library="SparkFun-IC-Comms" deviceset="MCP2515(MCP2510)" device="SO" value="MCP2515"/>
 <part name="D9" library="diode" deviceset="PESD1CAN" device=""/>
 <part name="IC12" library="digital_dash" deviceset="SN65HVD23" device="" technology="0D"/>
 <part name="GND8" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
@@ -10028,7 +10028,7 @@ conditioning circuit to here.</text>
 <instance part="R68" gate="G$1" x="486.41" y="80.01" rot="R90"/>
 <instance part="R70" gate="G$1" x="491.49" y="74.93" rot="R90"/>
 <instance part="SUPPLY56" gate="G$1" x="469.9" y="71.12"/>
-<instance part="U1" gate="&gt;NAME" x="431.8" y="322.58"/>
+<instance part="IC13" gate="&gt;NAME" x="431.8" y="322.58"/>
 <instance part="D9" gate="G$1" x="508" y="307.34" rot="R270"/>
 <instance part="IC12" gate="G$1" x="485.14" y="325.12"/>
 <instance part="GND8" gate="1" x="508" y="297.18" rot="MR0"/>
@@ -10044,7 +10044,7 @@ conditioning circuit to here.</text>
 <instance part="GND25" gate="1" x="472.44" y="340.36" rot="MR0"/>
 <instance part="R81" gate="G$1" x="406.4" y="312.42" rot="R180"/>
 <instance part="SUPPLY63" gate="G$1" x="391.16" y="314.96"/>
-<instance part="U1" gate="P" x="441.96" y="279.4"/>
+<instance part="IC13" gate="P" x="441.96" y="279.4"/>
 <instance part="SUPPLY64" gate="G$1" x="441.96" y="289.56"/>
 <instance part="GND51" gate="1" x="441.96" y="266.7" rot="MR0"/>
 <instance part="C31" gate="G$1" x="431.8" y="279.4" smashed="yes" rot="MR0">
@@ -10501,7 +10501,7 @@ conditioning circuit to here.</text>
 <wire x1="472.44" y1="342.9" x2="472.44" y2="345.44" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U1" gate="P" pin="VSS"/>
+<pinref part="IC13" gate="P" pin="VSS"/>
 <pinref part="GND51" gate="1" pin="GND"/>
 <wire x1="441.96" y1="271.78" x2="441.96" y2="269.24" width="0.1524" layer="91"/>
 <pinref part="C31" gate="G$1" pin="2"/>
@@ -11011,7 +11011,7 @@ conditioning circuit to here.</text>
 <pinref part="SUPPLY63" gate="G$1" pin="3.3V"/>
 </segment>
 <segment>
-<pinref part="U1" gate="P" pin="VDD"/>
+<pinref part="IC13" gate="P" pin="VDD"/>
 <pinref part="SUPPLY64" gate="G$1" pin="3.3V"/>
 <wire x1="441.96" y1="287.02" x2="441.96" y2="289.56" width="0.1524" layer="91"/>
 <pinref part="C31" gate="G$1" pin="1"/>
@@ -11044,7 +11044,7 @@ conditioning circuit to here.</text>
 <label x="234.95" y="195.58" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U1" gate="&gt;NAME" pin="SI"/>
+<pinref part="IC13" gate="&gt;NAME" pin="SI"/>
 <wire x1="416.56" y1="320.04" x2="408.94" y2="320.04" width="0.1524" layer="91"/>
 <label x="408.94" y="320.04" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -11061,7 +11061,7 @@ conditioning circuit to here.</text>
 <label x="234.95" y="200.66" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U1" gate="&gt;NAME" pin="SO"/>
+<pinref part="IC13" gate="&gt;NAME" pin="SO"/>
 <wire x1="416.56" y1="317.5" x2="408.94" y2="317.5" width="0.1524" layer="91"/>
 <label x="408.94" y="317.5" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -11078,7 +11078,7 @@ conditioning circuit to here.</text>
 <label x="234.95" y="205.74" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U1" gate="&gt;NAME" pin="SCK"/>
+<pinref part="IC13" gate="&gt;NAME" pin="SCK"/>
 <wire x1="416.56" y1="322.58" x2="408.94" y2="322.58" width="0.1524" layer="91"/>
 <label x="408.94" y="322.58" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -12978,7 +12978,7 @@ conditioning circuit to here.</text>
 <segment>
 <pinref part="IC12" gate="G$1" pin="RXD"/>
 <wire x1="469.9" y1="317.5" x2="459.74" y2="317.5" width="0.1524" layer="91"/>
-<pinref part="U1" gate="&gt;NAME" pin="RXCAN"/>
+<pinref part="IC13" gate="&gt;NAME" pin="RXCAN"/>
 <wire x1="459.74" y1="317.5" x2="449.58" y2="327.66" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -12986,13 +12986,13 @@ conditioning circuit to here.</text>
 <segment>
 <pinref part="IC12" gate="G$1" pin="TXD"/>
 <wire x1="469.9" y1="332.74" x2="459.74" y2="332.74" width="0.1524" layer="91"/>
-<pinref part="U1" gate="&gt;NAME" pin="TXCAN"/>
+<pinref part="IC13" gate="&gt;NAME" pin="TXCAN"/>
 <wire x1="459.74" y1="332.74" x2="449.58" y2="322.58" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$43" class="0">
 <segment>
-<pinref part="U1" gate="&gt;NAME" pin="RESET"/>
+<pinref part="IC13" gate="&gt;NAME" pin="RESET"/>
 <pinref part="R81" gate="G$1" pin="1"/>
 <wire x1="416.56" y1="312.42" x2="411.48" y2="312.42" width="0.1524" layer="91"/>
 </segment>
@@ -13004,14 +13004,14 @@ conditioning circuit to here.</text>
 <label x="93.98" y="25.4" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U1" gate="&gt;NAME" pin="CS"/>
+<pinref part="IC13" gate="&gt;NAME" pin="CS"/>
 <wire x1="416.56" y1="325.12" x2="408.94" y2="325.12" width="0.1524" layer="91"/>
 <label x="408.94" y="325.12" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="N$18" class="0">
 <segment>
-<pinref part="U1" gate="&gt;NAME" pin="OSC1"/>
+<pinref part="IC13" gate="&gt;NAME" pin="OSC1"/>
 <wire x1="416.56" y1="335.28" x2="393.7" y2="335.28" width="0.1524" layer="91"/>
 <wire x1="393.7" y1="335.28" x2="393.7" y2="340.36" width="0.1524" layer="91"/>
 <wire x1="393.7" y1="340.36" x2="386.08" y2="340.36" width="0.1524" layer="91"/>
@@ -13024,7 +13024,7 @@ conditioning circuit to here.</text>
 </net>
 <net name="N$31" class="0">
 <segment>
-<pinref part="U1" gate="&gt;NAME" pin="OSC2"/>
+<pinref part="IC13" gate="&gt;NAME" pin="OSC2"/>
 <wire x1="416.56" y1="332.74" x2="393.7" y2="332.74" width="0.1524" layer="91"/>
 <wire x1="393.7" y1="332.74" x2="393.7" y2="325.12" width="0.1524" layer="91"/>
 <wire x1="393.7" y1="325.12" x2="386.08" y2="325.12" width="0.1524" layer="91"/>
@@ -13042,7 +13042,7 @@ conditioning circuit to here.</text>
 <pinref part="J1" gate="G$1" pin="22"/>
 </segment>
 <segment>
-<pinref part="U1" gate="&gt;NAME" pin="INT"/>
+<pinref part="IC13" gate="&gt;NAME" pin="INT"/>
 <wire x1="449.58" y1="312.42" x2="452.12" y2="312.42" width="0.1524" layer="91"/>
 <label x="452.12" y="312.42" size="1.27" layer="95" xref="yes"/>
 </segment>
