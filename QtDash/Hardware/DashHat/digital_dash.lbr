@@ -2187,6 +2187,48 @@ reflow soldering</description>
 <text x="-3" y="2.5" size="1.016" layer="21">&gt;NAME</text>
 <text x="-3.5" y="-3.5" size="1.27" layer="21">&gt;VALUE</text>
 </package>
+<package name="1X02_JST-XHP">
+<description>&lt;h3&gt;Plated Through Hole&lt;/h3&gt;
+&lt;p&gt;Specifications:
+&lt;ul&gt;&lt;li&gt;Pin count:2&lt;/li&gt;
+&lt;li&gt;Pin pitch:0.1"&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;
+&lt;p&gt;Example device(s):
+&lt;ul&gt;&lt;li&gt;CONN_02&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;</description>
+<pad name="1" x="0" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
+<pad name="2" x="2.54" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
+<rectangle x1="2.286" y1="-0.254" x2="2.794" y2="0.254" layer="51"/>
+<rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
+<text x="-2.54" y="3.302" size="0.6096" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="-2.54" y="-3.302" size="0.6096" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<wire x1="-2.48" y1="-2.5" x2="5.02" y2="-2.5" width="0.127" layer="21"/>
+<wire x1="5.02" y1="-2.5" x2="5.02" y2="3.3" width="0.127" layer="21"/>
+<wire x1="5.02" y1="3.3" x2="-2.48" y2="3.3" width="0.127" layer="21"/>
+<wire x1="-2.48" y1="3.3" x2="-2.48" y2="-2.5" width="0.127" layer="21"/>
+</package>
+<package name="1X03_JST-XHP">
+<description>&lt;h3&gt;Plated Through Hole - 3 Pin&lt;/h3&gt;
+&lt;p&gt;Specifications:
+&lt;ul&gt;&lt;li&gt;Pin count:3&lt;/li&gt;
+&lt;li&gt;Pin pitch:0.1"&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;
+&lt;p&gt;Example device(s):
+&lt;ul&gt;&lt;li&gt;CONN_03&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;</description>
+<pad name="1" x="0" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
+<pad name="2" x="2.54" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
+<pad name="3" x="5.08" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
+<rectangle x1="4.826" y1="-0.254" x2="5.334" y2="0.254" layer="51"/>
+<rectangle x1="2.286" y1="-0.254" x2="2.794" y2="0.254" layer="51"/>
+<rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
+<text x="-2.54" y="3.302" size="0.6096" layer="25" font="vector" ratio="20">&gt;NAME</text>
+<text x="-2.54" y="-3.302" size="0.6096" layer="27" font="vector" ratio="20">&gt;VALUE</text>
+<wire x1="-2.48" y1="3.3" x2="7.54" y2="3.3" width="0.127" layer="21"/>
+<wire x1="7.54" y1="3.3" x2="7.54" y2="-2.5" width="0.127" layer="21"/>
+<wire x1="7.54" y1="-2.5" x2="-2.48" y2="-2.5" width="0.127" layer="21"/>
+<wire x1="-2.48" y1="-2.5" x2="-2.48" y2="3.3" width="0.127" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="OP-AMP">
@@ -3761,6 +3803,16 @@ Source: https://www.ti.com/lit/ds/symlink/tsv912.pdf</description>
 <technology name=""/>
 </technologies>
 </device>
+<device name="JST-XHP" package="1X03_JST-XHP">
+<connects>
+<connect gate="J$1" pin="1" pad="1"/>
+<connect gate="J$1" pin="2" pad="2"/>
+<connect gate="J$1" pin="3" pad="3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 <deviceset name="CONN_02" prefix="J" uservalue="yes">
@@ -4057,6 +4109,15 @@ Source: https://www.ti.com/lit/ds/symlink/tsv912.pdf</description>
 </technologies>
 </device>
 <device name="LARGE" package="1X02_LARGE">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="JST-XHP" package="1X02_JST-XHP">
 <connects>
 <connect gate="G$1" pin="1" pad="1"/>
 <connect gate="G$1" pin="2" pad="2"/>
