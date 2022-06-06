@@ -1,4 +1,4 @@
-QT += quick serialport positioning
+QT += quick serialport positioning serialbus
 CONFIG += c++17 qtquickcompiler staticlib
 
 TARGET = VolvoDigitalDashModels
@@ -408,6 +408,7 @@ HEADERS += \
     analog_12v_input.h \
     analog_sensors.h \
     backlight_control.h \
+    can_frame_config.h \
     config.h \
     dash.h \
     dash_host.h \
@@ -429,12 +430,14 @@ HEADERS += \
     pulse_counter.h \
     pwm.h \
     sensor.h \
+    sensor_can.h \
     sensor_map.h \
     sensor_ntc.h \
     sensor_odometer.h \
     sensor_resistive.h \
     sensor_source.h \
     sensor_source_adc.h \
+    sensor_source_can.h \
     sensor_source_gpio.h \
     sensor_source_gps.h \
     sensor_source_tach.h \

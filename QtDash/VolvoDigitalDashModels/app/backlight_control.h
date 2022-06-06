@@ -31,7 +31,13 @@ public:
                          this, &BackLightControl::dimmerVoltageUpdate);
 
         // initialize pwm
-        mPwm = new Pwm();
+        mPwm = new Pwm(
+                    Pwm::DEFAULT_PATH,
+                    Pwm::DEFAULT_DEVICE,
+                    Pwm::DEFAULT_PERIOD,
+                    mBacklightConfig.lightsOffDutyCycle,
+                    mBacklightConfig.activeLow
+                    );
     }
     virtual ~BackLightControl() {}
 

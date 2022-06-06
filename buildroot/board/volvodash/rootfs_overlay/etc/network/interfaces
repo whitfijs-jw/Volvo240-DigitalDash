@@ -5,3 +5,9 @@ auto eth0
 iface eth0 inet static
       address 192.168.42.2
       netmask 255.255.255.0
+      
+auto can0
+iface can0 inet manual
+    pre-up /sbin/ip link set can0 type can bitrate 500000 triple-sampling on restart-ms 100
+    up /sbin/ifconfig can0 up
+    down /sbin/ifconfig can0 down
