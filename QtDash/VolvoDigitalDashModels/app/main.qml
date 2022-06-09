@@ -2514,7 +2514,7 @@ Window {
                     break;
                 case Qt.Key_8:
                     currentGauge.source = "qrc:/OriginalP1800Layout.qml"
-                    setSmallGaugeSize(220);
+                    setSmallGaugeSize(200);
                     setTachSize(350);
                     setSpeedoSize(440);
                     setSpeedoMax(120);

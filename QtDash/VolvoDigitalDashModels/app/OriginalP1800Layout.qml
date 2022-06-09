@@ -100,11 +100,12 @@ Item {
 
         Rectangle {
             id: fuelLevelContainer
-            implicitWidth: 220
-            implicitHeight: 220
+            implicitWidth: 200
+            implicitHeight: 200
 
             anchors.right: parent.right
-            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 70
 
             color: "transparent"
 
@@ -123,11 +124,12 @@ Item {
 
         Rectangle {
             id: oilPressureContainer
-            implicitWidth: 220
-            implicitHeight: 220
+            implicitWidth: 200
+            implicitHeight: 200
 
             anchors.left: parent.left
-            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 70
 
             color: "transparent"
 
