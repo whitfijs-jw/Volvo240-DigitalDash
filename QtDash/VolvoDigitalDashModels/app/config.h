@@ -557,7 +557,7 @@ public:
         for (int i = 0; i < size; ++i) {
             mCanConfig->setArrayIndex(i);
 
-            uint16_t frameId = mCanConfig->value(CAN_FRAME_ID, 0).toUInt();
+            uint32_t frameId = mCanConfig->value(CAN_FRAME_ID, 0).toUInt();
             uint8_t offset = mCanConfig->value(CAN_FRAME_OFFSET, 0).toInt();
             uint8_t size = mCanConfig->value(CAN_FRAME_SIZE, 0).toInt();
             bool sign = mCanConfig->value(CAN_FRAME_SIGNED, false).toBool();

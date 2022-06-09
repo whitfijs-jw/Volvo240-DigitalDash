@@ -17,7 +17,7 @@ public:
         qreal value;
     } Operation_t;
 
-    CanFrameConfig(uint16_t frameId, uint8_t offset,
+    CanFrameConfig(uint32_t frameId, uint8_t offset,
                    uint8_t size, bool sign, QString units,
                    QString name, QString gaugeName = "none") :
         mFrameId(frameId), mOffset(offset), mSize(size), mSigned(sign),
@@ -25,7 +25,7 @@ public:
 
     }
 
-    uint16_t getFrameId() {
+    uint32_t getFrameId() {
         return mFrameId;
     }
 
@@ -129,7 +129,7 @@ public:
     }
 
 private:
-    uint16_t mFrameId;
+    uint32_t mFrameId;
     uint8_t mOffset;
     uint8_t mSize;
     bool mSigned;
