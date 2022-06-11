@@ -154,9 +154,9 @@ public slots:
             QString rpmString = rpmStream.readLine();
             int rpm = rpmString.toInt();
             rpm /= 1000;
-            mTachModel.setRpm(rpm);
+            //mTachModel.setRpm(rpm);
             mBoostModel.setCurrentValue( ((float)rpm/1000.0) * 5.0 );
-            mOilPressureModel.setCurrentValue( ((float)rpm / 1000.0 * 3) );
+            mOilPressureModel.setCurrentValue( ((float)rpm / 1000.0) );
 
             static qreal previousValue = 1;
 
@@ -186,10 +186,21 @@ public slots:
             mFuelLevelModel.setCurrentValue(level);
         }
 
+        mSpeedoModel.setCurrentValue(mSpeedoModel.currentValue() + 0.5);
+        if (mSpeedoModel.currentValue() > mSpeedoModel.maxValue()) {
+            mSpeedoModel.setCurrentValue(0.0);
+        }
+
+        mTachModel.setRpm(mTachModel.rpm() + 100);
+        if (mTachModel.rpm() > mTachModel.maxRpm()) {
+            mTachModel.setRpm(0);
+        }
+
 
 //        mBoostModel.setCurrentValue(mBoostModel.currentValue() + 1);
 //        mFuelLevelModel.setCurrentValue(mFuelLevelModel.currentValue() + 1);
-//        mCoolantTempModel.setCurrentValue(mCoolantTempModel.currentValue() + 1);
+        mCoolantTempModel.setCurrentValue(mCoolantTempModel.currentValue() + 1);
+        mOilTemperatureModel.setCurrentValue(mOilTemperatureModel.currentValue() + 1);
 
 //        if (mBoostModel.currentValue() > mBoostModel.maxValue()) {
 //            mBoostModel.setCurrentValue(-25.0);
@@ -201,9 +212,15 @@ public slots:
 //        }
 
 
-//        if (mCoolantTempModel.currentValue() > mCoolantTempModel.maxValue()) {
-//            mCoolantTempModel.setCurrentValue(120);
-//        }
+        if (mCoolantTempModel.currentValue() > mCoolantTempModel.maxValue()) {
+            mCoolantTempModel.setCurrentValue(90);
+        }
+
+        if (mOilTemperatureModel.currentValue() > mOilTemperatureModel.maxValue()) {
+            mOilTemperatureModel.setCurrentValue(140);
+        }
+
+
 
         tempFile.close();
         rpmFile.close();
@@ -332,7 +349,7 @@ private:
         if (gauge != nullptr) {
             gauge->setMinValue(minValue);
             gauge->setMaxValue(maxValue);
-            gauge->setUnits(units);;
+            gauge->setUnits(units);
             gauge->setHighAlarm(highAlarm);
             gauge->setLowAlarm(lowAlarm);
 
