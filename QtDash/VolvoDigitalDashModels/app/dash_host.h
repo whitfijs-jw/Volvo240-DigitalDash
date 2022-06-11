@@ -48,7 +48,8 @@ public:
         QObject(parent), mContext(context), mEventTiming(parent),
         mConfig(parent, "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config.ini",
                 "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config_gauges.ini",
-                "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config_odo.ini") {
+                "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config_odo.ini",
+                "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config_can.ini") {
 
         // populate accessory gauge model map
         mAccessoryGaugeModelMap.insert(COOLANT_TEMP_MODEL_NAME, &mCoolantTempModel);

@@ -18,6 +18,8 @@ kernel=zImage
 # If the text shown on the screen disappears off the edge, comment this out
 disable_overscan=1
 
+initial_turbo=30
+
 overscan_left=0
 overscan_right=0
 overscan_top=0
@@ -34,12 +36,12 @@ dtoverlay=miniuart-bt
 dtoverlay=vc4-fkms-v3d,nocomposite
 
 dtparam=i2c_arm=on
-
-dtoverlay=mcp23017
-dtparam=addr=0x20
-
 dtparam=spi=on
 dtoverlay=mcp3208:spi0-0-present
+
+dtoverlay=pwm
+
+dtoverlay=mcp2515-can0,oscillator=8000000,interrupt=25
 
 #hdmi_safe=1
 hdmi_cvt 1280 480 60 5 0 0 0

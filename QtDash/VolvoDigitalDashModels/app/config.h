@@ -6,6 +6,8 @@
 #include <QDebug>
 #include <iostream>
 
+#include <can_frame_config.h>
+
 /**
  * @brief Dash config class
  *
@@ -182,6 +184,19 @@ public:
     static constexpr char MAX_RPM[] = "max_rpm";
     static constexpr char REDLINE[] = "redline";
 
+    //can config keys
+    static constexpr char CAN_FRAME[] = "can_frame";
+    static constexpr char CAN_FRAME_ID[] = "frame_id";
+    static constexpr char CAN_FRAME_OFFSET[] = "offset";
+    static constexpr char CAN_FRAME_SIZE[] = "data_size";
+    static constexpr char CAN_FRAME_SIGNED[] = "signed";
+    static constexpr char CAN_FRAME_NAME[] = "name";
+    static constexpr char CAN_FRAME_UNITS[] = "units";
+    static constexpr char CAN_FRAME_MULTIPLY[] = "multiply";
+    static constexpr char CAN_FRAME_DIVIDE[] = "divide";
+    static constexpr char CAN_FRAME_ADD[] = "add";
+    static constexpr char CAN_FRAME_GAUGE[] = "gauge";
+
     enum class UnitType {
         PRESSURE = 0,
         TEMPERATURE,
@@ -203,10 +218,15 @@ public:
         BAR, //!< Bar
     };
 
+    /**
+     * @brief Get pressure units from string
+     * @param units: units string
+     * @return @ref PressureUnits
+     */
     static PressureUnits getPressureUnits(QString units) {
-        if (units == UNITS_BAR) {
+        if (units.compare(UNITS_BAR, Qt::CaseInsensitive) == 0) {
             return PressureUnits::BAR;
-        } else if (units == UNITS_KPA) {
+        } else if (units.compare(UNITS_KPA, Qt::CaseInsensitive) == 0) {
             return PressureUnits::KPA;
         } else {
             //default to psi
@@ -223,10 +243,15 @@ public:
         FAHRENHEIT, //!< Fahrenheit
     };
 
+    /**
+     * @brief Get temperature units from string
+     * @param units: units string
+     * @return @ref TemperatureUnits
+     */
     static TemperatureUnits getTempUnits(QString units) {
-        if (units == UNITS_C) {
+        if (units.compare(UNITS_C, Qt::CaseInsensitive) == 0) {
             return TemperatureUnits::CELSIUS;
-        } else if (units == UNITS_K) {
+        } else if (units.compare(UNITS_K, Qt::CaseInsensitive) == 0) {
             return TemperatureUnits::KELVIN;
         } else {
             //default to f
@@ -248,22 +273,27 @@ public:
         KILOMETER, //!< kilometer
     };
 
+    /**
+     * @brief Get distance units from string
+     * @param units: Units string
+     * @return @ref DistanceUnits
+     */
     static DistanceUnits getDistanceUnits(QString units) {
-        if (units == UNITS_INCH) {
+        if (units.compare(UNITS_INCH, Qt::CaseInsensitive) == 0) {
             return DistanceUnits::INCH;
-        } else if (units == UNITS_FOOT) {
+        } else if (units.compare(UNITS_FOOT, Qt::CaseInsensitive) == 0) {
             return DistanceUnits::FOOT;
-        } else if (units == UNITS_YARD) {
+        } else if (units.compare(UNITS_YARD, Qt::CaseInsensitive) == 0) {
             return DistanceUnits::YARD;
-        } else if (units == UNITS_MILE) {
+        } else if (units.compare(UNITS_MILE, Qt::CaseInsensitive) == 0) {
             return DistanceUnits::MILE;
-        } else if (units == UNITS_MILLIMETER) {
+        } else if (units.compare(UNITS_MILLIMETER, Qt::CaseInsensitive) == 0) {
             return DistanceUnits::MILLIMETER;
-        } else if (units == UNITS_CENTIMETER) {
+        } else if (units.compare(UNITS_CENTIMETER, Qt::CaseInsensitive) == 0) {
             return DistanceUnits::CENTIMETER;
-        } else if (units == UNITS_METER) {
+        } else if (units.compare(UNITS_METER, Qt::CaseInsensitive) == 0) {
             return DistanceUnits::METER;
-        } else if (units == UNITS_KILOMETER) {
+        } else if (units.compare(UNITS_KILOMETER, Qt::CaseInsensitive) == 0) {
             return DistanceUnits::KILOMETER;
         }
 
@@ -271,18 +301,26 @@ public:
         return DistanceUnits::MILLIMETER;
     }
 
+    /**
+     * @brief SpeedUnits enum
+     */
     enum class SpeedUnits {
         MPH,
         KPH,
         METER_PER_SECOND,
     };
 
+    /**
+     * @brief Get speed units from string
+     * @param units: units string
+     * @return @ref SpeedUnits
+     */
     static SpeedUnits getSpeedUnits(QString units) {
-        if (units == UNITS_MPH) {
+        if (units.compare(UNITS_MPH, Qt::CaseInsensitive) == 0) {
             return SpeedUnits::MPH;
-        } else if (units == UNITS_KPH) {
+        } else if (units.compare(UNITS_KPH, Qt::CaseInsensitive) == 0) {
             return SpeedUnits::KPH;
-        } else if (units == UNITS_METERS_PER_SECOND) {
+        } else if (units.compare(UNITS_METERS_PER_SECOND, Qt::CaseInsensitive) == 0) {
             return SpeedUnits::METER_PER_SECOND;
         }
 
@@ -429,6 +467,9 @@ public:
         int maxSpeed; //!< Max speed -- lowest possible value it best will filter out noisy signals better
     } VssInputConfig_t;
 
+    /**
+     * @struct OdometerConfig
+     */
     typedef struct OdometerConfig {
         DistanceUnits units; //!< odometer internal units
         qreal value; //!< odometer value (in above units)
@@ -436,7 +477,10 @@ public:
         QString name;
     } OdometerConfig_t;
 
-    typedef struct {
+    /**
+     * @struct BacklightControlConfig
+     */
+    typedef struct BacklightControlConfig {
         qreal minDutyCycle;
         qreal maxDutyCycle;
         qreal lightsOffDutyCycle;
@@ -475,9 +519,10 @@ public:
         qreal redline; //!< defines when numerical RPM indication will turn red
     } TachoConfig_t ;
 
-    static constexpr char DEFAULT_CONFIG_PATH[] = "/opt/config.ini";
-    static constexpr char DEFAULT_GAUGE_CONFIG_PATH[] = "/opt/config_gauges.ini";
-    static constexpr char DEFAULT_ODO_CONFIG_PATH[] = "/opt/config_odo.ini";
+    static constexpr char DEFAULT_CONFIG_PATH[] = "/opt/config.ini"; //!< deafult config location
+    static constexpr char DEFAULT_GAUGE_CONFIG_PATH[] = "/opt/config_gauges.ini"; //!< default gauge config location
+    static constexpr char DEFAULT_ODO_CONFIG_PATH[] = "/opt/config_odo.ini"; //!< default odometer config location
+    static constexpr char DEFAULT_CAN_CONFIG_PATH[] = "/opt/config_can.ini"; //!< default CAN frame config location
 
     /**
      * @brief Constructor
@@ -487,7 +532,8 @@ public:
     Config(QObject * parent,
            QString configPath = DEFAULT_CONFIG_PATH,
            QString gaugeConfigPath = DEFAULT_GAUGE_CONFIG_PATH,
-           QString odoConfigPath = DEFAULT_ODO_CONFIG_PATH) :
+           QString odoConfigPath = DEFAULT_ODO_CONFIG_PATH,
+           QString canConfigPath = DEFAULT_CAN_CONFIG_PATH) :
         QObject(parent) {
         mConfig = new QSettings(configPath, QSettings::IniFormat);
         loadConfig();
@@ -497,12 +543,59 @@ public:
 
         mOdometerConfig = new QSettings(odoConfigPath, QSettings::IniFormat);
         loadOdometerConfigs();
+
+        mCanConfig = new QSettings(canConfigPath, QSettings::IniFormat);
+        loadCanFrameConfigs();
+    }
+
+    bool loadCanFrameConfigs() {
+        mCanConfig->beginGroup(CAN_FRAME);
+        printKeys("can", mCanConfig);
+        mCanConfig->endGroup();
+
+        int size = mCanConfig->beginReadArray(CAN_FRAME);
+        for (int i = 0; i < size; ++i) {
+            mCanConfig->setArrayIndex(i);
+
+            uint32_t frameId = mCanConfig->value(CAN_FRAME_ID, 0).toUInt();
+            uint8_t offset = mCanConfig->value(CAN_FRAME_OFFSET, 0).toInt();
+            uint8_t size = mCanConfig->value(CAN_FRAME_SIZE, 0).toInt();
+            bool sign = mCanConfig->value(CAN_FRAME_SIGNED, false).toBool();
+            QString units = mCanConfig->value(CAN_FRAME_UNITS, "").toString();
+            QString name = mCanConfig->value(CAN_FRAME_NAME, "").toString();
+            QString gauge = mCanConfig->value(CAN_FRAME_GAUGE, "none").toString();
+
+            // create new can frame config
+            CanFrameConfig config(frameId, offset, size, sign, units, name, gauge);
+
+            qreal multiply = mCanConfig->value(CAN_FRAME_MULTIPLY, 1).toReal();
+            qreal divide = mCanConfig->value(CAN_FRAME_DIVIDE, 1).toReal();
+            qreal add = mCanConfig->value(CAN_FRAME_ADD, 0).toReal();
+
+            if (multiply != 1) {
+                config.addOperation(CanFrameConfig::OperationType::MULTIPLY, multiply);
+            }
+
+            if (divide != 1) {
+                config.addOperation(CanFrameConfig::OperationType::DIVIDE, divide);
+            }
+
+            if (add != 0) {
+                config.addOperation(CanFrameConfig::OperationType::ADD, add);
+            }
+
+            mCanFrameConfigs.append(config);
+            printKeys("can: ", mCanConfig);
+        }
+        mCanConfig->endArray();
+
+        return true;
     }
 
     bool loadOdometerConfigs() {
 
         mOdometerConfig->beginGroup("start");
-        bool use = mOdometerConfig->value("use", false).toBool();
+        printKeys("odo", mOdometerConfig);
         mOdometerConfig->endGroup();
 
         mOdometerConfig->beginGroup(ODOMETER_GROUP);
@@ -640,16 +733,7 @@ public:
             } else if (key == PRESSURE_UNITS) {
                 // default to kPa
                 QString units = mConfig->value(key, UNITS_KPA).toString();
-                if (units.toLower() == UNITS_KPA) {
-                    mMapSensorConfig.units = PressureUnits::KPA;
-                } else if (units.toLower() == UNITS_PSI) {
-                    mMapSensorConfig.units = PressureUnits::PSI;
-                } else if (units.toLower() == UNITS_BAR) {
-                    mMapSensorConfig.units = PressureUnits::BAR;
-                } else {
-                    qDebug() << "Unrecognized pressure units, assuming kPa.  Fix config.ini file if not correct";
-                    mMapSensorConfig.units = PressureUnits::KPA;
-                }
+                mMapSensorConfig.units = getPressureUnits(units);
             }
         }
 
@@ -672,24 +756,15 @@ public:
             conf.r2 = mConfig->value(T2_RES, -1).toReal();
             conf.r3 = mConfig->value(T3_RES, -1).toReal();
 
-            auto units = mConfig->value(TEMP_UNITS, UNITS_K);
-            if (units == UNITS_F) {
-                conf.units = TemperatureUnits::FAHRENHEIT;
-            } else if (units == UNITS_C) {
-                conf.units = TemperatureUnits::CELSIUS;
-            } else if (units == UNITS_K) {
-                conf.units = TemperatureUnits::KELVIN;
-            } else {
-                qDebug() << "Unrecognized temperature units, assuming Kelvin (K).  Fix config.ini file if not correct";
-                conf.units = TemperatureUnits::KELVIN;
-            }
+            QString units = mConfig->value(TEMP_UNITS, UNITS_K).toString();
+            conf.units = getTempUnits(units);
 
-            auto type = mConfig->value(TEMP_TYPE, TEMP_TYPE_COOLANT);
-            if (type == TEMP_TYPE_COOLANT) {
+            QString type = mConfig->value(TEMP_TYPE, TEMP_TYPE_COOLANT).toString();
+            if (type.compare(TEMP_TYPE_COOLANT, Qt::CaseInsensitive) == 0) {
                 conf.type = TemperatureSensorType::COOLANT;
-            } else if (type == TEMP_TYPE_OIL) {
+            } else if (type.compare(TEMP_TYPE_OIL, Qt::CaseInsensitive) == 0) {
                 conf.type = TemperatureSensorType::OIL;
-            } else if (type == TEMP_TYPE_AMBIENT) {
+            } else if (type.compare(TEMP_TYPE_AMBIENT, Qt::CaseInsensitive) == 0) {
                 conf.type = TemperatureSensorType::AMBIENT;
             } else {
                 qDebug() << "Unrecognized temperature sensor type, assuming coolant.  Fix config.ini file if not correct";
@@ -806,10 +881,10 @@ public:
         mVssInputConfig.pulsePerRot = mConfig->value(VSS_PULSES_PER_ROTATION, 12).toInt();
         mVssInputConfig.tireDiameter = mConfig->value(VSS_TIRE_DIAMETER, 24.9).toReal();
         QString diameterUnits =  mConfig->value(VSS_TIRE_DIAMETER_UNITS, "inch").toString().toLower();
-        mVssInputConfig.tireDiameterUnits = parseDistanceUnits(diameterUnits);
+        mVssInputConfig.tireDiameterUnits = getDistanceUnits(diameterUnits);
         mVssInputConfig.pulsePerUnitDistance = mConfig->value(VSS_PULSES_PER_DISTANCE, 0).toInt();
         QString distanceUnits = mConfig->value(VSS_DISTANCE_UNITS, "mile").toString().toLower();
-        mVssInputConfig.distanceUnits = parseDistanceUnits(distanceUnits);
+        mVssInputConfig.distanceUnits = getDistanceUnits(distanceUnits);
         mVssInputConfig.maxSpeed = mConfig->value(VSS_MAX_SPEED, 160).toInt();
 
         printKeys("VSS Input: ", mConfig);
@@ -840,36 +915,6 @@ public:
     void printKeys(QString setting, QSettings * config) {
         for (auto key : config->childKeys()) {
             qDebug() << setting << key << ": " << config->value(key, "N/A").toStringList();
-        }
-    }
-
-    /**
-     * @brief parseDistanceUnits
-     * @param units: unit string
-     * @return @ref DistanceUnits
-     */
-    DistanceUnits parseDistanceUnits(QString units) {
-        units = units.toLower();
-
-        if (units == UNITS_INCH) {
-            return DistanceUnits::INCH;
-        } else if (units == UNITS_FOOT) {
-            return DistanceUnits::FOOT;
-        } else if (units == UNITS_YARD) {
-            return DistanceUnits::YARD;
-        } else if (units == UNITS_MILE) {
-            return DistanceUnits::MILE;
-        } else if (units == UNITS_MILLIMETER) {
-            return DistanceUnits::MILLIMETER;
-        } else if (units == UNITS_CENTIMETER) {
-            return DistanceUnits::CENTIMETER;
-        } else if (units == UNITS_METER) {
-            return DistanceUnits::METER;
-        } else if (units == UNITS_KILOMETER) {
-            return DistanceUnits::KILOMETER;
-        } else {
-            //default to meter
-            return DistanceUnits::METER;
         }
     }
 
@@ -996,6 +1041,18 @@ public:
         return mBacklightConfig;
     }
 
+    QList<CanFrameConfig> getCanFrameConfigs() {
+        return mCanFrameConfigs;
+    }
+
+    CanFrameConfig getCanFrameConfig(QString name) {
+        for (CanFrameConfig conf : mCanFrameConfigs) {
+            if (conf.getName() == name) {
+                return conf;
+            }
+        }
+    }
+
 signals:
 
 public slots:
@@ -1020,6 +1077,9 @@ private:
     QList<OdometerConfig_t> mOdoConfig;
 
     BacklightControlConfig_t mBacklightConfig;
+
+    QSettings * mCanConfig;
+    QList<CanFrameConfig> mCanFrameConfigs;
 
     /**
      * @brief Check that values are valid in a map
