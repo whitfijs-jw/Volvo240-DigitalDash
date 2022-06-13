@@ -3112,13 +3112,10 @@ part number 2062-2P from STA</description>
 <part name="SUPPLY2" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="SUPPLY3" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="SUPPLY4" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
-<part name="Q1" library="SparkFun-DiscreteSemi" deviceset="MOSFET-NCH" device="-2N7002PW" value="310mA/60V/1.6Ω"/>
 <part name="Q2" library="SparkFun-DiscreteSemi" deviceset="MOSFET-NCH" device="-2N7002PW" value="310mA/60V/1.6Ω"/>
-<part name="R1" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="R2" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="GND3" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY5" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
-<part name="SUPPLY6" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="JP1" library="SparkFun-Jumpers" deviceset="JUMPER-SMT_3_NO" device="_SILK"/>
 <part name="J3" library="SparkFun-Connectors" deviceset="CONN_02" device=""/>
 <part name="R3" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100RL" value="100R"/>
@@ -3145,13 +3142,10 @@ part number 2062-2P from STA</description>
 <instance part="SUPPLY2" gate="G$1" x="119.38" y="86.36"/>
 <instance part="SUPPLY3" gate="G$1" x="53.34" y="86.36"/>
 <instance part="SUPPLY4" gate="G$1" x="111.76" y="86.36"/>
-<instance part="Q1" gate="NMOS" x="66.04" y="33.02"/>
-<instance part="Q2" gate="NMOS" x="78.74" y="43.18"/>
-<instance part="R1" gate="G$1" x="68.58" y="48.26" rot="R90"/>
-<instance part="R2" gate="G$1" x="81.28" y="58.42" rot="R90"/>
-<instance part="GND3" gate="1" x="73.66" y="10.16"/>
-<instance part="SUPPLY5" gate="G$1" x="81.28" y="66.04"/>
-<instance part="SUPPLY6" gate="G$1" x="68.58" y="55.88"/>
+<instance part="Q2" gate="NMOS" x="71.12" y="33.02"/>
+<instance part="R2" gate="G$1" x="73.66" y="48.26" rot="R90"/>
+<instance part="GND3" gate="1" x="73.66" y="22.86"/>
+<instance part="SUPPLY5" gate="G$1" x="73.66" y="55.88"/>
 <instance part="JP1" gate="G$1" x="78.74" y="116.84" rot="R180"/>
 <instance part="J3" gate="G$1" x="30.48" y="27.94"/>
 <instance part="R3" gate="G$1" x="48.26" y="30.48" rot="R180"/>
@@ -3161,32 +3155,15 @@ part number 2062-2P from STA</description>
 <instance part="SUPPLY7" gate="G$1" x="68.58" y="87.63"/>
 <instance part="GND5" gate="1" x="68.58" y="68.58"/>
 <instance part="R4" gate="G$1" x="55.88" y="38.1" rot="R90"/>
-<instance part="SUPPLY8" gate="G$1" x="55.88" y="45.72"/>
+<instance part="SUPPLY8" gate="G$1" x="55.88" y="53.34"/>
 </instances>
 <busses>
 </busses>
 <nets>
-<net name="N$3" class="0">
-<segment>
-<pinref part="Q2" gate="NMOS" pin="G"/>
-<pinref part="R1" gate="G$1" pin="1"/>
-<wire x1="73.66" y1="40.64" x2="68.58" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="68.58" y1="40.64" x2="68.58" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="Q1" gate="NMOS" pin="D"/>
-<wire x1="68.58" y1="40.64" x2="68.58" y2="38.1" width="0.1524" layer="91"/>
-<junction x="68.58" y="40.64"/>
-</segment>
-</net>
 <net name="GND" class="0">
 <segment>
-<pinref part="Q1" gate="NMOS" pin="S"/>
-<wire x1="68.58" y1="27.94" x2="68.58" y2="17.78" width="0.1524" layer="91"/>
 <pinref part="Q2" gate="NMOS" pin="S"/>
-<wire x1="81.28" y1="38.1" x2="81.28" y2="17.78" width="0.1524" layer="91"/>
-<wire x1="81.28" y1="17.78" x2="73.66" y2="17.78" width="0.1524" layer="91"/>
-<wire x1="73.66" y1="17.78" x2="68.58" y2="17.78" width="0.1524" layer="91"/>
-<wire x1="73.66" y1="17.78" x2="73.66" y2="12.7" width="0.1524" layer="91"/>
-<junction x="73.66" y="17.78"/>
+<wire x1="73.66" y1="27.94" x2="73.66" y2="25.4" width="0.1524" layer="91"/>
 <pinref part="GND3" gate="1" pin="GND"/>
 </segment>
 <segment>
@@ -3223,11 +3200,11 @@ part number 2062-2P from STA</description>
 <segment>
 <pinref part="Q2" gate="NMOS" pin="D"/>
 <pinref part="R2" gate="G$1" pin="1"/>
-<wire x1="81.28" y1="48.26" x2="81.28" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="81.28" y1="50.8" x2="81.28" y2="53.34" width="0.1524" layer="91"/>
-<wire x1="81.28" y1="50.8" x2="91.44" y2="50.8" width="0.1524" layer="91"/>
-<junction x="81.28" y="50.8"/>
-<label x="91.44" y="50.8" size="1.27" layer="95" xref="yes"/>
+<wire x1="73.66" y1="38.1" x2="73.66" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="73.66" y1="40.64" x2="73.66" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="73.66" y1="40.64" x2="86.36" y2="40.64" width="0.1524" layer="91"/>
+<junction x="73.66" y="40.64"/>
+<label x="86.36" y="40.64" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="JP1" gate="G$1" pin="1"/>
@@ -3237,14 +3214,9 @@ part number 2062-2P from STA</description>
 </net>
 <net name="5V" class="0">
 <segment>
-<pinref part="R1" gate="G$1" pin="2"/>
-<pinref part="SUPPLY6" gate="G$1" pin="5V"/>
-<wire x1="68.58" y1="53.34" x2="68.58" y2="55.88" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="R2" gate="G$1" pin="2"/>
 <pinref part="SUPPLY5" gate="G$1" pin="5V"/>
-<wire x1="81.28" y1="63.5" x2="81.28" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="73.66" y1="53.34" x2="73.66" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="SUPPLY1" gate="G$1" pin="5V"/>
@@ -3285,7 +3257,7 @@ part number 2062-2P from STA</description>
 </segment>
 <segment>
 <pinref part="R4" gate="G$1" pin="2"/>
-<wire x1="55.88" y1="43.18" x2="55.88" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="43.18" x2="55.88" y2="53.34" width="0.1524" layer="91"/>
 <pinref part="SUPPLY8" gate="G$1" pin="3.3V"/>
 </segment>
 </net>
@@ -3322,13 +3294,13 @@ part number 2062-2P from STA</description>
 </net>
 <net name="N$2" class="0">
 <segment>
-<pinref part="Q1" gate="NMOS" pin="G"/>
-<wire x1="60.96" y1="30.48" x2="55.88" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="R3" gate="G$1" pin="1"/>
 <pinref part="R4" gate="G$1" pin="1"/>
 <wire x1="55.88" y1="30.48" x2="53.34" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="55.88" y1="30.48" x2="55.88" y2="33.02" width="0.1524" layer="91"/>
 <junction x="55.88" y="30.48"/>
+<pinref part="Q2" gate="NMOS" pin="G"/>
+<wire x1="55.88" y1="30.48" x2="66.04" y2="30.48" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

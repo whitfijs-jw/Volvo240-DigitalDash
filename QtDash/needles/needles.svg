@@ -52,9 +52,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.24748737"
-     inkscape:cx="2924.7275"
-     inkscape:cy="-14.781348"
+     inkscape:zoom="0.175"
+     inkscape:cx="2043.6259"
+     inkscape:cy="-306.60521"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -224,5 +224,42 @@
        inkscape:export-xdpi="6.3499999"
        inkscape:export-ydpi="6.3499999"
        inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/needle-740-940.png" />
+    <g
+       id="g967-3"
+       transform="rotate(90,464.98163,566.45352)"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/240needle.png"
+       inkscape:export-xdpi="6.3804188"
+       inkscape:export-ydpi="6.3804188">
+      <path
+         style="fill:#e67800;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 685.0452,-14.092505 19.92861,-30.1441 -19.92796,-30.15093 z"
+         id="path955-6"
+         inkscape:connector-curvature="0"
+         inkscape:export-xdpi="6.3804188"
+         inkscape:export-ydpi="6.3804188" />
+      <path
+         style="fill:#e65000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 685.04485,-14.092505 10e-4,-60.29503 -19.68775,30.15047 z"
+         id="path957-7"
+         inkscape:connector-curvature="0"
+         inkscape:export-xdpi="6.3804188"
+         inkscape:export-ydpi="6.3804188" />
+      <path
+         style="fill:#e61400;fill-opacity:1;stroke:none;stroke-width:0.39430162px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 685.04615,721.70501 -10e-4,-735.797485 -19.68637,-30.14457 -7.9e-4,765.574855 z"
+         id="path959-5"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-xdpi="6.3804188"
+         inkscape:export-ydpi="6.3804188" />
+      <path
+         style="fill:#e65000;fill-opacity:1;stroke:none;stroke-width:0.39431775px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 685.04483,-14.09248 19.92896,-30.1441 -0.0501,766.03498 -19.87751,-0.1288 -0.001,-692.96402"
+         id="path961-3"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-xdpi="6.3804188"
+         inkscape:export-ydpi="6.3804188" />
+    </g>
   </g>
 </svg>

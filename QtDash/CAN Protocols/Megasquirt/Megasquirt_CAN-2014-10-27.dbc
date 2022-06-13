@@ -1,0 +1,762 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_:
+
+
+BO_ 1570 megasquirt_gp50: 8 Vector__XXX
+ SG_ launch_retard : 55|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ launch_timer : 39|16@0+ (0.001,0) [0|0] "s" Vector__XXX
+ SG_ total_accel : 23|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ map_accel : 7|16@0- (0.1,0) [0|0] "%" Vector__XXX
+
+BO_ 1583 megasquirt_gp63: 8 Vector__XXX
+ SG_ spare63_3 : 55|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ spare63_2 : 39|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ spare63_1 : 23|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ generic_pid_duty2 : 15|8@0+ (0.392,0) [0|0] "%" Vector__XXX
+ SG_ generic_pid_duty1 : 7|8@0+ (0.392,0) [0|0] "%" Vector__XXX
+
+BO_ 1582 megasquirt_gp62: 8 Vector__XXX
+ SG_ gps_course : 55|16@0+ (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ gps_speed : 39|16@0+ (0.1,0) [0|0] "m/s" Vector__XXX
+ SG_ gps_altm : 23|16@0+ (1,0) [0|0] "m" Vector__XXX
+ SG_ gps_altk : 15|8@0- (1,0) [0|0] "km" Vector__XXX
+ SG_ gps_west : 0|1@0- (1,0) [0|0] "" Vector__XXX
+
+BO_ 1581 megasquirt_gp61: 8 Vector__XXX
+ SG_ gps_lonmmin : 55|16@0+ (1,0) [0|0] "mmin" Vector__XXX
+ SG_ gps_lonmin : 47|8@0+ (1,0) [0|0] "min" Vector__XXX
+ SG_ gps_londeg : 39|8@0+ (1,0) [0|0] "deg" Vector__XXX
+ SG_ gps_latmmin : 23|16@0+ (1,0) [0|0] "mmin" Vector__XXX
+ SG_ gps_latmin : 15|8@0+ (1,0) [0|0] "min" Vector__XXX
+ SG_ gps_latdeg : 7|8@0- (1,0) [0|0] "deg" Vector__XXX
+
+BO_ 1580 megasquirt_gp60: 8 Vector__XXX
+ SG_ cel_status2 : 55|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ vsslaunch_retard : 39|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ step3_timing : 23|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ launch_timing : 7|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+
+BO_ 1579 megasquirt_gp59: 8 Vector__XXX
+ SG_ deadtime1 : 55|16@0- (0.001,0) [0|0] "deg" Vector__XXX
+ SG_ ext_advance : 39|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ als_timing : 23|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ revlim_retard : 7|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+
+BO_ 1578 megasquirt_gp58: 8 Vector__XXX
+ SG_ adv4 : 55|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ adv3 : 39|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ adv2 : 23|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ adv1 : 7|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+
+BO_ 1577 megasquirt_gp57: 8 Vector__XXX
+ SG_ flex_advance : 55|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ mat_retard : 39|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ idle_cor_advance : 23|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ base_advance : 7|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+
+BO_ 1576 megasquirt_gp56: 8 Vector__XXX
+ SG_ als_addfuel : 55|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ fc_retard : 39|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ cel_retard : 23|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ tc_retard : 7|16@0- (0.1,0) [0|0] "def" Vector__XXX
+
+BO_ 1575 megasquirt_gp55: 8 Vector__XXX
+ SG_ sp1 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ ltt_cor : 55|8@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ fuelpress_cor : 39|16@0+ (0.1,0) [0|0] "%" Vector__XXX
+ SG_ fueltemp_cor : 23|16@0+ (0.1,0) [0|0] "%" Vector__XXX
+ SG_ looptime : 7|16@0+ (1,0) [0|0] "us" Vector__XXX
+
+BO_ 1574 megasquirt_gp54: 8 Vector__XXX
+ SG_ cel_status : 23|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ alt_targv : 63|8@0+ (0.1,0) [0|0] "V" Vector__XXX
+ SG_ load_duty : 55|8@0+ (1,0) [0|0] "%" Vector__XXX
+ SG_ alt_duty : 47|8@0+ (1,0) [0|0] "%" Vector__XXX
+ SG_ fp_duty : 39|8@0+ (0.392,0) [0|0] "%" Vector__XXX
+ SG_ batt_cur : 7|16@0- (0.1,0) [0|0] "" Vector__XXX
+
+BO_ 1573 megasquirt_gp53: 8 Vector__XXX
+ SG_ fuel_temp2 : 55|16@0- (0.1,0) [0|0] "deg F" Vector__XXX
+ SG_ fuel_temp1 : 39|16@0- (0.1,0) [0|0] "deg F" Vector__XXX
+ SG_ fuel_press2 : 23|16@0- (0.1,0) [0|0] "kPa" Vector__XXX
+ SG_ fuel_press1 : 7|16@0- (0.1,0) [0|0] "kPa" Vector__XXX
+
+BO_ 1572 megasquirt_gp52: 8 Vector__XXX
+ SG_ fuelcons : 55|16@0+ (1,0) [0|0] "l/km" Vector__XXX
+ SG_ fuelflow : 39|16@0+ (1,0) [0|0] "cc/min" Vector__XXX
+ SG_ knk_rtd : 31|8@0+ (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ canout : 23|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ canin2 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ canin1 : 7|8@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1571 megasquirt_gp51: 8 Vector__XXX
+ SG_ cel_errorcode : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ portt : 55|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ portp : 47|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ portmj : 39|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ portk : 31|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ porteh : 23|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ portb : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ porta : 7|8@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1569 megasquirt_gp49: 8 Vector__XXX
+ SG_ knock_cyl16 : 63|8@0+ (0.4,0) [0|0] "%" Vector__XXX
+ SG_ knock_cyl15 : 55|8@0+ (0.4,0) [0|0] "%" Vector__XXX
+ SG_ knock_cyl14 : 47|8@0+ (0.4,0) [0|0] "%" Vector__XXX
+ SG_ knock_cyl13 : 39|8@0+ (0.4,0) [0|0] "%" Vector__XXX
+ SG_ knock_cyl12 : 31|8@0+ (0.4,0) [0|0] "%" Vector__XXX
+ SG_ knock_cyl11 : 23|8@0+ (0.4,0) [0|0] "%" Vector__XXX
+ SG_ knock_cyl10 : 15|8@0+ (0.4,0) [0|0] "%" Vector__XXX
+ SG_ knock_cyl9 : 7|8@0+ (0.4,0) [0|0] "%" Vector__XXX
+
+BO_ 1568 megasquirt_gp48: 8 Vector__XXX
+ SG_ knock_cyl8 : 63|8@0+ (0.4,0) [0|0] "%" Vector__XXX
+ SG_ knock_cyl7 : 55|8@0+ (0.4,0) [0|0] "%" Vector__XXX
+ SG_ knock_cyl6 : 47|8@0+ (0.4,0) [0|0] "%" Vector__XXX
+ SG_ knock_cyl5 : 39|8@0+ (0.4,0) [0|0] "%" Vector__XXX
+ SG_ knock_cyl4 : 31|8@0+ (0.4,0) [0|0] "%" Vector__XXX
+ SG_ knock_cyl3 : 23|8@0+ (0.4,0) [0|0] "%" Vector__XXX
+ SG_ knock_cyl2 : 15|8@0+ (0.4,0) [0|0] "%" Vector__XXX
+ SG_ knock_cyl1 : 7|8@0+ (0.4,0) [0|0] "%" Vector__XXX
+
+BO_ 1567 megasquirt_gp47: 8 Vector__XXX
+ SG_ SS2 : 55|16@0+ (10,0) [0|0] "RPM" Vector__XXX
+ SG_ SS1 : 39|16@0+ (10,0) [0|0] "RPM" Vector__XXX
+ SG_ tps_accel : 23|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ fuel_pct : 7|16@0- (0.1,0) [0|0] "%" Vector__XXX
+
+BO_ 1566 megasquirt_gp46: 8 Vector__XXX
+ SG_ inj_timing_sec : 55|16@0- (0.1,0) [0|0] "deg BTDC" Vector__XXX
+ SG_ inj_timing_pri : 39|16@0- (0.1,0) [0|0] "deg BTDC" Vector__XXX
+ SG_ vvt_duty4 : 31|8@0+ (0.392,0) [0|0] "%" Vector__XXX
+ SG_ vvt_duty3 : 23|8@0+ (0.392,0) [0|0] "%" Vector__XXX
+ SG_ vvt_duty2 : 15|8@0+ (0.392,0) [0|0] "%" Vector__XXX
+ SG_ vvt_duty1 : 7|8@0+ (0.392,0) [0|0] "%" Vector__XXX
+
+BO_ 1565 megasquirt_gp45: 8 Vector__XXX
+ SG_ vvt_target4 : 55|16@0- (1,0) [0|0] "deg" Vector__XXX
+ SG_ vvt_target3 : 39|16@0- (1,0) [0|0] "deg" Vector__XXX
+ SG_ vvt_target2 : 23|16@0- (1,0) [0|0] "deg" Vector__XXX
+ SG_ vvt_target1 : 7|16@0- (1,0) [0|0] "deg" Vector__XXX
+
+BO_ 1564 megasquirt_gp44: 8 Vector__XXX
+ SG_ vvt_ang4 : 55|16@0- (1,0) [0|0] "deg" Vector__XXX
+ SG_ vvt_ang3 : 39|16@0- (1,0) [0|0] "deg" Vector__XXX
+ SG_ vvt_ang2 : 23|16@0- (1,0) [0|0] "deg" Vector__XXX
+ SG_ vvt_ang1 : 7|16@0- (1,0) [0|0] "deg" Vector__XXX
+
+BO_ 1563 megasquirt_gp43: 8 Vector__XXX
+ SG_ timing_err : 63|8@0- (1,0) [0|0] "" Vector__XXX
+ SG_ sd_status : 55|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ sd_phase : 47|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ sd_error : 39|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ sd_filenum : 23|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ syncreason : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ synccnt : 7|8@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1562 megasquirt_gp42: 8 Vector__XXX
+ SG_ VSS4 : 55|16@0+ (0.1,0) [0|0] "m/s" Vector__XXX
+ SG_ VSS3 : 39|16@0+ (0.1,0) [0|0] "m/s" Vector__XXX
+ SG_ VSS2 : 23|16@0+ (0.1,0) [0|0] "m/s" Vector__XXX
+ SG_ VSS1 : 7|16@0+ (0.1,0) [0|0] "m/s" Vector__XXX
+
+BO_ 1559 megasquirt_gp39: 8 Vector__XXX
+ SG_ EGOcor8 : 55|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ EGOcor7 : 39|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ EGOcor6 : 23|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ EGOcor5 : 7|16@0- (0.1,0) [0|0] "%" Vector__XXX
+
+BO_ 1561 megasquirt_gp41: 8 Vector__XXX
+ SG_ EGOcor16 : 55|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ EGOcor15 : 39|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ EGOcor14 : 23|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ EGOcor13 : 7|16@0- (0.1,0) [0|0] "%" Vector__XXX
+
+BO_ 1560 megasquirt_gp40: 8 Vector__XXX
+ SG_ EGOcor12 : 55|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ EGOcor11 : 39|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ EGOcor10 : 23|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ EGOcor9 : 7|16@0- (0.1,0) [0|0] "%" Vector__XXX
+
+BO_ 1558 megasquirt_gp38: 8 Vector__XXX
+ SG_ EGOcor4 : 55|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ EGOcor3 : 39|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ EGOcor2 : 23|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ EGOcor1 : 7|16@0- (0.1,0) [0|0] "%" Vector__XXX
+
+BO_ 1557 megasquirt_gp37: 8 Vector__XXX
+ SG_ EGOv16 : 55|16@0- (0.00489,0) [0|0] "V" Vector__XXX
+ SG_ EGOv15 : 39|16@0- (0.00489,0) [0|0] "V" Vector__XXX
+ SG_ EGOv14 : 23|16@0- (0.00489,0) [0|0] "V" Vector__XXX
+ SG_ EGOv13 : 7|16@0- (0.00489,0) [0|0] "V" Vector__XXX
+
+BO_ 1556 megasquirt_gp36: 8 Vector__XXX
+ SG_ EGOv12 : 55|16@0- (0.00489,0) [0|0] "V" Vector__XXX
+ SG_ EGOv11 : 39|16@0- (0.00489,0) [0|0] "V" Vector__XXX
+ SG_ EGOv10 : 23|16@0- (0.00489,0) [0|0] "V" Vector__XXX
+ SG_ EGOv9 : 7|16@0- (0.00489,0) [0|0] "V" Vector__XXX
+
+BO_ 1555 megasquirt_gp35: 8 Vector__XXX
+ SG_ EGOv8 : 55|16@0- (0.00489,0) [0|0] "V" Vector__XXX
+ SG_ EGOv7 : 39|16@0- (0.00489,0) [0|0] "V" Vector__XXX
+ SG_ EGOv6 : 23|16@0- (0.00489,0) [0|0] "V" Vector__XXX
+ SG_ EGOv5 : 7|16@0- (0.00489,0) [0|0] "V" Vector__XXX
+
+BO_ 1554 megasquirt_gp34: 8 Vector__XXX
+ SG_ EGOv4 : 55|16@0- (0.00489,0) [0|0] "V" Vector__XXX
+ SG_ EGOv3 : 39|16@0- (0.00489,0) [0|0] "V" Vector__XXX
+ SG_ EGOv2 : 23|16@0- (0.00489,0) [0|0] "V" Vector__XXX
+ SG_ EGOv1 : 7|16@0- (0.00489,0) [0|0] "V" Vector__XXX
+
+BO_ 1553 megasquirt_gp33: 8 Vector__XXX
+ SG_ status8 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ gear : 55|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ duty_pwm6 : 47|8@0+ (1,0) [0|0] "%" Vector__XXX
+ SG_ duty_pwm5 : 39|8@0+ (1,0) [0|0] "%" Vector__XXX
+ SG_ duty_pwm4 : 31|8@0+ (1,0) [0|0] "%" Vector__XXX
+ SG_ duty_pwm3 : 23|8@0+ (1,0) [0|0] "%" Vector__XXX
+ SG_ duty_pwm2 : 15|8@0+ (1,0) [0|0] "%" Vector__XXX
+ SG_ duty_pwm1 : 7|8@0+ (1,0) [0|0] "%" Vector__XXX
+
+BO_ 1552 megasquirt_gp32: 8 Vector__XXX
+ SG_ AFR16 : 63|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ AFR15 : 55|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ AFR14 : 47|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ AFR13 : 39|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ AFR12 : 31|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ AFR11 : 23|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ AFR10 : 15|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ AFR9 : 7|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+
+BO_ 1551 megasquirt_gp31: 8 Vector__XXX
+ SG_ AFR8 : 63|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ AFR7 : 55|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ AFR6 : 47|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ AFR5 : 39|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ AFR4 : 31|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ AFR3 : 23|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ AFR2 : 15|8@0+ (0.1,0) [0|0] "" Vector__XXX
+ SG_ AFR1 : 7|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+
+BO_ 1550 megasquirt_gp30: 8 Vector__XXX
+ SG_ water_duty : 63|8@0+ (1,0) [0|0] "%" Vector__XXX
+ SG_ stream_level : 55|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ accelz : 39|16@0- (0.001,0) [0|0] "m/s^2" Vector__XXX
+ SG_ accely : 23|16@0- (0.001,0) [0|0] "m/s^2" Vector__XXX
+ SG_ accelx : 7|16@0- (0.001,0) [0|0] "m/s^2" Vector__XXX
+
+BO_ 1549 megasquirt_gp29: 8 Vector__XXX
+ SG_ VSS2dot : 55|16@0- (0.1,0) [0|0] "m/s^2" Vector__XXX
+ SG_ VSS1dot : 39|16@0- (0.1,0) [0|0] "m/s^2" Vector__XXX
+ SG_ EAEfcor2 : 23|16@0+ (0.1,0) [0|0] "%" Vector__XXX
+ SG_ EAEfcor1 : 7|16@0+ (0.1,0) [0|0] "%" Vector__XXX
+
+BO_ 1548 megasquirt_gp28: 8 Vector__XXX
+ SG_ cl_idle_targ_rpm : 7|16@0+ (1,0) [0|0] "RPM" Vector__XXX
+ SG_ tpsadc : 23|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ eaeload : 39|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ afrload : 55|16@0- (0.1,0) [0|0] "%" Vector__XXX
+
+BO_ 1547 megasquirt_gp27: 8 Vector__XXX
+ SG_ canpwmin4 : 55|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ canpwmin3 : 39|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ canpwmin2 : 23|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ canpwmin1 : 7|16@0- (1,0) [0|0] "" Vector__XXX
+
+BO_ 1546 megasquirt_gp26: 8 Vector__XXX
+ SG_ nitrous_timer_out : 23|16@0+ (0.001,0) [0|0] "s" Vector__XXX
+ SG_ nitrous2_duty : 15|8@0+ (1,0) [0|0] "%" Vector__XXX
+ SG_ nitrous1_duty : 7|8@0+ (1,0) [0|0] "%" Vector__XXX
+ SG_ n2o_retard : 55|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ n2o_addfuel : 39|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+
+BO_ 1545 megasquirt_gp25: 8 Vector__XXX
+ SG_ egt16 : 55|16@0- (0.1,0) [0|0] "degF" Vector__XXX
+ SG_ egt15 : 39|16@0- (0.1,0) [0|0] "degF" Vector__XXX
+ SG_ egt14 : 23|16@0- (0.1,0) [0|0] "degF" Vector__XXX
+ SG_ egt13 : 7|16@0- (0.1,0) [0|0] "degF" Vector__XXX
+
+BO_ 1544 megasquirt_gp24: 8 Vector__XXX
+ SG_ egt12 : 55|16@0- (0.1,0) [0|0] "degF" Vector__XXX
+ SG_ egt11 : 39|16@0- (0.1,0) [0|0] "degF" Vector__XXX
+ SG_ egt10 : 23|16@0- (0.1,0) [0|0] "degF" Vector__XXX
+ SG_ egt9 : 7|16@0- (0.1,0) [0|0] "degF" Vector__XXX
+
+BO_ 1543 megasquirt_gp23: 8 Vector__XXX
+ SG_ egt8 : 55|16@0- (0.1,0) [0|0] "degF" Vector__XXX
+ SG_ egt7 : 39|16@0- (0.1,0) [0|0] "degF" Vector__XXX
+ SG_ egt6 : 23|16@0- (0.1,0) [0|0] "degF" Vector__XXX
+ SG_ egt5 : 7|16@0- (0.1,0) [0|0] "degF" Vector__XXX
+
+BO_ 1542 megasquirt_gp22: 8 Vector__XXX
+ SG_ egt4 : 55|16@0- (0.1,0) [0|0] "degF" Vector__XXX
+ SG_ egt3 : 39|16@0- (0.1,0) [0|0] "degF" Vector__XXX
+ SG_ egt2 : 23|16@0- (0.1,0) [0|0] "degF" Vector__XXX
+ SG_ egt1 : 7|16@0- (0.1,0) [0|0] "degF" Vector__XXX
+
+BO_ 1541 megasquirt_gp21: 8 Vector__XXX
+ SG_ pwseq16 : 55|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ pwseq15 : 39|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ pwseq14 : 23|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ pwseq13 : 7|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+
+BO_ 1540 megasquirt_gp20: 8 Vector__XXX
+ SG_ pwseq12 : 55|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ pwseq11 : 39|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ pwseq10 : 23|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ pwseq9 : 7|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+
+BO_ 1539 megasquirt_gp19: 8 Vector__XXX
+ SG_ pwseq8 : 55|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ pwseq7 : 39|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ pwseq6 : 23|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ pwseq5 : 7|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+
+BO_ 1538 megasquirt_gp18: 8 Vector__XXX
+ SG_ pwseq4 : 55|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ pwseq3 : 39|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ pwseq2 : 23|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ pwseq1 : 7|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+
+BO_ 1537 megasquirt_gp17: 8 Vector__XXX
+ SG_ maf_volts : 55|16@0- (0.001,0) [0|0] "V" Vector__XXX
+ SG_ boostduty2 : 47|8@0+ (1,0) [0|0] "%" Vector__XXX
+ SG_ boostduty : 39|8@0+ (1,0) [0|0] "%" Vector__XXX
+ SG_ boost_targ_2 : 23|16@0+ (0.1,0) [0|0] "kPa" Vector__XXX
+ SG_ boost_targ_1 : 7|16@0+ (0.1,0) [0|0] "kPa" Vector__XXX
+
+BO_ 1536 megasquirt_gp16: 8 Vector__XXX
+ SG_ sensors16 : 55|16@0- (0.01,0) [0|0] "" Vector__XXX
+ SG_ sensors15 : 39|16@0- (0.01,0) [0|0] "" Vector__XXX
+ SG_ sensors14 : 23|16@0- (0.01,0) [0|0] "" Vector__XXX
+ SG_ sensors13 : 7|16@0- (0.01,0) [0|0] "" Vector__XXX
+
+BO_ 1535 megasquirt_gp15: 8 Vector__XXX
+ SG_ sensors12 : 55|16@0- (0.01,0) [0|0] "" Vector__XXX
+ SG_ sensors11 : 39|16@0- (0.01,0) [0|0] "" Vector__XXX
+ SG_ sensors10 : 23|16@0- (0.01,0) [0|0] "" Vector__XXX
+ SG_ sensors9 : 7|16@0- (0.01,0) [0|0] "" Vector__XXX
+
+BO_ 1534 megasquirt_gp14: 8 Vector__XXX
+ SG_ sensors8 : 55|16@0- (0.01,0) [0|0] "" Vector__XXX
+ SG_ sensors7 : 39|16@0- (0.01,0) [0|0] "" Vector__XXX
+ SG_ sensors6 : 23|16@0- (0.01,0) [0|0] "" Vector__XXX
+ SG_ sensors5 : 7|16@0- (0.01,0) [0|0] "" Vector__XXX
+
+BO_ 1533 megasquirt_gp13: 8 Vector__XXX
+ SG_ sensors4 : 55|16@0- (0.01,0) [0|0] "" Vector__XXX
+ SG_ sensors3 : 39|16@0- (0.01,0) [0|0] "" Vector__XXX
+ SG_ sensors2 : 23|16@0- (0.01,0) [0|0] "" Vector__XXX
+ SG_ sensors1 : 7|16@0- (0.01,0) [0|0] "" Vector__XXX
+
+BO_ 1532 megasquirt_gp12: 8 Vector__XXX
+ SG_ wallfuel2 : 39|32@0- (0.01,0) [0|0] "us" Vector__XXX
+ SG_ wallfuel1 : 7|32@0- (0.01,0) [0|0] "us" Vector__XXX
+
+BO_ 1531 megasquirt_gp11: 8 Vector__XXX
+ SG_ airtemp : 55|16@0- (0.1,0) [0|0] "degF" Vector__XXX
+ SG_ ignload2 : 39|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ ignload : 23|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ fuelload2 : 7|16@0- (0.1,0) [0|0] "%" Vector__XXX
+
+BO_ 1530 megasquirt_gp10: 8 Vector__XXX
+ SG_ status7 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ status6 : 55|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ status5 : 39|16@0- (1,0) [0|0] "" Vector__XXX
+ SG_ status4 : 31|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ status3 : 23|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ status2 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ status1 : 7|8@0+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1529 megasquirt_gp9: 8 Vector__XXX
+ SG_ dwell_trl : 55|16@0+ (0.1,0) [0|0] "ms" Vector__XXX
+ SG_ dwell : 39|16@0+ (0.1,0) [0|0] "ms" Vector__XXX
+ SG_ egoV2 : 23|16@0- (0.01,0) [0|0] "V" Vector__XXX
+ SG_ egoV1 : 7|16@0- (0.01,0) [0|0] "V" Vector__XXX
+
+BO_ 1528 megasquirt_gp8: 8 Vector__XXX
+ SG_ MAF : 55|16@0- (0.01,0) [0|0] "g/s" Vector__XXX
+ SG_ fuelcor : 39|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ fuelload : 23|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ MAFload : 7|16@0- (0.1,0) [0|0] "%" Vector__XXX
+
+BO_ 1527 megasquirt_gp7: 8 Vector__XXX
+ SG_ RPMdot : 55|16@0- (10,0) [0|0] "RPM/s" Vector__XXX
+ SG_ MAPdot : 39|16@0- (1,0) [0|0] "kPa/s" Vector__XXX
+ SG_ TPSdot : 23|16@0- (0.1,0) [0|0] "%/s" Vector__XXX
+ SG_ cold_adv_deg : 7|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+
+BO_ 1526 megasquirt_gp6: 8 Vector__XXX
+ SG_ iacstep : 55|16@0- (1,0) [0|0] "step" Vector__XXX
+ SG_ ve2 : 39|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ ve1 : 23|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ totalcor : 7|16@0- (0.1,0) [0|0] "%" Vector__XXX
+
+BO_ 1525 megasquirt_gp5: 8 Vector__XXX
+ SG_ barocor : 55|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ warmcor : 7|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ tpsfuelcut : 39|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ tpsaccel : 23|16@0- (0.1,0) [0|0] "%" Vector__XXX
+
+BO_ 1524 megasquirt_gp4: 8 Vector__XXX
+ SG_ aircor : 55|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ egocor2 : 39|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ egocor1 : 23|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ knock : 7|16@0- (0.1,0) [0|0] "%" Vector__XXX
+
+BO_ 1523 megasquirt_gp3: 8 Vector__XXX
+ SG_ afr2_old : 55|16@0- (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ afr1_old : 39|16@0- (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ batt : 23|16@0- (0.1,0) [0|0] "V" Vector__XXX
+ SG_ tps : 7|16@0- (0.1,0) [0|0] "%" Vector__XXX
+
+BO_ 1522 megasquirt_gp2: 8 Vector__XXX
+ SG_ clt : 55|16@0- (0.1,0) [0|0] "deg F" Vector__XXX
+ SG_ mat : 39|16@0- (0.1,0) [0|0] "deg F" Vector__XXX
+ SG_ map : 23|16@0- (0.1,0) [0|0] "kPa" Vector__XXX
+ SG_ baro : 7|16@0- (0.1,0) [0|0] "kPa" Vector__XXX
+
+BO_ 1521 megasquirt_gp1: 8 Vector__XXX
+ SG_ wbo2_en2 : 63|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ wbo2_en1 : 55|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ afrtgt2 : 47|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ afrtgt1 : 39|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ engine : 31|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ squirt : 23|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ adv_deg : 7|16@0- (0.1,0) [0|0] "deg BTDC" Vector__XXX
+
+BO_ 1520 megasquirt_gp0: 8 Vector__XXX
+ SG_ rpm : 55|16@0+ (1,0) [0|0] "RPM" Vector__XXX
+ SG_ pw2 : 39|16@0+ (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ pw1 : 23|16@0+ (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ seconds : 7|16@0+ (1,0) [0|0] "s" Vector__XXX
+
+
+
+CM_ SG_ 1570 launch_retard "Launch retard";
+CM_ SG_ 1570 launch_timer "Timer for timed-launch retard";
+CM_ SG_ 1570 total_accel "Total accel";
+CM_ SG_ 1570 map_accel "MAPdot based accel";
+CM_ SG_ 1583 generic_pid_duty2 "Generic closed-loop duty 2";
+CM_ SG_ 1583 generic_pid_duty1 "Generic closed-loop duty 1";
+CM_ SG_ 1582 gps_course "GPS course (heading)";
+CM_ SG_ 1582 gps_speed "GPS speed";
+CM_ SG_ 1582 gps_altm "GPS altitude (m)";
+CM_ SG_ 1582 gps_altk "GPS altitude (km)";
+CM_ SG_ 1582 gps_west "GPS longitude west indicator bit (gps_outstatus)";
+CM_ SG_ 1581 gps_lonmmin "GPS longitude milli-minutes";
+CM_ SG_ 1581 gps_lonmin "GPS longitude minutes";
+CM_ SG_ 1581 gps_londeg "GPS longitude degrees";
+CM_ SG_ 1581 gps_latmmin "GPS latitude milli-minutes";
+CM_ SG_ 1581 gps_latmin "GPS latitude minutes";
+CM_ SG_ 1581 gps_latdeg "GPS latitude degrees";
+CM_ SG_ 1580 cel_status2 "CEL status bitfield 2";
+CM_ SG_ 1580 vsslaunch_retard "Wheel-speed based launch retard";
+CM_ SG_ 1580 step3_timing "3-step timing";
+CM_ SG_ 1580 launch_timing "Launch control timing";
+CM_ SG_ 1579 deadtime1 "Injector deadtime in use (#1)";
+CM_ SG_ 1579 ext_advance "External advance (e.g. trans)";
+CM_ SG_ 1579 als_timing "ALS timing change";
+CM_ SG_ 1579 revlim_retard "Rev-limiter 'soft' retard";
+CM_ SG_ 1578 adv4 "Timing lookup from table 4";
+CM_ SG_ 1578 adv3 "Timing lookup from table 3";
+CM_ SG_ 1578 adv2 "Timing lookup from table 2";
+CM_ SG_ 1578 adv1 "Timing lookup from table 1";
+CM_ SG_ 1577 flex_advance "Flex advance";
+CM_ SG_ 1577 mat_retard "MAT retard";
+CM_ SG_ 1577 idle_cor_advance "Idle correction advance";
+CM_ SG_ 1577 base_advance "Base timing from tables";
+CM_ SG_ 1576 als_addfuel "ALS added fuel";
+CM_ SG_ 1576 fc_retard "Fuel-cut (overrun) retard";
+CM_ SG_ 1576 cel_retard "CEL retard";
+CM_ SG_ 1576 tc_retard "Traction control retard";
+CM_ SG_ 1575 sp1 "Unused";
+CM_ SG_ 1575 ltt_cor "Long term trim correction";
+CM_ SG_ 1575 fuelpress_cor "Fuel pressure correction";
+CM_ SG_ 1575 fueltemp_cor "Fuel temperature correction";
+CM_ SG_ 1575 looptime "Main code loop execution time";
+CM_ SG_ 1574 cel_status "CEL status bitfield 1";
+CM_ SG_ 1574 alt_targv "Alternator target voltage";
+CM_ SG_ 1574 load_duty "Alternator measured load-sense duty";
+CM_ SG_ 1574 alt_duty "Alternator field output duty";
+CM_ SG_ 1574 fp_duty "Fuel pump output duty";
+CM_ SG_ 1574 batt_cur "Battery current (alternator system)";
+CM_ SG_ 1573 fuel_temp2 "Fuel temperature 2";
+CM_ SG_ 1573 fuel_temp1 "Fuel temperature 1";
+CM_ SG_ 1573 fuel_press2 "Fuel pressure 2";
+CM_ SG_ 1573 fuel_press1 "Fuel pressure 1";
+CM_ SG_ 1572 fuelcons "Average fuel consumption";
+CM_ SG_ 1572 fuelflow "Average fuel flow";
+CM_ SG_ 1572 knk_rtd "Knock retard";
+CM_ SG_ 1572 canout "CAN output 1 bitfield (CAN port 3 on MS2)";
+CM_ SG_ 1572 canin2 "CAN input 2 bitfield (CAN port 2 on MS2)";
+CM_ SG_ 1572 canin1 "CAN input 1 bitfield (CAN port 1 on MS2)";
+CM_ SG_ 1571 cel_errorcode "CEL error code";
+CM_ SG_ 1571 portt "CPU portT bitfield";
+CM_ SG_ 1571 portp "CPU portP bitfield";
+CM_ SG_ 1571 portmj "CPU portM/portJ bitfield";
+CM_ SG_ 1571 portk "CPU portK bitfield";
+CM_ SG_ 1571 porteh "CPU portE/portH bitfield";
+CM_ SG_ 1571 portb "CPU portB bitfield";
+CM_ SG_ 1571 porta "CPU portA bitfield";
+CM_ SG_ 1569 knock_cyl16 "Knock % cyl #16";
+CM_ SG_ 1569 knock_cyl15 "Knock % cyl #15";
+CM_ SG_ 1569 knock_cyl14 "Knock % cyl #14";
+CM_ SG_ 1569 knock_cyl13 "Knock % cyl #13";
+CM_ SG_ 1569 knock_cyl12 "Knock % cyl #12";
+CM_ SG_ 1569 knock_cyl11 "Knock % cyl #11";
+CM_ SG_ 1569 knock_cyl10 "Knock % cyl #10";
+CM_ SG_ 1569 knock_cyl9 "Knock % cyl #9";
+CM_ SG_ 1568 knock_cyl8 "Knock % cyl #8";
+CM_ SG_ 1568 knock_cyl7 "Knock % cyl #7";
+CM_ SG_ 1568 knock_cyl6 "Knock % cyl #6";
+CM_ SG_ 1568 knock_cyl5 "Knock % cyl #5";
+CM_ SG_ 1568 knock_cyl4 "Knock % cyl #4";
+CM_ SG_ 1568 knock_cyl3 "Knock % cyl #3";
+CM_ SG_ 1568 knock_cyl2 "Knock % cyl #2";
+CM_ SG_ 1568 knock_cyl1 "Knock % cyl #1";
+CM_ SG_ 1567 SS2 "Shaft Speed 2";
+CM_ SG_ 1567 SS1 "Shaft Speed 1";
+CM_ SG_ 1567 tps_accel "TPSdot based accel";
+CM_ SG_ 1567 fuel_pct "Ethanol content of fuel from Flex sensor";
+CM_ SG_ 1566 inj_timing_sec "Injection Timing Angle (Secondary)";
+CM_ SG_ 1566 inj_timing_pri "Injection Timing Angle (Primary)";
+CM_ SG_ 1566 vvt_duty4 "VVT solenoid duty cycle 4";
+CM_ SG_ 1566 vvt_duty3 "VVT solenoid duty cycle 3";
+CM_ SG_ 1566 vvt_duty2 "VVT solenoid duty cycle 2";
+CM_ SG_ 1566 vvt_duty1 "VVT solenoid duty cycle 1";
+CM_ SG_ 1565 vvt_target4 "VVT target angle 4";
+CM_ SG_ 1565 vvt_target3 "VVT target angle 3";
+CM_ SG_ 1565 vvt_target2 "VVT target angle 2";
+CM_ SG_ 1565 vvt_target1 "VVT target angle 1";
+CM_ SG_ 1564 vvt_ang4 "VVT actual angle 4";
+CM_ SG_ 1564 vvt_ang3 "VVT actual angle 3";
+CM_ SG_ 1564 vvt_ang2 "VVT actual angle 2";
+CM_ SG_ 1564 vvt_ang1 "VVT actual angle 1";
+CM_ SG_ 1563 timing_err "Calculated error in ignition timing";
+CM_ SG_ 1563 sd_status "SDcard status bitfield";
+CM_ SG_ 1563 sd_phase "SDcard internal code";
+CM_ SG_ 1563 sd_error "SDcard error number";
+CM_ SG_ 1563 sd_filenum "SDcard file number";
+CM_ SG_ 1563 syncreason "Sync-loss reason code";
+CM_ SG_ 1563 synccnt "Sync-loss counter";
+CM_ SG_ 1562 VSS4 "Vehicle speed 4";
+CM_ SG_ 1562 VSS3 "Vehicle speed 3";
+CM_ SG_ 1562 VSS2 "Vehicle speed 2";
+CM_ SG_ 1562 VSS1 "Vehicle speed 1";
+CM_ SG_ 1559 EGOcor8 "EGO correction cyl#8";
+CM_ SG_ 1559 EGOcor7 "EGO correction cyl#7";
+CM_ SG_ 1559 EGOcor6 "EGO correction cyl#6";
+CM_ SG_ 1559 EGOcor5 "EGO correction cyl#5";
+CM_ SG_ 1561 EGOcor16 "EGO correction cyl#16";
+CM_ SG_ 1561 EGOcor15 "EGO correction cyl#15";
+CM_ SG_ 1561 EGOcor14 "EGO correction cyl#14";
+CM_ SG_ 1561 EGOcor13 "EGO correction cyl#13";
+CM_ SG_ 1560 EGOcor12 "EGO correction cyl#12";
+CM_ SG_ 1560 EGOcor11 "EGO correction cyl#11";
+CM_ SG_ 1560 EGOcor10 "EGO correction cyl#10";
+CM_ SG_ 1560 EGOcor9 "EGO correction cyl#9";
+CM_ SG_ 1558 EGOcor4 "EGO correction cyl#4";
+CM_ SG_ 1558 EGOcor3 "EGO correction cyl#3";
+CM_ SG_ 1558 EGOcor2 "EGO correction cyl#2";
+CM_ SG_ 1558 EGOcor1 "EGO correction cyl#1";
+CM_ SG_ 1557 EGOv16 "Voltage from O2 cyl #16";
+CM_ SG_ 1557 EGOv15 "Voltage from O2 cyl #15";
+CM_ SG_ 1557 EGOv14 "Voltage from O2 cyl #14";
+CM_ SG_ 1557 EGOv13 "Voltage from O2 cyl #13";
+CM_ SG_ 1556 EGOv12 "Voltage from O2 cyl #12";
+CM_ SG_ 1556 EGOv11 "Voltage from O2 cyl #11";
+CM_ SG_ 1556 EGOv10 "Voltage from O2 cyl #10";
+CM_ SG_ 1556 EGOv9 "Voltage from O2 cyl #9";
+CM_ SG_ 1555 EGOv8 "Voltage from O2 cyl #8";
+CM_ SG_ 1555 EGOv7 "Voltage from O2 cyl #7";
+CM_ SG_ 1555 EGOv6 "Voltage from O2 cyl #6";
+CM_ SG_ 1555 EGOv5 "Voltage from O2 cyl #5";
+CM_ SG_ 1554 EGOv4 "Voltage from O2 cyl #4";
+CM_ SG_ 1554 EGOv3 "Voltage from O2 cyl #3";
+CM_ SG_ 1554 EGOv2 "Voltage from O2 cyl #2";
+CM_ SG_ 1554 EGOv1 "Voltage from O2 cyl #1";
+CM_ SG_ 1553 status8 "ECU status bitfield 8";
+CM_ SG_ 1553 gear "Current gear selected";
+CM_ SG_ 1553 duty_pwm6 "Generic PWM duty 6";
+CM_ SG_ 1553 duty_pwm5 "Generic PWM duty 5";
+CM_ SG_ 1553 duty_pwm4 "Generic PWM duty 4";
+CM_ SG_ 1553 duty_pwm3 "Generic PWM duty 3";
+CM_ SG_ 1553 duty_pwm2 "Generic PWM duty 2";
+CM_ SG_ 1553 duty_pwm1 "Generic PWM duty 1";
+CM_ SG_ 1552 AFR16 "AFR cyl #16";
+CM_ SG_ 1552 AFR15 "AFR cyl #15";
+CM_ SG_ 1552 AFR14 "AFR cyl #14";
+CM_ SG_ 1552 AFR13 "AFR cyl #13";
+CM_ SG_ 1552 AFR12 "AFR cyl #12";
+CM_ SG_ 1552 AFR11 "AFR cyl #11";
+CM_ SG_ 1552 AFR10 "AFR cyl #10";
+CM_ SG_ 1552 AFR9 "AFR cyl #9";
+CM_ SG_ 1551 AFR8 "AFR cyl #8";
+CM_ SG_ 1551 AFR7 "AFR cyl #7";
+CM_ SG_ 1551 AFR6 "AFR cyl #6";
+CM_ SG_ 1551 AFR5 "AFR cyl #5";
+CM_ SG_ 1551 AFR4 "AFR cyl #4";
+CM_ SG_ 1551 AFR3 "AFR cyl #3";
+CM_ SG_ 1551 AFR2 "AFR cyl #2";
+CM_ SG_ 1551 AFR1 "AFR cyl #1";
+CM_ SG_ 1550 water_duty "Duty cycle to water injection solenoid";
+CM_ SG_ 1550 stream_level "Volume level on audio input";
+CM_ SG_ 1550 accelz "External accelerometer Z";
+CM_ SG_ 1550 accely "External accelerometer Y";
+CM_ SG_ 1550 accelx "External accelerometer X";
+CM_ SG_ 1549 VSS2dot "Rate of change of VSS2";
+CM_ SG_ 1549 VSS1dot "Rate of change of VSS1";
+CM_ SG_ 1549 EAEfcor2 "Fuel correction from EAE - channel 2";
+CM_ SG_ 1549 EAEfcor1 "Fuel correction from EAE - channel 1";
+CM_ SG_ 1548 cl_idle_targ_rpm "Closed-loop idle target RPM";
+CM_ SG_ 1548 tpsadc "ADC count from TPS";
+CM_ SG_ 1548 eaeload "'Load' used for EAE calc";
+CM_ SG_ 1548 afrload "'Load' used for AFR table lookups";
+CM_ SG_ 1547 canpwmin4 "PWM period 4 from remote board";
+CM_ SG_ 1547 canpwmin3 "PWM period 3 from remote board";
+CM_ SG_ 1547 canpwmin2 "PWM period 2 from remote board";
+CM_ SG_ 1547 canpwmin1 "PWM period 1 from remote board";
+CM_ SG_ 1546 nitrous_timer_out "Timer used internally for nitrous system";
+CM_ SG_ 1546 nitrous2_duty "Duty cycle to nitrous solenoid 2";
+CM_ SG_ 1546 nitrous1_duty "Duty cycle to nitrous solenoid 1";
+CM_ SG_ 1546 n2o_retard "Timing retard due to nitrous system";
+CM_ SG_ 1546 n2o_addfuel "Fuel pulsewidth added due to nitrous system";
+CM_ SG_ 1545 egt16 "EGT cyl #16";
+CM_ SG_ 1545 egt15 "EGT cyl #15";
+CM_ SG_ 1545 egt14 "EGT cyl #14";
+CM_ SG_ 1545 egt13 "EGT cyl #13";
+CM_ SG_ 1544 egt12 "EGT cyl #12";
+CM_ SG_ 1544 egt11 "EGT cyl #11";
+CM_ SG_ 1544 egt10 "EGT cyl #10";
+CM_ SG_ 1544 egt9 "EGT cyl #9";
+CM_ SG_ 1543 egt8 "EGT cyl #8";
+CM_ SG_ 1543 egt7 "EGT cyl #7";
+CM_ SG_ 1543 egt6 "EGT cyl #6";
+CM_ SG_ 1543 egt5 "EGT cyl #5";
+CM_ SG_ 1542 egt4 "EGT cyl #4";
+CM_ SG_ 1542 egt3 "EGT cyl #3";
+CM_ SG_ 1542 egt2 "EGT cyl #2";
+CM_ SG_ 1542 egt1 "EGT cyl #1";
+CM_ SG_ 1541 pwseq16 "Sequential pulsewidth for cyl #16";
+CM_ SG_ 1541 pwseq15 "Sequential pulsewidth for cyl #15";
+CM_ SG_ 1541 pwseq14 "Sequential pulsewidth for cyl #14";
+CM_ SG_ 1541 pwseq13 "Sequential pulsewidth for cyl #13";
+CM_ SG_ 1540 pwseq12 "Sequential pulsewidth for cyl #12";
+CM_ SG_ 1540 pwseq11 "Sequential pulsewidth for cyl #11";
+CM_ SG_ 1540 pwseq10 "Sequential pulsewidth for cyl #10";
+CM_ SG_ 1540 pwseq9 "Sequential pulsewidth for cyl #9";
+CM_ SG_ 1539 pwseq8 "Sequential pulsewidth for cyl #8";
+CM_ SG_ 1539 pwseq7 "Sequential pulsewidth for cyl #7";
+CM_ SG_ 1539 pwseq6 "Sequential pulsewidth for cyl #6";
+CM_ SG_ 1539 pwseq5 "Sequential pulsewidth for cyl #5";
+CM_ SG_ 1538 pwseq4 "Sequential pulsewidth for cyl #4";
+CM_ SG_ 1538 pwseq3 "Sequential pulsewidth for cyl #3";
+CM_ SG_ 1538 pwseq2 "Sequential pulsewidth for cyl #2";
+CM_ SG_ 1538 pwseq1 "Sequential pulsewidth for cyl #1";
+CM_ SG_ 1537 maf_volts "MAF voltage";
+CM_ SG_ 1537 boostduty2 "Duty cycle on boost solenoid 2";
+CM_ SG_ 1537 boostduty "Duty cycle on boost solenoid 1";
+CM_ SG_ 1537 boost_targ_2 "Target boost - channel 2";
+CM_ SG_ 1537 boost_targ_1 "Target boost - channel 1";
+CM_ SG_ 1536 sensors16 "Generic sensor input 16";
+CM_ SG_ 1536 sensors15 "Generic sensor input 15";
+CM_ SG_ 1536 sensors14 "Generic sensor input 14";
+CM_ SG_ 1536 sensors13 "Generic sensor input 13";
+CM_ SG_ 1535 sensors12 "Generic sensor input 12";
+CM_ SG_ 1535 sensors11 "Generic sensor input 11";
+CM_ SG_ 1535 sensors10 "Generic sensor input 10 (adc7 on MS2)";
+CM_ SG_ 1535 sensors9 "Generic sensor input 19 (adc6 on MS2)";
+CM_ SG_ 1534 sensors8 "Generic sensor input 8 (gpioadc7 on MS2)";
+CM_ SG_ 1534 sensors7 "Generic sensor input 7 (gpioadc6 on MS2)";
+CM_ SG_ 1534 sensors6 "Generic sensor input 6 (gpioadc5 on MS2)";
+CM_ SG_ 1534 sensors5 "Generic sensor input 5 (gpioadc4 on MS2)";
+CM_ SG_ 1533 sensors4 "Generic sensor input 4 (gpioadc3 on MS2)";
+CM_ SG_ 1533 sensors3 "Generic sensor input 3 (gpioadc2 on MS2)";
+CM_ SG_ 1533 sensors2 "Generic sensor input 2 (gpioadc1 on MS2)";
+CM_ SG_ 1533 sensors1 "Generic sensor input 1 (gpioadc0 on MS2)";
+CM_ SG_ 1532 wallfuel2 "Calculated volume of fuel on intake walls from EAE - channel 2";
+CM_ SG_ 1532 wallfuel1 "Calculated volume of fuel on intake walls from EAE - channel 1";
+CM_ SG_ 1531 airtemp "Estimated intake air temperature";
+CM_ SG_ 1531 ignload2 "'Load' used for modifier ignition table lookup";
+CM_ SG_ 1531 ignload "'Load' used for ignition table lookup";
+CM_ SG_ 1531 fuelload2 "'Load' used for modifier fuel table lookup";
+CM_ SG_ 1530 status7 "ECU status bitfield 7";
+CM_ SG_ 1530 status6 "ECU status bitfield 6";
+CM_ SG_ 1530 status3 "ECU status bitfield 3";
+CM_ SG_ 1530 status2 "ECU status bitfield 2";
+CM_ SG_ 1530 status1 "ECU status bitfield 1";
+CM_ SG_ 1529 dwell_trl "Trailing ignition dwell";
+CM_ SG_ 1529 dwell "Main ignition dwell";
+CM_ SG_ 1528 MAF "Mass air flow";
+CM_ SG_ 1528 fuelcor "Adjustment to fuel from Flex";
+CM_ SG_ 1528 fuelload "'Load' used for fuel table lookup";
+CM_ SG_ 1528 MAFload "Synthetic 'load' from MAF";
+CM_ SG_ 1527 RPMdot "Rate of change of RPM";
+CM_ SG_ 1527 MAPdot "Rate of change of MAP";
+CM_ SG_ 1527 TPSdot "Rate of change of TPS";
+CM_ SG_ 1527 cold_adv_deg "Cold advance";
+CM_ SG_ 1526 iacstep "Stepper idle step number";
+CM_ SG_ 1526 ve2 "VE table/bank 2";
+CM_ SG_ 1526 ve1 "VE table/bank 1";
+CM_ SG_ 1526 totalcor "Total fuel correction";
+CM_ SG_ 1525 barocor "Barometric fuel correction";
+CM_ SG_ 1525 warmcor "Warmup correction";
+CM_ SG_ 1525 tpsfuelcut "TPS-based fuel cut";
+CM_ SG_ 1525 tpsaccel "TPS-based acceleration";
+CM_ SG_ 1524 aircor "Air density correction";
+CM_ SG_ 1524 egocor2 "EGO bank 2 correction";
+CM_ SG_ 1524 egocor1 "EGO bank 1 correction";
+CM_ SG_ 1524 knock "Indication of knock input";
+CM_ SG_ 1523 batt "Battery voltage";
+CM_ SG_ 1523 tps "Throttle position";
+CM_ SG_ 1522 clt "Coolant temperature";
+CM_ SG_ 1522 mat "Manifold air temperature";
+CM_ SG_ 1522 map "Manifold air pressure";
+CM_ SG_ 1522 baro "Barometric pressure";
+CM_ SG_ 1521 afrtgt2 "Bank 2 AFR target";
+CM_ SG_ 1521 afrtgt1 "Bank 1 AFR target";
+CM_ SG_ 1521 engine "Bitfield of engine status";
+CM_ SG_ 1521 squirt "Bitfield of batch fire injector events";
+CM_ SG_ 1521 adv_deg "Final ignition spark advance";
+CM_ SG_ 1520 rpm "Engine RPM";
+CM_ SG_ 1520 pw2 "Main pulsewidth bank 2";
+CM_ SG_ 1520 pw1 "Main pulsewidth bank 1";
+CM_ SG_ 1520 seconds "Seconds ECU has been on";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "BusType" "CAN";
+

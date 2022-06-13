@@ -10,11 +10,23 @@
 
 class Pwm {
 public:
+    static constexpr char DEFAULT_PATH[] = "/sys/class/pwm/pwmchip0/";
+    static constexpr char DEFAULT_DEVICE[] = "pwm0";
+    static constexpr char ENABLE[] = "enable";
+    static constexpr char DUTY_CYCLE[] = "duty_cycle";
+    static constexpr char PERIOD[] = "period";
+    static constexpr char POLARITY[] = "polarity";
+    static constexpr int DEFAULT_PERIOD = 33333; //!< 30kHz
+    static constexpr char POLARITY_NORMAL[] = "normal";
+    static constexpr char POLARITY_INVERSED[] = "inversed";
+
     Pwm(std::string path = DEFAULT_PATH,
         std::string dev = DEFAULT_DEVICE,
         int periodNsec = DEFAULT_PERIOD,
-        float dutyCycle = 0.5) :
-        mPath(path), mDev(dev), mPeriod(periodNsec), mDutyCycle(dutyCycle) {
+        float dutyCycle = 0.5,
+        bool activeLow = true) :
+        mPath(path), mDev(dev), mPeriod(periodNsec),
+        mDutyCycle(dutyCycle), mIsActiveLow(activeLow) {
         // make sure pwm0 is enabled
         writeAttribute("export", 0);
 
@@ -27,6 +39,10 @@ public:
             // set up period (will configure duty cycle)
             std::cout << "pwm: setting period" << std::endl;
             setPeriod(mPeriod);
+
+            // set polarity
+            std::string polarity = mIsActiveLow ? POLARITY_INVERSED : POLARITY_NORMAL;
+            writeAttribute(POLARITY, polarity);
 
             // enable
             std::cout << "pwm: enabled" << std::endl;
@@ -81,13 +97,6 @@ public:
     }
 
 private:
-    static constexpr char DEFAULT_PATH[] = "/sys/class/pwm/pwmchip0/";
-    static constexpr char DEFAULT_DEVICE[] = "pwm0";
-    static constexpr char ENABLE[] = "enable";
-    static constexpr char DUTY_CYCLE[] = "duty_cycle";
-    static constexpr char PERIOD[] = "period";
-    static constexpr int DEFAULT_PERIOD = 33333; //!< 30kHz
-
     /**
      * @brief Write attribute in the tach input sysfs
      * @param attr: attribute to write
@@ -111,10 +120,28 @@ private:
         return value;
     }
 
+    bool writeAttribute(std::string attr, std::string value) {
+        // read variable
+        std::string fullPath = mPath + attr;
+        std::ofstream ofs(fullPath, std::ofstream::out);
+        if (!ofs.is_open()) {
+            std::cout << "Error opening " << attr << std::endl;
+            return false;
+        }
+
+        ofs << value;
+        ofs.close();
+
+        std::cout << "Set " << attr << " to: " << value << std::endl;
+
+        return true;
+    }
+
     std::string mPath;
     std::string mDev;
     int mPeriod = DEFAULT_PERIOD;
     float mDutyCycle = 0.5;
+    bool mIsActiveLow = true;
 };
 
 #endif // PWM_H

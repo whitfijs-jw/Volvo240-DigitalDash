@@ -1,0 +1,93 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_:
+
+
+BO_ 1516 megasquirt_dash4: 8 Vector__XXX
+ SG_ launch_timing : 39|16@0- (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ tc_retard : 23|16@0- (0.1,0) [0|0] "def" Vector__XXX
+ SG_ VSS1 : 7|16@0+ (0.1,0) [0|0] "m/s" Vector__XXX
+
+BO_ 1515 megasquirt_dash3: 8 Vector__XXX
+ SG_ knk_rtd : 55|8@0+ (0.1,0) [0|0] "deg" Vector__XXX
+ SG_ sensors2 : 39|16@0- (0.01,0) [0|0] "" Vector__XXX
+ SG_ sensors1 : 23|16@0- (0.01,0) [0|0] "" Vector__XXX
+ SG_ batt : 7|16@0- (0.1,0) [0|0] "V" Vector__XXX
+
+BO_ 1514 megasquirt_dash2: 8 Vector__XXX
+ SG_ pwseq1 : 55|16@0- (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ egt1 : 39|16@0- (0.1,0) [0|0] "degF" Vector__XXX
+ SG_ egocor1 : 23|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ AFR1 : 15|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+ SG_ afrtgt1 : 7|8@0+ (0.1,0) [0|0] "AFR" Vector__XXX
+
+BO_ 1513 megasquirt_dash1: 8 Vector__XXX
+ SG_ adv_deg : 55|16@0- (0.1,0) [0|0] "deg BTDC" Vector__XXX
+ SG_ mat : 39|16@0- (0.1,0) [0|0] "deg F" Vector__XXX
+ SG_ pw2 : 23|16@0+ (0.001,0) [0|0] "ms" Vector__XXX
+ SG_ pw1 : 7|16@0+ (0.001,0) [0|0] "ms" Vector__XXX
+
+BO_ 1512 megasquirt_dash0: 8 Vector__XXX
+ SG_ tps : 55|16@0- (0.1,0) [0|0] "%" Vector__XXX
+ SG_ clt : 39|16@0- (0.1,0) [0|0] "deg F" Vector__XXX
+ SG_ rpm : 23|16@0+ (1,0) [0|0] "RPM" Vector__XXX
+ SG_ map : 7|16@0- (0.1,0) [0|0] "kPa" Vector__XXX
+
+
+
+CM_ SG_ 1516 launch_timing "Launch control timing";
+CM_ SG_ 1516 tc_retard "Traction control retard";
+CM_ SG_ 1516 VSS1 "Vehicle speed 1";
+CM_ SG_ 1515 knk_rtd "Knock retard";
+CM_ SG_ 1515 sensors2 "Generic sensor input 2 (gpioadc1 on MS2)";
+CM_ SG_ 1515 sensors1 "Generic sensor input 1 (gpioadc0 on MS2)";
+CM_ SG_ 1515 batt "Battery voltage";
+CM_ SG_ 1514 pwseq1 "Sequential pulsewidth for cyl #1";
+CM_ SG_ 1514 egt1 "EGT cyl #1";
+CM_ SG_ 1514 egocor1 "EGO bank 1 correction";
+CM_ SG_ 1514 AFR1 "AFR cyl #1";
+CM_ SG_ 1514 afrtgt1 "Bank 1 AFR target";
+CM_ SG_ 1513 adv_deg "Final ignition spark advance";
+CM_ SG_ 1513 mat "Manifold air temperature";
+CM_ SG_ 1513 pw2 "Main pulsewidth bank 2";
+CM_ SG_ 1513 pw1 "Main pulsewidth bank 1";
+CM_ SG_ 1512 tps "Throttle position";
+CM_ SG_ 1512 clt "Coolant temperature";
+CM_ SG_ 1512 rpm "Engine RPM";
+CM_ SG_ 1512 map "Manifold air pressure";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "BusType" "CAN";
+

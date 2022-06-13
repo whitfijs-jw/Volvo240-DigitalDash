@@ -15,12 +15,13 @@
 
 #enable the backlight with default 50% duty cycle
 ::sysinit echo 0 > /sys/class/pwm/pwmchip0/export
-::sysinit echo 151515 > /sys/class/pwm/pwmchip0/pwm0/period
-::sysinit echo 75757 > /sys/class/pwm/pwmchip0/pwm0/duty_cycle
+::sysinit echo 33333 > /sys/class/pwm/pwmchip0/pwm0/period
+::sysinit echo 16666 > /sys/class/pwm/pwmchip0/pwm0/duty_cycle
+::sysinit echo inversed > /sys/class/pwm/pwmchip0/pwm0/polarity
 ::sysinit echo 1 > /sys/class/pwm/pwmchip0/pwm0/enable
 
 # Startup the system
-::sysinit:fbv -d 1 /opt/splash.png > /dev/null 2>&1
+#::sysinit:fbv -d 1 /opt/splash.png > /dev/null 2>&1
 ::sysinit:/bin/mount -t proc proc /proc
 ::sysinit:/bin/mount -o remount,rw /
 ::sysinit:/bin/mkdir -p /dev/pts /dev/shm
