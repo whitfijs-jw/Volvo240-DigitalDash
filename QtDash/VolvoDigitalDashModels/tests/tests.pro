@@ -10,6 +10,7 @@ SOURCES += \
     config_test.cpp \
     map_test.cpp \
     ntc_test.cpp \
+    sensor_utils_test.cpp \
     test_main.cpp
 
 INCLUDEPATH += \
@@ -22,4 +23,5 @@ HEADERS += \
     compare_float.h \
     map_test.h \
     config_test.h \
-    ntc_test.h
+    ntc_test.h \
+    sensor_utils_test.h

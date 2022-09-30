@@ -26,18 +26,22 @@ public:
     static constexpr qreal METER_PER_IN = .0254; //!< meters per in
     static constexpr qreal METER_PER_FOOT = .3048; //!< meters per foot
     static constexpr qreal METER_PER_YARD = .9144; //!< meters per yard
-    static constexpr qreal METER_PER_MILE = 1609.34; //!< meters per mile
+    static constexpr qreal METER_PER_MILE = 1609.344; //!< meters per mile
 
     static constexpr qreal IN_PER_MILE = 63360.0; //!< inches per mile
     static constexpr qreal FOOT_PER_MILE = 5280.0; //!< feet per mile
     static constexpr qreal YARD_PER_MILE = 1760.0; //!< yard per mile
 
+    static constexpr qreal IN_PER_FOOT = 12;
+    static constexpr qreal FOOT_PER_YARD = 3.0;
     //speed constants
     static constexpr qreal MPH_TO_KPH = METER_PER_MILE / 1000.0;
     static constexpr qreal KPH_TO_METERS_PER_SEC = 1000.0 / 3600.0;
 
     // Check for disconnected or shorted sensor
     static constexpr qreal SENSOR_MAX_PCT = .95; //!< above this percentage and an error is assumed
+
+    static constexpr qreal INVALID_RESISTANCE = -1.0;
 
     /**
      * @brief Is sensor reading valid
@@ -61,9 +65,11 @@ public:
      * @return sensor resistance value
      */
     static constexpr qreal getResistance(qreal volts, qreal vSupply, qreal rBalance) {
-        qreal res = rBalance / ((vSupply / volts) - 1.0);
+        if (!isValid(volts, vSupply)) {
+            return INVALID_RESISTANCE;
+        }
 
-        //checks?
+        qreal res = rBalance / ((vSupply / volts) - 1.0);
 
         return res;
     }
@@ -75,7 +81,9 @@ public:
      * @return balance resistor value
      */
     static qreal estimateOptimalBalanceResistor(qreal rLow, qreal rHigh) {
-        // checks?
+        if (rLow <= 0 || rHigh <= 0) {
+            return INVALID_RESISTANCE;
+        }
 
         return qSqrt(rLow * rHigh);
     }
@@ -136,6 +144,28 @@ public:
         }
     }
 
+    static constexpr qreal toFeet(qreal distance, Config::DistanceUnits units) {
+        if (units == Config::DistanceUnits::INCH) {
+            return distance / IN_PER_FOOT;
+        } else if (units == Config::DistanceUnits::FOOT) {
+            return distance;
+        } else if (units == Config::DistanceUnits::YARD) {
+            return distance * FOOT_PER_YARD;
+        } else if (units == Config::DistanceUnits::MILE) {
+            return distance * FOOT_PER_MILE;
+        } else if (units == Config::DistanceUnits::MILLIMETER) {
+            return toMeters(distance, units) / METER_PER_FOOT;
+        } else if (units == Config::DistanceUnits::CENTIMETER) {
+            return toMeters(distance, units) / METER_PER_FOOT;
+        } else if (units == Config::DistanceUnits::METER) {
+            return toMeters(distance, units) / METER_PER_FOOT;
+        } else if (units == Config::DistanceUnits::KILOMETER) {
+            return toMeters(distance, units) / METER_PER_FOOT;
+        } else {
+            return -1;
+        }
+    }
+
     static constexpr qreal convertDistance(
             qreal distance,
             Config::DistanceUnits to,
@@ -152,6 +182,12 @@ public:
             return toMeters(distance, from) * 100.0;
         case Config::DistanceUnits::MILLIMETER:
             return toMeters(distance, from) * 1000.0;
+        case Config::DistanceUnits::INCH:
+            return toFeet(distance, from) * IN_PER_FOOT;
+        case Config::DistanceUnits::FOOT:
+            return toFeet(distance, from);
+        case Config::DistanceUnits::YARD:
+            return toFeet(distance, from) / FOOT_PER_YARD;
         }
 
         return 0;

@@ -3,6 +3,7 @@
 #include <map_test.h>
 #include <config_test.h>
 #include <ntc_test.h>
+#include <sensor_utils_test.h>
 
 int main(int argc, char *argv[])
 {
@@ -15,4 +16,5 @@ int main(int argc, char *argv[])
     ASSERT_TEST(new MapTest());
     ASSERT_TEST(new ConfigTest());
     ASSERT_TEST(new NtcTest());
+    ASSERT_TEST(new SensorUtilsTest);
 }
