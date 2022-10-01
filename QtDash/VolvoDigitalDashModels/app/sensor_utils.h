@@ -32,8 +32,8 @@ public:
     static constexpr qreal FOOT_PER_MILE = 5280.0; //!< feet per mile
     static constexpr qreal YARD_PER_MILE = 1760.0; //!< yard per mile
 
-    static constexpr qreal IN_PER_FOOT = 12;
-    static constexpr qreal FOOT_PER_YARD = 3.0;
+    static constexpr qreal IN_PER_FOOT = 12; //!< inches per foot
+    static constexpr qreal FOOT_PER_YARD = 3.0; //!< feet per yard
     //speed constants
     static constexpr qreal MPH_TO_KPH = METER_PER_MILE / 1000.0;
     static constexpr qreal KPH_TO_METERS_PER_SEC = 1000.0 / 3600.0;
@@ -41,7 +41,7 @@ public:
     // Check for disconnected or shorted sensor
     static constexpr qreal SENSOR_MAX_PCT = .95; //!< above this percentage and an error is assumed
 
-    static constexpr qreal INVALID_RESISTANCE = -1.0;
+    static constexpr qreal INVALID_RESISTANCE = -1.0; //!< invalid resistance return value
 
     /**
      * @brief Is sensor reading valid
