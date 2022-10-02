@@ -603,11 +603,90 @@ void SensorUtilsTest::test_convert_data() {
         << 106.85;
 }
 
-void SensorUtilsTest::test_interp() {}
-void SensorUtilsTest::test_interp_data() {}
+void SensorUtilsTest::test_interp() {
+    QFETCH(qreal, x);
+    QFETCH(qreal, x0);
+    QFETCH(qreal, y0);
+    QFETCH(qreal, x1);
+    QFETCH(qreal, y1);
+    QFETCH(qreal, y);
 
-void SensorUtilsTest::test_polynomialRegression() {}
-void SensorUtilsTest::test_polynomialRegression_data() {}
+    COMPARE_F(SensorUtils::interp(x, x0, y0, x1, y1), y, 1.0e-3);
+}
+void SensorUtilsTest::test_interp_data() {
+    QTest::addColumn<qreal>("x");
+    QTest::addColumn<qreal>("x0");
+    QTest::addColumn<qreal>("y0");
+    QTest::addColumn<qreal>("x1");
+    QTest::addColumn<qreal>("y1");
+    QTest::addColumn<qreal>("y");
 
-void SensorUtilsTest::test_polynomialValue() {}
-void SensorUtilsTest::test_polynomialValue_data() {}
+    QTest::addRow("1.0 | (0.0, 0.0), (2.0, 2.0) | 1.0")
+            << 1.0
+            << 0.0 << 0.0
+            << 2.0 << 2.0
+            << 1.0;
+    QTest::addRow("3.0 | (-1.0, 1.0), (5.0, 12.0) | 8.3333")
+            << 3.0
+            << -1.0 << 1.0
+            << 5.0 << 12.0
+            << 8.333;
+    QTest::addRow("180.0 | (150.0, 2100.0), (210.0, 200.0) | 1150.0")
+            << 180.0
+            << 150.0 << 2100.0
+            << 210.0 << 200.0
+            << 1150.0;
+}
+
+void SensorUtilsTest::test_polynomialRegression() {
+    QFETCH(QList<qreal>, x);
+    QFETCH(QList<qreal>, y);
+    QFETCH(qint32, order);
+    QFETCH(QList<qreal>, coeff);
+
+    QList<qreal> calculatedCoeff = SensorUtils::polynomialRegression(x, y, order);
+
+    for (int i = 0; i < calculatedCoeff.size(); i++) {
+        COMPARE_F(calculatedCoeff[i], coeff[i], 1e-3);
+    }
+}
+void SensorUtilsTest::test_polynomialRegression_data() {
+    QTest::addColumn<QList<qreal>>("x");
+    QTest::addColumn<QList<qreal>>("y");
+    QTest::addColumn<qint32>("order");
+    QTest::addColumn<QList<qreal>>("coeff");
+
+    QList<qreal> x = {1.0, 2.0, 3.0, 4.0};
+    QList<qreal> y = {2.0, 3.0, 4.0, 5.0};
+    QList<qreal> coeff {1.0, 1.0};
+    QTest::addRow("first order fit")
+            << x << y << 1 << coeff;
+
+
+    QList<qreal> x1 = {10.0,48.0,82.0,116.0,184.0};
+    QList<qreal> y1 = {0.0,1.0,2.0,3.0,5.0};
+    QList<qreal> coeff1 = {-0.246228917, 0.023918711, 0.000053419, -0.000000155};
+    QTest::addRow("cubic fit (oil pressure sensor)")
+            << x1 << y1 << 3 << coeff1;
+}
+
+void SensorUtilsTest::test_polynomialValue() {
+    QFETCH(qreal, x);
+    QFETCH(QList<qreal>, coeff);
+    QFETCH(qreal, output);
+
+    COMPARE_F(SensorUtils::polynomialValue(x, coeff), output, 1e-3);
+}
+void SensorUtilsTest::test_polynomialValue_data() {
+    QTest::addColumn<qreal>("x");
+    QTest::addColumn<QList<qreal>>("coeff");
+    QTest::addColumn<qreal>("output");
+
+    QList<qreal> coeff2 = {5.0, 1.5, 0.1};
+    QTest::addRow("5.0x^2 + 1.5x + 0.1 | x = 2.4 | y = 9.1760")
+            << 2.4 << coeff2 << 9.1760;
+
+    QList<qreal> coeff3 = {1.4, 0.5, 4.0, 100.4};
+    QTest::addRow("1.4x^3 + 0.5x^2 + 4.0x + 100.4 | x = 0.25 | y = 9.1760")
+            << 0.25 << coeff3 << 3.3438;
+}
