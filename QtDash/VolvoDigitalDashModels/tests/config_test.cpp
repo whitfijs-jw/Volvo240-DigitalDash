@@ -248,10 +248,149 @@ void ConfigTest::testLoadMapConfig_data() {
 }
 
 void ConfigTest::testLoadTempSensorConfig() {
+    QFETCH(QString, config);
+    QFETCH(bool, result);
+    QFETCH(qreal, r_balance);
+    QFETCH(qreal, v_supply);
+    QFETCH(qreal, t1_temp);
+    QFETCH(qreal, t1_R);
+    QFETCH(qreal, t2_temp);
+    QFETCH(qreal, t2_R);
+    QFETCH(qreal, t3_temp);
+    QFETCH(qreal, t3_R);
+    QFETCH(QString, units);
 
+    Config * testConfig = new Config(this, config);
+
+    // check if the settings are valid
+    Config::TempSensorConfig_t conf = testConfig->getTempSensorConfigs()->at(0);
+    QCOMPARE(conf.isValid(), result);
+
+    if(result) {
+        QCOMPARE(conf.rBalance, r_balance);
+        QCOMPARE(conf.vSupply, v_supply);
+        QCOMPARE(conf.t1, t1_temp);
+        QCOMPARE(conf.r1, t1_R);
+        QCOMPARE(conf.t2, t2_temp);
+        QCOMPARE(conf.r2, t2_R);
+        QCOMPARE(conf.t3, t3_temp);
+        QCOMPARE(conf.r3, t3_R);
+
+
+        auto configUnits = conf.units;
+        QString compare;
+        if (configUnits == Config::TemperatureUnits::CELSIUS) {
+            compare = Config::UNITS_C;
+        } else if (configUnits == Config::TemperatureUnits::FAHRENHEIT) {
+            compare = Config::UNITS_F;
+        } else if (configUnits == Config::TemperatureUnits::KELVIN) {
+            compare = Config::UNITS_K;
+        }
+        QCOMPARE(compare.toLower(), units.toLower());
+    }
+
+    delete(testConfig);
 }
 
 void ConfigTest::testLoadTempSensorConfig_data() {
+    QTest::addColumn<QString>("config");
+    QTest::addColumn<bool>("result");
+    QTest::addColumn<QString>("type");
+    QTest::addColumn<qreal>("r_balance");
+    QTest::addColumn<qreal>("v_supply");
+    QTest::addColumn<qreal>("t1_temp");
+    QTest::addColumn<qreal>("t1_R");
+    QTest::addColumn<qreal>("t2_temp");
+    QTest::addColumn<qreal>("t2_R");
+    QTest::addColumn<qreal>("t3_temp");
+    QTest::addColumn<qreal>("t3_R");
+    QTest::addColumn<QString>("units");
 
+    // try an empty config
+    QSettings * emptyConfig = new QSettings("emptyConfig.ini", QSettings::IniFormat);
+
+    emptyConfig->beginWriteArray(Config::TEMP_SENSOR_GROUP);
+    emptyConfig->setArrayIndex(0);
+    emptyConfig->setValue(Config::TEMP_TYPE, "");
+    emptyConfig->setValue(Config::TEMP_R_BALANCE, "");
+    emptyConfig->setValue(Config::TEMP_V_SUPPLY, "");
+    emptyConfig->setValue(Config::T1_TEMP, "");
+    emptyConfig->setValue(Config::T1_RES, "");
+    emptyConfig->setValue(Config::T2_TEMP, "");
+    emptyConfig->setValue(Config::T2_RES, "");
+    emptyConfig->setValue(Config::T3_TEMP, "");
+    emptyConfig->setValue(Config::T3_RES, "");
+    emptyConfig->setValue(Config::TEMP_UNITS, "");
+    emptyConfig->endArray();
+
+    QTest::addRow("empty_config")
+            << "emptyConfig.ini"
+            << false
+            << Config::TEMP_TYPE_COOLANT
+            << 1000.0
+            << 5.0
+            << -1.0
+            << -1.0
+            << -1.0
+            << -1.0
+            << -1.0
+            << -1.0
+            << "K";
+    delete emptyConfig;
+
+    // try an valid config
+    QSettings * validConfig = new QSettings("validConfig.ini", QSettings::IniFormat);
+
+    validConfig->beginWriteArray(Config::TEMP_SENSOR_GROUP);
+    validConfig->setArrayIndex(0);
+    validConfig->setValue(Config::TEMP_TYPE, "coolant");
+    validConfig->setValue(Config::TEMP_R_BALANCE, "470");
+    validConfig->setValue(Config::TEMP_V_SUPPLY, "5");
+    validConfig->setValue(Config::T1_TEMP, "60");
+    validConfig->setValue(Config::T1_RES, "217");
+    validConfig->setValue(Config::T2_TEMP, "90");
+    validConfig->setValue(Config::T2_RES, "87");
+    validConfig->setValue(Config::T3_TEMP, "100");
+    validConfig->setValue(Config::T3_RES, "67");
+    validConfig->setValue(Config::TEMP_UNITS, "C");
+    validConfig->endArray();
+
+    QTest::addRow("validConfig")
+            << "validConfig.ini"
+            << true
+            << Config::TEMP_TYPE_COOLANT
+            << 470.0
+            << 5.0
+            << 60.0
+            << 217.0
+            << 90.0
+            << 87.0
+            << 100.0
+            << 67.0
+            << "C";
+    delete validConfig;
 }
 
+void ConfigTest::test_getPressureUnits() {}
+void ConfigTest::test_getPressureUnits_data() {}
+
+void ConfigTest::test_getTemperatureUnits() {}
+void ConfigTest::test_getTemperatureUnits_data() {}
+
+void ConfigTest::test_getDistanceUnits() {}
+void ConfigTest::test_getDistanceUnits_data() {}
+
+void ConfigTest::test_getSpeedUnits() {}
+void ConfigTest::test_getSpeedUnits_data() {}
+
+void ConfigTest::test_loadCanFrameConfig() {}
+void ConfigTest::test_loadCanFrameConfig_data() {}
+
+void ConfigTest::test_loadOdometerConfig() {}
+void ConfigTest::test_loadOdometerConfig_data() {}
+
+void ConfigTest::test_writeOdometerConfig() {}
+void ConfigTest::test_writeOdometerConfig_data() {}
+
+void ConfigTest::test_loadGaugeConfig() {}
+void ConfigTest::test_loadGaugeConfig_data() {}
