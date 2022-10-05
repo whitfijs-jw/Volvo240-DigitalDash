@@ -601,6 +601,13 @@ void SensorUtilsTest::test_convert_data() {
         << QString(Config::UNITS_C).toUpper()
         << QString(Config::UNITS_K).toUpper()
         << 106.85;
+
+    // Distance
+    QTest::addRow("12 yards to meter | 10.9728 m ")
+        << 12.0
+        << QString(Config::UNITS_METER)
+        << QString(Config::UNITS_YARD)
+        << 10.9728;
 }
 
 void SensorUtilsTest::test_interp() {

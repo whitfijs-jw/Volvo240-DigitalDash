@@ -6,6 +6,7 @@
 
 class GpioSource : public SensorSource {
     Q_OBJECT
+public:
     GpioSource(QObject * parent, Config * config, QString name = "gpio") :
         SensorSource(parent, config, name) {
 

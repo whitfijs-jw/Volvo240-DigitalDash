@@ -411,16 +411,22 @@ public:
                         Config::getPressureUnits(to),
                         Config::getPressureUnits(from)
                         );
-        } else if (from.compare(Config::UNITS_MPH, Qt::CaseInsensitive) ||
-                   from.compare(Config::UNITS_KPH, Qt::CaseInsensitive) ||
-                   from.compare(Config::UNITS_METERS_PER_SECOND, Qt::CaseInsensitive) ) {
+        } else if (from.compare(Config::UNITS_MPH, Qt::CaseInsensitive) == 0 ||
+                   from.compare(Config::UNITS_KPH, Qt::CaseInsensitive) == 0||
+                   from.compare(Config::UNITS_METERS_PER_SECOND, Qt::CaseInsensitive) == 0) {
             // speed sensor
             val = SensorUtils::convertSpeed(value,
                         Config::getSpeedUnits(to),
                         Config::getSpeedUnits(from)
                         );
         } else if (from.compare(Config::UNITS_MILE, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Config::UNITS_KILOMETER, Qt::CaseInsensitive) == 0 ) {
+                   from.compare(Config::UNITS_KILOMETER, Qt::CaseInsensitive) == 0 ||
+                   from.compare(Config::UNITS_METER, Qt::CaseInsensitive) == 0 ||
+                   from.compare(Config::UNITS_CENTIMETER, Qt::CaseInsensitive) == 0||
+                   from.compare(Config::UNITS_MILLIMETER, Qt::CaseInsensitive) == 0 ||
+                   from.compare(Config::UNITS_INCH, Qt::CaseInsensitive) == 0 ||
+                   from.compare(Config::UNITS_FOOT, Qt::CaseInsensitive) == 0 ||
+                   from.compare(Config::UNITS_YARD, Qt::CaseInsensitive) == 0) {
             val = SensorUtils::convertDistance(value,
                   Config::getDistanceUnits(to),
                   Config::getDistanceUnits(from)
