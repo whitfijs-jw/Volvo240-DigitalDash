@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QQmlContext>
 #include <QMap>
+#include <QKeyEvent>
 
 #include <tachometer_model.h>
 #include <accessory_gauge_model.h>
@@ -96,6 +97,9 @@ public:
     void stop() {
         mEventTiming.stop();
     }
+
+signals:
+    void keyPress(QKeyEvent * event);
 
 private:
     QQmlContext * mContext; //!< QML Context
@@ -562,6 +566,27 @@ private:
         // init models
         mDashLights = new DashLights(this->parent(), mConfig.getDashLightConfig());
         mDashLights->init();
+
+        QObject::connect(mDashLights, &DashLights::userInputActive, [=] (uint8_t n) {
+            QKeyEvent * event = nullptr;
+            switch (n) {
+            case 0:
+                event = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_Down, Qt::NoModifier);
+                break;
+            case 1:
+                event = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_Left, Qt::NoModifier);
+                break;
+            case 2:
+                event = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_Up, Qt::NoModifier);
+                break;
+            case 3:
+                event = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_Right, Qt::NoModifier);
+                break;
+            default:
+                qDebug() << "invalid key press?";
+            }
+           emit keyPress(event);
+        });
 
         // hook up models in QML context
         for (auto modelName : mDashLights->getWarningLightModels()->keys()) {
