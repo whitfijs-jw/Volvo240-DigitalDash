@@ -5,6 +5,7 @@
 #include <QQmlContext>
 #include <QMap>
 #include <QFile>
+#include <QKeyEvent>
 
 #include <tachometer_model.h>
 #include <accessory_gauge_model.h>
@@ -92,6 +93,7 @@ public:
     }
 
 signals:
+    void keyPress(QKeyEvent * event);
 public slots:
     /**
      * @brief Update tachometer model
@@ -220,6 +222,11 @@ public slots:
             mOilTemperatureModel.setCurrentValue(140);
         }
 
+        static int key = 0;
+        if(++key % 10 == 0) {
+            QKeyEvent * ev = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_Right, Qt::NoModifier);
+            keyPress(ev);
+        }
 
 
         tempFile.close();
@@ -288,6 +295,10 @@ private:
     void initSpeedo(qreal maxSpeed = 120,
                     QString speedUnits = "mph",
                     QString topUnits = "°F") {
+        (void)speedUnits;
+        (void)topUnits;
+        (void)maxSpeed;
+
         //Init Speedo
         mSpeedoModel.setMaxValue(mConfig.getSpeedoConfig().gaugeConfig.max);
         mSpeedoModel.setMinValue(mConfig.getSpeedoConfig().gaugeConfig.min);

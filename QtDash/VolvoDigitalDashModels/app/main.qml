@@ -2404,6 +2404,7 @@ Window {
         property bool initialLoad: true
         antialiasing: true
         smooth: true
+        property int screen: 0
 
         Loader {
             id: currentGauge
@@ -2439,10 +2440,22 @@ Window {
                 loadText.visible = false;
             }
         }
-
         Keys.onPressed: {
             switch (event.key) {
-                case Qt.Key_0:
+            case Qt.Key_Left:
+                if (--screen < 0) {
+                    screen = 8;
+                }
+                break;
+            case Qt.Key_Right:
+                if (++screen > 8) {
+                    screen = 0;
+                }
+                break;
+            }
+
+            switch (screen) {
+                case 0:
                     //currentGauge.source = "";
                     currentGauge.source = "qrc:/BigTachCenter.qml";
                     setSmallGaugeSize(140);
@@ -2451,7 +2464,7 @@ Window {
                     setSpeedoMax(120);
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
                     break;
-                case Qt.Key_1:
+                case 1:
                     //currentGauge.source = "";
                     currentGauge.source = "qrc:/BigTachLeft.qml";
                     setSmallGaugeSize(140);
@@ -2460,7 +2473,7 @@ Window {
                     setSpeedoMax(120);
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
                     break;
-                case Qt.Key_2:
+                case 2:
                     //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original240Layout.qml";
                     setSmallGaugeSize(140);
@@ -2469,7 +2482,7 @@ Window {
                     setSpeedoMax(120);
                     setTempFuelSize(400);
                     break;
-                case Qt.Key_3:
+                case 3:
                     //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original740Layout.qml"
                     setSmallGaugeSize(140);
@@ -2477,8 +2490,8 @@ Window {
                     setSpeedoSize(350);
                     setSpeedoMax(140);
                     setTempFuelSize(300);
-                break;
-                case Qt.Key_4:
+                    break;
+                case 4:
                     //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original240LayoutClock.qml";
                     setSmallGaugeSize(140);
@@ -2487,7 +2500,7 @@ Window {
                     setSpeedoMax(120);
                     setTempFuelSize(400);
                     break;
-                case Qt.Key_5:
+                case 5:
                     //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original850R.qml"
                     setSmallGaugeSize(200);
@@ -2496,7 +2509,7 @@ Window {
                     setSpeedoMax(140);
                     //setTempFuelSize(300);
                     break;
-                case Qt.Key_6:
+                case 6:
                     currentGauge.source = "qrc:/OriginalRSportLayout.qml"
                     setSmallGaugeSize(200);
                     setTachSize(350);
@@ -2504,7 +2517,7 @@ Window {
                     setSpeedoMax(130);
                     break;
 
-                case Qt.Key_7:
+                case 7:
                     currentGauge.source = "qrc:/Original544Layout.qml"
                     setSmallGaugeSize(140);
                     setTachSize(400);
@@ -2512,15 +2525,12 @@ Window {
                     setSpeedoMax(120);
                     setTempFuelSize(400);
                     break;
-                case Qt.Key_8:
+                case 8:
                     currentGauge.source = "qrc:/OriginalP1800Layout.qml"
                     setSmallGaugeSize(200);
                     setTachSize(350);
                     setSpeedoSize(440);
                     setSpeedoMax(120);
-                    break;
-                case Qt.Key_Escape:
-                    Qt.quit();
                     break;
                 default:
                     break;

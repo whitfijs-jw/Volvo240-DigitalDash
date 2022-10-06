@@ -107,6 +107,7 @@ public:
 
     bool addCanFrameConfig(CanFrameConfig * frameConfig, CanDataChannel channel) {
         mCanMap.insert((int)channel, frameConfig->getName());
+        return true;
     }
 
     QString getUnits(int channel) {
@@ -210,7 +211,8 @@ public slots:
         }
     }
 
-    void update(int channel) {
+    void update(int channel) override {
+        (void)channel;
     }
 
 

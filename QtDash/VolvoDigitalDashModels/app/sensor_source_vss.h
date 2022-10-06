@@ -110,6 +110,7 @@ private:
             return mVssInput.getKph();
         case (int) VssDataChannel::PULSE_COUNT:
             emit dataReady(mVssInput.getPulseCount(), channel);
+            return mVssInput.getPulseCount();
         default:
             return 0;
         }

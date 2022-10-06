@@ -1051,6 +1051,9 @@ public:
                 return conf;
             }
         }
+        // return empty config
+        CanFrameConfig conf(0x00, 0x00, 0x00, false, "", "");
+        return conf;
     }
 
 signals:

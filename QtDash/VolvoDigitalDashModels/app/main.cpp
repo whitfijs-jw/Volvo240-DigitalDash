@@ -42,6 +42,13 @@ int main(int argc, char *argv[])
 #else
     DashHost * dash = new DashHost(&app, ctxt);
     ctxt->setContextProperty("RASPBERRY_PI", QVariant(false));
+
+    QObject::connect(dash, &DashHost::keyPress, [&engine](QKeyEvent * ev) {
+        if (ev != nullptr) {
+            qDebug() << ev;
+            QCoreApplication::postEvent(engine.rootObjects().first(), ev);
+        }
+    });
 #endif
     dash->init();
 
