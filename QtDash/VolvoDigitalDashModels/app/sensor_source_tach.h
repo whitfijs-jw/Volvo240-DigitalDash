@@ -33,7 +33,7 @@ public:
      * @brief init
      * @return true if successful
      */
-    bool init() {
+    bool init() override {
         return true;
     }
 
@@ -41,7 +41,7 @@ public:
      * @brief get number of tach source channels
      * @return number of tach source channels
      */
-    int getNumChannels() {
+    int getNumChannels() override {
         return 2;
     }
 
@@ -50,7 +50,7 @@ public:
      * @param channel: tach source channel
      * @return channel units
      */
-    QString getUnits(int channel) {
+    QString getUnits(int channel) override {
         switch (channel) {
         case (int)TachDataChannel::RPM_CHANNEL:
             return "rpm";
@@ -65,7 +65,7 @@ public slots:
     /**
      * @brief update all channel and emit dataReady
      */
-    void updateAll() {
+    void updateAll() override {
         for (int i = 0; i < getNumChannels(); i++) {
             emit dataReady(getValue(i), i);
         }
@@ -75,7 +75,7 @@ public slots:
      * @brief update single channel
      * @param channel: channel to update
      */
-    void update(int channel) {
+    void update(int channel) override {
         switch (channel) {
         case (int) TachDataChannel::RPM_CHANNEL:
             emit dataReady(mTachInput.getRpm(), channel);

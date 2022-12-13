@@ -97,11 +97,11 @@ public:
         }
     }
 
-    bool init() {
+    bool init() override {
         return true;
     }
 
-    int getNumChannels() {
+    int getNumChannels() override {
         return 20;
     }
 
@@ -110,7 +110,7 @@ public:
         return true;
     }
 
-    QString getUnits(int channel) {
+    QString getUnits(int channel) override {
         if (mCanMap.contains(channel)) {
             // return value from frame config
             return mConfig->getCanFrameConfig(mCanMap.value(channel)).getUnits();
@@ -183,7 +183,7 @@ signals:
     void stop();
 
 public slots:
-    void updateAll() {
+    void updateAll() override {
         while(mDevice->framesAvailable()) {
             QCanBusFrame frame = mDevice->readFrame();
 //            /*** test frame start ***/
