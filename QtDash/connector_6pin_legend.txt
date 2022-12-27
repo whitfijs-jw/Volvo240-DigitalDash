@@ -1,0 +1,23 @@
+oil pressure -> yellow
+oil temp -> orange
+ambient -> N/C
+map_sensor -> blue
+
+6 pin DT04-6P
+1 -> +5V (red)
+2 -> MAP Sensor output (blue)
+3 -> GND (black)
+4 -> N/C (ambient temp sensor)
+5 -> oil temp (orange)
+6 -> oil pressure (yellow)
+
+Molex Nano-fit 8-pin
+1 -> oil temp (orange)
+2 -> oil pressure (yellow)
+3 -> sensor 2 input (used by stock fuel level sensor)
+4 -> sensor 1 input (used by stock coolant temp sensor)
+5 -> N/C (ambient temp sensor)
+6 -> MAP (blue)
+7 -> +5V (red)
+8 -> GND (black)
+
