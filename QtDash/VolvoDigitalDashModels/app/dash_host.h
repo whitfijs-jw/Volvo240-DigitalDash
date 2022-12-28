@@ -131,24 +131,24 @@ public slots:
         }
 
 
-        mOdometerModel.setOdometerValue(mOdometerModel.odometerValue() + 0.1);
-        mOdometerModel.setTripAValue(mOdometerModel.tripAValue() + 0.1);
-        mOdometerModel.setTripBValue(mOdometerModel.tripBValue() + 0.1);
+//        mOdometerModel.setOdometerValue(mOdometerModel.odometerValue() + 0.1);
+//        mOdometerModel.setTripAValue(mOdometerModel.tripAValue() + 0.1);
+//        mOdometerModel.setTripBValue(mOdometerModel.tripBValue() + 0.1);
+//
+//        static int i = 0;
+//        if (++i % 100 == 0) {
+//            Config::OdometerConfig_t c = mConfig.getOdometerConfig(Config::ODO_NAME_ODOMETER);
+//            c.value = mOdometerModel.odometerValue();
+//            mConfig.writeOdometerConfig(Config::ODO_NAME_ODOMETER, c);
 
-        static int i = 0;
-        if (++i % 100 == 0) {
-            Config::OdometerConfig_t c = mConfig.getOdometerConfig(Config::ODO_NAME_ODOMETER);
-            c.value = mOdometerModel.odometerValue();
-            mConfig.writeOdometerConfig(Config::ODO_NAME_ODOMETER, c);
+//            c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA);
+//            c.value = mOdometerModel.tripAValue();
+//            mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPA, c);
 
-            c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA);
-            c.value = mOdometerModel.tripAValue();
-            mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPA, c);
-
-            c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB);
-            c.value = mOdometerModel.tripBValue();
-            mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPB, c);
-        }
+//            c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB);
+//            c.value = mOdometerModel.tripBValue();
+//            mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPB, c);
+//        }
 
 
         if(rpmFile.isOpen())
@@ -222,12 +222,11 @@ public slots:
             mOilTemperatureModel.setCurrentValue(140);
         }
 
-        static int key = 0;
-        if(++key % 10 == 0) {
-            QKeyEvent * ev = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_Right, Qt::NoModifier);
-            keyPress(ev);
-        }
-
+//        static int key = 0;
+//        if(++key % 10 == 0) {
+//            QKeyEvent * ev = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_Right, Qt::NoModifier);
+//            keyPress(ev);
+//        }
 
         tempFile.close();
         rpmFile.close();
