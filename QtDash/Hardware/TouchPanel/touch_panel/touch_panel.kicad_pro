@@ -45,7 +45,7 @@
         "silk_text_upright": false,
         "zones": {
           "45_degree_only": false,
-          "min_clearance": 1.5999999999999999
+          "min_clearance": 1.7999999999999998
         }
       },
       "diff_pair_dimensions": [],
@@ -367,7 +367,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "touch_panel.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""
