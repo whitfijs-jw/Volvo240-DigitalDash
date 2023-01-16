@@ -564,28 +564,15 @@ private:
      */
     void initDashLights() {
         // init models
-        mDashLights = new DashLights(this->parent(), mConfig.getDashLightConfig());
+        mDashLights = new DashLights(this->parent(), &mConfig);
         mDashLights->init();
 
         QObject::connect(mDashLights, &DashLights::userInputActive, [=] (uint8_t n) {
             QKeyEvent * event = nullptr;
-            switch (n) {
-            case 0:
-                event = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_Down, Qt::NoModifier);
-                break;
-            case 1:
-                event = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_Left, Qt::NoModifier);
-                break;
-            case 2:
-                event = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_Up, Qt::NoModifier);
-                break;
-            case 3:
-                event = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_Right, Qt::NoModifier);
-                break;
-            default:
-                qDebug() << "invalid key press?";
+            if (n <= 3) {
+                event = new QKeyEvent(QKeyEvent::KeyPress, mConfig.geUserInputConfig().value(n, Qt::Key::Key_Left), Qt::NoModifier);
+                emit keyPress(event);
             }
-           emit keyPress(event);
         });
 
         // hook up models in QML context

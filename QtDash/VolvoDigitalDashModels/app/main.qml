@@ -37,10 +37,10 @@ Window {
         "I bet you could get\n$500 on BaT for this",
         "404 Not Found",
         "I heard you like\nFWD Volvos",
-        "How many neutrals\ndoes your tranmission have?",
-        "Is a rear main seal\nsupposed to leak that much?",
+        "How many neutrals\ndoes your trans have?",
+        "Is a rear main seal\nsupposed to leak\nthat much?",
         "MOTOBOTO!",
-        "Highway speeds might not\nbe an option for you",
+        "Highway speeds\nmight not be\nan option for you",
     ]
 
 
@@ -2383,9 +2383,14 @@ Window {
                 color: "white"
                 onVisibleChanged: {
                     console.count("hidden");
-                    var txt = qsTr(rootWindow.msg[Math.floor(Math.random() * rootWindow.msg.length)]);
+                    var index = Math.floor(Math.random() * rootWindow.msg.length);
+                    var txt = qsTr(rootWindow.msg[index]);
                     if (loadText.text === txt) {
-                        loadText.text = qsTr(rootWindow.msg[Math.floor(Math.random() * rootWindow.msg.length)]);
+                        if (++index > rootWindow.msg.length) {
+                            index = 0
+                        }
+
+                        loadText.text = qsTr(rootWindow.msg[index]);
                     } else {
                         loadText.text = txt;
                     }
@@ -2444,7 +2449,7 @@ Window {
             }
         }
 
-        Keys.onReleased: {
+        Keys.onPressed: {
             if (!event.isAutoRepeat) {
                 switch (event.key) {
                 case Qt.Key_Left:
@@ -2542,9 +2547,6 @@ Window {
                     }
                 event.accepted = true;
             }
-        }
-
-        Keys.onPressed: {
         }
 
         Loader {
