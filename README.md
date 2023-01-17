@@ -155,12 +155,13 @@ After linux is done booting and loading kernel modules, the init system will aut
 - config.ini
 - config_gauges.ini
 - config_odo.ini
+- config_can.ini
 
-These files are parsed using QSettings ([more info here](https://doc.qt.io/qt-5/qsettings.html).
+These files are parsed using QSettings ([more info here](https://doc.qt.io/qt-5/qsettings.html)).
 
 ### Sensor input configuration (config.ini)
 
-The sensor configuration file contains the configuration for the analog sensor inputs, dash light inputs, tach inputs, vss inputs, and the isolated 12V inputs
+The sensor configuration file contains the configuration for the analog sensor inputs, dash light inputs, user inputs, tach inputs, vss inputs, the isolated 12V inputs, and backlight PWM control.
 
 #### Sensor channels
 
@@ -233,6 +234,54 @@ check_engine=9
 parking_brake=10
 conn_32_pin3=11
 ```
+#### User Input configuration
+
+There are 4 user inputs in Rev C and greater hardware.  They are active low inputs on the otherwise unused pins on the MCP23017.
+
+Under the **[user_inputs]** section the following inputs can be configured:
+
+| Parameter | Description |
+|---|---|
+| *input_1* | User input 1 pin number |
+| *input_2* | User input 2 pin number |
+| *input_3* | User input 3 pin number |
+| *input_4* | User input 4 pin number |
+| *input_1_map* | User input 1 key mapping |
+| *input_2_map* | User input 2 key mapping |
+| *input_3_map* | User input 3 key mapping |
+| *input_4_map* | User input 4 key mapping |
+
+The default configuration is as follows:
+
+```
+[user_inputs]
+input_1=12
+input_2=13
+input_3=14
+input_4=15
+input_1_map="Key_Left"
+input_2_map="Key_A"
+input_3_map="Key_B"
+input_4_map="Key_Right"
+```
+
+Available key mappings are:
+```
+"Key_Left"
+"Key_Right"
+"Key_Up"
+"Key_Down"
+"Key_A"
+"Key_B"
+"Key_C"
+"Key_D"
+"Key_1"
+"Key_2"
+"Key_3"
+"Key_4"
+```
+
+"Key_Left" and "Key_Right" are used to change dash layouts.  Other keys will be mapped to other functions in the future (resetting trip counters, for example).
 
 #### MAP Sensor configuration
 
@@ -453,3 +502,35 @@ pulse_per_unit_distance=9720
 distance_units="mile"
 max_speed="185"
 ```
+
+#### Backlight control configuration (optional and only somewhat functional)
+
+The stock 240 dimming circuit (Pin 10 on the circular Volvo connector 31) can be used to dim the backlight of the LCD by injecting a PWM signal into the LCD control board. Back light control with the dimmer knob only works when the headlights or running lights are engaged.  Otherwise, the dimmer rheostat does not receive voltage.
+
+The following parameters can be configured:
+
+| Parameter | Description |
+|---|---|
+| *max_duty_cycle* | Maximimum duty cycle of backlight PWM signal (min_duty_cycle-1.0) |
+| *min_duty_cycle* | Minimum duty cycle of backlight PWM signal (0-max_duty_cycle) |
+| *lights_off_duty_cycle* | Default duty cycle to use when the headlights or running lights are off |
+| *lights_on_duty_cycle* | Default duty cycle to use when headlights or running lights are on|
+| *min_dimmer_ratio* | rheostat voltage as a percentage of battery voltage at dimmest setting |
+| *max_dimmer_ratio* | rheostat voltage as a percentage of battery voltage at brightest setting |
+| *use_dimmer* | flag to use/don't use dimmer |
+| *active_low* | PWM signal active low flag |
+
+The default configuration is as follows:
+
+```
+[backlight]
+max_duty_cycle=1.0
+min_duty_cycle=0.05
+lights_off_duty_cycle=1.0
+lights_on_duty_cycle=0.5
+min_dimmer_ratio=0.82
+max_dimmer_ratio=0.93
+use_dimmer=0
+active_low=1
+```
+
