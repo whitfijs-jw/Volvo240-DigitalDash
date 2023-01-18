@@ -165,7 +165,7 @@ The sensor configuration file contains the configuration for the analog sensor i
 
 #### Sensor channels
 
-Under the [sensor_channel] section the following inputs can be configured:
+Under the **[sensor_channel]** section the following inputs can be configured:
 
 | Parameter | Description |
 |---|---|
@@ -534,3 +534,115 @@ use_dimmer=0
 active_low=1
 ```
 
+### CAN config (config_can.ini)
+Rev C hardware added components to interface with CAN outputs from an aftermarket ECU.  The MCP2515 driver and can0 network interface are loaded when the dash boots and the Dash Qt app attempts to load CAN frame configuration from the *config_can.ini* file.  To date this has only been tested with a Microsquirt on a bench with simulated inputs. If the CAN interface is enabled in the CAN config file, the dash will preferentially use the frame data for a specific gauge over a hardware sensor.
+
+#### Enable/Disable
+Under the **[start]** heading in the CAN config file, there is a single option:
+
+| Parameter | Description |
+|---|---|
+| *use* | true/false to enable/disable the use of incoming CAN data |
+
+#### CAN Frame data
+Under the **[can_frame]** heading will come the CAN frame data settings. This is setup based upon information found [here](http://www.msextra.com/doc/pdf/Megasquirt_CAN_Broadcast.pdf).
+
+| Parameter | Description |
+|---|---|
+| *frame_id* | CAN Frame ID where data is present |
+| *offset* | Offset within frame where the data is present |
+| *data_size* | Data size in bytes |
+| *signed* | true if data is signed |
+| *name* | Name of data (map, rpm, tps, etc) -- default values come from the simplified CAN broadcast data from Megasquirt |
+| *units* | Units of data |
+| *multiply* | Factor to multiply raw value by |
+| *divide* | Factor to divide raw value by |
+| *add* | Value to add to raw value |
+| *gauge* | Gauge to route data to. |
+
+Order of operations is **(raw_data * multiply_factor / divide_factor) + add_value**.  Is this right? No idea.
+
+Example configuration:
+```
+[start]
+use=false
+[can_frame]
+size=7
+[can_frame/1]
+frame_id=1512
+offset=0
+data_size=2
+signed=true
+name="map"
+units="kPa"
+multiply=1
+divide=10
+add=0
+gauge="boost"
+[can_frame/2]
+frame_id=1512
+offset=2
+data_size=2
+signed=false
+name="rpm"
+units="rpm"
+multiply=1
+divide=1
+add=0
+gauge="tacho"
+[can_frame/3]
+frame_id=1512
+offset=4
+data_size=2
+signed=true
+name="clt"
+units="F"
+multiply=1
+divide=10
+add=0
+gauge="coolant_temp"
+[can_frame/4]
+frame_id=1512
+offset=6
+data_size=2
+signed=true
+name="tps"
+units="%"
+multiply=1
+divide=10
+add=0
+gauge="none"
+[can_frame/5]
+frame_id=1513
+offset=4
+data_size=2
+signed=true
+name="mat"
+units="F"
+multiply=1
+divide=10
+add=0
+gauge="none"
+[can_frame/6]
+frame_id=1515
+offset=0
+data_size=2
+signed=true
+name="batt"
+units="V"
+multiply=1
+divide=10
+add=0
+gauge="voltmeter"
+[can_frame/7]
+frame_id=1516
+offset=0
+data_size=2
+signed=true
+name="vss1"
+units="msec^-1"
+multiply=1
+divide=10
+add=0
+gauge="none"
+```

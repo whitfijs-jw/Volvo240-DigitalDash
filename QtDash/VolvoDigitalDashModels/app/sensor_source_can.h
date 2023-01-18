@@ -58,42 +58,48 @@ public:
 
     CanSource(QObject * parent, Config * config, QString name = "can0") :
         SensorSource(parent, config, name) {
-        mOtherChannels = getNumChannels();
+        mOtherChannels = CanSource::getNumChannels();
         qDebug() << "Can Source init";
-        for (CanFrameConfig conf : mConfig->getCanFrameConfigs()) {
-            qDebug() << "Frame config found: " << conf.getName();
-            if (mDefaultChannelMap.contains(conf.getName())) {
-                // name exists within default mapping
-                mCanMap.insert(mDefaultChannelMap.value(conf.getName()), conf.getName());
-            } else {
-                mCanMap.insert(mOtherChannels++, conf.getName());
-            }
-        }
 
-
-        if (QCanBus::instance()->plugins().contains(QStringLiteral("socketcan"))) {
-            qDebug() << "found socketcan";
-            QString errorString;
-
-            const QList<QCanBusDeviceInfo> devices =
-                    QCanBus::instance()->availableDevices(QStringLiteral("socketcan"), &errorString);
-            if (!errorString.isEmpty()) qDebug() << errorString;
-            foreach (QCanBusDeviceInfo info, devices) {
-                qDebug() << info.name();
+        // check if we're actually using the CAN configs
+        if (mConfig->isCanEnabled()) {
+            // load CAN configs from file
+            for (CanFrameConfig conf : mConfig->getCanFrameConfigs()) {
+                qDebug() << "Frame config found: " << conf.getName();
+                if (mDefaultChannelMap.contains(conf.getName())) {
+                    // name exists within default mapping
+                    mCanMap.insert(mDefaultChannelMap.value(conf.getName()), conf.getName());
+                } else {
+                    mCanMap.insert(mOtherChannels++, conf.getName());
+                }
             }
 
-            mDevice = QCanBus::instance()->createDevice(
-                QStringLiteral("socketcan"), mName, &errorString);
-            if (!mDevice) {
-                qDebug() << "Error String: " << errorString;
-            } else {
-                qDebug() << "Attempting connection";
-                mDevice->connectDevice();
+            // setup the canbus socket
+            if (QCanBus::instance()->plugins().contains(QStringLiteral("socketcan"))) {
+                qDebug() << "found socketcan";
+                QString errorString;
 
-                QObject::connect(mDevice, &QCanBusDevice::framesReceived,
-                                 this, &SensorSource::updateAll);
+                const QList<QCanBusDeviceInfo> devices =
+                        QCanBus::instance()->availableDevices(QStringLiteral("socketcan"), &errorString);
+                if (!errorString.isEmpty()) {
+                    qDebug() << errorString;
+                }
+                foreach (QCanBusDeviceInfo info, devices) {
+                    qDebug() << info.name();
+                }
+
+                mDevice = QCanBus::instance()->createDevice(
+                    QStringLiteral("socketcan"), mName, &errorString);
+                if (!mDevice) {
+                    qDebug() << "Error String: " << errorString;
+                } else {
+                    qDebug() << "Attempting connection";
+                    mDevice->connectDevice();
+
+                    QObject::connect(mDevice, &QCanBusDevice::framesReceived,
+                                     this, &SensorSource::updateAll);
+                }
             }
-
         }
     }
 

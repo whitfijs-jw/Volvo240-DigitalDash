@@ -197,6 +197,8 @@ public:
     static constexpr char REDLINE[] = "redline";
 
     //can config keys
+    static constexpr char CAN_CONFIG_START[] = "start";
+    static constexpr char CAN_CONFIG_ENABLE[] = "use";
     static constexpr char CAN_FRAME[] = "can_frame";
     static constexpr char CAN_FRAME_ID[] = "frame_id";
     static constexpr char CAN_FRAME_OFFSET[] = "offset";
@@ -560,11 +562,23 @@ public:
         loadCanFrameConfigs();
     }
 
+    bool isCanEnabled() {
+        return mEnableCan;
+    }
+
     bool loadCanFrameConfigs() {
+        // parse enable/disable
+        mCanConfig->beginGroup(CAN_CONFIG_START);
+        printKeys("can", mCanConfig);
+        mEnableCan = mCanConfig->value(CAN_CONFIG_ENABLE, false).toBool();
+        mCanConfig->endGroup();
+
+        // dump keys to log
         mCanConfig->beginGroup(CAN_FRAME);
         printKeys("can", mCanConfig);
         mCanConfig->endGroup();
 
+        // parse can frame data configs
         int size = mCanConfig->beginReadArray(CAN_FRAME);
         for (int i = 0; i < size; ++i) {
             mCanConfig->setArrayIndex(i);
@@ -1124,6 +1138,7 @@ private:
     BacklightControlConfig_t mBacklightConfig;
 
     QSettings * mCanConfig;
+    bool mEnableCan = false;
     QList<CanFrameConfig> mCanFrameConfigs;
 
     /**
