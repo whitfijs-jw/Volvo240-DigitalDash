@@ -66,7 +66,7 @@ public slots:
 
 private:
     Config::ResistiveSensorConfig_t mSensorConfig; //!< resistive sensor config
-    qreal previousValue; //!< previous value (used for filtering)
+    qreal previousValue = 0; //!< previous value (used for filtering)
 };
 
 #endif // SENSOR_RESISTIVE_H
