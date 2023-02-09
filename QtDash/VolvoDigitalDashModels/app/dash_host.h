@@ -5,6 +5,7 @@
 #include <QQmlContext>
 #include <QMap>
 #include <QFile>
+#include <QKeyEvent>
 
 #include <tachometer_model.h>
 #include <accessory_gauge_model.h>
@@ -92,6 +93,7 @@ public:
     }
 
 signals:
+    void keyPress(QKeyEvent * event);
 public slots:
     /**
      * @brief Update tachometer model
@@ -129,24 +131,24 @@ public slots:
         }
 
 
-        mOdometerModel.setOdometerValue(mOdometerModel.odometerValue() + 0.1);
-        mOdometerModel.setTripAValue(mOdometerModel.tripAValue() + 0.1);
-        mOdometerModel.setTripBValue(mOdometerModel.tripBValue() + 0.1);
+//        mOdometerModel.setOdometerValue(mOdometerModel.odometerValue() + 0.1);
+//        mOdometerModel.setTripAValue(mOdometerModel.tripAValue() + 0.1);
+//        mOdometerModel.setTripBValue(mOdometerModel.tripBValue() + 0.1);
+//
+//        static int i = 0;
+//        if (++i % 100 == 0) {
+//            Config::OdometerConfig_t c = mConfig.getOdometerConfig(Config::ODO_NAME_ODOMETER);
+//            c.value = mOdometerModel.odometerValue();
+//            mConfig.writeOdometerConfig(Config::ODO_NAME_ODOMETER, c);
 
-        static int i = 0;
-        if (++i % 100 == 0) {
-            Config::OdometerConfig_t c = mConfig.getOdometerConfig(Config::ODO_NAME_ODOMETER);
-            c.value = mOdometerModel.odometerValue();
-            mConfig.writeOdometerConfig(Config::ODO_NAME_ODOMETER, c);
+//            c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA);
+//            c.value = mOdometerModel.tripAValue();
+//            mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPA, c);
 
-            c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA);
-            c.value = mOdometerModel.tripAValue();
-            mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPA, c);
-
-            c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB);
-            c.value = mOdometerModel.tripBValue();
-            mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPB, c);
-        }
+//            c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB);
+//            c.value = mOdometerModel.tripBValue();
+//            mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPB, c);
+//        }
 
 
         if(rpmFile.isOpen())
@@ -220,7 +222,11 @@ public slots:
             mOilTemperatureModel.setCurrentValue(140);
         }
 
-
+//        static int key = 0;
+//        if(++key % 10 == 0) {
+//            QKeyEvent * ev = new QKeyEvent(QKeyEvent::KeyPress, Qt::Key_Right, Qt::NoModifier);
+//            keyPress(ev);
+//        }
 
         tempFile.close();
         rpmFile.close();
@@ -288,6 +294,10 @@ private:
     void initSpeedo(qreal maxSpeed = 120,
                     QString speedUnits = "mph",
                     QString topUnits = "°F") {
+        (void)speedUnits;
+        (void)topUnits;
+        (void)maxSpeed;
+
         //Init Speedo
         mSpeedoModel.setMaxValue(mConfig.getSpeedoConfig().gaugeConfig.max);
         mSpeedoModel.setMinValue(mConfig.getSpeedoConfig().gaugeConfig.min);
@@ -364,7 +374,7 @@ private:
      */
     void initDashLights() {
         // init models
-        mDashLights = new DashLights(this->parent(), mConfig.getDashLightConfig());
+        mDashLights = new DashLights(this->parent(), &mConfig);
         mDashLights->init();
 
         // hook up models in QML context

@@ -58,58 +58,65 @@ public:
 
     CanSource(QObject * parent, Config * config, QString name = "can0") :
         SensorSource(parent, config, name) {
-        mOtherChannels = getNumChannels();
+        mOtherChannels = CanSource::getNumChannels();
         qDebug() << "Can Source init";
-        for (CanFrameConfig conf : mConfig->getCanFrameConfigs()) {
-            qDebug() << "Frame config found: " << conf.getName();
-            if (mDefaultChannelMap.contains(conf.getName())) {
-                // name exists within default mapping
-                mCanMap.insert(mDefaultChannelMap.value(conf.getName()), conf.getName());
-            } else {
-                mCanMap.insert(mOtherChannels++, conf.getName());
-            }
-        }
 
-
-        if (QCanBus::instance()->plugins().contains(QStringLiteral("socketcan"))) {
-            qDebug() << "found socketcan";
-            QString errorString;
-
-            const QList<QCanBusDeviceInfo> devices =
-                    QCanBus::instance()->availableDevices(QStringLiteral("socketcan"), &errorString);
-            if (!errorString.isEmpty()) qDebug() << errorString;
-            foreach (QCanBusDeviceInfo info, devices) {
-                qDebug() << info.name();
+        // check if we're actually using the CAN configs
+        if (mConfig->isCanEnabled()) {
+            // load CAN configs from file
+            for (CanFrameConfig conf : mConfig->getCanFrameConfigs()) {
+                qDebug() << "Frame config found: " << conf.getName();
+                if (mDefaultChannelMap.contains(conf.getName())) {
+                    // name exists within default mapping
+                    mCanMap.insert(mDefaultChannelMap.value(conf.getName()), conf.getName());
+                } else {
+                    mCanMap.insert(mOtherChannels++, conf.getName());
+                }
             }
 
-            mDevice = QCanBus::instance()->createDevice(
-                QStringLiteral("socketcan"), mName, &errorString);
-            if (!mDevice) {
-                qDebug() << "Error String: " << errorString;
-            } else {
-                qDebug() << "Attempting connection";
-                mDevice->connectDevice();
+            // setup the canbus socket
+            if (QCanBus::instance()->plugins().contains(QStringLiteral("socketcan"))) {
+                qDebug() << "found socketcan";
+                QString errorString;
 
-                QObject::connect(mDevice, &QCanBusDevice::framesReceived,
-                                 this, &SensorSource::updateAll);
+                const QList<QCanBusDeviceInfo> devices =
+                        QCanBus::instance()->availableDevices(QStringLiteral("socketcan"), &errorString);
+                if (!errorString.isEmpty()) {
+                    qDebug() << errorString;
+                }
+                foreach (QCanBusDeviceInfo info, devices) {
+                    qDebug() << info.name();
+                }
+
+                mDevice = QCanBus::instance()->createDevice(
+                    QStringLiteral("socketcan"), mName, &errorString);
+                if (!mDevice) {
+                    qDebug() << "Error String: " << errorString;
+                } else {
+                    qDebug() << "Attempting connection";
+                    mDevice->connectDevice();
+
+                    QObject::connect(mDevice, &QCanBusDevice::framesReceived,
+                                     this, &SensorSource::updateAll);
+                }
             }
-
         }
     }
 
-    bool init() {
+    bool init() override {
         return true;
     }
 
-    int getNumChannels() {
+    int getNumChannels() override {
         return 20;
     }
 
     bool addCanFrameConfig(CanFrameConfig * frameConfig, CanDataChannel channel) {
         mCanMap.insert((int)channel, frameConfig->getName());
+        return true;
     }
 
-    QString getUnits(int channel) {
+    QString getUnits(int channel) override {
         if (mCanMap.contains(channel)) {
             // return value from frame config
             return mConfig->getCanFrameConfig(mCanMap.value(channel)).getUnits();
@@ -182,7 +189,7 @@ signals:
     void stop();
 
 public slots:
-    void updateAll() {
+    void updateAll() override {
         while(mDevice->framesAvailable()) {
             QCanBusFrame frame = mDevice->readFrame();
 //            /*** test frame start ***/
@@ -210,7 +217,8 @@ public slots:
         }
     }
 
-    void update(int channel) {
+    void update(int channel) override {
+        (void)channel;
     }
 
 

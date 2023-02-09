@@ -30,6 +30,7 @@ public:
     static constexpr char VSS_INPUT_GROUP[] = "vss_input";
     static constexpr char ODOMETER_GROUP[] = "odometer";
     static constexpr char BACKLIGHT_GROUP[] = "backlight";
+    static constexpr char USER_INPUT_GROUP[] = "user_inputs";
 
     // units for sensors
     static constexpr char UNITS_KPA[] = "kpa";
@@ -76,6 +77,17 @@ public:
     static constexpr char CHECK_ENGINE_KEY[] = "check_engine";
     static constexpr char PARKING_BRAKE_KEY[] = "parking_brake";
     static constexpr char CONN_32_PIN3[] = "conn_32_pin3";
+
+    // expected user input keys
+    static constexpr char USER_INPUT1[] = "input_1";
+    static constexpr char USER_INPUT2[] = "input_2";
+    static constexpr char USER_INPUT3[] = "input_3";
+    static constexpr char USER_INPUT4[] = "input_4";
+    static constexpr char USER_INPUT1_MAP[] = "input_1_map";
+    static constexpr char USER_INPUT2_MAP[] = "input_2_map";
+    static constexpr char USER_INPUT3_MAP[] = "input_3_map";
+    static constexpr char USER_INPUT4_MAP[] = "input_4_map";
+    static constexpr Qt::Key USER_INPUT_DEFAULT_KEY = Qt::Key::Key_A;
 
     //expected map sensor keys
     static constexpr char PRESSURE_AT_0V[] = "p_0v";
@@ -185,6 +197,8 @@ public:
     static constexpr char REDLINE[] = "redline";
 
     //can config keys
+    static constexpr char CAN_CONFIG_START[] = "start";
+    static constexpr char CAN_CONFIG_ENABLE[] = "use";
     static constexpr char CAN_FRAME[] = "can_frame";
     static constexpr char CAN_FRAME_ID[] = "frame_id";
     static constexpr char CAN_FRAME_OFFSET[] = "offset";
@@ -548,11 +562,23 @@ public:
         loadCanFrameConfigs();
     }
 
+    bool isCanEnabled() {
+        return mEnableCan;
+    }
+
     bool loadCanFrameConfigs() {
+        // parse enable/disable
+        mCanConfig->beginGroup(CAN_CONFIG_START);
+        printKeys("can", mCanConfig);
+        mEnableCan = mCanConfig->value(CAN_CONFIG_ENABLE, false).toBool();
+        mCanConfig->endGroup();
+
+        // dump keys to log
         mCanConfig->beginGroup(CAN_FRAME);
         printKeys("can", mCanConfig);
         mCanConfig->endGroup();
 
+        // parse can frame data configs
         int size = mCanConfig->beginReadArray(CAN_FRAME);
         for (int i = 0; i < size; ++i) {
             mCanConfig->setArrayIndex(i);
@@ -720,6 +746,26 @@ public:
 
         printKeys("Dash Light Config ", mConfig);
 
+        mConfig->endGroup();
+
+        // user input group
+        mConfig->beginGroup(USER_INPUT_GROUP);
+
+        for (QString key : mConfig->childKeys()) {
+            if (QString::compare(key, USER_INPUT1_MAP) == 0) {
+                mUserInputConfig.insert(0, mKeyMap.value(mConfig->value(key, "Key_Left").toString(), USER_INPUT_DEFAULT_KEY));
+            } else if (QString::compare(key, USER_INPUT2_MAP) == 0) {
+                mUserInputConfig.insert(1, mKeyMap.value(mConfig->value(key, "Key_A").toString(), USER_INPUT_DEFAULT_KEY));
+            } else if (QString::compare(key, USER_INPUT3_MAP) == 0) {
+                mUserInputConfig.insert(2, mKeyMap.value(mConfig->value(key, "Key_B").toString(), USER_INPUT_DEFAULT_KEY));
+            } else if (QString::compare(key, USER_INPUT4_MAP) == 0) {
+                mUserInputConfig.insert(3, mKeyMap.value(mConfig->value(key, "Key_Right").toString(), USER_INPUT_DEFAULT_KEY));
+            } else {
+                mUserInputPinConfig.insert(key, mConfig->value(key).toInt());
+            }
+        }
+
+        printKeys("User Inputs: ", mConfig);
         mConfig->endGroup();
 
         //load map sensor config
@@ -1051,6 +1097,17 @@ public:
                 return conf;
             }
         }
+        // return empty config
+        CanFrameConfig conf(0x00, 0x00, 0x00, false, "", "");
+        return conf;
+    }
+
+    QMap<int, Qt::Key> geUserInputConfig() {
+        return mUserInputConfig;
+    }
+
+    QMap<QString, int> getUserInputPinConfig() {
+        return mUserInputPinConfig;
     }
 
 signals:
@@ -1061,6 +1118,8 @@ private:
     QSettings * mConfig = nullptr;  //!< QSettings for reading config.ini file
     QMap<QString, int> mSensorChannelConfig; //!< sensor channel configuration
     QMap<QString, int> mDashLightConfig; //!< dash light gpio configuration
+    QMap<int, Qt::Key> mUserInputConfig;
+    QMap<QString, int> mUserInputPinConfig;
     MapSensorConfig_t mMapSensorConfig; //!< MAP sensor configuration
     QList<TempSensorConfig_t> mTempSensorConfigs; //!< Temp sensor configurations
     TachInputConfig_t mTachConfig; //!< Tach signal input configuration
@@ -1079,6 +1138,7 @@ private:
     BacklightControlConfig_t mBacklightConfig;
 
     QSettings * mCanConfig;
+    bool mEnableCan = false;
     QList<CanFrameConfig> mCanFrameConfigs;
 
     /**
@@ -1103,6 +1163,32 @@ private:
         }
         return true;
     }
+
+    /**
+     * @brief Initialize User Input Keymap -- this is gross
+     * @return User Input Key map
+     */
+    static QMap<QString, Qt::Key> initKeyMap() {
+        QMap<QString, Qt::Key> map;
+
+        map.insert("Key_Left", Qt::Key::Key_Left);
+        map.insert("Key_Right", Qt::Key::Key_Right);
+        map.insert("Key_Up", Qt::Key::Key_Up);
+        map.insert("Key_Down", Qt::Key::Key_Down);
+        map.insert("Key_A", Qt::Key::Key_A);
+        map.insert("Key_B", Qt::Key::Key_B);
+        map.insert("Key_C", Qt::Key::Key_C);
+        map.insert("Key_D", Qt::Key::Key_D);
+        map.insert("Key_1", Qt::Key::Key_1);
+        map.insert("Key_2", Qt::Key::Key_2);
+        map.insert("Key_3", Qt::Key::Key_3);
+        map.insert("Key_4", Qt::Key::Key_4);
+
+        return map;
+    }
+
+    QMap<QString, Qt::Key> mKeyMap = initKeyMap();
+
 };
 
 #endif // CONFIG_H

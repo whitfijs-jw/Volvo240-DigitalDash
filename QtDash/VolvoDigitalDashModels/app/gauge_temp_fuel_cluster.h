@@ -39,7 +39,7 @@ public:
         //hook it up
         QObject::connect(
                     sensors.at(0), &Sensor::sensorDataReady,
-                    [=](QVariant data) {
+                    this, [=](QVariant data) {
 
             // get raw value
             qreal val = data.toReal();

@@ -6,33 +6,34 @@
 
 class GpioSource : public SensorSource {
     Q_OBJECT
+public:
     GpioSource(QObject * parent, Config * config, QString name = "gpio") :
         SensorSource(parent, config, name) {
 
     }
 
-    bool init() {
+    bool init() override {
         return true;
     }
 
-    int getNumChannels() {
+    int getNumChannels() override {
         return 16;
     }
 
-    QString getUnits(int channel) {
+    QString getUnits(int channel) override {
         (void)channel;
         return "on/off";
     }
 
 public slots:
-    void updateAll() {
+    void updateAll() override {
         uint16_t inputs = getInputs();
         for (int i = 0; i < mInputs.getNumChannels(); i++) {
             emit dataReady(bitValue(inputs, i), i);
         }
     }
 
-    void update(int channel) {
+    void update(int channel) override {
         uint16_t inputs = getInputs();
 
         emit dataReady(bitValue(inputs, channel), channel);

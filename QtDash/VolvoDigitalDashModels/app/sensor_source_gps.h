@@ -87,15 +87,15 @@ public:
 
     }
 
-    bool init() {
+    bool init() override {
         return true;
     }
 
-    int getNumChannels() {
+    int getNumChannels() override {
         return 5;
     }
 
-    QString getUnits(int channel) {
+    QString getUnits(int channel) override {
         switch ((GpsDataChannel)channel) {
         case GpsDataChannel::HEADING_CARDINAL:
             return "direction";
@@ -120,14 +120,14 @@ signals:
     void stop();
 
 public slots:
-    void updateAll() {
+    void updateAll() override {
         // add the last data points
         for (auto key : mLastData.keys()) {
             update((int) key);
         }
     }
 
-    void update(int channel) {
+    void update(int channel) override {
         emit dataReady(mLastData.value((GpsDataChannel)channel, ""), channel);
     }
 

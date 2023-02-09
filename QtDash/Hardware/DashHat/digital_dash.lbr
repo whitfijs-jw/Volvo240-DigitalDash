@@ -2229,6 +2229,19 @@ reflow soldering</description>
 <wire x1="7.54" y1="-2.5" x2="-2.48" y2="-2.5" width="0.127" layer="21"/>
 <wire x1="-2.48" y1="-2.5" x2="-2.48" y2="3.3" width="0.127" layer="21"/>
 </package>
+<package name="MOLEX-1053101106">
+<hole x="0" y="2.59" drill="1.3"/>
+<pad name="1" x="1.25" y="1.25" drill="1.2" diameter="1.7" shape="octagon"/>
+<pad name="2" x="-1.25" y="1.25" drill="1.2" diameter="1.7"/>
+<pad name="4" x="1.29" y="-1.25" drill="1.2" diameter="1.7"/>
+<pad name="3" x="-3.83" y="1.29" drill="1.2" diameter="1.7"/>
+<wire x1="-5.51" y1="2.99" x2="2.97" y2="2.99" width="0.127" layer="51"/>
+<wire x1="2.97" y1="2.99" x2="2.97" y2="-2.99" width="0.127" layer="51"/>
+<wire x1="2.97" y1="-2.99" x2="-5.51" y2="-2.99" width="0.127" layer="51"/>
+<wire x1="-5.51" y1="-2.99" x2="-5.51" y2="2.99" width="0.127" layer="51"/>
+<pad name="5" x="-1.25" y="-1.25" drill="1.2" diameter="1.7"/>
+<pad name="6" x="-3.79" y="-1.25" drill="1.2" diameter="1.7"/>
+</package>
 </packages>
 <symbols>
 <symbol name="OP-AMP">
@@ -4404,6 +4417,31 @@ Source: https://www.ti.com/lit/ds/symlink/tsv912.pdf</description>
 <technology name="-120-20-3X-TR">
 <attribute name="VALUE" value="12MHz" constant="no"/>
 </technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="CONN_03X2" prefix="J">
+<gates>
+<gate name="1" symbol="M" x="0" y="5.08"/>
+<gate name="2" symbol="M" x="0" y="2.54"/>
+<gate name="3" symbol="M" x="0" y="0"/>
+<gate name="4" symbol="M" x="0" y="-2.54"/>
+<gate name="5" symbol="M" x="0" y="-5.08"/>
+<gate name="6" symbol="M" x="0" y="-7.62"/>
+</gates>
+<devices>
+<device name="" package="MOLEX-1053101106">
+<connects>
+<connect gate="1" pin="S" pad="1"/>
+<connect gate="2" pin="S" pad="2"/>
+<connect gate="3" pin="S" pad="3"/>
+<connect gate="4" pin="S" pad="4"/>
+<connect gate="5" pin="S" pad="5"/>
+<connect gate="6" pin="S" pad="6"/>
+</connects>
+<technologies>
+<technology name=""/>
 </technologies>
 </device>
 </devices>

@@ -123,8 +123,8 @@ public slots:
             }
 #endif
 
-            QString headingString = headingToDirectionString(heading);
-            //std::cout << "heading: " << heading << " (" << headingString.toStdString() << ")" << std::endl;
+//            QString headingString = headingToDirectionString(heading);
+//            std::cout << "heading: " << heading << " (" << headingString.toStdString() << ")" << std::endl;
 
             emit headingUpdateDegree(heading);
             emit headingUpdate(headingToDirectionString(heading));

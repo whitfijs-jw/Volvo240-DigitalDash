@@ -29,6 +29,7 @@ public:
         } else {
             // use the odo values from the config file
             mOdoConfig = mConfig->getOdometerConfig(Config::ODO_NAME_ODOMETER);
+            mCanReset = false;
         }
     }
 
@@ -49,6 +50,17 @@ signals:
     void writeOdoValue(qreal value);
 
 public slots:
+    void reset() {
+        if (mCanReset) {
+            mOdoConfig.value = 0;
+            mLastPulseCount = 0;
+            mUpdatePulseCount = 0;
+
+           mConfig->writeOdometerConfig(mOdoConfig.name,
+                                        mOdoConfig);
+        }
+    }
+
     /**
      * @brief Transform incoming data for the gauge
      * @param data: data from source
@@ -85,6 +97,7 @@ private:
     Config::OdometerConfig_t mOdoConfig;
     int mLastPulseCount = 0;
     int mUpdatePulseCount = 0;
+    bool mCanReset = true;
 };
 
 #endif // SENSOR_TACH_H

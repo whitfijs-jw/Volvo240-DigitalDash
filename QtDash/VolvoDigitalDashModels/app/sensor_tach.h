@@ -34,7 +34,7 @@ public slots:
     void transform(QVariant data, int channel) override {
         if (channel == getChannel()) {
             int rpm = data.toInt();
-            sensorDataReady(rpm);
+            emit sensorDataReady(rpm);
         }
     }
 };

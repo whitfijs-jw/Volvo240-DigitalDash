@@ -27,7 +27,7 @@ public:
      * @brief init
      * @return true if successful
      */
-    bool init() {
+    bool init() override {
         return true;
     }
 
@@ -35,7 +35,7 @@ public:
      * @brief get number of channels
      * @return number of ADC channels
      */
-    int getNumChannels() {
+    int getNumChannels() override {
         return mAdc->getNumChannels();
     }
 
@@ -44,7 +44,7 @@ public:
      * @param channel: adc channel
      * @return ADC output units (volts)
      */
-    QString getUnits(int channel) {
+    QString getUnits(int channel) override {
         (void)channel;
         return "volts";
     }
@@ -57,7 +57,7 @@ public slots:
     /**
      * @brief update all channels and emit dataReady
      */
-    void updateAll() {
+    void updateAll() override {
         for (int i = 0; i < mAdc->getNumChannels(); i++) {
             update(i);
         }
@@ -68,7 +68,7 @@ public slots:
      * @brief update given channel
      * @param channel: adc channel
      */
-    void update(int channel) {
+    void update(int channel) override {
         qreal volts = mAdc->readValue(channel);
         emit dataReady(volts, channel);
     }
