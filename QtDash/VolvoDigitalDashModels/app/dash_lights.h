@@ -19,8 +19,8 @@ public:
      * @param parent
      * @param config
      */
-    DashLights(QObject * parent, QMap<QString, int> config) :
-        QObject(parent), mConfig(config) {
+    DashLights(QObject * parent, Config * config) :
+        QObject(parent), mConfig(config), mLightsConfig(config->getDashLightConfig()) {
     }
 
     /**
@@ -95,8 +95,8 @@ public slots:
         // combine ports
         uint16_t inputs = (portB << 8) | portA;
 
-        auto lightConf = mConfig;
-        bool activeLow = mConfig.value(Config::ACTIVE_LOW, true);
+        auto lightConf = mLightsConfig;
+        bool activeLow = mLightsConfig.value(Config::ACTIVE_LOW, true);
 
         // set em
         mLeftBlinkerModel.setOn(readPin(lightConf.value(Config::BLINKER_LEFT_KEY), inputs, activeLow));
@@ -115,25 +115,28 @@ public slots:
         mShiftUpLightModel.setOn(0);
         mServiceLightModel.setOn(0);
 
-        bool userInput1 = readPin(12, inputs, activeLow);
-        bool userInput2 = readPin(13, inputs, activeLow);
-        bool userInput3 = readPin(14, inputs, activeLow);
-        bool userInput4 = readPin(15, inputs, activeLow);
+        auto userInputPinConfig = mConfig->getUserInputPinConfig();
+        auto userInputConfig = mConfig->geUserInputConfig();
 
-        if (userInput1) {
-            emit userInputActive(1);
-        }
+        bool userInput1 = readPin(userInputPinConfig.value(Config::USER_INPUT1, 12), inputs, activeLow);
+        bool userInput2 = readPin(userInputPinConfig.value(Config::USER_INPUT2, 13), inputs, activeLow);
+        bool userInput3 = readPin(userInputPinConfig.value(Config::USER_INPUT3, 14), inputs, activeLow);
+        bool userInput4 = readPin(userInputPinConfig.value(Config::USER_INPUT4, 15), inputs, activeLow);
 
-        if (userInput2) {
-            emit userInputActive(2);
-        }
-
-        if (userInput3) {
-            emit userInputActive(3);
-        }
-
-        if (userInput4) {
-            emit userInputActive(4);
+        bool active = (userInput1 || userInput2 || userInput3 || userInput4);
+        if (!mInputActive && active) {
+            mInputActive = true;
+            if (userInput1) {
+                emit userInputActive(0);
+            } else if (userInput2) {
+                emit userInputActive(1);
+            } else if (userInput3) {
+                emit userInputActive(2);
+            } else if (userInput4) {
+                emit userInputActive(3);
+            }
+        } else if (!active){
+            mInputActive = false;
         }
 
 #else
@@ -178,9 +181,11 @@ private:
     static constexpr char CHECK_ENGINE_MODEL_NAME[] = "checkEngineLightModel";
     static constexpr char SERVICE_ENGINE_MODEL_NAME[] = "serviceLightModel";
 
-    QMap<QString, int> mConfig; //!< Dash light config
+    Config * mConfig;
+    QMap<QString, int> mLightsConfig; //!< Dash light config
     QMap<QString, WarningLightModel*> mWarningLightModels; //!< map of warning light model names (from qml) and c++/qobject model references
     QMap<QString, IndicatorModel*> mIndicatorModels; //!< map of indicator model names (from qml) and c++/qobject model references
+    bool mInputActive = false;
 
     IndicatorModel mLeftBlinkerModel; //!< left blinker model
     IndicatorModel mRightBlinkerModel; //!< right blinker model

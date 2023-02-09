@@ -34,9 +34,21 @@ int main(int argc, char *argv[])
     //Dash * dash = new Dash(&app, ctxt); //old style dash
     DashNew * dash = new DashNew(&app, ctxt); // new scheme with sensor source -> sensor -> gauge -> model
     ctxt->setContextProperty("RASPBERRY_PI", QVariant(true));
+    QObject::connect(dash, &DashNew::keyPress, [&engine](QKeyEvent * ev) {
+        if (ev != nullptr) {
+            QCoreApplication::postEvent(engine.rootObjects().first(), ev);
+        }
+    });
 #else
     DashHost * dash = new DashHost(&app, ctxt);
     ctxt->setContextProperty("RASPBERRY_PI", QVariant(false));
+
+    QObject::connect(dash, &DashHost::keyPress, [&engine](QKeyEvent * ev) {
+        if (ev != nullptr) {
+            qDebug() << ev;
+            QCoreApplication::postEvent(engine.rootObjects().first(), ev);
+        }
+    });
 #endif
     dash->init();
 

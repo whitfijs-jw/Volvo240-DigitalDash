@@ -258,7 +258,7 @@ private:
      */
     void initDashLights() {
         // init models
-        mDashLights = new DashLights(this->parent(), mConfig.getDashLightConfig());
+        mDashLights = new DashLights(this->parent(), &mConfig);
         mDashLights->init();
 
         // hook up models in QML context

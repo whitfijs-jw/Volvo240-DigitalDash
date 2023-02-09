@@ -36,12 +36,13 @@ dtoverlay=miniuart-bt
 dtoverlay=vc4-fkms-v3d,nocomposite
 
 dtparam=i2c_arm=on
+
 dtparam=spi=on
-dtoverlay=mcp3208:spi0-0-present
+dtoverlay=mcp3208:spi0-1-present
 
 dtoverlay=pwm
 
-dtoverlay=mcp2515-can0,oscillator=8000000,interrupt=25
+dtoverlay=mcp2515-can0,oscillator=12000000,interrupt=25
 
 #hdmi_safe=1
 hdmi_cvt 1280 480 60 5 0 0 0

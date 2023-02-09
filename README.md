@@ -155,16 +155,17 @@ After linux is done booting and loading kernel modules, the init system will aut
 - config.ini
 - config_gauges.ini
 - config_odo.ini
+- config_can.ini
 
-These files are parsed using QSettings ([more info here](https://doc.qt.io/qt-5/qsettings.html).
+These files are parsed using QSettings ([more info here](https://doc.qt.io/qt-5/qsettings.html)).
 
 ### Sensor input configuration (config.ini)
 
-The sensor configuration file contains the configuration for the analog sensor inputs, dash light inputs, tach inputs, vss inputs, and the isolated 12V inputs
+The sensor configuration file contains the configuration for the analog sensor inputs, dash light inputs, user inputs, tach inputs, vss inputs, the isolated 12V inputs, and backlight PWM control.
 
 #### Sensor channels
 
-Under the [sensor_channel] section the following inputs can be configured:
+Under the **[sensor_channel]** section the following inputs can be configured:
 
 | Parameter | Description |
 |---|---|
@@ -233,6 +234,54 @@ check_engine=9
 parking_brake=10
 conn_32_pin3=11
 ```
+#### User Input configuration
+
+There are 4 user inputs in Rev C and greater hardware.  They are active low inputs on the otherwise unused pins on the MCP23017.
+
+Under the **[user_inputs]** section the following inputs can be configured:
+
+| Parameter | Description |
+|---|---|
+| *input_1* | User input 1 pin number |
+| *input_2* | User input 2 pin number |
+| *input_3* | User input 3 pin number |
+| *input_4* | User input 4 pin number |
+| *input_1_map* | User input 1 key mapping |
+| *input_2_map* | User input 2 key mapping |
+| *input_3_map* | User input 3 key mapping |
+| *input_4_map* | User input 4 key mapping |
+
+The default configuration is as follows:
+
+```
+[user_inputs]
+input_1=12
+input_2=13
+input_3=14
+input_4=15
+input_1_map="Key_Left"
+input_2_map="Key_A"
+input_3_map="Key_B"
+input_4_map="Key_Right"
+```
+
+Available key mappings are:
+```
+"Key_Left"
+"Key_Right"
+"Key_Up"
+"Key_Down"
+"Key_A"
+"Key_B"
+"Key_C"
+"Key_D"
+"Key_1"
+"Key_2"
+"Key_3"
+"Key_4"
+```
+
+"Key_Left" and "Key_Right" are used to change dash layouts.  Other keys will be mapped to other functions in the future (resetting trip counters, for example).
 
 #### MAP Sensor configuration
 
@@ -452,4 +501,148 @@ diameter_units="inch"
 pulse_per_unit_distance=9720
 distance_units="mile"
 max_speed="185"
+```
+
+#### Backlight control configuration (optional and only somewhat functional)
+
+The stock 240 dimming circuit (Pin 10 on the circular Volvo connector 31) can be used to dim the backlight of the LCD by injecting a PWM signal into the LCD control board. Back light control with the dimmer knob only works when the headlights or running lights are engaged.  Otherwise, the dimmer rheostat does not receive voltage.
+
+The following parameters can be configured:
+
+| Parameter | Description |
+|---|---|
+| *max_duty_cycle* | Maximimum duty cycle of backlight PWM signal (min_duty_cycle-1.0) |
+| *min_duty_cycle* | Minimum duty cycle of backlight PWM signal (0-max_duty_cycle) |
+| *lights_off_duty_cycle* | Default duty cycle to use when the headlights or running lights are off |
+| *lights_on_duty_cycle* | Default duty cycle to use when headlights or running lights are on|
+| *min_dimmer_ratio* | rheostat voltage as a percentage of battery voltage at dimmest setting |
+| *max_dimmer_ratio* | rheostat voltage as a percentage of battery voltage at brightest setting |
+| *use_dimmer* | flag to use/don't use dimmer |
+| *active_low* | PWM signal active low flag |
+
+The default configuration is as follows:
+
+```
+[backlight]
+max_duty_cycle=1.0
+min_duty_cycle=0.05
+lights_off_duty_cycle=1.0
+lights_on_duty_cycle=0.5
+min_dimmer_ratio=0.82
+max_dimmer_ratio=0.93
+use_dimmer=0
+active_low=1
+```
+
+### CAN config (config_can.ini)
+Rev C hardware added components to interface with CAN outputs from an aftermarket ECU.  The MCP2515 driver and can0 network interface are loaded when the dash boots and the Dash Qt app attempts to load CAN frame configuration from the *config_can.ini* file.  To date this has only been tested with a Microsquirt on a bench with simulated inputs. If the CAN interface is enabled in the CAN config file, the dash will preferentially use the frame data for a specific gauge over a hardware sensor.
+
+#### Enable/Disable
+Under the **[start]** heading in the CAN config file, there is a single option:
+
+| Parameter | Description |
+|---|---|
+| *use* | true/false to enable/disable the use of incoming CAN data |
+
+#### CAN Frame data
+Under the **[can_frame]** heading will come the CAN frame data settings. This is setup based upon information found [here](http://www.msextra.com/doc/pdf/Megasquirt_CAN_Broadcast.pdf).
+
+| Parameter | Description |
+|---|---|
+| *frame_id* | CAN Frame ID where data is present |
+| *offset* | Offset within frame where the data is present |
+| *data_size* | Data size in bytes |
+| *signed* | true if data is signed |
+| *name* | Name of data (map, rpm, tps, etc) -- default values come from the simplified CAN broadcast data from Megasquirt |
+| *units* | Units of data |
+| *multiply* | Factor to multiply raw value by |
+| *divide* | Factor to divide raw value by |
+| *add* | Value to add to raw value |
+| *gauge* | Gauge to route data to. |
+
+Order of operations is **(raw_data * multiply_factor / divide_factor) + add_value**.  Is this right? No idea.
+
+Example configuration:
+```
+[start]
+use=false
+[can_frame]
+size=7
+[can_frame/1]
+frame_id=1512
+offset=0
+data_size=2
+signed=true
+name="map"
+units="kPa"
+multiply=1
+divide=10
+add=0
+gauge="boost"
+[can_frame/2]
+frame_id=1512
+offset=2
+data_size=2
+signed=false
+name="rpm"
+units="rpm"
+multiply=1
+divide=1
+add=0
+gauge="tacho"
+[can_frame/3]
+frame_id=1512
+offset=4
+data_size=2
+signed=true
+name="clt"
+units="F"
+multiply=1
+divide=10
+add=0
+gauge="coolant_temp"
+[can_frame/4]
+frame_id=1512
+offset=6
+data_size=2
+signed=true
+name="tps"
+units="%"
+multiply=1
+divide=10
+add=0
+gauge="none"
+[can_frame/5]
+frame_id=1513
+offset=4
+data_size=2
+signed=true
+name="mat"
+units="F"
+multiply=1
+divide=10
+add=0
+gauge="none"
+[can_frame/6]
+frame_id=1515
+offset=0
+data_size=2
+signed=true
+name="batt"
+units="V"
+multiply=1
+divide=10
+add=0
+gauge="voltmeter"
+[can_frame/7]
+frame_id=1516
+offset=0
+data_size=2
+signed=true
+name="vss1"
+units="msec^-1"
+multiply=1
+divide=10
+add=0
+gauge="none"
 ```
