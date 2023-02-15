@@ -3,8 +3,8 @@ import QtQuick 2.15
 Item {
 
     Rectangle {
-        width: 1280
-        height: 480
+        width: 1920
+        height: 720
         color: "transparent"
 
         Rectangle {

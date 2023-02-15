@@ -4,8 +4,8 @@ import QtQuick.Window 2.15
 Window {
     id: rootWindow
     visible: true
-    width: 1280
-    height: 480
+    width: 1920
+    height: 720
 
     title: qsTr("Lolvo")
 
@@ -18,11 +18,11 @@ Window {
     property int linearSpeedoWidth: 1100
     property int linearSpeedoHeight: 65
 
-    property int warningLightHeight: 50;
-    property int warningLightWidth: 70;
-    property int warningLightWideWidth: 100;
-    property int warningLightVerticalMargin: 5;
-    property int warningLightHorizontalMargin: 8
+    property int warningLightHeight: width / 25.6; // 50;
+    property int warningLightWidth: width / height / 25.6; // 70;
+    property int warningLightWideWidth: width / 12.8; //100;
+    property int warningLightVerticalMargin: width / 256; //5;
+    property int warningLightHorizontalMargin: width / 160; //8
 
     property int speedoMax: 120;
 
@@ -2468,8 +2468,8 @@ Window {
                     case 0:
                         //currentGauge.source = "";
                         currentGauge.source = "qrc:/BigTachCenter.qml";
-                        setSmallGaugeSize(140);
-                        setTachSize(440);
+                        setSmallGaugeSize(width / 9.15);
+                        setTachSize(width / 2.9);
                         setSpeedoSize(tachSize - smallGaugeSize - 10);
                         setSpeedoMax(120);
                         setTempFuelSize(tachSize - smallGaugeSize - 10);
@@ -2477,8 +2477,8 @@ Window {
                     case 1:
                         //currentGauge.source = "";
                         currentGauge.source = "qrc:/BigTachLeft.qml";
-                        setSmallGaugeSize(140);
-                        setTachSize(440);
+                        setSmallGaugeSize(width / 9.15);
+                        setTachSize(width / 2.9);
                         setSpeedoSize(tachSize - smallGaugeSize - 10);
                         setSpeedoMax(120);
                         setTempFuelSize(tachSize - smallGaugeSize - 10);
@@ -2486,20 +2486,20 @@ Window {
                     case 2:
                         //currentGauge.source = "";
                         currentGauge.source = "qrc:/Original240Layout.qml";
-                        setSmallGaugeSize(140);
-                        setTachSize(400);
-                        setSpeedoSize(440);
+                        setSmallGaugeSize(width / 9.15);
+                        setTachSize(width / 3.2);
+                        setSpeedoSize(width / 2.9);
                         setSpeedoMax(120);
-                        setTempFuelSize(400);
+                        setTempFuelSize(width / 3.2);
                         break;
                     case 3:
                         //currentGauge.source = "";
                         currentGauge.source = "qrc:/Original740Layout.qml"
-                        setSmallGaugeSize(140);
-                        setTachSize(275);
-                        setSpeedoSize(350);
-                        setSpeedoMax(140);
-                        setTempFuelSize(300);
+                        setSmallGaugeSize(width / 9.15);
+                        setTachSize(width / 4.65);
+                        setSpeedoSize(width / 3.66);
+                        setSpeedoMax(width / 9.15);
+                        setTempFuelSize(width / 4.27);
                         break;
                     case 4:
                         //currentGauge.source = "";

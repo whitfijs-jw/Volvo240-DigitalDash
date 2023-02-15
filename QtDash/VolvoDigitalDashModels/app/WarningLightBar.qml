@@ -9,8 +9,8 @@ Item {
     property int deadSpaceMiddle: 100;
 
     Rectangle {
-        width: 1280
-        height: 480
+        width: 1920
+        height: 720
         color: "transparent"
 
         Rectangle {
