@@ -14,6 +14,27 @@
 class DashLights: public QObject {
 Q_OBJECT
 public:
+    struct ActiveInput {
+        int activeInput = -1;
+        int count = 0;
+        bool countEnabled = true;
+        bool active = false;
+
+
+        void reset() {
+            activeInput = 0;
+            count = 0;
+            countEnabled = true;
+            active = false;
+        }
+
+        void operator++() {
+            if (countEnabled) {
+                count++;
+            }
+        }
+    };
+
     /**
      * @brief DashLights
      * @param parent
@@ -79,6 +100,7 @@ public:
 
 signals:
     void userInputActive(uint8_t input);
+    void userInputLongPress(uint8_t input);
 
 public slots:
     /**
@@ -124,19 +146,39 @@ public slots:
         bool userInput4 = readPin(userInputPinConfig.value(Config::USER_INPUT4, 15), inputs, activeLow);
 
         bool active = (userInput1 || userInput2 || userInput3 || userInput4);
-        if (!mInputActive && active) {
-            mInputActive = true;
-            if (userInput1) {
-                emit userInputActive(0);
-            } else if (userInput2) {
-                emit userInputActive(1);
-            } else if (userInput3) {
-                emit userInputActive(2);
-            } else if (userInput4) {
-                emit userInputActive(3);
+
+        if (active) {
+            if (!mActiveInput.active) {
+                // First press -- send out initial active event
+                int activeInput = -1;
+                if (userInput1) {
+                    activeInput = 0;
+                } else if (userInput2) {
+                    activeInput = 1;
+                } else if (userInput3) {
+                    activeInput = 2;
+                } else if (userInput4) {
+                    activeInput = 3;
+                }
+                emit userInputActive(activeInput);
+                mActiveInput.activeInput = activeInput;
+            } else {
+                // continued active event -- check if we've exceeded the long press threshold
+                if ((userInput1 && mActiveInput.activeInput == 1) ||
+                    (userInput2 && mActiveInput.activeInput == 2) ||
+                    (userInput3 && mActiveInput.activeInput == 3) ||
+                    (userInput4 && mActiveInput.activeInput == 4)) {
+                    ++mActiveInput;
+                }
+
+                if (mActiveInput.count > 50) {
+                    // we've been pressed for a while -- emit event and then disable counting
+                    emit userInputLongPress(mActiveInput.activeInput);
+                    mActiveInput.countEnabled = false;
+                }
             }
-        } else if (!active){
-            mInputActive = false;
+        } else {
+            mActiveInput.reset();
         }
 
 #else
@@ -185,7 +227,7 @@ private:
     QMap<QString, int> mLightsConfig; //!< Dash light config
     QMap<QString, WarningLightModel*> mWarningLightModels; //!< map of warning light model names (from qml) and c++/qobject model references
     QMap<QString, IndicatorModel*> mIndicatorModels; //!< map of indicator model names (from qml) and c++/qobject model references
-    bool mInputActive = false;
+    ActiveInput mActiveInput;
 
     IndicatorModel mLeftBlinkerModel; //!< left blinker model
     IndicatorModel mRightBlinkerModel; //!< right blinker model
