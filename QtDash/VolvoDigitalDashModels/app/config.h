@@ -88,6 +88,8 @@ public:
     static constexpr char USER_INPUT3_MAP[] = "input_3_map";
     static constexpr char USER_INPUT4_MAP[] = "input_4_map";
     static constexpr Qt::Key USER_INPUT_DEFAULT_KEY = Qt::Key::Key_A;
+    static constexpr char USER_INPUT_LONG_PRESS_DURATION[] = "long_press_msec";
+    static constexpr int DEFAULT_LONG_PRESS_DURATION_MSEC = 3000;
 
     //expected map sensor keys
     static constexpr char PRESSURE_AT_0V[] = "p_0v";
@@ -760,6 +762,8 @@ public:
                 mUserInputConfig.insert(2, mKeyMap.value(mConfig->value(key, "Key_B").toString(), USER_INPUT_DEFAULT_KEY));
             } else if (QString::compare(key, USER_INPUT4_MAP) == 0) {
                 mUserInputConfig.insert(3, mKeyMap.value(mConfig->value(key, "Key_Right").toString(), USER_INPUT_DEFAULT_KEY));
+            } else if (QString::compare(key, USER_INPUT_LONG_PRESS_DURATION) == 0) {
+                mUserInputPinConfig.insert(key, mConfig->value(key, DEFAULT_LONG_PRESS_DURATION_MSEC).toInt());
             } else {
                 mUserInputPinConfig.insert(key, mConfig->value(key).toInt());
             }

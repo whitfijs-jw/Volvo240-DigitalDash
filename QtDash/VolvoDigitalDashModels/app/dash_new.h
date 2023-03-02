@@ -578,16 +578,17 @@ private:
 
         // hook up long press events -- this will need to be configurable at some point:
         QObject::connect(mDashLights, &DashLights::userInputLongPress, [=] (uint8_t n) {
+            qDebug() << "Long press detected: " << n;
             switch(n) {
-            case 1:
+            case 0:
                 break;
-            case 2:
+            case 1:
                 mTripAOdoSensor->reset();
                 break;
-            case 3:
+            case 2:
                 mTripBOdoSensor->reset();
                 break;
-            case 4:
+            case 3:
                 break;
             default:
                 break;

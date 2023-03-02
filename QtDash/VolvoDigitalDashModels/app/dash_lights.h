@@ -7,6 +7,7 @@
 #include <config.h>
 #include <QMap>
 #include <mcp23017.h>
+#include <QElapsedTimer>
 
 /**
  * @brief The DashLights class
@@ -14,24 +15,28 @@
 class DashLights: public QObject {
 Q_OBJECT
 public:
-    struct ActiveInput {
+    class ActiveInput {
+    public:
         int activeInput = -1;
-        int count = 0;
-        bool countEnabled = true;
         bool active = false;
+        bool longPressed = false;
+        QElapsedTimer * activeTimer;
+        int longPressDuration;
 
+        ActiveInput() {
+            activeTimer = new QElapsedTimer();
+        }
+
+        void activate(int input) {
+            activeInput = input;
+            active = true;
+            activeTimer->restart();
+        }
 
         void reset() {
             activeInput = 0;
-            count = 0;
-            countEnabled = true;
             active = false;
-        }
-
-        void operator++() {
-            if (countEnabled) {
-                count++;
-            }
+            longPressed = false;
         }
     };
 
@@ -42,6 +47,9 @@ public:
      */
     DashLights(QObject * parent, Config * config) :
         QObject(parent), mConfig(config), mLightsConfig(config->getDashLightConfig()) {
+        mActiveInput.longPressDuration =
+            mConfig->getUserInputPinConfig().value(
+                Config::USER_INPUT_LONG_PRESS_DURATION, Config::DEFAULT_LONG_PRESS_DURATION_MSEC);
     }
 
     /**
@@ -137,6 +145,7 @@ public slots:
         mShiftUpLightModel.setOn(0);
         mServiceLightModel.setOn(0);
 
+        // deal with user inputs here
         auto userInputPinConfig = mConfig->getUserInputPinConfig();
         auto userInputConfig = mConfig->geUserInputConfig();
 
@@ -145,9 +154,11 @@ public slots:
         bool userInput3 = readPin(userInputPinConfig.value(Config::USER_INPUT3, 14), inputs, activeLow);
         bool userInput4 = readPin(userInputPinConfig.value(Config::USER_INPUT4, 15), inputs, activeLow);
 
+        // check if any of the inputs are active
         bool active = (userInput1 || userInput2 || userInput3 || userInput4);
 
         if (active) {
+            // only trigger an event if we haven't previously triggered an event
             if (!mActiveInput.active) {
                 // First press -- send out initial active event
                 int activeInput = -1;
@@ -161,20 +172,13 @@ public slots:
                     activeInput = 3;
                 }
                 emit userInputActive(activeInput);
-                mActiveInput.activeInput = activeInput;
+                mActiveInput.activate(activeInput);
             } else {
-                // continued active event -- check if we've exceeded the long press threshold
-                if ((userInput1 && mActiveInput.activeInput == 1) ||
-                    (userInput2 && mActiveInput.activeInput == 2) ||
-                    (userInput3 && mActiveInput.activeInput == 3) ||
-                    (userInput4 && mActiveInput.activeInput == 4)) {
-                    ++mActiveInput;
-                }
-
-                if (mActiveInput.count > 50) {
-                    // we've been pressed for a while -- emit event and then disable counting
+                // check how long we've been pressed
+                if ((mActiveInput.activeTimer->elapsed() >= mActiveInput.longPressDuration) && !mActiveInput.longPressed) {
+                    // we've been pressed for a while -- emit event and then make sure we don't trigger the event twice
                     emit userInputLongPress(mActiveInput.activeInput);
-                    mActiveInput.countEnabled = false;
+                    mActiveInput.longPressed = true;
                 }
             }
         } else {
