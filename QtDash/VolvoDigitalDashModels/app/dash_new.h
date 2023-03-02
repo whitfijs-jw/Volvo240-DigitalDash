@@ -567,11 +567,31 @@ private:
         mDashLights = new DashLights(this->parent(), &mConfig);
         mDashLights->init();
 
+        // Hook up key press events
         QObject::connect(mDashLights, &DashLights::userInputActive, [=] (uint8_t n) {
             QKeyEvent * event = nullptr;
             if (n <= 3) {
                 event = new QKeyEvent(QKeyEvent::KeyPress, mConfig.geUserInputConfig().value(n, Qt::Key::Key_Left), Qt::NoModifier);
                 emit keyPress(event);
+            }
+        });
+
+        // hook up long press events -- this will need to be configurable at some point:
+        QObject::connect(mDashLights, &DashLights::userInputLongPress, [=] (uint8_t n) {
+            qDebug() << "Long press detected: " << n;
+            switch(n) {
+            case 0:
+                break;
+            case 1:
+                mTripAOdoSensor->reset();
+                break;
+            case 2:
+                mTripBOdoSensor->reset();
+                break;
+            case 3:
+                break;
+            default:
+                break;
             }
         });
 

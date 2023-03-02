@@ -7,6 +7,7 @@
 #include <config.h>
 #include <QMap>
 #include <mcp23017.h>
+#include <QElapsedTimer>
 
 /**
  * @brief The DashLights class
@@ -14,6 +15,31 @@
 class DashLights: public QObject {
 Q_OBJECT
 public:
+    class ActiveInput {
+    public:
+        int activeInput = -1;
+        bool active = false;
+        bool longPressed = false;
+        QElapsedTimer * activeTimer;
+        int longPressDuration;
+
+        ActiveInput() {
+            activeTimer = new QElapsedTimer();
+        }
+
+        void activate(int input) {
+            activeInput = input;
+            active = true;
+            activeTimer->restart();
+        }
+
+        void reset() {
+            activeInput = 0;
+            active = false;
+            longPressed = false;
+        }
+    };
+
     /**
      * @brief DashLights
      * @param parent
@@ -21,6 +47,9 @@ public:
      */
     DashLights(QObject * parent, Config * config) :
         QObject(parent), mConfig(config), mLightsConfig(config->getDashLightConfig()) {
+        mActiveInput.longPressDuration =
+            mConfig->getUserInputPinConfig().value(
+                Config::USER_INPUT_LONG_PRESS_DURATION, Config::DEFAULT_LONG_PRESS_DURATION_MSEC);
     }
 
     /**
@@ -79,6 +108,7 @@ public:
 
 signals:
     void userInputActive(uint8_t input);
+    void userInputLongPress(uint8_t input);
 
 public slots:
     /**
@@ -115,6 +145,7 @@ public slots:
         mShiftUpLightModel.setOn(0);
         mServiceLightModel.setOn(0);
 
+        // deal with user inputs here
         auto userInputPinConfig = mConfig->getUserInputPinConfig();
         auto userInputConfig = mConfig->geUserInputConfig();
 
@@ -123,20 +154,35 @@ public slots:
         bool userInput3 = readPin(userInputPinConfig.value(Config::USER_INPUT3, 14), inputs, activeLow);
         bool userInput4 = readPin(userInputPinConfig.value(Config::USER_INPUT4, 15), inputs, activeLow);
 
+        // check if any of the inputs are active
         bool active = (userInput1 || userInput2 || userInput3 || userInput4);
-        if (!mInputActive && active) {
-            mInputActive = true;
-            if (userInput1) {
-                emit userInputActive(0);
-            } else if (userInput2) {
-                emit userInputActive(1);
-            } else if (userInput3) {
-                emit userInputActive(2);
-            } else if (userInput4) {
-                emit userInputActive(3);
+
+        if (active) {
+            // only trigger an event if we haven't previously triggered an event
+            if (!mActiveInput.active) {
+                // First press -- send out initial active event
+                int activeInput = -1;
+                if (userInput1) {
+                    activeInput = 0;
+                } else if (userInput2) {
+                    activeInput = 1;
+                } else if (userInput3) {
+                    activeInput = 2;
+                } else if (userInput4) {
+                    activeInput = 3;
+                }
+                emit userInputActive(activeInput);
+                mActiveInput.activate(activeInput);
+            } else {
+                // check how long we've been pressed
+                if ((mActiveInput.activeTimer->elapsed() >= mActiveInput.longPressDuration) && !mActiveInput.longPressed) {
+                    // we've been pressed for a while -- emit event and then make sure we don't trigger the event twice
+                    emit userInputLongPress(mActiveInput.activeInput);
+                    mActiveInput.longPressed = true;
+                }
             }
-        } else if (!active){
-            mInputActive = false;
+        } else {
+            mActiveInput.reset();
         }
 
 #else
@@ -185,7 +231,7 @@ private:
     QMap<QString, int> mLightsConfig; //!< Dash light config
     QMap<QString, WarningLightModel*> mWarningLightModels; //!< map of warning light model names (from qml) and c++/qobject model references
     QMap<QString, IndicatorModel*> mIndicatorModels; //!< map of indicator model names (from qml) and c++/qobject model references
-    bool mInputActive = false;
+    ActiveInput mActiveInput;
 
     IndicatorModel mLeftBlinkerModel; //!< left blinker model
     IndicatorModel mRightBlinkerModel; //!< right blinker model
