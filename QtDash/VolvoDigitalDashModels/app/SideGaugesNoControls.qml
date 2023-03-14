@@ -17,7 +17,7 @@ Item {
 
         ListView {
             model: boostModel
-            delegate: BoostDelegate240Style
+            delegate: boostDelegate
         }
     }
 //    Rectangle {

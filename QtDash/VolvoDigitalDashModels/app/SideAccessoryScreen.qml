@@ -11,110 +11,12 @@ Window {
 
     property int smallGaugeNeedleWidth240: smallGaugeSize * 0.04
 
+    BoostDelegate240Style {
+        id: boostDelegate
+    }
 
-//    Component {
-//        id: boostDelegate
-
-//        Loader {
-//            source: "qrc:/Gauge.qml"
-//            asynchronous: true
-//            onLoaded: {
-//                item.minValue = gaugeMin
-//                item.maxValue = gaugeMax
-//                item.units = gaugeUnits
-//                item.highAlarm = gaugeHighAlarm
-//                item.lowAlarm = gaugeMin
-//                item.initialValueOffset = gaugeMin
-
-//                item.minAngle = -226
-//                item.maxAngle = 45
-
-//                item.height = smallGaugeSize
-//                item.width = smallGaugeSize
-
-//                item.imageResource = "qrc:/accCluster/boost_black_no_numbers.png"
-
-//                item.needleColor = "orange"
-
-//                item.needleWidth = smallGaugeNeedleWidth240
-//                item.needleLength = smallGaugeSize * 0.55
-//                item.needleOffset = smallGaugeSize * .25 / 2
-
-//                item.needleCenterRadius = 0.15
-//            }
-
-//            Binding {
-//                target: item
-//                property: "value"
-//                value: currentValue
-//            }
-
-//            Binding {
-//                target: item
-//                property: "width"
-//                value: smallGaugeSize
-//            }
-
-//            Binding {
-//                target: item
-//                property: "height"
-//                value: smallGaugeSize
-//            }
-//        }
-//    }
-
-    Component {
+    VoltmeterDelegate240Style {
         id: voltMeterDelegate
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeLowAlarm
-
-                item.minAngle = -136
-                item.maxAngle = -45
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/accCluster/volt_black.png"
-
-                item.needleColor = "orange"
-
-                item.needleWidth = smallGaugeNeedleWidth240
-                item.needleLength = smallGaugeSize * 0.65
-                item.needleOffset = smallGaugeSize * .25 / 2
-
-                item.offset = smallGaugeSize / 4.5
-
-                item.significantDigits = 2
-
-                item.needleCenterRadius = 0.15
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
     Item {
@@ -144,7 +46,7 @@ Window {
             Loader {
                 id: currentLayout
                 anchors.fill: parent
-                source: "qrc:/sideScreen/SideGaugesNoControls.qml"
+                source: "qrc:/SideGaugesNoControls.qml"
                 asynchronous: true
                 visible: true
             }

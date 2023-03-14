@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
 
 
     if (screens.count() > 1) {
-        QQmlComponent *qml = new QQmlComponent(&engine, QUrl(QStringLiteral("qrc:/sideScreen/sideAccessoryScreen.qml")));
+        QQmlComponent *qml = new QQmlComponent(&engine, QUrl(QStringLiteral("qrc:/sideAccessoryScreen.qml")));
         QQuickWindow * accessoryWindow = qobject_cast<QQuickWindow *>(qml->create());
 
         QScreen * screen = screens[1];
@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
         }
     });
 
-    QQmlComponent *qml = new QQmlComponent(&engine, QUrl(QStringLiteral("qrc:/sideScreen/SideAccessoryScreen.qml")));
+    QQmlComponent *qml = new QQmlComponent(&engine, QUrl(QStringLiteral("qrc:/SideAccessoryScreen.qml")));
     QQuickWindow * accessoryWindow = qobject_cast<QQuickWindow *>(qml->create());
     accessoryWindow->setWidth(288);
     accessoryWindow->setHeight(480);

@@ -23,6 +23,44 @@
         <file>LinearGauge.qml</file>
         <file>Original544Layout.qml</file>
         <file>OriginalP1800Layout.qml</file>
+        <file>OdometerDelegate.qml</file>
+        <file>VoltmeterDelegate240Style.qml</file>
+        <file>BoostDelegate240Style.qml</file>
+        <file>SideAccessoryScreen.qml</file>
+        <file>SideGaugesNoControls.qml</file>
+        <file>BoostDelegate740Style.qml</file>
+        <file>BoostDelegate850Style.qml</file>
+        <file>OilPressureDelegate240Style.qml</file>
+        <file>OilTempereatureDelegate240Style.qml</file>
+        <file>ClockDelegate240Style.qml</file>
+        <file>TachometerDelegate240Style.qml</file>
+        <file>TachometerDelegate740Style.qml</file>
+        <file>SpeedoDelegate240Style.qml</file>
+        <file>SpeedoDelegate740Style.qml</file>
+        <file>TempAndFuelDelegate240Style.qml</file>
+        <file>CoolantTempDelegate740Style.qml</file>
+        <file>FuelLevelDelegate740Style.qml</file>
+        <file>VoltmeterDelegate740Style.qml</file>
+        <file>CoolantTempDelegate850Style.qml</file>
+        <file>FuelLevelDelegate850Style.qml</file>
+        <file>FuelLevelDelegateRSportStyle.qml</file>
+        <file>CoolantTempDelegateRSportStyle.qml</file>
+        <file>OilPressureDelegateRSportStyle.qml</file>
+        <file>VoltmeterDelegateRSportStyle.qml</file>
+        <file>SpeedoDelegateRSportStyle.qml</file>
+        <file>TachoDelegateRSportStyle.qml</file>
+        <file>SpeedoDelegate544Style.qml</file>
+        <file>TachoDelegate544Style.qml</file>
+        <file>VoltmeterDelegate544Style.qml</file>
+        <file>FuelLevelDelegate544Style.qml</file>
+        <file>CoolantTempDelegate544Style.qml</file>
+        <file>OilPressureDelegate544Style.qml</file>
+        <file>SpeedoDelegateP1800Style.qml</file>
+        <file>TachoDelegateP1800Style.qml</file>
+        <file>CoolantTempDelegateP1800Style.qml</file>
+        <file>OilTempDelegateP1800Style.qml</file>
+        <file>OilPressureDelegateP1800Style.qml</file>
+        <file>FuelLevelDelegateP1800Style.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -115,10 +153,5 @@
         <file>center-cover-small-p1800.png</file>
         <file>oil-pressure-p1800.png</file>
         <file>fuel-level-p1800.png</file>
-    </qresource>
-    <qresource prefix="/sideScreen">
-        <file>SideAccessoryScreen.qml</file>
-        <file>SideGaugesNoControls.qml</file>
-        <file>BoostDelegate240Style.qml</file>
     </qresource>
 </RCC>
