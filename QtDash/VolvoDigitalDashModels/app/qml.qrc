@@ -61,6 +61,7 @@
         <file>OilTempDelegateP1800Style.qml</file>
         <file>OilPressureDelegateP1800Style.qml</file>
         <file>FuelLevelDelegateP1800Style.qml</file>
+        <file>SideAccessoryScreenControl.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>

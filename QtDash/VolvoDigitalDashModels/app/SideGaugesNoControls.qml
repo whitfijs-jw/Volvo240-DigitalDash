@@ -1,10 +1,6 @@
 import QtQuick 2.15
 
 Item {
-    Rectangle {
-        anchors.fill: parent
-        color: "transparent"
-    }
 
     Rectangle {
         id: boostContainer
@@ -20,41 +16,12 @@ Item {
             delegate: boostDelegate
         }
     }
-//    Rectangle {
-//        id: oilPContainer
-//        anchors.left: tachContainer.right
-//        anchors.top: tachContainer.top
-
-//        height: smallGaugeSize
-//        width: smallGaugeSize
-//        color: "transparent"
-
-//        ListView {
-//            model: oilPModel
-//            delegate: oilPressureDelegate
-//        }
-//    }
-
-//    Rectangle {
-//        id: oilTContainer
-//        anchors.left: oilPContainer.right
-//        anchors.top: tachContainer.top
-
-//        height: smallGaugeSize
-//        width: smallGaugeSize
-//        color: "transparent"
-
-//        ListView {
-//            model: oilTModel
-//            delegate: oilTemperatureDelegate
-//        }
-//    }
 
     Rectangle {
         id: voltContainer
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: boostContainer.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 5
 
         height: smallGaugeSize
         width: smallGaugeSize

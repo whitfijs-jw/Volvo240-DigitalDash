@@ -2,7 +2,7 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 
 Window {
-
+    id: accWindow
     property int smallGaugeSize: if (width > height) {
                                      width / 2.3
                                  } else {
@@ -10,6 +10,12 @@ Window {
                                  }
 
     property int smallGaugeNeedleWidth240: smallGaugeSize * 0.04
+    property int buttonHeightFactor: 15.0;
+    property int buttonHeight: if (width > height) {
+                                   width / buttonHeightFactor;
+                               } else {
+                                   height / buttonHeightFactor;
+                               }
 
     BoostDelegate240Style {
         id: boostDelegate
@@ -27,28 +33,38 @@ Window {
                       0
                   }
         anchors.fill: parent
+        focus: false
 
         Rectangle {
+            id: container
             width: if (RASPBERRY_PI) {
                        parent.height
                    } else {
                        parent.width
                    }
-            height:  if (RASPBERRY_PI) {
-                         parent.width
-                     } else {
-                         parent.height
-                     }
+            height: if (RASPBERRY_PI) {
+                        parent.width
+                    } else {
+                        parent.height
+                    }
             color: "black"
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
 
             Loader {
                 id: currentLayout
-                anchors.fill: parent
+                width: container.width
+                height: container.height - buttonHeight
                 source: "qrc:/SideGaugesNoControls.qml"
                 asynchronous: true
                 visible: true
+            }
+
+            Loader {
+                id: controlLayout
+                anchors.fill: parent
+                source: "qrc:/SideAccessoryScreenControl.qml"
+                asynchronous: true
             }
          }
     }

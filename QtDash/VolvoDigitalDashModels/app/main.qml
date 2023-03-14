@@ -3,12 +3,18 @@ import QtQuick.Window 2.15
 
 Window {
     id: rootWindow
+    objectName: "rootWindow"
     visible: true
     width: 1280
     height: 480
 
     title: qsTr("Lolvo")
 
+    SideAccessoryScreen {
+        id: accessoryScreen
+        objectName: "accessoryScreen"
+        visible: true
+    }
 
     property int smallGaugeSize: 140
     property int tachSize: 400
@@ -71,6 +77,10 @@ Window {
         }
 
         return angle;
+    }
+
+    function advance(forward) {
+        gaugeItem.advanceScreen(forward);
     }
 
     OdometerDelegate {
@@ -592,102 +602,111 @@ Window {
             }
         }
 
+        function advanceScreen(forward) {
+            if (forward) {
+                if (++screen > 8) {
+                    screen = 0;
+                }
+            } else {
+                if (--screen < 0) {
+                    screen = 8;
+                }
+            }
+
+            switch (screen) {
+                case 0:
+                    //currentGauge.source = "";
+                    currentGauge.source = "qrc:/BigTachCenter.qml";
+                    setSmallGaugeSize(140);
+                    setTachSize(440);
+                    setSpeedoSize(tachSize - smallGaugeSize - 10);
+                    setSpeedoMax(120);
+                    setTempFuelSize(tachSize - smallGaugeSize - 10);
+                    break;
+                case 1:
+                    //currentGauge.source = "";
+                    currentGauge.source = "qrc:/BigTachLeft.qml";
+                    setSmallGaugeSize(140);
+                    setTachSize(440);
+                    setSpeedoSize(tachSize - smallGaugeSize - 10);
+                    setSpeedoMax(120);
+                    setTempFuelSize(tachSize - smallGaugeSize - 10);
+                    break;
+                case 2:
+                    //currentGauge.source = "";
+                    currentGauge.source = "qrc:/Original240Layout.qml";
+                    setSmallGaugeSize(140);
+                    setTachSize(400);
+                    setSpeedoSize(440);
+                    setSpeedoMax(120);
+                    setTempFuelSize(400);
+                    break;
+                case 3:
+                    //currentGauge.source = "";
+                    currentGauge.source = "qrc:/Original740Layout.qml"
+                    setSmallGaugeSize(140);
+                    setTachSize(275);
+                    setSpeedoSize(350);
+                    setSpeedoMax(140);
+                    setTempFuelSize(300);
+                    break;
+                case 4:
+                    //currentGauge.source = "";
+                    currentGauge.source = "qrc:/Original240LayoutClock.qml";
+                    setSmallGaugeSize(140);
+                    setTachSize(400);
+                    setSpeedoSize(440);
+                    setSpeedoMax(120);
+                    setTempFuelSize(400);
+                    break;
+                case 5:
+                    //currentGauge.source = "";
+                    currentGauge.source = "qrc:/Original850R.qml"
+                    setSmallGaugeSize(200);
+                    setTachSize(350);
+                    setSpeedoSize(440);
+                    setSpeedoMax(140);
+                    //setTempFuelSize(300);
+                    break;
+                case 6:
+                    currentGauge.source = "qrc:/OriginalRSportLayout.qml"
+                    setSmallGaugeSize(200);
+                    setTachSize(350);
+                    setSpeedoSize(350);
+                    setSpeedoMax(130);
+                    break;
+
+                case 7:
+                    currentGauge.source = "qrc:/Original544Layout.qml"
+                    setSmallGaugeSize(140);
+                    setTachSize(400);
+                    setSpeedoSize(440);
+                    setSpeedoMax(120);
+                    setTempFuelSize(400);
+                    break;
+                case 8:
+                    currentGauge.source = "qrc:/OriginalP1800Layout.qml"
+                    setSmallGaugeSize(200);
+                    setTachSize(350);
+                    setSpeedoSize(440);
+                    setSpeedoMax(120);
+                    break;
+                default:
+                    break;
+                }
+        }
+
         Keys.onPressed: {
             if (!event.isAutoRepeat) {
                 switch (event.key) {
                 case Qt.Key_Left:
-                    if (--screen < 0) {
-                        screen = 8;
-                    }
+                    advanceScreen(false);
                     break;
                 case Qt.Key_Right:
-                    if (++screen > 8) {
-                        screen = 0;
-                    }
+                    advanceScreen(true);
                     break;
                 }
 
-                switch (screen) {
-                    case 0:
-                        //currentGauge.source = "";
-                        currentGauge.source = "qrc:/BigTachCenter.qml";
-                        setSmallGaugeSize(140);
-                        setTachSize(440);
-                        setSpeedoSize(tachSize - smallGaugeSize - 10);
-                        setSpeedoMax(120);
-                        setTempFuelSize(tachSize - smallGaugeSize - 10);
-                        break;
-                    case 1:
-                        //currentGauge.source = "";
-                        currentGauge.source = "qrc:/BigTachLeft.qml";
-                        setSmallGaugeSize(140);
-                        setTachSize(440);
-                        setSpeedoSize(tachSize - smallGaugeSize - 10);
-                        setSpeedoMax(120);
-                        setTempFuelSize(tachSize - smallGaugeSize - 10);
-                        break;
-                    case 2:
-                        //currentGauge.source = "";
-                        currentGauge.source = "qrc:/Original240Layout.qml";
-                        setSmallGaugeSize(140);
-                        setTachSize(400);
-                        setSpeedoSize(440);
-                        setSpeedoMax(120);
-                        setTempFuelSize(400);
-                        break;
-                    case 3:
-                        //currentGauge.source = "";
-                        currentGauge.source = "qrc:/Original740Layout.qml"
-                        setSmallGaugeSize(140);
-                        setTachSize(275);
-                        setSpeedoSize(350);
-                        setSpeedoMax(140);
-                        setTempFuelSize(300);
-                        break;
-                    case 4:
-                        //currentGauge.source = "";
-                        currentGauge.source = "qrc:/Original240LayoutClock.qml";
-                        setSmallGaugeSize(140);
-                        setTachSize(400);
-                        setSpeedoSize(440);
-                        setSpeedoMax(120);
-                        setTempFuelSize(400);
-                        break;
-                    case 5:
-                        //currentGauge.source = "";
-                        currentGauge.source = "qrc:/Original850R.qml"
-                        setSmallGaugeSize(200);
-                        setTachSize(350);
-                        setSpeedoSize(440);
-                        setSpeedoMax(140);
-                        //setTempFuelSize(300);
-                        break;
-                    case 6:
-                        currentGauge.source = "qrc:/OriginalRSportLayout.qml"
-                        setSmallGaugeSize(200);
-                        setTachSize(350);
-                        setSpeedoSize(350);
-                        setSpeedoMax(130);
-                        break;
-
-                    case 7:
-                        currentGauge.source = "qrc:/Original544Layout.qml"
-                        setSmallGaugeSize(140);
-                        setTachSize(400);
-                        setSpeedoSize(440);
-                        setSpeedoMax(120);
-                        setTempFuelSize(400);
-                        break;
-                    case 8:
-                        currentGauge.source = "qrc:/OriginalP1800Layout.qml"
-                        setSmallGaugeSize(200);
-                        setTachSize(350);
-                        setSpeedoSize(440);
-                        setSpeedoMax(120);
-                        break;
-                    default:
-                        break;
-                    }
                 event.accepted = true;
             }
         }

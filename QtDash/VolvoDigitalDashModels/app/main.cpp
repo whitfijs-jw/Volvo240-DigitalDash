@@ -8,6 +8,7 @@
 #include <QScreen>
 #include <QQmlComponent>
 #include <QQuickWindow>
+#include <key_press_emitter.h>
 
 #include <config.h>
 
@@ -52,10 +53,18 @@ int main(int argc, char *argv[])
         }
     });
 
+    dash->init();
+
+    // load main.qml
+    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
+    if (engine.rootObjects().isEmpty())
+        return -1;
+
+    // connect quit
+    QObject::connect(&engine, SIGNAL(quit()), &app, SLOT(quit()));
 
     if (screens.count() > 1) {
-        QQmlComponent *qml = new QQmlComponent(&engine, QUrl(QStringLiteral("qrc:/sideAccessoryScreen.qml")));
-        QQuickWindow * accessoryWindow = qobject_cast<QQuickWindow *>(qml->create());
+        QQuickWindow * accessoryWindow = engine.rootObjects()[0]->findChild<QQuickWindow *>("accessoryScreen");
 
         QScreen * screen = screens[1];
         screen->setOrientationUpdateMask(Qt::PortraitOrientation);
@@ -74,14 +83,7 @@ int main(int argc, char *argv[])
         }
     });
 
-    QQmlComponent *qml = new QQmlComponent(&engine, QUrl(QStringLiteral("qrc:/SideAccessoryScreen.qml")));
-    QQuickWindow * accessoryWindow = qobject_cast<QQuickWindow *>(qml->create());
-    accessoryWindow->setWidth(288);
-    accessoryWindow->setHeight(480);
-    accessoryWindow->show();
-#endif
     dash->init();
-
 
     // load main.qml
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
@@ -91,6 +93,11 @@ int main(int argc, char *argv[])
     // connect quit
     QObject::connect(&engine, SIGNAL(quit()), &app, SLOT(quit()));
 
+    QQuickWindow * accessoryWindow = engine.rootObjects()[0]->findChild<QQuickWindow *>("accessoryScreen");
+    accessoryWindow->setWidth(288);
+    accessoryWindow->setHeight(480);
+    accessoryWindow->show();
+#endif
     // Start Dash
     dash->start();
 
