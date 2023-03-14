@@ -116,4 +116,9 @@
         <file>oil-pressure-p1800.png</file>
         <file>fuel-level-p1800.png</file>
     </qresource>
+    <qresource prefix="/sideScreen">
+        <file>SideAccessoryScreen.qml</file>
+        <file>SideGaugesNoControls.qml</file>
+        <file>BoostDelegate240Style.qml</file>
+    </qresource>
 </RCC>

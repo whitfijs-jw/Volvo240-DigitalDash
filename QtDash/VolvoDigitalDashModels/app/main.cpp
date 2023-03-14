@@ -5,6 +5,9 @@
 #include <QFontDatabase>
 #include <QList>
 #include <QSurface>
+#include <QScreen>
+#include <QQmlComponent>
+#include <QQuickWindow>
 
 #include <config.h>
 
@@ -19,6 +22,15 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
+
+    QList<QScreen *> screens = app.screens();
+    qDebug("Application sees %d screens", screens.count());
+    for (auto screen : screens) {
+        qDebug() << "Screen: " << screen;
+        qDebug() << screen->physicalSize();
+        qDebug() << screen->availableSize();
+        qDebug() << screen->availableSize();
+    }
 
     QFontDatabase::addApplicationFont(":/fonts/HandelGothReg.ttf");
     QFont mFont;
@@ -39,6 +51,18 @@ int main(int argc, char *argv[])
             QCoreApplication::postEvent(engine.rootObjects().first(), ev);
         }
     });
+
+
+    if (screens.count() > 1) {
+        QQmlComponent *qml = new QQmlComponent(&engine, QUrl(QStringLiteral("qrc:/sideScreen/sideAccessoryScreen.qml")));
+        QQuickWindow * accessoryWindow = qobject_cast<QQuickWindow *>(qml->create());
+
+        QScreen * screen = screens[1];
+        screen->setOrientationUpdateMask(Qt::PortraitOrientation);
+
+        accessoryWindow->setScreen(screen);
+        accessoryWindow->setProperty("visible", true);
+    }
 #else
     DashHost * dash = new DashHost(&app, ctxt);
     ctxt->setContextProperty("RASPBERRY_PI", QVariant(false));
@@ -49,6 +73,12 @@ int main(int argc, char *argv[])
             QCoreApplication::postEvent(engine.rootObjects().first(), ev);
         }
     });
+
+    QQmlComponent *qml = new QQmlComponent(&engine, QUrl(QStringLiteral("qrc:/sideScreen/SideAccessoryScreen.qml")));
+    QQuickWindow * accessoryWindow = qobject_cast<QQuickWindow *>(qml->create());
+    accessoryWindow->setWidth(288);
+    accessoryWindow->setHeight(480);
+    accessoryWindow->show();
 #endif
     dash->init();
 
