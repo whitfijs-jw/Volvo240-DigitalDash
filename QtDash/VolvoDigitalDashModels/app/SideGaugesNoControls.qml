@@ -23,7 +23,7 @@ Item {
         width: smallGaugeSize
 
         anchors.top: upperGauge.bottom
-        anchors.topMargin: parent.height / 20
+        anchors.topMargin: parent.height / 25
         anchors.horizontalCenter: parent.horizontalCenter
 
         initalModel: voltMeterModel

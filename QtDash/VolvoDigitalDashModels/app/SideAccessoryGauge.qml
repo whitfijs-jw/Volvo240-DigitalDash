@@ -18,14 +18,12 @@ Item {
 
         MouseArea {
             anchors.fill: parent
-
             onPressAndHold: {
                 contextMenu.popup()
             }
 
             Menu {
                 id: contextMenu
-
                 MenuItem {
                     text: "boost"
                     onTriggered: {

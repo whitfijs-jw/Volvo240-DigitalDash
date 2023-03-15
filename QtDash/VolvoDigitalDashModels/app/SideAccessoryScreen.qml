@@ -10,12 +10,6 @@ Window {
                                  }
 
     property int smallGaugeNeedleWidth240: smallGaugeSize * 0.04
-    property int buttonHeightFactor: 12.0;
-    property int buttonHeight: if (width > height) {
-                                   width / buttonHeightFactor;
-                               } else {
-                                   height / buttonHeightFactor;
-                               }
 
     BoostDelegate240Style {
         id: boostDelegate240
@@ -66,7 +60,7 @@ Window {
             Loader {
                 id: currentLayout
                 width: container.width
-                height: container.height - buttonHeight
+                height: container.height - 50
                 source: "qrc:/SideGaugesNoControls.qml"
                 asynchronous: true
                 visible: true
