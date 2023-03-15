@@ -1,36 +1,32 @@
 import QtQuick 2.15
+import QtQuick.Controls 2.15
 
 Item {
+    SideAccessoryGauge {
+        id: upperGauge
 
-    Rectangle {
-        id: boostContainer
+        height: smallGaugeSize
+        width: smallGaugeSize
+
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
 
-        height: smallGaugeSize
-        width: smallGaugeSize
-        color: "transparent"
 
-        ListView {
-            model: boostModel
-            delegate: boostDelegate
-        }
+        initalModel: boostModel
+        initialDelegate: boostDelegate240
     }
 
-    Rectangle {
-        id: voltContainer
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: boostContainer.bottom
-        anchors.topMargin: 5
+    SideAccessoryGauge {
+        id: lowerGauge
 
         height: smallGaugeSize
         width: smallGaugeSize
-        color: "transparent"
 
-        ListView {
-            id: gaugeVolt
-            model: voltMeterModel
-            delegate: voltMeterDelegate
-        }
+        anchors.top: upperGauge.bottom
+        anchors.topMargin: parent.height / 20
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        initalModel: voltMeterModel
+        initialDelegate: voltMeterDelegate240
     }
 }

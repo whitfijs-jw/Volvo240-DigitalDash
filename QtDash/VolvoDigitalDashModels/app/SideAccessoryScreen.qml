@@ -4,13 +4,13 @@ import QtQuick.Window 2.15
 Window {
     id: accWindow
     property int smallGaugeSize: if (width > height) {
-                                     width / 2.3
+                                     width / 2.4
                                  } else {
-                                     height / 2.3
+                                     height / 2.4
                                  }
 
     property int smallGaugeNeedleWidth240: smallGaugeSize * 0.04
-    property int buttonHeightFactor: 15.0;
+    property int buttonHeightFactor: 12.0;
     property int buttonHeight: if (width > height) {
                                    width / buttonHeightFactor;
                                } else {
@@ -18,11 +18,23 @@ Window {
                                }
 
     BoostDelegate240Style {
-        id: boostDelegate
+        id: boostDelegate240
     }
 
     VoltmeterDelegate240Style {
-        id: voltMeterDelegate
+        id: voltMeterDelegate240
+    }
+
+    OilPressureDelegate240Style {
+        id: oilPressureDelegate240
+    }
+
+    OilTempereatureDelegate240Style {
+        id: oilTemperatureDelegate240
+    }
+
+    ClockDelegate240Style {
+        id: clockDelegate240
     }
 
     Item {
