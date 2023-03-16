@@ -161,5 +161,6 @@
         <file>center-cover-small-p1800.png</file>
         <file>oil-pressure-p1800.png</file>
         <file>fuel-level-p1800.png</file>
+        <file>boost-p1800.png</file>
     </qresource>
 </RCC>
