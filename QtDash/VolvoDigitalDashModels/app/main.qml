@@ -13,7 +13,6 @@ Window {
     SideAccessoryScreen {
         id: accessoryScreen
         objectName: "accessoryScreen"
-        visible: true
         currentLayoutSource: "qrc:/SideAccessoryLayout240Style.qml"
     }
 

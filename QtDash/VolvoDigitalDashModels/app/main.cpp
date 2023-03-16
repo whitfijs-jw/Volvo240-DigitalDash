@@ -96,7 +96,7 @@ int main(int argc, char *argv[])
     QQuickWindow * accessoryWindow = engine.rootObjects()[0]->findChild<QQuickWindow *>("accessoryScreen");
     accessoryWindow->setWidth(480);
     accessoryWindow->setHeight(800);
-    accessoryWindow->show();
+    accessoryWindow->setProperty("visible", true);
 #endif
     // Start Dash
     dash->start();
