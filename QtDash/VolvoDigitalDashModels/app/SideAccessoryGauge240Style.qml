@@ -21,15 +21,15 @@ Item {
         MouseArea {
             anchors.fill: parent
             onPressAndHold: {
-                selectionMenu.x = mouse.x;
-                selectionMenu.y = mouse.y;
+                selectionMenu.x = mouse.x - selectionMenu.width / 2.0;
+                selectionMenu.y = mouse.y - selectionMenu.height / 2.0;
                 selectionMenu.visible = true;
             }
             Column {
                 id: selectionMenu
 
-                width: parent.width / 2
-                height: parent.width / 2
+                width: parent.width / 1.5
+                height: parent.width / 1.5
 
                 spacing: 2
                 visible: false;

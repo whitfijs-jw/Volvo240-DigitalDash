@@ -27,7 +27,7 @@
         <file>VoltmeterDelegate240Style.qml</file>
         <file>BoostDelegate240Style.qml</file>
         <file>SideAccessoryScreen.qml</file>
-        <file>SideGaugesNoControls.qml</file>
+        <file>SideAccessoryLayout240Style.qml</file>
         <file>BoostDelegate740Style.qml</file>
         <file>BoostDelegate850Style.qml</file>
         <file>OilPressureDelegate240Style.qml</file>
@@ -62,7 +62,10 @@
         <file>OilPressureDelegateP1800Style.qml</file>
         <file>FuelLevelDelegateP1800Style.qml</file>
         <file>SideAccessoryScreenControl.qml</file>
-        <file>SideAccessoryGauge.qml</file>
+        <file>SideAccessoryGauge240Style.qml</file>
+        <file>OilTempDelegate740Style.qml</file>
+        <file>SideAccessoryGauge740Style.qml</file>
+        <file>SideAccessoryLayout740Style.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -109,6 +112,7 @@
         <file>740_speedo.png</file>
         <file>740_clock.png</file>
         <file>740_voltmeter.png</file>
+        <file>740_oil_temperature.png</file>
     </qresource>
     <qresource prefix="/gauge-faces-850">
         <file>850_unleaded_only.png</file>

@@ -2,7 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Item {
-    SideAccessoryGauge {
+    SideAccessoryGauge240Style {
         id: upperGauge
 
         height: smallGaugeSize
@@ -16,7 +16,7 @@ Item {
         initialDelegate: boostDelegate240
     }
 
-    SideAccessoryGauge {
+    SideAccessoryGauge240Style {
         id: lowerGauge
 
         height: smallGaugeSize

@@ -14,6 +14,7 @@ Window {
         id: accessoryScreen
         objectName: "accessoryScreen"
         visible: true
+        currentLayoutSource: "qrc:/SideAccessoryLayout240Style.qml"
     }
 
     property int smallGaugeSize: 140
@@ -87,16 +88,9 @@ Window {
         id: odometerDelegate
     }
 
+    // 240 style delegates
     BoostDelegate240Style {
         id: boostDelegate
-    }
-
-    BoostDelegate740Style {
-        id: boostDelegate740
-    }
-
-    BoostDelegate850Style {
-        id: boostDelegate850
     }
 
     OilPressureDelegate240Style {
@@ -119,20 +113,25 @@ Window {
         id: rpmDelegate
     }
 
-    TachometerDelegate740Style {
-        id: rpmDelegate740
-    }
-
     SpeedoDelegate240Style {
         id: speedoDelegate
     }
 
-    SpeedoDelegate740Style {
-        id: speedoDelegate740
-    }
-
     TempAndFuelDelegate240Style {
         id: tempFuelDelegate
+    }
+
+    // 740 style delegates
+    BoostDelegate740Style {
+        id: boostDelegate740
+    }
+
+    TachometerDelegate740Style {
+        id: rpmDelegate740
+    }
+
+    SpeedoDelegate740Style {
+        id: speedoDelegate740
     }
 
     CoolantTempDelegate740Style {
@@ -147,6 +146,11 @@ Window {
         id: voltMeterDelegate740
     }
 
+    // 850 style delegates
+    BoostDelegate850Style {
+        id: boostDelegate850
+    }
+
     CoolantTempDelegate850Style {
         id: coolantDelegate850
     }
@@ -155,6 +159,7 @@ Window {
         id: fuelLevelDelegate850
     }
 
+    // rsport style delegates
     FuelLevelDelegateRSportStyle {
         id: fuelLevelDelegateRSport
     }
@@ -179,6 +184,7 @@ Window {
         id: rpmDelegateRSport
     }
 
+    // 544 style delegates
     SpeedoDelegate544Style {
         id: speedoDelegate544
     }
@@ -203,6 +209,7 @@ Window {
         id: oilPressureDelegate544
     }
 
+    // p1800 style delegates
     SpeedoDelegateP1800Style {
         id: speedoDelegateP1800
     }
@@ -556,7 +563,7 @@ Window {
     Item {
         id: gaugeItem
         anchors.fill: parent
-        focus: true
+        //focus: true
         rotation: if (RASPBERRY_PI) {
                       180
                   } else {
@@ -622,6 +629,7 @@ Window {
                     setSpeedoSize(tachSize - smallGaugeSize - 10);
                     setSpeedoMax(120);
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
+                    accessoryScreen.currentLayoutSource = "qrc:/SideAccessoryLayout240Style.qml";
                     break;
                 case 1:
                     //currentGauge.source = "";
@@ -631,6 +639,7 @@ Window {
                     setSpeedoSize(tachSize - smallGaugeSize - 10);
                     setSpeedoMax(120);
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
+                    accessoryScreen.currentLayoutSource = "qrc:/SideAccessoryLayout240Style.qml";
                     break;
                 case 2:
                     //currentGauge.source = "";
@@ -640,6 +649,7 @@ Window {
                     setSpeedoSize(440);
                     setSpeedoMax(120);
                     setTempFuelSize(400);
+                    accessoryScreen.currentLayoutSource = "qrc:/SideAccessoryLayout240Style.qml";
                     break;
                 case 3:
                     //currentGauge.source = "";
@@ -649,6 +659,7 @@ Window {
                     setSpeedoSize(350);
                     setSpeedoMax(140);
                     setTempFuelSize(300);
+                    accessoryScreen.currentLayoutSource = "qrc:/SideAccessoryLayout740Style.qml";
                     break;
                 case 4:
                     //currentGauge.source = "";
@@ -658,6 +669,7 @@ Window {
                     setSpeedoSize(440);
                     setSpeedoMax(120);
                     setTempFuelSize(400);
+                    accessoryScreen.currentLayoutSource = "qrc:/SideAccessoryLayout240Style.qml";
                     break;
                 case 5:
                     //currentGauge.source = "";
@@ -667,6 +679,7 @@ Window {
                     setSpeedoSize(440);
                     setSpeedoMax(140);
                     //setTempFuelSize(300);
+                    accessoryScreen.currentLayoutSource = "qrc:/SideAccessoryLayout740Style.qml";
                     break;
                 case 6:
                     currentGauge.source = "qrc:/OriginalRSportLayout.qml"

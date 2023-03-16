@@ -94,8 +94,8 @@ int main(int argc, char *argv[])
     QObject::connect(&engine, SIGNAL(quit()), &app, SLOT(quit()));
 
     QQuickWindow * accessoryWindow = engine.rootObjects()[0]->findChild<QQuickWindow *>("accessoryScreen");
-    accessoryWindow->setWidth(288);
-    accessoryWindow->setHeight(480);
+    accessoryWindow->setWidth(480);
+    accessoryWindow->setHeight(800);
     accessoryWindow->show();
 #endif
     // Start Dash

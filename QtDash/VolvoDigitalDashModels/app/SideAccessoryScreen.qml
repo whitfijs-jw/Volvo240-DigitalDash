@@ -10,7 +10,9 @@ Window {
                                  }
 
     property int smallGaugeNeedleWidth240: smallGaugeSize * 0.04
+    property string currentLayoutSource: "qrc:/SideAccessoryLayout240Style.qml"
 
+    // 240 style delegates
     BoostDelegate240Style {
         id: boostDelegate240
     }
@@ -29,6 +31,27 @@ Window {
 
     ClockDelegate240Style {
         id: clockDelegate240
+    }
+
+    // 740 style delegates
+    BoostDelegate740Style {
+        id: boostDelegate740
+    }
+
+    CoolantTempDelegate740Style {
+        id: coolantDelegate740
+    }
+
+    FuelLevelDelegate740Style {
+        id: fuelLevelDelegate740
+    }
+
+    VoltmeterDelegate740Style {
+        id: voltMeterDelegate740
+    }
+
+    OilTempDelegate740Style {
+        id: oilTempDelegate740
     }
 
     Item {
@@ -61,7 +84,7 @@ Window {
                 id: currentLayout
                 width: container.width
                 height: container.height - 50
-                source: "qrc:/SideGaugesNoControls.qml"
+                source: currentLayoutSource
                 asynchronous: true
                 visible: true
             }
