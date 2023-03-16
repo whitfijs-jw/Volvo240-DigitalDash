@@ -686,6 +686,7 @@ Window {
                     setTachSize(350);
                     setSpeedoSize(350);
                     setSpeedoMax(130);
+                    accessoryScreen.currentLayoutSource = "qrc:/SideAccessoryLayout240Style.qml";
                     break;
 
                 case 7:
@@ -695,6 +696,7 @@ Window {
                     setSpeedoSize(440);
                     setSpeedoMax(120);
                     setTempFuelSize(400);
+                    accessoryScreen.currentLayoutSource = "qrc:/SideAccessoryLayout240Style.qml";
                     break;
                 case 8:
                     currentGauge.source = "qrc:/OriginalP1800Layout.qml"
@@ -702,6 +704,7 @@ Window {
                     setTachSize(350);
                     setSpeedoSize(440);
                     setSpeedoMax(120);
+                    accessoryScreen.currentLayoutSource = "qrc:/SideAccessoryLayout240Style.qml";
                     break;
                 default:
                     break;
