@@ -4,6 +4,7 @@ import QtQuick.Controls 2.15
 Item {
     property var initalModel: boostModel
     property Component initialDelegate: boostDelegate740
+    property int numGauges: 6
 
     Rectangle {
         id: gaugeContainer
@@ -34,10 +35,11 @@ Item {
                 spacing: 2
                 visible: false;
 
+
                 Rectangle {
                     id: firstButton
                     width: parent.width
-                    height: parent.height / 5;
+                    height: parent.height / numGauges;
                     color: "white"
                     z: 100
                     Text {
@@ -55,7 +57,7 @@ Item {
                 }
                 Rectangle {
                     width: parent.width
-                    height: parent.height / 5;
+                    height: parent.height / numGauges;
                     color: "white"
                     z: 100
                     Text {
@@ -73,7 +75,25 @@ Item {
                 }
                 Rectangle {
                     width: parent.width
-                    height: parent.height / 5;
+                    height: parent.height / numGauges;
+                    color: "white"
+                    z: 100
+                    Text {
+                        text: qsTr("oil pressure")
+                        anchors.centerIn: parent
+                    }
+                    MouseArea {
+                        anchors.fill: parent
+                        onPressed: {
+                            gaugeTop.model = oilPModel;
+                            gaugeTop.delegate = oilPressureDelegate740;
+                            selectionMenu.visible = false;
+                        }
+                    }
+                }
+                Rectangle {
+                    width: parent.width
+                    height: parent.height / numGauges;
                     color: "white"
                     z: 100
                     Text {
@@ -91,7 +111,7 @@ Item {
                 }
                 Rectangle {
                     width: parent.width
-                    height: parent.height / 5;
+                    height: parent.height / numGauges;
                     color: "white"
                     z: 100
                     Text {
@@ -109,7 +129,7 @@ Item {
                 }
                 Rectangle {
                     width: parent.width
-                    height: parent.height / 5;
+                    height: parent.height / numGauges;
                     color: "white"
                     z: 100
                     Text {

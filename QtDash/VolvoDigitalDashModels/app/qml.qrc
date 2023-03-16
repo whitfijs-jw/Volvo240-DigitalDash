@@ -66,6 +66,7 @@
         <file>OilTempDelegate740Style.qml</file>
         <file>SideAccessoryGauge740Style.qml</file>
         <file>SideAccessoryLayout740Style.qml</file>
+        <file>OilPressureDelegate740Style.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -113,6 +114,7 @@
         <file>740_clock.png</file>
         <file>740_voltmeter.png</file>
         <file>740_oil_temperature.png</file>
+        <file>740_oil_pressure.png</file>
     </qresource>
     <qresource prefix="/gauge-faces-850">
         <file>850_unleaded_only.png</file>

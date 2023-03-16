@@ -760,13 +760,13 @@
      inkscape:window-height="1016"
      id="namedview836"
      showgrid="false"
-     inkscape:zoom="0.71122387"
-     inkscape:cx="3424.3789"
-     inkscape:cy="1103.0282"
+     inkscape:zoom="0.6104355"
+     inkscape:cx="4228.948"
+     inkscape:cy="1455.5182"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg834"
+     inkscape:current-layer="g6077-7"
      showguides="false"
      inkscape:pagecheckerboard="0"
      inkscape:snap-to-guides="false" />
@@ -1674,6 +1674,60 @@
          rx="2.7755599e-17" />
     </g>
   </g>
+  <g
+     id="g6638-3"
+     transform="translate(4672.9308,788.44144)"
+     inkscape:export-xdpi="144"
+     inkscape:export-ydpi="144"
+     inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/740_voltmeter.png">
+    <g
+       transform="translate(-4.2146748,13.221462)"
+       id="g6077-7">
+      <g
+         id="g17157"
+         inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/740_oil_pressure.png"
+         inkscape:export-xdpi="144"
+         inkscape:export-ydpi="144">
+        <rect
+           rx="2.7755599e-17"
+           y="310.74036"
+           x="-866.27917"
+           height="200"
+           width="200"
+           id="rect6038-6"
+           style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+           transform="translate(4.2146748,-13.221462)" />
+        <path
+           style="fill:none;stroke:#ffffff;stroke-width:3.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m -825.2201,355.07849 c 45.97123,-26.223 92.32503,-20.40254 125.68823,0"
+           id="path5898-6-5"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;line-height:1.25;font-family:'Handel Gothic';-inkscape-font-specification:'Handel Gothic';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none"
+           x="-831.86133"
+           y="377.28647"
+           id="text5938-9-6"><tspan
+             sodipodi:role="line"
+             id="tspan5936-9-2"
+             x="-831.86133"
+             y="377.28647"
+             style="font-size:18.6667px;fill:#ffffff">0</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;line-height:1.25;font-family:'Handel Gothic';-inkscape-font-specification:'Handel Gothic';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none"
+           x="-705.92706"
+           y="377.30515"
+           id="text5942-0-9"><tspan
+             sodipodi:role="line"
+             id="tspan5940-8-1"
+             x="-705.92706"
+             y="377.30515"
+             style="font-size:18.6667px;fill:#ffffff">5</tspan></text>
+      </g>
+    </g>
+  </g>
   <ellipse
      style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.113;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      id="path5884-4"
@@ -1716,7 +1770,7 @@
   </g>
   <g
      id="g6648"
-     transform="translate(4051.7964,489.22586)"
+     transform="translate(4001.0227,469.0814)"
      inkscape:export-xdpi="144"
      inkscape:export-ydpi="144"
      inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/740_fuel.png">
@@ -1738,15 +1792,20 @@
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="cc" />
       <path
-         style="fill:none;stroke:#ffffff;stroke-width:3.71135306;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:none;stroke:#ffffff;stroke-width:3.71135;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          d="m -461.13826,333.17813 -11.78197,21.80835"
          id="path6111-9"
          inkscape:connector-curvature="0" />
       <path
          inkscape:connector-curvature="0"
-         style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1.11300004;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1.113;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          d="m -573.26132,330.98568 c 4.35519,-1.68722 8.754,-3.15315 13.18302,-4.40339 l 6.32573,21.53987 c -3.68695,1.07571 -7.33241,2.34009 -10.92294,3.79875 z"
          id="path6251" />
+      <path
+         inkscape:connector-curvature="0"
+         style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1.113;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m -169.49381,658.6302 c 4.08162,-2.27041 8.23689,-4.32765 12.45176,-6.17539 l 9.2293,20.46462 c -3.50387,1.57277 -6.94068,3.32672 -10.29636,5.26553 z"
+         id="path6251-8" />
       <g
          id="g6148-3"
          transform="matrix(0.00212749,0,0,-0.00212749,-472.57069,419.71216)"
@@ -1795,33 +1854,40 @@
          x="4066.0564"
          y="876.76843"
          style="font-size:18.6667px;fill:#ffffff">300</tspan></text>
-    <g
-       id="g46158"
-       transform="translate(15.038529)">
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;line-height:1.25;font-family:'Handel Gothic';-inkscape-font-specification:'Handel Gothic';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none"
-         x="4066.9792"
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;line-height:1.25;font-family:'Handel Gothic';-inkscape-font-specification:'Handel Gothic';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none"
+       x="4082.0178"
+       y="911.55084"
+       id="text5942-0-0-2"><tspan
+         sodipodi:role="line"
+         id="tspan5940-8-6-8"
+         x="4082.0178"
          y="911.55084"
-         id="text5942-0-0-2"><tspan
-           sodipodi:role="line"
-           id="tspan5940-8-6-8"
-           x="4066.9792"
-           y="911.55084"
-           style="font-size:18.6667px;fill:#ffffff"
-           dx="0.76922059">F</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.6667px;line-height:1.25;font-family:'Handel Gothic';-inkscape-font-specification:'Handel Gothic';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none"
-         x="4062.2446"
+         style="font-size:18.6667px;fill:#ffffff"
+         dx="0.76922059">F</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;line-height:1.25;font-family:'Handel Gothic';-inkscape-font-specification:'Handel Gothic';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none"
+       x="3945.4373"
+       y="1219.809"
+       id="text5942-0-0-2-6"><tspan
+         sodipodi:role="line"
+         id="tspan5940-8-6-8-1"
+         x="3945.4373"
+         y="1219.809"
+         style="font-size:18.6667px;fill:#ffffff">Bar</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.6667px;line-height:1.25;font-family:'Handel Gothic';-inkscape-font-specification:'Handel Gothic';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none"
+       x="4077.2832"
+       y="903.86548"
+       id="text5942-0-0-2-9"><tspan
+         sodipodi:role="line"
+         id="tspan5940-8-6-8-7"
+         x="4077.2832"
          y="903.86548"
-         id="text5942-0-0-2-9"><tspan
-           sodipodi:role="line"
-           id="tspan5940-8-6-8-7"
-           x="4062.2446"
-           y="903.86548"
-           style="font-size:10.6667px;fill:#ffffff">o</tspan></text>
-    </g>
+         style="font-size:10.6667px;fill:#ffffff">o</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;line-height:1.25;font-family:'Handel Gothic';-inkscape-font-specification:'Handel Gothic';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none"
@@ -1844,6 +1910,19 @@
       <path
          d="m 93.462879,33.036363 c -2.498825,4.923096 8.932581,5.489766 7.060671,0.07279 -2.895946,-5.072803 -2.85419,-6.123102 -3.421151,-8.152525 -0.738117,1.991649 -0.540897,3.138257 -3.63952,8.079734 z"
          id="path3365"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <g
+       transform="matrix(0.54050168,0,0,0.54050168,3814.9704,1199.8502)"
+       id="g3367-0"
+       style="fill:#ffffff">
+      <path
+         d="m 95.686578,17.800694 2.019454,1.979264 2.131155,-2.268557 -6.460919,-4.994459 -29.428796,9.122161 -4.533376,-4.713332 -11.378492,-0.07239 0.01806,-4.882178 4.008837,0.0134 0.06985,-5.9578511 H 38.047794 l -0.0074,5.9321161 4.007353,0.06516 v 5.049502 l -10.335966,0.14558 0.08921,-4.725059 -18.472038,-5.9213741 -3.29408,15.2298461 16.999169,4.275057 -0.06346,16.951832 40.634569,-0.102941 25.108327,-25.135884 z m -10.532513,1.130298 -18.69342,7.15167 -6.201278,-0.0093 -5.003651,-4.958159 -18.855882,-0.144509 -4.273319,1.01136 -0.07279,15.109848 34.738762,-0.106059 z m -58.254161,-3.819183 -10.499778,-3.298983 -1.525121,6.316291 11.825759,2.861978 z"
+         id="path2563-6"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd" />
+      <path
+         d="m 93.462879,33.036363 c -2.498825,4.923096 8.932581,5.489766 7.060671,0.07279 -2.895946,-5.072803 -2.85419,-6.123102 -3.421151,-8.152525 -0.738117,1.991649 -0.540897,3.138257 -3.63952,8.079734 z"
+         id="path3365-2"
          style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     </g>
     <path

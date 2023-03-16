@@ -54,6 +54,10 @@ Window {
         id: oilTempDelegate740
     }
 
+    OilPressureDelegate740Style {
+        id: oilPressureDelegate740
+    }
+
     Item {
         //rotate all elements
         rotation: if (RASPBERRY_PI) {
