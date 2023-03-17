@@ -27,7 +27,7 @@
         <file>VoltmeterDelegate240Style.qml</file>
         <file>BoostDelegate240Style.qml</file>
         <file>SideAccessoryScreen.qml</file>
-        <file>SideAccessoryLayout240Style.qml</file>
+        <file>SideAccessoryLayout.qml</file>
         <file>BoostDelegate740Style.qml</file>
         <file>BoostDelegate850Style.qml</file>
         <file>OilPressureDelegate240Style.qml</file>
@@ -62,10 +62,8 @@
         <file>OilPressureDelegateP1800Style.qml</file>
         <file>FuelLevelDelegateP1800Style.qml</file>
         <file>SideAccessoryScreenControl.qml</file>
-        <file>SideAccessoryGauge240Style.qml</file>
+        <file>SideAccessoryGauge.qml</file>
         <file>OilTempDelegate740Style.qml</file>
-        <file>SideAccessoryGauge740Style.qml</file>
-        <file>SideAccessoryLayout740Style.qml</file>
         <file>OilPressureDelegate740Style.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">

@@ -13,7 +13,7 @@ Window {
     SideAccessoryScreen {
         id: accessoryScreen
         objectName: "accessoryScreen"
-        currentLayoutSource: "qrc:/SideAccessoryLayout240Style.qml"
+        currentStyle: "240"
     }
 
     property int smallGaugeSize: 140
@@ -628,7 +628,7 @@ Window {
                     setSpeedoSize(tachSize - smallGaugeSize - 10);
                     setSpeedoMax(120);
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
-                    accessoryScreen.currentLayoutSource = "qrc:/SideAccessoryLayout240Style.qml";
+                    accessoryScreen.currentStyle = "240";
                     break;
                 case 1:
                     //currentGauge.source = "";
@@ -638,7 +638,7 @@ Window {
                     setSpeedoSize(tachSize - smallGaugeSize - 10);
                     setSpeedoMax(120);
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
-                    accessoryScreen.currentLayoutSource = "qrc:/SideAccessoryLayout240Style.qml";
+                    accessoryScreen.currentStyle = "240";
                     break;
                 case 2:
                     //currentGauge.source = "";
@@ -648,7 +648,7 @@ Window {
                     setSpeedoSize(440);
                     setSpeedoMax(120);
                     setTempFuelSize(400);
-                    accessoryScreen.currentLayoutSource = "qrc:/SideAccessoryLayout240Style.qml";
+                    accessoryScreen.currentStyle = "240";
                     break;
                 case 3:
                     //currentGauge.source = "";
@@ -658,7 +658,7 @@ Window {
                     setSpeedoSize(350);
                     setSpeedoMax(140);
                     setTempFuelSize(300);
-                    accessoryScreen.currentLayoutSource = "qrc:/SideAccessoryLayout740Style.qml";
+                    accessoryScreen.currentStyle = "740";
                     break;
                 case 4:
                     //currentGauge.source = "";
@@ -668,7 +668,7 @@ Window {
                     setSpeedoSize(440);
                     setSpeedoMax(120);
                     setTempFuelSize(400);
-                    accessoryScreen.currentLayoutSource = "qrc:/SideAccessoryLayout240Style.qml";
+                    accessoryScreen.currentStyle = "240";
                     break;
                 case 5:
                     //currentGauge.source = "";
@@ -678,7 +678,7 @@ Window {
                     setSpeedoSize(440);
                     setSpeedoMax(140);
                     //setTempFuelSize(300);
-                    accessoryScreen.currentLayoutSource = "qrc:/SideAccessoryLayout740Style.qml";
+                    accessoryScreen.currentStyle = "740";
                     break;
                 case 6:
                     currentGauge.source = "qrc:/OriginalRSportLayout.qml"
@@ -686,7 +686,7 @@ Window {
                     setTachSize(350);
                     setSpeedoSize(350);
                     setSpeedoMax(130);
-                    accessoryScreen.currentLayoutSource = "qrc:/SideAccessoryLayout240Style.qml";
+                    accessoryScreen.currentStyle = "240";
                     break;
 
                 case 7:
@@ -696,7 +696,7 @@ Window {
                     setSpeedoSize(440);
                     setSpeedoMax(120);
                     setTempFuelSize(400);
-                    accessoryScreen.currentLayoutSource = "qrc:/SideAccessoryLayout240Style.qml";
+                    accessoryScreen.currentStyle = "240";
                     break;
                 case 8:
                     currentGauge.source = "qrc:/OriginalP1800Layout.qml"
@@ -704,7 +704,7 @@ Window {
                     setTachSize(350);
                     setSpeedoSize(440);
                     setSpeedoMax(120);
-                    accessoryScreen.currentLayoutSource = "qrc:/SideAccessoryLayout240Style.qml";
+                    accessoryScreen.currentStyle = "240";
                     break;
                 default:
                     break;

@@ -10,52 +10,19 @@ Window {
                                  }
 
     property int smallGaugeNeedleWidth240: smallGaugeSize * 0.04
-    property string currentLayoutSource: "qrc:/SideAccessoryLayout240Style.qml"
+    property string currentStyle: "240"
 
-    // 240 style delegates
-    BoostDelegate240Style {
-        id: boostDelegate240
+    onCurrentStyleChanged: {
+        currentLayout.update();
     }
 
-    VoltmeterDelegate240Style {
-        id: voltMeterDelegate240
-    }
-
-    OilPressureDelegate240Style {
-        id: oilPressureDelegate240
-    }
-
-    OilTempereatureDelegate240Style {
-        id: oilTemperatureDelegate240
-    }
-
-    ClockDelegate240Style {
-        id: clockDelegate240
-    }
-
-    // 740 style delegates
-    BoostDelegate740Style {
-        id: boostDelegate740
-    }
-
-    CoolantTempDelegate740Style {
-        id: coolantDelegate740
-    }
-
-    FuelLevelDelegate740Style {
-        id: fuelLevelDelegate740
-    }
-
-    VoltmeterDelegate740Style {
-        id: voltMeterDelegate740
-    }
-
-    OilTempDelegate740Style {
-        id: oilTempDelegate740
-    }
-
-    OilPressureDelegate740Style {
-        id: oilPressureDelegate740
+    property var currentModel: {
+        switch(currentStyle) {
+        case "240":
+            return available240Gauges;
+        case "740":
+            return available740Gauges;
+        }
     }
 
     Item {
@@ -88,7 +55,7 @@ Window {
                 id: currentLayout
                 width: container.width
                 height: container.height - 50
-                source: currentLayoutSource
+                source: "qrc:/SideAccessoryLayout.qml"
                 asynchronous: true
                 visible: true
             }
@@ -100,6 +67,87 @@ Window {
                 asynchronous: true
             }
          }
+    }
+
+    // 740 gauges
+    property list<Component> delegates740: [
+        BoostDelegate740Style {
+            id: boostDelegate740
+        },
+        CoolantTempDelegate740Style {
+            id: coolantDelegate740
+        },
+        FuelLevelDelegate740Style {
+            id: fuelLevelDelegate740
+        },
+        OilTempDelegate740Style {
+            id: oilTempDelegate740
+        },
+        OilPressureDelegate740Style {
+            id: oilPressureDelegate740
+        },
+        VoltmeterDelegate740Style {
+            id: voltMeterDelegate740
+        }
+    ]
+
+    ListModel {
+        id: available740Gauges
+        ListElement {
+            name: "boost"
+        }
+        ListElement {
+            name: "coolant temp"
+        }
+        ListElement {
+            name: "fuel level"
+        }
+        ListElement {
+            name: "oil temp"
+        }
+        ListElement {
+            name: "oil pressure"
+        }
+        ListElement {
+            name: "voltmeter"
+        }
+    }
+
+    // 240 gauges
+    property list<Component> delegates240: [
+        BoostDelegate240Style {
+            id: boostDelegate240
+        },
+        OilTempereatureDelegate240Style {
+            id: oilTemperatureDelegate240
+        },
+        OilPressureDelegate240Style {
+            id: oilPressureDelegate240
+        },
+        VoltmeterDelegate240Style {
+            id: voltMeterDelegate240
+        },
+        ClockDelegate240Style {
+            id: clockDelegate240Style
+        }
+    ]
+    ListModel {
+        id: available240Gauges
+        ListElement {
+            name: "boost"
+        }
+        ListElement {
+            name: "oil temp"
+        }
+        ListElement {
+            name: "oil pressure"
+        }
+        ListElement {
+            name: "voltmeter"
+        }
+        ListElement {
+            name: "clock"
+        }
     }
 }
 
