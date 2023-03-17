@@ -22,6 +22,8 @@ Window {
             return available240Gauges;
         case "740":
             return available740Gauges;
+        case "p1800":
+            return availableP1800Gauges;
         }
     }
 
@@ -144,6 +146,44 @@ Window {
         }
         ListElement {
             name: "voltmeter"
+        }
+        ListElement {
+            name: "clock"
+        }
+    }
+
+    //p1800 gauges
+    property list<Component> delegatesP1800: [
+        BoostDelegateP1800Style {
+            id: boostDelegateP1800Style
+        },
+        OilTempAccDelegateP1800Style {
+            id: oilTempDelegateP1800Style
+        },
+        OilPressureDelegateP1800Style {
+            id: oilPressureDelegateP1800Style
+        },
+        FuelLevelDelegateP1800Style {
+            id: fuelLevelDelegateP1800
+        },
+        ClockDelegateP1800Style {
+            id: clockDelegateP1800Style
+        }
+    ]
+
+    ListModel {
+        id: availableP1800Gauges
+        ListElement {
+            name: "boost"
+        }
+        ListElement {
+            name: "oil temp"
+        }
+        ListElement {
+            name: "oil pressure"
+        }
+        ListElement {
+            name: "fuel level"
         }
         ListElement {
             name: "clock"

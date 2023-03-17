@@ -704,7 +704,7 @@ Window {
                     setTachSize(350);
                     setSpeedoSize(440);
                     setSpeedoMax(120);
-                    accessoryScreen.currentStyle = "240";
+                    accessoryScreen.currentStyle = "p1800";
                     break;
                 default:
                     break;

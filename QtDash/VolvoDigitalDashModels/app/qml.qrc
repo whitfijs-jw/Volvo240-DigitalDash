@@ -65,6 +65,9 @@
         <file>SideAccessoryGauge.qml</file>
         <file>OilTempDelegate740Style.qml</file>
         <file>OilPressureDelegate740Style.qml</file>
+        <file>ClockDelegateP1800Style.qml</file>
+        <file>BoostDelegateP1800Style.qml</file>
+        <file>OilTempAccDelegateP1800Style.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -160,5 +163,8 @@
         <file>oil-pressure-p1800.png</file>
         <file>fuel-level-p1800.png</file>
         <file>boost-p1800.png</file>
+        <file>clock-p1800.png</file>
+        <file>oil-temp-p1800.png</file>
+        <file>center-cover-medium-p1800.png</file>
     </qresource>
 </RCC>

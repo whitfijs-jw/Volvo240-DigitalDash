@@ -39,6 +39,8 @@ Item {
             return delegates240[index];
         case "740":
             return delegates740[index];
+        case "p1800":
+            return delegatesP1800[index];
         default:
             return delegates240[index];
         }
@@ -50,6 +52,8 @@ Item {
             return delegates240.length;
         case "740":
             return delegates740.length;
+        case "p1800":
+            return delegatesP1800.length;
         default:
             return delegates240.length;
         }
@@ -66,6 +70,13 @@ Item {
             model: getModel(initialGauge)
             delegate: getDelegateByName(initialGauge)
             z:0
+        }
+
+        Image {
+            anchors.horizontalCenter: gaugeContainer.horizontalCenter
+            anchors.verticalCenter: gaugeContainer.verticalCenter
+            source: "qrc:/gauge-faces-p1800/center-cover-medium-p1800.png"
+            visible: {currentStyle === "p1800"}
         }
 
         MouseArea {
