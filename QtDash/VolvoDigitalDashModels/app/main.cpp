@@ -42,15 +42,32 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     QQmlContext * ctxt = engine.rootContext();
 
+    KeyPressEmitter * sideScreenKeyPress = new KeyPressEmitter();
+    ctxt->setContextProperty("keyPressEmitter", sideScreenKeyPress);
+
     // Initialize Dash
 #ifdef RASPBERRY_PI
     //Dash * dash = new Dash(&app, ctxt); //old style dash
     DashNew * dash = new DashNew(&app, ctxt); // new scheme with sensor source -> sensor -> gauge -> model
     ctxt->setContextProperty("RASPBERRY_PI", QVariant(true));
+    \
     QObject::connect(dash, &DashNew::keyPress, [&engine](QKeyEvent * ev) {
         if (ev != nullptr) {
             QCoreApplication::postEvent(engine.rootObjects().first(), ev);
         }
+    });
+
+    QObject::connect(sideScreenKeyPress, &KeyPressEmitter::keyPressAndHold, [dash](Qt::Key key) {
+       switch (key) {
+       case Qt::Key_A:
+           dash->odoTripReset(0);
+           break;
+       case Qt::Key_B:
+           dash->odoTripReset(1);
+           break;
+       default:
+           break;
+       }
     });
 
     dash->init();
@@ -81,6 +98,19 @@ int main(int argc, char *argv[])
             qDebug() << ev;
             QCoreApplication::postEvent(engine.rootObjects().first(), ev);
         }
+    });
+
+    QObject::connect(sideScreenKeyPress, &KeyPressEmitter::keyPressAndHold, [dash](Qt::Key key) {
+       switch (key) {
+       case Qt::Key_A:
+           dash->odoTripReset(0);
+           break;
+       case Qt::Key_B:
+           dash->odoTripReset(1);
+           break;
+       default:
+           break;
+       }
     });
 
     dash->init();

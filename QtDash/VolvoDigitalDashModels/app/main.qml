@@ -562,7 +562,7 @@ Window {
     Item {
         id: gaugeItem
         anchors.fill: parent
-        //focus: true
+        focus: true
         rotation: if (RASPBERRY_PI) {
                       180
                   } else {

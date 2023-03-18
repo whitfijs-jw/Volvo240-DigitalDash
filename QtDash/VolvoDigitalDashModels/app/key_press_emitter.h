@@ -27,6 +27,7 @@ public:
 
 signals:
     Q_INVOKABLE void keyPress(Qt::Key key);
+    Q_INVOKABLE void keyPressAndHold(Qt::Key key);
 private:
 };
 

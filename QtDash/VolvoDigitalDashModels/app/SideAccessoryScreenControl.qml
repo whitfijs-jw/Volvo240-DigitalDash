@@ -28,20 +28,26 @@ Item {
             }
             Button {
                 id: middleLeftButton
-                text: "1"
+                text: "A"
                 width: buttonWidth
                 height: buttonHeight
                 onPressed: {
-                    //rootWindow.advance(false);
+                    keyPressEmitter.keyPress(Qt.Key_A);
+                }
+                onPressAndHold: {
+                    keyPressEmitter.keyPressAndHold(Qt.Key_A);
                 }
             }
             Button {
                 id: middleRightButton
-                text: "2"
+                text: "B"
                 width: buttonWidth
                 height: buttonHeight
                 onPressed: {
-                    //rootWindow.advance(false);
+                    keyPressEmitter.keyPress(Qt.Key_B);
+                }
+                onPressAndHold: {
+                    keyPressEmitter.keyPressAndHold(Qt.Key_B);
                 }
             }
             Button {
