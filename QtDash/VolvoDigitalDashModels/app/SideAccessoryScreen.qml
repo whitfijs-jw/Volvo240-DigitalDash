@@ -24,6 +24,10 @@ Window {
             return available740Gauges;
         case "p1800":
             return availableP1800Gauges;
+        case "rSport":
+            return availableRSportGauges;
+        default:
+            return available240Gauges;
         }
     }
 
@@ -187,6 +191,44 @@ Window {
         }
         ListElement {
             name: "clock"
+        }
+    }
+
+    // R-sport gauges
+    property list<Component> delegatesRSport: [
+        BoostDelegateRSportStyle {
+            id: boostDelegateRSportStyle
+        },
+        OilTempDelegateRSportStyle {
+            id: oilTempDelegateRSportStyle
+        },
+        OilPressureDelegateRSportStyle {
+            id: oilPressureDelegateRSportStyle
+        },
+        CoolantTempAccDelegateRSportStyle {
+            id: coolantTempDelegateRSportStyle
+        },
+        VoltmeterDelegateRSportStyle {
+            id: voltmeterDelegateRSportStyle
+        }
+    ]
+
+    ListModel {
+        id: availableRSportGauges
+        ListElement {
+            name: "boost"
+        }
+        ListElement {
+            name: "oil temp"
+        }
+        ListElement {
+            name: "oil pressure"
+        }
+        ListElement {
+            name: "coolant temp"
+        }
+        ListElement {
+            name: "voltmeter"
         }
     }
 }

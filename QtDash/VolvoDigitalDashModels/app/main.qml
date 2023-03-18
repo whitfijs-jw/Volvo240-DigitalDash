@@ -686,7 +686,7 @@ Window {
                     setTachSize(350);
                     setSpeedoSize(350);
                     setSpeedoMax(130);
-                    accessoryScreen.currentStyle = "240";
+                    accessoryScreen.currentStyle = "rSport";
                     break;
 
                 case 7:

@@ -68,6 +68,9 @@
         <file>ClockDelegateP1800Style.qml</file>
         <file>BoostDelegateP1800Style.qml</file>
         <file>OilTempAccDelegateP1800Style.qml</file>
+        <file>BoostDelegateRSportStyle.qml</file>
+        <file>CoolantTempAccDelegateRSportStyle.qml</file>
+        <file>OilTempDelegateRSportStyle.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -134,6 +137,9 @@
         <file>r_sport_coolant_fahrenheit_shroud.png</file>
         <file>r_sport_coolant_celsius_shroud.png</file>
         <file>r_sport_fuel_shroud.png</file>
+        <file>r_sport_boost.png</file>
+        <file>r_sport_oil_temp_F.png</file>
+        <file>r_sport_acc_coolant_fahrenhet.png</file>
     </qresource>
     <qresource prefix="/needles">
         <file>needle-240.png</file>
