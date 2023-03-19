@@ -12,6 +12,7 @@ Component {
             item.units = gaugeUnits
             item.highAlarm = gaugeHighAlarm
             item.lowAlarm = gaugeLowAlarm
+            item.initialValueOffset = gaugeMin
 
             item.minAngle = -145
             item.maxAngle = -35
