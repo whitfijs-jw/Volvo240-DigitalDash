@@ -5,8 +5,16 @@
   "outputs": [
     {
       "name": "HDMI1",
-      "mode": "1280x480"
+      "mode": "FIXED_MODE",
+      "virtualIndex": 0
+    },
+    {
+      "name": "HDMI2", 
+      "mode": "800x480",
+      "touchDevice": "/dev/input/event0",
+      "virtualIndex": 1
     }
   ]
 }
+
 

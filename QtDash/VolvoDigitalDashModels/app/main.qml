@@ -3,12 +3,18 @@ import QtQuick.Window 2.15
 
 Window {
     id: rootWindow
+    objectName: "rootWindow"
     visible: true
     width: 1280
     height: 480
 
     title: qsTr("Lolvo")
 
+    SideAccessoryScreen {
+        id: accessoryScreen
+        objectName: "accessoryScreen"
+        currentStyle: "240"
+    }
 
     property int smallGaugeSize: 140
     property int tachSize: 400
@@ -43,8 +49,6 @@ Window {
         "Highway speeds\nmight not be\nan option for you",
     ]
 
-
-
     function setSmallGaugeSize(size) {
         smallGaugeSize = size;
     }
@@ -75,2003 +79,158 @@ Window {
         return angle;
     }
 
-    Component {
+    function advance(forward) {
+        gaugeItem.advanceScreen(forward);
+    }
+
+    OdometerDelegate {
         id: odometerDelegate
-
-        Loader {
-            source: "qrc:/Odometer.qml"
-            asynchronous: true
-            onLoaded: {
-                item.odometerValue = odometerValue
-                item.tripAValue = tripAValue
-                item.tripBValue = tripBValue
-            }
-
-            Binding {
-                target: item
-                property: "odometerValue"
-                value: odometerValue
-            }
-
-            Binding {
-                target: item
-                property: "tripAValue"
-                value: tripAValue
-            }
-
-            Binding {
-                target: item
-                property: "tripBValue"
-                value: tripBValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: warningLightWideWidth
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: warningLightHeight
-            }
-        }
     }
 
-    Component {
+    // 240 style delegates
+    BoostDelegate240Style {
         id: boostDelegate
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeMin
-                item.initialValueOffset = gaugeMin
-
-                item.minAngle = -226
-                item.maxAngle = 45
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/accCluster/boost_black_no_numbers.png"
-
-                item.needleColor = "orange"
-
-                item.needleWidth = smallGaugeNeedleWidth240
-                item.needleLength = smallGaugeSize * 0.55
-                item.needleOffset = smallGaugeSize * .25 / 2
-
-                item.needleCenterRadius = 0.15
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
-        id: boostDelegate740
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeMin
-                item.initialValueOffset = gaugeMin
-
-                item.minAngle = -228
-                item.maxAngle = 45
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/gauge-faces-740-940/740_boost.png"
-                item.needleResource = "qrc:/needles/needle-740-940.png"
-
-                item.needleColor = "red"
-
-                item.needleWidth = smallGaugeSize * 0.05
-                item.needleLength = smallGaugeSize * 0.55
-                item.needleOffset = smallGaugeSize * .25 / 2
-
-                item.needleCenterRadius = 0.25
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
-    }
-
-    Component {
-        id: boostDelegate850
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeMin
-                item.initialValueOffset = gaugeMin
-
-                item.minAngle = -140
-                item.maxAngle = -41
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/gauge-faces-850/850_boost.png"
-                item.needleResource = "qrc:/needles/needle-740-940.png"
-
-                item.needleColor = "red"
-
-                item.needleWidth = smallGaugeSize * 0.05
-                item.needleLength = smallGaugeSize * 0.50
-                item.needleOffset = smallGaugeSize * .25 / 2
-
-                item.needleCenterRadius = 0.25
-
-
-                item.textOffset = smallGaugeSize * 0.75
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
-    }
-
-    Component {
+    OilPressureDelegate240Style {
         id: oilPressureDelegate
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeMax
-                item.lowAlarm = gaugeLowAlarm
-
-                item.minAngle = -136
-                item.maxAngle = -45
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/accCluster/oil_pressure_black.png"
-
-                item.needleColor = "orange"
-
-                item.needleWidth = smallGaugeNeedleWidth240
-                item.needleLength = smallGaugeSize * 0.65
-                item.needleOffset = smallGaugeSize * .25 / 2
-
-                item.offset = smallGaugeSize / 4.5
-
-                item.needleCenterRadius = 0.15
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
+    OilTempereatureDelegate240Style {
         id: oilTemperatureDelegate
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeLowAlarm
-
-                item.minAngle = -136
-                item.maxAngle = -43
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/accCluster/oil_temp_black.png"
-
-                item.needleColor = "orange"
-
-                item.needleWidth = smallGaugeNeedleWidth240
-                item.needleLength = smallGaugeSize * 0.65
-                item.needleOffset = smallGaugeSize * .25 / 2
-
-                item.offset = smallGaugeSize / 4.5
-
-                item.significantDigits = 0
-
-                item.needleCenterRadius = 0.15
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
+    VoltmeterDelegate240Style {
         id: voltMeterDelegate
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeLowAlarm
-
-                item.minAngle = -136
-                item.maxAngle = -45
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/accCluster/volt_black.png"
-
-                item.needleColor = "orange"
-
-                item.needleWidth = smallGaugeNeedleWidth240
-                item.needleLength = smallGaugeSize * 0.65
-                item.needleOffset = smallGaugeSize * .25 / 2
-
-                item.offset = smallGaugeSize / 4.5
-
-                item.significantDigits = 2
-
-                item.needleCenterRadius = 0.15
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
+    ClockDelegate240Style {
         id: clockDelegate
-        Loader {
-            source: "qrc:/Clock.qml"
-            asynchronous: true
-            onLoaded: {
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
+    TachometerDelegate240Style {
         id: rpmDelegate
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = 0
-                item.maxValue = maxRpm
-                item.units = "rpm"
-                item.highAlarm = redLine
-                item.lowAlarm = 0
-
-                item.initialValueOffset = 200
-
-                item.minAngle = -221
-                item.maxAngle = 32
-
-                item.height = tachSize
-                item.width = tachSize
-
-                item.imageResource = "qrc:/mainCluster/tacho.png"
-
-                item.needleColor = "orange"
-
-                item.needleWidth = tachSize * 0.02
-                item.needleLength = tachSize * 0.45
-                item.needleOffset = tachSize * 0.15 / 2
-
-                item.needleCenterRadius = 0.10
-
-                item.textSize = tachSize * 0.15 / 2
-                item.textOffset = tachSize / 6
-                item.significantDigits = 0
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: rpm
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: tachSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: tachSize
-            }
-        }
     }
 
-    Component {
-        id: rpmDelegate740
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = 0
-                item.maxValue = maxRpm
-                item.units = "rpm"
-                item.highAlarm = redLine
-                item.lowAlarm = 0
-                item.initialValueOffset = 200
-
-                item.minAngle = -220
-                item.maxAngle = 40
-
-                item.height = tachSize
-                item.width = tachSize
-
-                item.imageResource = "qrc:/gauge-faces-740-940/740_tach.png"
-                item.needleResource = "qrc:/needles/needle-740-940.png"
-
-                item.needleColor = "red"
-
-                item.needleWidth = tachSize * 0.035
-                item.needleLength = tachSize * 0.45
-                item.needleOffset = tachSize * 0.15 / 2
-
-                item.needleCenterRadius = 0.15
-
-                item.textSize = 20
-                item.textOffset = tachSize / 6
-                item.significantDigits = 0
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: rpm
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: tachSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: tachSize
-            }
-        }
-    }
-
-    Component {
+    SpeedoDelegate240Style {
         id: speedoDelegate
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = minValue
-                item.maxValue = speedoMax
-                item.units = speedUnits
-                item.lowAlarm = minValue
-                item.highAlarm = speedoMax
-
-                item.initialValueOffset = 4
-
-                item.topValue = valueTop
-                item.topUnits = valueTopUnits
-                item.topValueEnabled = true
-                item.topTextOffset = -speedoSize / 6
-                item.topTextSize = speedoSize / 20.0
-
-                item.minAngle = -233
-                item.maxAngle = 43
-
-                item.height = speedoSize
-                item.width = speedoSize
-
-                item.imageResource = "qrc:mainCluster/early120mphspeedolo.png"
-
-                item.needleColor = "orange"
-
-                item.needleWidth = speedoSize * 0.02
-                item.needleLength = speedoSize * 0.45
-                item.needleOffset = speedoSize * 0.15 / 2
-
-                item.needleCenterRadius = 0.10
-
-                item.textSize = speedoSize * .15 / 2
-                item.textOffset = speedoSize / 6
-                item.significantDigits = 0
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue;
-            }
-
-            Binding {
-                target: item
-                property: "maxValue"
-                value: speedoMax
-            }
-
-            Binding {
-                target: item
-                property: "topValue"
-                value: valueTop
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: speedoSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: speedoSize
-            }
-        }
     }
 
-    Component {
-        id: speedoDelegate740
-
-        Loader {
-
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = minValue
-                item.maxValue = speedoMax
-                item.units = speedUnits
-                item.lowAlarm = minValue
-                item.highAlarm = speedoMax
-
-                item.initialValueOffset = 2
-
-                item.topValue = valueTop
-                item.topUnits = valueTopUnits
-                item.topValueEnabled = true
-                item.topTextOffset = -speedoSize / 6
-                item.topTextSize = speedoSize / 20.0
-
-                item.minAngle = -227
-                item.maxAngle = 45
-
-                item.height = speedoSize
-                item.width = speedoSize
-
-                item.imageResource = "qrc:/gauge-faces-740-940/740_speedo.png"
-                item.needleResource = "qrc:/needles/needle-740-940.png"
-
-                item.needleColor = "red"
-
-                item.needleWidth = speedoSize * 0.0325
-                item.needleLength = speedoSize * 0.45
-                item.needleOffset = speedoSize * 0.15 / 2
-
-                item.needleCenterRadius = 0.15
-
-                item.textSize = speedoSize * .15 / 2
-                item.textOffset = speedoSize / 6
-                item.significantDigits = 0
-            }
-
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue;
-            }
-
-            Binding {
-                target: item
-                property: "maxValue"
-                value: speedoMax
-            }
-
-            Binding {
-                target: item
-                property: "topValue"
-                value: valueTop
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: speedoSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: speedoSize
-            }
-        }
-    }
-
-    Component {
+    TempAndFuelDelegate240Style {
         id: tempFuelDelegate
-        Loader {
-            source: "qrc:/TempCoolant.qml"
-            asynchronous: true
-            onLoaded: {
-                item.maxCoolantTemp = tempMax
-                item.minCoolantTemp = tempMin
-                item.units = tempUnits
-
-                item.highAlarm = alarmHighTemp
-                item.lowAlarm = alarmLowFuel
-
-                item.height = tempFuelSize
-                item.width = tempFuelSize
-            }
-
-            Binding {
-                target: item
-                property: "coolantTemp"
-                value: currentTemp;
-            }
-
-            Binding {
-                target: item
-                property: "fuelLevel"
-                value: currentFuelLevel
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: tempFuelSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: tempFuelSize
-            }
-        }
     }
 
-    Component {
+    // 740 style delegates
+    BoostDelegate740Style {
+        id: boostDelegate740
+    }
+
+    TachometerDelegate740Style {
+        id: rpmDelegate740
+    }
+
+    SpeedoDelegate740Style {
+        id: speedoDelegate740
+    }
+
+    CoolantTempDelegate740Style {
         id: coolant740Delegate
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeLowAlarm
-
-                item.minAngle = -115
-                item.maxAngle = -65
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/gauge-faces-740-940/740_coolant_temp.png"
-                item.needleResource = "qrc:/needles/needle-740-940.png"
-
-                item.needleColor = "red"
-
-                item.needleWidth = smallGaugeSize * 0.05
-                item.needleLength = smallGaugeSize * 0.75
-                item.needleOffset = smallGaugeSize * 0.25 / 2
-                item.offset = smallGaugeSize / 4.5
-
-                item.significantDigits = 0
-
-                item.needleCenterRadius = 0.25
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
+    FuelLevelDelegate740Style {
         id: fuelLevel740Delegate
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeMax
-                item.lowAlarm = gaugeLowAlarm
-
-                item.minAngle = -115
-                item.maxAngle = -65
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/gauge-faces-740-940/740_fuel.png"
-                item.needleResource = "qrc:/needles/needle-740-940.png"
-
-                item.needleColor = "red"
-
-                item.needleWidth = smallGaugeSize * 0.05
-                item.needleLength = smallGaugeSize * 0.75
-                item.needleOffset = smallGaugeSize * 0.25 / 2
-                item.offset = smallGaugeSize / 4.5
-
-                item.significantDigits = 0
-
-                item.needleCenterRadius = 0.25
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
+    VoltmeterDelegate740Style {
         id: voltMeterDelegate740
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeLowAlarm
-
-                item.minAngle = -130
-                item.maxAngle = -55
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/gauge-faces-740-940/740_voltmeter.png"
-                item.needleResource = "qrc:/needles/needle-740-940.png"
-
-                item.needleColor = "red"
-
-                item.needleWidth = smallGaugeSize * 0.05
-                item.needleLength = smallGaugeSize * 0.75
-                item.needleOffset = smallGaugeSize * 0.25 / 2
-                item.offset = smallGaugeSize / 4.5
-
-                item.significantDigits = 2
-
-                item.needleCenterRadius = 0.25
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
+    // 850 style delegates
+    BoostDelegate850Style {
+        id: boostDelegate850
+    }
+
+    CoolantTempDelegate850Style {
         id: coolantDelegate850
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeLowAlarm
-                item.clockwise = false
-
-                item.minAngle = -45
-                item.maxAngle = 45
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/gauge-faces-850/850_coolant.png"
-                item.needleResource = "qrc:/needles/needle-740-940.png"
-
-                item.needleColor = "red"
-
-                item.needleWidth = smallGaugeSize * 0.05
-                item.needleLength = smallGaugeSize * 0.50
-                item.needleOffset = smallGaugeSize * .25 / 2
-
-                item.significantDigits = 0
-
-                item.needleCenterRadius = 0.25
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
+    FuelLevelDelegate850Style {
         id: fuelLevelDelegate850
-
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeMax
-                item.lowAlarm = gaugeLowAlarm
-
-                item.minAngle = -225
-                item.maxAngle = -135
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/gauge-faces-850/850_fuel_level.png"
-                item.needleResource = "qrc:/needles/needle-740-940.png"
-
-                item.needleColor = "red"
-
-                item.needleWidth = smallGaugeSize * 0.05
-                item.needleLength = smallGaugeSize * 0.50
-                item.needleOffset = smallGaugeSize * .25 / 2
-
-                item.significantDigits = 0
-
-                item.needleCenterRadius = 0.25
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
+    // rsport style delegates
+    FuelLevelDelegateRSportStyle {
         id: fuelLevelDelegateRSport
-
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeMax
-                item.lowAlarm = gaugeLowAlarm
-                item.clockwise = false
-
-                item.minAngle = -40
-                item.maxAngle = 40
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_fuel.png"
-                item.needleResource = "qrc:/needles/needle-rsport.png"
-
-                item.needleColor = "burlywood"
-
-                item.needleWidth = smallGaugeSize * 0.035
-                item.needleLength = smallGaugeSize * 0.65
-                item.needleOffset = smallGaugeSize * 0.25 / 2
-                item.offsetX = -smallGaugeSize / 7.4
-
-                item.significantDigits = 0
-
-                item.needleCenterRadius = 0.15
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
+    CoolantTempDelegateRSportStyle {
         id: coolantDelegateRSport
-
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeLowAlarm
-                item.clockwise = false
-
-                item.minAngle = -35
-                item.maxAngle = 38
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_coolant_fahrenhet.png"
-                item.needleResource = "qrc:/needles/needle-rsport.png"
-
-                item.needleColor = "burlywood"
-
-                item.needleWidth = smallGaugeSize * 0.035
-                item.needleLength = smallGaugeSize * 0.65
-                item.needleOffset = smallGaugeSize * 0.25 / 2
-                item.offsetX = -smallGaugeSize / 7.4
-
-                item.significantDigits = 0
-
-                item.needleCenterRadius = 0.15
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
+    OilPressureDelegateRSportStyle {
         id: oilPressureDelegateRSport
-
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeMax
-                item.lowAlarm = gaugeLowAlarm
-                item.clockwise = false
-
-                item.minAngle = -48
-                item.maxAngle = 48
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_oil_pressure_5bar.png"
-                item.needleResource = "qrc:/needles/needle-rsport.png"
-
-                item.needleColor = "burlywood"
-
-                item.needleWidth = smallGaugeSize * 0.035
-                item.needleLength = smallGaugeSize * 0.65
-                item.needleOffset = smallGaugeSize * 0.25 / 2
-                item.offsetX = -smallGaugeSize / 4.65
-
-                item.needleCenterRadius = 0.15
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
+    VoltmeterDelegateRSportStyle {
         id: voltMeterDelegateRSport
-
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = 8.0
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeLowAlarm
-                item.clockwise = false
-
-                item.minAngle = -48
-                item.maxAngle = 48
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_voltmeter.png"
-                item.needleResource = "qrc:/needles/needle-rsport.png"
-
-                item.needleColor = "burlywood"
-
-                item.needleWidth = smallGaugeSize * 0.035
-                item.needleLength = smallGaugeSize * 0.65
-                item.needleOffset = smallGaugeSize * 0.25 / 2
-                item.offsetX = -smallGaugeSize / 4.65
-
-                item.significantDigits = 2
-
-                item.needleCenterRadius = 0.15
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
+    SpeedoDelegateRSportStyle {
         id: speedoDelegateRSport
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = minValue
-                item.maxValue = speedoMax
-                item.units = speedUnits
-                item.lowAlarm = minValue
-                item.highAlarm = speedoMax
-
-                item.initialValueOffset = 10
-
-                item.topValue = valueTop
-                item.topUnits = valueTopUnits
-                item.topValueEnabled = true
-                item.topTextOffset = -speedoSize / 6
-                item.topTextSize = speedoSize / 20.0
-
-                item.minAngle = -148
-                item.maxAngle = 128
-
-                item.height = speedoSize
-                item.width = speedoSize
-
-                item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_speedo_mph.png"
-                item.needleResource = "qrc:/needles/needle-rsport.png"
-
-                item.needleColor = "burlywood"
-
-                item.needleWidth = speedoSize * 0.025
-                item.needleLength = speedoSize * 0.525
-                item.needleOffset = speedoSize * 0.2 / 2
-
-                item.needleCenterRadius = 0.125
-
-                item.textSize = speedoSize * .15 / 2
-                item.textOffset = speedoSize / 6
-                item.significantDigits = 0
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue;
-            }
-
-            Binding {
-                target: item
-                property: "maxValue"
-                value: speedoMax
-            }
-
-            Binding {
-                target: item
-                property: "topValue"
-                value: valueTop
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: speedoSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: speedoSize
-            }
-        }
     }
 
-    Component {
+    TachoDelegateRSportStyle {
         id: rpmDelegateRSport
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = 0
-                item.maxValue = 8000
-                item.units = "rpm"
-                item.highAlarm = redLine
-                item.lowAlarm = 0
-
-                item.initialValueOffset = 400
-
-                item.minAngle = -140
-                item.maxAngle = 126
-
-                item.height = tachSize
-                item.width = tachSize
-
-                item.imageResource = "qrc:/gauge-faces-r-sport/r_sport_tachometer.png"
-                item.needleResource = "qrc:/needles/needle-rsport.png"
-
-                item.needleColor = "burlywood"
-
-                item.needleWidth = tachSize * 0.025
-                item.needleLength = tachSize * 0.525
-                item.needleOffset = tachSize * 0.2 / 2
-
-                item.needleCenterRadius = 0.125
-
-                item.textSize = tachSize * 0.15 / 2
-                item.textOffset = tachSize / 6
-                item.significantDigits = 0
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: rpm
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: tachSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: tachSize
-            }
-        }
     }
 
-    Component {
+    // 544 style delegates
+    SpeedoDelegate544Style {
         id: speedoDelegate544
-
-        Loader {
-            source: "qrc:/LinearGauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = minValue
-                item.maxValue = speedoMax
-                item.units = speedUnits
-                item.lowAlarm = minValue
-                item.highAlarm = speedoMax
-
-                item.height = linearSpeedoHeight
-                item.width = linearSpeedoWidth
-
-                item.imageResource = "qrc:/gauge-faces-544/speedo-544-large.png"
-
-                item.needleColor = "red"
-
-                item.needleWidth = item.height * 0.4
-                item.needleLength = item.width * 0.9
-
-                item.offset = item.height * .675
-                item.offsetX = item.width * 0.035
-
-                item.textSize = speedoSize * .15 / 2
-                item.textOffset = speedoSize / 6
-                item.significantDigits = 0
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue;
-            }
-
-            Binding {
-                target: item
-                property: "maxValue"
-                value: speedoMax
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: linearSpeedoWidth
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: linearSpeedoHeight
-            }
-        }
     }
 
-    Component {
+    TachoDelegate544Style {
         id: rpmDelegate544
-
-        Loader {
-            source: "qrc:/LinearGauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = 0
-                item.maxValue = maxRpm
-                item.units = "rpm"
-                item.highAlarm = redLine
-                item.lowAlarm = 0
-
-                item.height = 64
-                item.width = 600
-
-                item.imageResource = "qrc:/gauge-faces-544/tachometer-544.png"
-
-                item.needleColor = "red"
-
-                item.needleWidth = item.height * 0.4
-                item.needleLength = item.width * 0.775
-
-                item.offset = item.height * .625
-                item.offsetX = item.width * 0.15
-
-                item.textSize = speedoSize * .15 / 2
-                item.textOffset = - speedoSize / 8
-                item.significantDigits = 0
-
-                item.blockWidth = item.width * 0.15
-
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: rpm
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: 600
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: 64
-            }
-        }
     }
 
-    Component {
+    VoltmeterDelegate544Style {
         id: voltMeterDelegate544
-
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeLowAlarm
-                item.clockwise = true
-
-                item.minAngle = -130
-                item.maxAngle = -55
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/gauge-faces-544/battery-544.png"
-                item.needleResource = "qrc:/needles/needle-544-140.png"
-
-                item.needleWidth = smallGaugeSize * 0.05
-                item.needleLength = smallGaugeSize * 0.75
-                item.needleOffset = smallGaugeSize * 0.25 / 2
-                item.offset = smallGaugeSize / 4.0
-
-                item.textOffset = -item.height / 2.0
-
-                item.significantDigits = 2
-
-                item.needleCenterRadius = 0.15
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
+    FuelLevelDelegate544Style {
         id: fuelLevelDelegate544
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeLowAlarm
-                item.clockwise = true
-
-                item.minAngle = -130
-                item.maxAngle = -55
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/gauge-faces-544/fuel-544.png"
-                item.needleResource = "qrc:/needles/needle-544-140.png"
-
-                item.needleWidth = smallGaugeSize * 0.05
-                item.needleLength = smallGaugeSize * 0.75
-                item.needleOffset = smallGaugeSize * 0.25 / 2
-                item.offset = smallGaugeSize / 4.0
-
-                item.textOffset = -item.height / 2.0
-
-                item.significantDigits = 1
-
-                item.needleCenterRadius = 0.15
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
+    CoolantTempDelegate544Style {
         id: coolantTempDelegate544
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeLowAlarm
-                item.clockwise = true
-
-                item.minAngle = -130
-                item.maxAngle = -55
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/gauge-faces-544/coolant-temp-544.png"
-                item.needleResource = "qrc:/needles/needle-544-140.png"
-
-                item.needleWidth = smallGaugeSize * 0.05
-                item.needleLength = smallGaugeSize * 0.75
-                item.needleOffset = smallGaugeSize * 0.25 / 2
-                item.offset = smallGaugeSize / 4.0
-
-                item.textOffset = -item.height / 2.0
-
-                item.significantDigits = 1
-
-                item.needleCenterRadius = 0.15
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
+    OilPressureDelegate544Style {
         id: oilPressureDelegate544
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeLowAlarm
-                item.clockwise = true
-
-                item.minAngle = -130
-                item.maxAngle = -55
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/gauge-faces-544/oil-pressure-544.png"
-                item.needleResource = "qrc:/needles/needle-544-140.png"
-
-                item.needleWidth = smallGaugeSize * 0.05
-                item.needleLength = smallGaugeSize * 0.75
-                item.needleOffset = smallGaugeSize * 0.25 / 2
-                item.offset = smallGaugeSize / 4.0
-
-
-                item.textOffset = -item.height / 2.0
-
-                item.significantDigits = 1
-
-                item.needleCenterRadius = 0.15
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
+    // p1800 style delegates
+    SpeedoDelegateP1800Style {
         id: speedoDelegateP1800
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = minValue
-                item.maxValue = speedoMax
-                item.units = speedUnits
-                item.lowAlarm = minValue
-                item.highAlarm = speedoMax
-
-                item.initialValueOffset = 0
-
-                item.topValue = valueTop
-                item.topUnits = valueTopUnits
-                item.topValueEnabled = true
-                item.topTextOffset = -speedoSize / 6
-                item.topTextSize = speedoSize / 20.0
-
-                item.minAngle = -225
-                item.maxAngle = 40
-
-                item.height = speedoSize
-                item.width = speedoSize
-
-                item.imageResource = "qrc:/gauge-faces-p1800/speedo-mph-p1800.png"
-                item.needleResource = "qrc:/needles/needle-rsport.png"
-
-                item.needleColor = "burlywood"
-
-                item.needleWidth = item.width * 0.025
-                item.needleLength = item.width * 0.375
-                item.needleOffset = 0
-
-                item.needleCenterRadius = 0.125
-
-                item.textSize = speedoSize * .15 / 2
-                item.textOffset = speedoSize / 6
-                item.significantDigits = 0
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue;
-            }
-
-            Binding {
-                target: item
-                property: "maxValue"
-                value: speedoMax
-            }
-
-            Binding {
-                target: item
-                property: "topValue"
-                value: valueTop
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: speedoSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: speedoSize
-            }
-        }
     }
 
-    Component {
+    TachoDelegateP1800Style {
         id: rpmDelegateP1800
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = 0
-                item.maxValue = 7000
-                item.units = "rpm"
-                item.highAlarm = redLine
-                item.lowAlarm = 0
-
-                item.initialValueOffset = 0
-
-                item.minAngle = -221
-                item.maxAngle = 35
-
-                item.height = speedoSize
-                item.width = speedoSize
-
-                item.imageResource = "qrc:/gauge-faces-p1800/tach-p1800.png"
-                item.needleResource = "qrc:/needles/needle-rsport.png"
-
-                item.needleColor = "burlywood"
-
-                item.needleWidth = item.width * 0.025
-                item.needleLength = item.width * 0.375
-                item.needleOffset = 0
-
-                item.needleCenterRadius = 0.125
-
-                item.textSize = tachSize * 0.15 / 2
-                item.textOffset = tachSize / 6
-                item.significantDigits = 0
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: rpm
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: speedoSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: speedoSize
-            }
-        }
     }
 
-    Component {
+    CoolantTempDelegateP1800Style {
         id: coolantTempDelegateP1800
-
-        Loader {
-            source: "qrc:/LinearGauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = 90
-                item.maxValue = 230
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeLowAlarm
-
-                item.height = 20
-                item.width = 125
-
-                item.imageResource = ""
-
-                item.needleColor = "goldenrod"
-
-                item.needleWidth = item.height
-                item.needleLength = item.width
-
-                item.offset = 0
-                item.offsetX = 0
-
-                item.textSize = item.width * 0.2
-                item.textOffsetY = item.width * 0.70
-                item.textRotation = 90
-                item.significantDigits = 0
-
-                item.blockWidth = 0
-                item.shear = 0
-                item.barRadius = 2
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: 80
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: 15
-            }
-        }
     }
 
-    Component {
+    OilTempDelegateP1800Style {
         id: oilTempDelegateP1800
-
-        Loader {
-            source: "qrc:/LinearGauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = 140
-                item.maxValue = 280
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeLowAlarm
-
-                item.height = 20
-                item.width = 125
-
-                item.imageResource = ""
-
-                item.needleColor = "lightseagreen"
-
-                item.needleWidth = item.height
-                item.needleLength = item.width
-
-                item.offset = 0
-                item.offsetX = 0
-
-                item.textSize = item.width * 0.2
-                item.textOffsetY = - item.width * 0.70
-                item.textRotation = 90
-                item.significantDigits = 0
-
-                item.blockWidth = 0
-                item.shear = 0
-                item.barRadius = 2
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: 80
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: 15
-            }
-        }
     }
 
-    Component {
+    OilPressureDelegateP1800Style {
         id: oilPressureDelegateP1800
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = 6
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeLowAlarm
-
-                item.minAngle = -145
-                item.maxAngle = -35
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/gauge-faces-p1800/oil-pressure-p1800.png"
-                item.needleResource = "qrc:/needles/needle-rsport.png"
-
-                item.needleWidth = smallGaugeNeedleWidth240
-                item.needleLength = item.width * 0.375
-                item.needleOffset = 0
-
-                item.offset = 0
-
-                item.textSize = item.width * 0.1
-                item.significantDigits = 2
-
-                item.needleCenterRadius = 0
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
-    Component {
+    FuelLevelDelegateP1800Style {
         id: fuelLevelDelegateP1800
-
-        Loader {
-            source: "qrc:/Gauge.qml"
-            asynchronous: true
-            onLoaded: {
-                item.minValue = gaugeMin
-                item.maxValue = gaugeMax
-                item.units = gaugeUnits
-                item.highAlarm = gaugeHighAlarm
-                item.lowAlarm = gaugeLowAlarm
-
-                item.minAngle = -145
-                item.maxAngle = -35
-
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
-
-                item.imageResource = "qrc:/gauge-faces-p1800/fuel-level-p1800.png"
-                item.needleResource = "qrc:/needles/needle-rsport.png"
-
-                item.needleWidth = smallGaugeNeedleWidth240
-                item.needleLength = item.width * 0.375
-                item.needleOffset = 0
-
-                item.significantDigits = 1
-                item.textSize = item.width * 0.1
-
-                item.needleCenterRadius = 0
-            }
-
-            Binding {
-                target: item
-                property: "value"
-                value: currentValue
-            }
-
-            Binding {
-                target: item
-                property: "width"
-                value: smallGaugeSize
-            }
-
-            Binding {
-                target: item
-                property: "height"
-                value: smallGaugeSize
-            }
-        }
     }
 
     Component {
@@ -2449,102 +608,120 @@ Window {
             }
         }
 
+        function advanceScreen(forward) {
+            if (forward) {
+                if (++screen > 8) {
+                    screen = 0;
+                }
+            } else {
+                if (--screen < 0) {
+                    screen = 8;
+                }
+            }
+
+            switch (screen) {
+                case 0:
+                    //currentGauge.source = "";
+                    currentGauge.source = "qrc:/BigTachCenter.qml";
+                    setSmallGaugeSize(140);
+                    setTachSize(440);
+                    setSpeedoSize(tachSize - smallGaugeSize - 10);
+                    setSpeedoMax(120);
+                    setTempFuelSize(tachSize - smallGaugeSize - 10);
+                    accessoryScreen.currentStyle = "240";
+                    break;
+                case 1:
+                    //currentGauge.source = "";
+                    currentGauge.source = "qrc:/BigTachLeft.qml";
+                    setSmallGaugeSize(140);
+                    setTachSize(440);
+                    setSpeedoSize(tachSize - smallGaugeSize - 10);
+                    setSpeedoMax(120);
+                    setTempFuelSize(tachSize - smallGaugeSize - 10);
+                    accessoryScreen.currentStyle = "240";
+                    break;
+                case 2:
+                    //currentGauge.source = "";
+                    currentGauge.source = "qrc:/Original240Layout.qml";
+                    setSmallGaugeSize(140);
+                    setTachSize(400);
+                    setSpeedoSize(440);
+                    setSpeedoMax(120);
+                    setTempFuelSize(400);
+                    accessoryScreen.currentStyle = "240";
+                    break;
+                case 3:
+                    //currentGauge.source = "";
+                    currentGauge.source = "qrc:/Original740Layout.qml"
+                    setSmallGaugeSize(140);
+                    setTachSize(275);
+                    setSpeedoSize(350);
+                    setSpeedoMax(140);
+                    setTempFuelSize(300);
+                    accessoryScreen.currentStyle = "740";
+                    break;
+                case 4:
+                    //currentGauge.source = "";
+                    currentGauge.source = "qrc:/Original240LayoutClock.qml";
+                    setSmallGaugeSize(140);
+                    setTachSize(400);
+                    setSpeedoSize(440);
+                    setSpeedoMax(120);
+                    setTempFuelSize(400);
+                    accessoryScreen.currentStyle = "240";
+                    break;
+                case 5:
+                    //currentGauge.source = "";
+                    currentGauge.source = "qrc:/Original850R.qml"
+                    setSmallGaugeSize(200);
+                    setTachSize(350);
+                    setSpeedoSize(440);
+                    setSpeedoMax(140);
+                    //setTempFuelSize(300);
+                    accessoryScreen.currentStyle = "740";
+                    break;
+                case 6:
+                    currentGauge.source = "qrc:/OriginalRSportLayout.qml"
+                    setSmallGaugeSize(200);
+                    setTachSize(350);
+                    setSpeedoSize(350);
+                    setSpeedoMax(130);
+                    accessoryScreen.currentStyle = "rSport";
+                    break;
+
+                case 7:
+                    currentGauge.source = "qrc:/Original544Layout.qml"
+                    setSmallGaugeSize(140);
+                    setTachSize(400);
+                    setSpeedoSize(440);
+                    setSpeedoMax(120);
+                    setTempFuelSize(400);
+                    accessoryScreen.currentStyle = "240";
+                    break;
+                case 8:
+                    currentGauge.source = "qrc:/OriginalP1800Layout.qml"
+                    setSmallGaugeSize(200);
+                    setTachSize(350);
+                    setSpeedoSize(440);
+                    setSpeedoMax(120);
+                    accessoryScreen.currentStyle = "p1800";
+                    break;
+                default:
+                    break;
+                }
+        }
+
         Keys.onPressed: {
             if (!event.isAutoRepeat) {
                 switch (event.key) {
                 case Qt.Key_Left:
-                    if (--screen < 0) {
-                        screen = 8;
-                    }
+                    advanceScreen(false);
                     break;
                 case Qt.Key_Right:
-                    if (++screen > 8) {
-                        screen = 0;
-                    }
+                    advanceScreen(true);
                     break;
                 }
 
-                switch (screen) {
-                    case 0:
-                        //currentGauge.source = "";
-                        currentGauge.source = "qrc:/BigTachCenter.qml";
-                        setSmallGaugeSize(140);
-                        setTachSize(440);
-                        setSpeedoSize(tachSize - smallGaugeSize - 10);
-                        setSpeedoMax(120);
-                        setTempFuelSize(tachSize - smallGaugeSize - 10);
-                        break;
-                    case 1:
-                        //currentGauge.source = "";
-                        currentGauge.source = "qrc:/BigTachLeft.qml";
-                        setSmallGaugeSize(140);
-                        setTachSize(440);
-                        setSpeedoSize(tachSize - smallGaugeSize - 10);
-                        setSpeedoMax(120);
-                        setTempFuelSize(tachSize - smallGaugeSize - 10);
-                        break;
-                    case 2:
-                        //currentGauge.source = "";
-                        currentGauge.source = "qrc:/Original240Layout.qml";
-                        setSmallGaugeSize(140);
-                        setTachSize(400);
-                        setSpeedoSize(440);
-                        setSpeedoMax(120);
-                        setTempFuelSize(400);
-                        break;
-                    case 3:
-                        //currentGauge.source = "";
-                        currentGauge.source = "qrc:/Original740Layout.qml"
-                        setSmallGaugeSize(140);
-                        setTachSize(275);
-                        setSpeedoSize(350);
-                        setSpeedoMax(140);
-                        setTempFuelSize(300);
-                        break;
-                    case 4:
-                        //currentGauge.source = "";
-                        currentGauge.source = "qrc:/Original240LayoutClock.qml";
-                        setSmallGaugeSize(140);
-                        setTachSize(400);
-                        setSpeedoSize(440);
-                        setSpeedoMax(120);
-                        setTempFuelSize(400);
-                        break;
-                    case 5:
-                        //currentGauge.source = "";
-                        currentGauge.source = "qrc:/Original850R.qml"
-                        setSmallGaugeSize(200);
-                        setTachSize(350);
-                        setSpeedoSize(440);
-                        setSpeedoMax(140);
-                        //setTempFuelSize(300);
-                        break;
-                    case 6:
-                        currentGauge.source = "qrc:/OriginalRSportLayout.qml"
-                        setSmallGaugeSize(200);
-                        setTachSize(350);
-                        setSpeedoSize(350);
-                        setSpeedoMax(130);
-                        break;
-
-                    case 7:
-                        currentGauge.source = "qrc:/Original544Layout.qml"
-                        setSmallGaugeSize(140);
-                        setTachSize(400);
-                        setSpeedoSize(440);
-                        setSpeedoMax(120);
-                        setTempFuelSize(400);
-                        break;
-                    case 8:
-                        currentGauge.source = "qrc:/OriginalP1800Layout.qml"
-                        setSmallGaugeSize(200);
-                        setTachSize(350);
-                        setSpeedoSize(440);
-                        setSpeedoMax(120);
-                        break;
-                    default:
-                        break;
-                    }
                 event.accepted = true;
             }
         }

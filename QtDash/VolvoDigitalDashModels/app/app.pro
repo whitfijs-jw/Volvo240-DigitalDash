@@ -1,4 +1,4 @@
-QT += quick serialport positioning serialbus
+QT += qml quick serialport positioning serialbus
 CONFIG += c++17 qtquickcompiler staticlib
 
 TARGET = VolvoDigitalDashModels
@@ -423,6 +423,7 @@ HEADERS += \
     gauge_temp_fuel_cluster.h \
     gps_helper.h \
     indicator_model.h \
+    key_press_emitter.h \
     map_sensor.h \
     mcp23017.h \
     ntc.h \

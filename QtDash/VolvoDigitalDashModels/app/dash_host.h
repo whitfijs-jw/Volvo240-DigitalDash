@@ -95,6 +95,19 @@ public:
 signals:
     void keyPress(QKeyEvent * event);
 public slots:
+    void odoTripReset(int trip) {
+        switch (trip) {
+        case 0:
+            mOdometerModel.setTripAValue(0.0);
+            break;
+        case 1:
+            mOdometerModel.setTripBValue(0.0);
+            break;
+        default:
+            break;
+        }
+    }
+
     /**
      * @brief Update tachometer model
      */
@@ -131,11 +144,11 @@ public slots:
         }
 
 
-//        mOdometerModel.setOdometerValue(mOdometerModel.odometerValue() + 0.1);
-//        mOdometerModel.setTripAValue(mOdometerModel.tripAValue() + 0.1);
-//        mOdometerModel.setTripBValue(mOdometerModel.tripBValue() + 0.1);
-//
-//        static int i = 0;
+        mOdometerModel.setOdometerValue(mOdometerModel.odometerValue() + 0.1);
+        mOdometerModel.setTripAValue(mOdometerModel.tripAValue() + 0.1);
+        mOdometerModel.setTripBValue(mOdometerModel.tripBValue() + 0.1);
+
+        static int i = 0;
 //        if (++i % 100 == 0) {
 //            Config::OdometerConfig_t c = mConfig.getOdometerConfig(Config::ODO_NAME_ODOMETER);
 //            c.value = mOdometerModel.odometerValue();

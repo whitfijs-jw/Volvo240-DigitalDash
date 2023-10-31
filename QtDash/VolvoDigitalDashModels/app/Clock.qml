@@ -12,6 +12,11 @@ Item
     property real minutes
     property real seconds
 
+    property string imageResource: "qrc:/accCluster/clock_black.png"
+    property string needleResource: "qrc:/needles/needle-240.png"
+
+    property real needleCenterRadius: 0.15
+
     function timeChanged() {
         var date = new Date;
         valueText.text = date.toLocaleTimeString();
@@ -55,15 +60,14 @@ Item
         units: ""
         textEnabled: false
 
-        imageResource: "qrc:/accCluster/clock_black.png"
-
-        needleColor: "orange"
+        imageResource: clock.imageResource
+        needleResource: clock.needleResource
 
         needleWidth: parent.width * 0.015
         needleLength: parent.width * 0.525
         needleOffset: parent.width * .15 / 2
 
-        needleCenterRadius: 0.15
+        needleCenterRadius: clock.needleCenterRadius
 
         dir: RotationAnimation.Shortest
     }
@@ -87,14 +91,13 @@ Item
         textEnabled: false
 
         imageResource: ""
-
-        needleColor: "orange"
+        needleResource: clock.needleResource
 
         needleWidth: smallGaugeSize * 0.03
         needleLength: smallGaugeSize * 0.525
         needleOffset: smallGaugeSize * .15 / 2
 
-        needleCenterRadius: 0.15
+        needleCenterRadius: clock.needleCenterRadius
 
         dir: RotationAnimation.Shortest
     }
@@ -118,14 +121,13 @@ Item
         textEnabled: false
 
         imageResource: ""
-
-        needleColor: "orange"
+        needleResource: clock.needleResource
 
         needleWidth: smallGaugeSize * 0.035
         needleLength: smallGaugeSize * 0.425
         needleOffset: smallGaugeSize * .15 / 2
 
-        needleCenterRadius: 0.15
+        needleCenterRadius: clock.needleCenterRadius
 
         dir: RotationAnimation.Shortest
     }

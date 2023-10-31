@@ -101,6 +101,20 @@ public:
 signals:
     void keyPress(QKeyEvent * event);
 
+public slots:
+    void odoTripReset(int trip) {
+        switch (trip) {
+        case 0:
+            mTripAOdoSensor->reset();
+            break;
+        case 1:
+            mTripBOdoSensor->reset();
+            break;
+        default:
+            break;
+        }
+    }
+
 private:
     QQmlContext * mContext; //!< QML Context
     EventTimers mEventTiming; //!< Event Timer

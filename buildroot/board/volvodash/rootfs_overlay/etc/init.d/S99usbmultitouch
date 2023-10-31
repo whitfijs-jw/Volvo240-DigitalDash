@@ -1,0 +1,39 @@
+#!/bin/sh
+### BEGIN INIT INFO
+### END INIT INFO
+
+# Carry out specific functions when asked to by the system
+case "$1" in
+  start)
+    echo "finding hid-multitouch driver"
+    cp /etc/eglfs_hdmi-old.json /etc/eglfs_hdmi.json
+
+    timeout=5
+    until [ -e /sys/bus/hid/drivers/hid-multitouch/*/input ]
+    do
+        sleep 1
+	$((timeout-=1))
+	if [ "$timeout" -eq 0 ]; then
+	    echo "device not found -- timeout"
+	    exit 0
+	fi
+    done
+    echo "hid-multitouch driver found"
+
+    inputNum=`ls /sys/bus/hid/drivers/hid-multitouch/*/input/ | grep -E '[0-9]$' | cut -c '6'`
+    echo "event${inputNum} found"
+    filename=/etc/eglfs_hdmi.json
+    sed -i "s/event0/event${inputNum}/" $filename
+    export QT_QPA_EVDEV_TOUCHSCREEN_PARAMETERS=/dev/input/event${inputNum}
+    ;;
+  stop)
+    echo "end hid-multitouch driver search"
+    ;;
+  *)
+    echo "Usage: /etc/init.d/S60eglfs-hid-multitouch {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
+
