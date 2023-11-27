@@ -62,6 +62,7 @@ public:
     static constexpr char DIMMER_VOLTAGE_KEY[] =  "dimmer_voltage";
     static constexpr char FUSE8_12V_KEY[] = "fuse8_12v";
     static constexpr char REFERENCE_MEASUREMENT[] = "reference";
+    static constexpr char V_SUPPLY_KEY[] = "v_supply";
 
     // expected dash light keys
     static constexpr char ACTIVE_LOW[] = "active_low";
@@ -94,6 +95,7 @@ public:
     //expected map sensor keys
     static constexpr char PRESSURE_AT_0V[] = "p_0v";
     static constexpr char PRESSURE_AT_5V[] = "p_5v";
+    static constexpr char PRESSURE_ATM[] = "p_atm";
     static constexpr char PRESSURE_UNITS[] = "units";
 
     //expected temperature sensor keys
@@ -418,6 +420,7 @@ public:
     typedef struct MapSensorConfig {
         qreal p0V; //!< pressure when sensor reads 0V
         qreal p5V; //!< pressure when sensor reads 5V
+        qreal pAtm; //!< atmpsheric pressure
         PressureUnits units; //!< units of calibration pressures
 
         /**
@@ -780,6 +783,8 @@ public:
                 mMapSensorConfig.p0V = mConfig->value(key, -1).toReal();
             } else if (key == PRESSURE_AT_5V) {
                 mMapSensorConfig.p5V = mConfig->value(key, -1).toReal();
+            } else if (key == PRESSURE_ATM) {
+                mMapSensorConfig.pAtm = mConfig->value(key, -1).toReal();
             } else if (key == PRESSURE_UNITS) {
                 // default to kPa
                 QString units = mConfig->value(key, UNITS_KPA).toString();

@@ -406,11 +406,9 @@ HEADERS += \
     ../../eigen/Eigen/src/plugins/ReshapedMethods.h \
     adc.h \
     analog_12v_input.h \
-    analog_sensors.h \
     backlight_control.h \
     can_frame_config.h \
     config.h \
-    dash.h \
     dash_host.h \
     dash_lights.h \
     dash_new.h \

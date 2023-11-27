@@ -57,9 +57,9 @@ public slots:
             qreal volts = data.toReal();
 
             qreal value = mNtc->calculateTemp(volts, NTC_INTERNAL_UNITS);
-
+            qreal vRef = ((AdcSource *)mSource)->getVRef();
             // Check that we're not shorted to ground or VDD (could be disconnected)
-            if (!SensorUtils::isValid(volts, mNtc->getSensorConfig()->vSupply)) {
+            if (!SensorUtils::isValid(volts, vRef)) {
                 value = 0;
             }
 
