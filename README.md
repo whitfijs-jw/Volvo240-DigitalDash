@@ -178,6 +178,7 @@ Under the **[sensor_channel]** section the following inputs can be configured:
 | *dimmer_voltage* | Dimmer Rheostat output voltage |
 | *fuse8_12v* | Volvo Fuse 8 to measure battery voltage |
 | *reference* | A channel configured to measure the unregulated pi 5V supply to decrease measurment error.  If this is not used it is assumed that the supply is exactly 5V. You can alternatively measure your 5V power rail and provide that in the configurations below.|
+| *v_supply* | Optional value to set the exact value of the 5V supply.  If left empty exactly 5.0V will be used |
 
 The default configuration is as follows:
 ```
@@ -191,6 +192,7 @@ ambient_temp=4
 dimmer_voltage=6
 fuse8_12v=7
 reference=-1
+v_supply=5.1
 ```
 
 #### Dash Light Inputs
@@ -291,6 +293,7 @@ Designed for a GM style 0-5V output MAP sensor (1 bar, 2 bar, 3 bar). Under the 
 |---|---|
 | *p_0v* | pressure when sensor output is 0V |
 | *p_5v* | pressure when sensor output is 5V |
+| *p_atm* | atmospheric pressure |
 | *units* | pressure units used for above values.  "kPa", "psi" or "bar" should be used |
 
 The default configuration is for a 3 bar GM style map sensor:
