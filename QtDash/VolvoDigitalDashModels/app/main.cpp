@@ -13,7 +13,6 @@
 #include <config.h>
 
 #ifdef RASPBERRY_PI
-#include <dash.h>
 #include <dash_new.h>
 #else
 #include <dash_host.h>
