@@ -3,7 +3,7 @@
 Volvo 240 Digital Dash Project.  Designed to use existing dash connectors (circular connectors w/ 2mm pins, vehicle speed sensor (VSS) connector, and various spade connectors) to
 minimize extra wiring effort and installation of superfluous sensors.
 
-![alt text](https://github.com/whitfijs-jw/Volvo240-DigitalDash/blob/develop/QtDash/project_preview.jpg?raw=true)
+![alt text](https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/main/QtDash/Pictures/240-tach-single-screen.jpg)
 
 ## Project Structure:
 ### /QtDash
