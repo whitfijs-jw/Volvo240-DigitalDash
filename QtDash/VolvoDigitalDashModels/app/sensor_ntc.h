@@ -30,6 +30,10 @@ public:
                 mConfig->getTempSensorConfigs();
 
         for (Config::TempSensorConfig_t config : *tempSensorConfigs) {
+            // use the sensor source vref
+            config.vSupply = source->getVRef();
+
+            // check if its a valid config
             if (config.isValid()) {
                 if (config.type == type) {
                     mNtc = new Ntc(config);

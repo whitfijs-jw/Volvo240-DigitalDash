@@ -101,7 +101,6 @@ public:
     //expected temperature sensor keys
     static constexpr char TEMP_TYPE[] = "type";
     static constexpr char TEMP_R_BALANCE[] = "r_balance";
-    static constexpr char TEMP_V_SUPPLY[] = "v_supply";
     static constexpr char T1_TEMP[] = "t1_temp";
     static constexpr char T1_RES[] = "t1_R";
     static constexpr char T2_TEMP[] = "t2_temp";
@@ -137,7 +136,6 @@ public:
     static constexpr char RES_SENSOR_UNITS[] = "units";
     static constexpr char RES_SENSOR_R_BALANCE[] = "r_balance";
     static constexpr char RES_SENSOR_LAG[] = "lag";
-    static constexpr char RES_SENSOR_V_SUPPLY[] = "v_supply";
 
     static constexpr char RES_SENSOR_TYPE_FUEL_LEVEL[] = "fuel_level";
     static constexpr char RES_SENSOR_TYPE_OIL_PRESSURE[] = "oil_pressure";
@@ -803,7 +801,6 @@ public:
             mConfig->setArrayIndex(i);
 
             conf.rBalance = mConfig->value(TEMP_R_BALANCE, 1000).toReal();
-            conf.vSupply = mConfig->value(TEMP_V_SUPPLY, 5.0).toReal();
             conf.t1 = mConfig->value(T1_TEMP, -1).toReal();
             conf.t2 = mConfig->value(T2_TEMP, -1).toReal();
             conf.t3 = mConfig->value(T3_TEMP, -1).toReal();
@@ -881,9 +878,6 @@ public:
 
             // lag coefficient
             rSensorConf.lag = mConfig->value(RES_SENSOR_LAG, 1.0).toReal();
-
-            // voltage supply
-            rSensorConf.vSupply = mConfig->value(RES_SENSOR_V_SUPPLY, 5.0).toReal();
 
             mResistiveSensorConfig.insert(rSensorConf.type, rSensorConf);
             printKeys("Resistive Sensor: ", mConfig);
