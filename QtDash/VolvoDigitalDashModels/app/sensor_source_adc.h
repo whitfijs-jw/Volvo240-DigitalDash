@@ -19,8 +19,13 @@ public:
     AdcSource(QObject * parent, Config * config, QString name = "adc") :
         SensorSource(parent, config, name) {
 
+        // setup ref channel (if configured)
         int refChannel = mConfig->getSensorConfig().value(Config::REFERENCE_MEASUREMENT, -1);
-        qreal vRef = mConfig->getSensorConfig().value(Config::V_SUPPLY_KEY, 500) / 100.0;
+
+        // get the sensor supply voltage
+        qreal vRef = mConfig->getSensorSupplyVoltage();
+
+        // setup the ADC
         mAdc = new Adc(Adc::MCP3208, Adc::IIO_DEVICE_PATH, vRef, refChannel);
     }
 

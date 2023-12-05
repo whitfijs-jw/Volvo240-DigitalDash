@@ -63,6 +63,7 @@ public:
     static constexpr char FUSE8_12V_KEY[] = "fuse8_12v";
     static constexpr char REFERENCE_MEASUREMENT[] = "reference";
     static constexpr char V_SUPPLY_KEY[] = "v_supply";
+    static constexpr qreal DEFAULT_V_SUPPLY = 5.0;
 
     // expected dash light keys
     static constexpr char ACTIVE_LOW[] = "active_low";
@@ -734,7 +735,7 @@ public:
 
         for (auto key : mConfig->childKeys()) {
             if (key == V_SUPPLY_KEY) {
-                mSensorChannelConfig.insert(key, mConfig->value(key, 5.0).toReal() * 100);
+                mSensorSupplyVoltage = mConfig->value(key, DEFAULT_V_SUPPLY).toReal();
             } else {
                 mSensorChannelConfig.insert(key, mConfig->value(key, -1).toInt());
             }
@@ -1117,6 +1118,10 @@ public:
         return mUserInputPinConfig;
     }
 
+    qreal getSensorSupplyVoltage() {
+        return mSensorSupplyVoltage;
+    }
+
 signals:
 
 public slots:
@@ -1124,6 +1129,7 @@ public slots:
 private:
     QSettings * mConfig = nullptr;  //!< QSettings for reading config.ini file
     QMap<QString, int> mSensorChannelConfig; //!< sensor channel configuration
+    qreal mSensorSupplyVoltage = DEFAULT_V_SUPPLY;
     QMap<QString, int> mDashLightConfig; //!< dash light gpio configuration
     QMap<int, Qt::Key> mUserInputConfig;
     QMap<QString, int> mUserInputPinConfig;
