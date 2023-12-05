@@ -10,6 +10,8 @@
  */
 class Map_Sensor : public Sensor {
 public:
+    static constexpr qreal DEFAULT_P_ATM_PSI = 14.5038;
+
     /**
      * @brief Map_Sensor constructor
      * @param parent: parent object
@@ -24,8 +26,17 @@ public:
         mMapSensor = new MapSensor(
                     mConfig->getMapSensorConfig().p0V,
                     mConfig->getMapSensorConfig().p5V,
+                    source->getVRef(), // vref from source
                     mConfig->getMapSensorConfig().units
                     );
+        // check that a valid atm pressure is available
+        if (mConfig->getMapSensorConfig().pAtm > 0) {
+            // convert atm pressure to PSI to be used internally
+            SensorUtils::convertPressure(
+                mConfig->getMapSensorConfig().pAtm,
+                Config::PressureUnits::PSI,
+                mConfig->getMapSensorConfig().units);
+        }
     }
 
     QString getUnits() override {
@@ -41,13 +52,14 @@ public slots:
     void transform(QVariant data, int channel) override {
         if (channel == getChannel()) {
             qreal volts = data.toReal();
-            qreal pressure = mMapSensor->getAbsolutePressure(volts, Config::PressureUnits::PSI) - 14.5038;
+            qreal pressure = mMapSensor->getAbsolutePressure(volts, Config::PressureUnits::PSI) - mPressureAtm;
             emit sensorDataReady(pressure);
         }
     }
 
 private:
     MapSensor * mMapSensor;
+    qreal mPressureAtm = DEFAULT_P_ATM_PSI;
 };
 
 #endif // SENSOR_MAP_H

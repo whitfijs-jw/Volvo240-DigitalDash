@@ -148,7 +148,7 @@ public slots:
         mOdometerModel.setTripAValue(mOdometerModel.tripAValue() + 0.1);
         mOdometerModel.setTripBValue(mOdometerModel.tripBValue() + 0.1);
 
-        static int i = 0;
+//        static int i = 0;
 //        if (++i % 100 == 0) {
 //            Config::OdometerConfig_t c = mConfig.getOdometerConfig(Config::ODO_NAME_ODOMETER);
 //            c.value = mOdometerModel.odometerValue();

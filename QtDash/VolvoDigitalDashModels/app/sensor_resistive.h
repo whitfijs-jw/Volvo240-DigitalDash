@@ -25,6 +25,8 @@ public:
         // calculate curve
         mSensorConfig.coeff = SensorUtils::polynomialRegression(
                     mSensorConfig.x, mSensorConfig.y, mSensorConfig.order);
+        // use vref from adc source
+        mSensorConfig.vSupply = ((AdcSource *)mSource)->getVRef();
     }
 
     QString getUnits() override {
@@ -52,13 +54,14 @@ public slots:
             }
 
             // Check that we're not shorted to ground or VDD (could be disconnected)
-            if (!SensorUtils::isValid(volts, mSensorConfig.vSupply)) {
+            qreal vRef = ((AdcSource *)mSource)->getVRef();
+            if (!SensorUtils::isValid(volts, vRef)) {
                 value = 0;
             }
 
-            value = (mSensorConfig.lag * value) + (1 - mSensorConfig.lag) * previousValue;
+            value = (mSensorConfig.lag * value) + (1 - mSensorConfig.lag) * mPreviousValue;
 
-            previousValue = value;
+            mPreviousValue = value;
 
             emit sensorDataReady(value);
         }
@@ -66,7 +69,7 @@ public slots:
 
 private:
     Config::ResistiveSensorConfig_t mSensorConfig; //!< resistive sensor config
-    qreal previousValue = 0; //!< previous value (used for filtering)
+    qreal mPreviousValue = 0; //!< previous value (used for filtering)
 };
 
 #endif // SENSOR_RESISTIVE_H

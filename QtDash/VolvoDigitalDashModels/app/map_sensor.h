@@ -15,8 +15,8 @@ public:
      * @brief MapSensor constructor
      * @param config: MAP sensor config
      */
-    MapSensor(Config::MapSensorConfig_t config) {
-        setVoltages(config.p0V, config.p5V, config.units);
+    MapSensor(Config::MapSensorConfig_t config, qreal vRef) {
+        setVoltages(config.p0V, config.p5V, vRef, config.units);
     }
 
     /**
@@ -25,8 +25,8 @@ public:
      * @param pressure5V: pressure when MAP sensor it at 5V
      * @param units: pressure units
      */
-    MapSensor(qreal pressure0V, qreal pressure5V, Config::PressureUnits units) {
-        setVoltages(pressure0V, pressure5V, units);
+    MapSensor(qreal pressure0V, qreal pressure5V, qreal vRef, Config::PressureUnits units) {
+        setVoltages(pressure0V, pressure5V, vRef, units);
     }
 
     /**
@@ -52,10 +52,11 @@ private:
      * @param p0V: pressure at 0V
      * @return
      */
-    static constexpr qreal calculateSlope(qreal p5V, qreal p0V) {
-        return (p5V - p0V) / (VDD - VSS);
+    static constexpr qreal calculateSlope(qreal p5V, qreal p0V, qreal vRef) {
+        return (p5V - p0V) / (vRef - VSS);
     }
 
+    qreal mVRef = 5.0;
     qreal mP0V = 0.0;
     qreal mP5V = 0.0;
     qreal mSlope = 0.0;
@@ -67,13 +68,15 @@ private:
      * @param pressure5V: pressure at 5V
      * @param units: input units -- kPa is used internally
      */
-    void setVoltages(qreal pressure0V, qreal pressure5V, Config::PressureUnits units) {
+    void setVoltages(qreal pressure0V, qreal pressure5V,
+                     qreal vRef, Config::PressureUnits units) {
         // keep everthing in kPA
         mP0V = SensorUtils::toKpa(pressure0V, units);
         mP5V = SensorUtils::toKpa(pressure5V, units);
 
-        mSlope = calculateSlope(mP5V, mP0V);
+        mSlope = calculateSlope(mP5V, mP0V, vRef);
         mOffset = mP0V;
+        mVRef = vRef;
     }
 
 };

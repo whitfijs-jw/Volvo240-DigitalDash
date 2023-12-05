@@ -178,6 +178,7 @@ Under the **[sensor_channel]** section the following inputs can be configured:
 | *dimmer_voltage* | Dimmer Rheostat output voltage |
 | *fuse8_12v* | Volvo Fuse 8 to measure battery voltage |
 | *reference* | A channel configured to measure the unregulated pi 5V supply to decrease measurment error.  If this is not used it is assumed that the supply is exactly 5V. You can alternatively measure your 5V power rail and provide that in the configurations below.|
+| *v_supply* | Optional value to set the exact value of the 5V supply.  If left empty exactly 5.0V will be used |
 
 The default configuration is as follows:
 ```
@@ -191,6 +192,7 @@ ambient_temp=4
 dimmer_voltage=6
 fuse8_12v=7
 reference=-1
+v_supply=5.1
 ```
 
 #### Dash Light Inputs
@@ -291,6 +293,7 @@ Designed for a GM style 0-5V output MAP sensor (1 bar, 2 bar, 3 bar). Under the 
 |---|---|
 | *p_0v* | pressure when sensor output is 0V |
 | *p_5v* | pressure when sensor output is 5V |
+| *p_atm* | atmospheric pressure |
 | *units* | pressure units used for above values.  "kPa", "psi" or "bar" should be used |
 
 The default configuration is for a 3 bar GM style map sensor:
@@ -310,7 +313,6 @@ An array of NTC sensor configurations. Calibration curves are calculated using t
 |---|---|
 | *type* | Sensor type.  Options are "coolant", "oil", and "ambient" |
 | *r_balance* | Resistance of the balance resistor. This can be calculated based on the high and low resistances expected during operation. |
-| *v_supply* 	| Sensor circuit supply voltage (5V for Rev A and B hardware) |
 | *t1_temp* 	|  Temperature at first calibration point |
 | *t1_R* 		| Resistance at first calibration point |
 | *t2_temp* 	| Temperature at second calibration point |
@@ -327,7 +329,6 @@ size=3
 [temp_sensor/1]
 type="coolant"
 r_balance=470
-v_supply=5
 t1_temp=60
 t1_R=217
 t2_temp=90
@@ -338,7 +339,6 @@ units="C"
 [temp_sensor/2]
 type="oil"
 r_balance=150.0
-v_supply=5
 t1_temp=19.5
 t1_R=1325
 t2_temp=100
@@ -349,7 +349,6 @@ units="C"
 [temp_sensor/3]
 type="ambient"
 r_balance=6490
-v_supply=5
 t1_temp=1.0
 t1_R=15800
 t2_temp=20
@@ -372,7 +371,6 @@ An array of resistive sensor configurations. Calibration values can be interpola
 | *y* | Calibration y values |
 | *units* | Units of calibration y values |
 | *lag* | Lag factor (0-1).  Used to filter values with the difference equation: **y[n] = lag \* x[n] + (1 - lag) \* y[n-1]** |
-| *v_supply* | Sensor circuit supply voltage (5V for Rev A and B hardware) |
 
 The default configuration is designed for a VDO 360-028 Oil pressure sender and a 240-33Ohm Volvo 240 Fuel level sender.
 
@@ -387,7 +385,6 @@ r=10.0,48.0,82.0,116.0,184.0
 y=0.0,1.0,2.0,3.0,5.0
 units="bar"
 lag=1.0
-v_supply=5
 [resistive_sensor/2]
 type="fuel_level"
 fit=polynomial,3
@@ -396,7 +393,6 @@ r=240,196,153,125,103,87,67,45,33
 y=0.0,12.5,25.0,37.5,50.0,62.5,75.0,87.5,100
 units="%"
 lag=0.2
-v_supply=5
 ```
 
 #### Analog 12V inputs.

@@ -9,7 +9,7 @@ void MapTest::testGetAbsolutePressure()
     QFETCH(qreal, expected_kpa);
     QFETCH(qreal, expected_psi);
 
-    MapSensor * sensor = new MapSensor(pressure0V, pressure5V, (Config::PressureUnits)units);
+    MapSensor * sensor = new MapSensor(pressure0V, pressure5V, 5.0, (Config::PressureUnits)units);
 
     // kpa values
     qreal actual = sensor->getAbsolutePressure(volts, Config::PressureUnits::KPA);

@@ -62,6 +62,8 @@ public:
     static constexpr char DIMMER_VOLTAGE_KEY[] =  "dimmer_voltage";
     static constexpr char FUSE8_12V_KEY[] = "fuse8_12v";
     static constexpr char REFERENCE_MEASUREMENT[] = "reference";
+    static constexpr char V_SUPPLY_KEY[] = "v_supply";
+    static constexpr qreal DEFAULT_V_SUPPLY = 5.0;
 
     // expected dash light keys
     static constexpr char ACTIVE_LOW[] = "active_low";
@@ -94,12 +96,12 @@ public:
     //expected map sensor keys
     static constexpr char PRESSURE_AT_0V[] = "p_0v";
     static constexpr char PRESSURE_AT_5V[] = "p_5v";
+    static constexpr char PRESSURE_ATM[] = "p_atm";
     static constexpr char PRESSURE_UNITS[] = "units";
 
     //expected temperature sensor keys
     static constexpr char TEMP_TYPE[] = "type";
     static constexpr char TEMP_R_BALANCE[] = "r_balance";
-    static constexpr char TEMP_V_SUPPLY[] = "v_supply";
     static constexpr char T1_TEMP[] = "t1_temp";
     static constexpr char T1_RES[] = "t1_R";
     static constexpr char T2_TEMP[] = "t2_temp";
@@ -135,7 +137,6 @@ public:
     static constexpr char RES_SENSOR_UNITS[] = "units";
     static constexpr char RES_SENSOR_R_BALANCE[] = "r_balance";
     static constexpr char RES_SENSOR_LAG[] = "lag";
-    static constexpr char RES_SENSOR_V_SUPPLY[] = "v_supply";
 
     static constexpr char RES_SENSOR_TYPE_FUEL_LEVEL[] = "fuel_level";
     static constexpr char RES_SENSOR_TYPE_OIL_PRESSURE[] = "oil_pressure";
@@ -418,6 +419,7 @@ public:
     typedef struct MapSensorConfig {
         qreal p0V; //!< pressure when sensor reads 0V
         qreal p5V; //!< pressure when sensor reads 5V
+        qreal pAtm; //!< atmpsheric pressure
         PressureUnits units; //!< units of calibration pressures
 
         /**
@@ -732,7 +734,11 @@ public:
         mConfig->beginGroup(SENSOR_CHANNEL_GROUP);
 
         for (auto key : mConfig->childKeys()) {
-            mSensorChannelConfig.insert(key, mConfig->value(key, -1).toInt());
+            if (key == V_SUPPLY_KEY) {
+                mSensorSupplyVoltage = mConfig->value(key, DEFAULT_V_SUPPLY).toReal();
+            } else {
+                mSensorChannelConfig.insert(key, mConfig->value(key, -1).toInt());
+            }
         }
 
         printKeys("Sensor Channels ", mConfig);
@@ -780,6 +786,8 @@ public:
                 mMapSensorConfig.p0V = mConfig->value(key, -1).toReal();
             } else if (key == PRESSURE_AT_5V) {
                 mMapSensorConfig.p5V = mConfig->value(key, -1).toReal();
+            } else if (key == PRESSURE_ATM) {
+                mMapSensorConfig.pAtm = mConfig->value(key, -1).toReal();
             } else if (key == PRESSURE_UNITS) {
                 // default to kPa
                 QString units = mConfig->value(key, UNITS_KPA).toString();
@@ -798,7 +806,6 @@ public:
             mConfig->setArrayIndex(i);
 
             conf.rBalance = mConfig->value(TEMP_R_BALANCE, 1000).toReal();
-            conf.vSupply = mConfig->value(TEMP_V_SUPPLY, 5.0).toReal();
             conf.t1 = mConfig->value(T1_TEMP, -1).toReal();
             conf.t2 = mConfig->value(T2_TEMP, -1).toReal();
             conf.t3 = mConfig->value(T3_TEMP, -1).toReal();
@@ -876,9 +883,6 @@ public:
 
             // lag coefficient
             rSensorConf.lag = mConfig->value(RES_SENSOR_LAG, 1.0).toReal();
-
-            // voltage supply
-            rSensorConf.vSupply = mConfig->value(RES_SENSOR_V_SUPPLY, 5.0).toReal();
 
             mResistiveSensorConfig.insert(rSensorConf.type, rSensorConf);
             printKeys("Resistive Sensor: ", mConfig);
@@ -1114,6 +1118,10 @@ public:
         return mUserInputPinConfig;
     }
 
+    qreal getSensorSupplyVoltage() {
+        return mSensorSupplyVoltage;
+    }
+
 signals:
 
 public slots:
@@ -1121,6 +1129,7 @@ public slots:
 private:
     QSettings * mConfig = nullptr;  //!< QSettings for reading config.ini file
     QMap<QString, int> mSensorChannelConfig; //!< sensor channel configuration
+    qreal mSensorSupplyVoltage = DEFAULT_V_SUPPLY;
     QMap<QString, int> mDashLightConfig; //!< dash light gpio configuration
     QMap<int, Qt::Key> mUserInputConfig;
     QMap<QString, int> mUserInputPinConfig;

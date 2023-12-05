@@ -251,7 +251,6 @@ void ConfigTest::testLoadTempSensorConfig() {
     QFETCH(QString, config);
     QFETCH(bool, result);
     QFETCH(qreal, r_balance);
-    QFETCH(qreal, v_supply);
     QFETCH(qreal, t1_temp);
     QFETCH(qreal, t1_R);
     QFETCH(qreal, t2_temp);
@@ -268,7 +267,6 @@ void ConfigTest::testLoadTempSensorConfig() {
 
     if(result) {
         QCOMPARE(conf.rBalance, r_balance);
-        QCOMPARE(conf.vSupply, v_supply);
         QCOMPARE(conf.t1, t1_temp);
         QCOMPARE(conf.r1, t1_R);
         QCOMPARE(conf.t2, t2_temp);
@@ -297,7 +295,6 @@ void ConfigTest::testLoadTempSensorConfig_data() {
     QTest::addColumn<bool>("result");
     QTest::addColumn<QString>("type");
     QTest::addColumn<qreal>("r_balance");
-    QTest::addColumn<qreal>("v_supply");
     QTest::addColumn<qreal>("t1_temp");
     QTest::addColumn<qreal>("t1_R");
     QTest::addColumn<qreal>("t2_temp");
@@ -313,7 +310,6 @@ void ConfigTest::testLoadTempSensorConfig_data() {
     emptyConfig->setArrayIndex(0);
     emptyConfig->setValue(Config::TEMP_TYPE, "");
     emptyConfig->setValue(Config::TEMP_R_BALANCE, "");
-    emptyConfig->setValue(Config::TEMP_V_SUPPLY, "");
     emptyConfig->setValue(Config::T1_TEMP, "");
     emptyConfig->setValue(Config::T1_RES, "");
     emptyConfig->setValue(Config::T2_TEMP, "");
@@ -328,7 +324,6 @@ void ConfigTest::testLoadTempSensorConfig_data() {
             << false
             << Config::TEMP_TYPE_COOLANT
             << 1000.0
-            << 5.0
             << -1.0
             << -1.0
             << -1.0
@@ -345,7 +340,6 @@ void ConfigTest::testLoadTempSensorConfig_data() {
     validConfig->setArrayIndex(0);
     validConfig->setValue(Config::TEMP_TYPE, "coolant");
     validConfig->setValue(Config::TEMP_R_BALANCE, "470");
-    validConfig->setValue(Config::TEMP_V_SUPPLY, "5");
     validConfig->setValue(Config::T1_TEMP, "60");
     validConfig->setValue(Config::T1_RES, "217");
     validConfig->setValue(Config::T2_TEMP, "90");
@@ -360,7 +354,6 @@ void ConfigTest::testLoadTempSensorConfig_data() {
             << true
             << Config::TEMP_TYPE_COOLANT
             << 470.0
-            << 5.0
             << 60.0
             << 217.0
             << 90.0
