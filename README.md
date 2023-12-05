@@ -32,8 +32,13 @@ Different Volvo dash styles can be displayed:
 
 ### Accessory Gauges
 The raspberry pi 4 supports 2 HDMI outputs so a second screen can be added where normal 52mm accessory gauges would have been placed:
+
 <img src="https://github.com/whitfijs-jw/Volvo240-DigitalDash/blob/topic/update-readme/QtDash/Pictures/rsport-dual-screen.jpg" height="300">
-Touch screen controls on this screen can be used to changed between dash layouts and also to reset trip odometers
+
+Touch screen controls on this screen can be used to changed between dash layouts and also to reset trip odometers.  The style of the accessory gauges reflects the style of the main dash layout.
+
+<img src="https://github.com/whitfijs-jw/Volvo240-DigitalDash/blob/topic/update-readme/QtDash/Pictures/240-tach-dual-screen.jpg" height="300">
+
 
 ## Project Structure:
 ### /QtDash
@@ -58,7 +63,7 @@ This directory contains the schematics and board files for the cold start tolera
 
 ##### /QtDash/Hardware/Screen Mounting
 
-This directory contains the `.stl` files for mounting the HSD123KPW2-D10 12.3" TFT LCD using the stock 240 dash mounting holes.  These mounts will put the screen flush with the surrounding dash. The mounts and all other 3D modeling/CAD has been done using [Onshape](https://cad.onshape.com/documents/a41976d465f773bfdcbe5a50/w/2aee2fa256d8f08e0c531410/e/f563da56c6a88e94f86205e9). Included in the public OnShape document are models of the main PCB, HSD123KPW2-D10 LCD, screen mounts, etc. 
+This directory contains the `.stl` files for mounting the HSD123KPW2-D10 12.3" TFT LCD using the stock 240 dash mounting holes.  These mounts will put the screen flush with the surrounding dash. The mounts and all other 3D modeling/CAD has been done using [Onshape](https://cad.onshape.com/documents/a41976d465f773bfdcbe5a50/w/2aee2fa256d8f08e0c531410/e/f563da56c6a88e94f86205e9). Included in the public OnShape document are models of the main PCB, HSD123KPW2-D10 LCD, screen mounts, etc.
 
 ##### /QtDash/Hardware/Simulation
 
