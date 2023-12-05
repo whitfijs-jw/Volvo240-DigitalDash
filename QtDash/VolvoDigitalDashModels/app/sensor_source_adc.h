@@ -20,7 +20,7 @@ public:
         SensorSource(parent, config, name) {
 
         int refChannel = mConfig->getSensorConfig().value(Config::REFERENCE_MEASUREMENT, -1);
-        qreal vRef = mConfig->getSensorConfig().value(Config::V_SUPPLY_KEY, 5.0);
+        qreal vRef = mConfig->getSensorConfig().value(Config::V_SUPPLY_KEY, 500) / 100.0;
         mAdc = new Adc(Adc::MCP3208, Adc::IIO_DEVICE_PATH, vRef, refChannel);
     }
 

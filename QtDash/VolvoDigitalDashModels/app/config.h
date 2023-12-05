@@ -733,7 +733,11 @@ public:
         mConfig->beginGroup(SENSOR_CHANNEL_GROUP);
 
         for (auto key : mConfig->childKeys()) {
-            mSensorChannelConfig.insert(key, mConfig->value(key, -1).toInt());
+            if (key == V_SUPPLY_KEY) {
+                mSensorChannelConfig.insert(key, mConfig->value(key, 5.0).toReal() * 100);
+            } else {
+                mSensorChannelConfig.insert(key, mConfig->value(key, -1).toInt());
+            }
         }
 
         printKeys("Sensor Channels ", mConfig);
