@@ -3,7 +3,7 @@
 Volvo 240 Digital Dash Project.  Designed to use existing dash connectors (circular connectors w/ 2mm pins, vehicle speed sensor (VSS) connector, and various spade connectors) to
 minimize extra wiring effort and installation of superfluous sensors.
 
-<img src="https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/main/QtDash/Pictures/240-tach-single-screen.jpg" height="300">
+<img src="https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/main/QtDash/Pictures/240-tach-single-screen.jpg" height="400">
 
 ## Features
 ### Plug and play with stock sensors and dash connectors
@@ -14,18 +14,25 @@ The hardware supports the addition of common accessory sensors such as oil press
 Different Volvo dash styles can be displayed:
 #### 240 w/ Tach
 <img src="https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/topic/update-readme/QtDash/Pictures/screenshot-240-tach.png" height="200">
+
 #### 240 w/ Clock
 <img src="https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/topic/update-readme/QtDash/Pictures/screenshot-240-clock.png" height="200">
+
 #### R-Sport Style
 <img src="https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/topic/update-readme/QtDash/Pictures/screenshot-rsport.png" height="200">
+
 #### P1800 Style
 <img src="https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/topic/update-readme/QtDash/Pictures/screenshot-p1800.png" height="200">
+
 #### 850R
 <img src="https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/topic/update-readme/QtDash/Pictures/screenshot-850R.png" height="200">
+
 #### 740/940 Style
 <img src="https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/topic/update-readme/QtDash/Pictures/screenshot-740.png" height="200">
+
 #### 544/140 Linear Style
 <img src="https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/topic/update-readme/QtDash/Pictures/screenshot-544144.png" height="200">
+
 #### 240 Style Custom Layouts
 <img src="https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/topic/update-readme/QtDash/Pictures/screenshot-240-custom-tach-center.png" height="200">
 <img src="https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/topic/update-readme/QtDash/Pictures/screenshot-240-custom-tach-left.png" height="200">
@@ -38,7 +45,6 @@ The raspberry pi 4 supports 2 HDMI outputs so a second screen can be added where
 Touch screen controls on this screen can be used to changed between dash layouts and also to reset trip odometers.  The style of the accessory gauges reflects the style of the main dash layout.
 
 <img src="https://github.com/whitfijs-jw/Volvo240-DigitalDash/blob/topic/update-readme/QtDash/Pictures/240-tach-dual-screen.jpg" height="300">
-
 
 ## Project Structure:
 ### /QtDash
@@ -119,6 +125,11 @@ This directory contains the outputs of the buildroot compilation process. After 
 - (optional) MAX9924 VSS conditioning circuit
 - (separate) optocoupler tach pulse input.
 
+## Accessory Screen Parts
+- Adafruit TFP401 HDMI/DVI Decoder to 40-Pin TTL Breakout - With Touch
+- BuyDisplay.com 5" IPS 800x480 LCD Screen TFT w/ touch module ER-TFT050-6-5781-4859
+- extended 40-pin flat cable
+- USB cable for touch screen interface
 
 ## Setting up buildroot
 
