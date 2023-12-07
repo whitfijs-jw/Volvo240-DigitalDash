@@ -53,7 +53,7 @@ This directory contains the hardware and software components that makeup the das
 
 #### /QtDash/VolvoDigitalDashModels
 
-This directory contains the Qt app and related unit tests.  It is advised to use [QtCreator](https://www.qt.io/product/development-tools) to edit and compile the app. Using QtCreator to `QtDash/VolvoDigitalDashModels/subdirs.pro` will load both the app and the unit tests. The app is written using C/C++ for interfacing with the various sensors and QML for the UI. 
+This directory contains the Qt app and related unit tests.  It is advised to use [QtCreator](https://www.qt.io/product/development-tools) to edit and compile the app. Using QtCreator to `QtDash/VolvoDigitalDashModels/subdirs.pro` will load both the app and the unit tests. The app is written using C/C++ for interfacing with the various sensors and QML for the UI.
 
 #### /QtDash/Hardware
 
@@ -61,7 +61,7 @@ This directory contains the hardware that has been designed for this project.  M
 
 ##### /QtDash/Hardware/DashHat
 
-This directory contains the schematics and board files for the PCB that directly interfaces with the Raspberry Pi 40 pin header.  The board is split up into a low voltage (3.3/5V) that is powered from the Pi header and a high voltage (car battery voltage 8-16V) that is powered from the 240 ignition switch via the VSS connector.  The high voltage side is optically isolated from the low voltage side using 
+This directory contains the schematics and board files for the PCB that directly interfaces with the Raspberry Pi 40 pin header.  The board is split up into a low voltage (3.3/5V) that is powered from the Pi header and a high voltage (car battery voltage 8-16V) that is powered from the 240 ignition switch via the VSS connector.  The high voltage side is optically isolated from the low voltage side using optoislators.
 
 ##### /QtDash/Hardware/Cold Start Power Supply
 
@@ -125,7 +125,7 @@ This directory contains the outputs of the buildroot compilation process. After 
 - (optional) MAX9924 VSS conditioning circuit
 - (separate) optocoupler tach pulse input.
 
-## Accessory Screen Parts
+## Accessory Screen Parts (optional)
 - Adafruit TFP401 HDMI/DVI Decoder to 40-Pin TTL Breakout - With Touch
 - BuyDisplay.com 5" IPS 800x480 LCD Screen TFT w/ touch module ER-TFT050-6-5781-4859
 - extended 40-pin flat cable
