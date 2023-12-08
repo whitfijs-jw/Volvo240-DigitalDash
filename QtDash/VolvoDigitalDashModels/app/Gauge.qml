@@ -121,9 +121,11 @@ Item {
             smooth: true
             source: needleCenterImageResource
 
-
-
             transform: [
+                Translate {
+                    y: -needleCenterImageSize / 2
+                    x: -needleCenterImageSize / 2
+                },
                 Rotation {
                     angle: gauge.angle > gauge.maxAngle ?
                                gauge.maxAngle : (gauge.angle < minAngle) ?

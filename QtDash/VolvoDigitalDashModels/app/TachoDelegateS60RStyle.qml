@@ -24,7 +24,9 @@ Component {
             item.imageResource = "qrc:/gauge-faces-s60r/tach_400.png"
             item.needleResource = "qrc:/needles/needle_s60r.png"
 
-            item.needleColor = "red"
+            item.needleCenterImageSize = speedoSize / 5
+            item.needleCenterUseImage = true
+            item.needleCenterImageResource = "qrc:/needles/needle_center_s60r.png"
 
             item.needleWidth = speedoSize * 0.0325
             item.needleLength = speedoSize * 0.55
