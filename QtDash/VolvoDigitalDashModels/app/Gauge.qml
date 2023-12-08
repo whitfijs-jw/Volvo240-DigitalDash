@@ -28,6 +28,9 @@ Item {
     property real needleOffset: parent.height * .20
 
     property real needleCenterRadius: 0.15
+    property bool needleCenterUseImage: false
+    property string needleCenterImageResource
+    property real needleCenterImageSize: 0
 
     property string imageResource
     property string needleResource: "qrc:/needles/needle-240.png"
@@ -86,6 +89,39 @@ Item {
             y: parent.height / 2 + offset
             antialiasing: true
             smooth: true
+            visible: !gauge.needleCenterUseImage
+
+            transform: [
+                Rotation {
+                    angle: gauge.angle > gauge.maxAngle ?
+                               gauge.maxAngle : (gauge.angle < minAngle) ?
+                                   gauge.minAngle : gauge.angle
+                    origin.x: 0
+                    origin.y: 0
+
+                    Behavior on angle {
+                        RotationAnimation {
+                            duration: 150
+                            direction: gauge.dir
+                        }
+                    }
+                }
+            ]
+        }
+
+        Image {
+            id: needleCenterImage
+            height: needleCenterImageSize
+            width: needleCenterImageSize
+            x: parent.width / 2 + offsetX
+            y: parent.height / 2 + offset
+            visible: gauge.needleCenterUseImage
+
+            antialiasing: true
+            smooth: true
+            source: needleCenterImageResource
+
+
 
             transform: [
                 Rotation {
@@ -108,11 +144,6 @@ Item {
         Image {
             id: needle
 
-//            needleColor: gauge.needleColor
-//            needleTipRadius: gauge.needleTipRadius
-//            length: gauge.needleLength
-//            needleWidth:  gauge.needleWidth
-
             x: parent.width / 2 + offsetX
             y: parent.height / 2 + offset
             width: gauge.needleLength
@@ -121,13 +152,6 @@ Item {
             antialiasing: true
             smooth: true
             source: needleResource
-
-//            radius: gauge.needleTipRadius
-//            gradient: Gradient {
-//                    GradientStop { position: 0.25; color: needleColor}
-//                    GradientStop { position: 0.5; color: "white" }
-//                    GradientStop { position: 0.75; color: needleColor }
-//            }
 
             transform: [
                 Translate {
@@ -151,6 +175,8 @@ Item {
                 }
             ]
         }
+
+
 
         Text {
 

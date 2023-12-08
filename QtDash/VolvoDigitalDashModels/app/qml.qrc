@@ -71,6 +71,9 @@
         <file>BoostDelegateRSportStyle.qml</file>
         <file>CoolantTempAccDelegateRSportStyle.qml</file>
         <file>OilTempDelegateRSportStyle.qml</file>
+        <file>SpeedoDelegateS60RStyle.qml</file>
+        <file>OriginalS60RLayout.qml</file>
+        <file>TachoDelegateS60RStyle.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -146,6 +149,8 @@
         <file>needle-740-940.png</file>
         <file>needle-rsport.png</file>
         <file>needle-544-140.png</file>
+        <file>needle_s60r.png</file>
+        <file>needle_center_s60r.png</file>
     </qresource>
     <qresource prefix="/gauge-faces-544">
         <file>speedo-544.png</file>
@@ -172,5 +177,9 @@
         <file>clock-p1800.png</file>
         <file>oil-temp-p1800.png</file>
         <file>center-cover-medium-p1800.png</file>
+    </qresource>
+    <qresource prefix="/gauge-faces-s60r">
+        <file>tach_400.png</file>
+        <file>speedo_400.png</file>
     </qresource>
 </RCC>

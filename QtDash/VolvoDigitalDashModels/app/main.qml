@@ -233,6 +233,14 @@ Window {
         id: fuelLevelDelegateP1800
     }
 
+    SpeedoDelegateS60RStyle {
+        id: speedoDelegateS60R
+    }
+
+    TachoDelegateS60RStyle {
+        id: rpmDelegateS60R
+    }
+
     Component {
         id: leftBlinkerDelegate
 
@@ -610,12 +618,12 @@ Window {
 
         function advanceScreen(forward) {
             if (forward) {
-                if (++screen > 8) {
+                if (++screen > 9) {
                     screen = 0;
                 }
             } else {
                 if (--screen < 0) {
-                    screen = 8;
+                    screen = 9;
                 }
             }
 
@@ -688,7 +696,6 @@ Window {
                     setSpeedoMax(130);
                     accessoryScreen.currentStyle = "rSport";
                     break;
-
                 case 7:
                     currentGauge.source = "qrc:/Original544Layout.qml"
                     setSmallGaugeSize(140);
@@ -705,6 +712,14 @@ Window {
                     setSpeedoSize(440);
                     setSpeedoMax(120);
                     accessoryScreen.currentStyle = "p1800";
+                    break;
+                case 9:
+                    currentGauge.source = "qrc:/OriginalS60RLayout.qml"
+                    setSmallGaugeSize(200);
+                    setTachSize(350);
+                    setSpeedoSize(350);
+                    setSpeedoMax(160);
+                    accessoryScreen.currentStyle = "rSport";
                     break;
                 default:
                     break;
