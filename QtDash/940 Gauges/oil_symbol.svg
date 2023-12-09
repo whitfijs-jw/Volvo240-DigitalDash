@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    id="svg3276"
+    sodipodi:docname="Oil can.svg"
+    viewBox="0 0 243.14 87.839"
+    version="1.1"
+    inkscape:version="0.48.4 r9939"
+    preserveAspectRatio="xMinYMin"
+  >
+  <sodipodi:namedview
+      id="base"
+      bordercolor="#666666"
+      inkscape:pageshadow="2"
+      inkscape:window-y="-8"
+      fit-margin-left="0"
+      pagecolor="#ffffff"
+      inkscape:window-height="1138"
+      inkscape:window-maximized="1"
+      inkscape:zoom="1.4"
+      inkscape:window-x="1272"
+      showgrid="false"
+      borderopacity="1.0"
+      inkscape:current-layer="layer1"
+      inkscape:cx="300.0359"
+      inkscape:cy="146.45252"
+      fit-margin-top="0"
+      fit-margin-right="0"
+      fit-margin-bottom="0"
+      inkscape:window-width="1920"
+      inkscape:pageopacity="0.0"
+      inkscape:document-units="px"
+  />
+  <g
+      id="layer1"
+      inkscape:label="Layer 1"
+      inkscape:groupmode="layer"
+      transform="translate(-179.07 -315.35)"
+    >
+    <path
+        id="path3307"
+        sodipodi:nodetypes="sssscssssccssssssscccccsssssssccccccccsssccccccccccccccccssssscs"
+        style="fill:#000000"
+        inkscape:connector-curvature="0"
+        d="m405.03 402.14c-1.1449-0.46315-4.3732-2.4601-5.2857-4.549-2.1865-5.0054-3.5828-8.8949 2.6109-22.188 2.9036-6.2317 5.7833-12.455 6.3994-13.83l1.12-2.5 1.6862 4c0.92741 2.2 3.6946 8.216 6.1494 13.369 5.4613 11.464 4.8914 17.338 3.7469 19.768-2.8684 6.091-9.8917 8.5739-16.427 5.9301zm-181.26-1.6-0.11-35.05c-0.47764-1.7802-0.91323-1.824-21.704-8.9275-2.141-0.7315-18.56-6.935-19.105-7.3043-3.1413-2.1279-3.7761-3.2462-3.7761-5.6761 0-2.246 8.0811-21.915 10.581-25.752 1.0404-1.5974 2.5751-3.0371 4.831-2.25 2.0472 0.71429 36.734 13.044 40.565 14.479 1.3284 0.49746 2.0497 3.1459 2.2178 4.8758l0.30555 3.1453h11.5 11.5v-3-3l-7.1488-0.5c-8.0823-0.56529-11.351-2.5756-11.351-6.9807 0-1.4987 1.0157-3.6249 2.3144-4.845 2.2282-2.0933 3.1159-2.1743 23.826-2.1743 21.192 0 21.543 0.0343 23.686 2.3144 1.1959 1.273 2.1743 3.4532 2.1743 4.845 0 4.2659-3.3429 6.2804-11.351 6.8405l-7.1488 0.5v3 3l11.704 0.28133 11.704 0.28134 5.5857 5.105 5.5857 5.105c1.1356-0.25644 85.364-21.686 86.246-21.906 0.12147 0.026 5.6687 5.0944 9.4248 8.8327 4.9706 4.9471 7.8324 9.2185 4.2503 12.801-3.4145 3.4145-7.4527 2.5921-13.07-2.6618l-4.9839-4.6618-8.6808 2.4164-8.6808 2.4164c-1.2413 1.1449-46.116 52.05-48.617 54.491h-48.762zm110.73-29.534 16.121-18.509-23.045 6.0847-20.637 5-13.577-11.032-56.417-0.0992-0.0585 34.228 42.582-0.097h41.455zm-111.25-24.18c0.22896-0.9625 0.16895-3.0425-0.13337-4.6222-0.50037-2.6146-1.4914-3.2189-11.05-6.738-5.775-2.1262-11.233-3.8713-12.129-3.8778-1.7434-0.0128-4.4833 5.1156-3.6562 7.1333 0.63755 1.5555 22.569 9.6699 25.418 9.8022 0.62335 0.0289 1.3207-0.7349 1.5497-1.6974z"
+    />
+  </g
+  >
+  <metadata
+    >
+    <rdf:RDF
+      >
+      <cc:Work
+        >
+        <dc:format
+          >image/svg+xml</dc:format
+        >
+        <dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        />
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        />
+        <dc:publisher
+          >
+          <cc:Agent
+              rdf:about="http://openclipart.org/"
+            >
+            <dc:title
+              >Openclipart</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:publisher
+        >
+      </cc:Work
+      >
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        >
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        />
+      </cc:License
+      >
+    </rdf:RDF
+    >
+  </metadata
+  >
+</svg
+>

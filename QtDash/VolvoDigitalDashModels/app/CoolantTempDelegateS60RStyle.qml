@@ -22,7 +22,7 @@ Component {
             item.imageResource = "qrc:/gauge-faces-s60r/s60r_coolant_temp.png"
             item.needleResource = "qrc:/needles/needle_s60r.png"
 
-            item.needleCenterImageSize = speedoSize / 5
+            item.needleCenterImageSize = smallGaugeSize * 0.35
             item.needleCenterUseImage = true
             item.needleCenterImageResource = "qrc:/needles/needle_center_s60r.png"
 
@@ -32,8 +32,8 @@ Component {
             item.offset = smallGaugeSize / 4
 
             item.significantDigits = 0
-            item.textSize = speedoSize / 20
-            item.textOffset = smallGaugeSize * 0.6
+            item.textSize = smallGaugeSize / 12
+            item.textOffset = smallGaugeSize * 0.55
 
             item.needleCenterRadius = 0.25
         }

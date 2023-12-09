@@ -76,6 +76,10 @@
         <file>TachoDelegateS60RStyle.qml</file>
         <file>FuelLevelDelegateS60RStyle.qml</file>
         <file>CoolantTempDelegateS60RStyle.qml</file>
+        <file>BoostDelegateS60RStyle.qml</file>
+        <file>OilTempDelegateS60RStyle.qml</file>
+        <file>OilPressureDelegateS60RStyle.qml</file>
+        <file>VoltmeterDelegateS60RStyle.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -185,5 +189,9 @@
         <file>s60r_speedo.png</file>
         <file>s60r_fuel_level.png</file>
         <file>s60r_coolant_temp.png</file>
+        <file>s60r_oil_pressure.png</file>
+        <file>s60r_oil_temp.png</file>
+        <file>s60r_boost.png</file>
+        <file>s60r_voltmeter.png</file>
     </qresource>
 </RCC>

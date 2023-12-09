@@ -26,6 +26,8 @@ Window {
             return availableP1800Gauges;
         case "rSport":
             return availableRSportGauges;
+        case "s60r":
+            return availableS60RGauges
         default:
             return available240Gauges;
         }
@@ -205,7 +207,7 @@ Window {
         OilPressureDelegateRSportStyle {
             id: oilPressureDelegateRSportStyle
         },
-        CoolantTempAccDelegateRSportStyle {
+        CoolantTempDelegateS60RStyle {
             id: coolantTempDelegateRSportStyle
         },
         VoltmeterDelegateRSportStyle {
@@ -215,6 +217,44 @@ Window {
 
     ListModel {
         id: availableRSportGauges
+        ListElement {
+            name: "boost"
+        }
+        ListElement {
+            name: "oil temp"
+        }
+        ListElement {
+            name: "oil pressure"
+        }
+        ListElement {
+            name: "coolant temp"
+        }
+        ListElement {
+            name: "voltmeter"
+        }
+    }
+
+    // S60R gauges
+    property list<Component> delegatesS60r: [
+        BoostDelegateS60RStyle {
+            id: boostDelegateS60RStyle
+        },
+        OilTempDelegateS60RStyle {
+            id: oilTempDelegateS60RStyle
+        },
+        OilPressureDelegateS60RStyle {
+            id: oilPressureDelegateS60RStyle
+        },
+        CoolantTempDelegateS60RStyle {
+            id: coolantTempDelegateS60RStyle
+        },
+        VoltmeterDelegateS60RStyle {
+            id: voltmeterDelegateS60RStyle
+        }
+    ]
+
+    ListModel {
+        id: availableS60RGauges
         ListElement {
             name: "boost"
         }

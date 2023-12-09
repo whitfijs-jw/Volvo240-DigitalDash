@@ -727,7 +727,7 @@ Window {
                     setTachSize(350);
                     setSpeedoSize(350);
                     setSpeedoMax(160);
-                    accessoryScreen.currentStyle = "rSport";
+                    accessoryScreen.currentStyle = "s60r";
                     break;
                 default:
                     break;
