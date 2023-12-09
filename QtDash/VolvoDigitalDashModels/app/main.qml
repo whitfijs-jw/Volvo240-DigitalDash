@@ -241,6 +241,14 @@ Window {
         id: rpmDelegateS60R
     }
 
+    FuelLevelDelegateS60RStyle {
+        id: fuelLevelS60RDelegate
+    }
+
+    CoolantTempDelegateS60RStyle {
+        id: coolantS60RDelegate
+    }
+
     Component {
         id: leftBlinkerDelegate
 

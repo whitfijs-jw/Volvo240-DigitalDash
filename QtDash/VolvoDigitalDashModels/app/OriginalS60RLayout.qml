@@ -44,6 +44,36 @@ Item {
 
         }
 
+        Rectangle {
+            id: fuelLevelContainer
+            width: smallGaugeSize
+            height: smallGaugeSize
+            color: "transparent"
+            anchors.verticalCenter: speedoContainer.verticalCenter
+            anchors.left: tachContainer.right
+            anchors.leftMargin: 10
+
+            ListView {
+                model: fuelLevelModel
+                delegate: fuelLevelS60RDelegate
+            }
+        }
+
+        Rectangle {
+            id: coolantTempContainer
+            width: smallGaugeSize
+            height: smallGaugeSize
+            color: "transparent"
+            anchors.verticalCenter: speedoContainer.verticalCenter
+            anchors.right: speedoContainer.left
+            anchors.rightMargin: 10
+
+            ListView {
+                model: coolantTempModel
+                delegate: coolantS60RDelegate
+            }
+        }
+
 
         Rectangle {
             id: leftBlinker

@@ -21,7 +21,7 @@ Component {
             item.height = tachSize
             item.width = tachSize
 
-            item.imageResource = "qrc:/gauge-faces-s60r/tach_400.png"
+            item.imageResource = "qrc:/gauge-faces-s60r/s60r_tach.png"
             item.needleResource = "qrc:/needles/needle_s60r.png"
 
             item.needleCenterImageSize = speedoSize / 5

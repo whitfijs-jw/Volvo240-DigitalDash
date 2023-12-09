@@ -21,7 +21,7 @@ Component {
             item.height = speedoSize
             item.width = speedoSize
 
-            item.imageResource = "qrc:/gauge-faces-s60r/speedo_400.png"
+            item.imageResource = "qrc:/gauge-faces-s60r/s60r_speedo.png"
             item.needleResource = "qrc:/needles/needle_s60r.png"
 
             item.needleCenterImageSize = speedoSize / 5
