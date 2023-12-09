@@ -207,7 +207,7 @@ public slots:
         }
 
         mTachModel.setRpm(mTachModel.rpm() + 100);
-        if (mTachModel.rpm() > mTachModel.maxRpm()) {
+        if (mTachModel.rpm() > 9000) {
             mTachModel.setRpm(0);
         }
 

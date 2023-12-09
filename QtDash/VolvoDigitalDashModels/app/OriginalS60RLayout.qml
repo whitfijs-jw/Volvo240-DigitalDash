@@ -13,7 +13,7 @@ Item {
             width: speedoSize
             height: speedoSize
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: -speedoSize / 1.75
+            anchors.horizontalCenterOffset: -speedoSize / 1.85
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: -speedoSize / 10
             anchors.topMargin: 0
@@ -33,7 +33,7 @@ Item {
             height: tachSize
             color: "transparent"
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: tachSize / 1.75
+            anchors.horizontalCenterOffset: tachSize / 1.85
             anchors.verticalCenter: speedoContainer.verticalCenter
 
             /* Rpm: */
@@ -51,7 +51,7 @@ Item {
             color: "transparent"
             anchors.verticalCenter: speedoContainer.verticalCenter
             anchors.left: tachContainer.right
-            anchors.leftMargin: 10
+            anchors.leftMargin: 25
 
             ListView {
                 model: fuelLevelModel
@@ -66,7 +66,7 @@ Item {
             color: "transparent"
             anchors.verticalCenter: speedoContainer.verticalCenter
             anchors.right: speedoContainer.left
-            anchors.rightMargin: 10
+            anchors.rightMargin: 25
 
             ListView {
                 model: coolantTempModel
