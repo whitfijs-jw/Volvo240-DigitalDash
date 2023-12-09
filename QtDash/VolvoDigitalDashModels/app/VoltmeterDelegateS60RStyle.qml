@@ -19,7 +19,7 @@ Component {
             item.height = smallGaugeSize
             item.width = smallGaugeSize
 
-            item.imageResource = "qrc:/gauge-faces-s60r/s60r_oil_pressure.png"
+            item.imageResource = "qrc:/gauge-faces-s60r/s60r_voltmeter.png"
             item.needleResource = "qrc:/needles/needle_s60r.png"
 
             item.needleCenterImageSize = smallGaugeSize * 0.35
@@ -31,7 +31,7 @@ Component {
             item.needleOffset = smallGaugeSize * 0.175
             item.offset = smallGaugeSize / 4
 
-            item.significantDigits = 0
+            item.significantDigits = 2
             item.textSize = smallGaugeSize / 12
             item.textOffset = smallGaugeSize * 0.55
 
