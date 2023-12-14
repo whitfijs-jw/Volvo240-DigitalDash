@@ -249,6 +249,14 @@ Window {
         id: coolantS60RDelegate
     }
 
+    ClockTachDelegateStyle {
+        id: clockTachDelegate
+    }
+
+    ClockSpeedoDelegateStyle {
+        id: clockSpeedoDelegate
+    }
+
     Component {
         id: leftBlinkerDelegate
 
@@ -626,12 +634,12 @@ Window {
 
         function advanceScreen(forward) {
             if (forward) {
-                if (++screen > 9) {
+                if (++screen > 10) {
                     screen = 0;
                 }
             } else {
                 if (--screen < 0) {
-                    screen = 9;
+                    screen = 10;
                 }
             }
 
@@ -728,6 +736,15 @@ Window {
                     setSpeedoSize(350);
                     setSpeedoMax(160);
                     accessoryScreen.currentStyle = "s60r";
+                    break;
+                case 10:
+                    currentGauge.source = "qrc:/Clock240Layout.qml";
+                    setSmallGaugeSize(140);
+                    setTachSize(400);
+                    setSpeedoSize(400);
+                    setSpeedoMax(120);
+                    setTempFuelSize(400);
+                    accessoryScreen.currentStyle = "240";
                     break;
                 default:
                     break;
