@@ -41,6 +41,8 @@
 #include <sensor_source_can.h>
 #include <sensor_can.h>
 
+#include <sensor_gear_indicator.h>
+
 /**
  * @brief A class to run the digital dash
  */
@@ -170,6 +172,8 @@ private:
     BackLightControl * mBacklightControl;
 
     QVector<CanSensor *> mCanSensors;
+
+    GearSensor * mGearSensor;
 
     /**
      * @brief Initialize sensor sources
@@ -392,6 +396,12 @@ private:
             c.value = value;
             mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPB, c);
         });
+
+        mGearSensor = new GearSensor(
+                    this->parent(), &mConfig,
+                    mTachSource, (int) TachSource::TachDataChannel::RPM_CHANNEL,
+                    mVssSource, (int) VssSource::VssDataChannel::MPH
+                    );
     }
 
     /**

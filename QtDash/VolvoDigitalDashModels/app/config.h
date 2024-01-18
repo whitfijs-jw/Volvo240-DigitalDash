@@ -31,6 +31,7 @@ public:
     static constexpr char ODOMETER_GROUP[] = "odometer";
     static constexpr char BACKLIGHT_GROUP[] = "backlight";
     static constexpr char USER_INPUT_GROUP[] = "user_inputs";
+    static constexpr char GEAR_INDICATOR_GROUP[] = "gear_indicator";
 
     // units for sensors
     static constexpr char UNITS_KPA[] = "kpa";
@@ -128,6 +129,15 @@ public:
     static constexpr char VSS_PULSES_PER_DISTANCE[] = "pulse_per_unit_distance";
     static constexpr char VSS_DISTANCE_UNITS[] = "distance_units";
     static constexpr char VSS_MAX_SPEED[] = "max_speed";
+
+    //expected keys for gear indicator input
+    static constexpr char GEAR_INDICATOR_GEAR_RATIOS[] = "gear_ratios";
+    static constexpr char GEAR_INDICATOR_REAR_END_RATIO[] = "rear_end_ratio";
+    static constexpr char GEAR_INDICATOR_DELTA[] = "ratio_delta";
+    static constexpr char GEAR_INDICATOR_SPEED_DROPOUT[] = "speed_drop_out";
+    static constexpr char GEAR_INDICATOR_SPEED_DROPOUT_UNITS[] = "speed_drop_out_units";
+    static constexpr char GEAR_INDICATOR_HIGH_IDLE[] = "idle_high_rpm";
+    static constexpr char GEAR_INDICATOR_LOW_IDLE[] = "idle_low_rpm";
 
     //expected keys for resistive sensors
     static constexpr char RES_SENSOR_TYPE[] = "type";
@@ -484,6 +494,17 @@ public:
         DistanceUnits distanceUnits; //!< unit of distance for pulsePerUnitDistance
         int maxSpeed; //!< Max speed -- lowest possible value it best will filter out noisy signals better
     } VssInputConfig_t;
+
+    typedef struct GearIndicatorConfig {
+        qreal tireDiameter; //!< Tire diameter
+        DistanceUnits tireDiameterUnits; //!< Tire diameter units
+        QList<qreal> gearRatios; //!< list of transmission gear ratios
+        qreal rearEndRatio; //!< rear end gear ratio
+        qreal speedDropOut; //!< speed at which gear estimation drops out
+        DistanceUnits speedDropOutUnits; //!< dropout speed units
+        qreal idleHighRpm; //!< high idle rpm
+        qreal idleLowRpm; //!< low idle rpm
+    } GearIndicatorConfig_t;
 
     /**
      * @struct OdometerConfig
@@ -959,6 +980,25 @@ public:
 
         mConfig->endGroup();
 
+        mConfig->beginGroup(GEAR_INDICATOR_GROUP);
+
+        mGearIndicatorConfig.rearEndRatio = mConfig->value(GEAR_INDICATOR_REAR_END_RATIO, 3.31).toReal();
+        mGearIndicatorConfig.idleHighRpm = mConfig->value(GEAR_INDICATOR_HIGH_IDLE, 1100.0).toReal();
+        mGearIndicatorConfig.idleLowRpm = mConfig->value(GEAR_INDICATOR_LOW_IDLE, 500.0).toReal();
+        mGearIndicatorConfig.speedDropOut = mConfig->value(GEAR_INDICATOR_SPEED_DROPOUT, 5).toReal();
+        QString dropoutUnits = mConfig->value(GEAR_INDICATOR_SPEED_DROPOUT_UNITS, "mph").toString().toLower();
+        mGearIndicatorConfig.speedDropOutUnits = getDistanceUnits(dropoutUnits);
+        mGearIndicatorConfig.tireDiameter = mVssInputConfig.tireDiameter;
+        mGearIndicatorConfig.tireDiameterUnits = mVssInputConfig.tireDiameterUnits;
+
+        // get the gear ratios
+        QList ratios = mConfig->value(GEAR_INDICATOR_GEAR_RATIOS, "").toList();
+        for (QVariant val : ratios) {
+            mGearIndicatorConfig.gearRatios.push_back(val.toReal());
+        }
+
+        mConfig->endGroup();
+
         return keys.size() > 0;
     }
 
@@ -1122,6 +1162,10 @@ public:
         return mSensorSupplyVoltage;
     }
 
+    GearIndicatorConfig_t getGearIndicatorConfig() {
+        return mGearIndicatorConfig;
+    }
+
 signals:
 
 public slots:
@@ -1144,6 +1188,7 @@ private:
     SpeedoConfig_t mSpeedoGaugeConfig; //!< speedo gauge config
     TachoConfig_t mTachGaugeConfig; //!< tacho gauge config
     VssInputConfig_t mVssInputConfig; //!< vehicle speed sensor config
+    GearIndicatorConfig_t mGearIndicatorConfig; //!< Gear indicator config
 
     QSettings * mOdometerConfig = nullptr;
     QList<OdometerConfig_t> mOdoConfig;
