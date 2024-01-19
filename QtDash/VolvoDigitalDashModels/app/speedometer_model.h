@@ -13,6 +13,7 @@ class SpeedometerModel : public QAbstractListModel
     Q_PROPERTY(QString units READ units WRITE setUnits NOTIFY unitsChanged)
     Q_PROPERTY(qreal topValue READ topValue WRITE setTopValue NOTIFY topValueChanged)
     Q_PROPERTY(QString topUnits READ topUnits WRITE setTopUnits NOTIFY topUnitsChanged)
+    Q_PROPERTY(int currentGear READ currentGear WRITE setCurrentGear NOTIFY currentGearChanged)
 
 public:
     static constexpr char SPEEDO_MODEL_NAME[] = "speedoModel";
@@ -24,6 +25,7 @@ public:
         UnitsRole           = Qt::UserRole + 4,
         TopValueRole        = Qt::UserRole + 5,
         TopUnitsRole        = Qt::UserRole + 6,
+        CurrentGearRole     = Qt::UserRole + 7,
     };
 
     explicit SpeedometerModel(QObject *parent = nullptr);
@@ -89,6 +91,8 @@ public:
     qreal topValue();
     QString topUnits();
 
+    int currentGear();
+
 private:
     qreal mMinValue;
     qreal mMaxValue;
@@ -96,6 +100,7 @@ private:
     QString mUnits;
     qreal mTopValue;
     QString mTopUnits;
+    int mCurrentGear = 0;
 
 signals:
     void minValueChanged();
@@ -104,7 +109,7 @@ signals:
     void unitsChanged();
     void topValueChanged();
     void topUnitsChanged();
-
+    void currentGearChanged();
 public slots:
     void setMinValue(qreal minValue);
     void setMaxValue(qreal maxValue);
@@ -112,6 +117,7 @@ public slots:
     void setUnits(QString units);
     void setTopValue(qreal topValue);
     void setTopUnits(QString topUnits);
+    void setCurrentGear(int gear);
 };
 
 #endif // SPEEDOMETER_MODEL_H

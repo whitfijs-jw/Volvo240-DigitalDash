@@ -15,6 +15,7 @@ QHash<int, QByteArray> SpeedometerModel::roleNames() const
     roles[SpeedometerModelRoles::UnitsRole] = "speedUnits";
     roles[SpeedometerModelRoles::TopValueRole] = "valueTop";
     roles[SpeedometerModelRoles::TopUnitsRole] = "valueTopUnits";
+    roles[SpeedometerModelRoles::CurrentGearRole] = "currentGear";
     return roles;
 }
 
@@ -43,6 +44,9 @@ QVariant SpeedometerModel::headerData(int section, Qt::Orientation orientation, 
     else if(role == SpeedometerModelRoles::TopUnitsRole)
     {
         return QVariant("valueTopUnits");
+    } else if (role == SpeedometerModelRoles::CurrentGearRole)
+    {
+        return QVariant("currentGear");
     }
     return QVariant("");
 }
@@ -77,6 +81,10 @@ QVariant SpeedometerModel::data(const QModelIndex &index, int role) const
     else if(role == SpeedometerModelRoles::TopUnitsRole)
     {
         return mTopUnits;
+    }
+    else if (role == SpeedometerModelRoles::CurrentGearRole)
+    {
+        return mCurrentGear;
     }
     // Default return:
     return mCurrentValue;
@@ -132,6 +140,14 @@ bool SpeedometerModel::setData(const QModelIndex &index, const QVariant &value, 
                          QVector<int>() << SpeedometerModelRoles::TopUnitsRole);
         emit topUnitsChanged();
     }
+    else if(role == SpeedometerModelRoles::CurrentGearRole)
+    {
+        mCurrentGear = value.toInt();
+        emit dataChanged(createIndex(0,0),
+                         createIndex(1, 0),
+                         QVector<int>() << SpeedometerModelRoles::CurrentGearRole);
+        emit currentGearChanged();
+    }
     else
     {
         emit layoutChanged();
@@ -172,6 +188,11 @@ qreal SpeedometerModel::topValue()
 QString SpeedometerModel::topUnits()
 {
     return mTopUnits;
+}
+
+int SpeedometerModel::currentGear()
+{
+    return mCurrentGear;
 }
 
 void SpeedometerModel::setMinValue(qreal minValue)
@@ -226,4 +247,12 @@ void SpeedometerModel::setTopUnits(QString topUnits)
                      createIndex(1, 0),
                      QVector<int>() << SpeedometerModelRoles::TopUnitsRole);
     emit topUnitsChanged();
+}
+
+void SpeedometerModel::setCurrentGear(int gear) {
+    mCurrentGear = gear;
+    emit dataChanged(createIndex(0,0),
+                     createIndex(1, 0),
+                     QVector<int>() << SpeedometerModelRoles::CurrentGearRole);
+    emit currentGearChanged();
 }

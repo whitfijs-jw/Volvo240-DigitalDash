@@ -997,6 +997,8 @@ public:
             mGearIndicatorConfig.gearRatios.push_back(val.toReal());
         }
 
+        printKeys("Gear Indicator Input: ", mConfig);
+
         mConfig->endGroup();
 
         return keys.size() > 0;

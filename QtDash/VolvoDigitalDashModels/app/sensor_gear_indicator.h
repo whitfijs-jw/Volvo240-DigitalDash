@@ -52,6 +52,8 @@ public:
         return "gear";
     }
 
+
+
     int estimateGear(qreal rpm, qreal speed, Config::SpeedUnits speedUnits) {
         // Get units to agree
         qreal diameterMile = SensorUtils::convertDistance(
@@ -114,6 +116,22 @@ public slots:
     void transformVssData(QVariant data, int channel) {
         if (channel == mVssChannel) {
             mCurrentSpeed = data.toReal();
+
+            //estimte the current gear
+            int gear = estimateGear(
+                        mCurrentRpm,
+                        mCurrentSpeed,
+                        Config::getSpeedUnits(mVssSource->getUnits(channel))
+                        );
+
+            // check that we're in a good place to even use this estimate
+            if (mCurrentSpeed > mGearIndicatorConfig.speedDropOut &&
+                    mCurrentRpm > mGearIndicatorConfig.idleHighRpm) {
+                emit sensorDataReady(gear);
+            } else {
+                // we can't make a good estimate of gear
+                emit sensorDataReady(0);
+            }
         }
     }
 

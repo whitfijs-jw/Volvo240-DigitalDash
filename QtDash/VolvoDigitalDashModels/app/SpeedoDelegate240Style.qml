@@ -40,6 +40,10 @@ Component {
             item.textSize = speedoSize * .15 / 2
             item.textOffset = speedoSize / 6
             item.significantDigits = 0
+
+            item.gearValue = currentGear;
+            item.gearTextOffset = -speedoSize / 9
+            item.gearValueEnabled = true
         }
 
         Binding {

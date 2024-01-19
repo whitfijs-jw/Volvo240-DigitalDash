@@ -60,6 +60,16 @@ public:
 
             ((SpeedometerModel *)mModel)->setTopValue(val);
         });
+
+        if (sensors.length() > 2) {
+            QObject::connect(
+                        sensors.at(2), &Sensor::sensorDataReady,
+                        [=](QVariant data) {
+                int gear = data.toInt();
+
+                ((SpeedometerModel *)mModel)->setCurrentGear(gear);
+            });
+        }
     }
 
 private:

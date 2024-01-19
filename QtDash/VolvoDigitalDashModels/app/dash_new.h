@@ -538,6 +538,9 @@ private:
             speedoSensors.append(mAmbientTempSensor);
         }
 
+        // append the gear indicator sensor
+        speedoSensors.append(mGearSensor);
+
         mSpeedoGauge = new SpeedometerGauge(
                     this->parent(), &mConfig, speedoSensors,
                     &mSpeedoModel, SpeedometerModel::SPEEDO_MODEL_NAME,

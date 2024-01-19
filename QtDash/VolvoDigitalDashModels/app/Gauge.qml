@@ -45,6 +45,11 @@ Item {
     property real topTextOffset: parent.height / 4.0
     property bool topValueEnabled: false
 
+    property real gearValue: 0
+    property real gearTextSize: topTextSize
+    property real gearTextOffset: -parent.height / 4.0
+    property bool gearValueEnabled: false
+
     property real dir: RotationAnimation.Numerical
 
     width: smallGaugeSize
@@ -192,6 +197,27 @@ Item {
             font.pixelSize: gauge.topTextSize
 
             text: Number(gauge.topValue).toFixed(1).toLocaleString(Qt.locale("en_US")) + " " + gauge.topUnits
+            color: "white"
+        }
+
+        Text {
+
+            id: gearText
+
+            visible: gearValueEnabled
+
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            anchors.horizontalCenterOffset: 0
+
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenterOffset: gauge.gearTextOffset
+
+            fontSizeMode: Text.Fit
+            font.pixelSize: gauge.gearTextSize
+
+            text: gauge.gearValue
             color: "white"
         }
     }
