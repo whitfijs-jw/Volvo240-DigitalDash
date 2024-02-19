@@ -233,6 +233,11 @@ Window {
         id: fuelLevelDelegateP1800
     }
 
+    // early 240 style delegates
+    SpeedoDelegateEarly240Style {
+        id: speedoDelegateEarly240
+    }
+
     Component {
         id: leftBlinkerDelegate
 
@@ -610,12 +615,12 @@ Window {
 
         function advanceScreen(forward) {
             if (forward) {
-                if (++screen > 8) {
+                if (++screen > 9) {
                     screen = 0;
                 }
             } else {
                 if (--screen < 0) {
-                    screen = 8;
+                    screen = 9;
                 }
             }
 
@@ -705,6 +710,15 @@ Window {
                     setSpeedoSize(440);
                     setSpeedoMax(120);
                     accessoryScreen.currentStyle = "p1800";
+                    break;
+                case 9:
+                    currentGauge.source = "qrc:/OriginalEarly240Layout.qml"
+                    setSmallGaugeSize(140);
+                    setTachSize(400);
+                    setSpeedoSize(440);
+                    setSpeedoMax(120);
+                    setTempFuelSize(400);
+                    accessoryScreen.currentStyle = "240";
                     break;
                 default:
                     break;

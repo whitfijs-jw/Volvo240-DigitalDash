@@ -71,6 +71,8 @@
         <file>BoostDelegateRSportStyle.qml</file>
         <file>CoolantTempAccDelegateRSportStyle.qml</file>
         <file>OilTempDelegateRSportStyle.qml</file>
+        <file>OriginalEarly240Layout.qml</file>
+        <file>SpeedoDelegateEarly240Style.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -172,5 +174,12 @@
         <file>clock-p1800.png</file>
         <file>oil-temp-p1800.png</file>
         <file>center-cover-medium-p1800.png</file>
+    </qresource>
+    <qresource prefix="/gauges-early-240">
+        <file>early-240-clock.png</file>
+        <file>early-240-speedo.png</file>
+        <file>early-240-tach.png</file>
+        <file>early-240-temp-fuel.png.png</file>
+        <file>early-240-temp-fuel-overlay.png</file>
     </qresource>
 </RCC>
