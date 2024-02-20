@@ -1,7 +1,6 @@
 import QtQuick 2.15
 
 Item {
-
     Rectangle {
         width: 1280
         height: 480
@@ -61,11 +60,11 @@ Item {
 
         Rectangle {
             id: leftBlinker
-            width: blinkerSize * 2
+            width: blinkerSize
             anchors.top: speedoContainer.top
             anchors.topMargin: 10
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: -parent.width / 8
+            anchors.right: parkingBrakeLight.left
+            anchors.rightMargin: warningLightHorizontalMargin
             color: "transparent"
 
             ListView {
@@ -75,12 +74,62 @@ Item {
         }
 
         Rectangle {
-            id: rightBlinker
-            width: blinkerSize * 2
+            id: parkingBrakeLight
+            width: warningLightWideWidth
+            height: warningLightHeight
             anchors.top: speedoContainer.top
             anchors.topMargin: 10
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: parent.width / 6
+            anchors.right : highBeamLight.left
+            anchors.rightMargin: warningLightHorizontalMargin
+            color: "transparent"
+
+            ListView {
+                model: parkingBrakeLightModel
+                delegate: parkingBrakeLightDelegate
+                anchors.fill: parent
+            }
+        }
+
+        Rectangle {
+            id: highBeamLight
+            width: warningLightWidth
+            height: warningLightHeight
+            anchors.top: speedoContainer.top
+            anchors.topMargin: 10
+            anchors.horizontalCenter: tachContainer.horizontalCenter
+            color: "transparent"
+
+            ListView {
+                model: highBeamLightModel
+                delegate: highBeamLightDelegate
+                anchors.fill: parent
+            }
+        }
+
+        Rectangle {
+            id: brakeFailureLight
+            width: warningLightWideWidth
+            height: warningLightHeight
+            anchors.top: speedoContainer.top
+            anchors.topMargin: 10
+            anchors.left : highBeamLight.right
+            anchors.leftMargin: warningLightHorizontalMargin
+            color: "transparent"
+
+            ListView {
+                model: brakeFailureLightModel
+                delegate: brakeFailureLightDelegate
+                anchors.fill: parent
+            }
+        }
+
+        Rectangle {
+            id: rightBlinker
+            width: blinkerSize
+            anchors.top: speedoContainer.top
+            anchors.topMargin: 10
+            anchors.left : brakeFailureLight.right
+            anchors.leftMargin: warningLightHorizontalMargin
             color: "transparent"
 
             ListView {
@@ -88,5 +137,41 @@ Item {
                 delegate: rightBlinkerDelegate
             }
         }
+
+        Rectangle {
+            id: oilWarningLight
+            height: warningLightHeight
+            width: warningLightWidth
+            anchors.horizontalCenter: tempFuelContainer.horizontalCenter
+            anchors.horizontalCenterOffset: -(warningLightWidth + warningLightHorizontalMargin) / 2
+            anchors.top: tempFuelContainer.top
+            anchors.topMargin: 10
+            color: "transparent"
+
+            ListView {
+                model: oilWarningLightModel
+                delegate: oilWarningLightDelegate
+                anchors.fill: parent
+            }
+        }
+
+        Rectangle {
+            id: batteryWarningLight
+            height: warningLightHeight
+            width: warningLightWidth
+            anchors.horizontalCenter: tempFuelContainer.horizontalCenter
+            anchors.horizontalCenterOffset: (warningLightWidth + warningLightHorizontalMargin) / 2
+            anchors.top: tempFuelContainer.top
+            anchors.topMargin: 10
+            color: "transparent"
+
+            ListView {
+                model: batteryWarningLightModel
+                delegate: batteryWarningLightDelegate
+                anchors.fill: parent
+            }
+        }
+
+
     }
 }
