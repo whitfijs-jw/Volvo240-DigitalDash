@@ -11,8 +11,6 @@ Window {
     title: qsTr("VolvoDash Gauge Delegate Generator")
     property int smallGaugeSize: 440
     property alias gauge: currentGauge
-    id: mainWindow
-
 
     Window {
         width: 400
@@ -202,9 +200,40 @@ Window {
                     value: needleCenterRadius.value
                 }
             }
+            SliderValue {
+                Layout.row: 13
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                to: 1.0
+                from: 0.001
+                id: textSize
+                name: "Text Size Factor"
+                defaultValue: gauge.textSize
+                Binding {
+                    target: gauge
+                    property: "textSize"
+                    value: textSize.value * gauge.height
+                }
+            }
+
+            SliderValue {
+                Layout.row: 14
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                to: 1.0
+                from: 0.001
+                id: textOffset
+                name: "Text Offset Factor"
+                defaultValue: gauge.textOffset
+                Binding {
+                    target: gauge
+                    property: "textOffset"
+                    value: textOffset.value * gauge.height
+                }
+            }
 
             TextInputValue {
-                Layout.row: 14
+                Layout.row: 25
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 id: gaugeSize
