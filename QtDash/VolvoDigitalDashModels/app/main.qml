@@ -238,6 +238,14 @@ Window {
         id: speedoDelegateEarly240
     }
 
+    TempAndFuelDelegateEarly240Style {
+        id: tempFuelDelegateEarly240
+    }
+
+    TachoDelegateEarly240Style {
+        id: tachoDelegateEarly240Style
+    }
+
     Component {
         id: leftBlinkerDelegate
 
@@ -714,10 +722,10 @@ Window {
                 case 9:
                     currentGauge.source = "qrc:/OriginalEarly240Layout.qml"
                     setSmallGaugeSize(140);
-                    setTachSize(400);
-                    setSpeedoSize(440);
-                    setSpeedoMax(120);
-                    setTempFuelSize(400);
+                    setTachSize(300);
+                    setSpeedoSize(380);
+                    setSpeedoMax(130);
+                    setTempFuelSize(380);
                     accessoryScreen.currentStyle = "240";
                     break;
                 default:

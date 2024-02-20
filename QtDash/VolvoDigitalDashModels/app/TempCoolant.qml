@@ -17,14 +17,26 @@ Item
 
     property string units
 
+    property string overlayImageSource: "qrc:mainCluster/temp_coolant_overlay_small.png"
+    property string gaugeImageResource: "qrc:mainCluster/temp_coolant.png"
+
+    property real needleLength: tempFuelSize * 0.4
+    property real needleWidth: tempFuelSize * 0.02
+    property real needleOffset: 0
+    property string needleResource: "qrc:/needles/needle-240.png"
+
+    property real offsetX: 0
+
     Image {
         z: 0;
-        source: "qrc:mainCluster/temp_coolant_overlay_small.png"
+        id: overlay
+        source: overlayImageSource
         anchors.fill: parent
     }
 
     Image {
         z: 1;
+        id: warningLight
         source: "qrc:mainCluster/temp_coolant_gas_can.png"
         anchors.fill: parent
         visible: fuelLevel < lowAlarm ? true : false
@@ -47,12 +59,15 @@ Item
         minAngle: -205
         maxAngle: -155
 
+        offsetX: tempCoolant.offsetX
+
         units: "F"
-        needleLength: parent.height * 0.4
-        needleWidth: parent.height * 0.02
+        needleResource: tempCoolant.needleResource
+        needleLength: tempCoolant.needleLength
+        needleWidth: tempCoolant.needleWidth
         needleOffset: 0
 
-        imageResource: "qrc:mainCluster/temp_coolant.png"
+        imageResource: gaugeImageResource
 
         textOffset: parent.height / 5
         textSize: parent.height / 16
@@ -73,11 +88,14 @@ Item
         highAlarm: tempCoolant.maxFuel
         lowAlarm: tempCoolant.lowAlarm
 
+        offsetX: -tempCoolant.offsetX
+
         minAngle: -27
         maxAngle: 25
 
-        needleLength: parent.height * 0.40
-        needleWidth: parent.height * 0.02
+        needleResource: tempCoolant.needleResource
+        needleLength: tempCoolant.needleLength
+        needleWidth: tempCoolant.needleWidth
         needleOffset: 0
 
         imageResource: ""

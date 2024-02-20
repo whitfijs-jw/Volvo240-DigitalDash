@@ -73,6 +73,8 @@
         <file>OilTempDelegateRSportStyle.qml</file>
         <file>OriginalEarly240Layout.qml</file>
         <file>SpeedoDelegateEarly240Style.qml</file>
+        <file>TempAndFuelDelegateEarly240Style.qml</file>
+        <file>TachoDelegateEarly240Style.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>

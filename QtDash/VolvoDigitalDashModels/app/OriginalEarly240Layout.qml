@@ -8,25 +8,11 @@ Item {
         color: "transparent"
 
         Rectangle {
-            id: tachContainer
-            width: tachSize
-            height: tachSize
-            color: "transparent"
-            anchors.right: speedoContainer.left
-            anchors.verticalCenter: speedoContainer.verticalCenter
-            /* Rpm: */
-            ListView {
-                model: rpmModel
-                delegate: rpmDelegate
-            }
-
-        }
-
-        Rectangle {
             id: speedoContainer
             width: speedoSize
             height: speedoSize
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.right: tachContainer.left
+            anchors.rightMargin: parent.width * 0.035
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: 0
             color: "transparent"
@@ -40,17 +26,35 @@ Item {
         }
 
         Rectangle {
+            id: tachContainer
+            width: tachSize
+            height: tachSize
+            color: "transparent"
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: tachSize * 0.1
+
+            /* Rpm: */
+            ListView {
+                model: rpmModel
+                delegate: tachoDelegateEarly240Style
+            }
+
+        }
+
+        Rectangle {
             id: tempFuelContainer
             width: tempFuelSize
             height: tempFuelSize
-            anchors.left: speedoContainer.right
-            anchors.verticalCenter: speedoContainer.verticalCenter
+            anchors.left: tachContainer.right
+            anchors.leftMargin: parent.width * 0.035
+            anchors.verticalCenter: parent.verticalCenter
             color: "transparent"
 
             /* Rpm: */
             ListView {
                 model: tempFuelModel
-                delegate: tempFuelDelegate
+                delegate: tempFuelDelegateEarly240
             }
 
         }
