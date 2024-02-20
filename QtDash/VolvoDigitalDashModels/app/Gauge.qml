@@ -35,6 +35,7 @@ Item {
     property color needleColor: "orange"
 
     property real textOffset:  parent.height / 2.0
+    property real textXOffset: 0
     property real textSize: parent.height / 8
     property bool textEnabled: true
     property int significantDigits: 1
@@ -155,14 +156,14 @@ Item {
         Text {
 
             id: valueText
-
+            z: 10
             visible: textEnabled
 
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            anchors.horizontalCenterOffset: 0
 
             anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset: gauge.textXOffset
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: gauge.textOffset
 

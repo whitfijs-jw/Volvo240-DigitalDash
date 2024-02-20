@@ -27,6 +27,11 @@ Item
 
     property real offsetX: 0
 
+    property real textXOffset: 0
+    property real textOffset : parent.height / 5
+
+    property bool enableFuelText: false
+
     Image {
         z: 0;
         id: overlay
@@ -69,7 +74,8 @@ Item
 
         imageResource: gaugeImageResource
 
-        textOffset: parent.height / 5
+        textOffset: tempCoolant.textOffset
+        textXOffset: -tempCoolant.textXOffset
         textSize: parent.height / 16
 
     }
@@ -79,8 +85,10 @@ Item
         z: -1
         anchors.fill: parent
 
-        value: tempCoolant.maxFuel - tempCoolant.fuelLevel
-        units: ""
+        clockwise: false
+
+        value: tempCoolant.fuelLevel
+        units: "%"
 
         minValue: tempCoolant.minFuel
         maxValue: tempCoolant.maxFuel
@@ -100,7 +108,10 @@ Item
 
         imageResource: ""
 
-        textEnabled: false
+        textEnabled: tempCoolant.enableFuelText
+        textOffset: tempCoolant.textOffset
+        textXOffset: tempCoolant.textXOffset
+        textSize: parent.height / 16
     }
 }
 

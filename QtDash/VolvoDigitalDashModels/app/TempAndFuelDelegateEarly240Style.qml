@@ -24,6 +24,10 @@ Component {
             item.needleWidth = tempFuelSize * 0.02
 
             item.offsetX = -tempFuelSize * 0.1
+
+            item.textXOffset = tempFuelSize * 0.4;
+            item.textOffset = tempFuelSize * 0.25
+            item.enableFuelText = true;
         }
 
         Binding {
