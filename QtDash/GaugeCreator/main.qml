@@ -13,8 +13,8 @@ Window {
     property alias gauge: currentGauge
 
     Window {
-        width: 400
         height: 800
+        width: 600
         visible: true
 
         GridLayout {
@@ -221,7 +221,7 @@ Window {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 to: 1.0
-                from: 0.001
+                from: 0
                 id: textOffset
                 name: "Text Offset Factor"
                 defaultValue: gauge.textOffset
@@ -229,6 +229,38 @@ Window {
                     target: gauge
                     property: "textOffset"
                     value: textOffset.value * gauge.height
+                }
+            }
+
+            SliderValue {
+                Layout.row: 15
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                to: 0.5
+                from: -0.5
+                id: offset
+                name: "Needle Y Offset (factor)"
+                defaultValue: gauge.offset
+                Binding {
+                    target: gauge
+                    property: "offset"
+                    value: offset.value * gauge.height
+                }
+            }
+
+            SliderValue {
+                Layout.row: 16
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                to: 0.5
+                from: -0.5
+                id: offsetX
+                name: "Needle X Offset (factor)"
+                defaultValue: gauge.offset
+                Binding {
+                    target: gauge
+                    property: "offsetX"
+                    value: offsetX.value * gauge.height
                 }
             }
 
