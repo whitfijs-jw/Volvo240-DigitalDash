@@ -75,6 +75,8 @@
         <file>SpeedoDelegateEarly240Style.qml</file>
         <file>TempAndFuelDelegateEarly240Style.qml</file>
         <file>TachoDelegateEarly240Style.qml</file>
+        <file>WarningLightOilPressureEarly240Style.qml</file>
+        <file>WarningLightBatteryEarly240Style.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>

@@ -141,16 +141,16 @@ Item {
         Rectangle {
             id: oilWarningLight
             height: warningLightHeight
-            width: warningLightWidth
+            width: warningLightHeight
             anchors.horizontalCenter: tempFuelContainer.horizontalCenter
-            anchors.horizontalCenterOffset: -(warningLightWidth + warningLightHorizontalMargin) / 2
+            anchors.horizontalCenterOffset: -(oilWarningLight.width + warningLightHorizontalMargin) / 2
             anchors.top: tempFuelContainer.top
             anchors.topMargin: 10
             color: "transparent"
 
             ListView {
                 model: oilWarningLightModel
-                delegate: oilWarningLightDelegate
+                delegate: warningLightOilPressureEarly240
                 anchors.fill: parent
             }
         }
@@ -158,16 +158,16 @@ Item {
         Rectangle {
             id: batteryWarningLight
             height: warningLightHeight
-            width: warningLightWidth
+            width: warningLightHeight
             anchors.horizontalCenter: tempFuelContainer.horizontalCenter
-            anchors.horizontalCenterOffset: (warningLightWidth + warningLightHorizontalMargin) / 2
+            anchors.horizontalCenterOffset: (batteryWarningLight.width + warningLightHorizontalMargin) / 2
             anchors.top: tempFuelContainer.top
             anchors.topMargin: 10
             color: "transparent"
 
             ListView {
                 model: batteryWarningLightModel
-                delegate: batteryWarningLightDelegate
+                delegate: warningLightBatteryEarly240Style
                 anchors.fill: parent
             }
         }

@@ -246,6 +246,14 @@ Window {
         id: tachoDelegateEarly240Style
     }
 
+    WarningLightOilPressureEarly240Style {
+        id: warningLightOilPressureEarly240
+    }
+
+    WarningLightBatteryEarly240Style {
+        id: warningLightBatteryEarly240Style
+    }
+
     Component {
         id: leftBlinkerDelegate
 
@@ -533,6 +541,8 @@ Window {
             }
         }
     }
+
+
 
     Item {
         id: loading
