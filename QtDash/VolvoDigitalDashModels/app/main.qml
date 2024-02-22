@@ -254,6 +254,10 @@ Window {
         id: warningLightBatteryEarly240Style
     }
 
+    WarningLightHighBeamEarly240Style {
+        id: warningLightHighBeamEarly240Style
+    }
+
     Component {
         id: leftBlinkerDelegate
 

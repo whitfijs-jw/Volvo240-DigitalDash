@@ -92,7 +92,7 @@ Item {
 
         Rectangle {
             id: highBeamLight
-            width: warningLightWidth
+            width: warningLightHeight
             height: warningLightHeight
             anchors.top: speedoContainer.top
             anchors.topMargin: 10
@@ -101,7 +101,7 @@ Item {
 
             ListView {
                 model: highBeamLightModel
-                delegate: highBeamLightDelegate
+                delegate: warningLightHighBeamEarly240Style
                 anchors.fill: parent
             }
         }
