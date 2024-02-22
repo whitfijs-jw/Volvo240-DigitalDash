@@ -96,6 +96,7 @@
         <file>later-240-tacho.png</file>
         <file>later-240-temp-fuel.png</file>
         <file>later-240-temp-fuel-overlay.png</file>
+        <file>later-240-clock.png</file>
     </qresource>
     <qresource prefix="/accCluster">
         <file>volt_black.png</file>
