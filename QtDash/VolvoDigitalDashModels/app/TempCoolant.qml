@@ -17,8 +17,8 @@ Item
 
     property string units
 
-    property string overlayImageSource: "qrc:mainCluster/temp_coolant_overlay_small.png"
-    property string gaugeImageResource: "qrc:mainCluster/temp_coolant.png"
+    property string overlayImageSource: "qrc:/mainCluster/later-240-temp-fuel-overlay.png"
+    property string gaugeImageResource: "qrc:/mainCluster/later-240-temp-fuel.png"
 
     property real needleLength: tempFuelSize * 0.4
     property real needleWidth: tempFuelSize * 0.02
@@ -28,7 +28,7 @@ Item
     property real offsetX: 0
 
     property real textXOffset: 0
-    property real textOffset : parent.height / 5
+    property real textOffset : parent.height / 4.5
 
     property bool enableFuelText: false
 
