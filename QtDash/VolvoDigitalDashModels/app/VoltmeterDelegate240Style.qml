@@ -13,8 +13,8 @@ Component {
             item.highAlarm = gaugeHighAlarm
             item.lowAlarm = gaugeLowAlarm
 
-            item.minAngle = -136
-            item.maxAngle = -45
+            item.minAngle = -135
+            item.maxAngle = -44
 
             item.height = smallGaugeSize
             item.width = smallGaugeSize
