@@ -19,15 +19,15 @@ Component {
             item.height = smallGaugeSize
             item.width = smallGaugeSize
 
-            item.imageResource = "qrc:/accCluster/volt_black.png"
+            item.imageResource = "qrc:/accCluster/later-240-voltmeter.png"
 
             item.needleColor = "orange"
 
             item.needleWidth = smallGaugeNeedleWidth240
-            item.needleLength = smallGaugeSize * 0.65
-            item.needleOffset = smallGaugeSize * .25 / 2
+            item.needleLength = smallGaugeSize * 0.7
+            item.needleOffset = smallGaugeSize * .125
 
-            item.offset = smallGaugeSize / 4.5
+            item.offset = smallGaugeSize * 0.25
 
             item.significantDigits = 2
 

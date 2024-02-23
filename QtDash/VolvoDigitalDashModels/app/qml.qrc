@@ -105,6 +105,10 @@
         <file>ambient_temp_black_f.png</file>
         <file>oil_pressure_black.png</file>
         <file>clock_black.png</file>
+        <file>later-240-oil-temp.png</file>
+        <file>later-240-boost.png</file>
+        <file>later-240-voltmeter.png</file>
+        <file>later-240-oil-pressure.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>ariblk.ttf</file>

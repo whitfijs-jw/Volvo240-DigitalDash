@@ -11,6 +11,7 @@ Window {
     title: qsTr("VolvoDash Gauge Delegate Generator")
     property int smallGaugeSize: 440
     property alias gauge: currentGauge
+    id: mainWindow
 
     Window {
         height: 800
