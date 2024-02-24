@@ -12,8 +12,7 @@ Item {
             height: speedoSize
             anchors.right: tachContainer.left
             anchors.rightMargin: parent.width * 0.035
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: 0
+            anchors.bottom: tachContainer.bottom
             color: "transparent"
 
             /* Rpm: */
@@ -31,7 +30,7 @@ Item {
             color: "transparent"
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: tachSize * 0.1
+            anchors.bottomMargin: tachSize * 0.025
 
             /* Rpm: */
             ListView {
@@ -47,7 +46,7 @@ Item {
             height: tempFuelSize
             anchors.left: tachContainer.right
             anchors.leftMargin: parent.width * 0.035
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenter: speedoContainer.verticalCenter
             color: "transparent"
 
             /* Rpm: */
@@ -69,7 +68,7 @@ Item {
 
             ListView {
                 model: leftBlinkerModel
-                delegate: leftBlinkerDelegate
+                delegate: leftBlinkerDelegateEarly240Style.component
             }
         }
 
@@ -134,7 +133,7 @@ Item {
 
             ListView {
                 model: rightBlinkerModel
-                delegate: rightBlinkerDelegate
+                delegate: rightBlinkerDelegateEarly240Style.component
             }
         }
 

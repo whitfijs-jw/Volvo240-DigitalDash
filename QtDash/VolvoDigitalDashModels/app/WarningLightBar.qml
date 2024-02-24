@@ -7,6 +7,7 @@ Item {
     property int warningLightVerticalMargin: 5;
     property int warningLightHorizontalMargin: 8
     property int deadSpaceMiddle: 100;
+    property bool showLights: true
 
     Rectangle {
         width: 1280
@@ -19,7 +20,7 @@ Item {
             color: "transparent"
             width: deadSpaceMiddle
             height: warningLightWidth
-
+            visible: showLights
 
             ListView {
                 model: odometerModel
@@ -37,6 +38,7 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.rightMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
 
             ListView {
                 model: serviceLightModel
@@ -54,6 +56,7 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.rightMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
 
             ListView {
                 model: checkEngineLightModel
@@ -71,6 +74,7 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.rightMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
 
             ListView {
                 model: absWarningLightModel
@@ -88,6 +92,7 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.rightMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
 
             ListView {
                 model: batteryWarningLightModel
@@ -105,6 +110,7 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.rightMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
 
             ListView {
                 model: oilWarningLightModel
@@ -123,6 +129,7 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.rightMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
 
             ListView {
                 model: srsWarningLightModel
@@ -141,6 +148,7 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.rightMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
 
             ListView {
                 model: highBeamLightModel
@@ -158,6 +166,7 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.leftMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
 
             ListView {
                 model: parkingBrakeLightModel
@@ -175,6 +184,7 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.leftMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
 
             ListView {
                 model: brakeFailureLightModel
@@ -192,6 +202,7 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.leftMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
 
             ListView {
                 model: bulbFailureLightModel
@@ -209,6 +220,7 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.leftMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
 
             ListView {
                 model: shiftUpLightModel

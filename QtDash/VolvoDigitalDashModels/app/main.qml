@@ -258,6 +258,16 @@ Window {
         id: warningLightHighBeamEarly240Style
     }
 
+    BlinkerDelegateEarly240Style {
+        id: leftBlinkerDelegateEarly240Style
+        flipped: false
+    }
+
+    BlinkerDelegateEarly240Style {
+        id: rightBlinkerDelegateEarly240Style
+        flipped: true
+    }
+
     Component {
         id: leftBlinkerDelegate
 
@@ -656,6 +666,7 @@ Window {
                     setSpeedoMax(120);
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
                     accessoryScreen.currentStyle = "240";
+                    warningLightBar.item.showLights = true;
                     break;
                 case 1:
                     //currentGauge.source = "";
@@ -666,6 +677,7 @@ Window {
                     setSpeedoMax(120);
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
                     accessoryScreen.currentStyle = "240";
+                    warningLightBar.item.showLights = true;
                     break;
                 case 2:
                     //currentGauge.source = "";
@@ -676,6 +688,7 @@ Window {
                     setSpeedoMax(120);
                     setTempFuelSize(400);
                     accessoryScreen.currentStyle = "240";
+                    warningLightBar.item.showLights = true;
                     break;
                 case 3:
                     //currentGauge.source = "";
@@ -686,6 +699,7 @@ Window {
                     setSpeedoMax(140);
                     setTempFuelSize(300);
                     accessoryScreen.currentStyle = "740";
+                    warningLightBar.item.showLights = true;
                     break;
                 case 4:
                     //currentGauge.source = "";
@@ -696,6 +710,7 @@ Window {
                     setSpeedoMax(120);
                     setTempFuelSize(400);
                     accessoryScreen.currentStyle = "240";
+                    warningLightBar.item.showLights = true;
                     break;
                 case 5:
                     //currentGauge.source = "";
@@ -706,6 +721,7 @@ Window {
                     setSpeedoMax(140);
                     //setTempFuelSize(300);
                     accessoryScreen.currentStyle = "740";
+                    warningLightBar.item.showLights = true;
                     break;
                 case 6:
                     currentGauge.source = "qrc:/OriginalRSportLayout.qml"
@@ -714,8 +730,8 @@ Window {
                     setSpeedoSize(350);
                     setSpeedoMax(130);
                     accessoryScreen.currentStyle = "rSport";
+                    warningLightBar.item.showLights = true;
                     break;
-
                 case 7:
                     currentGauge.source = "qrc:/Original544Layout.qml"
                     setSmallGaugeSize(140);
@@ -724,6 +740,7 @@ Window {
                     setSpeedoMax(120);
                     setTempFuelSize(400);
                     accessoryScreen.currentStyle = "240";
+                    warningLightBar.item.showLights = true;
                     break;
                 case 8:
                     currentGauge.source = "qrc:/OriginalP1800Layout.qml"
@@ -732,15 +749,17 @@ Window {
                     setSpeedoSize(440);
                     setSpeedoMax(120);
                     accessoryScreen.currentStyle = "p1800";
+                    warningLightBar.item.showLights = true;
                     break;
                 case 9:
                     currentGauge.source = "qrc:/OriginalEarly240Layout.qml"
                     setSmallGaugeSize(140);
                     setTachSize(300);
-                    setSpeedoSize(380);
+                    setSpeedoSize(400);
                     setSpeedoMax(130);
-                    setTempFuelSize(380);
+                    setTempFuelSize(400);
                     accessoryScreen.currentStyle = "240";
+                    warningLightBar.item.showLights = false;
                     break;
                 default:
                     break;
@@ -763,6 +782,7 @@ Window {
         }
 
         Loader {
+            id: warningLightBar
             source: "WarningLightBar.qml"
             asynchronous: true
         }

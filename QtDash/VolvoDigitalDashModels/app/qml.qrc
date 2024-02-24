@@ -78,6 +78,8 @@
         <file>WarningLightOilPressureEarly240Style.qml</file>
         <file>WarningLightBatteryEarly240Style.qml</file>
         <file>WarningLightHighBeamEarly240Style.qml</file>
+        <file>BlinkerEarly240.qml</file>
+        <file>BlinkerDelegateEarly240Style.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -195,5 +197,7 @@
         <file>early-240-tach.png</file>
         <file>early-240-temp-fuel.png.png</file>
         <file>early-240-temp-fuel-overlay.png</file>
+        <file>early-240-blinker-off.png</file>
+        <file>early-240-blinker-on.png</file>
     </qresource>
 </RCC>
