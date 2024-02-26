@@ -109,11 +109,6 @@ Item {
         Image {
             id: needle
 
-//            needleColor: gauge.needleColor
-//            needleTipRadius: gauge.needleTipRadius
-//            length: gauge.needleLength
-//            needleWidth:  gauge.needleWidth
-
             x: parent.width / 2 + offsetX
             y: parent.height / 2 + offset
             width: gauge.needleLength
@@ -122,13 +117,6 @@ Item {
             antialiasing: true
             smooth: true
             source: needleResource
-
-//            radius: gauge.needleTipRadius
-//            gradient: Gradient {
-//                    GradientStop { position: 0.25; color: needleColor}
-//                    GradientStop { position: 0.5; color: "white" }
-//                    GradientStop { position: 0.75; color: needleColor }
-//            }
 
             transform: [
                 Translate {

@@ -26,6 +26,8 @@ Window {
             return availableP1800Gauges;
         case "rSport":
             return availableRSportGauges;
+        case "140rallye":
+            return available140RallyeGauges;
         default:
             return available240Gauges;
         }
@@ -215,6 +217,74 @@ Window {
 
     ListModel {
         id: availableRSportGauges
+        ListElement {
+            name: "boost"
+        }
+        ListElement {
+            name: "oil temp"
+        }
+        ListElement {
+            name: "oil pressure"
+        }
+        ListElement {
+            name: "coolant temp"
+        }
+        ListElement {
+            name: "voltmeter"
+        }
+    }
+
+    // 140 Rallye gauges
+   property list<Item> delegates140Rallye: [
+        Accessory140RallyeStyle {
+            id: boostDelegate140RallyeStyle
+            gaugeMin: -20
+            gaugeMax: 30
+            minAngle: -240
+            maxAngle: 60
+            yOffset: 0
+            needleLength: 0.55
+
+            significatDigits: 1
+
+            imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-boost_no_num.png"
+        },
+        Accessory140RallyeStyle {
+            id: oilTempDelegate140RallyeStyle
+            gaugeMin: 120
+            gaugeMax: 300
+            significatDigits: 1
+
+            imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-oil-temp.png"
+        },
+        Accessory140RallyeStyle {
+            id: oilPressureDelegate140RallyeStyle
+            gaugeMin: 0
+            gaugeMax: 8
+            significatDigits: 2
+
+            imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-oil-pressure-bar.png"
+        },
+        Accessory140RallyeStyle {
+            id: coolantTempDelegate140RallyeStyle
+            gaugeMin: 120
+            gaugeMax: 250
+            significatDigits: 1
+
+            imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-coolant.png"
+        },
+        Accessory140RallyeStyle {
+            id: voltmeterDelegate140RallyeStyle
+            gaugeMin: 10
+            gaugeMax: 18
+            significatDigits: 2
+
+            imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-voltmeter.png"
+        }
+    ]
+
+    ListModel {
+        id: available140RallyeGauges
         ListElement {
             name: "boost"
         }

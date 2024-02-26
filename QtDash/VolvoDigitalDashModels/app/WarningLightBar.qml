@@ -20,7 +20,7 @@ Item {
             color: "transparent"
             width: deadSpaceMiddle
             height: warningLightWidth
-            visible: showLights
+            visible: true
 
             ListView {
                 model: odometerModel

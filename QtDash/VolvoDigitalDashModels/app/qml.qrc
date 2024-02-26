@@ -80,6 +80,10 @@
         <file>WarningLightHighBeamEarly240Style.qml</file>
         <file>BlinkerEarly240.qml</file>
         <file>BlinkerDelegateEarly240Style.qml</file>
+        <file>Accessory140RallyeStyle.qml</file>
+        <file>Original140RallyeLayout.qml</file>
+        <file>SpeedoDelegate140RallyeStyle.qml</file>
+        <file>TachoDelegate140RallyeStyle.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -199,5 +203,18 @@
         <file>early-240-temp-fuel-overlay.png</file>
         <file>early-240-blinker-off.png</file>
         <file>early-240-blinker-on.png</file>
+    </qresource>
+    <qresource prefix="/gauge-faces-140-rallye">
+        <file>140-rallye-boost_no_num.png</file>
+        <file>140-rallye-boost_psi.png</file>
+        <file>140-rallye-clock.png</file>
+        <file>140-rallye-coolant.png</file>
+        <file>140-rallye-fuel.png</file>
+        <file>140-rallye-oil-pressure-bar.png</file>
+        <file>140-rallye-oil-pressure-psi.png</file>
+        <file>140-rallye-oil-temp.png</file>
+        <file>140-rallye-tach.png</file>
+        <file>140-rallye-speedo.png</file>
+        <file>140-rallye-voltmeter.png</file>
     </qresource>
 </RCC>

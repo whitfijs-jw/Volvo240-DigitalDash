@@ -43,6 +43,8 @@ Item {
             return delegatesP1800[index];
         case "rSport":
             return delegatesRSport[index];
+        case "140rallye":
+            return delegates140Rallye[index].component;
         default:
             return delegates240[index];
         }
@@ -58,6 +60,8 @@ Item {
             return delegatesP1800.length;
         case "rSport":
             return delegatesRSport.length;
+        case "140rallye":
+            return delegates140Rallye.length
         default:
             return delegates240.length;
         }

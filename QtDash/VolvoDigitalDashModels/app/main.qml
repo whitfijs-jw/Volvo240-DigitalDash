@@ -268,6 +268,74 @@ Window {
         flipped: true
     }
 
+    Accessory140RallyeStyle {
+        id: coolantTempDelegate140RallyeStyle
+        gaugeMin: 120
+        gaugeMax: 250
+        significatDigits: 1
+
+        imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-coolant.png"
+    }
+
+    Accessory140RallyeStyle {
+        id: fuelLevelDelegate140RallyeStyle
+        gaugeMin: 0
+        gaugeMax: 100
+        significatDigits: 0
+
+        imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-fuel.png"
+    }
+
+    Accessory140RallyeStyle {
+        id: oilPressureDelegate140RallyeStyle
+        gaugeMin: 0
+        gaugeMax: 8
+        significatDigits: 2
+
+        imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-oil-pressure-bar.png"
+    }
+
+    Accessory140RallyeStyle {
+        id: oilTempDelegate140RallyeStyle
+        gaugeMin: 120
+        gaugeMax: 300
+        significatDigits: 1
+
+        imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-oil-temp.png"
+    }
+
+    Accessory140RallyeStyle {
+        id: voltmeterDelegate140RallyeStyle
+        gaugeMin: 10
+        gaugeMax: 18
+        significatDigits: 2
+
+        imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-voltmeter.png"
+    }
+
+    Accessory140RallyeStyle {
+        id: boostDelegate140RallyeStyle
+        gaugeMin: -20
+        gaugeMax: 30
+        minAngle: -240
+        maxAngle: 60
+        yOffset: 0
+        needleLength: 0.55
+
+        significatDigits: 1
+
+        imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-boost_no_num.png"
+    }
+
+    SpeedoDelegate140RallyeStyle {
+        id: speedoDelegate140RallyeStyle
+    }
+
+    TachoDelegate140RallyeStyle {
+        id: tachoDelegate140RallyeStyle
+    }
+
+
     Component {
         id: leftBlinkerDelegate
 
@@ -647,12 +715,12 @@ Window {
 
         function advanceScreen(forward) {
             if (forward) {
-                if (++screen > 9) {
+                if (++screen > 10) {
                     screen = 0;
                 }
             } else {
                 if (--screen < 0) {
-                    screen = 9;
+                    screen = 10;
                 }
             }
 
@@ -760,6 +828,16 @@ Window {
                     setTempFuelSize(400);
                     accessoryScreen.currentStyle = "240";
                     warningLightBar.item.showLights = false;
+                    break;
+                case 10:
+                    currentGauge.source = "qrc:/Original140RallyeLayout.qml"
+                    setSmallGaugeSize(200);
+                    setTachSize(400);
+                    setSpeedoSize(400);
+                    setSpeedoMax(130);
+                    setTempFuelSize(400);
+                    accessoryScreen.currentStyle = "140rallye";
+                    warningLightBar.item.showLights = true;
                     break;
                 default:
                     break;
