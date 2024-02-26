@@ -3735,9 +3735,9 @@
      inkscape:pageopacity="0"
      inkscape:pagecheckerboard="0"
      showgrid="false"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="1227.5374"
-     inkscape:cy="264.10438"
+     inkscape:zoom="4.0000001"
+     inkscape:cx="1206.25"
+     inkscape:cy="350.87499"
      inkscape:window-width="2490"
      inkscape:window-height="1376"
      inkscape:window-x="1990"
@@ -3860,9 +3860,9 @@
        transform="translate(57.536295,-116.21051)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6487"><tspan
+         id="tspan5065"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6485">40</tspan></tspan></text>
+           id="tspan5063">40</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-2"
@@ -3870,9 +3870,9 @@
        transform="translate(102.69202,-111.40725)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6491"><tspan
+         id="tspan5069"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6489">50</tspan></tspan></text>
+           id="tspan5067">50</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-2-2"
@@ -3880,9 +3880,9 @@
        transform="translate(651.25518,-106.55152)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6495"><tspan
+         id="tspan5073"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6493">50</tspan></tspan></text>
+           id="tspan5071">50</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-2-1"
@@ -3890,9 +3890,9 @@
        transform="translate(698.50351,-122.35724)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6499"><tspan
+         id="tspan5077"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6497">70</tspan></tspan></text>
+           id="tspan5075">70</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-2-7"
@@ -3900,9 +3900,9 @@
        transform="translate(746.50414,-106.16996)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6503"><tspan
+         id="tspan5081"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6501">90</tspan></tspan></text>
+           id="tspan5079">90</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-3"
@@ -3910,9 +3910,9 @@
        transform="translate(136.62802,-81.540118)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6507"><tspan
+         id="tspan5085"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6505">60</tspan></tspan></text>
+           id="tspan5083">60</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-88"
@@ -3920,9 +3920,9 @@
        transform="translate(151.10818,-39.104287)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6511"><tspan
+         id="tspan5089"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6509">70</tspan></tspan></text>
+           id="tspan5087">70</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0"
@@ -3930,9 +3930,9 @@
        transform="translate(138.10941,4.2092456)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6515"><tspan
+         id="tspan5093"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6513">80</tspan></tspan></text>
+           id="tspan5091">80</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6"
@@ -3940,9 +3940,9 @@
        transform="translate(65.893354,27.327864)"><tspan
          x="58.021484"
          y="190.93058"
-         id="tspan6519"><tspan
+         id="tspan5097"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6517">RPM</tspan></tspan></text>
+           id="tspan5095">RPM</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7"
@@ -3950,9 +3950,9 @@
        transform="translate(694.17027,43.197924)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6523"><tspan
+         id="tspan5101"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6521">MPH</tspan></tspan></text>
+           id="tspan5099">MPH</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8"
@@ -3960,9 +3960,9 @@
        transform="translate(264.98472,-92.501121)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6527"><tspan
+         id="tspan5105"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6525">TANK</tspan></tspan></text>
+           id="tspan5103">TANK</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0"
@@ -3970,9 +3970,9 @@
        transform="translate(231.186,-102.65392)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6531"><tspan
+         id="tspan5109"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6529">0</tspan></tspan></text>
+           id="tspan5107">0</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0"
@@ -3980,9 +3980,9 @@
        transform="translate(251.43988,-116.0145)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6535"><tspan
+         id="tspan5113"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6533">R</tspan></tspan></text>
+           id="tspan5111">R</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-4"
@@ -3990,9 +3990,9 @@
        transform="translate(323.07181,-101.95641)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6539"><tspan
+         id="tspan5117"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6537">F</tspan></tspan></text>
+           id="tspan5115">F</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-7"
@@ -4000,9 +4000,9 @@
        transform="translate(291.55168,-118.11829)"><tspan
          x="58.021484"
          y="186.16794"
-         id="tspan6543"><tspan
+         id="tspan5121"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6541">1</tspan></tspan></text>
+           id="tspan5119">1</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-3"
@@ -4010,9 +4010,9 @@
        transform="translate(300.64805,-115.59864)"><tspan
          x="58.021484"
          y="186.16794"
-         id="tspan6547"><tspan
+         id="tspan5125"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6545">2</tspan></tspan></text>
+           id="tspan5123">2</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-75"
@@ -4020,9 +4020,9 @@
        transform="matrix(0.48341146,0,0,0.97999404,326.00411,-114.27174)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6551"><tspan
+         id="tspan5129"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6549">/</tspan></tspan></text>
+           id="tspan5127">/</tspan></tspan></text>
     <circle
        style="fill:#008000;fill-opacity:1;stroke:none;stroke-width:1.7845"
        id="path1055"
@@ -4060,9 +4060,9 @@
        transform="translate(1.6034264,2.4228945)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6555"><tspan
+         id="tspan5133"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6553">10</tspan></tspan></text>
+           id="tspan5131">10</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-75"
@@ -4070,9 +4070,9 @@
        transform="translate(654.94512,21.134904)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6559"><tspan
+         id="tspan5137"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6557">10</tspan></tspan></text>
+           id="tspan5135">10</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-2-60"
@@ -4080,15 +4080,15 @@
        transform="translate(773.09533,-43.756981)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6567"><tspan
+         id="tspan5145"><tspan
            style="letter-spacing:-3.7px"
-           id="tspan6561">1</tspan><tspan
+           id="tspan5139">1</tspan><tspan
            dx="-1.4499998"
            style="letter-spacing:-2.25px"
-           id="tspan6563">1</tspan><tspan
+           id="tspan5141">1</tspan><tspan
            dx="-2.000001"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6565">0</tspan></tspan></text>
+           id="tspan5143">0</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-2-61"
@@ -4096,12 +4096,12 @@
        transform="translate(734.79973,22.015346)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6573"><tspan
+         id="tspan5151"><tspan
            style="letter-spacing:-1.98px"
-           id="tspan6569">1</tspan><tspan
+           id="tspan5147">1</tspan><tspan
            dx="-1.7299995"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6571">30</tspan></tspan></text>
+           id="tspan5149">30</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6"
@@ -4109,9 +4109,9 @@
        transform="translate(-4.6603318,-52.62345)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6577"><tspan
+         id="tspan5155"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6575">20</tspan></tspan></text>
+           id="tspan5153">20</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-1"
@@ -4119,12 +4119,12 @@
        transform="translate(74.926859,42.797333)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6583"><tspan
+         id="tspan5161"><tspan
            style="letter-spacing:-1.5px"
-           id="tspan6579">1</tspan><tspan
+           id="tspan5157">1</tspan><tspan
            dx="-1.25"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6581">00</tspan></tspan></text>
+           id="tspan5159">00</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-1-5"
@@ -4132,9 +4132,9 @@
        transform="matrix(1.03245,0,0,0.70278331,66.097904,95.788627)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6587"><tspan
+         id="tspan5165"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6585">x</tspan></tspan></text>
+           id="tspan5163">x</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-9"
@@ -4142,9 +4142,9 @@
        transform="translate(16.05786,-93.665041)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6591"><tspan
+         id="tspan5169"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6589">30</tspan></tspan></text>
+           id="tspan5167">30</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-9-5"
@@ -4152,9 +4152,9 @@
        transform="translate(618.88407,-43.327815)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6595"><tspan
+         id="tspan5173"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6593">30</tspan></tspan></text>
+           id="tspan5171">30</tspan></tspan></text>
     <circle
        style="fill:none;stroke:#ff0000;stroke-width:2.5;stroke-opacity:1"
        id="path849-7"
@@ -4175,9 +4175,9 @@
        transform="translate(45.127147,-409.66662)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6599"><tspan
+         id="tspan5177"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6597">40</tspan></tspan></text>
+           id="tspan5175">40</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-2-6"
@@ -4185,9 +4185,9 @@
        transform="translate(90.282872,-404.86336)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6603"><tspan
+         id="tspan5181"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6601">50</tspan></tspan></text>
+           id="tspan5179">50</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-3-2"
@@ -4195,9 +4195,9 @@
        transform="translate(124.21887,-374.99623)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6607"><tspan
+         id="tspan5185"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6605">60</tspan></tspan></text>
+           id="tspan5183">60</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-88-1"
@@ -4205,9 +4205,9 @@
        transform="translate(138.69903,-332.5604)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6611"><tspan
+         id="tspan5189"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6609">70</tspan></tspan></text>
+           id="tspan5187">70</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-7"
@@ -4215,9 +4215,9 @@
        transform="translate(125.70026,-289.24686)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6615"><tspan
+         id="tspan5193"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6613">80</tspan></tspan></text>
+           id="tspan5191">80</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-8"
@@ -4225,9 +4225,9 @@
        transform="translate(53.484206,-266.12825)"><tspan
          x="58.021484"
          y="190.93058"
-         id="tspan6619"><tspan
+         id="tspan5197"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6617">RPM</tspan></tspan></text>
+           id="tspan5195">RPM</tspan></tspan></text>
     <path
        id="circle1209-5"
        transform="rotate(158.94827)"
@@ -4272,9 +4272,9 @@
        transform="translate(-10.805722,-291.03322)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6623"><tspan
+         id="tspan5201"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6621">10</tspan></tspan></text>
+           id="tspan5199">10</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-97"
@@ -4282,9 +4282,9 @@
        transform="translate(-17.06948,-346.07956)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6627"><tspan
+         id="tspan5205"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6625">20</tspan></tspan></text>
+           id="tspan5203">20</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-1-53"
@@ -4292,12 +4292,12 @@
        transform="translate(62.517711,-250.65878)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6633"><tspan
+         id="tspan5211"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.5px;fill:#ffffff"
-           id="tspan6629">1</tspan><tspan
+           id="tspan5207">1</tspan><tspan
            dx="-1.25"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6631">00</tspan></tspan></text>
+           id="tspan5209">00</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-1-5-8"
@@ -4305,9 +4305,9 @@
        transform="matrix(1.03245,0,0,0.70278331,53.688756,-197.66748)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6637"><tspan
+         id="tspan5215"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6635">x</tspan></tspan></text>
+           id="tspan5213">x</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-9-8"
@@ -4315,9 +4315,9 @@
        transform="translate(3.6487118,-387.12115)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6641"><tspan
+         id="tspan5219"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6639">30</tspan></tspan></text>
+           id="tspan5217">30</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text2163"
@@ -4432,9 +4432,9 @@
          transform="translate(-242.89339,-411.68282)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6645"><tspan
+           id="tspan5223"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6643">40</tspan></tspan></text>
+             id="tspan5221">40</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-2-4"
@@ -4442,9 +4442,9 @@
          transform="translate(-197.73767,-406.87956)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6649"><tspan
+           id="tspan5227"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6647">50</tspan></tspan></text>
+             id="tspan5225">50</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-3-9"
@@ -4452,9 +4452,9 @@
          transform="translate(-163.80167,-377.01243)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6653"><tspan
+           id="tspan5231"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6651">60</tspan></tspan></text>
+             id="tspan5229">60</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-88-5"
@@ -4462,9 +4462,9 @@
          transform="translate(-149.32151,-334.5766)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6657"><tspan
+           id="tspan5235"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6655">70</tspan></tspan></text>
+             id="tspan5233">70</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-0"
@@ -4472,9 +4472,9 @@
          transform="translate(-162.32028,-291.26306)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6661"><tspan
+           id="tspan5239"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6659">80</tspan></tspan></text>
+             id="tspan5237">80</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-4"
@@ -4482,9 +4482,9 @@
          transform="translate(-234.53634,-268.14445)"><tspan
            x="58.021484"
            y="190.93058"
-           id="tspan6665"><tspan
+           id="tspan5243"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6663">RPM</tspan></tspan></text>
+             id="tspan5241">RPM</tspan></tspan></text>
       <circle
          style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.7845"
          id="path1055-8"
@@ -4510,9 +4510,9 @@
          transform="translate(-298.82626,-293.04942)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6669"><tspan
+           id="tspan5247"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6667">10</tspan></tspan></text>
+             id="tspan5245">10</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-27"
@@ -4520,9 +4520,9 @@
          transform="translate(-305.09002,-348.09576)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6673"><tspan
+           id="tspan5251"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6671">20</tspan></tspan></text>
+             id="tspan5249">20</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-1-2"
@@ -4530,12 +4530,12 @@
          transform="translate(-225.50283,-252.67498)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan6679"><tspan
+           id="tspan5257"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.5px;fill:#ffffff"
-             id="tspan6675">1</tspan><tspan
+             id="tspan5253">1</tspan><tspan
              dx="-1.25"
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6677">00</tspan></tspan></text>
+             id="tspan5255">00</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-1-5-2"
@@ -4543,9 +4543,9 @@
          transform="matrix(1.03245,0,0,0.70278331,-234.33179,-199.68368)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan6683"><tspan
+           id="tspan5261"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6681">x</tspan></tspan></text>
+             id="tspan5259">x</tspan></tspan></text>
       <path
          style="fill:none;stroke:#ff0000;stroke-width:1.50783;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="circle50627-4"
@@ -4566,9 +4566,9 @@
          transform="translate(-284.37183,-389.13735)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6687"><tspan
+           id="tspan5265"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6685">30</tspan></tspan></text>
+             id="tspan5263">30</tspan></tspan></text>
       <path
          style="fill:none;stroke:#ff0000;stroke-width:1.50004;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="circle50461-6"
@@ -4717,9 +4717,9 @@
        transform="translate(9.8607893,-673.63127)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6691"><tspan
+         id="tspan5269"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6689">50</tspan></tspan></text>
+           id="tspan5267">50</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-2-1-3"
@@ -4727,9 +4727,9 @@
        transform="translate(58.505729,-690.77122)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6695"><tspan
+         id="tspan5273"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6693">70</tspan></tspan></text>
+           id="tspan5271">70</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-2-7-6"
@@ -4737,9 +4737,9 @@
        transform="translate(110.57419,-673.54679)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6699"><tspan
+         id="tspan5277"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6697">90</tspan></tspan></text>
+           id="tspan5275">90</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-1"
@@ -4747,9 +4747,9 @@
        transform="translate(55.938929,-523.70913)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6703"><tspan
+         id="tspan5281"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6701">MPH</tspan></tspan></text>
+           id="tspan5279">MPH</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-75-0"
@@ -4757,9 +4757,9 @@
        transform="translate(12.998979,-544.98846)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6707"><tspan
+         id="tspan5285"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6705">10</tspan></tspan></text>
+           id="tspan5283">10</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-2-60-6"
@@ -4767,15 +4767,15 @@
        transform="translate(134.86399,-610.30349)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6715"><tspan
+         id="tspan5293"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-3.7px;fill:#ffffff"
-           id="tspan6709">1</tspan><tspan
+           id="tspan5287">1</tspan><tspan
            dx="-1.4499998"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-2.25px;fill:#ffffff"
-           id="tspan6711">1</tspan><tspan
+           id="tspan5289">1</tspan><tspan
            dx="-2.000001"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6713">0</tspan></tspan></text>
+           id="tspan5291">0</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-2-61-3"
@@ -4783,12 +4783,12 @@
        transform="translate(100.32149,-544.91984)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6721"><tspan
+         id="tspan5299"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.98px;fill:#ffffff"
-           id="tspan6717">1</tspan><tspan
+           id="tspan5295">1</tspan><tspan
            dx="-1.7300005"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6719">30</tspan></tspan></text>
+           id="tspan5297">30</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-9-5-2"
@@ -4796,9 +4796,9 @@
        transform="translate(-19.347231,-610.23487)"><tspan
          x="58.021484"
          y="195.69321"
-         id="tspan6725"><tspan
+         id="tspan5303"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6723">30</tspan></tspan></text>
+           id="tspan5301">30</tspan></tspan></text>
     <circle
        style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:1.7845"
        id="path1055-4-4-0"
@@ -4876,9 +4876,9 @@
          transform="translate(-281.19832,-694.69173)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6729"><tspan
+           id="tspan5307"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6727">50</tspan></tspan></text>
+             id="tspan5305">50</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-2-1-3-1"
@@ -4886,9 +4886,9 @@
          transform="translate(-232.55338,-711.83168)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6733"><tspan
+           id="tspan5311"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6731">70</tspan></tspan></text>
+             id="tspan5309">70</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-2-7-6-5"
@@ -4896,9 +4896,9 @@
          transform="translate(-180.48492,-694.60725)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6737"><tspan
+           id="tspan5315"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6735">90</tspan></tspan></text>
+             id="tspan5313">90</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-1-9"
@@ -4906,9 +4906,9 @@
          transform="translate(-235.12018,-544.76959)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan6741"><tspan
+           id="tspan5319"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6739">MPH</tspan></tspan></text>
+             id="tspan5317">MPH</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-75-0-4"
@@ -4916,9 +4916,9 @@
          transform="translate(-278.06013,-566.04892)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6745"><tspan
+           id="tspan5323"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6743">10</tspan></tspan></text>
+             id="tspan5321">10</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-2-60-6-9"
@@ -4926,15 +4926,15 @@
          transform="translate(-156.19512,-631.36395)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6753"><tspan
+           id="tspan5331"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-3.7px;fill:#ffffff"
-             id="tspan6747">1</tspan><tspan
+             id="tspan5325">1</tspan><tspan
              dx="-1.4499998"
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-2.25px;fill:#ffffff"
-             id="tspan6749">1</tspan><tspan
+             id="tspan5327">1</tspan><tspan
              dx="-2.000001"
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6751">0</tspan></tspan></text>
+             id="tspan5329">0</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-2-61-3-0"
@@ -4942,12 +4942,12 @@
          transform="translate(-190.73762,-565.9803)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6759"><tspan
+           id="tspan5337"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.98px;fill:#ffffff"
-             id="tspan6755">1</tspan><tspan
+             id="tspan5333">1</tspan><tspan
              dx="-1.7300005"
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6757">30</tspan></tspan></text>
+             id="tspan5335">30</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-9-5-2-9"
@@ -4955,9 +4955,9 @@
          transform="translate(-310.40634,-631.29533)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6763"><tspan
+           id="tspan5341"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6761">30</tspan></tspan></text>
+             id="tspan5339">30</tspan></tspan></text>
       <circle
          style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:1.7845"
          id="path1055-4-4-0-1"
@@ -5039,9 +5039,9 @@
          transform="translate(-281.19832,-694.69173)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6767"><tspan
+           id="tspan5345"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6765">50</tspan></tspan></text>
+             id="tspan5343">50</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-2-1-3-1-9"
@@ -5049,9 +5049,9 @@
          transform="translate(-232.55338,-711.83168)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6771"><tspan
+           id="tspan5349"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6769">70</tspan></tspan></text>
+             id="tspan5347">70</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-2-7-6-5-0"
@@ -5059,9 +5059,9 @@
          transform="translate(-180.48492,-694.60725)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6775"><tspan
+           id="tspan5353"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6773">90</tspan></tspan></text>
+             id="tspan5351">90</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-1-9-8"
@@ -5069,9 +5069,9 @@
          transform="translate(-235.12018,-544.76959)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan6779"><tspan
+           id="tspan5357"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6777">MPH</tspan></tspan></text>
+             id="tspan5355">MPH</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-75-0-4-8"
@@ -5079,9 +5079,9 @@
          transform="translate(-278.06013,-566.04892)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6783"><tspan
+           id="tspan5361"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6781">10</tspan></tspan></text>
+             id="tspan5359">10</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-2-60-6-9-5"
@@ -5089,15 +5089,15 @@
          transform="translate(-156.19512,-631.36395)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6791"><tspan
+           id="tspan5369"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-3.7px;fill:#ffffff"
-             id="tspan6785">1</tspan><tspan
+             id="tspan5363">1</tspan><tspan
              dx="-1.4499998"
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-2.25px;fill:#ffffff"
-             id="tspan6787">1</tspan><tspan
+             id="tspan5365">1</tspan><tspan
              dx="-2.000001"
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6789">0</tspan></tspan></text>
+             id="tspan5367">0</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-2-61-3-0-0"
@@ -5105,12 +5105,12 @@
          transform="translate(-190.73762,-565.9803)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6797"><tspan
+           id="tspan5375"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.98px;fill:#ffffff"
-             id="tspan6793">1</tspan><tspan
+             id="tspan5371">1</tspan><tspan
              dx="-1.7300005"
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6795">30</tspan></tspan></text>
+             id="tspan5373">30</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-9-5-2-9-9"
@@ -5118,9 +5118,9 @@
          transform="translate(-310.40634,-631.29533)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6801"><tspan
+           id="tspan5379"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6799">30</tspan></tspan></text>
+             id="tspan5377">30</tspan></tspan></text>
       <circle
          style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:1.7845"
          id="path1055-4-4-0-1-6"
@@ -5231,9 +5231,9 @@
        transform="translate(1207.7844,758.76614)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6805"><tspan
+         id="tspan5383"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan6803">18</tspan></tspan></text>
+           id="tspan5381">18</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-01"
@@ -5241,9 +5241,9 @@
        transform="translate(1159.1572,772.09768)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6809"><tspan
+         id="tspan5387"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6807">VOLTS</tspan></tspan></text>
+           id="tspan5385">VOLTS</tspan></tspan></text>
     <circle
        style="fill:#999999;stroke:none;stroke-width:2.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path53248-04-7-2-8"
@@ -5263,9 +5263,9 @@
        transform="translate(1140.0268,1046.017)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6813"><tspan
+         id="tspan5391"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6811">Quartz</tspan></tspan></text>
+           id="tspan5389">Quartz</tspan></tspan></text>
     <circle
        style="fill:#008000;fill-opacity:1;stroke:none;stroke-width:1.7845"
        id="path1055-9-8-9-1"
@@ -5356,9 +5356,9 @@
        transform="translate(618.46741,-801.36638)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6817"><tspan
+         id="tspan5395"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6815">TANK</tspan></tspan></text>
+           id="tspan5393">TANK</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-09"
@@ -5366,9 +5366,9 @@
        transform="translate(584.66869,-811.51918)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6821"><tspan
+         id="tspan5399"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6819">0</tspan></tspan></text>
+           id="tspan5397">0</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-4-5"
@@ -5376,9 +5376,9 @@
        transform="translate(676.5545,-810.82167)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6825"><tspan
+         id="tspan5403"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6823">F</tspan></tspan></text>
+           id="tspan5401">F</tspan></tspan></text>
     <g
        id="g2890"
        transform="translate(-18.575666,-4.7419723)">
@@ -5389,9 +5389,9 @@
          transform="translate(645.03437,-826.98355)"><tspan
            x="58.021484"
            y="186.16794"
-           id="tspan6829"><tspan
+           id="tspan5407"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6827">1</tspan></tspan></text>
+             id="tspan5405">1</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-0-3-0"
@@ -5399,9 +5399,9 @@
          transform="translate(654.13074,-824.4639)"><tspan
            x="58.021484"
            y="186.16794"
-           id="tspan6833"><tspan
+           id="tspan5411"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6831">2</tspan></tspan></text>
+             id="tspan5409">2</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-0-75-5"
@@ -5409,9 +5409,9 @@
          transform="matrix(0.48341146,0,0,0.97999404,679.4868,-823.137)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan6837"><tspan
+           id="tspan5415"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6835">/</tspan></tspan></text>
+             id="tspan5413">/</tspan></tspan></text>
     </g>
     <circle
        style="fill:#008000;fill-opacity:1;stroke:none;stroke-width:1.7845"
@@ -5484,9 +5484,9 @@
        transform="translate(412.67225,-636.87653)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6841"><tspan
+         id="tspan5419"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6839">TANK</tspan></tspan></text>
+           id="tspan5417">TANK</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-09-9"
@@ -5494,9 +5494,9 @@
        transform="translate(378.87353,-647.02933)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6845"><tspan
+         id="tspan5423"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6843">0</tspan></tspan></text>
+           id="tspan5421">0</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-4-5-3"
@@ -5504,9 +5504,9 @@
        transform="translate(470.75934,-646.33182)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6849"><tspan
+         id="tspan5427"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6847">F</tspan></tspan></text>
+           id="tspan5425">F</tspan></tspan></text>
     <g
        id="g2890-6"
        transform="translate(-224.37083,159.74788)">
@@ -5517,9 +5517,9 @@
          transform="translate(645.03437,-826.98355)"><tspan
            x="58.021484"
            y="186.16794"
-           id="tspan6853"><tspan
+           id="tspan5431"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6851">1</tspan></tspan></text>
+             id="tspan5429">1</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-0-3-0-6"
@@ -5527,9 +5527,9 @@
          transform="translate(654.13074,-824.4639)"><tspan
            x="58.021484"
            y="186.16794"
-           id="tspan6857"><tspan
+           id="tspan5435"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6855">2</tspan></tspan></text>
+             id="tspan5433">2</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-0-75-5-2"
@@ -5537,9 +5537,9 @@
          transform="matrix(0.48341146,0,0,0.97999404,679.4868,-823.137)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan6861"><tspan
+           id="tspan5439"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6859">/</tspan></tspan></text>
+             id="tspan5437">/</tspan></tspan></text>
     </g>
     <circle
        style="fill:#008000;fill-opacity:1;stroke:none;stroke-width:1.7845"
@@ -5597,9 +5597,9 @@
        transform="translate(391.47308,628.15472)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6865"><tspan
+         id="tspan5443"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6863">OIL</tspan></tspan></text>
+           id="tspan5441">OIL</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-3-9-7"
@@ -5607,21 +5607,21 @@
        transform="translate(376.83431,644.15869)"><tspan
          x="58.021484"
          y="184.97724"
-         id="tspan6877"><tspan
+         id="tspan5455"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6867">lbs</tspan><tspan
+           id="tspan5445">lbs</tspan><tspan
            dx="1.3100002"
            style="letter-spacing:-0.31px"
-           id="tspan6869">/</tspan><tspan
+           id="tspan5447">/</tspan><tspan
            dx="-1.3100004"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6871">s</tspan><tspan
+           id="tspan5449">s</tspan><tspan
            dx="1.2100003"
            style="letter-spacing:-0.21px"
-           id="tspan6873">q</tspan><tspan
+           id="tspan5451">q</tspan><tspan
            dx="-1.2099996"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6875">.inch.</tspan></tspan></text>
+           id="tspan5453">.inch.</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-09-69"
@@ -5629,9 +5629,9 @@
        transform="translate(351.85606,626.62893)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6881"><tspan
+         id="tspan5459"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6879">0</tspan></tspan></text>
+           id="tspan5457">0</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3"
@@ -5639,9 +5639,9 @@
        transform="translate(371.21921,611.366)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6885"><tspan
+         id="tspan5463"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6883">30</tspan></tspan></text>
+           id="tspan5461">30</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-6"
@@ -5649,9 +5649,9 @@
        transform="translate(394.36799,605.99527)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6889"><tspan
+         id="tspan5467"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6887">60</tspan></tspan></text>
+           id="tspan5465">60</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-5"
@@ -5659,9 +5659,9 @@
        transform="translate(415.86732,611.53276)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6893"><tspan
+         id="tspan5471"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6891">90</tspan></tspan></text>
+           id="tspan5469">90</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9"
@@ -5669,12 +5669,12 @@
        transform="translate(430.95251,624.61675)"><tspan
          x="58.021484"
          y="188.43942"
-         id="tspan6899"><tspan
+         id="tspan5477"><tspan
            style="letter-spacing:-1.75px"
-           id="tspan6895">1</tspan><tspan
+           id="tspan5473">1</tspan><tspan
            dx="-1.03"
            style="letter-spacing:-0.72px"
-           id="tspan6897">20</tspan></tspan></text>
+           id="tspan5475">20</tspan></tspan></text>
     <circle
        style="fill:#008000;fill-opacity:1;stroke:none;stroke-width:1.7845"
        id="path1055-9-8-9-9-6"
@@ -5742,9 +5742,9 @@
        transform="translate(411.88988,-810.76322)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6903"><tspan
+         id="tspan5481"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6901">TANK</tspan></tspan></text>
+           id="tspan5479">TANK</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-09-6"
@@ -5752,9 +5752,9 @@
        transform="translate(378.09116,-820.91602)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6907"><tspan
+         id="tspan5485"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6905">0</tspan></tspan></text>
+           id="tspan5483">0</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-8"
@@ -5762,9 +5762,9 @@
        transform="translate(398.34504,-834.2766)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6911"><tspan
+         id="tspan5489"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6909">R</tspan></tspan></text>
+           id="tspan5487">R</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-4-5-0"
@@ -5772,9 +5772,9 @@
        transform="translate(469.97697,-820.21851)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6915"><tspan
+         id="tspan5493"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6913">F</tspan></tspan></text>
+           id="tspan5491">F</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-7-4-2"
@@ -5782,9 +5782,9 @@
        transform="translate(438.45684,-836.38039)"><tspan
          x="58.021484"
          y="186.16794"
-         id="tspan6919"><tspan
+         id="tspan5497"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6917">1</tspan></tspan></text>
+           id="tspan5495">1</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-3-0-1"
@@ -5792,9 +5792,9 @@
        transform="translate(447.55321,-833.86074)"><tspan
          x="58.021484"
          y="186.16794"
-         id="tspan6923"><tspan
+         id="tspan5501"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6921">2</tspan></tspan></text>
+           id="tspan5499">2</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-75-5-0"
@@ -5802,9 +5802,9 @@
        transform="matrix(0.48341146,0,0,0.97999404,472.90927,-832.53384)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan6927"><tspan
+         id="tspan5505"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan6925">/</tspan></tspan></text>
+           id="tspan5503">/</tspan></tspan></text>
     <circle
        style="fill:#008000;fill-opacity:1;stroke:none;stroke-width:1.7845"
        id="path1055-9-8-9-9-5"
@@ -5893,9 +5893,9 @@
          transform="translate(1211.8951,-180.30691)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6931"><tspan
+           id="tspan5509"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6929">40</tspan></tspan></text>
+             id="tspan5507">40</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-2-4-1"
@@ -5903,9 +5903,9 @@
          transform="translate(1257.0508,-175.50365)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6935"><tspan
+           id="tspan5513"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6933">50</tspan></tspan></text>
+             id="tspan5511">50</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-3-9-2"
@@ -5913,9 +5913,9 @@
          transform="translate(1290.9868,-145.63652)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6939"><tspan
+           id="tspan5517"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6937">60</tspan></tspan></text>
+             id="tspan5515">60</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-88-5-9"
@@ -5923,9 +5923,9 @@
          transform="translate(1305.467,-103.20069)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6943"><tspan
+           id="tspan5521"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6941">70</tspan></tspan></text>
+             id="tspan5519">70</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-0-3"
@@ -5933,9 +5933,9 @@
          transform="translate(1292.4682,-59.88715)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6947"><tspan
+           id="tspan5525"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6945">80</tspan></tspan></text>
+             id="tspan5523">80</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-4-9"
@@ -5943,9 +5943,9 @@
          transform="translate(1220.2522,-36.76854)"><tspan
            x="58.021484"
            y="190.93058"
-           id="tspan6951"><tspan
+           id="tspan5529"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6949">RPM</tspan></tspan></text>
+             id="tspan5527">RPM</tspan></tspan></text>
       <circle
          style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.7845"
          id="path1055-8-0"
@@ -5971,9 +5971,9 @@
          transform="translate(1155.9622,-61.67351)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6955"><tspan
+           id="tspan5533"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6953">10</tspan></tspan></text>
+             id="tspan5531">10</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-27-0"
@@ -5981,9 +5981,9 @@
          transform="translate(1149.6985,-116.71985)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6959"><tspan
+           id="tspan5537"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6957">20</tspan></tspan></text>
+             id="tspan5535">20</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-1-2-9"
@@ -5991,12 +5991,12 @@
          transform="translate(1229.2857,-21.29907)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan6965"><tspan
+           id="tspan5543"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.5px;fill:#ffffff"
-             id="tspan6961">1</tspan><tspan
+             id="tspan5539">1</tspan><tspan
              dx="-1.25"
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6963">00</tspan></tspan></text>
+             id="tspan5541">00</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-1-5-2-6"
@@ -6004,9 +6004,9 @@
          transform="matrix(1.03245,0,0,0.70278331,1220.4567,31.69223)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan6969"><tspan
+           id="tspan5547"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6967">x</tspan></tspan></text>
+             id="tspan5545">x</tspan></tspan></text>
       <path
          style="fill:none;stroke:#ff0000;stroke-width:1.50783;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="circle50627-4-3"
@@ -6027,9 +6027,9 @@
          transform="translate(1170.4167,-157.76144)"><tspan
            x="58.021484"
            y="195.69321"
-           id="tspan6973"><tspan
+           id="tspan5551"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6971">30</tspan></tspan></text>
+             id="tspan5549">30</tspan></tspan></text>
       <path
          style="fill:none;stroke:#ff0000;stroke-width:1.50004;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="circle50461-6-5"
@@ -6113,9 +6113,9 @@
        transform="matrix(1,0,0,0.78187304,-126.94544,523.57731)"><tspan
          x="601.58203"
          y="-403.94385"
-         id="tspan6977"><tspan
+         id="tspan5555"><tspan
            style="font-weight:bold;font-family:'Besley*';-inkscape-font-specification:'Besley* Bold'"
-           id="tspan6975">VOLVO</tspan></tspan></text>
+           id="tspan5553">VOLVO</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text199686-3"
@@ -6137,53 +6137,49 @@
              style="font-weight:bold;font-family:'Besley*';-inkscape-font-specification:'Besley* Bold'"
              id="tspan239392-5">VOLVO</tspan></tspan></textPath></text>
     <g
-       id="g4495"
+       id="g3060"
        inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/140-rallye-fuel.png"
        inkscape:export-xdpi="189.47"
        inkscape:export-ydpi="189.47">
-      <path
-         id="circle215292-1-3"
-         style="fill:#999999;stroke-width:2.5"
-         d="m 1106.099,383.23743 a 76,76 0 0 0 94.3127,-51.54711 76,76 0 0 0 -51.5471,-94.31275 76,76 0 0 0 -94.3128,51.54711 76,76 0 0 0 51.5472,94.31275 z" />
       <circle
          style="fill:#000000;stroke:none;stroke-width:2.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="path52610-3-7-6"
-         cx="1127.4818"
-         cy="310.3075"
+         cx="1113.7445"
+         cy="299.30737"
          r="76" />
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-3-0-1"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:R-Cluster;-inkscape-font-specification:R-Cluster;letter-spacing:1px;word-spacing:0.01px;white-space:pre;shape-inside:url(#rect6813-5-5-9-8-4-0-3-9);fill:#000000;fill-opacity:1;stroke:none"
-         transform="translate(1054.6097,135.01845)"><tspan
+         transform="translate(1040.8724,124.01831)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan6981"><tspan
+           id="tspan5559"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6979">TANK</tspan></tspan></text>
+             id="tspan5557">TANK</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-0-09-9-2"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:R-Cluster;-inkscape-font-specification:R-Cluster;letter-spacing:1px;word-spacing:0.01px;white-space:pre;shape-inside:url(#rect6813-5-5-9-8-4-1-48-6-2);fill:#000000;fill-opacity:1;stroke:none"
-         transform="translate(1020.811,124.86565)"><tspan
+         transform="translate(1007.0737,113.86551)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan6985"><tspan
+           id="tspan5563"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6983">0</tspan></tspan></text>
+             id="tspan5561">0</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-0-4-5-3-9"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:R-Cluster;-inkscape-font-specification:R-Cluster;letter-spacing:1px;word-spacing:0.01px;white-space:pre;shape-inside:url(#rect6813-5-5-9-8-4-1-4-8-7-2);fill:#000000;fill-opacity:1;stroke:none"
-         transform="translate(1112.6968,125.56316)"><tspan
+         transform="translate(1098.9595,114.56302)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan6989"><tspan
+           id="tspan5567"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan6987">F</tspan></tspan></text>
+             id="tspan5565">F</tspan></tspan></text>
       <g
          id="g2890-6-3"
-         transform="translate(417.56662,931.64286)">
+         transform="translate(403.82932,920.64272)">
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-7-4-0-1"
@@ -6191,9 +6187,9 @@
            transform="translate(645.03437,-826.98355)"><tspan
              x="58.021484"
              y="186.16794"
-             id="tspan6993"><tspan
+             id="tspan5571"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan6991">1</tspan></tspan></text>
+               id="tspan5569">1</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-3-0-6-9"
@@ -6201,9 +6197,9 @@
            transform="translate(654.13074,-824.4639)"><tspan
              x="58.021484"
              y="186.16794"
-             id="tspan6997"><tspan
+             id="tspan5575"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan6995">2</tspan></tspan></text>
+               id="tspan5573">2</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-75-5-2-4"
@@ -6211,64 +6207,64 @@
            transform="matrix(0.48341146,0,0,0.97999404,679.4868,-823.137)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7001"><tspan
+             id="tspan5579"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan6999">/</tspan></tspan></text>
+               id="tspan5577">/</tspan></tspan></text>
       </g>
       <circle
          style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.7845"
          id="path1055-9-8-9-9-61-7"
-         cx="1078.4957"
-         cy="349.69049"
+         cx="1064.7584"
+         cy="338.69037"
          r="4.5" />
       <circle
          style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.7845"
          id="path1055-9-8-6-4-8-8"
-         cx="1175.8793"
-         cy="349.69049"
+         cx="1162.142"
+         cy="338.69037"
          r="4.5" />
       <path
          style="fill:none;stroke:#ff0000;stroke-width:12;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="circle54046-6-7-4"
          sodipodi:type="arc"
-         sodipodi:cx="1127.4818"
-         sodipodi:cy="349.69049"
+         sodipodi:cx="1113.7445"
+         sodipodi:cy="338.69037"
          sodipodi:rx="76"
          sodipodi:ry="76"
          sodipodi:start="3.9997198"
          sodipodi:end="4.3572069"
          sodipodi:arc-type="arc"
          sodipodi:open="true"
-         d="m 1077.7888,292.18742 a 76,76 0 0 1 23.2632,-13.75325" />
+         d="m 1064.0515,281.1873 a 76,76 0 0 1 23.2632,-13.75325" />
       <path
          style="fill:none;fill-opacity:1;stroke:#06a469;stroke-width:12;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="circle54428-9-9-5"
          sodipodi:type="arc"
-         sodipodi:cx="1127.4818"
-         sodipodi:cy="349.69049"
+         sodipodi:cx="1113.7445"
+         sodipodi:cy="338.69037"
          sodipodi:rx="76"
          sodipodi:ry="76"
          sodipodi:start="4.3582912"
          sodipodi:end="5.4429752"
          sodipodi:arc-type="arc"
          sodipodi:open="true"
-         d="m 1101.1292,278.40555 a 76,76 0 0 1 77.0679,14.68141" />
+         d="m 1087.3919,267.40543 a 76,76 0 0 1 77.0679,14.6814" />
       <path
          id="circle53820-2-2-0"
-         d="m 1102.9469,284.13105 -4.206,-11.23876 m 29.0736,6.79898 0.057,-11.99986 m 24.7673,16.67587 4.3127,-11.19826"
+         d="m 1089.2096,273.13091 -4.206,-11.23876 m 29.0736,6.79898 0.057,-11.99986 m 24.7673,16.67587 4.3127,-11.19826"
          style="fill:none;stroke:#ffffff;stroke-width:2.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          sodipodi:nodetypes="cccccc" />
       <circle
          style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:12;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="path90569-2-0-3"
-         cx="1127.4818"
-         cy="349.69049"
+         cx="1113.7445"
+         cy="338.69037"
          r="7.5" />
       <text
          xml:space="preserve"
          id="text199686-3-2-6"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.43188px;line-height:1.25;font-family:R-Cluster;-inkscape-font-specification:R-Cluster;letter-spacing:1px;word-spacing:0px;white-space:pre;fill:#ffffff;fill-opacity:1;stroke:none"
-         transform="translate(436.85642,928.43444)"><textPath
+         transform="translate(423.11912,917.4343)"><textPath
            xlink:href="#circle215292"
            id="textPath239412-3-1"><tspan
              id="tspan239394-7-0"><tspan
@@ -6297,9 +6293,9 @@
            transform="translate(1408.1279,-303.28904)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7005"><tspan
+             id="tspan5583"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7003">TANK</tspan></tspan></text>
+               id="tspan5581">TANK</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-09-6-8"
@@ -6307,9 +6303,9 @@
            transform="translate(1374.3292,-313.44184)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7009"><tspan
+             id="tspan5587"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7007">0</tspan></tspan></text>
+               id="tspan5585">0</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-0-2-8-4"
@@ -6317,9 +6313,9 @@
            transform="translate(1394.5831,-326.80242)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7013"><tspan
+             id="tspan5591"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7011">R</tspan></tspan></text>
+               id="tspan5589">R</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-4-5-0-7"
@@ -6327,9 +6323,9 @@
            transform="translate(1466.215,-312.74433)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7017"><tspan
+             id="tspan5595"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7015">F</tspan></tspan></text>
+               id="tspan5593">F</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-7-4-2-2"
@@ -6337,9 +6333,9 @@
            transform="translate(1434.6949,-328.90621)"><tspan
              x="58.021484"
              y="186.16794"
-             id="tspan7021"><tspan
+             id="tspan5599"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7019">1</tspan></tspan></text>
+               id="tspan5597">1</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-3-0-1-4"
@@ -6347,9 +6343,9 @@
            transform="translate(1443.7913,-326.38656)"><tspan
              x="58.021484"
              y="186.16794"
-             id="tspan7025"><tspan
+             id="tspan5603"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7023">2</tspan></tspan></text>
+               id="tspan5601">2</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-75-5-0-0"
@@ -6357,9 +6353,9 @@
            transform="matrix(0.48341146,0,0,0.97999404,1469.1473,-325.05966)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7029"><tspan
+             id="tspan5607"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7027">/</tspan></tspan></text>
+               id="tspan5605">/</tspan></tspan></text>
         <circle
            style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.7845"
            id="path1055-9-8-9-9-5-6"
@@ -6460,9 +6456,9 @@
        transform="translate(620.2225,-1159.7473)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7033"><tspan
+         id="tspan5611"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7031">OIL</tspan></tspan></text>
+           id="tspan5609">OIL</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-3-9-7-3"
@@ -6470,21 +6466,21 @@
        transform="translate(605.58373,-1143.7433)"><tspan
          x="58.021484"
          y="184.97724"
-         id="tspan7045"><tspan
+         id="tspan5623"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7035">lbs</tspan><tspan
+           id="tspan5613">lbs</tspan><tspan
            dx="1.3100002"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.31px;fill:#ffffff"
-           id="tspan7037">/</tspan><tspan
+           id="tspan5615">/</tspan><tspan
            dx="-1.3099995"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7039">s</tspan><tspan
+           id="tspan5617">s</tspan><tspan
            dx="1.2099993"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.21px;fill:#ffffff"
-           id="tspan7041">q</tspan><tspan
+           id="tspan5619">q</tspan><tspan
            dx="-1.2099996"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7043">.inch.</tspan></tspan></text>
+           id="tspan5621">.inch.</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-09-69-8"
@@ -6492,9 +6488,9 @@
        transform="translate(580.60548,-1161.2731)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7049"><tspan
+         id="tspan5627"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7047">0</tspan></tspan></text>
+           id="tspan5625">0</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-0"
@@ -6502,9 +6498,9 @@
        transform="translate(599.96863,-1176.536)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7053"><tspan
+         id="tspan5631"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7051">30</tspan></tspan></text>
+           id="tspan5629">30</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-6-4"
@@ -6512,9 +6508,9 @@
        transform="translate(623.11741,-1181.9067)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7057"><tspan
+         id="tspan5635"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7055">60</tspan></tspan></text>
+           id="tspan5633">60</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-5-7"
@@ -6522,9 +6518,9 @@
        transform="translate(644.61674,-1176.3692)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7061"><tspan
+         id="tspan5639"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7059">90</tspan></tspan></text>
+           id="tspan5637">90</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-6"
@@ -6532,12 +6528,12 @@
        transform="translate(659.70193,-1163.2853)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7067"><tspan
+         id="tspan5645"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7063">1</tspan><tspan
+           id="tspan5641">1</tspan><tspan
            dx="-1.03"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7065">20</tspan></tspan></text>
+           id="tspan5643">20</tspan></tspan></text>
     <circle
        style="fill:#008000;fill-opacity:1;stroke:none;stroke-width:1.7845"
        id="path1055-9-8-9-9-6-8"
@@ -6616,9 +6612,9 @@
        transform="translate(859.44626,-1169.6076)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7071"><tspan
+         id="tspan5649"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7069">OIL</tspan></tspan></text>
+           id="tspan5647">OIL</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-3-9-7-3-0"
@@ -6626,9 +6622,9 @@
        transform="translate(861.67957,-1154.9129)"><tspan
          x="58.021484"
          y="184.97724"
-         id="tspan7075"><tspan
+         id="tspan5653"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7073">bar</tspan></tspan></text>
+           id="tspan5651">bar</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-09-69-8-3"
@@ -6636,9 +6632,9 @@
        transform="translate(819.92561,-1173.8003)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7079"><tspan
+         id="tspan5657"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7077">0</tspan></tspan></text>
+           id="tspan5655">0</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-0-7"
@@ -6646,9 +6642,9 @@
        transform="translate(841.28134,-1188.2947)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7083"><tspan
+         id="tspan5661"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7081">2</tspan></tspan></text>
+           id="tspan5659">2</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-6-4-06"
@@ -6656,9 +6652,9 @@
        transform="translate(864.83935,-1192.7291)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7087"><tspan
+         id="tspan5665"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7085">4</tspan></tspan></text>
+           id="tspan5663">4</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-5-7-9"
@@ -6666,9 +6662,9 @@
        transform="translate(888.04827,-1188.3694)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7091"><tspan
+         id="tspan5669"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7089">6</tspan></tspan></text>
+           id="tspan5667">6</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-6-2"
@@ -6676,9 +6672,9 @@
        transform="translate(909.98256,-1173.7547)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7095"><tspan
+         id="tspan5673"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7093">8</tspan></tspan></text>
+           id="tspan5671">8</tspan></tspan></text>
     <circle
        style="fill:#008000;fill-opacity:1;stroke:none;stroke-width:1.7845"
        id="path1055-9-8-9-9-6-8-1"
@@ -6751,9 +6747,9 @@
        transform="translate(864.913,-969.23264)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7099"><tspan
+         id="tspan5677"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7097">OIL</tspan></tspan></text>
+           id="tspan5675">OIL</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-3-9-7-3-0-8"
@@ -6761,9 +6757,9 @@
        transform="translate(867.14631,-954.53794)"><tspan
          x="58.021484"
          y="184.97724"
-         id="tspan7103"><tspan
+         id="tspan5681"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7101">bar</tspan></tspan></text>
+           id="tspan5679">bar</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-09-69-8-3-3"
@@ -6771,9 +6767,9 @@
        transform="translate(825.39235,-973.42534)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7107"><tspan
+         id="tspan5685"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7105">0</tspan></tspan></text>
+           id="tspan5683">0</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-0-7-8"
@@ -6781,9 +6777,9 @@
        transform="translate(846.74808,-987.91974)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7111"><tspan
+         id="tspan5689"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7109">2</tspan></tspan></text>
+           id="tspan5687">2</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-6-4-06-7"
@@ -6791,9 +6787,9 @@
        transform="translate(870.30609,-992.35414)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7115"><tspan
+         id="tspan5693"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7113">4</tspan></tspan></text>
+           id="tspan5691">4</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-5-7-9-5"
@@ -6801,9 +6797,9 @@
        transform="translate(893.51501,-987.99444)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7119"><tspan
+         id="tspan5697"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7117">6</tspan></tspan></text>
+           id="tspan5695">6</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-6-2-2"
@@ -6811,9 +6807,9 @@
        transform="translate(915.4493,-973.37974)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7123"><tspan
+         id="tspan5701"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7121">8</tspan></tspan></text>
+           id="tspan5699">8</tspan></tspan></text>
     <circle
        style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.7845"
        id="path1055-9-8-9-9-6-8-1-4"
@@ -6891,9 +6887,9 @@
          transform="translate(1548.3105,-309.6765)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7127"><tspan
+           id="tspan5705"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan7125">OIL</tspan></tspan></text>
+             id="tspan5703">OIL</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-3-9-7-3-0-8-1"
@@ -6901,9 +6897,9 @@
          transform="translate(1550.5439,-294.9818)"><tspan
            x="58.021484"
            y="184.97724"
-           id="tspan7131"><tspan
+           id="tspan5709"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan7129">bar</tspan></tspan></text>
+             id="tspan5707">bar</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-0-09-69-8-3-3-2"
@@ -6911,9 +6907,9 @@
          transform="translate(1508.7899,-313.8692)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7135"><tspan
+           id="tspan5713"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan7133">0</tspan></tspan></text>
+             id="tspan5711">0</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-0-0-2-3-0-7-8-2"
@@ -6921,9 +6917,9 @@
          transform="translate(1530.1456,-328.3636)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7139"><tspan
+           id="tspan5717"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan7137">2</tspan></tspan></text>
+             id="tspan5715">2</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-0-0-2-3-6-4-06-7-1"
@@ -6931,9 +6927,9 @@
          transform="translate(1553.7036,-332.798)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7143"><tspan
+           id="tspan5721"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan7141">4</tspan></tspan></text>
+             id="tspan5719">4</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-0-0-2-3-5-7-9-5-6"
@@ -6941,9 +6937,9 @@
          transform="translate(1576.9126,-328.4383)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7147"><tspan
+           id="tspan5725"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan7145">6</tspan></tspan></text>
+             id="tspan5723">6</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-0-0-2-3-9-6-2-2-2"
@@ -6951,9 +6947,9 @@
          transform="translate(1598.8468,-313.8236)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7151"><tspan
+           id="tspan5729"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-             id="tspan7149">8</tspan></tspan></text>
+             id="tspan5727">8</tspan></tspan></text>
       <circle
          style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.7845"
          id="path1055-9-8-9-9-6-8-1-4-0"
@@ -7027,9 +7023,9 @@
        transform="translate(422.26414,-1170.4045)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7155"><tspan
+         id="tspan5733"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7153">OIL</tspan></tspan></text>
+           id="tspan5731">OIL</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-3-9-7-3-7"
@@ -7037,21 +7033,21 @@
        transform="translate(407.62537,-1154.4005)"><tspan
          x="58.021484"
          y="184.97724"
-         id="tspan7167"><tspan
+         id="tspan5745"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7157">lbs</tspan><tspan
+           id="tspan5735">lbs</tspan><tspan
            dx="1.3100002"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.31px;fill:#ffffff"
-           id="tspan7159">/</tspan><tspan
+           id="tspan5737">/</tspan><tspan
            dx="-1.3099995"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7161">s</tspan><tspan
+           id="tspan5739">s</tspan><tspan
            dx="1.2099993"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.21px;fill:#ffffff"
-           id="tspan7163">q</tspan><tspan
+           id="tspan5741">q</tspan><tspan
            dx="-1.2099996"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7165">.inch.</tspan></tspan></text>
+           id="tspan5743">.inch.</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-09-69-8-9"
@@ -7059,9 +7055,9 @@
        transform="translate(382.64712,-1171.9303)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7171"><tspan
+         id="tspan5749"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7169">0</tspan></tspan></text>
+           id="tspan5747">0</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-0-6"
@@ -7069,9 +7065,9 @@
        transform="translate(402.01027,-1187.1932)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7175"><tspan
+         id="tspan5753"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7173">30</tspan></tspan></text>
+           id="tspan5751">30</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-6-4-0"
@@ -7079,9 +7075,9 @@
        transform="translate(425.15905,-1192.5639)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7179"><tspan
+         id="tspan5757"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7177">60</tspan></tspan></text>
+           id="tspan5755">60</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-5-7-4"
@@ -7089,9 +7085,9 @@
        transform="translate(446.65838,-1187.0264)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7183"><tspan
+         id="tspan5761"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7181">90</tspan></tspan></text>
+           id="tspan5759">90</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-6-1"
@@ -7099,12 +7095,12 @@
        transform="translate(461.74357,-1173.9425)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7189"><tspan
+         id="tspan5767"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7185">1</tspan><tspan
+           id="tspan5763">1</tspan><tspan
            dx="-1.03"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7187">20</tspan></tspan></text>
+           id="tspan5765">20</tspan></tspan></text>
     <circle
        style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.7845"
        id="path1055-9-8-9-9-6-8-0"
@@ -7186,9 +7182,9 @@
            transform="translate(1548.3105,-32.05089)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7193"><tspan
+             id="tspan5771"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7191">OIL</tspan></tspan></text>
+               id="tspan5769">OIL</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-3-9-7-3-7-3"
@@ -7196,21 +7192,21 @@
            transform="translate(1533.6718,-16.04689)"><tspan
              x="58.021484"
              y="184.97724"
-             id="tspan7205"><tspan
+             id="tspan5783"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7195">lbs</tspan><tspan
+               id="tspan5773">lbs</tspan><tspan
                dx="1.3100002"
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.31px;fill:#ffffff"
-               id="tspan7197">/</tspan><tspan
+               id="tspan5775">/</tspan><tspan
                dx="-1.3099995"
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7199">s</tspan><tspan
+               id="tspan5777">s</tspan><tspan
                dx="1.2099993"
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.21px;fill:#ffffff"
-               id="tspan7201">q</tspan><tspan
+               id="tspan5779">q</tspan><tspan
                dx="-1.2099996"
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7203">.inch.</tspan></tspan></text>
+               id="tspan5781">.inch.</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-09-69-8-9-2"
@@ -7218,9 +7214,9 @@
            transform="translate(1508.6935,-33.57669)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7209"><tspan
+             id="tspan5787"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7207">0</tspan></tspan></text>
+               id="tspan5785">0</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-0-2-3-0-6-4"
@@ -7228,9 +7224,9 @@
            transform="translate(1528.0567,-48.83959)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7213"><tspan
+             id="tspan5791"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7211">30</tspan></tspan></text>
+               id="tspan5789">30</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-0-2-3-6-4-0-3"
@@ -7238,9 +7234,9 @@
            transform="translate(1551.2055,-54.21029)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7217"><tspan
+             id="tspan5795"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7215">60</tspan></tspan></text>
+               id="tspan5793">60</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-0-2-3-5-7-4-7"
@@ -7248,9 +7244,9 @@
            transform="translate(1572.7048,-48.67279)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7221"><tspan
+             id="tspan5799"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7219">90</tspan></tspan></text>
+               id="tspan5797">90</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-0-2-3-9-6-1-1"
@@ -7258,12 +7254,12 @@
            transform="translate(1587.79,-35.58889)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7227"><tspan
+             id="tspan5805"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-               id="tspan7223">1</tspan><tspan
+               id="tspan5801">1</tspan><tspan
                dx="-1.03"
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-               id="tspan7225">20</tspan></tspan></text>
+               id="tspan5803">20</tspan></tspan></text>
         <circle
            style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.7845"
            id="path1055-9-8-9-9-6-8-0-22"
@@ -7344,9 +7340,9 @@
        transform="translate(-912.87488,407.14746)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7231"><tspan
+         id="tspan5809"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7229">TANK</tspan></tspan></text>
+           id="tspan5807">TANK</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-099"
@@ -7354,9 +7350,9 @@
        transform="translate(-946.6736,396.99466)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7235"><tspan
+         id="tspan5813"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7233">0</tspan></tspan></text>
+           id="tspan5811">0</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-4"
@@ -7364,9 +7360,9 @@
        transform="translate(-926.41972,383.63408)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7239"><tspan
+         id="tspan5817"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7237">R</tspan></tspan></text>
+           id="tspan5815">R</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-4-51"
@@ -7374,9 +7370,9 @@
        transform="translate(-854.78779,397.69217)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7243"><tspan
+         id="tspan5821"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7241">F</tspan></tspan></text>
+           id="tspan5819">F</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-7-0"
@@ -7384,9 +7380,9 @@
        transform="translate(-886.30792,381.53029)"><tspan
          x="58.021484"
          y="186.16794"
-         id="tspan7247"><tspan
+         id="tspan5825"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7245">1</tspan></tspan></text>
+           id="tspan5823">1</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-3-3"
@@ -7394,9 +7390,9 @@
        transform="translate(-877.21155,384.04994)"><tspan
          x="58.021484"
          y="186.16794"
-         id="tspan7251"><tspan
+         id="tspan5829"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7249">2</tspan></tspan></text>
+           id="tspan5827">2</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-75-7"
@@ -7404,9 +7400,9 @@
        transform="matrix(0.48341146,0,0,0.97999404,-851.85549,385.37684)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7255"><tspan
+         id="tspan5833"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7253">/</tspan></tspan></text>
+           id="tspan5831">/</tspan></tspan></text>
     <circle
        style="fill:#008000;fill-opacity:1;stroke:none;stroke-width:1.7845"
        id="path1055-9-8-9-8"
@@ -7468,9 +7464,9 @@
        transform="translate(495.70293,-97.480865)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7259"><tspan
+         id="tspan5837"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7257">TEMP</tspan></tspan></text>
+           id="tspan5835">TEMP</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-099-8"
@@ -7478,9 +7474,9 @@
        transform="translate(461.88189,-105.4143)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7263"><tspan
+         id="tspan5841"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7261">C</tspan></tspan></text>
+           id="tspan5839">C</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-4-51-7"
@@ -7488,9 +7484,9 @@
        transform="translate(555.64207,-105.9386)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7267"><tspan
+         id="tspan5845"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7265">H</tspan></tspan></text>
+           id="tspan5843">H</tspan></tspan></text>
     <circle
        style="fill:#008000;fill-opacity:1;stroke:none;stroke-width:1.7845"
        id="path1055-9-8-9-8-8"
@@ -7584,9 +7580,9 @@
        transform="translate(956.42343,517.16061)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7271"><tspan
+         id="tspan5849"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7269">TEMP</tspan></tspan></text>
+           id="tspan5847">TEMP</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-099-8-2"
@@ -7594,9 +7590,9 @@
        transform="translate(921.90342,509.22717)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7275"><tspan
+         id="tspan5853"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7273">C</tspan></tspan></text>
+           id="tspan5851">C</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-4-51-7-1"
@@ -7604,9 +7600,9 @@
        transform="translate(1015.6636,509.2215)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7279"><tspan
+         id="tspan5857"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7277">H</tspan></tspan></text>
+           id="tspan5855">H</tspan></tspan></text>
     <circle
        style="fill:#008000;fill-opacity:1;stroke:none;stroke-width:1.7845"
        id="path1055-9-8-9-8-8-9"
@@ -7820,9 +7816,9 @@
        transform="translate(1153.9749,525.0219)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7283"><tspan
+         id="tspan5861"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7281">TEMP</tspan></tspan></text>
+           id="tspan5859">TEMP</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-099-8-2-3"
@@ -7830,9 +7826,9 @@
        transform="translate(1119.4549,517.08846)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7287"><tspan
+         id="tspan5865"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7285">C</tspan></tspan></text>
+           id="tspan5863">C</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-4-51-7-1-8"
@@ -7840,9 +7836,9 @@
        transform="translate(1213.2151,517.08279)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7291"><tspan
+         id="tspan5869"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7289">H</tspan></tspan></text>
+           id="tspan5867">H</tspan></tspan></text>
     <circle
        style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.7845"
        id="path1055-9-8-9-8-8-9-5"
@@ -7946,12 +7942,12 @@
        transform="translate(962.11972,295.23102)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7297"><tspan
+         id="tspan5875"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7293">1</tspan><tspan
+           id="tspan5871">1</tspan><tspan
            dx="-1.03"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7295">20</tspan></tspan></text>
+           id="tspan5873">20</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1"
@@ -7959,12 +7955,12 @@
        transform="translate(1125.2222,758.72053)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7303"><tspan
+         id="tspan5881"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7299">1</tspan><tspan
+           id="tspan5877">1</tspan><tspan
            dx="-1.03"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7301">0</tspan></tspan></text>
+           id="tspan5879">0</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-2"
@@ -7972,9 +7968,9 @@
        transform="translate(1146.1337,746.25358)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7307"><tspan
+         id="tspan5885"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7305">12</tspan></tspan></text>
+           id="tspan5883">12</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-1"
@@ -7982,9 +7978,9 @@
        transform="translate(1167.2561,740.75004)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7311"><tspan
+         id="tspan5889"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7309">14</tspan></tspan></text>
+           id="tspan5887">14</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-5"
@@ -7992,9 +7988,9 @@
        transform="translate(1189.5445,746.17892)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7315"><tspan
+         id="tspan5893"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7313">16</tspan></tspan></text>
+           id="tspan5891">16</tspan></tspan></text>
     <circle
        style="fill:#000000;stroke:none;stroke-width:2.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path52610-9-0"
@@ -8014,9 +8010,9 @@
        transform="translate(1626.1687,550.48183)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7319"><tspan
+         id="tspan5897"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7317">18</tspan></tspan></text>
+           id="tspan5895">18</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-01-0"
@@ -8024,9 +8020,9 @@
        transform="translate(1589.8787,596.00838)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7323"><tspan
+         id="tspan5901"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7321">VOLTS</tspan></tspan></text>
+           id="tspan5899">VOLTS</tspan></tspan></text>
     <circle
        style="fill:#008000;fill-opacity:1;stroke:none;stroke-width:1.7845"
        id="path1055-9-8-9-1-1"
@@ -8088,12 +8084,12 @@
        transform="translate(1568.0868,558.03412)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7329"><tspan
+         id="tspan5907"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7325">1</tspan><tspan
+           id="tspan5903">1</tspan><tspan
            dx="-1.03"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7327">0</tspan></tspan></text>
+           id="tspan5905">0</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-2-06"
@@ -8101,9 +8097,9 @@
        transform="translate(1586.8685,548.74942)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7333"><tspan
+         id="tspan5911"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7331">12</tspan></tspan></text>
+           id="tspan5909">12</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-1-8"
@@ -8111,9 +8107,9 @@
        transform="translate(1602.5596,546.86162)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7337"><tspan
+         id="tspan5915"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7335">14</tspan></tspan></text>
+           id="tspan5913">14</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-5-7"
@@ -8121,9 +8117,9 @@
        transform="translate(1617.378,548.48389)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7341"><tspan
+         id="tspan5919"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7339">16</tspan></tspan></text>
+           id="tspan5917">16</tspan></tspan></text>
     <circle
        style="fill:#999999;stroke:none;stroke-width:2.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path52610-9-2"
@@ -8137,9 +8133,9 @@
        transform="translate(1007.8159,744.97491)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7345"><tspan
+         id="tspan5923"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7343">18</tspan></tspan></text>
+           id="tspan5921">18</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-01-6"
@@ -8147,9 +8143,9 @@
        transform="translate(959.18867,758.30645)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7349"><tspan
+         id="tspan5927"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7347">VOLTS</tspan></tspan></text>
+           id="tspan5925">VOLTS</tspan></tspan></text>
     <circle
        style="fill:#008000;fill-opacity:1;stroke:none;stroke-width:1.7845"
        id="path1055-9-8-9-1-3"
@@ -8219,12 +8215,12 @@
        transform="translate(925.25367,744.9293)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7355"><tspan
+         id="tspan5933"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7351">1</tspan><tspan
+           id="tspan5929">1</tspan><tspan
            dx="-1.03"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7353">0</tspan></tspan></text>
+           id="tspan5931">0</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-2-0"
@@ -8232,9 +8228,9 @@
        transform="translate(946.16517,732.46235)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7359"><tspan
+         id="tspan5937"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7357">12</tspan></tspan></text>
+           id="tspan5935">12</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-1-3"
@@ -8242,9 +8238,9 @@
        transform="translate(967.28757,726.95881)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7363"><tspan
+         id="tspan5941"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7361">14</tspan></tspan></text>
+           id="tspan5939">14</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-5-4"
@@ -8252,9 +8248,9 @@
        transform="translate(989.57597,732.38769)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7367"><tspan
+         id="tspan5945"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7365">16</tspan></tspan></text>
+           id="tspan5943">16</tspan></tspan></text>
     <g
        id="g6166"
        inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/140-rallye-voltmeter.png"
@@ -8286,9 +8282,9 @@
            transform="translate(1669.6435,126.98717)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7371"><tspan
+             id="tspan5949"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-               id="tspan7369">18</tspan></tspan></text>
+               id="tspan5947">18</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-01-6-0"
@@ -8296,9 +8292,9 @@
            transform="translate(1621.0162,140.31871)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7375"><tspan
+             id="tspan5953"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7373">VOLTS</tspan></tspan></text>
+               id="tspan5951">VOLTS</tspan></tspan></text>
         <circle
            style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.7845"
            id="path1055-9-8-9-1-3-6"
@@ -8368,12 +8364,12 @@
            transform="translate(1587.0812,126.94156)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7381"><tspan
+             id="tspan5959"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-               id="tspan7377">1</tspan><tspan
+               id="tspan5955">1</tspan><tspan
                dx="-1.03"
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-               id="tspan7379">0</tspan></tspan></text>
+               id="tspan5957">0</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-2-0-0"
@@ -8381,9 +8377,9 @@
            transform="translate(1607.9928,114.47461)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7385"><tspan
+             id="tspan5963"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-               id="tspan7383">12</tspan></tspan></text>
+               id="tspan5961">12</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-1-3-5"
@@ -8391,9 +8387,9 @@
            transform="translate(1629.1152,108.97107)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7389"><tspan
+             id="tspan5967"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-               id="tspan7387">14</tspan></tspan></text>
+               id="tspan5965">14</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-5-4-8"
@@ -8401,9 +8397,9 @@
            transform="translate(1651.4036,114.39995)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7393"><tspan
+             id="tspan5971"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-               id="tspan7391">16</tspan></tspan></text>
+               id="tspan5969">16</tspan></tspan></text>
       </g>
     </g>
     <text
@@ -8413,12 +8409,12 @@
        transform="translate(988.86471,278.54512)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7399"><tspan
+         id="tspan5977"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7395">1</tspan><tspan
+           id="tspan5973">1</tspan><tspan
            dx="-1.03"
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7397">80</tspan></tspan></text>
+           id="tspan5975">80</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-0"
@@ -8426,9 +8422,9 @@
        transform="translate(1043.7372,295.22474)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7403"><tspan
+         id="tspan5981"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7401">300</tspan></tspan></text>
+           id="tspan5979">300</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-3-9-7-4"
@@ -8436,9 +8432,9 @@
        transform="translate(1007.4951,321.94205)"><tspan
          x="58.021484"
          y="184.97724"
-         id="tspan7407"><tspan
+         id="tspan5985"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7405">OIL</tspan></tspan></text>
+           id="tspan5983">OIL</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text199686-3-1-1-98-8-5-1"
@@ -8456,9 +8452,9 @@
        transform="translate(997.97489,306.21342)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7411"><tspan
+         id="tspan5989"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7409">TEMP</tspan></tspan></text>
+           id="tspan5987">TEMP</tspan></tspan></text>
     <circle
        style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.7845"
        id="path1055-9-8-9-8-8-9-5-2"
@@ -8560,9 +8556,9 @@
        transform="translate(1019.8263,278.54867)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7415"><tspan
+         id="tspan5993"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7413">240</tspan></tspan></text>
+           id="tspan5991">240</tspan></tspan></text>
     <path
        id="circle53820-6-9-0-8-4"
        d="m 1054.6166,454.0758 -2.98,-11.62409 m 37.3256,11.51751 2.9078,-11.64236"
@@ -8619,9 +8615,9 @@
          transform="translate(1647.3221,-169.50337)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7419"><tspan
+           id="tspan5997"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan7417">TEMP</tspan></tspan></text>
+             id="tspan5995">TEMP</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-0-099-8-2-3-6"
@@ -8629,9 +8625,9 @@
          transform="translate(1612.8021,-177.43681)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7423"><tspan
+           id="tspan6001"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan7421">C</tspan></tspan></text>
+             id="tspan5999">C</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-0-4-51-7-1-8-5"
@@ -8639,9 +8635,9 @@
          transform="translate(1706.5623,-177.44248)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7427"><tspan
+           id="tspan6005"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan7425">H</tspan></tspan></text>
+             id="tspan6003">H</tspan></tspan></text>
       <circle
          style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.7845"
          id="path1055-9-8-9-8-8-9-5-9"
@@ -8773,12 +8769,12 @@
            transform="translate(1385.1774,125.24213)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7433"><tspan
+             id="tspan6011"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-               id="tspan7429">1</tspan><tspan
+               id="tspan6007">1</tspan><tspan
                dx="-1.03"
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-               id="tspan7431">20</tspan></tspan></text>
+               id="tspan6009">20</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-0-2-3-9-8-2-0"
@@ -8786,12 +8782,12 @@
            transform="translate(1411.9224,108.55622)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7439"><tspan
+             id="tspan6017"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-               id="tspan7435">1</tspan><tspan
+               id="tspan6013">1</tspan><tspan
                dx="-1.03"
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-               id="tspan7437">80</tspan></tspan></text>
+               id="tspan6015">80</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-0-2-3-9-8-0-4"
@@ -8799,9 +8795,9 @@
            transform="translate(1466.7949,125.23584)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7443"><tspan
+             id="tspan6021"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-               id="tspan7441">300</tspan></tspan></text>
+               id="tspan6019">300</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-3-9-7-4-8"
@@ -8809,9 +8805,9 @@
            transform="translate(1430.5528,151.95315)"><tspan
              x="58.021484"
              y="184.97724"
-             id="tspan7447"><tspan
+             id="tspan6025"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7445">OIL</tspan></tspan></text>
+               id="tspan6023">OIL</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-9-3-6-3-4-8"
@@ -8819,9 +8815,9 @@
            transform="translate(1421.0326,136.22453)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7451"><tspan
+             id="tspan6029"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7449">TEMP</tspan></tspan></text>
+               id="tspan6027">TEMP</tspan></tspan></text>
         <circle
            style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.7845"
            id="path1055-9-8-9-8-8-9-5-2-5"
@@ -8923,9 +8919,9 @@
            transform="translate(1442.884,108.55978)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7455"><tspan
+             id="tspan6033"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-               id="tspan7453">240</tspan></tspan></text>
+               id="tspan6031">240</tspan></tspan></text>
         <path
            id="circle53820-6-9-0-8-4-1"
            d="m 1477.6743,284.08691 -2.98,-11.6241 m 37.3256,11.51752 2.9078,-11.64236"
@@ -8997,9 +8993,9 @@
        transform="translate(1601.1411,890.78513)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7459"><tspan
+         id="tspan6037"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7457">BOOST</tspan></tspan></text>
+           id="tspan6035">BOOST</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-01-0-9-3"
@@ -9007,9 +9003,9 @@
        transform="translate(1554.0767,890.79046)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7463"><tspan
+         id="tspan6041"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7461">VAC</tspan></tspan></text>
+           id="tspan6039">VAC</tspan></tspan></text>
     <path
        style="fill:none;fill-opacity:1;stroke:#06a469;stroke-width:12;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="circle54428-6-19-6"
@@ -9059,9 +9055,9 @@
        transform="translate(1567.8974,826.94984)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7467"><tspan
+         id="tspan6045"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7465">0</tspan></tspan></text>
+           id="tspan6043">0</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-2-06-5"
@@ -9069,9 +9065,9 @@
        transform="translate(1610.1825,826.94984)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7471"><tspan
+         id="tspan6049"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7469">10</tspan></tspan></text>
+           id="tspan6047">10</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-2-06-5-5"
@@ -9079,9 +9075,9 @@
        transform="translate(1543.1848,865.89436)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7475"><tspan
+         id="tspan6053"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7473">10</tspan></tspan></text>
+           id="tspan6051">10</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-5-7-6"
@@ -9089,9 +9085,9 @@
        transform="translate(1631.9435,865.94352)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7479"><tspan
+         id="tspan6057"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7477">20</tspan></tspan></text>
+           id="tspan6055">20</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-5-7-6-1"
@@ -9099,9 +9095,9 @@
        transform="translate(1565.766,904.55877)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7483"><tspan
+         id="tspan6061"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7481">20</tspan></tspan></text>
+           id="tspan6059">20</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-5-7-6-9"
@@ -9109,9 +9105,9 @@
        transform="translate(1609.8941,904.55249)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7487"><tspan
+         id="tspan6065"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7485">30</tspan></tspan></text>
+           id="tspan6063">30</tspan></tspan></text>
     <path
        style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path370384-6"
@@ -9148,9 +9144,9 @@
        transform="translate(1154.59,1061.5095)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7491"><tspan
+         id="tspan6069"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7489">6</tspan></tspan></text>
+           id="tspan6067">6</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-12-4-4-0"
@@ -9158,9 +9154,9 @@
        transform="translate(1201.1321,1015.8331)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7495"><tspan
+         id="tspan6073"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7493">3</tspan></tspan></text>
+           id="tspan6071">3</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-12-4-4-2"
@@ -9168,9 +9164,9 @@
        transform="translate(1109.2884,1015.8305)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7499"><tspan
+         id="tspan6077"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7497">9</tspan></tspan></text>
+           id="tspan6075">9</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-2-06-5-85"
@@ -9178,9 +9174,9 @@
        transform="translate(1151.5786,970.98566)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7503"><tspan
+         id="tspan6081"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7501">12</tspan></tspan></text>
+           id="tspan6079">12</tspan></tspan></text>
     <path
        style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path370384-6-3"
@@ -9223,9 +9219,9 @@
        transform="translate(1740.5704,896.81593)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7507"><tspan
+         id="tspan6085"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7505">VAC</tspan></tspan></text>
+           id="tspan6083">VAC</tspan></tspan></text>
     <path
        style="fill:none;stroke:#ff0000;stroke-width:12;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path343110-7-4-3"
@@ -9297,9 +9293,9 @@
        transform="translate(1790.4553,896.8106)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7511"><tspan
+         id="tspan6089"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7509">BOOST</tspan></tspan></text>
+           id="tspan6087">BOOST</tspan></tspan></text>
     <path
        style="fill:none;fill-opacity:1;stroke:#06a469;stroke-width:12;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="circle54428-6-19-6-0"
@@ -9344,9 +9340,9 @@
        transform="translate(1754.3911,832.97531)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7515"><tspan
+         id="tspan6093"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7513">0</tspan></tspan></text>
+           id="tspan6091">0</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-2-06-5-8"
@@ -9354,9 +9350,9 @@
        transform="translate(1796.6762,832.97531)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7519"><tspan
+         id="tspan6097"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7517">10</tspan></tspan></text>
+           id="tspan6095">10</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-2-06-5-5-7"
@@ -9364,9 +9360,9 @@
        transform="translate(1729.6785,871.91983)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7523"><tspan
+         id="tspan6101"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7521">10</tspan></tspan></text>
+           id="tspan6099">10</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-5-7-6-0"
@@ -9374,9 +9370,9 @@
        transform="translate(1818.4372,871.96899)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7527"><tspan
+         id="tspan6105"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7525">20</tspan></tspan></text>
+           id="tspan6103">20</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-5-7-6-1-5"
@@ -9384,9 +9380,9 @@
        transform="translate(1752.2597,910.58424)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7531"><tspan
+         id="tspan6109"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7529">20</tspan></tspan></text>
+           id="tspan6107">20</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-5-7-6-9-1"
@@ -9394,9 +9390,9 @@
        transform="translate(1796.3878,910.57796)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7535"><tspan
+         id="tspan6113"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7533">30</tspan></tspan></text>
+           id="tspan6111">30</tspan></tspan></text>
     <path
        style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path370384-6-1"
@@ -9445,9 +9441,9 @@
          transform="translate(1804.3925,486.32537)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7539"><tspan
+           id="tspan6117"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan7537">VAC</tspan></tspan></text>
+             id="tspan6115">VAC</tspan></tspan></text>
       <path
          style="fill:none;stroke:#ff0000;stroke-width:12;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="path343110-7-4-3-7"
@@ -9519,9 +9515,9 @@
          transform="translate(1854.2774,486.32004)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7543"><tspan
+           id="tspan6121"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan7541">BOOST</tspan></tspan></text>
+             id="tspan6119">BOOST</tspan></tspan></text>
       <path
          style="fill:none;fill-opacity:1;stroke:#06a469;stroke-width:12;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="circle54428-6-19-6-0-96"
@@ -9566,9 +9562,9 @@
          transform="translate(1818.2132,422.48475)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7547"><tspan
+           id="tspan6125"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-             id="tspan7545">0</tspan></tspan></text>
+             id="tspan6123">0</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-2-06-5-8-3"
@@ -9576,9 +9572,9 @@
          transform="translate(1860.4983,422.48475)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7551"><tspan
+           id="tspan6129"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-             id="tspan7549">10</tspan></tspan></text>
+             id="tspan6127">10</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-2-06-5-5-7-6"
@@ -9586,9 +9582,9 @@
          transform="translate(1793.5006,461.42927)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7555"><tspan
+           id="tspan6133"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-             id="tspan7553">10</tspan></tspan></text>
+             id="tspan6131">10</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-5-7-6-0-4"
@@ -9596,9 +9592,9 @@
          transform="translate(1882.2593,461.47843)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7559"><tspan
+           id="tspan6137"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan7557">20</tspan></tspan></text>
+             id="tspan6135">20</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-5-7-6-1-5-3"
@@ -9606,9 +9602,9 @@
          transform="translate(1816.0818,500.09368)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7563"><tspan
+           id="tspan6141"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan7561">20</tspan></tspan></text>
+             id="tspan6139">20</tspan></tspan></text>
       <text
          xml:space="preserve"
          id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-5-7-6-9-1-1"
@@ -9616,9 +9612,9 @@
          transform="translate(1860.2099,500.0874)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7567"><tspan
+           id="tspan6145"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan7565">30</tspan></tspan></text>
+             id="tspan6143">30</tspan></tspan></text>
       <path
          style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="path370384-6-1-91"
@@ -9662,9 +9658,9 @@
        transform="translate(1926.2542,896.81592)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7571"><tspan
+         id="tspan6149"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7569">VAC</tspan></tspan></text>
+           id="tspan6147">VAC</tspan></tspan></text>
     <path
        style="fill:none;stroke:#ff0000;stroke-width:12;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path343110-7-4-3-1"
@@ -9736,9 +9732,9 @@
        transform="translate(1976.1391,896.81059)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7575"><tspan
+         id="tspan6153"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7573">BOOST</tspan></tspan></text>
+           id="tspan6151">BOOST</tspan></tspan></text>
     <path
        style="fill:none;fill-opacity:1;stroke:#06a469;stroke-width:12;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="circle54428-6-19-6-0-4"
@@ -9875,9 +9871,9 @@
          transform="translate(1968.4414,480.6685)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7579"><tspan
+           id="tspan6157"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan7577">VAC</tspan></tspan></text>
+             id="tspan6155">VAC</tspan></tspan></text>
       <path
          style="fill:none;stroke:#ff0000;stroke-width:12;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="path343110-7-4-3-1-9"
@@ -9949,9 +9945,9 @@
          transform="translate(2018.3263,480.66317)"><tspan
            x="58.021484"
            y="188.54921"
-           id="tspan7583"><tspan
+           id="tspan6161"><tspan
              style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-             id="tspan7581">BOOST</tspan></tspan></text>
+             id="tspan6159">BOOST</tspan></tspan></text>
       <path
          style="fill:none;fill-opacity:1;stroke:#06a469;stroke-width:12;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="circle54428-6-19-6-0-4-0"
@@ -10032,9 +10028,9 @@
        transform="translate(1314.2187,1048.3731)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7587"><tspan
+         id="tspan6165"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-           id="tspan7585">Quartz</tspan></tspan></text>
+           id="tspan6163">Quartz</tspan></tspan></text>
     <path
        id="circle53820-5-1-0-9-7"
        d="m 1390.22,1255.5357 -0.017,12 m -53.9057,-66.1539 -11.9999,-0.034 m 66.2307,-53.8112 0.051,-11.9999 m 53.7177,65.9994 h 12"
@@ -10053,9 +10049,9 @@
        transform="translate(1328.7819,1063.8656)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7591"><tspan
+         id="tspan6169"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7589">6</tspan></tspan></text>
+           id="tspan6167">6</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-12-4-4-0-6"
@@ -10063,9 +10059,9 @@
        transform="translate(1375.324,1018.1892)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7595"><tspan
+         id="tspan6173"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7593">3</tspan></tspan></text>
+           id="tspan6171">3</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-12-4-4-2-2"
@@ -10073,9 +10069,9 @@
        transform="translate(1283.4803,1018.1866)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7599"><tspan
+         id="tspan6177"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-           id="tspan7597">9</tspan></tspan></text>
+           id="tspan6175">9</tspan></tspan></text>
     <text
        xml:space="preserve"
        id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-2-06-5-85-9"
@@ -10083,9 +10079,9 @@
        transform="translate(1325.7705,973.34174)"><tspan
          x="58.021484"
          y="188.54921"
-         id="tspan7603"><tspan
+         id="tspan6181"><tspan
            style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-           id="tspan7601">12</tspan></tspan></text>
+           id="tspan6179">12</tspan></tspan></text>
     <path
        style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path370384-6-3-7"
@@ -10132,9 +10128,9 @@
            transform="translate(1907.5021,345.56758)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7607"><tspan
+             id="tspan6185"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;fill:#ffffff"
-               id="tspan7605">Quartz</tspan></tspan></text>
+               id="tspan6183">Quartz</tspan></tspan></text>
         <path
            id="circle53820-5-1-0-9-7-5"
            d="m 1983.8266,552.73018 -0.017,12 m -53.9057,-66.1539 -11.9999,-0.034 m 66.2307,-53.8112 0.051,-11.9999 m 53.7177,65.9994 h 12"
@@ -10153,9 +10149,9 @@
            transform="translate(1922.3885,361.06008)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7611"><tspan
+             id="tspan6189"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-               id="tspan7609">6</tspan></tspan></text>
+               id="tspan6187">6</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-12-4-4-0-6-7"
@@ -10163,9 +10159,9 @@
            transform="translate(1968.9306,315.38368)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7615"><tspan
+             id="tspan6193"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-               id="tspan7613">3</tspan></tspan></text>
+               id="tspan6191">3</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-12-4-4-2-2-3"
@@ -10173,9 +10169,9 @@
            transform="translate(1877.0869,315.38108)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7619"><tspan
+             id="tspan6197"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-0.72px;fill:#ffffff"
-               id="tspan7617">9</tspan></tspan></text>
+               id="tspan6195">9</tspan></tspan></text>
         <text
            xml:space="preserve"
            id="text6811-6-0-6-7-8-0-0-2-3-9-8-1-2-06-5-85-9-3"
@@ -10183,9 +10179,9 @@
            transform="translate(1919.3771,270.53622)"><tspan
              x="58.021484"
              y="188.54921"
-             id="tspan7623"><tspan
+             id="tspan6201"><tspan
                style="font-family:OPTIUniversFiftySeven;-inkscape-font-specification:OPTIUniversFiftySeven;letter-spacing:-1.75px;fill:#ffffff"
-               id="tspan7621">12</tspan></tspan></text>
+               id="tspan6199">12</tspan></tspan></text>
         <path
            style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
            id="path370384-6-3-7-5"
