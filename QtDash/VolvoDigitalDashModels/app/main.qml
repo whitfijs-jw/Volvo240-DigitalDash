@@ -270,8 +270,6 @@ Window {
 
     Accessory140RallyeStyle {
         id: coolantTempDelegate140RallyeStyle
-        gaugeMin: 120
-        gaugeMax: 250
         significatDigits: 1
 
         imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-coolant.png"
@@ -279,8 +277,6 @@ Window {
 
     Accessory140RallyeStyle {
         id: fuelLevelDelegate140RallyeStyle
-        gaugeMin: 0
-        gaugeMax: 100
         significatDigits: 0
 
         imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-fuel.png"
@@ -297,8 +293,6 @@ Window {
 
     Accessory140RallyeStyle {
         id: oilTempDelegate140RallyeStyle
-        gaugeMin: 120
-        gaugeMax: 300
         significatDigits: 1
 
         imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-oil-temp.png"
@@ -315,8 +309,6 @@ Window {
 
     Accessory140RallyeStyle {
         id: boostDelegate140RallyeStyle
-        gaugeMin: -20
-        gaugeMax: 30
         minAngle: -240
         maxAngle: 60
         yOffset: 0
@@ -731,7 +723,7 @@ Window {
                     setSmallGaugeSize(140);
                     setTachSize(440);
                     setSpeedoSize(tachSize - smallGaugeSize - 10);
-                    setSpeedoMax(120);
+                    setSpeedoMax(speedoModel.maxValue);
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
                     accessoryScreen.currentStyle = "240";
                     warningLightBar.item.showLights = true;
@@ -742,7 +734,7 @@ Window {
                     setSmallGaugeSize(140);
                     setTachSize(440);
                     setSpeedoSize(tachSize - smallGaugeSize - 10);
-                    setSpeedoMax(120);
+                    setSpeedoMax(speedoModel.maxValue);
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
                     accessoryScreen.currentStyle = "240";
                     warningLightBar.item.showLights = true;
@@ -753,7 +745,7 @@ Window {
                     setSmallGaugeSize(140);
                     setTachSize(400);
                     setSpeedoSize(440);
-                    setSpeedoMax(120);
+                    setSpeedoMax(speedoModel.maxValue);
                     setTempFuelSize(400);
                     accessoryScreen.currentStyle = "240";
                     warningLightBar.item.showLights = true;
@@ -775,7 +767,7 @@ Window {
                     setSmallGaugeSize(140);
                     setTachSize(400);
                     setSpeedoSize(440);
-                    setSpeedoMax(120);
+                    setSpeedoMax(speedoModel.maxValue);
                     setTempFuelSize(400);
                     accessoryScreen.currentStyle = "240";
                     warningLightBar.item.showLights = true;

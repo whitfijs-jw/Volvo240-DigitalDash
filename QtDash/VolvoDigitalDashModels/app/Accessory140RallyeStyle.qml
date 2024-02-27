@@ -9,9 +9,9 @@ Item {
     property real needleLength: 0.65
     property real needleWidth: .04
     property real yOffset: 0.25
-    property real gaugeMin: 0
-    property real gaugeMax: 100
-    property real gaugeMinOffset: accGauge.gaugeMin
+    property real gaugeMin: -1
+    property real gaugeMax: -1
+    property real gaugeMinOffset: -1
     property real significatDigits: 1
 
     property string imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-coolant.png"
@@ -23,12 +23,12 @@ Item {
             source: "qrc:/Gauge.qml"
             asynchronous: true
             onLoaded: {
-                item.minValue = accGauge.gaugeMin
-                item.maxValue = accGauge.gaugeMax
+                item.minValue = (accGauge.gaugeMin == -1) ? gaugeMin : accGauge.gaugeMin
+                item.maxValue = (accGauge.gaugeMax == -1) ? gaugeMax : accGauge.gaugeMax
                 item.units = gaugeUnits
                 item.highAlarm = gaugeHighAlarm
                 item.lowAlarm = gaugeLowAlarm
-                item.initialValueOffset = accGauge.gaugeMin
+                item.initialValueOffset = (accGauge.gaugeMinOffset == -1) ? gaugeMin : accGauge.gaugeMin
 
                 item.minAngle = accGauge.minAngle
                 item.maxAngle = accGauge.maxAngle

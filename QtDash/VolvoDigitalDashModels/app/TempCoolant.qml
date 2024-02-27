@@ -67,7 +67,7 @@ Item
 
         offsetX: tempCoolant.offsetX
 
-        units: "F"
+        units: tempCoolant.units
         needleResource: tempCoolant.needleResource
         needleLength: tempCoolant.needleLength
         needleWidth: tempCoolant.needleWidth

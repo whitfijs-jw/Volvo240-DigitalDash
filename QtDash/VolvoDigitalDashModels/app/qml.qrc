@@ -207,6 +207,7 @@
         <file>early-240-temp-fuel-overlay-with-border.png</file>
         <file>early-240-temp-fuel-with-border.png</file>
         <file>early-240-speedo-with-border.png</file>
+        <file>early-240-speedo-kph-with-border.png</file>
     </qresource>
     <qresource prefix="/gauge-faces-140-rallye">
         <file>140-rallye-boost_no_num.png</file>
