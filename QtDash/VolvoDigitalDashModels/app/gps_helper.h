@@ -14,6 +14,7 @@
 #include <QDateTime>
 #include <QTimeZone>
 #include <QtMath>
+#include <sensor_utils.h>
 
 /**
  * @brief GPS helper class
@@ -133,8 +134,8 @@ public slots:
         //std::cout << std::setprecision(3) << speed << " m/s\t" << (speed * 2.23694) << " mph" << std::endl;
 
         emit speedUpdateMeterPerSec(speed);
-        emit speedUpdateMilesPerHour(speed * 2.23694);
-        emit speedUpdateKph(speed *  3.6);
+        emit speedUpdateMilesPerHour(SensorUtils::convert(speed, Config::UNITS_MPH, Config::UNITS_METERS_PER_SECOND));
+        emit speedUpdateKph(SensorUtils::convert(speed, Config::UNITS_KPH, Config::UNITS_METERS_PER_SECOND));
     }
 
     /**
