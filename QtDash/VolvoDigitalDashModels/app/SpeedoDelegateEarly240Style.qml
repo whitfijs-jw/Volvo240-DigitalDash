@@ -27,7 +27,7 @@ Component {
             item.height = speedoSize
             item.width = speedoSize
 
-            item.imageResource = "qrc:/gauges-early-240/early-240-speedo.png"
+            item.imageResource = "qrc:/gauges-early-240/early-240-speedo-with-border.png"
 
             item.needleResource = "qrc:/needles/needle-rsport.png"
             item.needleColor = "burlywood"

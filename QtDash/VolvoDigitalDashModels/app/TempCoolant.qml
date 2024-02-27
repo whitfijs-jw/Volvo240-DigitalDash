@@ -29,6 +29,7 @@ Item
 
     property real textXOffset: 0
     property real textOffset : parent.height / 4.5
+    property real textSize: parent.height / 16
 
     property bool enableFuelText: false
 
@@ -76,7 +77,7 @@ Item
 
         textOffset: tempCoolant.textOffset
         textXOffset: -tempCoolant.textXOffset
-        textSize: parent.height / 16
+        textSize: tempCoolant.textSize
 
     }
 
@@ -111,7 +112,7 @@ Item
         textEnabled: tempCoolant.enableFuelText
         textOffset: tempCoolant.textOffset
         textXOffset: tempCoolant.textXOffset
-        textSize: parent.height / 16
+        textSize: tempCoolant.textSize
     }
 }
 

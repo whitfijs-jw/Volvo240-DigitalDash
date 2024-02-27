@@ -23,6 +23,16 @@ Item {
 
         }
 
+        Image {
+            id: tachOverlay
+            antialiasing: true
+            smooth: true
+            source: "qrc:/gauges-early-240/early-240-tach-border.png"
+
+            anchors.horizontalCenter: tachContainer.horizontalCenter
+            anchors.bottom: tachContainer.bottom
+        }
+
         Rectangle {
             id: tachContainer
             width: tachSize

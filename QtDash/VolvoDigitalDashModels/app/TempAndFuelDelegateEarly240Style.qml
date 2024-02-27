@@ -16,17 +16,18 @@ Component {
             item.height = tempFuelSize
             item.width = tempFuelSize
 
-            item.overlayImageSource = "qrc:/gauges-early-240/early-240-temp-fuel-overlay.png"
-            item.gaugeImageResource = "qrc:/gauges-early-240/early-240-temp-fuel.png.png"
+            item.overlayImageSource = "qrc:/gauges-early-240/early-240-temp-fuel-overlay-with-border.png"
+            item.gaugeImageResource = "qrc:/gauges-early-240/early-240-temp-fuel-with-border.png"
 
             item.needleResource = "qrc:/needles/needle-rsport.png"
             item.needleLength = tempFuelSize * 0.4
             item.needleWidth = tempFuelSize * 0.02
 
-            item.offsetX = -tempFuelSize * 0.1
+            item.offsetX = -tempFuelSize * 0.05
 
-            item.textXOffset = tempFuelSize * 0.4;
+            item.textXOffset = tempFuelSize * 0.375
             item.textOffset = tempFuelSize * 0.25
+            item.textSize = tempFuelSize * 0.04
             item.enableFuelText = true;
         }
 
