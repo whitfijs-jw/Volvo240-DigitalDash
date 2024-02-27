@@ -720,6 +720,9 @@ Window {
                 case 0:
                     //currentGauge.source = "";
                     currentGauge.source = "qrc:/BigTachCenter.qml";
+                    speedoModel.setUnits("mph");
+                    speedoModel.setMaxValue(120);
+
                     setSmallGaugeSize(140);
                     setTachSize(440);
                     setSpeedoSize(tachSize - smallGaugeSize - 10);
@@ -727,10 +730,14 @@ Window {
                     setTempFuelSize(tachSize - smallGaugeSize - 10);
                     accessoryScreen.currentStyle = "240";
                     warningLightBar.item.showLights = true;
+
                     break;
                 case 1:
                     //currentGauge.source = "";
                     currentGauge.source = "qrc:/BigTachLeft.qml";
+                    speedoModel.setUnits("mph");
+                    speedoModel.setMaxValue(120);
+
                     setSmallGaugeSize(140);
                     setTachSize(440);
                     setSpeedoSize(tachSize - smallGaugeSize - 10);
@@ -742,6 +749,9 @@ Window {
                 case 2:
                     //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original240Layout.qml";
+                    speedoModel.setUnits("mph");
+                    speedoModel.setMaxValue(120);
+
                     setSmallGaugeSize(140);
                     setTachSize(400);
                     setSpeedoSize(440);
@@ -753,10 +763,13 @@ Window {
                 case 3:
                     //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original740Layout.qml"
+                    speedoModel.setUnits("mph");
+                    speedoModel.setMaxValue(140);
+
                     setSmallGaugeSize(140);
                     setTachSize(275);
                     setSpeedoSize(350);
-                    setSpeedoMax(140);
+                    setSpeedoMax(speedoModel.maxValue);
                     setTempFuelSize(300);
                     accessoryScreen.currentStyle = "740";
                     warningLightBar.item.showLights = true;
@@ -764,6 +777,9 @@ Window {
                 case 4:
                     //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original240LayoutClock.qml";
+                    speedoModel.setUnits("mph");
+                    speedoModel.setMaxValue(120);
+
                     setSmallGaugeSize(140);
                     setTachSize(400);
                     setSpeedoSize(440);
@@ -775,58 +791,75 @@ Window {
                 case 5:
                     //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original850R.qml"
+                    speedoModel.setUnits("mph");
+                    speedoModel.setMaxValue(140);
+
                     setSmallGaugeSize(200);
                     setTachSize(350);
                     setSpeedoSize(440);
-                    setSpeedoMax(140);
-                    //setTempFuelSize(300);
+                    setSpeedoMax(speedoModel.maxValue);
                     accessoryScreen.currentStyle = "740";
                     warningLightBar.item.showLights = true;
                     break;
                 case 6:
                     currentGauge.source = "qrc:/OriginalRSportLayout.qml"
+                    speedoModel.setUnits("mph");
+                    speedoModel.setMaxValue(130);
+
                     setSmallGaugeSize(200);
                     setTachSize(350);
                     setSpeedoSize(350);
-                    setSpeedoMax(130);
+                    setSpeedoMax(speedoModel.maxValue);
                     accessoryScreen.currentStyle = "rSport";
                     warningLightBar.item.showLights = true;
                     break;
                 case 7:
                     currentGauge.source = "qrc:/Original544Layout.qml"
+                    speedoModel.setUnits("mph");
+                    speedoModel.setMaxValue(130);
+
                     setSmallGaugeSize(140);
                     setTachSize(400);
                     setSpeedoSize(440);
-                    setSpeedoMax(120);
+                    setSpeedoMax(speedoModel.maxValue);
                     setTempFuelSize(400);
                     accessoryScreen.currentStyle = "240";
                     warningLightBar.item.showLights = true;
                     break;
                 case 8:
                     currentGauge.source = "qrc:/OriginalP1800Layout.qml"
+                    speedoModel.setUnits("mph");
+                    speedoModel.setMaxValue(130);
+
                     setSmallGaugeSize(200);
                     setTachSize(350);
                     setSpeedoSize(440);
-                    setSpeedoMax(120);
+                    setSpeedoMax(speedoModel.maxValue);
                     accessoryScreen.currentStyle = "p1800";
                     warningLightBar.item.showLights = true;
                     break;
                 case 9:
                     currentGauge.source = "qrc:/OriginalEarly240Layout.qml"
+                    speedoModel.setUnits("mph");
+                    speedoModel.setMaxValue(130);
+
                     setSmallGaugeSize(140);
                     setTachSize(300);
                     setSpeedoSize(400);
-                    setSpeedoMax(130);
+                    setSpeedoMax(speedoModel.maxValue);
                     setTempFuelSize(400);
                     accessoryScreen.currentStyle = "240";
                     warningLightBar.item.showLights = false;
                     break;
                 case 10:
                     currentGauge.source = "qrc:/Original140RallyeLayout.qml"
+                    speedoModel.setUnits("mph");
+                    speedoModel.setMaxValue(130);
+
                     setSmallGaugeSize(200);
                     setTachSize(400);
                     setSpeedoSize(400);
-                    setSpeedoMax(130);
+                    setSpeedoMax(speedoModel.maxValue);
                     setTempFuelSize(400);
                     accessoryScreen.currentStyle = "140rallye";
                     warningLightBar.item.showLights = true;

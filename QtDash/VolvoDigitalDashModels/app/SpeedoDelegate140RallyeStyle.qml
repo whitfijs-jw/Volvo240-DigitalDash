@@ -8,7 +8,7 @@ Component {
         asynchronous: true
         onLoaded: {
             item.minValue = minValue
-            item.maxValue = 130
+            item.maxValue = speedoModel.maxValue
             item.units = speedUnits
             item.lowAlarm = minValue
             item.highAlarm = 130

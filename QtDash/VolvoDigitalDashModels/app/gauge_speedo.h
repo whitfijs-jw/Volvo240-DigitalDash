@@ -43,8 +43,9 @@ public:
                     [=](QVariant data) {
             QString units = sensors.at(0)->getUnits();
             QString displayUnits = speedoConfig.gaugeConfig.displayUnits;
+            QString modelUnits = ((SpeedometerModel *)mModel)->units();
 
-            qreal val = SensorUtils::convert(data.toReal(), displayUnits, units);
+            qreal val = SensorUtils::convert(data.toReal(), modelUnits, units);
             ((SpeedometerModel *)mModel)->setCurrentValue(val);
         });
 
