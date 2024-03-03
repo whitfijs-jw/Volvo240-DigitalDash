@@ -14,6 +14,7 @@
 #include <QDateTime>
 #include <QTimeZone>
 #include <QtMath>
+#include <sensor_utils.h>
 
 class GpsSource : public SensorSource {
     Q_OBJECT
@@ -176,16 +177,18 @@ public slots:
         }
         double speed = data.attribute(QGeoPositionInfo::GroundSpeed);
 
-        qreal speedMph = speed * 2.23694;
-        qreal speedKph = speed * 3.6;
+        qreal speedMph = SensorUtils::convert(speed, Config::UNITS_MPH, Config::UNITS_METERS_PER_SECOND);
+        qreal speedKph = SensorUtils::convert(speed, Config::UNITS_KPH, Config::UNITS_METERS_PER_SECOND);
+
+
 
         mLastData.insert(GpsDataChannel::SPEED_METERS_PER_SEC, speed);
         mLastData.insert(GpsDataChannel::SPEED_MILES_PER_HOUR, speedMph);
         mLastData.insert(GpsDataChannel::SPEED_KILOMETERS_PER_HOUR, speedKph);
 
         emit dataReady(speed, (int) GpsDataChannel::SPEED_METERS_PER_SEC);
-        emit dataReady(speed * 2.23694, (int) GpsDataChannel::SPEED_MILES_PER_HOUR);
-        emit dataReady(speed * 3.6, (int) GpsDataChannel::SPEED_KILOMETERS_PER_HOUR);
+        emit dataReady(speedMph, (int) GpsDataChannel::SPEED_MILES_PER_HOUR);
+        emit dataReady(speedKph, (int) GpsDataChannel::SPEED_KILOMETERS_PER_HOUR);
     }
 
 

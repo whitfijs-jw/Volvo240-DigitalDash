@@ -32,7 +32,7 @@ Item {
 
             ClockLarge {
                 anchors.fill: parent
-                imageSource: "qrc:/mainCluster/origclockblack.png"
+                imageSource: "qrc:/mainCluster/later-240-clock.png"
                 needleResource: "qrc:/needles/needle-240.png"
                 generation: "240"
             }

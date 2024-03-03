@@ -128,6 +128,7 @@ public:
     static constexpr char VSS_PULSES_PER_DISTANCE[] = "pulse_per_unit_distance";
     static constexpr char VSS_DISTANCE_UNITS[] = "distance_units";
     static constexpr char VSS_MAX_SPEED[] = "max_speed";
+    static constexpr char VSS_USE_GPS[] = "use_gps";
 
     //expected keys for resistive sensors
     static constexpr char RES_SENSOR_TYPE[] = "type";
@@ -483,6 +484,7 @@ public:
         int pulsePerUnitDistance; //!< Pulses per unit distance.  Will be calculated from tire diameter if left empty
         DistanceUnits distanceUnits; //!< unit of distance for pulsePerUnitDistance
         int maxSpeed; //!< Max speed -- lowest possible value it best will filter out noisy signals better
+        bool useGps = false;
     } VssInputConfig_t;
 
     /**
@@ -940,6 +942,7 @@ public:
         QString distanceUnits = mConfig->value(VSS_DISTANCE_UNITS, "mile").toString().toLower();
         mVssInputConfig.distanceUnits = getDistanceUnits(distanceUnits);
         mVssInputConfig.maxSpeed = mConfig->value(VSS_MAX_SPEED, 160).toInt();
+        mVssInputConfig.useGps = mConfig->value(VSS_USE_GPS, false).toBool();
 
         printKeys("VSS Input: ", mConfig);
 

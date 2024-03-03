@@ -71,6 +71,19 @@
         <file>BoostDelegateRSportStyle.qml</file>
         <file>CoolantTempAccDelegateRSportStyle.qml</file>
         <file>OilTempDelegateRSportStyle.qml</file>
+        <file>OriginalEarly240Layout.qml</file>
+        <file>SpeedoDelegateEarly240Style.qml</file>
+        <file>TempAndFuelDelegateEarly240Style.qml</file>
+        <file>TachoDelegateEarly240Style.qml</file>
+        <file>WarningLightOilPressureEarly240Style.qml</file>
+        <file>WarningLightBatteryEarly240Style.qml</file>
+        <file>WarningLightHighBeamEarly240Style.qml</file>
+        <file>BlinkerEarly240.qml</file>
+        <file>BlinkerDelegateEarly240Style.qml</file>
+        <file>Accessory140RallyeStyle.qml</file>
+        <file>Original140RallyeLayout.qml</file>
+        <file>SpeedoDelegate140RallyeStyle.qml</file>
+        <file>TachoDelegate140RallyeStyle.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>
@@ -85,6 +98,11 @@
         <file>temp_coolant_overlay_small.png</file>
         <file>temp_coolant_gas_can.png</file>
         <file>origclockblack.png</file>
+        <file>later-240-speedo.png</file>
+        <file>later-240-tacho.png</file>
+        <file>later-240-temp-fuel.png</file>
+        <file>later-240-temp-fuel-overlay.png</file>
+        <file>later-240-clock.png</file>
     </qresource>
     <qresource prefix="/accCluster">
         <file>volt_black.png</file>
@@ -93,6 +111,10 @@
         <file>ambient_temp_black_f.png</file>
         <file>oil_pressure_black.png</file>
         <file>clock_black.png</file>
+        <file>later-240-oil-temp.png</file>
+        <file>later-240-boost.png</file>
+        <file>later-240-voltmeter.png</file>
+        <file>later-240-oil-pressure.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>ariblk.ttf</file>
@@ -172,5 +194,32 @@
         <file>clock-p1800.png</file>
         <file>oil-temp-p1800.png</file>
         <file>center-cover-medium-p1800.png</file>
+    </qresource>
+    <qresource prefix="/gauges-early-240">
+        <file>early-240-clock.png</file>
+        <file>early-240-speedo.png</file>
+        <file>early-240-tach.png</file>
+        <file>early-240-temp-fuel.png.png</file>
+        <file>early-240-temp-fuel-overlay.png</file>
+        <file>early-240-blinker-off.png</file>
+        <file>early-240-blinker-on.png</file>
+        <file>early-240-tach-border.png</file>
+        <file>early-240-temp-fuel-overlay-with-border.png</file>
+        <file>early-240-temp-fuel-with-border.png</file>
+        <file>early-240-speedo-with-border.png</file>
+        <file>early-240-speedo-kph-with-border.png</file>
+    </qresource>
+    <qresource prefix="/gauge-faces-140-rallye">
+        <file>140-rallye-boost_no_num.png</file>
+        <file>140-rallye-boost_psi.png</file>
+        <file>140-rallye-clock.png</file>
+        <file>140-rallye-coolant.png</file>
+        <file>140-rallye-fuel.png</file>
+        <file>140-rallye-oil-pressure-bar.png</file>
+        <file>140-rallye-oil-pressure-psi.png</file>
+        <file>140-rallye-oil-temp.png</file>
+        <file>140-rallye-tach.png</file>
+        <file>140-rallye-speedo.png</file>
+        <file>140-rallye-voltmeter.png</file>
     </qresource>
 </RCC>

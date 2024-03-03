@@ -502,8 +502,11 @@ private:
     void initSpeedo() {
         qDebug() << "Speedometer Gauge Model Init";
 
-        // init gauge
+        // init gauge -- default is VSS
         QList<Sensor *> speedoSensors = {mSpeedoSensor};
+        if (mConfig.getVssConfig().useGps) {
+            speedoSensors.replace(0, mGpsSpeedoSensor);
+        }
 
         // Speedometer has a secondary output -- assign it now
         QString topSource = mConfig.getSpeedoConfig().topSource;

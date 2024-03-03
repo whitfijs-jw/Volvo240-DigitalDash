@@ -35,6 +35,7 @@ Item {
     property color needleColor: "orange"
 
     property real textOffset:  parent.height / 2.0
+    property real textXOffset: 0
     property real textSize: parent.height / 8
     property bool textEnabled: true
     property int significantDigits: 1
@@ -108,11 +109,6 @@ Item {
         Image {
             id: needle
 
-//            needleColor: gauge.needleColor
-//            needleTipRadius: gauge.needleTipRadius
-//            length: gauge.needleLength
-//            needleWidth:  gauge.needleWidth
-
             x: parent.width / 2 + offsetX
             y: parent.height / 2 + offset
             width: gauge.needleLength
@@ -121,13 +117,6 @@ Item {
             antialiasing: true
             smooth: true
             source: needleResource
-
-//            radius: gauge.needleTipRadius
-//            gradient: Gradient {
-//                    GradientStop { position: 0.25; color: needleColor}
-//                    GradientStop { position: 0.5; color: "white" }
-//                    GradientStop { position: 0.75; color: needleColor }
-//            }
 
             transform: [
                 Translate {
@@ -155,14 +144,14 @@ Item {
         Text {
 
             id: valueText
-
+            z: 10
             visible: textEnabled
 
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            anchors.horizontalCenterOffset: 0
 
             anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset: gauge.textXOffset
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: gauge.textOffset
 

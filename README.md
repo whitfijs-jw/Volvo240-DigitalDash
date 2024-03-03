@@ -33,6 +33,13 @@ Different Volvo dash styles can be displayed:
 #### 544/140 Linear Style
 <img src="https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/topic/update-readme/QtDash/Pictures/screenshot-544144.png" height="200">
 
+#### Early 240 Style
+<img src="https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/topic/early-240-cluster/QtDash/Pictures/screenshot-early-240.png" height="200">
+
+#### 140 Rallye Style
+<img src="https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/topic/early-240-cluster/QtDash/Pictures/screenshot-140-rallye.png" height="200">
+
+
 #### 240 Style Custom Layouts
 <img src="https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/topic/update-readme/QtDash/Pictures/screenshot-240-custom-tach-center.png" height="200">
 <img src="https://raw.githubusercontent.com/whitfijs-jw/Volvo240-DigitalDash/topic/update-readme/QtDash/Pictures/screenshot-240-custom-tach-left.png" height="200">

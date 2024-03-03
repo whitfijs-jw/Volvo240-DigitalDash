@@ -69,7 +69,18 @@ public:
         initTacho();
         initSpeedo();
         initTempFuelCluster();
-        initAccessoryGuage(COOLANT_TEMP_MODEL_NAME, 120.0, 250.0, "°F", 0.0, 220.0);
+
+        Config::GaugeConfig_t gaugeConfig;
+        gaugeConfig = mConfig.getGaugeConfig(Config::COOLANT_TEMP_GAUGE_GROUP);
+
+        initAccessoryGuage(
+            COOLANT_TEMP_MODEL_NAME,
+            gaugeConfig.min,
+            gaugeConfig.max,
+            gaugeConfig.displayUnits,
+            gaugeConfig.lowAlarm,
+            gaugeConfig.highAlarm);
+
         initAccessoryGuage(FUEL_LEVEL_MODEL_NAME, 0.0, 100.0, "%", 10.0, 200.0);
         initAccessoryGuage(OIL_PRESSURE_MODEL_NAME, 0.0, 5.0, "bar", 1.0, 4.5);
         initAccessoryGuage(OIL_TEMPERATURE_MODEL_NAME, 120.0, 300.0, "°F", 0.0, 260.0);
@@ -135,12 +146,18 @@ public slots:
         if(tempFile.isOpen())
         {
             QString coreTemp = tempStream.readLine();
-            float temp = coreTemp.toFloat();
-            qreal tempF = ((temp/1000.0) * 9.0/5.0)+32.0;
+
+            Config::GaugeConfig_t gaugeConfig;
+            gaugeConfig = mConfig.getGaugeConfig(Config::COOLANT_TEMP_GAUGE_GROUP);
+
+            qreal temp = coreTemp.toFloat() / 1000.0;
+            qreal tVal = SensorUtils::convert(temp, gaugeConfig.displayUnits, Config::UNITS_C);
+            qreal tempF = SensorUtils::convert(temp, Config::UNITS_F, Config::UNITS_C);
+
             mOilTemperatureModel.setCurrentValue(tempF);
-            mTempFuelModel.setCurrentTemp(tempF);
+            mTempFuelModel.setCurrentTemp(tVal);
             mSpeedoModel.setTopValue(tempF);
-            mCoolantTempModel.setCurrentValue(tempF);
+            mCoolantTempModel.setCurrentValue(tVal);
         }
 
 
@@ -169,21 +186,13 @@ public slots:
             QString rpmString = rpmStream.readLine();
             int rpm = rpmString.toInt();
             rpm /= 1000;
-            //mTachModel.setRpm(rpm);
+            mTachModel.setRpm(rpm);
             mBoostModel.setCurrentValue( ((float)rpm/1000.0) * 5.0 );
             mOilPressureModel.setCurrentValue( ((float)rpm / 1000.0) );
 
-            static qreal previousValue = 1;
-
-            qreal value = (qreal)rpm / 4700.0 * 100;
-
-            qreal lag = 1.0;
-            value = (value * lag) + (previousValue * (1 - lag));
-            previousValue = value;
-
-            mFuelLevelModel.setCurrentValue(value);
-            mTempFuelModel.setFuelLevel(value);
-
+            float speedMph = rpm / 100;
+            qreal speedo = SensorUtils::convert(speedMph, mConfig.getSpeedoConfig().gaugeConfig.displayUnits, Config::UNITS_MPH);
+            mSpeedoModel.setCurrentValue(speedo);
         }
 
         if(battFile.isOpen())
@@ -201,7 +210,7 @@ public slots:
             mFuelLevelModel.setCurrentValue(level);
         }
 
-        mSpeedoModel.setCurrentValue(mSpeedoModel.currentValue() + 0.5);
+        //mSpeedoModel.setCurrentValue(mSpeedoModel.currentValue() + 0.5);
         if (mSpeedoModel.currentValue() > mSpeedoModel.maxValue()) {
             mSpeedoModel.setCurrentValue(0.0);
         }
@@ -342,11 +351,14 @@ private:
      */
     void initTempFuelCluster(qreal minTemp = 120, qreal maxTemp = 250, QString tempUnits = "°F",
                              qreal highTempAlarm = 220, qreal lowFuelAlarm = 10) {
+        Config::GaugeConfig_t gaugeConfig;
+        gaugeConfig = mConfig.getGaugeConfig(Config::COOLANT_TEMP_GAUGE_GROUP);
+
         /** Init temp/fuel gauge **/
-        mTempFuelModel.setMinTemp(minTemp);
-        mTempFuelModel.setMaxTemp(maxTemp);
-        mTempFuelModel.setTempUnits(tempUnits);
-        mTempFuelModel.setHighTempAlarm(highTempAlarm);
+        mTempFuelModel.setMinTemp(gaugeConfig.min);
+        mTempFuelModel.setMaxTemp(gaugeConfig.max);
+        mTempFuelModel.setTempUnits(gaugeConfig.displayUnits);
+        mTempFuelModel.setHighTempAlarm(gaugeConfig.highAlarm);
         mTempFuelModel.setLowFuelAlarm(lowFuelAlarm);
 
         mTempFuelModel.setCurrentTemp(0);

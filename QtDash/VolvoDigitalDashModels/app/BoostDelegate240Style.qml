@@ -14,13 +14,13 @@ Component {
             item.lowAlarm = gaugeMin
             item.initialValueOffset = gaugeMin
 
-            item.minAngle = -226
-            item.maxAngle = 45
+            item.minAngle = -227
+            item.maxAngle = 48
 
             item.height = smallGaugeSize
             item.width = smallGaugeSize
 
-            item.imageResource = "qrc:/accCluster/boost_black_no_numbers.png"
+            item.imageResource = "qrc:/accCluster/later-240-boost.png"
 
             item.needleColor = "orange"
 

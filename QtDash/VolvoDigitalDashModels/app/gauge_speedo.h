@@ -41,7 +41,12 @@ public:
         QObject::connect(
                     sensors.at(0), &Sensor::sensorDataReady,
                     [=](QVariant data) {
-            ((SpeedometerModel *)mModel)->setCurrentValue(data.toReal());
+            QString units = sensors.at(0)->getUnits();
+            QString displayUnits = speedoConfig.gaugeConfig.displayUnits;
+            QString modelUnits = ((SpeedometerModel *)mModel)->units();
+
+            qreal val = SensorUtils::convert(data.toReal(), modelUnits, units);
+            ((SpeedometerModel *)mModel)->setCurrentValue(val);
         });
 
         // connect the secondary values

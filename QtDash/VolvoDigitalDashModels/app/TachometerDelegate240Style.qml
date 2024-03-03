@@ -13,15 +13,15 @@ Component {
             item.highAlarm = redLine
             item.lowAlarm = 0
 
-            item.initialValueOffset = 200
+            item.initialValueOffset = 250
 
             item.minAngle = -221
-            item.maxAngle = 32
+            item.maxAngle = 33
 
             item.height = tachSize
             item.width = tachSize
 
-            item.imageResource = "qrc:/mainCluster/tacho.png"
+            item.imageResource = "qrc:/mainCluster/later-240-tacho.png"
 
             item.needleColor = "orange"
 

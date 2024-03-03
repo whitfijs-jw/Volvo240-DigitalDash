@@ -13,7 +13,7 @@ Component {
             item.lowAlarm = minValue
             item.highAlarm = speedoMax
 
-            item.initialValueOffset = 4
+            item.initialValueOffset = 5
 
             item.topValue = valueTop
             item.topUnits = valueTopUnits
@@ -21,13 +21,13 @@ Component {
             item.topTextOffset = -speedoSize / 6
             item.topTextSize = speedoSize / 20.0
 
-            item.minAngle = -233
-            item.maxAngle = 43
+            item.minAngle = -238
+            item.maxAngle = 44
 
             item.height = speedoSize
             item.width = speedoSize
 
-            item.imageResource = "qrc:mainCluster/early120mphspeedolo.png"
+            item.imageResource = "qrc:/mainCluster/later-240-speedo.png"
 
             item.needleColor = "orange"
 

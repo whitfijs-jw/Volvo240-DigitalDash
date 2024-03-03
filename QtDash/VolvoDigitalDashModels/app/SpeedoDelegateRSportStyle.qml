@@ -22,7 +22,7 @@ Component {
             item.topTextSize = speedoSize / 20.0
 
             item.minAngle = -148
-            item.maxAngle = 128
+            item.maxAngle = 126
 
             item.height = speedoSize
             item.width = speedoSize

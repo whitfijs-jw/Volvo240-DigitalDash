@@ -13,21 +13,21 @@ Component {
             item.highAlarm = gaugeMax
             item.lowAlarm = gaugeLowAlarm
 
-            item.minAngle = -136
-            item.maxAngle = -45
+            item.minAngle = -135
+            item.maxAngle = -44
 
             item.height = smallGaugeSize
             item.width = smallGaugeSize
 
-            item.imageResource = "qrc:/accCluster/oil_pressure_black.png"
+            item.imageResource = "qrc:/accCluster/later-240-oil-pressure.png"
 
             item.needleColor = "orange"
 
             item.needleWidth = smallGaugeNeedleWidth240
-            item.needleLength = smallGaugeSize * 0.65
+            item.needleLength = smallGaugeSize * 0.7
             item.needleOffset = smallGaugeSize * .25 / 2
 
-            item.offset = smallGaugeSize / 4.5
+            item.offset = smallGaugeSize * 0.25
 
             item.needleCenterRadius = 0.15
         }
