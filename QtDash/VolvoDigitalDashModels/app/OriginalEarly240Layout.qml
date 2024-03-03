@@ -36,14 +36,16 @@ Item {
         property real largeGaugeNeedleOffset: 0.075
         property real largeGaugeNeedleCenterRadius: 0.1
 
+        property bool speedoMph: speedoModel.units === "mph"
+
         Rectangle {
             SpeedoDelegate {
                 id: speedoDelegate
 
-                initialValueOffset: 8
+                initialValueOffset: container.speedoMph ? 8 : 18
 
-                minAngle: -246
-                maxAngle: 45
+                minAngle: container.speedoMph ? -246 : -253
+                maxAngle: container.speedoMph ? 45 : 43
 
                 imageSource: speedoModel.units === "mph" ?
                                  "qrc:/gauges-early-240/early-240-speedo-with-border.png" :
