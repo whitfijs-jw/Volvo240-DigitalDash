@@ -3,24 +3,34 @@ import QtQuick 2.15
 Item {
     id: accGauge
 
-    implicitHeight: 333
     implicitWidth: 333
+    implicitHeight: 333
 
     anchors.fill: parent
 
     property Component component: component
     property real minAngle: -135
-    property real maxAngle: -45
+    property real maxAngle: -44
+
     property real needleOffset: 0.1
     property real needleLength: 0.65
     property real needleWidth: .04
+    property real needleCenterRadius: 0.15
     property real yOffset: 0.25
+    property real xOffset: 0
+
     property real gaugeMin: -1
     property real gaugeMax: -1
     property real gaugeMinOffset: -1
+
     property real significatDigits: 1
 
-    property string imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-coolant.png"
+    property url imageSource: "qrc:/accCluster/later-240-voltmeter.png"
+    property url needleResource: "qrc:/needles/needle-240.png"
+
+    property real textOffset: 0.55
+
+    property bool clockwise: true
 
     Component {
         id: component
@@ -36,6 +46,8 @@ Item {
                 item.lowAlarm = gaugeLowAlarm
                 item.initialValueOffset = (accGauge.gaugeMinOffset == -1) ? gaugeMin : accGauge.gaugeMin
 
+                item.clockwise = accGauge.clockwise
+
                 item.minAngle = accGauge.minAngle
                 item.maxAngle = accGauge.maxAngle
 
@@ -44,17 +56,18 @@ Item {
 
                 item.imageResource = accGauge.imageSource
 
-                item.needleResource = "qrc:/needles/needle-rsport.png"
-                item.needleColor = "burlywood"
+                item.needleResource = accGauge.needleResource
                 item.needleWidth = accGauge.needleWidth
                 item.needleLength = accGauge.needleLength
                 item.needleOffset = accGauge.needleOffset
-                item.needleCenterRadius = 0.15
+                item.needleCenterRadius = accGauge.needleCenterRadius
 
                 item.offset = accGauge.yOffset
+                item.offsetX = accGauge.xOffset
+
                 item.significantDigits = accGauge.significatDigits
 
-                item.textOffset = 0.55
+                item.textOffset = accGauge.textOffset
             }
 
             Binding {

@@ -8,7 +8,7 @@ Component {
         asynchronous: true
         onLoaded: {
             item.minValue = 0
-            item.maxValue = 8000
+            item.maxValue = maxRpm
             item.units = "rpm"
             item.highAlarm = redLine
             item.lowAlarm = 0

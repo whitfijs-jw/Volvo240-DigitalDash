@@ -84,6 +84,11 @@
         <file>Original140RallyeLayout.qml</file>
         <file>SpeedoDelegate140RallyeStyle.qml</file>
         <file>TachoDelegate140RallyeStyle.qml</file>
+        <file>SpeedoDelegate.qml</file>
+        <file>TachometerDelegate.qml</file>
+        <file>AccessoryGaugeDelegate.qml</file>
+        <file>LinearGaugeDelegate.qml</file>
+        <file>WarningLightDelegate.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
         <file>85black120.png</file>

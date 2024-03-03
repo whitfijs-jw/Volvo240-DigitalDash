@@ -3,31 +3,21 @@ import QtQuick 2.15
 Item {
 
     Rectangle {
-        width: 1280
-        height: 480
+        id: container
+        width: parent.width
+        height: parent.height
         color: "transparent"
 
-        Rectangle {
-            id: tachContainer
-            width: tachSize
-            height: tachSize
-            color: "transparent"
-            anchors.right: speedoContainer.left
-            anchors.verticalCenter: speedoContainer.verticalCenter
-            /* Rpm: */
-            ListView {
-                model: rpmModel
-                delegate: rpmDelegate
-            }
-
-        }
+        property real speedometerSize: parent.height * 0.925
+        property real clockSize: parent.height / 1.2
+        property real tempFuelSize: clockSize
 
         Rectangle {
             id: clockContainer
             anchors.right: speedoContainer.left
             anchors.verticalCenter: speedoContainer.verticalCenter
-            height: tachSize
-            width: tachSize
+            height: container.clockSize
+            width: container.clockSize
             color: "transparent"
 
             ClockLarge {
@@ -39,9 +29,13 @@ Item {
         }
 
         Rectangle {
+            SpeedoDelegate {
+                id: speedoDelegate
+            }
+
             id: speedoContainer
-            width: speedoSize
-            height: speedoSize
+            width: container.speedometerSize
+            height: container.speedometerSize
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: 0
@@ -50,15 +44,19 @@ Item {
             /* Rpm: */
             ListView {
                 model: speedoModel
-                delegate: speedoDelegate
+                delegate: speedoDelegate.component
             }
 
         }
 
         Rectangle {
+            TempAndFuelDelegate240Style {
+                id: tempFuelDelegate
+            }
+
             id: tempFuelContainer
-            width: tempFuelSize
-            height: tempFuelSize
+            width: container.tempFuelSize
+            height: container.tempFuelSize
             anchors.left: speedoContainer.right
             anchors.verticalCenter: speedoContainer.verticalCenter
             color: "transparent"
@@ -66,7 +64,7 @@ Item {
             /* Rpm: */
             ListView {
                 model: tempFuelModel
-                delegate: tempFuelDelegate
+                delegate: tempFuelDelegate.component
             }
 
         }

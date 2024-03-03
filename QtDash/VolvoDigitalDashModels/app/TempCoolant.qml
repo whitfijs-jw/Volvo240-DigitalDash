@@ -20,16 +20,16 @@ Item
     property string overlayImageSource: "qrc:/mainCluster/later-240-temp-fuel-overlay.png"
     property string gaugeImageResource: "qrc:/mainCluster/later-240-temp-fuel.png"
 
-    property real needleLength: tempFuelSize * 0.4
-    property real needleWidth: tempFuelSize * 0.02
+    property real needleLength: 0.4
+    property real needleWidth: 0.02
     property real needleOffset: 0
     property string needleResource: "qrc:/needles/needle-240.png"
 
     property real offsetX: 0
 
     property real textXOffset: 0
-    property real textOffset : parent.height / 4.5
-    property real textSize: parent.height / 16
+    property real textOffset : 1 / 4.5
+    property real textSize: 1 / 16.0
 
     property bool enableFuelText: false
 

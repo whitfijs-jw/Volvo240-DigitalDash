@@ -1,30 +1,41 @@
 import QtQuick 2.15
 
-Component {
-    id: clockDelegate
-    Loader {
-        source: "qrc:/Clock.qml"
-        asynchronous: true
-        onLoaded: {
-            item.height = smallGaugeSize
-            item.width = smallGaugeSize
+Item {
+    id: clock
 
-            item.needleCenterRadius = 0.05
+    implicitWidth: 333
+    implicitHeight: 333
 
-            item.imageResource = "qrc:/gauge-faces-p1800/clock-p1800.png"
-            item.needleResource = "qrc:/needles/needle-rsport.png"
-        }
+    anchors.fill: parent
 
-        Binding {
-            target: item
-            property: "width"
-            value: smallGaugeSize
-        }
+    property Component component: component
 
-        Binding {
-            target: item
-            property: "height"
-            value: smallGaugeSize
+    Component {
+        id: component
+        Loader {
+            source: "qrc:/Clock.qml"
+            asynchronous: true
+            onLoaded: {
+                item.height = clock.height
+                item.width = clock.width
+
+                item.needleCenterRadius = 0.05
+
+                item.imageResource = "qrc:/gauge-faces-p1800/clock-p1800.png"
+                item.needleResource = "qrc:/needles/needle-rsport.png"
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: clock.width
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: clock.height
+            }
         }
     }
 }

@@ -8,10 +8,10 @@ Component {
         asynchronous: true
         onLoaded: {
             item.minValue = minValue
-            item.maxValue = speedoMax
+            item.maxValue = maxValue
             item.units = speedUnits
             item.lowAlarm = minValue
-            item.highAlarm = speedoMax
+            item.highAlarm = maxValue
 
             item.height = linearSpeedoHeight
             item.width = linearSpeedoWidth
@@ -40,7 +40,7 @@ Component {
         Binding {
             target: item
             property: "maxValue"
-            value: speedoMax
+            value: speedoModel.maxValue
         }
 
         Binding {

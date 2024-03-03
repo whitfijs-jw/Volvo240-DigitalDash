@@ -63,9 +63,9 @@ Item
         imageResource: clock.imageResource
         needleResource: clock.needleResource
 
-        needleWidth: parent.width * 0.015
-        needleLength: parent.width * 0.525
-        needleOffset: parent.width * .15 / 2
+        needleWidth: 0.015
+        needleLength: 0.525
+        needleOffset: .075
 
         needleCenterRadius: clock.needleCenterRadius
 
@@ -93,9 +93,9 @@ Item
         imageResource: ""
         needleResource: clock.needleResource
 
-        needleWidth: smallGaugeSize * 0.03
-        needleLength: smallGaugeSize * 0.525
-        needleOffset: smallGaugeSize * .15 / 2
+        needleWidth: 0.03
+        needleLength: 0.525
+        needleOffset: .075
 
         needleCenterRadius: clock.needleCenterRadius
 
@@ -123,9 +123,9 @@ Item
         imageResource: ""
         needleResource: clock.needleResource
 
-        needleWidth: smallGaugeSize * 0.035
-        needleLength: smallGaugeSize * 0.425
-        needleOffset: smallGaugeSize * .15 / 2
+        needleWidth: 0.035
+        needleLength: 0.425
+        needleOffset: .075
 
         needleCenterRadius: clock.needleCenterRadius
 
