@@ -2,57 +2,6 @@ import QtQuick 2.15
 
 Item {
 
-    Accessory140RallyeStyle {
-        id: coolantTempDelegate140RallyeStyle
-        significatDigits: 1
-
-        imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-coolant.png"
-    }
-
-    Accessory140RallyeStyle {
-        id: fuelLevelDelegate140RallyeStyle
-        significatDigits: 0
-
-        imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-fuel.png"
-    }
-
-    Accessory140RallyeStyle {
-        id: oilPressureDelegate140RallyeStyle
-        gaugeMin: 0
-        gaugeMax: 8
-        significatDigits: 2
-
-        imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-oil-pressure-bar.png"
-    }
-
-    Accessory140RallyeStyle {
-        id: oilTempDelegate140RallyeStyle
-        significatDigits: 1
-
-        imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-oil-temp.png"
-    }
-
-    Accessory140RallyeStyle {
-        id: voltmeterDelegate140RallyeStyle
-        gaugeMin: 10
-        gaugeMax: 18
-        significatDigits: 2
-
-        imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-voltmeter.png"
-    }
-
-    Accessory140RallyeStyle {
-        id: boostDelegate140RallyeStyle
-        minAngle: -240
-        maxAngle: 60
-        yOffset: 0
-        needleLength: 0.55
-
-        significatDigits: 1
-
-        imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-boost_no_num.png"
-    }
-
     Rectangle {
         id: container
         width: parent.width
@@ -77,6 +26,8 @@ Item {
         property real smallGaugeYOffset: 0.25
         property real smallGaugeNeedleCenterRadius: 0.15
 
+        property bool speedoMph: speedoModel.units === "mph"
+
         Rectangle {
             id: tachContainer
             width: container.tachometerSize
@@ -90,7 +41,7 @@ Item {
                 id: tachometerDelegate
 
                 minAngle: -235
-                maxAngle: -33
+                maxAngle: 33
 
                 initialValueOffset: 500
 
@@ -123,12 +74,14 @@ Item {
             SpeedoDelegate {
                 id: speedoDelegate
 
-                initialValueOffset: 10
+                initialValueOffset: container.speedoMph ? 10 : 18
 
-                minAngle: -247
-                maxAngle: 45
+                minAngle: container.speedoMph ? -247 : -251
+                maxAngle: container.speedoMph ? 45 : 46
 
-                imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-speedo.png"
+                imageSource: container.speedoMph ?
+                                 "qrc:/gauge-faces-140-rallye/140-rallye-speedo.png" :
+                                 "qrc:/gauge-faces-140-rallye/140-rallye-speedo-kph.png"
                 needleResource: "qrc:/needles/needle-rsport.png"
 
                 needleWidth: container.largeGaugeNeedleWidth

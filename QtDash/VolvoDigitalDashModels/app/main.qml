@@ -343,7 +343,6 @@ Window {
                     break;
                 case 9:
                     currentGauge.source = "qrc:/OriginalEarly240Layout.qml"
-                    //speedoModel.setUnits("mph");
                     if (speedoModel.units === "mph") {
                         speedoModel.setMaxValue(130);
                     } else {
@@ -358,8 +357,11 @@ Window {
                     break;
                 case 10:
                     currentGauge.source = "qrc:/Original140RallyeLayout.qml"
-                    //speedoModel.setUnits("mph");
-                    speedoModel.setMaxValue(130);
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(130);
+                    } else {
+                        speedoModel.setMaxValue(200)
+                    }
 
                     rpmModel.setMaxRpm(8000);
                     rpmModel.setRedLine(6500);
