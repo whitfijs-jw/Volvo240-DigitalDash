@@ -104,6 +104,7 @@
         <file>740_voltmeter.png</file>
         <file>740_oil_temperature.png</file>
         <file>740_oil_pressure.png</file>
+        <file>740_speedo_kph.png</file>
     </qresource>
     <qresource prefix="/gauge-faces-850">
         <file>850_unleaded_only.png</file>
@@ -125,6 +126,7 @@
         <file>r_sport_boost.png</file>
         <file>r_sport_oil_temp_F.png</file>
         <file>r_sport_acc_coolant_fahrenhet.png</file>
+        <file>r_sport_speedo_kph.png</file>
     </qresource>
     <qresource prefix="/needles">
         <file>needle-240.png</file>
@@ -157,6 +159,7 @@
         <file>clock-p1800.png</file>
         <file>oil-temp-p1800.png</file>
         <file>center-cover-medium-p1800.png</file>
+        <file>speedo-kph-p1800.png</file>
     </qresource>
     <qresource prefix="/gauges-early-240">
         <file>early-240-clock.png</file>

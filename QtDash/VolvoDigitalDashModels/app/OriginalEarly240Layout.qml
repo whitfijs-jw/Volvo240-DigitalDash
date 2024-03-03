@@ -45,7 +45,9 @@ Item {
                 minAngle: -246
                 maxAngle: 45
 
-                imageSource: "qrc:/gauges-early-240/early-240-speedo-with-border.png"
+                imageSource: speedoModel.units === "mph" ?
+                                 "qrc:/gauges-early-240/early-240-speedo-with-border.png" :
+                                 "qrc:/gauges-early-240/early-240-speedo-kph-with-border.png"
                 needleResource: "qrc:/needles/needle-rsport.png"
 
                 needleWidth: container.largeGaugeNeedleWidth

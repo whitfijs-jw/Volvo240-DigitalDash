@@ -26,16 +26,20 @@ Item {
         property real smallgaugeNeedleCenterRadius: .25
         property real smallgaugeNeedleYOffset: 0
 
+        property bool speedoMph: speedoModel.units === "mph"
+
         Rectangle {
             SpeedoDelegate {
                 id: speedoDelegate
 
-                initialValueOffset: 2
+                initialValueOffset: container.speedoMph ? 2 : 8
 
-                minAngle: -227
-                maxAngle: 45
+                minAngle: container.speedoMph ? -227 : -232
+                maxAngle: container.speedoMph ? 45 : 46
 
-                imageSource: "qrc:/gauge-faces-740-940/740_speedo.png"
+                imageSource: container.speedoMph ?
+                                 "qrc:/gauge-faces-740-940/740_speedo.png" :
+                                 "qrc:/gauge-faces-740-940/740_speedo_kph.png"
                 needleResource: "qrc:/needles/needle-740-940.png"
 
                 needleWidth: container.largeGaugeNeedleWidth

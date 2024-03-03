@@ -33,16 +33,20 @@ Item {
         property real smallUnshroudedXOffset: -(1 / 4.65)
         property real smallGaugeNeedleCenterRadius: 0.15
 
+        property bool speedoMph: speedoModel.units === "mph"
+
         Rectangle {
             SpeedoDelegate {
                 id: speedoDelegate
 
-                initialValueOffset: 10
+                initialValueOffset: container.speedoMph? 10 : 20
 
                 minAngle: -148
-                maxAngle: 126
+                maxAngle: 128
 
-                imageSource: "qrc:/gauge-faces-r-sport/r_sport_speedo_mph.png"
+                imageSource: container.speedoMph ?
+                                 "qrc:/gauge-faces-r-sport/r_sport_speedo_mph.png" :
+                                 "qrc:/gauge-faces-r-sport/r_sport_speedo_kph.png"
                 needleResource: "qrc:/needles/needle-rsport.png"
 
                 needleWidth: container.largeGaugeNeedleWidth

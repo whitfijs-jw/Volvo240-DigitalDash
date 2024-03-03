@@ -19,8 +19,6 @@ Item {
     property real speedometerHeight: parent.height * (65/480)
 
     property real tachometerSize: parent.height * 0.575
-    property real centerGaugeXOffset: speedometerSize * 0.5
-    property real centerGaugeYOffset: -speedometerSize * 0.1
 
     property real largeGaugeNeedleWidth: 0.035
     property real largeGaugeNeedleLength: 0.45

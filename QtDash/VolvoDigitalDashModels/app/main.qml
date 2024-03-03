@@ -223,8 +223,11 @@ Window {
             switch (screen) {
                 case 0:
                     currentGauge.source = "qrc:/BigTachCenter.qml";
-                    speedoModel.setUnits("mph");
-                    speedoModel.setMaxValue(120);
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(120);
+                    } else {
+                        speedoModel.setMaxValue(193.121)
+                    }
 
                     rpmModel.setMaxRpm(7000);
                     rpmModel.setRedLine(6000);
@@ -235,8 +238,11 @@ Window {
                     break;
                 case 1:
                     currentGauge.source = "qrc:/BigTachLeft.qml";
-                    speedoModel.setUnits("mph");
-                    speedoModel.setMaxValue(120);
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(120);
+                    } else {
+                        speedoModel.setMaxValue(193.121)
+                    }
 
                     rpmModel.setMaxRpm(7000);
                     rpmModel.setRedLine(6000);
@@ -245,10 +251,12 @@ Window {
                     warningLightBar.item.showLights = true;
                     break;
                 case 2:
-                    //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original240Layout.qml";
-                    speedoModel.setUnits("mph");
-                    speedoModel.setMaxValue(120);
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(120);
+                    } else {
+                        speedoModel.setMaxValue(193.121)
+                    }
 
                     rpmModel.setMaxRpm(7000);
                     rpmModel.setRedLine(6000);
@@ -257,10 +265,12 @@ Window {
                     warningLightBar.item.showLights = true;
                     break;
                 case 3:
-                    //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original740Layout.qml"
-                    speedoModel.setUnits("mph");
-                    speedoModel.setMaxValue(140);
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(140);
+                    } else {
+                        speedoModel.setMaxValue(225.308)
+                    }
 
                     rpmModel.setMaxRpm(7000);
                     rpmModel.setRedLine(5500);
@@ -269,10 +279,12 @@ Window {
                     warningLightBar.item.showLights = true;
                     break;
                 case 4:
-                    //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original240LayoutClock.qml";
-                    speedoModel.setUnits("mph");
-                    speedoModel.setMaxValue(120);
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(120);
+                    } else {
+                        speedoModel.setMaxValue(193.121)
+                    }
 
                     rpmModel.setMaxRpm(7000);
                     rpmModel.setRedLine(6000);
@@ -281,10 +293,12 @@ Window {
                     warningLightBar.item.showLights = true;
                     break;
                 case 5:
-                    //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original850R.qml"
-                    speedoModel.setUnits("mph");
-                    speedoModel.setMaxValue(140);
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(140);
+                    } else {
+                        speedoModel.setMaxValue(225.308)
+                    }
 
                     rpmModel.setMaxRpm(7000);
                     rpmModel.setRedLine(5500);
@@ -294,8 +308,11 @@ Window {
                     break;
                 case 6:
                     currentGauge.source = "qrc:/OriginalRSportLayout.qml"
-                    speedoModel.setUnits("mph");
-                    speedoModel.setMaxValue(130);
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(130);
+                    } else {
+                        speedoModel.setMaxValue(200)
+                    }
 
                     rpmModel.setMaxRpm(8000);
                     rpmModel.setRedLine(6500);
@@ -305,7 +322,6 @@ Window {
                     break;
                 case 7:
                     currentGauge.source = "qrc:/Original544Layout.qml"
-                    speedoModel.setUnits("mph");
                     speedoModel.setMaxValue(130);
 
                     accessoryScreen.currentStyle = "240";
@@ -313,8 +329,11 @@ Window {
                     break;
                 case 8:
                     currentGauge.source = "qrc:/OriginalP1800Layout.qml"
-                    speedoModel.setUnits("mph");
-                    speedoModel.setMaxValue(130);
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(120);
+                    } else {
+                        speedoModel.setMaxValue(200)
+                    }
 
                     rpmModel.setMaxRpm(7000);
                     rpmModel.setRedLine(6000);
@@ -324,8 +343,12 @@ Window {
                     break;
                 case 9:
                     currentGauge.source = "qrc:/OriginalEarly240Layout.qml"
-                    speedoModel.setUnits("mph");
-                    speedoModel.setMaxValue(130);
+                    //speedoModel.setUnits("mph");
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(130);
+                    } else {
+                        speedoModel.setMaxValue(200)
+                    }
 
                     rpmModel.setMaxRpm(7000);
                     rpmModel.setRedLine(5500);
@@ -335,7 +358,7 @@ Window {
                     break;
                 case 10:
                     currentGauge.source = "qrc:/Original140RallyeLayout.qml"
-                    speedoModel.setUnits("mph");
+                    //speedoModel.setUnits("mph");
                     speedoModel.setMaxValue(130);
 
                     rpmModel.setMaxRpm(8000);

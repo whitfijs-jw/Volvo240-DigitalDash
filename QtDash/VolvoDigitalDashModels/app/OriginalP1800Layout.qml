@@ -56,7 +56,9 @@ Item {
                 minAngle: -225
                 maxAngle: 40
 
-                imageSource: "qrc:/gauge-faces-p1800/speedo-mph-p1800.png"
+                imageSource: speedoModel.units === "mph" ?
+                                 "qrc:/gauge-faces-p1800/speedo-mph-p1800.png" :
+                                 "qrc:/gauge-faces-p1800/speedo-kph-p1800.png"
                 needleResource: "qrc:/needles/needle-rsport.png"
 
                 textSize: container.largeGaugeTestSize
