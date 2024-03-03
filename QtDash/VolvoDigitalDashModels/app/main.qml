@@ -322,8 +322,11 @@ Window {
                     break;
                 case 7:
                     currentGauge.source = "qrc:/Original544Layout.qml"
-                    speedoModel.setMaxValue(130);
-
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(120);
+                    } else {
+                        speedoModel.setMaxValue(193.121)
+                    }
                     accessoryScreen.currentStyle = "240";
                     warningLightBar.item.showLights = true;
                     break;

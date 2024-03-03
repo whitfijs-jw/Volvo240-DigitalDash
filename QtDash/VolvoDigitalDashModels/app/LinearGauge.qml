@@ -15,8 +15,8 @@ Item {
     property string units: "F"
     property int lowAlarm: 0
     property int highAlarm: 0
-    property int offset: 0
-    property int offsetX: 0
+    property real offset: 0
+    property real offsetX: 0
     property int initialValueOffset: 0
 
     property string imageResource: "qrc:/gauge-faces-544/speedo-544.png"
@@ -49,8 +49,8 @@ Item {
 
     ProgressBar {
         id: control
-        x: gauge.offsetX
-        y: gauge.offset
+        x: gauge.offsetX * gauge.width
+        y: gauge.offset * gauge.height
         width: needleLength * gauge.width
         z: 0
         //anchors.fill: parent
@@ -100,7 +100,7 @@ Item {
 
     Rectangle {
         id: lowerBlock
-        height: needleWidth * gauge.height
+        height: needleWidth * gauge.height * 1.1
         color: "black"
         width: blockWidth * gauge.width
         anchors.left: parent.left

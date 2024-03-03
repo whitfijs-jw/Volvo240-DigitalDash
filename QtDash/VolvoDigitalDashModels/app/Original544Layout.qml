@@ -3,22 +3,14 @@ import QtQuick 2.15
 Item {
     id: container
 
-    // 544 style delegates
-    SpeedoDelegate544Style {
-        id: speedoDelegate544
-    }
-
-    TachoDelegate544Style {
-        id: rpmDelegate544
-    }
-
     property int spacing: 300
     property int smallGaugeSpacing: 50
 
     property real speedometerWidth: parent.height * (1100/480)
     property real speedometerHeight: parent.height * (65/480)
 
-    property real tachometerSize: parent.height * 0.575
+    property real tachometerWidth: parent.height * (600 / 480)
+    property real tachometerHeight: speedometerHeight
 
     property real largeGaugeNeedleWidth: 0.035
     property real largeGaugeNeedleLength: 0.45
@@ -43,18 +35,23 @@ Item {
 
         Rectangle {
             id: speedoContainer
-            width: linearSpeedoWidth
-            height: linearSpeedoHeight
+            width: container.speedometerWidth
+            height: container.speedometerHeight
             anchors.top: parent.top
             anchors.topMargin: 100
             anchors.horizontalCenter: parent.horizontalCenter
 
             color: "transparent"
 
+            // 544 style delegates
+            SpeedoDelegate544Style {
+                id: speedoDelegate544
+            }
+
             /* Speed: */
             ListView {
                 model: speedoModel
-                delegate: speedoDelegate544
+                delegate: speedoDelegate544.component
             }
 
             Image {
@@ -75,8 +72,8 @@ Item {
             anchors.top: speedoContainer.bottom
             anchors.topMargin: 50
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+            height: container.smallGaugeSize
+            width: container.smallGaugeSize
             color: "transparent"
 
             AccessoryGaugeDelegate {
@@ -125,8 +122,8 @@ Item {
             anchors.right: voltContainer544.left
             anchors.rightMargin: smallGaugeSpacing
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+            height: container.smallGaugeSize
+            width: container.smallGaugeSize
             color: "transparent"
 
             AccessoryGaugeDelegate {
@@ -174,8 +171,8 @@ Item {
 
             anchors.verticalCenter: voltContainer544.verticalCenter
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+            height: container.smallGaugeSize
+            width: container.smallGaugeSize
             color: "transparent"
 
             AccessoryGaugeDelegate {
@@ -225,8 +222,8 @@ Item {
             anchors.left: oilPressureContainer544.right
             anchors.leftMargin: smallGaugeSpacing
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+            height: container.smallGaugeSize
+            width: container.smallGaugeSize
             color: "transparent"
 
             AccessoryGaugeDelegate {
@@ -270,18 +267,22 @@ Item {
 
         Rectangle {
             id: tachoContainer
-            width: 600
-            height: 64
+            width: container.tachometerWidth
+            height: container.tachometerHeight
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: voltContainer544.bottom
             anchors.topMargin: -40
 
             color: "transparent"
 
+            TachoDelegate544Style {
+                id: rpmDelegate544
+            }
+
             /* rpm: */
             ListView {
                 model: rpmModel
-                delegate: rpmDelegate544
+                delegate: rpmDelegate544.component
             }
 
 

@@ -1,58 +1,67 @@
 import QtQuick 2.15
 
-Component {
-    id: speedoDelegate544
 
-    Loader {
-        source: "qrc:/LinearGauge.qml"
-        asynchronous: true
-        onLoaded: {
-            item.minValue = minValue
-            item.maxValue = maxValue
-            item.units = speedUnits
-            item.lowAlarm = minValue
-            item.highAlarm = maxValue
+Item {
+    id: speedo
 
-            item.height = linearSpeedoHeight
-            item.width = linearSpeedoWidth
+    anchors.fill: parent
 
-            item.imageResource = "qrc:/gauge-faces-544/speedo-544-large.png"
+    property Component component: component
 
-            item.needleColor = "red"
+    Component {
+        id: component
 
-            item.needleWidth = item.height * 0.4
-            item.needleLength = item.width * 0.9
+        Loader {
+            source: "qrc:/LinearGauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = minValue
+                item.maxValue = maxValue
+                item.units = speedUnits
+                item.lowAlarm = minValue
+                item.highAlarm = maxValue
 
-            item.offset = item.height * .675
-            item.offsetX = item.width * 0.035
+                item.height = speedo.height
+                item.width = speedo.width
 
-            item.textSize = speedoSize * .15 / 2
-            item.textOffset = speedoSize / 6
-            item.significantDigits = 0
-        }
+                item.imageResource = "qrc:/gauge-faces-544/speedo-544-large.png"
 
-        Binding {
-            target: item
-            property: "value"
-            value: currentValue;
-        }
+                item.needleColor = "red"
 
-        Binding {
-            target: item
-            property: "maxValue"
-            value: speedoModel.maxValue
-        }
+                item.needleWidth = 0.4
+                item.needleLength = 0.9
 
-        Binding {
-            target: item
-            property: "width"
-            value: linearSpeedoWidth
-        }
+                item.offset = 0.675
+                item.offsetX = 0.035
 
-        Binding {
-            target: item
-            property: "height"
-            value: linearSpeedoHeight
+                item.textSize = 0.5
+                item.textOffset = 1.0
+                item.significantDigits = 0
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: currentValue;
+            }
+
+            Binding {
+                target: item
+                property: "maxValue"
+                value: speedoModel.maxValue
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: speedo.width
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: speedo.height
+            }
         }
     }
 }
