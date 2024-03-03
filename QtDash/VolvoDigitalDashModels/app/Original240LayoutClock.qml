@@ -12,6 +12,8 @@ Item {
         property real clockSize: parent.height / 1.2
         property real tempFuelSize: clockSize
 
+        property bool speedoMph: speedoModel.units === "mph"
+
         Rectangle {
             id: clockContainer
             anchors.right: speedoContainer.left
@@ -31,6 +33,15 @@ Item {
         Rectangle {
             SpeedoDelegate {
                 id: speedoDelegate
+
+                initialValueOffset: container.speedoMph ? 5 : 20
+
+                minAngle: container.speedoMph ? -238 : -254
+                maxAngle: container.speedoMph ? 44 : 45
+
+                imageSource: container.speedoMph ?
+                                 "qrc:/mainCluster/later-240-speedo.png" :
+                                 "qrc:/mainCluster/later-240-speedo-kph.png"
             }
 
             id: speedoContainer

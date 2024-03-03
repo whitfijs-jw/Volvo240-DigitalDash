@@ -66,6 +66,7 @@
         <file>later-240-temp-fuel.png</file>
         <file>later-240-temp-fuel-overlay.png</file>
         <file>later-240-clock.png</file>
+        <file>later-240-speedo-kph.png</file>
     </qresource>
     <qresource prefix="/accCluster">
         <file>volt_black.png</file>

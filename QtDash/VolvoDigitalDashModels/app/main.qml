@@ -226,7 +226,7 @@ Window {
                     if (speedoModel.units === "mph") {
                         speedoModel.setMaxValue(120);
                     } else {
-                        speedoModel.setMaxValue(193.121)
+                        speedoModel.setMaxValue(220)
                     }
 
                     rpmModel.setMaxRpm(7000);
@@ -241,7 +241,7 @@ Window {
                     if (speedoModel.units === "mph") {
                         speedoModel.setMaxValue(120);
                     } else {
-                        speedoModel.setMaxValue(193.121)
+                        speedoModel.setMaxValue(220)
                     }
 
                     rpmModel.setMaxRpm(7000);
@@ -255,7 +255,7 @@ Window {
                     if (speedoModel.units === "mph") {
                         speedoModel.setMaxValue(120);
                     } else {
-                        speedoModel.setMaxValue(193.121)
+                        speedoModel.setMaxValue(220)
                     }
 
                     rpmModel.setMaxRpm(7000);
@@ -283,7 +283,7 @@ Window {
                     if (speedoModel.units === "mph") {
                         speedoModel.setMaxValue(120);
                     } else {
-                        speedoModel.setMaxValue(193.121)
+                        speedoModel.setMaxValue(220)
                     }
 
                     rpmModel.setMaxRpm(7000);
