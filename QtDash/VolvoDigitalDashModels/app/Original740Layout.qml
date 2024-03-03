@@ -2,27 +2,6 @@ import QtQuick 2.15
 
 Item {
 
-    // 740 style delegates
-    BoostDelegate740Style {
-        id: boostDelegate740
-    }
-
-    TachometerDelegate740Style {
-        id: rpmDelegate740
-    }
-
-    CoolantTempDelegate740Style {
-        id: coolant740Delegate
-    }
-
-    FuelLevelDelegate740Style {
-        id: fuelLevel740Delegate
-    }
-
-    VoltmeterDelegate740Style {
-        id: voltMeterDelegate740
-    }
-
     Rectangle {
         id: container
         width: parent.width

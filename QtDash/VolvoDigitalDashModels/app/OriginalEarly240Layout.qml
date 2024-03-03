@@ -1,18 +1,6 @@
 import QtQuick 2.15
 
 Item {
-    WarningLightOilPressureEarly240Style {
-        id: warningLightOilPressureEarly240
-    }
-
-    WarningLightBatteryEarly240Style {
-        id: warningLightBatteryEarly240Style
-    }
-
-    WarningLightHighBeamEarly240Style {
-        id: warningLightHighBeamEarly240Style
-    }
-
     BlinkerDelegateEarly240Style {
         id: leftBlinkerDelegateEarly240Style
         flipped: false

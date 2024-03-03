@@ -5,8 +5,8 @@ Window {
     id: rootWindow
     objectName: "rootWindow"
     visible: true
-    width: 1920
-    height: 720
+    width: 1280
+    height: 480
 
     title: qsTr("Lolvo")
 
