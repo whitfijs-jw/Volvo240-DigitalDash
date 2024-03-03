@@ -18,7 +18,6 @@ Item {
         property real largeGaugeNeedleOffset: 0.1
         property real largeGaugeNeedleCenterRadius: 0.125
 
-
         property real smallGaugeSize: parent.height / 2.4
         property real lowerSmallGaugeYOffset: smallGaugeSize * 0.45
         property real upperSmallGaugeYOffset: smallGaugeSize * 0.5
@@ -113,7 +112,7 @@ Item {
             width: container.smallGaugeSize
 
             anchors.right: tachContainer.left
-            anchors.rightMargin: -container.upperSmallGaugeXOffset
+            anchors.rightMargin: -container.lowerSmallGaugeXOffset
 
             anchors.verticalCenter: speedoContainer.verticalCenter
             anchors.verticalCenterOffset: container.lowerSmallGaugeYOffset
@@ -161,7 +160,7 @@ Item {
 
         Rectangle {
             anchors.left: speedoContainer.right
-            anchors.leftMargin: -container.upperSmallGaugeXOffset
+            anchors.leftMargin: -container.lowerSmallGaugeXOffset
 
             anchors.verticalCenter: speedoContainer.verticalCenter
             anchors.verticalCenterOffset: container.lowerSmallGaugeYOffset

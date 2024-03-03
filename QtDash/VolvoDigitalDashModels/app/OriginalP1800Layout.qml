@@ -148,6 +148,9 @@ Item {
 
                     minValue: 90
                     maxValue: 230
+
+                    textSize: 1.0
+                    textYOffset: 4.25
                 }
 
                 ListView {
@@ -172,7 +175,8 @@ Item {
 
                     needleColor: "lightseagreen"
 
-                    textYOffset: -0.7
+                    textSize: 1.0
+                    textYOffset: -4.25
                 }
 
                 ListView {
@@ -221,6 +225,8 @@ Item {
                 yOffset: container.smallgaugeNeedleYOffset
 
                 significatDigits: 0
+
+                textOffset: 0.45
             }
 
             ListView {
@@ -266,6 +272,8 @@ Item {
                 needleOffset: container.smallgaugeNeedleOffset
                 needleCenterRadius: container.smallgaugeNeedleCenterRadius
                 yOffset: container.smallgaugeNeedleYOffset
+
+                textOffset: 0.45
             }
 
             ListView {
