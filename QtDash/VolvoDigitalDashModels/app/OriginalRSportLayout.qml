@@ -123,6 +123,8 @@ Item {
                 AccessoryGaugeDelegate {
                     id: coolantTempDelegate
 
+                    gaugeMax: 260
+
                     minAngle: -35
                     maxAngle: 38
 
@@ -258,6 +260,8 @@ Item {
 
             AccessoryGaugeDelegate {
                 id: voltmeterDelegate
+
+                gaugeMin: 8
 
                 minAngle: -48
                 maxAngle: 48
