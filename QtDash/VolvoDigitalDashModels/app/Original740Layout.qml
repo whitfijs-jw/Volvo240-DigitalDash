@@ -8,7 +8,7 @@ Item {
         height: parent.height
         color: "transparent"
 
-        property real speedometerSize: parent.height * 0.73
+        property real speedometerSize: parent.height * 0.75
         property real tachometerSize: parent.height * 0.575
         property real centerGaugeXOffset: speedometerSize * 0.5
         property real centerGaugeYOffset: -speedometerSize * 0.1
@@ -32,6 +32,11 @@ Item {
         Rectangle {
             TachometerDelegate {
                 id: tachometerDelegate
+
+                minAngle: -218
+                maxAngle: 38
+
+                initialValueOffset: 150
 
                 imageSource: "qrc:/gauge-faces-740-940/740_tach.png"
                 needleResource: "qrc:/needles/needle-740-940.png"

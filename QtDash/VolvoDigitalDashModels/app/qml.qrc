@@ -106,6 +106,7 @@
         <file>850_fuel_level.png</file>
         <file>850_coolant.png</file>
         <file>850_boost.png</file>
+        <file>850R_tach.png</file>
     </qresource>
     <qresource prefix="/gauge-faces-r-sport">
         <file>r_sport_coolant_fahrenhet.png</file>

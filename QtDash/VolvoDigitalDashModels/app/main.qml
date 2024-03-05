@@ -10,6 +10,10 @@ Window {
 
     title: qsTr("Lolvo")
 
+    property url initialScreen: "qrc:/Original240Layout.qml"
+    property real initialScreenSpeedoMaxMph: 120
+    property real initialScreenSpeedoMaxKph: 220
+
     SideAccessoryScreen {
         id: accessoryScreen
         objectName: "accessoryScreen"
@@ -167,7 +171,7 @@ Window {
         Loader {
             id: currentGauge
             anchors.fill: parent
-            source: "qrc:/Original240Layout.qml"
+            source: rootWindow.initialScreen
             asynchronous: true
             visible: false
             onStatusChanged: {
@@ -179,6 +183,13 @@ Window {
                     } else {
                         bootTimer.start();
                         gaugeItem.initialLoad = false
+
+                        // setup the speedometer for the initial screen
+                        if (speedoModel.units === "mph") {
+                            speedoModel.setMaxValue(rootWindow.initialScreenSpeedoMaxMph);
+                        } else {
+                            speedoModel.setMaxValue(rootWindow.initialScreenSpeedoMaxKph)
+                        }
                     }
                 } else if (status == Loader.Loading) {
                     currentGauge.visible = false;

@@ -68,7 +68,12 @@ Item {
             TachometerDelegate {
                 id: tachometerDelegate
 
-                imageSource: "qrc:/gauge-faces-740-940/740_tach.png"
+                minAngle: -218
+                maxAngle: 38
+
+                initialValueOffset: 150
+
+                imageSource: "qrc:/gauge-faces-850/850R_tach.png"
                 needleResource: "qrc:/needles/needle-740-940.png"
 
                 needleWidth: container.largeGaugeNeedleWidth
