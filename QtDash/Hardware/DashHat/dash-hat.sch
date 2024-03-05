@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -9390,7 +9390,7 @@ SOIC, 0.3 inch width</description>
 <attributes>
 </attributes>
 <variantdefs>
-<variantdef name="REVC"/>
+<variantdef name="REVC" current="yes"/>
 </variantdefs>
 <classes>
 <class number="0" name="default" width="0" drill="0">
@@ -9453,7 +9453,7 @@ SOIC, 0.3 inch width</description>
 <variant name="REVC" populate="no"/>
 </part>
 <part name="SUPPLY13" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R19" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R19" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="GND24" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY14" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="R20" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R">
@@ -9461,7 +9461,7 @@ SOIC, 0.3 inch width</description>
 </part>
 <part name="R21" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
 <part name="SUPPLY15" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R22" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R22" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="SUPPLY16" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="GND26" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="R23" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R">
@@ -9474,10 +9474,10 @@ SOIC, 0.3 inch width</description>
 <variant name="REVC" populate="no"/>
 </part>
 <part name="SUPPLY18" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R27" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R27" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="GND29" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY19" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
-<part name="R28" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R28" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="SUPPLY20" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="GND30" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="OK2" library="digital_dash" deviceset="ILQ1" device="X009"/>
@@ -9486,7 +9486,7 @@ SOIC, 0.3 inch width</description>
 <variant name="REVC" populate="no"/>
 </part>
 <part name="SUPPLY21" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R31" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R31" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="GND32" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY22" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="R32" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
@@ -9494,7 +9494,7 @@ SOIC, 0.3 inch width</description>
 <variant name="REVC" populate="no"/>
 </part>
 <part name="SUPPLY23" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R34" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R34" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="SUPPLY24" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="GND34" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="R35" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R">
@@ -9507,10 +9507,10 @@ SOIC, 0.3 inch width</description>
 </part>
 <part name="R38" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
 <part name="SUPPLY26" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R39" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R39" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="GND37" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY27" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
-<part name="R40" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R40" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="SUPPLY28" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="GND38" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="GND39" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
@@ -9526,7 +9526,7 @@ SOIC, 0.3 inch width</description>
 <variant name="REVC" populate="no"/>
 </part>
 <part name="SUPPLY30" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R43" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R43" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="GND42" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY31" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="R44" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
@@ -9534,7 +9534,7 @@ SOIC, 0.3 inch width</description>
 <variant name="REVC" populate="no"/>
 </part>
 <part name="SUPPLY32" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R46" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R46" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="SUPPLY33" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="GND44" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="R47" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
@@ -9549,10 +9549,10 @@ SOIC, 0.3 inch width</description>
 <variant name="REVC" populate="no"/>
 </part>
 <part name="SUPPLY35" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
-<part name="R51" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R51" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="GND47" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY36" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
-<part name="R52" library="digital_dash" deviceset="RC0603JR" device="" technology="-07470RL" value="470R"/>
+<part name="R52" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="SUPPLY37" library="SparkFun-PowerSymbols" deviceset="3.3V" device=""/>
 <part name="GND48" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="C12" library="digital_dash" deviceset="CL" device="" technology="10B104MB8NNNC" value="100n"/>
@@ -9706,7 +9706,7 @@ SOIC, 0.3 inch width</description>
 <part name="GND-ISO27" library="SparkFun-PowerSymbols" deviceset="GND-ISO" device=""/>
 <part name="R5" library="digital_dash" deviceset="RC0603FR" device="" technology="-1010KL" value="10k 1%"/>
 <part name="R7" library="digital_dash" deviceset="RC0603FR" device="" technology="-1010KL" value="10k 1%"/>
-<part name="C26" library="digital_dash" deviceset="CL" device="" technology="10B102KB8NNWC" value="1n"/>
+<part name="C26" library="digital_dash" deviceset="CL" device="" technology="10B103KB8NNNC" value="10n"/>
 <part name="R13" library="digital_dash" deviceset="RC0603JR" device="" technology="-071KL" value="1k"/>
 <part name="U$6" library="SparkFun-PowerSymbols" deviceset="VCCA" device=""/>
 <part name="JP21" library="SparkFun-Jumpers" deviceset="JUMPER-SMT_3_NO" device="_SILK" value="SPI_CS_SEL"/>

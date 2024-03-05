@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
@@ -2242,6 +2242,105 @@ reflow soldering</description>
 <pad name="5" x="-1.25" y="-1.25" drill="1.2" diameter="1.7"/>
 <pad name="6" x="-3.79" y="-1.25" drill="1.2" diameter="1.7"/>
 </package>
+<package name="DIP18">
+<description>&lt;h3&gt;Dual In Line Package -18&lt;/h3&gt;
+&lt;p&gt;Specifications:
+&lt;ul&gt;&lt;li&gt;Pin count:18&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;
+&lt;p&gt;Example device(s):
+&lt;ul&gt;&lt;li&gt;MCP2515(MCP2510)&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;</description>
+<pad name="1" x="-10.16" y="-3.81" drill="0.8128" diameter="1.6256" rot="R90"/>
+<pad name="2" x="-7.62" y="-3.81" drill="0.8128" diameter="1.6256" rot="R90"/>
+<pad name="3" x="-5.08" y="-3.81" drill="0.8128" diameter="1.6256" rot="R90"/>
+<pad name="4" x="-2.54" y="-3.81" drill="0.8128" diameter="1.6256" rot="R90"/>
+<pad name="5" x="0" y="-3.81" drill="0.8128" diameter="1.6256" rot="R90"/>
+<pad name="6" x="2.54" y="-3.81" drill="0.8128" diameter="1.6256" rot="R90"/>
+<pad name="7" x="5.08" y="-3.81" drill="0.8128" diameter="1.6256" rot="R90"/>
+<pad name="8" x="7.62" y="-3.81" drill="0.8128" diameter="1.6256" rot="R90"/>
+<pad name="9" x="10.16" y="-3.81" drill="0.8128" diameter="1.6256" rot="R90"/>
+<pad name="10" x="10.16" y="3.81" drill="0.8128" diameter="1.6256" rot="R90"/>
+<pad name="11" x="7.62" y="3.81" drill="0.8128" diameter="1.6256" rot="R90"/>
+<pad name="12" x="5.08" y="3.81" drill="0.8128" diameter="1.6256" rot="R90"/>
+<pad name="13" x="2.54" y="3.81" drill="0.8128" diameter="1.6256" rot="R90"/>
+<pad name="14" x="0" y="3.81" drill="0.8128" diameter="1.6256" rot="R90"/>
+<pad name="15" x="-2.54" y="3.81" drill="0.8128" diameter="1.6256" rot="R90"/>
+<pad name="16" x="-5.08" y="3.81" drill="0.8128" diameter="1.6256" rot="R90"/>
+<pad name="17" x="-7.62" y="3.81" drill="0.8128" diameter="1.6256" rot="R90"/>
+<pad name="18" x="-10.16" y="3.81" drill="0.8128" diameter="1.6256" rot="R90"/>
+<wire x1="11.43" y1="2.54" x2="-11.43" y2="2.54" width="0.2032" layer="21"/>
+<wire x1="-11.43" y1="-2.54" x2="11.43" y2="-2.54" width="0.2032" layer="21"/>
+<wire x1="11.43" y1="2.54" x2="11.43" y2="-2.54" width="0.2032" layer="21"/>
+<wire x1="-11.43" y1="2.54" x2="-11.43" y2="1.016" width="0.2032" layer="21"/>
+<wire x1="-11.43" y1="-2.54" x2="-11.43" y2="-1.016" width="0.2032" layer="21"/>
+<wire x1="-11.43" y1="-1.016" x2="-11.43" y2="1.016" width="0.2032" layer="21" curve="180"/>
+<text x="-12.065" y="0" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center">&gt;NAME</text>
+<text x="12.7" y="0" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="bottom-center">&gt;VALUE</text>
+<polygon width="0.127" layer="21">
+<vertex x="-12.54125" y="-3.175" curve="-90"/>
+<vertex x="-12.065" y="-2.69875" curve="-90"/>
+<vertex x="-11.58875" y="-3.175" curve="-90"/>
+<vertex x="-12.065" y="-3.65125" curve="-90"/>
+</polygon>
+</package>
+<package name="SO18W">
+<description>&lt;B&gt;Small Outline Wide Plastic Gull Wing&lt;/B&gt;&lt;p&gt;
+SOIC, 0.3 inch width</description>
+<smd name="1" x="-5.08" y="-4.7879" dx="0.6" dy="1.2" layer="1"/>
+<smd name="2" x="-3.81" y="-4.7879" dx="0.6" dy="1.2" layer="1"/>
+<smd name="3" x="-2.54" y="-4.7879" dx="0.6" dy="1.2" layer="1"/>
+<smd name="4" x="-1.27" y="-4.7879" dx="0.6" dy="1.2" layer="1"/>
+<smd name="5" x="0" y="-4.7879" dx="0.6" dy="1.2" layer="1"/>
+<smd name="6" x="1.27" y="-4.7879" dx="0.6" dy="1.2" layer="1"/>
+<smd name="7" x="2.54" y="-4.7879" dx="0.6" dy="1.2" layer="1"/>
+<smd name="8" x="3.81" y="-4.7879" dx="0.6" dy="1.2" layer="1"/>
+<smd name="9" x="5.08" y="-4.7879" dx="0.6" dy="1.2" layer="1"/>
+<smd name="10" x="5.08" y="4.7879" dx="0.6" dy="1.2" layer="1"/>
+<smd name="11" x="3.81" y="4.7879" dx="0.6" dy="1.2" layer="1"/>
+<smd name="12" x="2.54" y="4.7879" dx="0.6" dy="1.2" layer="1"/>
+<smd name="13" x="1.27" y="4.7879" dx="0.6" dy="1.2" layer="1"/>
+<smd name="14" x="0" y="4.7879" dx="0.6" dy="1.2" layer="1"/>
+<smd name="15" x="-1.27" y="4.7879" dx="0.6" dy="1.2" layer="1"/>
+<smd name="16" x="-2.54" y="4.7879" dx="0.6" dy="1.2" layer="1"/>
+<smd name="17" x="-3.81" y="4.7879" dx="0.6" dy="1.2" layer="1"/>
+<smd name="18" x="-5.08" y="4.7879" dx="0.6" dy="1.2" layer="1"/>
+<wire x1="5.5118" y1="3.8513" x2="-5.5118" y2="3.8513" width="0.2032" layer="21"/>
+<wire x1="5.6118" y1="-3.8513" x2="5.8928" y2="-3.4703" width="0.2032" layer="21" curve="90"/>
+<wire x1="-5.8928" y1="3.3703" x2="-5.5118" y2="3.8513" width="0.2032" layer="21" curve="-90.023829"/>
+<wire x1="5.5118" y1="3.8513" x2="5.8928" y2="3.4703" width="0.2032" layer="21" curve="-90.030084"/>
+<wire x1="-5.8928" y1="-3.5703" x2="-5.5118" y2="-3.8513" width="0.2032" layer="21" curve="90.060185"/>
+<wire x1="-5.5118" y1="-3.8513" x2="5.6118" y2="-3.8513" width="0.2032" layer="21"/>
+<wire x1="5.8928" y1="-3.4703" x2="5.8928" y2="3.4703" width="0.2032" layer="21"/>
+<wire x1="-5.842" y1="0.6096" x2="-5.842" y2="-0.6604" width="0.2032" layer="21" curve="-180"/>
+<wire x1="-5.8928" y1="3.3576" x2="-5.8928" y2="0.6096" width="0.2032" layer="21"/>
+<wire x1="-5.8928" y1="-3.5703" x2="-5.8928" y2="-0.6604" width="0.2032" layer="21"/>
+<text x="-6.35" y="0" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center">&gt;NAME</text>
+<text x="6.985" y="0" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="bottom-center">&gt;VALUE</text>
+<rectangle x1="-5.334" y1="3.952875" x2="-4.826" y2="4.968875" layer="51"/>
+<rectangle x1="-4.064" y1="3.952875" x2="-3.556" y2="4.968875" layer="51"/>
+<rectangle x1="-2.794" y1="3.952875" x2="-2.286" y2="4.968875" layer="51"/>
+<rectangle x1="-1.524" y1="3.952875" x2="-1.016" y2="4.968875" layer="51"/>
+<rectangle x1="-0.254" y1="3.952875" x2="0.254" y2="4.968875" layer="51"/>
+<rectangle x1="1.016" y1="3.952875" x2="1.524" y2="4.968875" layer="51"/>
+<rectangle x1="4.826" y1="3.952875" x2="5.334" y2="4.968875" layer="51"/>
+<rectangle x1="2.286" y1="3.952875" x2="2.794" y2="4.968875" layer="51"/>
+<rectangle x1="3.556" y1="3.952875" x2="4.064" y2="4.968875" layer="51"/>
+<rectangle x1="-5.334" y1="-4.968875" x2="-4.826" y2="-3.952875" layer="51" rot="R180"/>
+<rectangle x1="-4.064" y1="-4.968875" x2="-3.556" y2="-3.952875" layer="51" rot="R180"/>
+<rectangle x1="-2.794" y1="-4.968875" x2="-2.286" y2="-3.952875" layer="51" rot="R180"/>
+<rectangle x1="-1.524" y1="-4.968875" x2="-1.016" y2="-3.952875" layer="51" rot="R180"/>
+<rectangle x1="-0.254" y1="-4.968875" x2="0.254" y2="-3.952875" layer="51" rot="R180"/>
+<rectangle x1="1.016" y1="-4.968875" x2="1.524" y2="-3.952875" layer="51" rot="R180"/>
+<rectangle x1="2.286" y1="-4.968875" x2="2.794" y2="-3.952875" layer="51" rot="R180"/>
+<rectangle x1="3.556" y1="-4.968875" x2="4.064" y2="-3.952875" layer="51" rot="R180"/>
+<rectangle x1="4.826" y1="-4.968875" x2="5.334" y2="-3.952875" layer="51" rot="R180"/>
+<polygon width="0.002540625" layer="21">
+<vertex x="-5.87375" y="-4.28625" curve="90"/>
+<vertex x="-6.19125" y="-3.96875" curve="90"/>
+<vertex x="-6.50875" y="-4.28625" curve="90"/>
+<vertex x="-6.19125" y="-4.60375" curve="90"/>
+</polygon>
+</package>
 </packages>
 <symbols>
 <symbol name="OP-AMP">
@@ -2881,6 +2980,40 @@ reflow soldering</description>
 <wire x1="-10.16" y1="-10.16" x2="-10.16" y2="10.16" width="0.254" layer="94"/>
 <text x="5.08" y="-12.7" size="1.27" layer="94">&gt;NAME</text>
 <text x="-3.81" y="-11.43" size="1.27" layer="94" rot="R180">&gt;VALUE</text>
+</symbol>
+<symbol name="MCP2510">
+<wire x1="-10.16" y1="15.24" x2="12.7" y2="15.24" width="0.254" layer="94"/>
+<wire x1="12.7" y1="15.24" x2="12.7" y2="-25.4" width="0.254" layer="94"/>
+<wire x1="12.7" y1="-25.4" x2="-10.16" y2="-25.4" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-25.4" x2="-10.16" y2="15.24" width="0.254" layer="94"/>
+<pin name="CLKOUT" x="17.78" y="10.16" length="middle" direction="out" rot="R180"/>
+<pin name="CS" x="-15.24" y="2.54" length="middle" direction="in" function="dot"/>
+<pin name="INT" x="17.78" y="-10.16" length="middle" direction="out" function="dot" rot="R180"/>
+<pin name="OSC1" x="-15.24" y="12.7" length="middle" direction="in"/>
+<pin name="OSC2" x="-15.24" y="10.16" length="middle" direction="out"/>
+<pin name="RESET" x="-15.24" y="-10.16" length="middle" direction="in" function="dot"/>
+<pin name="RX0BF" x="17.78" y="-17.78" length="middle" direction="out" function="dot" rot="R180"/>
+<pin name="RX1BF" x="17.78" y="-20.32" length="middle" direction="out" function="dot" rot="R180"/>
+<pin name="RXCAN" x="17.78" y="5.08" length="middle" direction="in" rot="R180"/>
+<pin name="SCK" x="-15.24" y="0" length="middle" direction="in"/>
+<pin name="SI" x="-15.24" y="-2.54" length="middle" direction="in"/>
+<pin name="SO" x="-15.24" y="-5.08" length="middle" direction="out"/>
+<pin name="TX0RTS" x="-15.24" y="-17.78" length="middle" direction="in" function="dot"/>
+<pin name="TX1RTS" x="-15.24" y="-20.32" length="middle" direction="in" function="dot"/>
+<pin name="TX2RTS" x="-15.24" y="-22.86" length="middle" direction="in" function="dot"/>
+<pin name="TXCAN" x="17.78" y="0" length="middle" direction="out" rot="R180"/>
+<text x="-10.16" y="16.51" size="1.778" layer="95">&gt;NAME</text>
+<text x="-10.16" y="-29.21" size="1.778" layer="96">&gt;VALUE</text>
+</symbol>
+<symbol name="PWRN-1">
+<pin name="VDD" x="0" y="7.62" visible="pad" length="middle" direction="pwr" rot="R270"/>
+<pin name="VSS" x="0" y="-7.62" visible="pad" length="middle" direction="pwr" rot="R90"/>
+<text x="-2.54" y="0" size="1.778" layer="95">&gt;NAME</text>
+<text x="2.54" y="-7.62" size="1.4224" layer="95" rot="R90">VSS</text>
+<text x="2.54" y="2.54" size="1.4224" layer="95" rot="R90">VDD</text>
+<text x="-2.54" y="0" size="1.778" layer="95">&gt;NAME</text>
+<text x="2.54" y="-7.62" size="1.4224" layer="95" rot="R90">VSS</text>
+<text x="2.54" y="2.54" size="1.4224" layer="95" rot="R90">VDD</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -4442,6 +4575,86 @@ Source: https://www.ti.com/lit/ds/symlink/tsv912.pdf</description>
 </connects>
 <technologies>
 <technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="MCP2515(MCP2510)" prefix="U">
+<description>&lt;h3&gt;CAN controller with SPI interface&lt;/h3&gt;
+&lt;p&gt;The MCP2515 controller supercedes the MCP2510 while addressing all errata associated with it.  The two devices are pin compatible, either can be used with this device.
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;18-pin package SOIC&lt;/li&gt;
+&lt;li&gt;Simple SPI interface to any MCU.  &lt;/li&gt;
+&lt;li&gt;One-shot mode ensures message transmission is attempted only once&lt;/li&gt;
+&lt;li&gt;Databyte filtering&lt;/li&gt;
+&lt;li&gt;Start-of-Frame (SOF) output&lt;/li&gt;
+&lt;li&gt;Low-power CMOS Technology&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="http://www.sparkfun.com/datasheets/DevTools/Arduino/MCP2515.pdf"&gt;Datasheet&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;SparkFun Products&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.sparkfun.com/products/13262"&gt;CAN-BUS Shield&lt;/a&gt; (DEV-13262)&lt;/li&gt;
+&lt;/ul&gt;</description>
+<gates>
+<gate name="&gt;NAME" symbol="MCP2510" x="0" y="5.08"/>
+<gate name="P" symbol="PWRN-1" x="-30.48" y="-2.54" addlevel="request"/>
+</gates>
+<devices>
+<device name="P" package="DIP18">
+<connects>
+<connect gate="&gt;NAME" pin="CLKOUT" pad="3"/>
+<connect gate="&gt;NAME" pin="CS" pad="16"/>
+<connect gate="&gt;NAME" pin="INT" pad="12"/>
+<connect gate="&gt;NAME" pin="OSC1" pad="8"/>
+<connect gate="&gt;NAME" pin="OSC2" pad="7"/>
+<connect gate="&gt;NAME" pin="RESET" pad="17"/>
+<connect gate="&gt;NAME" pin="RX0BF" pad="11"/>
+<connect gate="&gt;NAME" pin="RX1BF" pad="10"/>
+<connect gate="&gt;NAME" pin="RXCAN" pad="2"/>
+<connect gate="&gt;NAME" pin="SCK" pad="13"/>
+<connect gate="&gt;NAME" pin="SI" pad="14"/>
+<connect gate="&gt;NAME" pin="SO" pad="15"/>
+<connect gate="&gt;NAME" pin="TX0RTS" pad="4"/>
+<connect gate="&gt;NAME" pin="TX1RTS" pad="5"/>
+<connect gate="&gt;NAME" pin="TX2RTS" pad="6"/>
+<connect gate="&gt;NAME" pin="TXCAN" pad="1"/>
+<connect gate="P" pin="VDD" pad="18"/>
+<connect gate="P" pin="VSS" pad="9"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="PROD_ID" value="NA-XXXXX" constant="no"/>
+<attribute name="VALUE" value=" MCP2515" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="SO" package="SO18W">
+<connects>
+<connect gate="&gt;NAME" pin="CLKOUT" pad="3"/>
+<connect gate="&gt;NAME" pin="CS" pad="16"/>
+<connect gate="&gt;NAME" pin="INT" pad="12"/>
+<connect gate="&gt;NAME" pin="OSC1" pad="8"/>
+<connect gate="&gt;NAME" pin="OSC2" pad="7"/>
+<connect gate="&gt;NAME" pin="RESET" pad="17"/>
+<connect gate="&gt;NAME" pin="RX0BF" pad="11"/>
+<connect gate="&gt;NAME" pin="RX1BF" pad="10"/>
+<connect gate="&gt;NAME" pin="RXCAN" pad="2"/>
+<connect gate="&gt;NAME" pin="SCK" pad="13"/>
+<connect gate="&gt;NAME" pin="SI" pad="14"/>
+<connect gate="&gt;NAME" pin="SO" pad="15"/>
+<connect gate="&gt;NAME" pin="TX0RTS" pad="4"/>
+<connect gate="&gt;NAME" pin="TX1RTS" pad="5"/>
+<connect gate="&gt;NAME" pin="TX2RTS" pad="6"/>
+<connect gate="&gt;NAME" pin="TXCAN" pad="1"/>
+<connect gate="P" pin="VDD" pad="18"/>
+<connect gate="P" pin="VSS" pad="9"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="PROD_ID" value="IC-09906" constant="no"/>
+<attribute name="VALUE" value="MCP2515" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
