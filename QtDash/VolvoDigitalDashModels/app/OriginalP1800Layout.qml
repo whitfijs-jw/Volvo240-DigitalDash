@@ -33,9 +33,11 @@ Item {
         property real smallgaugeNeedleCenterRadius: 0.05
         property real smallgaugeNeedleYOffset: 0
 
-        property real centerGaugeHeight: parent.height / 1.2
+        property real centerGaugeHeight: parent.height * (380/480)
+        property real centerGaugeWidth: parent.width * (84/480)
         property real centerGaugeYOffset: -parent.height / 24
         property real coolantTempYOffset: -parent.height * (95/480)
+        property real centerLinearGaugeXOffset: -parent.height * (1/480)
         property real oilTempYOffset: parent.height * (97/480)
 
         Rectangle {
@@ -133,6 +135,7 @@ Item {
         Rectangle {
             id: centerGaugeContainer
             height: container.centerGaugeHeight
+            width: container.centerGaugeWidth
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: container.centerGaugeYOffset
             anchors.horizontalCenter: parent.horizontalCenter
@@ -141,7 +144,7 @@ Item {
 
             Rectangle {
                 height: container.height / 24
-                width: container.height / 3.84
+                width: container.height / 3.86
 
                 LinearGaugeDelegate {
                     id: coolantTempDelegate
@@ -161,11 +164,12 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.verticalCenterOffset: container.coolantTempYOffset
                 anchors.horizontalCenter: parent.horizontalCenter
+                anchors.horizontalCenterOffset: container.centerLinearGaugeXOffset
             }
 
             Rectangle {
                 height: container.height / 24
-                width: container.height / 3.84
+                width: container.height / 3.86
 
                 LinearGaugeDelegate {
                     id: oilTempDelegate
@@ -187,6 +191,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.verticalCenterOffset: container.oilTempYOffset
                 anchors.horizontalCenter: parent.horizontalCenter
+                anchors.horizontalCenterOffset: container.centerLinearGaugeXOffset
             }
 
             Image {
@@ -194,6 +199,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 source: "qrc:/gauge-faces-p1800/oil-coolant-temp-p1800.png"
                 fillMode: Image.PreserveAspectFit
+                anchors.fill: parent
             }
         }
 
