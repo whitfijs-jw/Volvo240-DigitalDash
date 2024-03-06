@@ -4864,6 +4864,7 @@ Part Number: HA-522</description>
 </connects>
 <technologies>
 <technology name=""/>
+<technology name="-DEFG-X007T"/>
 </technologies>
 </device>
 </devices>
@@ -9390,7 +9391,7 @@ SOIC, 0.3 inch width</description>
 <attributes>
 </attributes>
 <variantdefs>
-<variantdef name="REVC" current="yes"/>
+<variantdef name="REVC"/>
 </variantdefs>
 <classes>
 <class number="0" name="default" width="0" drill="0">
@@ -9576,7 +9577,7 @@ SOIC, 0.3 inch width</description>
 <part name="R58" library="digital_dash" deviceset="RC0603JR" device="" technology="-07100RL" value="100R"/>
 <part name="SUPPLY43" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="R59" library="digital_dash" deviceset="RC0603FR" device="" technology="-10100KL" value="100k 1%"/>
-<part name="IC7" library="digital_dash" deviceset="IL300" device=""/>
+<part name="IC7" library="digital_dash" deviceset="IL300" device="" technology="-DEFG-X007T" value="IL300-DEFG-X007T"/>
 <part name="SUPPLY41" library="SparkFun-PowerSymbols" deviceset="12V" device=""/>
 <part name="R61" library="digital_dash" deviceset="RC0603FR" device="" technology="-07270RL" value="270 1%"/>
 <part name="GND61" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
