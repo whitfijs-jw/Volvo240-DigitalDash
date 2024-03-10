@@ -75,11 +75,11 @@ Item
 
         needleColor: generation === "740" ? "red" : "orange"
 
-        needleWidth: generation === "740" ? parent.width * 0.03 : parent.width * 0.015
-        needleLength: generation === "740" ? parent.width * 0.525 : parent.width * 0.425
-        needleOffset: parent.width * .15 / 2
+        needleWidth: generation === "740" ? 0.03 : 0.015
+        needleLength: generation === "740" ? 0.525 : 0.425
+        needleOffset: .075
 
-        needleCenterRadius: generation === "740" ? 0.15: 0.10
+        needleCenterRadius: generation === "740" ? 0.15 : 0.10
 
         dir: RotationAnimation.Shortest
     }
@@ -110,9 +110,9 @@ Item
 
         needleColor: generation === "740" ? "red" : "orange"
 
-        needleWidth: generation === "740" ? parent.width * 0.02 : parent.width * 0.015
-        needleLength: generation === "740" ? parent.width * 0.525 : parent.width * 0.425
-        needleOffset: parent.width * .15 / 2
+        needleWidth: generation === "740" ? 0.02 : 0.015
+        needleLength: generation === "740" ? 0.525 : 0.425
+        needleOffset: .075
 
         needleCenterRadius: generation === "740" ? 0.15: 0.10
 
@@ -144,9 +144,9 @@ Item
         needleColor: generation === "740" ? "red" : "orange"
         needleResource: clockLarge.needleResource
 
-        needleWidth: generation === "740" ? parent.width * 0.035 : parent.width * 0.020
-        needleLength: generation === "740" ? parent.width * 0.425 : parent.width * 0.275
-        needleOffset: generation === "740" ? (parent.width * .15 / 2) : (parent.width * 0.05 / 2)
+        needleWidth: generation === "740" ? 0.035 : 0.020
+        needleLength: generation === "740" ? 0.425 : 0.275
+        needleOffset: generation === "740" ? .075 : 0.025
 
         needleCenterRadius: generation === "740" ? 0.15: 0.10
 

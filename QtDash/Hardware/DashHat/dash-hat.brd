@@ -23,7 +23,7 @@
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
 <layer number="15" name="Route15" color="4" fill="6" visible="yes" active="yes"/>
-<layer number="16" name="Bottom" color="9" fill="1" visible="no" active="yes"/>
+<layer number="16" name="Bottom" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
@@ -1828,9 +1828,9 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="VALUE" x="70.866" y="37.592" size="0.6096" layer="27" font="vector" ratio="20" align="top-center"/>
 </element>
 <element name="R18" library="digital_dash" package="0603" value="470R" x="70.866" y="41.402" rot="R180"/>
-<element name="R19" library="digital_dash" package="0603" value="470R" x="55.118" y="39.878" smashed="yes" rot="R270">
+<element name="R19" library="digital_dash" package="0603" value="1k" x="55.118" y="39.878" smashed="yes" rot="R270">
 <attribute name="NAME" x="54.356" y="40.132" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center"/>
-<attribute name="VALUE" x="54.356" y="39.878" size="0.6096" layer="27" font="vector" ratio="20" rot="R270" align="top-center"/>
+<attribute name="VALUE" value="1k" x="54.356" y="39.878" size="0.6096" layer="27" font="vector" ratio="20" rot="R270" align="top-center"/>
 </element>
 <element name="R20" library="digital_dash" package="0603" value="470R" x="70.866" y="46.482" smashed="yes">
 <attribute name="NAME" x="70.866" y="44.958" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center"/>
@@ -1840,9 +1840,9 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="NAME" x="70.866" y="44.196" size="0.6096" layer="25" font="vector" ratio="20" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="70.866" y="43.688" size="0.6096" layer="27" font="vector" ratio="20" rot="R180" align="top-center"/>
 </element>
-<element name="R22" library="digital_dash" package="0603" value="470R" x="55.118" y="44.45" smashed="yes" rot="R90">
+<element name="R22" library="digital_dash" package="0603" value="1k" x="55.118" y="44.45" smashed="yes" rot="R90">
 <attribute name="NAME" x="54.356" y="44.45" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center"/>
-<attribute name="VALUE" x="55.88" y="44.45" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center"/>
+<attribute name="VALUE" value="1k" x="55.88" y="44.45" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center"/>
 </element>
 <element name="R23" library="digital_dash" package="0603" value="470R" x="70.866" y="48.006"/>
 <element name="R24" library="digital_dash" package="0603" value="470R" x="70.866" y="51.562" rot="R180"/>
@@ -1854,13 +1854,13 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="NAME" x="70.866" y="54.356" size="0.6096" layer="25" font="vector" ratio="20" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="70.866" y="53.848" size="0.6096" layer="27" font="vector" ratio="20" rot="R180" align="top-center"/>
 </element>
-<element name="R27" library="digital_dash" package="0603" value="470R" x="55.118" y="50.038" smashed="yes" rot="R270">
+<element name="R27" library="digital_dash" package="0603" value="1k" x="55.118" y="50.038" smashed="yes" rot="R270">
 <attribute name="NAME" x="54.356" y="50.038" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center"/>
-<attribute name="VALUE" x="54.356" y="50.038" size="0.6096" layer="27" font="vector" ratio="20" rot="R270" align="top-center"/>
+<attribute name="VALUE" value="1k" x="54.356" y="50.038" size="0.6096" layer="27" font="vector" ratio="20" rot="R270" align="top-center"/>
 </element>
-<element name="R28" library="digital_dash" package="0603" value="470R" x="55.118" y="54.864" smashed="yes" rot="R90">
+<element name="R28" library="digital_dash" package="0603" value="1k" x="55.118" y="54.864" smashed="yes" rot="R90">
 <attribute name="NAME" x="54.356" y="54.864" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center"/>
-<attribute name="VALUE" x="55.88" y="54.864" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center"/>
+<attribute name="VALUE" value="1k" x="55.88" y="54.864" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center"/>
 </element>
 <element name="OK2" library="digital_dash" package="SMD16" value="ILQ1X009" x="62.484" y="47.498" rot="MR0"/>
 <element name="R29" library="digital_dash" package="0603" value="470R" x="70.612" y="56.134" smashed="yes" rot="MR180">
@@ -1871,9 +1871,9 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="NAME" x="70.612" y="54.102" size="0.6096" layer="26" font="vector" ratio="20" rot="MR0" align="bottom-center"/>
 <attribute name="VALUE" x="70.612" y="52.578" size="0.6096" layer="28" font="vector" ratio="20" rot="MR0" align="top-center"/>
 </element>
-<element name="R31" library="digital_dash" package="0603" value="470R" x="55.118" y="54.864" smashed="yes" rot="MR90">
+<element name="R31" library="digital_dash" package="0603" value="1k" x="55.118" y="54.864" smashed="yes" rot="MR90">
 <attribute name="NAME" x="53.721" y="54.483" size="0.6096" layer="26" font="vector" ratio="20" rot="MR90" align="bottom-center"/>
-<attribute name="VALUE" x="54.356" y="54.864" size="0.6096" layer="28" font="vector" ratio="20" rot="MR90" align="top-center"/>
+<attribute name="VALUE" value="1k" x="54.356" y="54.864" size="0.6096" layer="28" font="vector" ratio="20" rot="MR90" align="top-center"/>
 </element>
 <element name="R32" library="digital_dash" package="0603" value="470R" x="70.612" y="48.006" smashed="yes" rot="MR180">
 <attribute name="NAME" x="70.612" y="49.276" size="0.6096" layer="26" font="vector" ratio="20" rot="MR180" align="bottom-center"/>
@@ -1883,9 +1883,9 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="NAME" x="70.612" y="50.292" size="0.6096" layer="26" font="vector" ratio="20" rot="MR0" align="bottom-center"/>
 <attribute name="VALUE" x="70.612" y="51.054" size="0.6096" layer="28" font="vector" ratio="20" rot="MR0" align="top-center"/>
 </element>
-<element name="R34" library="digital_dash" package="0603" value="470R" x="55.118" y="50.038" smashed="yes" rot="MR270">
+<element name="R34" library="digital_dash" package="0603" value="1k" x="55.118" y="50.038" smashed="yes" rot="MR270">
 <attribute name="NAME" x="54.356" y="49.784" size="0.6096" layer="26" font="vector" ratio="20" rot="MR270" align="bottom-center"/>
-<attribute name="VALUE" x="55.88" y="50.038" size="0.6096" layer="28" font="vector" ratio="20" rot="MR270" align="top-center"/>
+<attribute name="VALUE" value="1k" x="55.88" y="50.038" size="0.6096" layer="28" font="vector" ratio="20" rot="MR270" align="top-center"/>
 </element>
 <element name="R35" library="digital_dash" package="0603" value="470R" x="70.612" y="46.482" smashed="yes" rot="MR180">
 <attribute name="NAME" x="70.612" y="45.72" size="0.6096" layer="26" font="vector" ratio="20" rot="MR180" align="bottom-center"/>
@@ -1900,13 +1900,13 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="NAME" x="70.612" y="39.878" size="0.6096" layer="26" font="vector" ratio="20" rot="MR0" align="bottom-center"/>
 <attribute name="VALUE" x="70.612" y="40.64" size="0.6096" layer="28" font="vector" ratio="20" rot="MR0" align="top-center"/>
 </element>
-<element name="R39" library="digital_dash" package="0603" value="470R" x="55.118" y="44.45" smashed="yes" rot="MR90">
+<element name="R39" library="digital_dash" package="0603" value="1k" x="55.118" y="44.45" smashed="yes" rot="MR90">
 <attribute name="NAME" x="53.721" y="44.577" size="0.6096" layer="26" font="vector" ratio="20" rot="MR90" align="bottom-center"/>
-<attribute name="VALUE" x="54.356" y="44.45" size="0.6096" layer="28" font="vector" ratio="20" rot="MR90" align="top-center"/>
+<attribute name="VALUE" value="1k" x="54.356" y="44.45" size="0.6096" layer="28" font="vector" ratio="20" rot="MR90" align="top-center"/>
 </element>
-<element name="R40" library="digital_dash" package="0603" value="470R" x="55.118" y="39.878" smashed="yes" rot="MR270">
+<element name="R40" library="digital_dash" package="0603" value="1k" x="55.118" y="39.878" smashed="yes" rot="MR270">
 <attribute name="NAME" x="54.356" y="40.259" size="0.6096" layer="26" font="vector" ratio="20" rot="MR270" align="bottom-center"/>
-<attribute name="VALUE" x="55.88" y="39.878" size="0.6096" layer="28" font="vector" ratio="20" rot="MR270" align="top-center"/>
+<attribute name="VALUE" value="1k" x="55.88" y="39.878" size="0.6096" layer="28" font="vector" ratio="20" rot="MR270" align="top-center"/>
 </element>
 <element name="C9" library="digital_dash" package="0603" value="100n" x="51.562" y="36.068" smashed="yes" rot="R270">
 <attribute name="NAME" x="51.308" y="33.782" size="0.6096" layer="25" font="vector" ratio="20" rot="R270" align="bottom-center"/>
@@ -1921,9 +1921,9 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <element name="OK3" library="digital_dash" package="SMD16" value="ILQ1X009" x="62.484" y="22.352" rot="R180"/>
 <element name="R41" library="digital_dash" package="0603" value="470R" x="71.628" y="13.462"/>
 <element name="R42" library="digital_dash" package="0603" value="470R" x="71.628" y="16.51" rot="R180"/>
-<element name="R43" library="digital_dash" package="0603" value="470R" x="55.118" y="14.986" smashed="yes" rot="R270">
+<element name="R43" library="digital_dash" package="0603" value="1k" x="55.118" y="14.986" smashed="yes" rot="R270">
 <attribute name="NAME" x="54.356" y="14.986" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center"/>
-<attribute name="VALUE" x="54.356" y="14.986" size="0.6096" layer="27" font="vector" ratio="20" rot="R270" align="top-center"/>
+<attribute name="VALUE" value="1k" x="54.356" y="14.986" size="0.6096" layer="27" font="vector" ratio="20" rot="R270" align="top-center"/>
 </element>
 <element name="R44" library="digital_dash" package="0603" value="470R" x="71.628" y="21.59" smashed="yes">
 <attribute name="NAME" x="71.628" y="20.32" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center"/>
@@ -1933,9 +1933,9 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="NAME" x="71.628" y="19.304" size="0.6096" layer="25" font="vector" ratio="20" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="71.628" y="18.796" size="0.6096" layer="27" font="vector" ratio="20" rot="R180" align="top-center"/>
 </element>
-<element name="R46" library="digital_dash" package="0603" value="470R" x="55.118" y="19.558" smashed="yes" rot="R90">
+<element name="R46" library="digital_dash" package="0603" value="1k" x="55.118" y="19.558" smashed="yes" rot="R90">
 <attribute name="NAME" x="54.356" y="20.447" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center"/>
-<attribute name="VALUE" x="55.88" y="19.558" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center"/>
+<attribute name="VALUE" value="1k" x="55.88" y="19.558" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center"/>
 </element>
 <element name="R47" library="digital_dash" package="0603" value="470R" x="71.628" y="23.114"/>
 <element name="R48" library="digital_dash" package="0603" value="470R" x="71.628" y="26.67" rot="R180"/>
@@ -1947,13 +1947,13 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="NAME" x="71.628" y="29.464" size="0.6096" layer="25" font="vector" ratio="20" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="71.628" y="28.956" size="0.6096" layer="27" font="vector" ratio="20" rot="R180" align="top-center"/>
 </element>
-<element name="R51" library="digital_dash" package="0603" value="470R" x="55.118" y="25.146" smashed="yes" rot="R270">
+<element name="R51" library="digital_dash" package="0603" value="1k" x="55.118" y="25.146" smashed="yes" rot="R270">
 <attribute name="NAME" x="54.356" y="25.781" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center"/>
-<attribute name="VALUE" x="54.356" y="25.146" size="0.6096" layer="27" font="vector" ratio="20" rot="R270" align="top-center"/>
+<attribute name="VALUE" value="1k" x="54.356" y="25.146" size="0.6096" layer="27" font="vector" ratio="20" rot="R270" align="top-center"/>
 </element>
-<element name="R52" library="digital_dash" package="0603" value="470R" x="55.118" y="29.718" smashed="yes" rot="R90">
+<element name="R52" library="digital_dash" package="0603" value="1k" x="55.118" y="29.718" smashed="yes" rot="R90">
 <attribute name="NAME" x="54.356" y="29.718" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center"/>
-<attribute name="VALUE" x="55.88" y="29.718" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center"/>
+<attribute name="VALUE" value="1k" x="55.88" y="29.718" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center"/>
 </element>
 <element name="C12" library="digital_dash" package="0603" value="100n" x="73.66" y="20.066" smashed="yes" rot="MR270">
 <attribute name="NAME" x="73.66" y="22.606" size="0.6096" layer="26" font="vector" ratio="20" rot="MR270" align="bottom-center"/>
@@ -1995,7 +1995,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="NAME" x="68.834" y="23.241" size="0.6096" layer="26" font="vector" ratio="20" rot="MR90" align="bottom-center"/>
 <attribute name="VALUE" value="100k 1%" x="67.183" y="23.241" size="0.6096" layer="28" font="vector" ratio="20" rot="MR90" align="top-center"/>
 </element>
-<element name="IC7" library="digital_dash" package="DIL8-SMD" value="IL300" x="62.484" y="29.972" rot="MR0"/>
+<element name="IC7" library="digital_dash" package="DIL8-SMD" value="IL300-DEFG-X007T" x="62.484" y="29.972" rot="MR0"/>
 <element name="R61" library="digital_dash" package="0603" value="270 1%" x="70.866" y="31.242" rot="MR0"/>
 <element name="R62" library="digital_dash" package="0603" value="20k 1%" x="51.308" y="28.448" smashed="yes" rot="MR180">
 <attribute name="NAME" x="48.768" y="28.702" size="0.6096" layer="26" font="vector" ratio="20" rot="MR180" align="bottom-center"/>
@@ -2229,10 +2229,10 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="NAME" x="99.695" y="63.373" size="0.6096" layer="25" font="vector" ratio="20" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="97.917" y="64.135" size="0.6096" layer="27" font="vector" ratio="20" rot="R180" align="top-center"/>
 </element>
-<element name="C26" library="digital_dash" package="0603" value="1n" x="95.377" y="62.484" smashed="yes" rot="R90">
+<element name="C26" library="digital_dash" package="0603" value="10n" x="95.377" y="62.484" smashed="yes" rot="R90">
 <attribute name="VOLTAGE" value="50V" x="95.377" y="62.484" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="94.615" y="62.484" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center"/>
-<attribute name="VALUE" x="96.139" y="62.484" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center"/>
+<attribute name="VALUE" value="10n" x="96.139" y="62.484" size="0.6096" layer="27" font="vector" ratio="20" rot="R90" align="top-center"/>
 </element>
 <element name="R13" library="digital_dash" package="0603" value="1k" x="95.377" y="65.913" smashed="yes" rot="R90">
 <attribute name="NAME" x="94.615" y="65.913" size="0.6096" layer="25" font="vector" ratio="20" rot="R90" align="bottom-center"/>

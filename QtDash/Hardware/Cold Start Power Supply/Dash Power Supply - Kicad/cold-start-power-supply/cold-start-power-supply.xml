@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>/home/whitfijs/git/Volvo240-DigitalDash/QtDash/Hardware/Cold Start Power Supply/Dash Power Supply - Kicad/cold-start-power-supply/cold-start-power-supply.kicad_sch</source>
+    <date>Mon 04 Mar 2024 10:51:38 PM EST</date>
+    <tool>Eeschema 6.0.10-86aedd382b~118~ubuntu20.04.1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Cold Start Power Supply</title>
+        <company/>
+        <rev>B</rev>
+        <date>2024-03-04</date>
+        <source>cold-start-power-supply.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C1">
+      <value>3.3u</value>
+      <footprint>Capacitor_SMD:CP_Elec_5x5.3</footprint>
+      <libsource lib="Device" part="C_Polarized" description="Polarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7f5c5a33-bffa-44be-b723-f59e60ea9e4b</tstamps>
+    </comp>
+    <comp ref="C2">
+      <value>3.3u</value>
+      <footprint>Capacitor_SMD:CP_Elec_5x5.3</footprint>
+      <libsource lib="Device" part="C_Polarized" description="Polarized capacitor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3170b254-6a0f-4ab8-a131-bd04b3acda0a</tstamps>
+    </comp>
+    <comp ref="C3">
+      <value>3.3u</value>
+      <footprint>Capacitor_SMD:CP_Elec_5x5.3</footprint>
+      <fields>
+        <field name="PN">EEE-FK1K3R3R</field>
+      </fields>
+      <libsource lib="Device" part="C_Polarized" description="Polarized capacitor"/>
+      <property name="PN" value="EEE-FK1K3R3R"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ca5218cb-dd0d-46db-a2b9-396537593985</tstamps>
+    </comp>
+    <comp ref="C4">
+      <value>100n</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="PN">CL10B104MB8NNNC</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="PN" value="CL10B104MB8NNNC"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6d011a38-f58f-40c5-bb71-f7e76e74bfba</tstamps>
+    </comp>
+    <comp ref="C5">
+      <value>1n</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="PN">CL10B102KB8NNWC</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="PN" value="CL10B102KB8NNWC"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>39ab6025-0f4d-471a-9fc0-851e61ed537d</tstamps>
+    </comp>
+    <comp ref="C6">
+      <value>.68u</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="PN">CL10B684KO8NFNC</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="PN" value="CL10B684KO8NFNC"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>759a9689-e009-443b-a054-3d3d1aa22707</tstamps>
+    </comp>
+    <comp ref="C7">
+      <value>1n</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="PN">CL10B102KB8NNWC</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="PN" value="CL10B102KB8NNWC"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0cd77f7d-d460-4f33-acea-ec52b8800920</tstamps>
+    </comp>
+    <comp ref="C8">
+      <value>4.7u</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="PN">CL10A475KL8NRNC</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="PN" value="CL10A475KL8NRNC"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>280577c9-537d-4541-a697-86d3f22c6cbe</tstamps>
+    </comp>
+    <comp ref="C9">
+      <value>100u</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <fields>
+        <field name="PN">CL32A107MPVNNNE </field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="PN" value="CL32A107MPVNNNE "/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>397879e2-0a37-438a-8109-6a8fe1795147</tstamps>
+    </comp>
+    <comp ref="C10">
+      <value>100u</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <fields>
+        <field name="PN">CL32A107MPVNNNE</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="PN" value="CL32A107MPVNNNE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>745421e4-91e7-4f8a-86bd-bd91dcb5751d</tstamps>
+    </comp>
+    <comp ref="C11">
+      <value>4.7u</value>
+      <footprint>Capacitor_SMD:C_1210_3225Metric</footprint>
+      <fields>
+        <field name="PN">CL10A475KL8NRNC</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="PN" value="CL10A475KL8NRNC"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d7e722d2-dcb8-4ef5-9c9e-7b3647f941ac</tstamps>
+    </comp>
+    <comp ref="D1">
+      <value>D_Schottky</value>
+      <footprint>Package_TO_SOT_SMD:TO-263-2_TabPin1</footprint>
+      <fields>
+        <field name="PN">STPS8H100G-TR</field>
+      </fields>
+      <libsource lib="Device" part="D_Schottky" description="Schottky diode"/>
+      <property name="PN" value="STPS8H100G-TR"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>68a609b0-8a61-49f0-a46c-dc1a8c7d95c1</tstamps>
+    </comp>
+    <comp ref="H1">
+      <value>MountingHole</value>
+      <footprint>MountingHole:MountingHole_2.2mm_M2_Pad_Via</footprint>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>db8b0bab-fd2d-45c0-a8ea-0bcbb3f4d838</tstamps>
+    </comp>
+    <comp ref="H2">
+      <value>MountingHole</value>
+      <footprint>MountingHole:MountingHole_2.2mm_M2_Pad_Via</footprint>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>52b365fc-f56a-4bd9-8a86-6c0aa71966c5</tstamps>
+    </comp>
+    <comp ref="H3">
+      <value>MountingHole</value>
+      <footprint>MountingHole:MountingHole_2.2mm_M2_Pad_Via</footprint>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ec7f6dff-a503-4162-91c8-47f43a26ad1e</tstamps>
+    </comp>
+    <comp ref="H4">
+      <value>MountingHole</value>
+      <footprint>MountingHole:MountingHole_2.2mm_M2_Pad_Via</footprint>
+      <libsource lib="Mechanical" part="MountingHole" description="Mounting Hole without connection"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>619f5196-4751-47dd-ae2d-5b661611dfb9</tstamps>
+    </comp>
+    <comp ref="IC1">
+      <value>LM3488</value>
+      <footprint>Package_SO:MSOP-8_3x3mm_P0.65mm</footprint>
+      <fields>
+        <field name="PN">LM3488QMMX/NOPB</field>
+      </fields>
+      <libsource lib="volvodash" part="LM3488" description=""/>
+      <property name="PN" value="LM3488QMMX/NOPB"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b233950e-0e71-4fb7-a11b-871ab6c4f1ee</tstamps>
+    </comp>
+    <comp ref="J1">
+      <value>Conn_01x02</value>
+      <footprint>Connector_Wire:SolderWire-1sqmm_1x02_P5.4mm_D1.4mm_OD2.7mm</footprint>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>58a82dd9-ebab-45fa-87a7-af33f87e97c7</tstamps>
+    </comp>
+    <comp ref="J2">
+      <value>Conn_01x02</value>
+      <footprint>Connector_Wire:SolderWire-1sqmm_1x02_P5.4mm_D1.4mm_OD2.7mm</footprint>
+      <libsource lib="Connector_Generic" part="Conn_01x02" description="Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>28bf90b1-651a-4ed5-bba8-8e43180f1c4e</tstamps>
+    </comp>
+    <comp ref="L1">
+      <value>4.7u</value>
+      <footprint>volvodash:DRQ127</footprint>
+      <fields>
+        <field name="PN">DRQ127-4R7-R</field>
+      </fields>
+      <libsource lib="Device" part="L_Coupled_1324" description="Coupled inductor"/>
+      <property name="PN" value="DRQ127-4R7-R"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>853131cf-23d3-490e-9e2b-272c3bdb14f2</tstamps>
+    </comp>
+    <comp ref="Q1">
+      <value>BSC026N08NS5</value>
+      <footprint>Package_TO_SOT_SMD:TDSON-8-1</footprint>
+      <datasheet>http://www.infineon.com/dgdl/Infineon-BSC026N08NS5-DS-v02_01-EN.pdf?fileId=5546d4624ad04ef9014ae2eace7629e0</datasheet>
+      <fields>
+        <field name="PN">DMTH6002LPS-13</field>
+      </fields>
+      <libsource lib="Transistor_FET" part="BSC026N08NS5" description="100A Id, 80V Vds, OptiMOS N-Channel Power MOSFET, 2.6mOhm Ron, Qg (typ) 74.0nC, PG-TDSON-8"/>
+      <property name="PN" value="DMTH6002LPS-13"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6617cb88-b393-4e99-a82e-17438bb5d4e0</tstamps>
+    </comp>
+    <comp ref="R1">
+      <value>20R</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="PN">RC0603JR-0720RL</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="PN" value="RC0603JR-0720RL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e5cecde9-1560-44dd-a37a-789b21b7d168</tstamps>
+    </comp>
+    <comp ref="R2">
+      <value>270 1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="PN">RC0603FR-07270RL</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="PN" value="RC0603FR-07270RL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0bafb403-8361-4354-85f8-892cfa6c7803</tstamps>
+    </comp>
+    <comp ref="R3">
+      <value>75k</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="PN">RC0603JR-0775KL</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="PN" value="RC0603JR-0775KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e014ed94-3f80-43fa-9fd1-024eeeff4d34</tstamps>
+    </comp>
+    <comp ref="R4">
+      <value>0</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6218a67a-6826-49e0-8008-4b2d01825e57</tstamps>
+    </comp>
+    <comp ref="R5">
+      <value>100R</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="PN">RC0603JR-07100RL</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="PN" value="RC0603JR-07100RL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>bde8ecb6-8f54-4c81-a756-d3f5f8297c6e</tstamps>
+    </comp>
+    <comp ref="R6">
+      <value>6mOhm</value>
+      <footprint>volvodash:R3216</footprint>
+      <fields>
+        <field name="PN">PRL1632-R006-F-T1</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="PN" value="PRL1632-R006-F-T1"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6e417949-1c0b-4e2c-a1ca-2496c5b6d272</tstamps>
+    </comp>
+    <comp ref="R7">
+      <value>30.9k 1%</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric</footprint>
+      <fields>
+        <field name="PN">RC1206FR-0730K9L</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="PN" value="RC1206FR-0730K9L"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a03ac130-fa79-40b1-a286-2b47aff1a3e5</tstamps>
+    </comp>
+    <comp ref="R8">
+      <value>10k 1%</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="PN">RC0603FR-1010KL</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="PN" value="RC0603FR-1010KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="cold-start-power-supply.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c9b66316-c53a-44c3-ad56-bd0cc2f2f111</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Connector_Generic" part="Conn_01x02">
+      <description>Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x02</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C">
+      <description>Unpolarized capacitor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C_Polarized">
+      <description>Polarized capacitor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>CP_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_Polarized</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="D_Schottky">
+      <description>Schottky diode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>TO-???*</fp>
+        <fp>*_Diode_*</fp>
+        <fp>*SingleDiode*</fp>
+        <fp>D_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D_Schottky</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="L_Coupled_1324">
+      <description>Coupled inductor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Choke_*</fp>
+        <fp>*Coil*</fp>
+        <fp>Inductor_*</fp>
+        <fp>L_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">L_Coupled_1324</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Mechanical" part="MountingHole">
+      <description>Mounting Hole without connection</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>MountingHole*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">H</field>
+        <field name="Value">MountingHole</field>
+        <field name="Datasheet">~</field>
+      </fields>
+    </libpart>
+    <libpart lib="Transistor_FET" part="BSC026N08NS5">
+      <description>100A Id, 80V Vds, OptiMOS N-Channel Power MOSFET, 2.6mOhm Ron, Qg (typ) 74.0nC, PG-TDSON-8</description>
+      <docs>http://www.infineon.com/dgdl/Infineon-BSC026N08NS5-DS-v02_01-EN.pdf?fileId=5546d4624ad04ef9014ae2eace7629e0</docs>
+      <footprints>
+        <fp>TDSON*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">BSC026N08NS5</field>
+        <field name="Footprint">Package_TO_SOT_SMD:TDSON-8-1</field>
+        <field name="Datasheet">http://www.infineon.com/dgdl/Infineon-BSC026N08NS5-DS-v02_01-EN.pdf?fileId=5546d4624ad04ef9014ae2eace7629e0</field>
+      </fields>
+      <pins>
+        <pin num="1" name="S" type="passive"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="S" type="passive"/>
+        <pin num="4" name="G" type="passive"/>
+        <pin num="5" name="D" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="volvodash" part="LM3488">
+      <fields>
+        <field name="Reference">IC</field>
+        <field name="Value">LM3488</field>
+      </fields>
+      <pins>
+        <pin num="1" name="ISEN" type="input"/>
+        <pin num="2" name="COMP" type="input"/>
+        <pin num="3" name="FB" type="input"/>
+        <pin num="4" name="AGND" type="power_in"/>
+        <pin num="5" name="PGND" type="power_in"/>
+        <pin num="6" name="DR" type="output"/>
+        <pin num="7" name="SYNC" type="input"/>
+        <pin num="8" name="VIN" type="power_in"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector_Generic">
+      <uri>/usr/share/kicad/symbols//Connector_Generic.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>/usr/share/kicad/symbols//Device.kicad_sym</uri>
+    </library>
+    <library logical="Mechanical">
+      <uri>/usr/share/kicad/symbols//Mechanical.kicad_sym</uri>
+    </library>
+    <library logical="Transistor_FET">
+      <uri>/usr/share/kicad/symbols//Transistor_FET.kicad_sym</uri>
+    </library>
+    <library logical="volvodash">
+      <uri>/home/whitfijs/git/Volvo240-DigitalDash/QtDash/Hardware/kicad-libraries/volvodash.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="/DRAIN">
+      <node ref="C8" pin="2" pintype="passive"/>
+      <node ref="L1" pin="3" pinfunction="3" pintype="passive"/>
+      <node ref="Q1" pin="5" pinfunction="D" pintype="passive"/>
+    </net>
+    <net code="2" name="/LOUT">
+      <node ref="C8" pin="1" pintype="passive"/>
+      <node ref="D1" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="L1" pin="4" pinfunction="4" pintype="passive"/>
+    </net>
+    <net code="3" name="/SOURCE">
+      <node ref="Q1" pin="1" pinfunction="S" pintype="passive"/>
+      <node ref="Q1" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="Q1" pin="3" pinfunction="S" pintype="passive"/>
+      <node ref="R5" pin="1" pintype="passive"/>
+      <node ref="R6" pin="1" pintype="passive"/>
+    </net>
+    <net code="4" name="/VIN">
+      <node ref="C1" pin="1" pintype="passive"/>
+      <node ref="C2" pin="1" pintype="passive"/>
+      <node ref="C3" pin="1" pintype="passive"/>
+      <node ref="J1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="L1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="R1" pin="1" pintype="passive"/>
+    </net>
+    <net code="5" name="/VOUT">
+      <node ref="C10" pin="1" pintype="passive"/>
+      <node ref="C11" pin="1" pintype="passive"/>
+      <node ref="C9" pin="1" pintype="passive"/>
+      <node ref="D1" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="J2" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="R7" pin="1" pintype="passive"/>
+    </net>
+    <net code="6" name="GND">
+      <node ref="C1" pin="2" pintype="passive"/>
+      <node ref="C10" pin="2" pintype="passive"/>
+      <node ref="C11" pin="2" pintype="passive"/>
+      <node ref="C2" pin="2" pintype="passive"/>
+      <node ref="C3" pin="2" pintype="passive"/>
+      <node ref="C4" pin="2" pintype="passive"/>
+      <node ref="C5" pin="2" pintype="passive"/>
+      <node ref="C6" pin="2" pintype="passive"/>
+      <node ref="C7" pin="2" pintype="passive"/>
+      <node ref="C9" pin="2" pintype="passive"/>
+      <node ref="IC1" pin="4" pinfunction="AGND" pintype="power_in"/>
+      <node ref="IC1" pin="5" pinfunction="PGND" pintype="power_in"/>
+      <node ref="J1" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J2" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="L1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R3" pin="1" pintype="passive"/>
+      <node ref="R6" pin="2" pintype="passive"/>
+      <node ref="R8" pin="2" pintype="passive"/>
+    </net>
+    <net code="7" name="Net-(C4-Pad1)">
+      <node ref="C4" pin="1" pintype="passive"/>
+      <node ref="IC1" pin="8" pinfunction="VIN" pintype="power_in"/>
+      <node ref="R1" pin="2" pintype="passive"/>
+    </net>
+    <net code="8" name="Net-(C5-Pad1)">
+      <node ref="C5" pin="1" pintype="passive"/>
+      <node ref="IC1" pin="2" pinfunction="COMP" pintype="input"/>
+      <node ref="R2" pin="1" pintype="passive"/>
+    </net>
+    <net code="9" name="Net-(C6-Pad1)">
+      <node ref="C6" pin="1" pintype="passive"/>
+      <node ref="R2" pin="2" pintype="passive"/>
+    </net>
+    <net code="10" name="Net-(C7-Pad1)">
+      <node ref="C7" pin="1" pintype="passive"/>
+      <node ref="IC1" pin="1" pinfunction="ISEN" pintype="input"/>
+      <node ref="R5" pin="2" pintype="passive"/>
+    </net>
+    <net code="11" name="Net-(IC1-Pad3)">
+      <node ref="IC1" pin="3" pinfunction="FB" pintype="input"/>
+      <node ref="R7" pin="2" pintype="passive"/>
+      <node ref="R8" pin="1" pintype="passive"/>
+    </net>
+    <net code="12" name="Net-(IC1-Pad6)">
+      <node ref="IC1" pin="6" pinfunction="DR" pintype="output"/>
+      <node ref="R4" pin="1" pintype="passive"/>
+    </net>
+    <net code="13" name="Net-(IC1-Pad7)">
+      <node ref="IC1" pin="7" pinfunction="SYNC" pintype="input"/>
+      <node ref="R3" pin="2" pintype="passive"/>
+    </net>
+    <net code="14" name="Net-(Q1-Pad4)">
+      <node ref="Q1" pin="4" pinfunction="G" pintype="passive"/>
+      <node ref="R4" pin="2" pintype="passive"/>
+    </net>
+  </nets>
+</export>

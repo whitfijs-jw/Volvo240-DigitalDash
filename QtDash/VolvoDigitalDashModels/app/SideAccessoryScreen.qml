@@ -78,24 +78,91 @@ Window {
     }
 
     // 740 gauges
-    property list<Component> delegates740: [
-        BoostDelegate740Style {
-            id: boostDelegate740
+    property real needleLength_740: 0.75
+    property real needleWidth_740: 0.05;
+    property real needleOffset_740: 0.125
+    property real gaugeYOffset_740: 1.0 / 4.5
+    property real needleCenterRadius_740: 0.25
+
+    property list<Item> delegates740: [
+        AccessoryGaugeDelegate {
+            imageSource: "qrc:/gauge-faces-740-940/740_boost.png"
+            needleResource: "qrc:/needles/needle-740-940.png"
+
+            minAngle: -228
+            maxAngle: 45
+
+
+            needleWidth: needleWidth_740
+            needleLength: 0.55
+            needleOffset: needleOffset_740
+            needleCenterRadius: needleCenterRadius_740
+            yOffset: 0.0
         },
-        CoolantTempDelegate740Style {
-            id: coolantDelegate740
+        AccessoryGaugeDelegate {
+            minAngle: -115
+            maxAngle: -65
+
+            imageSource: "qrc:/gauge-faces-740-940/740_coolant_temp.png"
+            needleResource: "qrc:/needles/needle-740-940.png"
+
+            needleWidth: needleWidth_740
+            needleLength: needleLength_740
+            needleOffset: needleOffset_740
+            needleCenterRadius: needleCenterRadius_740
+            yOffset: gaugeYOffset_740
         },
-        FuelLevelDelegate740Style {
-            id: fuelLevelDelegate740
+        AccessoryGaugeDelegate {
+            minAngle: -115
+            maxAngle: -65
+
+            imageSource: "qrc:/gauge-faces-740-940/740_fuel.png"
+            needleResource: "qrc:/needles/needle-740-940.png"
+
+            needleWidth: needleWidth_740
+            needleLength: needleLength_740
+            needleOffset: needleOffset_740
+            needleCenterRadius: needleCenterRadius_740
+            yOffset: gaugeYOffset_740
         },
-        OilTempDelegate740Style {
-            id: oilTempDelegate740
+        AccessoryGaugeDelegate {
+            minAngle: -125
+            maxAngle: -55
+
+            imageSource: "qrc:/gauge-faces-740-940/740_oil_temperature.png"
+            needleResource: "qrc:/needles/needle-740-940.png"
+
+            needleWidth: needleWidth_740
+            needleLength: needleLength_740
+            needleOffset: needleOffset_740
+            needleCenterRadius: needleCenterRadius_740
+            yOffset: gaugeYOffset_740
         },
-        OilPressureDelegate740Style {
-            id: oilPressureDelegate740
+        AccessoryGaugeDelegate {
+            minAngle: -125
+            maxAngle: -55
+
+            imageSource: "qrc:/gauge-faces-740-940/740_oil_pressure.png"
+            needleResource: "qrc:/needles/needle-740-940.png"
+
+            needleWidth: needleWidth_740
+            needleLength: needleLength_740
+            needleOffset: needleOffset_740
+            needleCenterRadius: needleCenterRadius_740
+            yOffset: gaugeYOffset_740
         },
-        VoltmeterDelegate740Style {
-            id: voltMeterDelegate740
+        AccessoryGaugeDelegate {
+            minAngle: -130
+            maxAngle: -55
+
+            imageSource: "qrc:/gauge-faces-740-940/740_voltmeter.png"
+            needleResource: "qrc:/needles/needle-740-940.png"
+
+            needleWidth: needleWidth_740
+            needleLength: needleLength_740
+            needleOffset: needleOffset_740
+            needleCenterRadius: needleCenterRadius_740
+            yOffset: gaugeYOffset_740
         }
     ]
 
@@ -120,25 +187,30 @@ Window {
             name: "voltmeter"
         }
     }
-
     // 240 gauges
-    property list<Component> delegates240: [
-        BoostDelegate240Style {
-            id: boostDelegate240
+    property list<Item> delegates240: [
+        AccessoryGaugeDelegate {
+            imageSource: "qrc:/accCluster/boost_black_no_numbers.png"
+
+            minAngle: -227
+            maxAngle: 48
+
+            needleLength: 0.525
+
+            yOffset: 0.0
         },
-        OilTempereatureDelegate240Style {
-            id: oilTemperatureDelegate240
+        AccessoryGaugeDelegate {
+            imageSource: "qrc:/accCluster/later-240-oil-temp.png"
         },
-        OilPressureDelegate240Style {
-            id: oilPressureDelegate240
+        AccessoryGaugeDelegate {
+            imageSource: "qrc:/accCluster/later-240-oil-pressure.png"
         },
-        VoltmeterDelegate240Style {
-            id: voltMeterDelegate240
+        AccessoryGaugeDelegate {
         },
         ClockDelegate240Style {
-            id: clockDelegate240Style
         }
     ]
+
     ListModel {
         id: available240Gauges
         ListElement {
@@ -158,23 +230,70 @@ Window {
         }
     }
 
-    //p1800 gauges
-    property list<Component> delegatesP1800: [
-        BoostDelegateP1800Style {
-            id: boostDelegateP1800Style
+    property real p1800NeedleOffset: 0.0
+    property real p1800NeedleLength: 0.375
+    property real p1800NeedleCenterRadius: 0.0
+    property real p1800YOffset: 0.0
+
+    property list<Item> delegatesP1800: [
+        AccessoryGaugeDelegate {
+            gaugeMin: -20
+            gaugeMax: 20
+
+            minAngle: -145
+            maxAngle: -35
+
+            imageSource: "qrc:/gauge-faces-p1800/boost-p1800.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
+
+            needleLength: p1800NeedleLength
+            needleOffset: p1800NeedleOffset
+            needleCenterRadius: p1800NeedleCenterRadius
+
+            yOffset: p1800YOffset
         },
-        OilTempAccDelegateP1800Style {
-            id: oilTempDelegateP1800Style
+        AccessoryGaugeDelegate {
+            minAngle: -155
+            maxAngle: -25
+
+            imageSource: "qrc:/gauge-faces-p1800/oil-temp-p1800.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
+
+            needleLength: p1800NeedleLength
+            needleOffset: p1800NeedleOffset
+            needleCenterRadius: p1800NeedleCenterRadius
+
+            yOffset: p1800YOffset
         },
-        OilPressureDelegateP1800Style {
-            id: oilPressureDelegateP1800Style
+        AccessoryGaugeDelegate {
+            minAngle: -145
+            maxAngle: -35
+
+            imageSource: "qrc:/gauge-faces-p1800/oil-pressure-p1800.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
+
+            needleLength: p1800NeedleLength
+            needleOffset: p1800NeedleOffset
+            needleCenterRadius: p1800NeedleCenterRadius
+
+            yOffset: p1800YOffset
         },
-        FuelLevelDelegateP1800Style {
-            id: fuelLevelDelegateP1800
+        AccessoryGaugeDelegate {
+            minAngle: -145
+            maxAngle: -35
+
+            imageSource: "qrc:/gauge-faces-p1800/fuel-level-p1800.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
+
+            needleLength: p1800NeedleLength
+            needleOffset: p1800NeedleOffset
+            needleCenterRadius: p1800NeedleCenterRadius
+
+            yOffset: p1800YOffset
+
+            significatDigits: 0
         },
-        ClockDelegateP1800Style {
-            id: clockDelegateP1800Style
-        }
+        ClockDelegateP1800Style {}
     ]
 
     ListModel {
@@ -197,21 +316,118 @@ Window {
     }
 
     // R-sport gauges
-    property list<Component> delegatesRSport: [
-        BoostDelegateRSportStyle {
-            id: boostDelegateRSportStyle
+//    property list<Component> delegatesRSport: [
+//        BoostDelegateRSportStyle {
+//            id: boostDelegateRSportStyle
+//        },
+//        OilTempDelegateRSportStyle {
+//            id: oilTempDelegateRSportStyle
+//        },
+//        OilPressureDelegateRSportStyle {
+//            id: oilPressureDelegateRSportStyle
+//        },
+//        CoolantTempAccDelegateRSportStyle {
+//            id: coolantTempDelegateRSportStyle
+//        },
+//        VoltmeterDelegateRSportStyle {
+//            id: voltmeterDelegateRSportStyle
+//        }
+//    ]
+
+    property real rSportNeedleLength: 0.65
+    property real rSportNeedleWidth: 0.035;
+    property real rSportNeedleOffset: 0.125
+    property real rSportGaugeXOffset: -1.0 / 4.65
+    property real rSportNeedleCenterRadius: 0.15
+
+    property list<Item> delegatesRSport: [
+        AccessoryGaugeDelegate {
+            gaugeMin: -20
+            gaugeMax: 20
+
+            minAngle: -48
+            maxAngle: 48
+
+            imageSource: "qrc:/gauge-faces-r-sport/r_sport_boost.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
+
+            clockwise: false
+
+            needleWidth: rSportNeedleWidth
+            needleLength: rSportNeedleLength
+            needleOffset: rSportNeedleOffset
+            xOffset: rSportGaugeXOffset
+            yOffset: 0
+            needleCenterRadius: rSportNeedleCenterRadius
         },
-        OilTempDelegateRSportStyle {
-            id: oilTempDelegateRSportStyle
+        AccessoryGaugeDelegate {
+            minAngle: -48
+            maxAngle: 48
+
+            imageSource: "qrc:/gauge-faces-r-sport/r_sport_oil_temp_F.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
+
+            clockwise: false
+
+            needleWidth: rSportNeedleWidth
+            needleLength: rSportNeedleLength
+            needleOffset: rSportNeedleOffset
+            xOffset: rSportGaugeXOffset
+            yOffset: 0
+            needleCenterRadius: rSportNeedleCenterRadius
         },
-        OilPressureDelegateRSportStyle {
-            id: oilPressureDelegateRSportStyle
+        AccessoryGaugeDelegate {
+            minAngle: -48
+            maxAngle: 48
+
+            imageSource: "qrc:/gauge-faces-r-sport/r_sport_oil_pressure_5bar.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
+
+            clockwise: false
+
+            needleWidth: rSportNeedleWidth
+            needleLength: rSportNeedleLength
+            needleOffset: rSportNeedleOffset
+            xOffset: rSportGaugeXOffset
+            yOffset: 0
+            needleCenterRadius: rSportNeedleCenterRadius
         },
-        CoolantTempAccDelegateRSportStyle {
-            id: coolantTempDelegateRSportStyle
+        AccessoryGaugeDelegate {
+            gaugeMin: 100
+            gaugeMax: 260
+
+            minAngle: -48
+            maxAngle: 48
+
+            imageSource: "qrc:/gauge-faces-r-sport/r_sport_acc_coolant_fahrenhet.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
+
+            clockwise: false
+
+            needleWidth: rSportNeedleWidth
+            needleLength: rSportNeedleLength
+            needleOffset: rSportNeedleOffset
+            xOffset: rSportGaugeXOffset
+            yOffset: 0
+            needleCenterRadius: rSportNeedleCenterRadius
         },
-        VoltmeterDelegateRSportStyle {
-            id: voltmeterDelegateRSportStyle
+        AccessoryGaugeDelegate {
+            gaugeMin: 8
+
+            minAngle: -48
+            maxAngle: 48
+
+            imageSource: "qrc:/gauge-faces-r-sport/r_sport_voltmeter.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
+
+            clockwise: false
+
+            needleWidth: rSportNeedleWidth
+            needleLength: rSportNeedleLength
+            needleOffset: rSportNeedleOffset
+            xOffset: rSportGaugeXOffset
+            yOffset: 0
+            needleCenterRadius: rSportNeedleCenterRadius
         }
     ]
 

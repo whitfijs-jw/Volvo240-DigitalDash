@@ -2,14 +2,27 @@ import QtQuick 2.15
 
 Item {
     Rectangle {
-        width: 1280
-        height: 480
+        id: container
+        width: parent.width
+        height: parent.height
         color: "transparent"
 
+        property real tachometerSize: parent.height * 0.925
+        property real smallGaugeSize: parent.height / 3
+        property real speedometerSize: (tachometerSize - smallGaugeSize)
+        property real tempFuelSize: (tachometerSize - smallGaugeSize)
+        property real smallGaugeXOffset: parent.height * (50/480)
+
+        property bool speedoMph: speedoModel.units === "mph"
+
         Rectangle {
+            TachometerDelegate {
+                id: tachometerDelegate
+            }
+
             id: tachContainer
-            width: tachSize
-            height: tachSize
+            width: container.tachometerSize
+            height: container.tachometerSize
             color: "transparent"
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
@@ -17,15 +30,28 @@ Item {
             /* Rpm: */
             ListView {
                 model: rpmModel
-                delegate: rpmDelegate
+                delegate: tachometerDelegate.component
             }
 
         }
 
         Rectangle {
+            SpeedoDelegate {
+                id: speedoDelegate
+
+                initialValueOffset: container.speedoMph ? 5 : 20
+
+                minAngle: container.speedoMph ? -238 : -254
+                maxAngle: container.speedoMph ? 44 : 45
+
+                imageSource: container.speedoMph ?
+                                 "qrc:/mainCluster/later-240-speedo.png" :
+                                 "qrc:/mainCluster/later-240-speedo-kph.png"
+            }
+
             id: speedoContainer
-            width: speedoSize
-            height: speedoSize
+            width: container.speedometerSize
+            height: container.speedometerSize
             anchors.right: tachContainer.left
             anchors.top: boostContainer.bottom
             anchors.topMargin: 0
@@ -34,15 +60,19 @@ Item {
             /* Rpm: */
             ListView {
                 model: speedoModel
-                delegate: speedoDelegate
+                delegate: speedoDelegate.component
             }
 
         }
 
         Rectangle {
+            TempAndFuelDelegate240Style {
+                id: tempFuelDelegate
+            }
+
             id: tempFuelContainer
-            width: tempFuelSize
-            height: tempFuelSize
+            width: container.tempFuelSize
+            height: container.tempFuelSize
             anchors.left: tachContainer.right
             anchors.top: oilPContainer.bottom
             anchors.topMargin: 0
@@ -51,80 +81,106 @@ Item {
             /* Rpm: */
             ListView {
                 model: tempFuelModel
-                delegate: tempFuelDelegate
+                delegate: tempFuelDelegate.component
             }
 
         }
 
 
         Rectangle {
+            AccessoryGaugeDelegate {
+                id: boostDelegate
+                imageSource: "qrc:/accCluster/boost_black_no_numbers.png"
+
+                minAngle: -227
+                maxAngle: 48
+
+                needleLength: 0.525
+
+                yOffset: 0.0
+            }
+
             id: boostContainer
             anchors.right: tachContainer.left
             anchors.top: tachContainer.top
 
-            anchors.leftMargin: -50
-            height: smallGaugeSize
-            width: smallGaugeSize
+            anchors.leftMargin: -container.smallGaugeXOffset
+            height: container.smallGaugeSize
+            width: container.smallGaugeSize
             color: "transparent"
 
             ListView {
                 model: boostModel
-                delegate: boostDelegate
+                delegate: boostDelegate.component
             }
         }
         Rectangle {
+            AccessoryGaugeDelegate {
+                id: oilPressureDelegate
+                imageSource: "qrc:/accCluster/later-240-oil-pressure.png"
+            }
+
             id: oilPContainer
             anchors.left: tachContainer.right
             anchors.top: tachContainer.top
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+            height: container.smallGaugeSize
+            width: container.smallGaugeSize
             color: "transparent"
 
             ListView {
                 model: oilPModel
-                delegate: oilPressureDelegate
+                delegate: oilPressureDelegate.component
             }
         }
 
         Rectangle {
+            AccessoryGaugeDelegate {
+                id: oilTempDelegate
+                imageSource: "qrc:/accCluster/later-240-oil-temp.png"
+            }
+
             id: oilTContainer
             anchors.left: oilPContainer.right
             anchors.top: tachContainer.top
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+            height: container.smallGaugeSize
+            width: container.smallGaugeSize
             color: "transparent"
 
             ListView {
                 model: oilTModel
-                delegate: oilTemperatureDelegate
+                delegate: oilTempDelegate.component
             }
         }
 
         Rectangle {
+            AccessoryGaugeDelegate {
+                id: voltMeterDelegate
+            }
+
             id: voltContainer
             anchors.right: boostContainer.left
             anchors.top: tachContainer.top
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+            height: container.smallGaugeSize
+            width: container.smallGaugeSize
             color: "transparent"
 
             ListView {
                 id: gaugeVolt
                 model: voltMeterModel
-                delegate: voltMeterDelegate
+                delegate: voltMeterDelegate.component
             }
         }
 
         Rectangle {
             id: leftBlinker
-            width: blinkerSize * 2
+            width: blinkerSize
             anchors.top: tachContainer.top
-            anchors.topMargin: 10
+            anchors.topMargin: blinkerTopMargin
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: -parent.width / 8
+            anchors.horizontalCenterOffset: -blinkerSize * 4
             color: "transparent"
 
             ListView {
@@ -135,11 +191,11 @@ Item {
 
         Rectangle {
             id: rightBlinker
-            width: blinkerSize * 2
+            width: blinkerSize
             anchors.top: tachContainer.top
-            anchors.topMargin: 10
+            anchors.topMargin: blinkerTopMargin
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: parent.width / 6.75
+            anchors.horizontalCenterOffset: blinkerSize * 4
             color: "transparent"
 
             ListView {

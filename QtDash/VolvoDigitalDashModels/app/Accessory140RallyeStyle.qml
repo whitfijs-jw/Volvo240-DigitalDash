@@ -2,6 +2,12 @@ import QtQuick 2.15
 
 Item {
     id: accGauge
+
+    implicitHeight: 333
+    implicitWidth: 333
+
+    anchors.fill: parent
+
     property Component component: component
     property real minAngle: -135
     property real maxAngle: -45
@@ -33,22 +39,22 @@ Item {
                 item.minAngle = accGauge.minAngle
                 item.maxAngle = accGauge.maxAngle
 
-                item.height = smallGaugeSize
-                item.width = smallGaugeSize
+                item.height = accGauge.height
+                item.width = accGauge.width
 
                 item.imageResource = accGauge.imageSource
 
                 item.needleResource = "qrc:/needles/needle-rsport.png"
                 item.needleColor = "burlywood"
-                item.needleWidth = smallGaugeNeedleWidth240
-                item.needleLength = smallGaugeSize * accGauge.needleLength
-                item.needleOffset = smallGaugeSize * accGauge.needleOffset
+                item.needleWidth = accGauge.needleWidth
+                item.needleLength = accGauge.needleLength
+                item.needleOffset = accGauge.needleOffset
                 item.needleCenterRadius = 0.15
 
-                item.offset = smallGaugeSize * accGauge.yOffset
+                item.offset = accGauge.yOffset
                 item.significantDigits = accGauge.significatDigits
 
-                item.textOffset = smallGaugeSize * 0.55
+                item.textOffset = 0.55
             }
 
             Binding {
@@ -60,13 +66,13 @@ Item {
             Binding {
                 target: item
                 property: "width"
-                value: smallGaugeSize
+                value: accGauge.width
             }
 
             Binding {
                 target: item
                 property: "height"
-                value: smallGaugeSize
+                value: accGauge.height
             }
         }
     }

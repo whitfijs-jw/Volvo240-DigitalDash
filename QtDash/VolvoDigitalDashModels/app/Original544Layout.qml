@@ -1,29 +1,57 @@
 import QtQuick 2.15
 
 Item {
+    id: container
+
     property int spacing: 300
     property int smallGaugeSpacing: 50
 
+    property real speedometerWidth: parent.height * (1100/480)
+    property real speedometerHeight: parent.height * (65/480)
+
+    property real tachometerWidth: parent.height * (600 / 480)
+    property real tachometerHeight: speedometerHeight
+
+    property real largeGaugeNeedleWidth: 0.035
+    property real largeGaugeNeedleLength: 0.45
+    property real largeGaugeNeedleOffset: 0.075
+    property real largeGaugeNeedleCenterRadius: 0.15
+
+    property real smallGaugeSize: parent.height * (140/480)
+    property real smallGaugeVeritalMargin: parent.height * 0.02
+
+    property real smallGaugeNeedleLength: 0.75
+    property real smallGaugeNeedleWidth: 0.05;
+    property real smallGaugeNeedleOffset: 0.125
+    property real smallGaugeYOffset: 1.0 / 4.0
+    property real smallGaugeNeedleCenterRadius: 0.15
+    property real smallGaugeTextYOffset: -0.5
+
     Rectangle {
-        width: 1280
-        height: 480
+        width: parent.width
+        height: parent.height
         color: "transparent"
 
 
         Rectangle {
             id: speedoContainer
-            width: linearSpeedoWidth
-            height: linearSpeedoHeight
+            width: container.speedometerWidth
+            height: container.speedometerHeight
             anchors.top: parent.top
             anchors.topMargin: 100
             anchors.horizontalCenter: parent.horizontalCenter
 
             color: "transparent"
 
+            // 544 style delegates
+            SpeedoDelegate544Style {
+                id: speedoDelegate544
+            }
+
             /* Speed: */
             ListView {
                 model: speedoModel
-                delegate: speedoDelegate544
+                delegate: speedoDelegate544.component
             }
 
             Image {
@@ -44,13 +72,31 @@ Item {
             anchors.top: speedoContainer.bottom
             anchors.topMargin: 50
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+            height: container.smallGaugeSize
+            width: container.smallGaugeSize
             color: "transparent"
+
+            AccessoryGaugeDelegate {
+                id: voltMeterDelegate
+
+                minAngle: -130
+                maxAngle: -55
+
+                imageSource: "qrc:/gauge-faces-544/battery-544.png"
+                needleResource: "qrc:/needles/needle-544-140.png"
+
+                needleWidth: container.smallGaugeNeedleWidth
+                needleLength: container.smallGaugeNeedleLength
+                needleOffset: container.smallGaugeNeedleOffset
+                needleCenterRadius: container.smallGaugeNeedleCenterRadius
+                yOffset: container.smallGaugeYOffset
+
+                textOffset: container.smallGaugeTextYOffset
+            }
 
             ListView {
                 model: voltMeterModel
-                delegate: voltMeterDelegate544
+                delegate: voltMeterDelegate.component
             }
 
             Rectangle {
@@ -76,13 +122,30 @@ Item {
             anchors.right: voltContainer544.left
             anchors.rightMargin: smallGaugeSpacing
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+            height: container.smallGaugeSize
+            width: container.smallGaugeSize
             color: "transparent"
+
+            AccessoryGaugeDelegate {
+                id: coolantTempDelegate
+
+                minAngle: -130
+                maxAngle: -55
+
+                imageSource: "qrc:/gauge-faces-544/coolant-temp-544.png"
+                needleResource: "qrc:/needles/needle-544-140.png"
+
+                needleWidth: container.smallGaugeNeedleWidth
+                needleLength: container.smallGaugeNeedleLength
+                needleOffset: container.smallGaugeNeedleOffset
+                needleCenterRadius: container.smallGaugeNeedleCenterRadius
+                yOffset: container.smallGaugeYOffset
+                textOffset: container.smallGaugeTextYOffset
+            }
 
             ListView {
                 model: coolantTempModel
-                delegate: coolantTempDelegate544
+                delegate: coolantTempDelegate.component
             }
 
             Rectangle {
@@ -108,13 +171,30 @@ Item {
 
             anchors.verticalCenter: voltContainer544.verticalCenter
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+            height: container.smallGaugeSize
+            width: container.smallGaugeSize
             color: "transparent"
+
+            AccessoryGaugeDelegate {
+                id: oilPressureDelegate
+
+                minAngle: -130
+                maxAngle: -55
+
+                imageSource: "qrc:/gauge-faces-544/oil-pressure-544.png"
+                needleResource: "qrc:/needles/needle-544-140.png"
+
+                needleWidth: container.smallGaugeNeedleWidth
+                needleLength: container.smallGaugeNeedleLength
+                needleOffset: container.smallGaugeNeedleOffset
+                needleCenterRadius: container.smallGaugeNeedleCenterRadius
+                yOffset: container.smallGaugeYOffset
+                textOffset: container.smallGaugeTextYOffset
+            }
 
             ListView {
                 model: oilPModel
-                delegate: oilPressureDelegate544
+                delegate: oilPressureDelegate.component
             }
 
             Rectangle {
@@ -142,13 +222,30 @@ Item {
             anchors.left: oilPressureContainer544.right
             anchors.leftMargin: smallGaugeSpacing
 
-            height: smallGaugeSize
-            width: smallGaugeSize
+            height: container.smallGaugeSize
+            width: container.smallGaugeSize
             color: "transparent"
+
+            AccessoryGaugeDelegate {
+                id: fuelLevelDelegate
+
+                minAngle: -130
+                maxAngle: -55
+
+                imageSource: "qrc:/gauge-faces-544/fuel-544.png"
+                needleResource: "qrc:/needles/needle-544-140.png"
+
+                needleWidth: container.smallGaugeNeedleWidth
+                needleLength: container.smallGaugeNeedleLength
+                needleOffset: container.smallGaugeNeedleOffset
+                needleCenterRadius: container.smallGaugeNeedleCenterRadius
+                yOffset: container.smallGaugeYOffset
+                textOffset: container.smallGaugeTextYOffset
+            }
 
             ListView {
                 model: fuelLevelModel
-                delegate: fuelLevelDelegate544
+                delegate: fuelLevelDelegate.component
             }
 
             Rectangle {
@@ -170,18 +267,22 @@ Item {
 
         Rectangle {
             id: tachoContainer
-            width: 600
-            height: 64
+            width: container.tachometerWidth
+            height: container.tachometerHeight
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: voltContainer544.bottom
             anchors.topMargin: -40
 
             color: "transparent"
 
+            TachoDelegate544Style {
+                id: rpmDelegate544
+            }
+
             /* rpm: */
             ListView {
                 model: rpmModel
-                delegate: rpmDelegate544
+                delegate: rpmDelegate544.component
             }
 
 
@@ -197,11 +298,11 @@ Item {
 
         Rectangle {
             id: rightBlinker
-            width: blinkerSize * 2
+            width: blinkerSize
             anchors.top: parent.top
             anchors.topMargin: 20
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: parent.width / 6
+            anchors.horizontalCenterOffset: blinkerSize * 3
             color: "transparent"
 
             ListView {
@@ -212,9 +313,9 @@ Item {
 
         Rectangle {
             id: leftBlinker
-            width: blinkerSize * 2
+            width: blinkerSize
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: -parent.width / 8
+            anchors.horizontalCenterOffset: -blinkerSize * 3
             anchors.verticalCenter: rightBlinker.verticalCenter
             color: "transparent"
 
