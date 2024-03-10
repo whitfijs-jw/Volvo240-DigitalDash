@@ -28,7 +28,7 @@ Item {
     property url imageSource: "qrc:/mainCluster/later-240-speedo.png"
     property url needleResource: "qrc:/needles/needle-240.png"
 
-    property real topTextOffset: -.175
+    property real topTextOffset: -.15
     property real topTextSize: 0.05
 
     property real textSize: 0.075
@@ -52,8 +52,8 @@ Item {
                 item.topValue = valueTop
                 item.topUnits = valueTopUnits
                 item.topValueEnabled = true
-                item.topTextOffset = speedometer.width * speedometer.topTextOffset
-                item.topTextSize = speedometer.width * speedometer.topTextSize
+                item.topTextOffset = speedometer.topTextOffset
+                item.topTextSize = speedometer.topTextSize
 
                 item.minAngle = speedometer.minAngle
                 item.maxAngle = speedometer.maxAngle
