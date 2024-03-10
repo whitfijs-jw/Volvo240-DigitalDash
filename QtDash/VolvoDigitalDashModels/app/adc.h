@@ -29,7 +29,7 @@ public:
     /* 5V inputs go through voltage divider for 3.3V ADC inputs -- not quite 100% */
     static constexpr double REFERENCE_VOLTAGE_DIVIDER = (15.0e3 / (15.0e3 + 8.2e3));
     static constexpr double INPUT_VOLTAGE_DIVIDER = (15.0e3 / (15.0e3 + 8.2e3));
-    static constexpr double VOLTAGE_CONVERSION_CORRECTION_FACTOR = 3.3 / (INPUT_VOLTAGE_DIVIDER * 5.0);
+    static constexpr double VOLTAGE_CONVERSION_CORRECTION_FACTOR = 3.3 / (INPUT_VOLTAGE_DIVIDER);
 
     /**
      * @brief Constructor
@@ -109,7 +109,7 @@ public:
 
         if (vRef < 0) {
             updateReference();
-            return volts * mVref * VOLTAGE_CONVERSION_CORRECTION_FACTOR;
+            return volts * VOLTAGE_CONVERSION_CORRECTION_FACTOR;
         } else {
             return volts * vRef;
         }
