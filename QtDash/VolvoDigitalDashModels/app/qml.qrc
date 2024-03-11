@@ -101,6 +101,7 @@
         <file>740_oil_temperature.png</file>
         <file>740_oil_pressure.png</file>
         <file>740_speedo_kph.png</file>
+        <file>740_oil_temperature-c.png</file>
     </qresource>
     <qresource prefix="/gauge-faces-850">
         <file>850_unleaded_only.png</file>

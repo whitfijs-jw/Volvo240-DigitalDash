@@ -131,7 +131,9 @@ Window {
             minAngle: -125
             maxAngle: -55
 
-            imageSource: "qrc:/gauge-faces-740-940/740_oil_temperature.png"
+            imageSource: oilTempF ?
+                             "qrc:/gauge-faces-740-940/740_oil_temperature.png" :
+                             "qrc:/gauge-faces-740-940/740_oil_temperature-c.png"
             needleResource: "qrc:/needles/needle-740-940.png"
 
             needleWidth: needleWidth_740
