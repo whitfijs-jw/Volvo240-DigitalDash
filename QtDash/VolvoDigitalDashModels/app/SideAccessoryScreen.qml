@@ -92,7 +92,6 @@ Window {
             minAngle: -228
             maxAngle: 45
 
-
             needleWidth: needleWidth_740
             needleLength: 0.55
             needleOffset: needleOffset_740
@@ -315,25 +314,6 @@ Window {
         }
     }
 
-    // R-sport gauges
-//    property list<Component> delegatesRSport: [
-//        BoostDelegateRSportStyle {
-//            id: boostDelegateRSportStyle
-//        },
-//        OilTempDelegateRSportStyle {
-//            id: oilTempDelegateRSportStyle
-//        },
-//        OilPressureDelegateRSportStyle {
-//            id: oilPressureDelegateRSportStyle
-//        },
-//        CoolantTempAccDelegateRSportStyle {
-//            id: coolantTempDelegateRSportStyle
-//        },
-//        VoltmeterDelegateRSportStyle {
-//            id: voltmeterDelegateRSportStyle
-//        }
-//    ]
-
     property real rSportNeedleLength: 0.65
     property real rSportNeedleWidth: 0.035;
     property real rSportNeedleOffset: 0.125
@@ -483,12 +463,11 @@ Window {
         },
         Accessory140RallyeStyle {
             id: coolantTempDelegate140RallyeStyle
-            gaugeMin: 120
-            gaugeMax: 250
             significatDigits: 1
 
             imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-coolant.png"
         },
+
         Accessory140RallyeStyle {
             id: voltmeterDelegate140RallyeStyle
             gaugeMin: 10
