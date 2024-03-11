@@ -262,7 +262,9 @@ Window {
             minAngle: -155
             maxAngle: -25
 
-            imageSource: "qrc:/gauge-faces-p1800/oil-temp-p1800.png"
+            imageSource: oilTempF ?
+                             "qrc:/gauge-faces-p1800/oil-temp-p1800.png" :
+                             "qrc:/gauge-faces-p1800/oil-temp-p1800-c.png"
             needleResource: "qrc:/needles/needle-rsport.png"
 
             needleLength: p1800NeedleLength

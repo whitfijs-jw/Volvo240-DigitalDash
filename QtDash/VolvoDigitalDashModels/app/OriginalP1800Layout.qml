@@ -40,6 +40,9 @@ Item {
         property real centerLinearGaugeXOffset: -parent.height * (1/480)
         property real oilTempYOffset: parent.height * (97/480)
 
+        property bool oilTempF: oilTModel.units === "F"
+        property bool coolantTempF: coolantTempModel.units === "F"
+
         Rectangle {
             id: speedoContainer
             width: container.speedometerSize
@@ -149,8 +152,8 @@ Item {
                 LinearGaugeDelegate {
                     id: coolantTempDelegate
 
-                    minValue: 90
-                    maxValue: 230
+                    minValue: container.coolantTempF ? 90 : 30
+                    maxValue: container.coolantTempF ? 230 : 120
 
                     textSize: 1.0
                     textYOffset: 4.25
@@ -174,8 +177,8 @@ Item {
                 LinearGaugeDelegate {
                     id: oilTempDelegate
 
-                    minValue: 140
-                    maxValue: 280
+                    minValue: container.oilTempF ? 140 : 60
+                    maxValue: container.oilTempF ? 280 : 150
 
                     needleColor: "lightseagreen"
 
@@ -197,7 +200,13 @@ Item {
             Image {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
-                source: "qrc:/gauge-faces-p1800/oil-coolant-temp-p1800.png"
+                source: container.coolantTempF ?
+                            (container.oilTempF ?
+                                 "qrc:/gauge-faces-p1800/oil-coolant-temp-p1800.png" :
+                                 "qrc:/gauge-faces-p1800/oil-coolant-temp-p1800-oilC-coolantF.png") :
+                            (container.oilTempF ?
+                                 "qrc:/gauge-faces-p1800/oil-coolant-temp-p1800-oilF-coolantC.png" :
+                                 "qrc:/gauge-faces-p1800/oil-coolant-temp-p1800-metric.png")
                 fillMode: Image.PreserveAspectFit
                 anchors.fill: parent
             }
