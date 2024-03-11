@@ -186,5 +186,6 @@
         <file>140-rallye-speedo.png</file>
         <file>140-rallye-voltmeter.png</file>
         <file>140-rallye-speedo-kph.png</file>
+        <file>140-rallye-oil-temp-c.png</file>
     </qresource>
 </RCC>

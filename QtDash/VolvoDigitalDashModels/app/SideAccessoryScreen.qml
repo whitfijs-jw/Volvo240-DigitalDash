@@ -454,11 +454,11 @@ Window {
         },
         Accessory140RallyeStyle {
             id: oilTempDelegate140RallyeStyle
-            gaugeMin: 120
-            gaugeMax: 300
             significatDigits: 1
 
-            imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-oil-temp.png"
+            imageSource: oilTempF ?
+                             "qrc:/gauge-faces-140-rallye/140-rallye-oil-temp.png" :
+                             "qrc:/gauge-faces-140-rallye/140-rallye-oil-temp-c.png"
         },
         Accessory140RallyeStyle {
             id: oilPressureDelegate140RallyeStyle
