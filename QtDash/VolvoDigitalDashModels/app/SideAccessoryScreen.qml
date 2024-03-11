@@ -14,6 +14,7 @@ Window {
 
     property bool coolantTempF: coolantTempModel.units === "F"
     property bool oilTempF: oilTModel.units === "F"
+    property bool oilPressureBar: oilPModel.units === "bar"
 
     onCurrentStyleChanged: {
         currentLayout.update();
@@ -146,7 +147,9 @@ Window {
             minAngle: -125
             maxAngle: -55
 
-            imageSource: "qrc:/gauge-faces-740-940/740_oil_pressure.png"
+            imageSource: oilPressureBar ?
+                             "qrc:/gauge-faces-740-940/740_oil_pressure.png" :
+                             "qrc:/gauge-faces-740-940/740_oil_pressure-psi.png"
             needleResource: "qrc:/needles/needle-740-940.png"
 
             needleWidth: needleWidth_740
@@ -209,7 +212,9 @@ Window {
                              "qrc:/accCluster/later-240-oil-temp-c.png"
         },
         AccessoryGaugeDelegate {
-            imageSource: "qrc:/accCluster/later-240-oil-pressure.png"
+            imageSource: oilPressureBar ?
+                             "qrc:/accCluster/later-240-oil-pressure.png" :
+                             "qrc:/accCluster/later-240-oil-pressure-psi.png"
         },
         AccessoryGaugeDelegate {
         },
@@ -371,7 +376,9 @@ Window {
             minAngle: -48
             maxAngle: 48
 
-            imageSource: "qrc:/gauge-faces-r-sport/r_sport_oil_pressure_5bar.png"
+            imageSource: oilPressureBar ?
+                             "qrc:/gauge-faces-r-sport/r_sport_oil_pressure_5bar.png" :
+                             "qrc:/gauge-faces-r-sport/r_sport_oil_pressure_psi.png"
             needleResource: "qrc:/needles/needle-rsport.png"
 
             clockwise: false
@@ -467,10 +474,12 @@ Window {
         Accessory140RallyeStyle {
             id: oilPressureDelegate140RallyeStyle
             gaugeMin: 0
-            gaugeMax: 8
-            significatDigits: 2
+            gaugeMax: oilPressureBar ? 8 : 120
+            significatDigits: 1
 
-            imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-oil-pressure-bar.png"
+            imageSource: oilPressureBar ?
+                             "qrc:/gauge-faces-140-rallye/140-rallye-oil-pressure-bar.png" :
+                             "qrc:/gauge-faces-140-rallye/140-rallye-oil-pressure-psi.png"
         },
         Accessory140RallyeStyle {
             id: coolantTempDelegate140RallyeStyle

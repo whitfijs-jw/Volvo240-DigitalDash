@@ -82,7 +82,15 @@ public:
             gaugeConfig.highAlarm);
 
         initAccessoryGuage(FUEL_LEVEL_MODEL_NAME, 0.0, 100.0, "%", 10.0, 200.0);
-        initAccessoryGuage(OIL_PRESSURE_MODEL_NAME, 0.0, 5.0, "bar", 1.0, 4.5);
+        gaugeConfig = mConfig.getGaugeConfig(Config::OIL_PRESSURE_GAUGE_GROUP);
+        initAccessoryGuage(
+            OIL_PRESSURE_MODEL_NAME,
+            gaugeConfig.min,
+            gaugeConfig.max,
+            gaugeConfig.displayUnits,
+            gaugeConfig.lowAlarm,
+            gaugeConfig.highAlarm);
+
 
         gaugeConfig = mConfig.getGaugeConfig(Config::OIL_TEMPERATURE_GAUGE_GROUP);
         initAccessoryGuage(
@@ -204,7 +212,12 @@ public slots:
             rpm /= 1000;
             mTachModel.setRpm(rpm);
             mBoostModel.setCurrentValue( ((float)rpm/1000.0) * 5.0 );
-            mOilPressureModel.setCurrentValue( ((float)rpm / 1000.0) );
+
+            qreal oilPBar = ((float)rpm / 1000.0);
+            qreal oilP = SensorUtils::convert(oilPBar,
+                                             mConfig.getGaugeConfig(Config::OIL_PRESSURE_GAUGE_GROUP).displayUnits,
+                                             Config::UNITS_BAR);
+            mOilPressureModel.setCurrentValue( oilP );
 
             float speedMph = rpm / 100;
             qreal speedo = SensorUtils::convert(speedMph, mConfig.getSpeedoConfig().gaugeConfig.displayUnits, Config::UNITS_MPH);

@@ -74,6 +74,7 @@
         <file>later-240-voltmeter.png</file>
         <file>later-240-oil-pressure.png</file>
         <file>later-240-oil-temp-c.png</file>
+        <file>later-240-oil-pressure-psi.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>ariblk.ttf</file>
@@ -102,6 +103,7 @@
         <file>740_oil_pressure.png</file>
         <file>740_speedo_kph.png</file>
         <file>740_oil_temperature-c.png</file>
+        <file>740_oil_pressure-psi.png</file>
     </qresource>
     <qresource prefix="/gauge-faces-850">
         <file>850_unleaded_only.png</file>
@@ -126,6 +128,7 @@
         <file>r_sport_acc_coolant_fahrenhet.png</file>
         <file>r_sport_speedo_kph.png</file>
         <file>r_sport_oil_temp_C.png</file>
+        <file>r_sport_oil_pressure_psi.png</file>
     </qresource>
     <qresource prefix="/needles">
         <file>needle-240.png</file>

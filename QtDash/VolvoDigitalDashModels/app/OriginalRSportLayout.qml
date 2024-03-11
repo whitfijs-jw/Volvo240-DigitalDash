@@ -33,6 +33,7 @@ Item {
         property real smallGaugeNeedleCenterRadius: 0.15
 
         property bool speedoMph: speedoModel.units === "mph"
+        property bool oilPressureBar: oilPModel.units === "bar"
 
         Rectangle {
             SpeedoDelegate {
@@ -224,7 +225,9 @@ Item {
 
                 clockwise: false
 
-                imageSource: "qrc:/gauge-faces-r-sport/r_sport_oil_pressure_5bar.png"
+                imageSource: container.oilPressureBar ?
+                                 "qrc:/gauge-faces-r-sport/r_sport_oil_pressure_5bar.png" :
+                                 "qrc:/gauge-faces-r-sport/r_sport_oil_pressure_psi.png"
                 needleResource: "qrc:/needles/needle-rsport.png"
 
                 needleWidth: container.smallGaugeNeedleWidth

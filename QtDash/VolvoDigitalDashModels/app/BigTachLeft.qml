@@ -17,6 +17,7 @@ Item {
 
         property bool speedoMph: speedoModel.units === "mph"
         property bool oilTempF: oilTModel === "F"
+        property bool oilPressureBar: oilPModel.units === "bar"
 
         Rectangle {
             TachometerDelegate {
@@ -123,7 +124,9 @@ Item {
         Rectangle {
             AccessoryGaugeDelegate {
                 id: oilPressureDelegate
-                imageSource: "qrc:/accCluster/later-240-oil-pressure.png"
+                imageSource: container.oilPressureBar ?
+                                 "qrc:/accCluster/later-240-oil-pressure.png" :
+                                 "qrc:/accCluster/later-240-oil-pressure-psi.png"
             }
 
             id: oilPContainer
