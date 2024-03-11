@@ -413,6 +413,7 @@ public:
                         );
         } else if (from.compare(Config::UNITS_MPH, Qt::CaseInsensitive) == 0 ||
                    from.compare(Config::UNITS_KPH, Qt::CaseInsensitive) == 0||
+                   from.compare(Config::UNITS_KMH, Qt::CaseInsensitive) == 0 ||
                    from.compare(Config::UNITS_METERS_PER_SECOND, Qt::CaseInsensitive) == 0) {
             // speed sensor
             val = SensorUtils::convertSpeed(value,

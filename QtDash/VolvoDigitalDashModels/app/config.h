@@ -50,6 +50,7 @@ public:
     static constexpr char UNITS_KILOMETER[] = "kilometer";
     static constexpr char UNITS_MPH[] = "mph";
     static constexpr char UNITS_KPH[] = "kph";
+    static constexpr char UNITS_KMH[] = "km/h";
     static constexpr char UNITS_METERS_PER_SECOND[] = "m/s";
 
     // expected sensor keys
@@ -336,7 +337,7 @@ public:
     static SpeedUnits getSpeedUnits(QString units) {
         if (units.compare(UNITS_MPH, Qt::CaseInsensitive) == 0) {
             return SpeedUnits::MPH;
-        } else if (units.compare(UNITS_KPH, Qt::CaseInsensitive) == 0) {
+        } else if ((units.compare(UNITS_KPH, Qt::CaseInsensitive) == 0) || (units.compare(UNITS_KMH, Qt::CaseInsensitive) == 0)) {
             return SpeedUnits::KPH;
         } else if (units.compare(UNITS_METERS_PER_SECOND, Qt::CaseInsensitive) == 0) {
             return SpeedUnits::METER_PER_SECOND;
