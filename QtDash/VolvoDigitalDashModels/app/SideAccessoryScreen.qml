@@ -351,7 +351,9 @@ Window {
             minAngle: -48
             maxAngle: 48
 
-            imageSource: "qrc:/gauge-faces-r-sport/r_sport_oil_temp_F.png"
+            imageSource: oilTempF ?
+                             "qrc:/gauge-faces-r-sport/r_sport_oil_temp_F.png" :
+                             "qrc:/gauge-faces-r-sport/r_sport_oil_temp_C.png"
             needleResource: "qrc:/needles/needle-rsport.png"
 
             clockwise: false
