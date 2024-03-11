@@ -73,6 +73,7 @@
         <file>later-240-boost.png</file>
         <file>later-240-voltmeter.png</file>
         <file>later-240-oil-pressure.png</file>
+        <file>later-240-oil-temp-c.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>ariblk.ttf</file>

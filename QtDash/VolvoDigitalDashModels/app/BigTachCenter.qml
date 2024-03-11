@@ -14,6 +14,7 @@ Item {
         property real smallGaugeXOffset: parent.height * (50/480)
 
         property bool speedoMph: speedoModel.units === "mph"
+        property bool oilTempF: oilTModel.units === "F"
 
         Rectangle {
             TachometerDelegate {
@@ -137,7 +138,9 @@ Item {
         Rectangle {
             AccessoryGaugeDelegate {
                 id: oilTempDelegate
-                imageSource: "qrc:/accCluster/later-240-oil-temp.png"
+                imageSource: container.oilTempF ?
+                                 "qrc:/accCluster/later-240-oil-temp.png" :
+                                 "qrc:/accCluster/later-240-oil-temp-c.png"
             }
 
             id: oilTContainer

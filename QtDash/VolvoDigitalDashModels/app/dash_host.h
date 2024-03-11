@@ -83,7 +83,16 @@ public:
 
         initAccessoryGuage(FUEL_LEVEL_MODEL_NAME, 0.0, 100.0, "%", 10.0, 200.0);
         initAccessoryGuage(OIL_PRESSURE_MODEL_NAME, 0.0, 5.0, "bar", 1.0, 4.5);
-        initAccessoryGuage(OIL_TEMPERATURE_MODEL_NAME, 120.0, 300.0, "°F", 0.0, 260.0);
+
+        gaugeConfig = mConfig.getGaugeConfig(Config::OIL_TEMPERATURE_GAUGE_GROUP);
+        initAccessoryGuage(
+            OIL_TEMPERATURE_MODEL_NAME,
+            gaugeConfig.min,
+            gaugeConfig.max,
+            gaugeConfig.displayUnits,
+            gaugeConfig.lowAlarm,
+            gaugeConfig.highAlarm);
+
         initAccessoryGuage(BOOST_GAUGE_MODEL_NAME, -20.0, 30.0, "psi", -50.0, 18.0);
         initAccessoryGuage(VOLT_METER_MODEL_NAME, 10.0, 16.0, "V", 12.0, 15.0);
         initDashLights();
@@ -154,10 +163,17 @@ public slots:
             qreal tVal = SensorUtils::convert(temp, gaugeConfig.displayUnits, Config::UNITS_C);
             qreal tempF = SensorUtils::convert(temp, Config::UNITS_F, Config::UNITS_C);
 
-            mOilTemperatureModel.setCurrentValue(tempF);
             mTempFuelModel.setCurrentTemp(tVal);
             mSpeedoModel.setTopValue(tempF);
             mCoolantTempModel.setCurrentValue(tVal);
+
+            mOilTemperatureModel.setCurrentValue(
+                SensorUtils::convert(
+                    temp,
+                    mConfig.getGaugeConfig(Config::OIL_TEMPERATURE_GAUGE_GROUP).displayUnits,
+                    Config::UNITS_C)
+            );
+
         }
 
 

@@ -12,6 +12,9 @@ Window {
     property int smallGaugeNeedleWidth240: smallGaugeSize * 0.04
     property string currentStyle: "240"
 
+    property bool coolantTempF: coolantTempModel.units === "F"
+    property bool oilTempF: oilTModel.units === "F"
+
     onCurrentStyleChanged: {
         currentLayout.update();
     }
@@ -199,7 +202,9 @@ Window {
             yOffset: 0.0
         },
         AccessoryGaugeDelegate {
-            imageSource: "qrc:/accCluster/later-240-oil-temp.png"
+            imageSource: oilTempF ?
+                             "qrc:/accCluster/later-240-oil-temp.png" :
+                             "qrc:/accCluster/later-240-oil-temp-c.png"
         },
         AccessoryGaugeDelegate {
             imageSource: "qrc:/accCluster/later-240-oil-pressure.png"
