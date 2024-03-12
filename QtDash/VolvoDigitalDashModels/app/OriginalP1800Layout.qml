@@ -42,6 +42,7 @@ Item {
 
         property bool oilTempF: oilTModel.units === "F"
         property bool coolantTempF: coolantTempModel.units === "F"
+        property bool oilPressureBar: oilPModel.units === "bar"
 
         Rectangle {
             id: speedoContainer
@@ -274,10 +275,12 @@ Item {
             AccessoryGaugeDelegate {
                 id: oilPressureDelegate
 
-                imageSource: "qrc:/gauge-faces-p1800/oil-pressure-p1800.png"
+                imageSource: container.oilPressureBar ?
+                                 "qrc:/gauge-faces-p1800/oil-pressure-p1800.png" :
+                                 "qrc:/gauge-faces-p1800/oil-pressure-p1800-psi.png"
                 needleResource: "qrc:/needles/needle-rsport.png"
 
-                gaugeMax: 6.0
+                gaugeMax: container.oilPressureBar ? 6.0 : -1
 
                 minAngle: -145
                 maxAngle: -35

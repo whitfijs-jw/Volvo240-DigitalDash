@@ -166,6 +166,7 @@
         <file>oil-coolant-temp-p1800-oilC-coolantF.png</file>
         <file>oil-coolant-temp-p1800-oilF-coolantC.png</file>
         <file>oil-coolant-temp-p1800-metric.png</file>
+        <file>oil-pressure-p1800-psi.png</file>
     </qresource>
     <qresource prefix="/gauges-early-240">
         <file>early-240-clock.png</file>

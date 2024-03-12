@@ -282,7 +282,11 @@ Window {
             minAngle: -145
             maxAngle: -35
 
-            imageSource: "qrc:/gauge-faces-p1800/oil-pressure-p1800.png"
+            gaugeMax: oilPressureBar ? 6.0 : -1
+
+            imageSource: oilPressureBar ?
+                             "qrc:/gauge-faces-p1800/oil-pressure-p1800.png" :
+                             "qrc:/gauge-faces-p1800/oil-pressure-p1800-psi.png"
             needleResource: "qrc:/needles/needle-rsport.png"
 
             needleLength: p1800NeedleLength
