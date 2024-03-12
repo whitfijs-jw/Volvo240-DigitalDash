@@ -248,13 +248,10 @@ Window {
 
     property list<Item> delegatesP1800: [
         AccessoryGaugeDelegate {
-            gaugeMin: -20
-            gaugeMax: 20
+            minAngle: -230
+            maxAngle: 50
 
-            minAngle: -145
-            maxAngle: -35
-
-            imageSource: "qrc:/gauge-faces-p1800/boost-p1800.png"
+            imageSource: "qrc:/gauge-faces-p1800/boost-p1800-no-num.png"
             needleResource: "qrc:/needles/needle-rsport.png"
 
             needleLength: p1800NeedleLength
@@ -458,8 +455,6 @@ Window {
    property list<Item> delegates140Rallye: [
         Accessory140RallyeStyle {
             id: boostDelegate140RallyeStyle
-            gaugeMin: -20
-            gaugeMax: 30
             minAngle: -240
             maxAngle: 60
             yOffset: 0
