@@ -101,7 +101,15 @@ public:
             gaugeConfig.lowAlarm,
             gaugeConfig.highAlarm);
 
-        initAccessoryGuage(BOOST_GAUGE_MODEL_NAME, -20.0, 30.0, "psi", -50.0, 18.0);
+        gaugeConfig = mConfig.getGaugeConfig(Config::BOOST_GAUGE_GROUP);
+        initAccessoryGuage(
+            BOOST_GAUGE_MODEL_NAME,
+            gaugeConfig.min,
+            gaugeConfig.max,
+            gaugeConfig.displayUnits,
+            gaugeConfig.lowAlarm,
+            gaugeConfig.highAlarm);
+
         initAccessoryGuage(VOLT_METER_MODEL_NAME, 10.0, 16.0, "V", 12.0, 15.0);
         initDashLights();
         initOdometer();
@@ -211,7 +219,13 @@ public slots:
             int rpm = rpmString.toInt();
             rpm /= 1000;
             mTachModel.setRpm(rpm);
-            mBoostModel.setCurrentValue( ((float)rpm/1000.0) * 5.0 );
+
+            qreal boost_psi = ((float)rpm/1000.0) * 5.0;
+            mBoostModel.setCurrentValue(
+                SensorUtils::convert(boost_psi,
+                                     mConfig.getGaugeConfig(Config::BOOST_GAUGE_GROUP).displayUnits,
+                                     Config::UNITS_PSI)
+            );
 
             qreal oilPBar = ((float)rpm / 1000.0);
             qreal oilP = SensorUtils::convert(oilPBar,
