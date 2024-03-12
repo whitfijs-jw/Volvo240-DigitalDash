@@ -395,13 +395,15 @@ Window {
             needleCenterRadius: rSportNeedleCenterRadius
         },
         AccessoryGaugeDelegate {
-            gaugeMin: 100
-            gaugeMax: 260
+            gaugeMin: coolantTempF ? 100 : -1
+            gaugeMax: coolantTempF ? 260 : -1
 
             minAngle: -48
             maxAngle: 48
 
-            imageSource: "qrc:/gauge-faces-r-sport/r_sport_acc_coolant_fahrenhet.png"
+            imageSource: coolantTempF ?
+                             "qrc:/gauge-faces-r-sport/r_sport_acc_coolant_fahrenhet.png" :
+                             "qrc:/gauge-faces-r-sport/r_sport_acc_coolant_celsius.png"
             needleResource: "qrc:/needles/needle-rsport.png"
 
             clockwise: false

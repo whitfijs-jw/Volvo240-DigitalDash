@@ -19,9 +19,9 @@ Item {
     property real yOffset: 0.25
     property real xOffset: 0
 
-    property real gaugeMin: -999
-    property real gaugeMax: -999
-    property real gaugeMinOffset: -999
+    property real gaugeMin: -1
+    property real gaugeMax: -1
+    property real gaugeMinOffset: -1
 
     property real significatDigits: 1
 
@@ -39,12 +39,12 @@ Item {
             source: "qrc:/Gauge.qml"
             asynchronous: true
             onLoaded: {
-                item.minValue = (accGauge.gaugeMin == -999) ? gaugeMin : accGauge.gaugeMin
-                item.maxValue = (accGauge.gaugeMax == -999) ? gaugeMax : accGauge.gaugeMax
+                item.minValue = (accGauge.gaugeMin == -1) ? gaugeMin : accGauge.gaugeMin
+                item.maxValue = (accGauge.gaugeMax == -1) ? gaugeMax : accGauge.gaugeMax
                 item.units = gaugeUnits
                 item.highAlarm = gaugeHighAlarm
                 item.lowAlarm = gaugeLowAlarm
-                item.initialValueOffset = (accGauge.gaugeMinOffset == -999) ? gaugeMin : accGauge.gaugeMin
+                item.initialValueOffset = (accGauge.gaugeMinOffset == -1) ? gaugeMin : accGauge.gaugeMin
 
                 item.clockwise = accGauge.clockwise
 

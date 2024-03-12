@@ -129,6 +129,7 @@
         <file>r_sport_speedo_kph.png</file>
         <file>r_sport_oil_temp_C.png</file>
         <file>r_sport_oil_pressure_psi.png</file>
+        <file>r_sport_acc_coolant_celsius.png</file>
     </qresource>
     <qresource prefix="/needles">
         <file>needle-240.png</file>
