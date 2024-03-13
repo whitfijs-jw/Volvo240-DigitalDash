@@ -583,6 +583,95 @@ use_dimmer=0
 active_low=1
 ```
 
+### Gauge Configs (config_gauges.ini)
+There are a few options in setting up the gauge units and high/low warning indications.  There settings are found within the file config_gauges.ini.  The app will parse this file and will set the various gauge units, min/max values, and high/low warnings.
+
+#### Gauge Config Parameters
+| Parameter | Description |
+|---|---|
+|*units*| Gauge Display Units |
+|*low_alarm*| Value below which gauge will indicate a warning |
+|*high_alarm*| Value above which gauge will indicate a warning |
+
+#####Example:
+This example sets the units for coolant temperature gauges, in all screens, to celsius.  The gauge will indicate an alarm when the temperature exceeds 100C.
+```
+[coolant_temp]
+units="C"
+low_alarm=0.0
+high_alarm=100.0
+```
+
+#### Available Gauge Units
+Below are the available units for each gauge type
+
+| Gauge Type | Available Units |
+|---|---|
+|**[boost]**|```"bar"``` ```"psi"```|
+|**[coolant_temp]**|```"C"``` ```"F"```|
+|**[fuel_level]**|```"%"```|
+|**[oil_pressure]**|```"bar"``` ```"psi"```|
+|**[oil_temperature]**|```"C"``` ```"F"```|
+|**[voltmeter]**|```"V"```|
+|**[speedo]**|```"mph"``` ```"kph"``` ```"km/h"```|
+|**[techo]**|*none*|
+
+#### Default Gauge Ranges
+
+These are the default gauge ranges for the given units.  These can be assigned to different values in *config_gauges.ini*, but the gauges themselves are prerendered so its not gauranteed that the needle position will align with the displayed value
+
+| Gauge Type | Unit | Min Value | Max Value |
+|---|
+|**[boost]**| ```"psi"``` | -20 | 30 |
+|**[boost]**| ```"bar"```| -1.0| 1.5 |
+|**[coolant_temp]**| ```"C"``` | 50 | 120 |
+|**[coolant_temp]**| ```"F"```| 120| 250 |
+|**[fuel_level]**| ```"%"``` | 0 | 100 |
+|**[oil_pressure]**| ```"bar"```| 0| 5 |
+|**[oil_pressure]**| ```"psi"``` | 0 | 80 |
+|**[oil_temperature]**| ```"C"```| 50| 150 |
+|**[oil_temperature]**| ```"F"``` | 120 | 300 |
+|**[voltmeter]**| ```"V"```| 10| 16 |
+|**[speedo]**| ```"kph"``` ```"km/h"``` | 0 | 220 |
+|**[speedo]**| ```"mph"```| 0| 120 |
+
+
+### Default Values
+
+```
+[boost]
+units="psi"
+low_alarm=-20.0
+high_alarm=20.0
+[coolant_temp]
+units="F"
+low_alarm=0.0
+high_alarm=200.0
+[fuel_level]
+units="%"
+low_alarm=10.0
+high_alarm=200.0
+[oil_pressure]
+units="bar"
+low_alarm=1.0
+high_alarm=4.5
+[oil_temperature]
+units="F"
+low_alarm=0.0
+high_alarm=220.0
+[voltmeter]
+units="V"
+low_alarm=12.0
+high_alarm=15.0
+[speedo]
+units="mph"
+top_value_source="voltmeter"
+top_value_units="V"
+[tacho]
+max_rpm=7000
+redline=6000
+```
+
 ### CAN config (config_can.ini)
 Rev C hardware added components to interface with CAN outputs from an aftermarket ECU.  The MCP2515 driver and can0 network interface are loaded when the dash boots and the Dash Qt app attempts to load CAN frame configuration from the *config_can.ini* file.  To date this has only been tested with a Microsquirt on a bench with simulated inputs. If the CAN interface is enabled in the CAN config file, the dash will preferentially use the frame data for a specific gauge over a hardware sensor.
 
