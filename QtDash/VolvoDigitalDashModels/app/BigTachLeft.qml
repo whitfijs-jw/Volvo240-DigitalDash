@@ -16,7 +16,7 @@ Item {
         property real smallGaugeXOffset: parent.height * (50/480)
 
         property bool speedoMph: speedoModel.units === "mph"
-        property bool oilTempF: oilTModel === "F"
+        property bool oilTempF: oilTModel.units === "F"
         property bool oilPressureBar: oilPModel.units === "bar"
 
         Rectangle {
