@@ -593,7 +593,7 @@ There are a few options in setting up the gauge units and high/low warning indic
 |*low_alarm*| Value below which gauge will indicate a warning |
 |*high_alarm*| Value above which gauge will indicate a warning |
 
-#####Example:
+##### Example:
 This example sets the units for coolant temperature gauges, in all screens, to celsius.  The gauge will indicate an alarm when the temperature exceeds 100C.
 ```
 [coolant_temp]
@@ -621,7 +621,7 @@ Below are the available units for each gauge type
 These are the default gauge ranges for the given units.  These can be assigned to different values in *config_gauges.ini*, but the gauges themselves are prerendered so its not gauranteed that the needle position will align with the displayed value
 
 | Gauge Type | Unit | Min Value | Max Value |
-|---|
+|---|---|---|---|
 |**[boost]**| ```"psi"``` | -20 | 30 |
 |**[boost]**| ```"bar"```| -1.0| 1.5 |
 |**[coolant_temp]**| ```"C"``` | 50 | 120 |
