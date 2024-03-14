@@ -127,8 +127,8 @@ Item {
 
                     gaugeMax: container.coolantTempF ? 260 : -1
 
-                    minAngle: -35
-                    maxAngle: 38
+                    minAngle: -39
+                    maxAngle: 39
 
                     clockwise: false
 
