@@ -265,6 +265,22 @@ Window {
                 }
             }
 
+            Item {
+                Layout.row: 17
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                Switch {
+                    id: clockwiseSwitch
+                    text: "clockwise"
+                }
+                Binding {
+                    target: gauge
+                    property: "clockwise"
+                    value: clockwiseSwitch.position
+                }
+
+            }
+
             TextInputValue {
                 Layout.row: 25
                 Layout.fillHeight: true
@@ -283,8 +299,6 @@ Window {
                     value: gaugeSize.value
                 }
             }
-
-
         }
     }
 

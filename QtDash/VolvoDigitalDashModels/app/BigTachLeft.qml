@@ -16,6 +16,8 @@ Item {
         property real smallGaugeXOffset: parent.height * (50/480)
 
         property bool speedoMph: speedoModel.units === "mph"
+        property bool oilTempF: oilTModel.units === "F"
+        property bool oilPressureBar: oilPModel.units === "bar"
 
         Rectangle {
             TachometerDelegate {
@@ -122,7 +124,9 @@ Item {
         Rectangle {
             AccessoryGaugeDelegate {
                 id: oilPressureDelegate
-                imageSource: "qrc:/accCluster/later-240-oil-pressure.png"
+                imageSource: container.oilPressureBar ?
+                                 "qrc:/accCluster/later-240-oil-pressure.png" :
+                                 "qrc:/accCluster/later-240-oil-pressure-psi.png"
             }
 
             id: oilPContainer
@@ -141,7 +145,9 @@ Item {
         Rectangle {
             AccessoryGaugeDelegate {
                 id: oilTempDelegate
-                imageSource: "qrc:/accCluster/later-240-oil-temp.png"
+                imageSource: container.oilTempF ?
+                                 "qrc:/accCluster/later-240-oil-temp.png" :
+                                 "qrc:/accCluster/later-240-oil-temp-c.png"
             }
 
             id: oilTContainer

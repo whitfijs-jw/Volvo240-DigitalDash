@@ -28,7 +28,7 @@ Item {
     property url imageSource: "qrc:/accCluster/later-240-voltmeter.png"
     property url needleResource: "qrc:/needles/needle-240.png"
 
-    property real textOffset: 0.55
+    property real textOffset: 0.525
 
     property bool clockwise: true
 

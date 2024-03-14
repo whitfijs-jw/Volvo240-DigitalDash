@@ -27,6 +27,7 @@ Item {
         property real smallGaugeNeedleCenterRadius: 0.15
 
         property bool speedoMph: speedoModel.units === "mph"
+        property bool oilPressureBar: oilPModel.units === "bar"
 
         Rectangle {
             id: tachContainer
@@ -177,7 +178,7 @@ Item {
             AccessoryGaugeDelegate {
                 id: oilPressureDelegate
 
-                gaugeMax: 8
+                gaugeMax: container.oilPressureBar ? 8 : 120
 
                 minAngle: container.smallGaugeMinAngle
                 maxAngle: container.smallGaugeMaxAngle
@@ -188,7 +189,11 @@ Item {
                 needleCenterRadius: container.smallGaugeNeedleCenterRadius
                 yOffset: container.smallGaugeYOffset
 
-                imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-oil-pressure-bar.png"
+                significatDigits: 1
+
+                imageSource: container.oilPressureBar ?
+                                 "qrc:/gauge-faces-140-rallye/140-rallye-oil-pressure-bar.png" :
+                                 "qrc:/gauge-faces-140-rallye/140-rallye-oil-pressure-psi.png"
                 needleResource: "qrc:/needles/needle-rsport.png"
 
             }

@@ -5,8 +5,8 @@ Item {
     id: gauge
 
     property bool clockwise: true
-    property int maxValue: 100
-    property int minValue: 0
+    property real maxValue: 100
+    property real minValue: 0
     property real value: 0
     property real internalValue: clockwise ? value : (maxValue - (value - minValue))
     property real angle: (internalValue <= initialValueOffset) ?

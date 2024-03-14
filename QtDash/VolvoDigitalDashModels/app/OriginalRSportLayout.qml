@@ -33,6 +33,8 @@ Item {
         property real smallGaugeNeedleCenterRadius: 0.15
 
         property bool speedoMph: speedoModel.units === "mph"
+        property bool coolantTempF: coolantTempModel.units === "F"
+        property bool oilPressureBar: oilPModel.units === "bar"
 
         Rectangle {
             SpeedoDelegate {
@@ -123,14 +125,16 @@ Item {
                 AccessoryGaugeDelegate {
                     id: coolantTempDelegate
 
-                    gaugeMax: 260
+                    gaugeMax: container.coolantTempF ? 260 : -1
 
-                    minAngle: -35
-                    maxAngle: 38
+                    minAngle: -39
+                    maxAngle: 39
 
                     clockwise: false
 
-                    imageSource: "qrc:/gauge-faces-r-sport/r_sport_coolant_fahrenhet.png"
+                    imageSource: container.coolantTempF ?
+                                     "qrc:/gauge-faces-r-sport/r_sport_coolant_fahrenhet.png" :
+                                     "qrc:/gauge-faces-r-sport/r_sport_coolant_celsius.png"
                     needleResource: "qrc:/needles/needle-rsport.png"
 
                     needleWidth: container.smallGaugeNeedleWidth
@@ -155,7 +159,10 @@ Item {
 
             Image {
                 anchors.fill: parent
-                source: "qrc:/gauge-faces-r-sport/r_sport_coolant_fahrenheit_shroud.png"
+                source: container.coolantTempF ?
+                            "qrc:/gauge-faces-r-sport/r_sport_coolant_fahrenheit_shroud.png" :
+                            "qrc:/gauge-faces-r-sport/r_sport_coolant_celsius_shroud.png"
+
                 cache: true
             }
         }
@@ -224,7 +231,9 @@ Item {
 
                 clockwise: false
 
-                imageSource: "qrc:/gauge-faces-r-sport/r_sport_oil_pressure_5bar.png"
+                imageSource: container.oilPressureBar ?
+                                 "qrc:/gauge-faces-r-sport/r_sport_oil_pressure_5bar.png" :
+                                 "qrc:/gauge-faces-r-sport/r_sport_oil_pressure_psi.png"
                 needleResource: "qrc:/needles/needle-rsport.png"
 
                 needleWidth: container.smallGaugeNeedleWidth
