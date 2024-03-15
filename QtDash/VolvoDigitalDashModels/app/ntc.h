@@ -24,7 +24,7 @@ public:
      * @brief Ntc constructor
      * @param config: sensor config
      */
-    Ntc(Config::TempSensorConfig_t config) {
+    Ntc(SensorConfig::TempSensorConfig config) {
         calculateCoefficients(config.r1, config.t1,
                         config.r2, config.t2,
                         config.r3, config.t3,
@@ -72,7 +72,7 @@ public:
      * @brief Get sensor config
      * @return Sensor config
      */
-    Config::TempSensorConfig_t * getSensorConfig() {
+    SensorConfig::TempSensorConfig * getSensorConfig() {
         return &mConfig;
     }
 
@@ -105,7 +105,7 @@ private:
 
     SteinhartHartCoefficients_t mCoeff; //!< internal coefficients
 
-    Config::TempSensorConfig_t mConfig; //!< sensor config
+    SensorConfig::TempSensorConfig mConfig; //!< sensor config
 };
 
 #endif // NTC_H

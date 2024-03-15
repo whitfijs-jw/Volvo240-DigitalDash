@@ -20,7 +20,7 @@ public:
      */
     VoltmeterSensor(QObject * parent, Config * config,
                     AdcSource * source, int channel,
-                    Config::Analog12VInputConfig_t analogConfig) :
+                    Analog12VInput::Analog12VInputConfig analogConfig) :
         Sensor(parent, config, source, channel), m12VInput(analogConfig) {
     }
 

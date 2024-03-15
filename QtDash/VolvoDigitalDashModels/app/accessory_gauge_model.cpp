@@ -24,6 +24,8 @@ QHash<int, QByteArray> AccessoryGaugeModel::roleNames() const
 
 QVariant AccessoryGaugeModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
+    (void)section;
+    (void)orientation;
     if (role == AccessoryGaugeRoles::MinValueRole)
     {
         return QVariant("gaugeMin");
@@ -53,11 +55,13 @@ QVariant AccessoryGaugeModel::headerData(int section, Qt::Orientation orientatio
 
 int AccessoryGaugeModel::rowCount(const QModelIndex &parent) const
 {
+    (void)parent;
     return 1;
 }
 
 QVariant AccessoryGaugeModel::data(const QModelIndex &index, int role) const
 {
+    (void)index;
     if (role == AccessoryGaugeRoles::MinValueRole)
     {
         return mMinValue;
@@ -88,6 +92,7 @@ QVariant AccessoryGaugeModel::data(const QModelIndex &index, int role) const
 
 bool AccessoryGaugeModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
+    (void)index;
     if (role == AccessoryGaugeRoles::MinValueRole)
     {
         mMinValue = value.toReal();
@@ -145,6 +150,7 @@ bool AccessoryGaugeModel::setData(const QModelIndex &index, const QVariant &valu
 
 Qt::ItemFlags AccessoryGaugeModel::flags(const QModelIndex &index) const
 {
+    (void)index;
     return Qt::ItemIsEditable;
 }
 

@@ -16,6 +16,8 @@ QHash<int, QByteArray> OdometerModel::roleNames() const
 
 QVariant OdometerModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
+    (void)section;
+    (void)orientation;
     if (role == OdometerModelRoles::OdoValueRole)
     {
         return QVariant("odometerValue");
@@ -33,11 +35,13 @@ QVariant OdometerModel::headerData(int section, Qt::Orientation orientation, int
 
 int OdometerModel::rowCount(const QModelIndex &parent) const
 {
+    (void)parent;
     return 1;
 }
 
 QVariant OdometerModel::data(const QModelIndex &index, int role) const
 {
+    (void)index;
     if (role == OdometerModelRoles::OdoValueRole) {
         return mOdometerValue;
     } else if(role == OdometerModelRoles::TripAValueRole) {
@@ -50,6 +54,7 @@ QVariant OdometerModel::data(const QModelIndex &index, int role) const
 
 bool OdometerModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
+    (void)index;
     if (role == OdometerModelRoles::OdoValueRole) {
         setOdometerValue(value.toReal());
     } else if(role == OdometerModelRoles::TripAValueRole) {
@@ -63,6 +68,7 @@ bool OdometerModel::setData(const QModelIndex &index, const QVariant &value, int
 }
 
 Qt::ItemFlags OdometerModel::flags(const QModelIndex &index) const {
+    (void)index;
     return Qt::ItemIsEditable;
 }
 

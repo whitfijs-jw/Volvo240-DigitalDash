@@ -262,7 +262,7 @@ void ConfigTest::testLoadTempSensorConfig() {
     Config * testConfig = new Config(this, config);
 
     // check if the settings are valid
-    Config::TempSensorConfig_t conf = testConfig->getTempSensorConfigs()->at(0);
+    SensorConfig::TempSensorConfig conf = testConfig->getTempSensorConfigs()->at(0);
     QCOMPARE(conf.isValid(), result);
 
     if(result) {

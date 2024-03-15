@@ -1,6 +1,8 @@
 QT += qml quick serialport positioning serialbus
 CONFIG += c++17 qtquickcompiler staticlib
 
+QMAKE_CXXFLAGS += -Werror
+
 TARGET = VolvoDigitalDashModels
 TEMPLATE = app
 
@@ -415,6 +417,7 @@ HEADERS += \
     event_timers.h \
     gauge.h \
     gauge_accessory.h \
+    gauge_configs.h \
     gauge_odo.h \
     gauge_speedo.h \
     gauge_tach.h \
@@ -430,6 +433,7 @@ HEADERS += \
     pwm.h \
     sensor.h \
     sensor_can.h \
+    sensor_configs.h \
     sensor_map.h \
     sensor_ntc.h \
     sensor_odometer.h \

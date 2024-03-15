@@ -70,7 +70,7 @@ public:
         initSpeedo();
         initTempFuelCluster();
 
-        Config::GaugeConfig_t gaugeConfig;
+        GaugeConfig::GaugeConfig gaugeConfig;
         gaugeConfig = mConfig.getGaugeConfig(Config::COOLANT_TEMP_GAUGE_GROUP);
 
         initAccessoryGuage(
@@ -172,7 +172,7 @@ public slots:
         {
             QString coreTemp = tempStream.readLine();
 
-            Config::GaugeConfig_t gaugeConfig;
+            GaugeConfig::GaugeConfig gaugeConfig;
             gaugeConfig = mConfig.getGaugeConfig(Config::COOLANT_TEMP_GAUGE_GROUP);
 
             qreal temp = coreTemp.toFloat() / 1000.0;
@@ -392,9 +392,8 @@ private:
      * @param highTempAlarm: high coolant temp alarm
      * @param lowFuelAlarm: low fuel temp alarm
      */
-    void initTempFuelCluster(qreal minTemp = 120, qreal maxTemp = 250, QString tempUnits = "°F",
-                             qreal highTempAlarm = 220, qreal lowFuelAlarm = 10) {
-        Config::GaugeConfig_t gaugeConfig;
+    void initTempFuelCluster() {
+        GaugeConfig::GaugeConfig gaugeConfig;
         gaugeConfig = mConfig.getGaugeConfig(Config::COOLANT_TEMP_GAUGE_GROUP);
 
         /** Init temp/fuel gauge **/
@@ -402,7 +401,7 @@ private:
         mTempFuelModel.setMaxTemp(gaugeConfig.max);
         mTempFuelModel.setTempUnits(gaugeConfig.displayUnits);
         mTempFuelModel.setHighTempAlarm(gaugeConfig.highAlarm);
-        mTempFuelModel.setLowFuelAlarm(lowFuelAlarm);
+        mTempFuelModel.setLowFuelAlarm(10);
 
         mTempFuelModel.setCurrentTemp(0);
         mTempFuelModel.setFuelLevel(0);

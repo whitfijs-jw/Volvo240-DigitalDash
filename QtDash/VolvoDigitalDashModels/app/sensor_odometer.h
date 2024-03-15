@@ -19,7 +19,7 @@ public:
      */
     OdometerSensor(QObject * parent, Config * config,
                    VssSource * source, int channel,
-                   Config::OdometerConfig_t * odoConfig = nullptr) :
+                   SensorConfig::OdometerConfig * odoConfig = nullptr) :
            Sensor(parent, config, source, channel) {
 
         // Check if the optional input
@@ -94,7 +94,7 @@ public slots:
     }
 
 private:
-    Config::OdometerConfig_t mOdoConfig;
+    SensorConfig::OdometerConfig mOdoConfig;
     int mLastPulseCount = 0;
     int mUpdatePulseCount = 0;
     bool mCanReset = true;

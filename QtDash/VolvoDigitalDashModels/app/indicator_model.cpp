@@ -17,6 +17,8 @@ QHash<int, QByteArray> IndicatorModel::roleNames() const
 
 QVariant IndicatorModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
+    (void)section;
+    (void)orientation;
     if (role == IndicatorRoles::onRole)
     {
         return QVariant("indicatorOn");
@@ -30,11 +32,13 @@ QVariant IndicatorModel::headerData(int section, Qt::Orientation orientation, in
 
 int IndicatorModel::rowCount(const QModelIndex &parent) const
 {
+    (void)parent;
     return 1;
 }
 
 QVariant IndicatorModel::data(const QModelIndex &index, int role) const
 {
+    (void)index;
     if (role == IndicatorRoles::onRole)
     {
         return mOn;
@@ -49,6 +53,7 @@ QVariant IndicatorModel::data(const QModelIndex &index, int role) const
 
 bool IndicatorModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
+    (void)index;
     if (role == IndicatorRoles::onRole)
     {
         mOn = value.toBool();
@@ -74,6 +79,7 @@ bool IndicatorModel::setData(const QModelIndex &index, const QVariant &value, in
 
 Qt::ItemFlags IndicatorModel::flags(const QModelIndex &index) const
 {
+    (void)index;
     return Qt::ItemIsEditable;
 }
 

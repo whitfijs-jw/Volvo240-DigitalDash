@@ -26,7 +26,7 @@ public:
      * @param config: tach input config from Config class
      * @param path: path where the sysfs pulse_counter device is found
      */
-    TachInput(Config::TachInputConfig_t config,
+    TachInput(SensorConfig::TachInputConfig config,
               std::string path = DEFAULT_TACH_PULSE_PATH) :
         PulseCounter(path), mConfig(config) {
         setMaxRpm(config.maxRpm);
@@ -57,7 +57,7 @@ public:
 private:
     static constexpr char DEFAULT_TACH_PULSE_PATH[] = "/sys/class/volvo_dash/tach_counter/"; //!< default pulse counter location
 
-    Config::TachInputConfig_t mConfig; //!< Tach configuration
+    SensorConfig::TachInputConfig mConfig; //!< Tach configuration
 };
 
 #endif // TACH_INPUT_H

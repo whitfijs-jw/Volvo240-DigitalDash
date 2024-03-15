@@ -25,7 +25,7 @@ public:
      * @param config: VSS sensor configuration
      * @param path: path to vss_counter kernel module output
      */
-    VssInput(Config::VssInputConfig_t config,
+    VssInput(SensorConfig::VssInputConfig config,
              std::string path = DEFAULT_VSS_PULSE_PATH) :
         PulseCounter(path), mConfig(config) {
         if (mConfig.pulsePerUnitDistance <= 0 && mConfig.tireDiameter > 0) {
@@ -63,7 +63,7 @@ public:
 private:
     static constexpr char DEFAULT_VSS_PULSE_PATH[] = "/sys/class/volvo_dash/vss_counter/"; //!< default pulse counter location
 
-    Config::VssInputConfig_t mConfig; //!< VSS configuration
+    SensorConfig::VssInputConfig mConfig; //!< VSS configuration
 };
 
 #endif // VSS_INPUT_H

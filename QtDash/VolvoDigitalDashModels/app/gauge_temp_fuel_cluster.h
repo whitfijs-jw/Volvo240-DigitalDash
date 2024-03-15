@@ -22,7 +22,7 @@ public:
                          TempAndFuelGaugeModel * model, QString modelName, QQmlContext * context) :
           Gauge(parent, config, sensors, model, modelName, context) {
         // get coolant temp config
-        Config::GaugeConfig_t coolantConfig = mConfig->getGaugeConfig(Config::COOLANT_TEMP_GAUGE_GROUP);
+        GaugeConfig::GaugeConfig coolantConfig = mConfig->getGaugeConfig(Config::COOLANT_TEMP_GAUGE_GROUP);
 
         ((TempAndFuelGaugeModel*) mModel)->setMinTemp(coolantConfig.min);
         ((TempAndFuelGaugeModel*) mModel)->setMaxTemp(coolantConfig.max);
@@ -31,7 +31,7 @@ public:
         ((TempAndFuelGaugeModel*) mModel)->setCurrentTemp(0.0);
 
         // fuel gauge config
-        Config::GaugeConfig_t fuelLevelConfig = mConfig->getGaugeConfig(Config::FUEL_GAUGE_GROUP);
+        GaugeConfig::GaugeConfig fuelLevelConfig = mConfig->getGaugeConfig(Config::FUEL_GAUGE_GROUP);
 
         ((TempAndFuelGaugeModel*) mModel)->setLowFuelAlarm(fuelLevelConfig.lowAlarm);
         ((TempAndFuelGaugeModel*) mModel)->setFuelLevel(0.0);

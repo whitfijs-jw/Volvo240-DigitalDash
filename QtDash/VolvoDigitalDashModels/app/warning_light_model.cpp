@@ -19,6 +19,8 @@ QHash<int, QByteArray> WarningLightModel::roleNames() const
 
 QVariant WarningLightModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
+    (void)section;
+    (void)orientation;
     if (role == WarningLightRoles::onRole)
     {
         return QVariant("warningLightOn");
@@ -40,11 +42,13 @@ QVariant WarningLightModel::headerData(int section, Qt::Orientation orientation,
 
 int WarningLightModel::rowCount(const QModelIndex &parent) const
 {
+    (void)parent;
     return 1;
 }
 
 QVariant WarningLightModel::data(const QModelIndex &index, int role) const
 {
+    (void)index;
     if (role == WarningLightRoles::onRole)
     {
         return mOn;
@@ -67,6 +71,7 @@ QVariant WarningLightModel::data(const QModelIndex &index, int role) const
 
 bool WarningLightModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
+    (void)index;
     if (role == WarningLightRoles::onRole)
     {
         mOn = value.toBool();
@@ -108,6 +113,7 @@ bool WarningLightModel::setData(const QModelIndex &index, const QVariant &value,
 
 Qt::ItemFlags WarningLightModel::flags(const QModelIndex &index) const
 {
+    (void)index;
     return Qt::ItemIsEditable;
 }
 

@@ -4,12 +4,13 @@
 #include <sensor.h>
 #include <sensor_source_adc.h>
 #include <sensor_utils.h>
-
+#include <sensor_configs.h>
 /**
  * @brief The ResistiveSensor class
  */
 class ResistiveSensor : public Sensor {
 public:
+
     /**
      * @brief ResistiveSensor: resistive sensor constuctor
      * @param parent: parent object
@@ -20,7 +21,7 @@ public:
      */
     ResistiveSensor(QObject * parent, Config * config,
                     AdcSource * source, int channel,
-                    Config::ResistiveSensorConfig_t sensorConfig) :
+                    SensorConfig::ResistiveSensorConfig sensorConfig) :
         Sensor(parent, config, source, channel), mSensorConfig(sensorConfig) {
         // calculate curve
         mSensorConfig.coeff = SensorUtils::polynomialRegression(
@@ -68,7 +69,7 @@ public slots:
     }
 
 private:
-    Config::ResistiveSensorConfig_t mSensorConfig; //!< resistive sensor config
+    SensorConfig::ResistiveSensorConfig mSensorConfig; //!< resistive sensor config
     qreal mPreviousValue = 0; //!< previous value (used for filtering)
 };
 

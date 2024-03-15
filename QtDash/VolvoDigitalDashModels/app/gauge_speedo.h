@@ -25,7 +25,7 @@ public:
     SpeedometerGauge(QObject * parent, Config * config, QList<Sensor *> sensors,
                    SpeedometerModel * model, QString modelName, QQmlContext * context) :
     Gauge(parent, config, sensors, model, modelName, context) {
-        Config::SpeedoConfig_t speedoConfig = mConfig->getSpeedoConfig();
+        GaugeConfig::SpeedoConfig speedoConfig = mConfig->getSpeedoConfig();
 
         // setup speedo
         ((SpeedometerModel *)mModel)->setMinValue(speedoConfig.gaugeConfig.min);

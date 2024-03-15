@@ -23,7 +23,7 @@ public:
     Gauge(parent, config, sensors, model, modelName, context) {
 
         // get config
-        Config::TachoConfig_t gaugeConfig = mConfig->getTachGaugeConfig();
+        GaugeConfig::TachoConfig gaugeConfig = mConfig->getTachGaugeConfig();
 
         ((TachometerModel *)mModel)->setMaxRpm(gaugeConfig.maxRpm);
         ((TachometerModel *)mModel)->setRedLine(gaugeConfig.redline);

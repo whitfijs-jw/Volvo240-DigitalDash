@@ -21,6 +21,8 @@ QHash<int, QByteArray> SpeedometerModel::roleNames() const
 
 QVariant SpeedometerModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
+    (void)section;
+    (void)orientation;
     if (role == SpeedometerModelRoles::MinValueRole)
     {
         return QVariant("minValue");
@@ -50,11 +52,13 @@ QVariant SpeedometerModel::headerData(int section, Qt::Orientation orientation, 
 
 int SpeedometerModel::rowCount(const QModelIndex &parent) const
 {
+    (void)parent;
     return 1;
 }
 
 QVariant SpeedometerModel::data(const QModelIndex &index, int role) const
 {
+    (void)index;
     if (role == SpeedometerModelRoles::MinValueRole)
     {
         return mMinValue;
@@ -85,6 +89,7 @@ QVariant SpeedometerModel::data(const QModelIndex &index, int role) const
 
 bool SpeedometerModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
+    (void)index;
     if (role == SpeedometerModelRoles::MinValueRole)
     {
         mMinValue = value.toReal();
@@ -142,6 +147,7 @@ bool SpeedometerModel::setData(const QModelIndex &index, const QVariant &value, 
 
 Qt::ItemFlags SpeedometerModel::flags(const QModelIndex &index) const
 {
+    (void)index;
     return Qt::ItemIsEditable;
 }
 

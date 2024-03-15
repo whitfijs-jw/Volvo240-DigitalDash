@@ -3,8 +3,8 @@
 
 #include <QObject>
 #include <QtMath>
+#include <units.h>
 
-#include <config.h>
 #include <../../eigen/Eigen/Dense>
 
 /**

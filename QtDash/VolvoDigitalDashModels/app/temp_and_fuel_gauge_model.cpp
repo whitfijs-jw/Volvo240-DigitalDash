@@ -20,6 +20,8 @@ QHash<int, QByteArray> TempAndFuelGaugeModel::roleNames() const
 
 QVariant TempAndFuelGaugeModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
+    (void)section;
+    (void)orientation;
     if (role == TempAndFuelGaugeModelRoles::MinTempRole)
     {
         return QVariant("tempMin");
@@ -53,11 +55,13 @@ QVariant TempAndFuelGaugeModel::headerData(int section, Qt::Orientation orientat
 
 int TempAndFuelGaugeModel::rowCount(const QModelIndex &parent) const
 {
+    (void)parent;
     return 1;
 }
 
 QVariant TempAndFuelGaugeModel::data(const QModelIndex &index, int role) const
 {
+    (void)index;
     if (role == TempAndFuelGaugeModelRoles::MinTempRole)
     {
         return mMinTemp;
@@ -92,6 +96,7 @@ QVariant TempAndFuelGaugeModel::data(const QModelIndex &index, int role) const
 
 bool TempAndFuelGaugeModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
+    (void)index;
     if (role == TempAndFuelGaugeModelRoles::MinTempRole)
     {
         mMinTemp = value.toReal();
@@ -157,6 +162,7 @@ bool TempAndFuelGaugeModel::setData(const QModelIndex &index, const QVariant &va
 
 Qt::ItemFlags TempAndFuelGaugeModel::flags(const QModelIndex &index) const
 {
+    (void)index;
     return Qt::ItemIsEditable;
 }
 

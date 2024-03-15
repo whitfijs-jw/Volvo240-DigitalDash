@@ -3,6 +3,7 @@
 
 #include <sensor_source.h>
 #include <adc.h>
+#include <config.h>
 
 /**
  * @brief The AdcSource class

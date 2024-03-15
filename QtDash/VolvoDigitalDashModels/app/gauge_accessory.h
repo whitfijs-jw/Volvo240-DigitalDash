@@ -24,7 +24,7 @@ public:
     Gauge(parent, config, sensors, model, modelName, context) {
 
         // pull configs
-        Config::GaugeConfig_t gaugeConfig;
+        GaugeConfig::GaugeConfig gaugeConfig;
         if (modelName == AccessoryGaugeModel::BOOST_GAUGE_MODEL_NAME) {
             gaugeConfig = config->getGaugeConfig(Config::BOOST_GAUGE_GROUP);
         } else if (modelName == AccessoryGaugeModel::COOLANT_TEMP_MODEL_NAME) {

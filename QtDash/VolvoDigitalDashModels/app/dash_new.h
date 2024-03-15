@@ -24,6 +24,7 @@
 #include <sensor_source_tach.h>
 #include <sensor_source_vss.h>
 
+#include <sensor_configs.h>
 #include <sensor_map.h>
 #include <sensor_ntc.h>
 #include <sensor_voltmeter.h>
@@ -227,7 +228,7 @@ private:
         mCoolantTempSensor = new NtcSensor(
                     this->parent(), &mConfig, mAdcSource,
                     mConfig.getSensorConfig().value(Config::COOLANT_TEMP_KEY),
-                    Config::TemperatureSensorType::COOLANT);
+                    SensorConfig::TemperatureSensorType::COOLANT);
 
         QObject::connect(
                     mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
@@ -240,7 +241,7 @@ private:
         mAmbientTempSensor = new NtcSensor(
                     this->parent(), &mConfig, mAdcSource,
                     mConfig.getSensorConfig().value(Config::AMBIENT_TEMP_KEY),
-                    Config::TemperatureSensorType::AMBIENT);
+                    SensorConfig::TemperatureSensorType::AMBIENT);
 
         QObject::connect(
                     mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
@@ -253,7 +254,7 @@ private:
         mOilTempSensor = new NtcSensor(
                     this->parent(), &mConfig, mAdcSource,
                     mConfig.getSensorConfig().value(Config::OIL_TEMP_KEY),
-                    Config::TemperatureSensorType::OIL);
+                    SensorConfig::TemperatureSensorType::OIL);
 
         QObject::connect(
                     mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
@@ -361,13 +362,13 @@ private:
         QObject::connect(
                     mOdoSensor, &OdometerSensor::writeOdoValue,
                     [=](qreal value) {
-            Config::OdometerConfig_t c = mConfig.getOdometerConfig(Config::ODO_NAME_ODOMETER);
+            SensorConfig::OdometerConfig c = mConfig.getOdometerConfig(Config::ODO_NAME_ODOMETER);
             c.value = value;
             mConfig.writeOdometerConfig(Config::ODO_NAME_ODOMETER, c);
         });
 
         // trip counters
-        Config::OdometerConfig_t confA = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA);
+        SensorConfig::OdometerConfig confA = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA);
         mTripAOdoSensor = new OdometerSensor (
                     this->parent(), &mConfig, mVssSource,
                     (int) VssSource::VssDataChannel::PULSE_COUNT, &confA);
@@ -375,12 +376,12 @@ private:
         QObject::connect(
                     mTripAOdoSensor, &OdometerSensor::writeOdoValue,
                     [=](qreal value) {
-            Config::OdometerConfig_t c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA);
+            SensorConfig::OdometerConfig c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA);
             c.value = value;
             mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPA, c);
         });
 
-        Config::OdometerConfig_t confB = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB);
+        SensorConfig::OdometerConfig confB = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB);
         mTripBOdoSensor = new OdometerSensor (
                     this->parent(), &mConfig, mVssSource,
                     (int) VssSource::VssDataChannel::PULSE_COUNT, &confB);
@@ -388,7 +389,7 @@ private:
         QObject::connect(
                     mTripBOdoSensor, &OdometerSensor::writeOdoValue,
                     [=](qreal value) {
-            Config::OdometerConfig_t c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB);
+            SensorConfig::OdometerConfig c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB);
             c.value = value;
             mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPB, c);
         });

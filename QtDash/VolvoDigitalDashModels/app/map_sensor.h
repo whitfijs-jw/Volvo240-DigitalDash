@@ -15,7 +15,7 @@ public:
      * @brief MapSensor constructor
      * @param config: MAP sensor config
      */
-    MapSensor(Config::MapSensorConfig_t config, qreal vRef) {
+    MapSensor(SensorConfig::MapSensorConfig config, qreal vRef) {
         setVoltages(config.p0V, config.p5V, vRef, config.units);
     }
 

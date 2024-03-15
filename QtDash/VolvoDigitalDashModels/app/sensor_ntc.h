@@ -22,14 +22,14 @@ public:
      */
     NtcSensor(QObject * parent, Config * config,
               AdcSource * source, int channel,
-              Config::TemperatureSensorType type) :
+              SensorConfig::TemperatureSensorType type) :
     Sensor(parent, config, source, channel) {
 
         // setup temp sensors
-        QList<Config::TempSensorConfig_t> * tempSensorConfigs =
+        QList<SensorConfig::TempSensorConfig> * tempSensorConfigs =
                 mConfig->getTempSensorConfigs();
 
-        for (Config::TempSensorConfig_t config : *tempSensorConfigs) {
+        for (SensorConfig::TempSensorConfig config : *tempSensorConfigs) {
             // use the sensor source vref
             config.vSupply = source->getVRef();
 

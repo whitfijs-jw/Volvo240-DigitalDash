@@ -18,6 +18,8 @@ QHash<int, QByteArray> TachometerModel::roleNames() const
 
 QVariant TachometerModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
+    (void)section;
+    (void)orientation;
     if (role == TachometerRoles::RpmRole)
     {
         return QVariant("rpm");
@@ -35,11 +37,13 @@ QVariant TachometerModel::headerData(int section, Qt::Orientation orientation, i
 
 int TachometerModel::rowCount(const QModelIndex &parent) const
 {
+    (void)parent;
     return 1;
 }
 
 QVariant TachometerModel::data(const QModelIndex &index, int role) const
 {
+    (void)index;
     if (role == TachometerRoles::RpmRole)
     {
         return mRpm;
@@ -58,6 +62,7 @@ QVariant TachometerModel::data(const QModelIndex &index, int role) const
 
 bool TachometerModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
+    (void)index;
     if (role == TachometerRoles::RpmRole)
     {
         mRpm = value.toInt();
@@ -85,6 +90,7 @@ bool TachometerModel::setData(const QModelIndex &index, const QVariant &value, i
 
 Qt::ItemFlags TachometerModel::flags(const QModelIndex &index) const
 {
+    (void)index;
     return Qt::ItemIsEditable;
 }
 

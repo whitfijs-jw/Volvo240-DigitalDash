@@ -9,6 +9,10 @@
 #include <can_frame_config.h>
 #include <units.h>
 
+#include <analog_12v_input.h>
+#include <sensor_configs.h>
+#include <gauge_configs.h>
+
 /**
  * @brief Dash config class
  *
@@ -94,8 +98,6 @@ public:
     static constexpr char TEMP_TYPE_COOLANT[] = "coolant";
     static constexpr char TEMP_TYPE_OIL[] = "oil";
     static constexpr char TEMP_TYPE_AMBIENT[] = "ambient";
-
-    static constexpr qreal INVALID_TEMP = -459.67; // value if temp could not be read
 
     //expected keys for tach input
     static constexpr char TACH_PULSES_PER_ROTATION[] = "pulse_per_rot";
@@ -234,157 +236,6 @@ public:
     static constexpr char CAN_FRAME_GAUGE[] = "gauge";
 
     /**
-     * @brief TemperatureSensorType enum
-     */
-    enum class TemperatureSensorType {
-        COOLANT = 0, //!< Coolant temp sensor
-        OIL, //!< Oil temp sensor
-        AMBIENT, //!< Outside/Ambient temp sensor
-    };
-
-    /**
-     * @brief The ResistiveSensorType enum
-     */
-    enum class ResistiveSensorType {
-        INTERPOLATION = 0, //!< interpolate calibration data
-        POLYNOMIAL, //!< fit polynomial to calibration data
-    };
-
-    /**
-     * @struct Resistive Sensor config
-     */
-    typedef struct ResistiveSensorConfig {
-        QString type; //!< sensor type
-        ResistiveSensorType fitType; //!< @ref ResistiveSensorType
-        QList<qreal> x; //!< calibration x data
-        QList<qreal> y; //!< calibration y data
-        QList<qreal> coeff; //!< coefficients for polynomial fit only
-        int order; //!< polynomial order -- polynomial only
-        qreal rBalance; //!< balance resistor value in ohms
-        QString units; //!< calibration data units
-        qreal lag; //!< filtering value (0-1)
-        qreal vSupply; //!< supply voltage
-
-        /**
-         * @brief isValid
-         * @return is config valid
-         */
-        bool isValid() {
-            return true; //TODO: yea
-        }
-    } ResistiveSensorConfig_t;
-
-    /**
-     * @struct 12V analog input configuration
-     */
-    typedef struct Analog12VInputConfig{
-        QString type; //!< input type
-        qreal optoR1; //!< opto R1 resistance
-        qreal optoR2; //!< opto R2 resistance
-        qreal inputR1; //!< input voltage divided R1
-        qreal inputR2; //!< input voltage divider R2
-        qreal gainK3; //!< opto transfer gain K3
-        qreal offset;
-
-        // polynomial fit (if the fit isn't perfectly linear)
-        QList<qreal> x; //!< input voltage (battery voltage)
-        QList<qreal> y; //!< measured voltage
-        QList<qreal> coeff;
-        int order;
-
-        /**
-         * @brief isValid
-         * @return is config valid
-         */
-        bool isValid() {
-            return true; //TODO: yea
-        }
-    } Analog12VInputConfig_t;
-
-    /**
-     * @struct MapSensorConfig
-     */
-    typedef struct MapSensorConfig {
-        qreal p0V; //!< pressure when sensor reads 0V
-        qreal p5V; //!< pressure when sensor reads 5V
-        qreal pAtm; //!< atmpsheric pressure
-        Units::PressureUnits units; //!< units of calibration pressures
-
-        /**
-         * @brief Check if calibration is valid
-         * @return true if valid
-         */
-        bool isValid() {
-            // we're assuming absolute pressure.
-            return (p0V >= 0) && (p5V != p0V);
-        }
-    } MapSensorConfig_t;
-
-    /**
-     * @struct TempSensorConfig
-     */
-    typedef struct TempSensorConfig {
-        qreal rBalance; //!< balance resistor (everything should be high side)
-        qreal vSupply; //!< Voltage supply (should be 5V on Dash Hardware)
-        qreal t1; //!< Steinhart-Hart T1 (first calibration temperature)
-        qreal t2; //!< Steinhart-Hart T2
-        qreal t3; //!< Steinhart-Hart T3
-        qreal r1; //!< NTC resistance at T1
-        qreal r2; //!< NTC resistance at T2
-        qreal r3; //!< NTC resistance at T3
-        Units::TemperatureUnits units; //!< units of calibration temperature
-        TemperatureSensorType type; //!< Temp Sensor type -- coolant, oil, outside/ambient...
-
-        /**
-         * @brief Check if configuration is valid
-         * @return true if valid
-         */
-        bool isValid() {
-            return (t1 >= INVALID_TEMP) &&
-                    (t2 >= INVALID_TEMP) &&
-                    (t3 >= INVALID_TEMP) &&
-                    (r1 > 0) &&
-                    (r2 > 0) &&
-                    (r3 > 0) &&
-                    (vSupply > 0) &&
-                    (rBalance > 0);
-
-        }
-    } TempSensorConfig_t;
-
-    /**
-     * @struct TachInputConfig
-     */
-    typedef struct TachInputConfig {
-        int pulsesPerRot; //!< tach pulses per rotation
-        int maxRpm; //!< max valid rpm
-        int avgNumSamples; //!< number of samples to average over
-    }TachInputConfig_t;
-
-    /**
-     * @struct VssInputConfig
-     */
-    typedef struct VssInputConfig {
-        int pulsePerRot; //!< Number of pulses from VSS sensor per rotation of the tire
-        qreal tireDiameter; //!< tire diameter
-        Units::DistanceUnits tireDiameterUnits; //!< tire diameter units @ref DistanceUnits
-        int pulsePerUnitDistance; //!< Pulses per unit distance.  Will be calculated from tire diameter if left empty
-        Units::DistanceUnits distanceUnits; //!< unit of distance for pulsePerUnitDistance
-        int maxSpeed; //!< Max speed -- lowest possible value it best will filter out noisy signals better
-        bool useGps = false;
-    } VssInputConfig_t;
-
-    /**
-     * @struct OdometerConfig
-     */
-    typedef struct OdometerConfig {
-        Units::DistanceUnits units; //!< odometer internal units
-        qreal value; //!< odometer value (in above units)
-        int writeInterval; //!< number of pulses between writing to back to non-volatile memory
-        QString name;
-    } OdometerConfig_t;
-
-    /**
      * @struct BacklightControlConfig
      */
     typedef struct BacklightControlConfig {
@@ -397,34 +248,6 @@ public:
         bool useDimmer;
         bool activeLow;
     } BacklightControlConfig_t;
-
-    /**
-     * @struct GaugeConfig
-     */
-    typedef struct GaugeConfig {
-        qreal min; //!< minimum gauge value
-        qreal max; //!< maxuimum gauge value
-        qreal lowAlarm; //!< low alarm
-        qreal highAlarm; //!< high alarm
-        QString displayUnits; //!< display units
-    } GaugeConfig_t;
-
-    /**
-     * @struct SpeedoConfig
-     */
-    typedef struct SpeedoConfig {
-        GaugeConfig_t gaugeConfig; //!< Gauge config
-        QString topSource; //!< secondary display source
-        QString topUnits; //!< secondary display units
-    } SpeedoConfig_t;
-
-    /**
-     * @struct TachoConfig
-     */
-    typedef struct TachoConfig {
-        qreal maxRpm; //!< maximum rpm -- lowest possible value will help filter out noisier data
-        qreal redline; //!< defines when numerical RPM indication will turn red
-    } TachoConfig_t ;
 
     static constexpr char DEFAULT_CONFIG_PATH[] = "/opt/config.ini"; //!< deafult config location
     static constexpr char DEFAULT_GAUGE_CONFIG_PATH[] = "/opt/config_gauges.ini"; //!< default gauge config location
@@ -523,7 +346,7 @@ public:
 
         int size = mOdometerConfig->beginReadArray(ODOMETER_GROUP);
         for (int i = 0; i < size; ++i) {
-            OdometerConfig_t conf;
+            SensorConfig::OdometerConfig conf;
             mOdometerConfig->setArrayIndex(i);
 
             QString odoUnits = mOdometerConfig->value(ODO_UNITS, Units::UNITS_MILE).toString();
@@ -539,7 +362,7 @@ public:
         return true;
     }
 
-    bool writeOdometerConfig(QString name, OdometerConfig_t conf) {
+    bool writeOdometerConfig(QString name, SensorConfig::OdometerConfig conf) {
         //write to disk
         mOdometerConfig->beginWriteArray(ODOMETER_GROUP);
         for (int i = 0; i < mOdoConfig.size(); i++) {
@@ -561,7 +384,7 @@ public:
     bool loadGaugeConfigs() {
         // accessory gauges
         // boost gauge
-        GaugeConfig_t boost = loadGaugeConfig(BOOST_GAUGE_GROUP);
+        GaugeConfig::GaugeConfig boost = loadGaugeConfig(BOOST_GAUGE_GROUP);
         if (boost.displayUnits.compare(Units::UNITS_PSI, Qt::CaseInsensitive) == 0) {
             boost.min = DEFAULT_BOOST_GAUGE_MIN_PSI;
             boost.max = DEFAULT_BOOST_GAUGE_MAX_PSI;
@@ -572,7 +395,7 @@ public:
         mGaugeConfigs.insert(BOOST_GAUGE_GROUP, boost);
 
         // coolant temp
-        GaugeConfig_t coolantTemp = loadGaugeConfig(COOLANT_TEMP_GAUGE_GROUP);
+        GaugeConfig::GaugeConfig coolantTemp = loadGaugeConfig(COOLANT_TEMP_GAUGE_GROUP);
         if (coolantTemp.displayUnits.compare(Units::UNITS_F, Qt::CaseInsensitive) == 0) {
             coolantTemp.min = DEFAULT_COOLANT_TEMP_GAUGE_MIN_F;
             coolantTemp.max = DEFAULT_COOLANT_TEMP_GAUGE_MAX_F;
@@ -583,13 +406,13 @@ public:
         mGaugeConfigs.insert(COOLANT_TEMP_GAUGE_GROUP, coolantTemp);
 
         // fuel level
-        GaugeConfig_t fuelLevel = loadGaugeConfig(FUEL_GAUGE_GROUP);
+        GaugeConfig::GaugeConfig fuelLevel = loadGaugeConfig(FUEL_GAUGE_GROUP);
         fuelLevel.min = 0.0;
         fuelLevel.max = 100.0;
         mGaugeConfigs.insert(FUEL_GAUGE_GROUP, fuelLevel);
 
         // oil pressure
-        GaugeConfig_t oilPressure = loadGaugeConfig(OIL_PRESSURE_GAUGE_GROUP);
+        GaugeConfig::GaugeConfig oilPressure = loadGaugeConfig(OIL_PRESSURE_GAUGE_GROUP);
         if (oilPressure.displayUnits.compare(Units::UNITS_PSI, Qt::CaseInsensitive) == 0) {
             oilPressure.min = DEFAULT_OIL_PRESSURE_GAUGE_MIN_PSI;
             oilPressure.max = DEFAULT_OIL_PRESSURE_GAUGE_MAX_PSI;
@@ -600,7 +423,7 @@ public:
         mGaugeConfigs.insert(OIL_PRESSURE_GAUGE_GROUP, oilPressure);
 
         // oil temperature
-        GaugeConfig_t oilTemp = loadGaugeConfig(OIL_TEMPERATURE_GAUGE_GROUP);
+        GaugeConfig::GaugeConfig oilTemp = loadGaugeConfig(OIL_TEMPERATURE_GAUGE_GROUP);
         if (oilTemp.displayUnits.compare(Units::UNITS_F, Qt::CaseInsensitive) == 0) {
             oilTemp.min = DEFAULT_OIL_TEMP_GAUGE_MIN_F;
             oilTemp.max = DEFAULT_OIL_TEMP_GAUGE_MAX_F;
@@ -611,7 +434,7 @@ public:
         mGaugeConfigs.insert(OIL_TEMPERATURE_GAUGE_GROUP, oilTemp);
 
         //voltmeter
-        GaugeConfig_t voltmeter = loadGaugeConfig(VOLTMETER_GAUGE_GROUP);
+        GaugeConfig::GaugeConfig voltmeter = loadGaugeConfig(VOLTMETER_GAUGE_GROUP);
         voltmeter.min = DEFAULT_VOLTMETER_GAUGE_MIN;
         voltmeter.max = DEFAULT_VOLTMETER_GAUGE_MAX;
         mGaugeConfigs.insert(VOLTMETER_GAUGE_GROUP, voltmeter);
@@ -660,10 +483,10 @@ public:
      * @param groupName: Gauge group name
      * @return gauge config
      */
-    GaugeConfig_t loadGaugeConfig(QString groupName) {
+    GaugeConfig::GaugeConfig loadGaugeConfig(QString groupName) {
         mGaugeConfig->beginGroup(groupName);
 
-        GaugeConfig_t conf;
+        GaugeConfig::GaugeConfig conf;
 
         conf.min = mGaugeConfig->value(MIN_VALUE, "").toReal();
         conf.max = mGaugeConfig->value(MAX_VALUE, "").toReal();
@@ -757,7 +580,7 @@ public:
         // Temperature sensor config
         int size = mConfig->beginReadArray(TEMP_SENSOR_GROUP);
         for (int i = 0; i < size; ++i) {
-            TempSensorConfig_t conf;
+            SensorConfig::TempSensorConfig conf;
             mConfig->setArrayIndex(i);
 
             conf.rBalance = mConfig->value(TEMP_R_BALANCE, 1000).toReal();
@@ -773,14 +596,14 @@ public:
 
             QString type = mConfig->value(TEMP_TYPE, TEMP_TYPE_COOLANT).toString();
             if (type.compare(TEMP_TYPE_COOLANT, Qt::CaseInsensitive) == 0) {
-                conf.type = TemperatureSensorType::COOLANT;
+                conf.type = SensorConfig::TemperatureSensorType::COOLANT;
             } else if (type.compare(TEMP_TYPE_OIL, Qt::CaseInsensitive) == 0) {
-                conf.type = TemperatureSensorType::OIL;
+                conf.type = SensorConfig::TemperatureSensorType::OIL;
             } else if (type.compare(TEMP_TYPE_AMBIENT, Qt::CaseInsensitive) == 0) {
-                conf.type = TemperatureSensorType::AMBIENT;
+                conf.type = SensorConfig::TemperatureSensorType::AMBIENT;
             } else {
                 qDebug() << "Unrecognized temperature sensor type, assuming coolant.  Fix config.ini file if not correct";
-                conf.type = TemperatureSensorType::COOLANT;
+                conf.type = SensorConfig::TemperatureSensorType::COOLANT;
             }
 
             mTempSensorConfigs.append(conf);
@@ -804,17 +627,17 @@ public:
         size = mConfig->beginReadArray(RESISTIVE_SENSOR_GROUP);
         for (int i = 0; i < size; ++i) {
             mConfig->setArrayIndex(i);
-            ResistiveSensorConfig_t rSensorConf;
+            SensorConfig::ResistiveSensorConfig rSensorConf;
             // sensor type/name
             rSensorConf.type = mConfig->value(RES_SENSOR_TYPE, "").toString();
 
             // sensor fit type
             QList fit = mConfig->value(RES_SENSOR_FIT_TYPE, "").toList();
             if (fit.at(0).toString() == RES_SENSOR_FIT_TYPE_POLYNOMIAL && fit.length() == 2) {
-                rSensorConf.fitType = ResistiveSensorType::POLYNOMIAL;
+                rSensorConf.fitType = SensorConfig::ResistiveSensorType::POLYNOMIAL;
                 rSensorConf.order = fit.at(1).toInt();
             } else {
-                rSensorConf.fitType = ResistiveSensorType::INTERPOLATION;
+                rSensorConf.fitType = SensorConfig::ResistiveSensorType::INTERPOLATION;
                 rSensorConf.order = -1;
             }
 
@@ -851,7 +674,7 @@ public:
         for (int i = 0; i < size; ++i) {
             mConfig->setArrayIndex(i);
 
-            Analog12VInputConfig_t conf;
+            Analog12VInput::Analog12VInputConfig conf;
 
             conf.type = mConfig->value(ANALOG_INPUT_12V_NAME, "").toString();
             conf.optoR1 = mConfig->value(ANALOG_INPUT_12V_OPTO_R1, 1).toReal();
@@ -948,7 +771,7 @@ public:
      * @brief Get MAP sensor configuration
      * @return MAP sensor configuration
      */
-    MapSensorConfig getMapSensorConfig() {
+    SensorConfig::MapSensorConfig getMapSensorConfig() {
         return mMapSensorConfig;
     }
 
@@ -956,7 +779,7 @@ public:
      * @brief Get temp sensor configurations
      * @return QList of temperature sensor configurations
      */
-    QList<TempSensorConfig_t> * getTempSensorConfigs() {
+    QList<SensorConfig::TempSensorConfig> * getTempSensorConfigs() {
         return &mTempSensorConfigs;
     }
 
@@ -964,7 +787,7 @@ public:
      * @brief Get Tach Input configuration
      * @return tach input configuration
      */
-    TachInputConfig_t getTachInputConfig() {
+    SensorConfig::TachInputConfig getTachInputConfig() {
         return mTachConfig;
     }
 
@@ -989,8 +812,8 @@ public:
      * @param name: resistive sensor name
      * @return Sensor Config
      */
-    ResistiveSensorConfig_t getResistiveSensorConfig(QString name) {
-        ResistiveSensorConfig_t empty;
+    SensorConfig::ResistiveSensorConfig getResistiveSensorConfig(QString name) {
+        SensorConfig::ResistiveSensorConfig empty;
         return mResistiveSensorConfig.value(name, empty);
     }
 
@@ -999,8 +822,8 @@ public:
      * @param name: 12 analog input name
      * @return input config
      */
-    Analog12VInputConfig_t getAnalog12VInputConfig(QString name) {
-        Analog12VInputConfig_t empty;
+    Analog12VInput::Analog12VInputConfig getAnalog12VInputConfig(QString name) {
+        Analog12VInput::Analog12VInputConfig empty;
         return mAnalog12VInputConfig.value(name, empty);
     }
 
@@ -1008,7 +831,7 @@ public:
      * @brief Get vehicle speed sensor config
      * @return
      */
-    VssInputConfig_t getVssConfig() {
+    SensorConfig::VssInputConfig getVssConfig() {
         return mVssInputConfig;
     }
 
@@ -1017,8 +840,8 @@ public:
      * @param name: gauge name
      * @return Gauge config
      */
-    GaugeConfig_t getGaugeConfig(QString name) {
-        GaugeConfig_t empty;
+    GaugeConfig::GaugeConfig getGaugeConfig(QString name) {
+        GaugeConfig::GaugeConfig empty;
         return mGaugeConfigs.value(name, empty);
     }
 
@@ -1026,7 +849,7 @@ public:
      * @brief Get speedo gauge config
      * @return Speedo gauge config
      */
-    SpeedoConfig_t getSpeedoConfig() {
+    GaugeConfig::SpeedoConfig getSpeedoConfig() {
         return mSpeedoGaugeConfig;
     }
 
@@ -1034,11 +857,11 @@ public:
      * @brief Get tachometer gauge config
      * @return Tachometer gauge config
      */
-    TachoConfig_t getTachGaugeConfig() {
+    GaugeConfig::TachoConfig getTachGaugeConfig() {
         return mTachGaugeConfig;
     }
 
-    OdometerConfig_t getOdometerConfig(QString name) {
+    SensorConfig::OdometerConfig getOdometerConfig(QString name) {
         for (auto conf : mOdoConfig) {
             if (conf.name == name) {
                 return conf;
@@ -1089,20 +912,20 @@ private:
     QMap<QString, int> mDashLightConfig; //!< dash light gpio configuration
     QMap<int, Qt::Key> mUserInputConfig;
     QMap<QString, int> mUserInputPinConfig;
-    MapSensorConfig_t mMapSensorConfig; //!< MAP sensor configuration
-    QList<TempSensorConfig_t> mTempSensorConfigs; //!< Temp sensor configurations
-    TachInputConfig_t mTachConfig; //!< Tach signal input configuration
-    QMap<QString, ResistiveSensorConfig_t> mResistiveSensorConfig; //!< Resistive sensor configs
-    QMap<QString, Analog12VInputConfig_t> mAnalog12VInputConfig; //!< 12V analog configs
+    SensorConfig::MapSensorConfig mMapSensorConfig; //!< MAP sensor configuration
+    QList<SensorConfig::TempSensorConfig> mTempSensorConfigs; //!< Temp sensor configurations
+    SensorConfig::TachInputConfig mTachConfig; //!< Tach signal input configuration
+    QMap<QString, SensorConfig::ResistiveSensorConfig> mResistiveSensorConfig; //!< Resistive sensor configs
+    QMap<QString, Analog12VInput::Analog12VInputConfig> mAnalog12VInputConfig; //!< 12V analog configs
 
     QSettings * mGaugeConfig = nullptr; //!< Gauge config QSettings
-    QMap<QString, GaugeConfig_t> mGaugeConfigs; //!< map of gauge configs
-    SpeedoConfig_t mSpeedoGaugeConfig; //!< speedo gauge config
-    TachoConfig_t mTachGaugeConfig; //!< tacho gauge config
-    VssInputConfig_t mVssInputConfig; //!< vehicle speed sensor config
+    QMap<QString, GaugeConfig::GaugeConfig> mGaugeConfigs; //!< map of gauge configs
+    GaugeConfig::SpeedoConfig mSpeedoGaugeConfig; //!< speedo gauge config
+    GaugeConfig::TachoConfig mTachGaugeConfig; //!< tacho gauge config
+    SensorConfig::VssInputConfig mVssInputConfig; //!< vehicle speed sensor config
 
     QSettings * mOdometerConfig = nullptr;
-    QList<OdometerConfig_t> mOdoConfig;
+    QList<SensorConfig::OdometerConfig> mOdoConfig;
 
     BacklightControlConfig_t mBacklightConfig;
 
