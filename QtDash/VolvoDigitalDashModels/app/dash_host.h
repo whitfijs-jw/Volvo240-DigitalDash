@@ -176,8 +176,8 @@ public slots:
             gaugeConfig = mConfig.getGaugeConfig(Config::COOLANT_TEMP_GAUGE_GROUP);
 
             qreal temp = coreTemp.toFloat() / 1000.0;
-            qreal tVal = SensorUtils::convert(temp, gaugeConfig.displayUnits, Config::UNITS_C);
-            qreal tempF = SensorUtils::convert(temp, Config::UNITS_F, Config::UNITS_C);
+            qreal tVal = SensorUtils::convert(temp, gaugeConfig.displayUnits, Units::UNITS_C);
+            qreal tempF = SensorUtils::convert(temp, Units::UNITS_F, Units::UNITS_C);
 
             mTempFuelModel.setCurrentTemp(tVal);
             mSpeedoModel.setTopValue(tempF);
@@ -187,7 +187,7 @@ public slots:
                 SensorUtils::convert(
                     temp,
                     mConfig.getGaugeConfig(Config::OIL_TEMPERATURE_GAUGE_GROUP).displayUnits,
-                    Config::UNITS_C)
+                    Units::UNITS_C)
             );
 
         }
@@ -224,17 +224,17 @@ public slots:
             mBoostModel.setCurrentValue(
                 SensorUtils::convert(boost_psi,
                                      mConfig.getGaugeConfig(Config::BOOST_GAUGE_GROUP).displayUnits,
-                                     Config::UNITS_PSI)
+                                     Units::UNITS_PSI)
             );
 
             qreal oilPBar = ((float)rpm / 1000.0);
             qreal oilP = SensorUtils::convert(oilPBar,
                                              mConfig.getGaugeConfig(Config::OIL_PRESSURE_GAUGE_GROUP).displayUnits,
-                                             Config::UNITS_BAR);
+                                             Units::UNITS_BAR);
             mOilPressureModel.setCurrentValue( oilP );
 
             float speedMph = rpm / 100;
-            qreal speedo = SensorUtils::convert(speedMph, mConfig.getSpeedoConfig().gaugeConfig.displayUnits, Config::UNITS_MPH);
+            qreal speedo = SensorUtils::convert(speedMph, mConfig.getSpeedoConfig().gaugeConfig.displayUnits, Units::UNITS_MPH);
             mSpeedoModel.setCurrentValue(speedo);
         }
 

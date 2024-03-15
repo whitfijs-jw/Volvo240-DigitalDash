@@ -10,7 +10,7 @@
  */
 class NtcSensor : public Sensor {
 public:
-    static constexpr Config::TemperatureUnits NTC_INTERNAL_UNITS = Config::TemperatureUnits::FAHRENHEIT;
+    static constexpr Units::TemperatureUnits NTC_INTERNAL_UNITS = Units::TemperatureUnits::FAHRENHEIT;
 
     /**
      * @brief NtcSensor constructor
@@ -46,7 +46,7 @@ public:
 
 
     QString getUnits() override {
-        return Config::UNITS_F;
+        return Units::UNITS_F;
     }
 
 

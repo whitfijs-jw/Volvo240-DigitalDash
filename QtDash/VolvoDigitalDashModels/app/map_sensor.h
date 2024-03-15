@@ -25,7 +25,7 @@ public:
      * @param pressure5V: pressure when MAP sensor it at 5V
      * @param units: pressure units
      */
-    MapSensor(qreal pressure0V, qreal pressure5V, qreal vRef, Config::PressureUnits units) {
+    MapSensor(qreal pressure0V, qreal pressure5V, qreal vRef, Units::PressureUnits units) {
         setVoltages(pressure0V, pressure5V, vRef, units);
     }
 
@@ -35,11 +35,11 @@ public:
      * @param units: pressure units
      * @return Pressure in desired units
      */
-    qreal getAbsolutePressure(qreal volts, Config::PressureUnits units) {
+    qreal getAbsolutePressure(qreal volts, Units::PressureUnits units) {
         // pressure in kPa
         qreal p = (volts * mSlope) + mOffset;
 
-        return SensorUtils::convertPressure(p, units, Config::PressureUnits::KPA);
+        return SensorUtils::convertPressure(p, units, Units::PressureUnits::KPA);
     }
 
 private:
@@ -69,7 +69,7 @@ private:
      * @param units: input units -- kPa is used internally
      */
     void setVoltages(qreal pressure0V, qreal pressure5V,
-                     qreal vRef, Config::PressureUnits units) {
+                     qreal vRef, Units::PressureUnits units) {
         // keep everthing in kPA
         mP0V = SensorUtils::toKpa(pressure0V, units);
         mP5V = SensorUtils::toKpa(pressure5V, units);

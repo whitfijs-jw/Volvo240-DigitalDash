@@ -34,13 +34,13 @@ public:
     }
 
     QString getUnits() override {
-        Config::DistanceUnits units = mOdoConfig.units;
+        Units::DistanceUnits units = mOdoConfig.units;
 
         switch ((int) units) {
-        case (int) Config::DistanceUnits::MILE:
-            return Config::UNITS_MILE;
-        case (int) Config::DistanceUnits::KILOMETER:
-            return Config::UNITS_KILOMETER;
+        case (int) Units::DistanceUnits::MILE:
+            return Units::UNITS_MILE;
+        case (int) Units::DistanceUnits::KILOMETER:
+            return Units::UNITS_KILOMETER;
         default:
             return "";
         }

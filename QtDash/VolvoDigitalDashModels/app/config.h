@@ -7,6 +7,7 @@
 #include <iostream>
 
 #include <can_frame_config.h>
+#include <units.h>
 
 /**
  * @brief Dash config class
@@ -31,27 +32,6 @@ public:
     static constexpr char ODOMETER_GROUP[] = "odometer";
     static constexpr char BACKLIGHT_GROUP[] = "backlight";
     static constexpr char USER_INPUT_GROUP[] = "user_inputs";
-
-    // units for sensors
-    static constexpr char UNITS_KPA[] = "kpa";
-    static constexpr char UNITS_PSI[] = "psi";
-    static constexpr char UNITS_BAR[] = "bar";
-    static constexpr char UNITS_F[] = "F";
-    static constexpr char UNITS_C[] = "C";
-    static constexpr char UNITS_K[] = "K";
-    static constexpr char UNITS_PCT[] = "%";
-    static constexpr char UNITS_INCH[] = "inch";
-    static constexpr char UNITS_FOOT[] = "foot";
-    static constexpr char UNITS_YARD[] = "yard";
-    static constexpr char UNITS_MILE[] = "mile";
-    static constexpr char UNITS_MILLIMETER[] = "millimeter";
-    static constexpr char UNITS_CENTIMETER[] = "centimeter";
-    static constexpr char UNITS_METER[] = "meter";
-    static constexpr char UNITS_KILOMETER[] = "kilometer";
-    static constexpr char UNITS_MPH[] = "mph";
-    static constexpr char UNITS_KPH[] = "kph";
-    static constexpr char UNITS_KMH[] = "km/h";
-    static constexpr char UNITS_METERS_PER_SECOND[] = "m/s";
 
     // expected sensor keys
     static constexpr char COOLANT_TEMP_KEY[] = "coolant_temp";
@@ -253,138 +233,6 @@ public:
     static constexpr char CAN_FRAME_ADD[] = "add";
     static constexpr char CAN_FRAME_GAUGE[] = "gauge";
 
-
-    enum class UnitType {
-        PRESSURE = 0,
-        TEMPERATURE,
-        DISTANCE,
-        POTENTIAL,
-        AMPERAGE,
-        RESISTANCE,
-        PERCENTAGE,
-        TIME,
-        COUNT,
-    };
-
-    /**
-     * @brief The PressureUnits enum
-     */
-    enum class PressureUnits {
-        KPA = 0, //!< Kilopascals
-        PSI, //!< pounds per square inch
-        BAR, //!< Bar
-    };
-
-    /**
-     * @brief Get pressure units from string
-     * @param units: units string
-     * @return @ref PressureUnits
-     */
-    static PressureUnits getPressureUnits(QString units) {
-        if (units.compare(UNITS_BAR, Qt::CaseInsensitive) == 0) {
-            return PressureUnits::BAR;
-        } else if (units.compare(UNITS_KPA, Qt::CaseInsensitive) == 0) {
-            return PressureUnits::KPA;
-        } else {
-            //default to psi
-            return PressureUnits::PSI;
-        }
-    }
-
-    /**
-     * @brief The TemperatureUnits enum
-     */
-    enum class TemperatureUnits {
-        KELVIN = 0, //!< Kelvin
-        CELSIUS, //!< Celsius
-        FAHRENHEIT, //!< Fahrenheit
-    };
-
-    /**
-     * @brief Get temperature units from string
-     * @param units: units string
-     * @return @ref TemperatureUnits
-     */
-    static TemperatureUnits getTempUnits(QString units) {
-        if (units.compare(UNITS_C, Qt::CaseInsensitive) == 0) {
-            return TemperatureUnits::CELSIUS;
-        } else if (units.compare(UNITS_K, Qt::CaseInsensitive) == 0) {
-            return TemperatureUnits::KELVIN;
-        } else {
-            //default to f
-            return TemperatureUnits::FAHRENHEIT;
-        }
-    }
-
-    /**
-     * @brief The DistanceUnits enum
-     */
-    enum class DistanceUnits {
-        INCH = 0, //!< inches
-        FOOT,   //!< feet
-        YARD,   //!< yards
-        MILE, //!< miles
-        MILLIMETER, //!< millimeters
-        CENTIMETER, //!< centimeters
-        METER, //!< meters
-        KILOMETER, //!< kilometer
-    };
-
-    /**
-     * @brief Get distance units from string
-     * @param units: Units string
-     * @return @ref DistanceUnits
-     */
-    static DistanceUnits getDistanceUnits(QString units) {
-        if (units.compare(UNITS_INCH, Qt::CaseInsensitive) == 0) {
-            return DistanceUnits::INCH;
-        } else if (units.compare(UNITS_FOOT, Qt::CaseInsensitive) == 0) {
-            return DistanceUnits::FOOT;
-        } else if (units.compare(UNITS_YARD, Qt::CaseInsensitive) == 0) {
-            return DistanceUnits::YARD;
-        } else if (units.compare(UNITS_MILE, Qt::CaseInsensitive) == 0) {
-            return DistanceUnits::MILE;
-        } else if (units.compare(UNITS_MILLIMETER, Qt::CaseInsensitive) == 0) {
-            return DistanceUnits::MILLIMETER;
-        } else if (units.compare(UNITS_CENTIMETER, Qt::CaseInsensitive) == 0) {
-            return DistanceUnits::CENTIMETER;
-        } else if (units.compare(UNITS_METER, Qt::CaseInsensitive) == 0) {
-            return DistanceUnits::METER;
-        } else if (units.compare(UNITS_KILOMETER, Qt::CaseInsensitive) == 0) {
-            return DistanceUnits::KILOMETER;
-        }
-
-        // default to mm:
-        return DistanceUnits::MILLIMETER;
-    }
-
-    /**
-     * @brief SpeedUnits enum
-     */
-    enum class SpeedUnits {
-        MPH,
-        KPH,
-        METER_PER_SECOND,
-    };
-
-    /**
-     * @brief Get speed units from string
-     * @param units: units string
-     * @return @ref SpeedUnits
-     */
-    static SpeedUnits getSpeedUnits(QString units) {
-        if (units.compare(UNITS_MPH, Qt::CaseInsensitive) == 0) {
-            return SpeedUnits::MPH;
-        } else if ((units.compare(UNITS_KPH, Qt::CaseInsensitive) == 0) || (units.compare(UNITS_KMH, Qt::CaseInsensitive) == 0)) {
-            return SpeedUnits::KPH;
-        } else if (units.compare(UNITS_METERS_PER_SECOND, Qt::CaseInsensitive) == 0) {
-            return SpeedUnits::METER_PER_SECOND;
-        }
-
-        //default to mph
-        return SpeedUnits::MPH;
-    }
-
     /**
      * @brief TemperatureSensorType enum
      */
@@ -460,7 +308,7 @@ public:
         qreal p0V; //!< pressure when sensor reads 0V
         qreal p5V; //!< pressure when sensor reads 5V
         qreal pAtm; //!< atmpsheric pressure
-        PressureUnits units; //!< units of calibration pressures
+        Units::PressureUnits units; //!< units of calibration pressures
 
         /**
          * @brief Check if calibration is valid
@@ -484,7 +332,7 @@ public:
         qreal r1; //!< NTC resistance at T1
         qreal r2; //!< NTC resistance at T2
         qreal r3; //!< NTC resistance at T3
-        TemperatureUnits units; //!< units of calibration temperature
+        Units::TemperatureUnits units; //!< units of calibration temperature
         TemperatureSensorType type; //!< Temp Sensor type -- coolant, oil, outside/ambient...
 
         /**
@@ -519,9 +367,9 @@ public:
     typedef struct VssInputConfig {
         int pulsePerRot; //!< Number of pulses from VSS sensor per rotation of the tire
         qreal tireDiameter; //!< tire diameter
-        DistanceUnits tireDiameterUnits; //!< tire diameter units @ref DistanceUnits
+        Units::DistanceUnits tireDiameterUnits; //!< tire diameter units @ref DistanceUnits
         int pulsePerUnitDistance; //!< Pulses per unit distance.  Will be calculated from tire diameter if left empty
-        DistanceUnits distanceUnits; //!< unit of distance for pulsePerUnitDistance
+        Units::DistanceUnits distanceUnits; //!< unit of distance for pulsePerUnitDistance
         int maxSpeed; //!< Max speed -- lowest possible value it best will filter out noisy signals better
         bool useGps = false;
     } VssInputConfig_t;
@@ -530,7 +378,7 @@ public:
      * @struct OdometerConfig
      */
     typedef struct OdometerConfig {
-        DistanceUnits units; //!< odometer internal units
+        Units::DistanceUnits units; //!< odometer internal units
         qreal value; //!< odometer value (in above units)
         int writeInterval; //!< number of pulses between writing to back to non-volatile memory
         QString name;
@@ -678,8 +526,8 @@ public:
             OdometerConfig_t conf;
             mOdometerConfig->setArrayIndex(i);
 
-            QString odoUnits = mOdometerConfig->value(ODO_UNITS, UNITS_MILE).toString();
-            conf.units = getDistanceUnits(odoUnits);
+            QString odoUnits = mOdometerConfig->value(ODO_UNITS, Units::UNITS_MILE).toString();
+            conf.units = Units::getDistanceUnits(odoUnits);
             conf.value = mOdometerConfig->value(ODO_VALUE, 0.0).toReal();
             conf.writeInterval = mOdometerConfig->value(ODO_WRITE_INTERVAL, 2000).toInt();
             conf.name = mOdometerConfig->value(ODO_NAME, "").toString();
@@ -714,7 +562,7 @@ public:
         // accessory gauges
         // boost gauge
         GaugeConfig_t boost = loadGaugeConfig(BOOST_GAUGE_GROUP);
-        if (boost.displayUnits.compare(Config::UNITS_PSI, Qt::CaseInsensitive) == 0) {
+        if (boost.displayUnits.compare(Units::UNITS_PSI, Qt::CaseInsensitive) == 0) {
             boost.min = DEFAULT_BOOST_GAUGE_MIN_PSI;
             boost.max = DEFAULT_BOOST_GAUGE_MAX_PSI;
         } else {
@@ -725,7 +573,7 @@ public:
 
         // coolant temp
         GaugeConfig_t coolantTemp = loadGaugeConfig(COOLANT_TEMP_GAUGE_GROUP);
-        if (coolantTemp.displayUnits.compare(Config::UNITS_F, Qt::CaseInsensitive) == 0) {
+        if (coolantTemp.displayUnits.compare(Units::UNITS_F, Qt::CaseInsensitive) == 0) {
             coolantTemp.min = DEFAULT_COOLANT_TEMP_GAUGE_MIN_F;
             coolantTemp.max = DEFAULT_COOLANT_TEMP_GAUGE_MAX_F;
         } else {
@@ -742,7 +590,7 @@ public:
 
         // oil pressure
         GaugeConfig_t oilPressure = loadGaugeConfig(OIL_PRESSURE_GAUGE_GROUP);
-        if (oilPressure.displayUnits.compare(Config::UNITS_PSI, Qt::CaseInsensitive) == 0) {
+        if (oilPressure.displayUnits.compare(Units::UNITS_PSI, Qt::CaseInsensitive) == 0) {
             oilPressure.min = DEFAULT_OIL_PRESSURE_GAUGE_MIN_PSI;
             oilPressure.max = DEFAULT_OIL_PRESSURE_GAUGE_MAX_PSI;
         } else {
@@ -753,7 +601,7 @@ public:
 
         // oil temperature
         GaugeConfig_t oilTemp = loadGaugeConfig(OIL_TEMPERATURE_GAUGE_GROUP);
-        if (oilTemp.displayUnits.compare(Config::UNITS_F, Qt::CaseInsensitive) == 0) {
+        if (oilTemp.displayUnits.compare(Units::UNITS_F, Qt::CaseInsensitive) == 0) {
             oilTemp.min = DEFAULT_OIL_TEMP_GAUGE_MIN_F;
             oilTemp.max = DEFAULT_OIL_TEMP_GAUGE_MAX_F;
         } else {
@@ -770,7 +618,7 @@ public:
 
         // speedo
         mSpeedoGaugeConfig.gaugeConfig = loadGaugeConfig(SPEEDOMETER_GAUGE_GROUP);
-        if (mSpeedoGaugeConfig.gaugeConfig.displayUnits.compare(Config::UNITS_MPH, Qt::CaseInsensitive) == 0) {
+        if (mSpeedoGaugeConfig.gaugeConfig.displayUnits.compare(Units::UNITS_MPH, Qt::CaseInsensitive) == 0) {
             mSpeedoGaugeConfig.gaugeConfig.min = 0.0;
             mSpeedoGaugeConfig.gaugeConfig.max =
                 mSpeedoGaugeConfig.gaugeConfig.max == 0 ?
@@ -897,8 +745,8 @@ public:
                 mMapSensorConfig.pAtm = mConfig->value(key, -1).toReal();
             } else if (key == PRESSURE_UNITS) {
                 // default to kPa
-                QString units = mConfig->value(key, UNITS_KPA).toString();
-                mMapSensorConfig.units = getPressureUnits(units);
+                QString units = mConfig->value(key, Units::UNITS_KPA).toString();
+                mMapSensorConfig.units = Units::getPressureUnits(units);
             }
         }
 
@@ -920,8 +768,8 @@ public:
             conf.r2 = mConfig->value(T2_RES, -1).toReal();
             conf.r3 = mConfig->value(T3_RES, -1).toReal();
 
-            QString units = mConfig->value(TEMP_UNITS, UNITS_K).toString();
-            conf.units = getTempUnits(units);
+            QString units = mConfig->value(TEMP_UNITS, Units::UNITS_K).toString();
+            conf.units = Units::getTempUnits(units);
 
             QString type = mConfig->value(TEMP_TYPE, TEMP_TYPE_COOLANT).toString();
             if (type.compare(TEMP_TYPE_COOLANT, Qt::CaseInsensitive) == 0) {
@@ -1042,10 +890,10 @@ public:
         mVssInputConfig.pulsePerRot = mConfig->value(VSS_PULSES_PER_ROTATION, 12).toInt();
         mVssInputConfig.tireDiameter = mConfig->value(VSS_TIRE_DIAMETER, 24.9).toReal();
         QString diameterUnits =  mConfig->value(VSS_TIRE_DIAMETER_UNITS, "inch").toString().toLower();
-        mVssInputConfig.tireDiameterUnits = getDistanceUnits(diameterUnits);
+        mVssInputConfig.tireDiameterUnits = Units::getDistanceUnits(diameterUnits);
         mVssInputConfig.pulsePerUnitDistance = mConfig->value(VSS_PULSES_PER_DISTANCE, 0).toInt();
         QString distanceUnits = mConfig->value(VSS_DISTANCE_UNITS, "mile").toString().toLower();
-        mVssInputConfig.distanceUnits = getDistanceUnits(distanceUnits);
+        mVssInputConfig.distanceUnits = Units::getDistanceUnits(distanceUnits);
         mVssInputConfig.maxSpeed = mConfig->value(VSS_MAX_SPEED, 160).toInt();
         mVssInputConfig.useGps = mConfig->value(VSS_USE_GPS, false).toBool();
 
@@ -1196,7 +1044,7 @@ public:
                 return conf;
             }
         }
-        return {DistanceUnits::MILE, 0, 0, ""};
+        return {Units::DistanceUnits::MILE, 0, 0, ""};
     }
 
     BacklightControlConfig_t getBackLightConfig() {

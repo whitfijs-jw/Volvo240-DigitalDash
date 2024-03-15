@@ -34,13 +34,13 @@ public:
             // convert atm pressure to PSI to be used internally
             SensorUtils::convertPressure(
                 mConfig->getMapSensorConfig().pAtm,
-                Config::PressureUnits::PSI,
+                Units::PressureUnits::PSI,
                 mConfig->getMapSensorConfig().units);
         }
     }
 
     QString getUnits() override {
-        return Config::UNITS_PSI;
+        return Units::UNITS_PSI;
     }
 
 public slots:
@@ -52,7 +52,7 @@ public slots:
     void transform(QVariant data, int channel) override {
         if (channel == getChannel()) {
             qreal volts = data.toReal();
-            qreal pressure = mMapSensor->getAbsolutePressure(volts, Config::PressureUnits::PSI) - mPressureAtm;
+            qreal pressure = mMapSensor->getAbsolutePressure(volts, Units::PressureUnits::PSI) - mPressureAtm;
             emit sensorDataReady(pressure);
         }
     }

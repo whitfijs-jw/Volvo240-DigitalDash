@@ -177,8 +177,8 @@ public slots:
         }
         double speed = data.attribute(QGeoPositionInfo::GroundSpeed);
 
-        qreal speedMph = SensorUtils::convert(speed, Config::UNITS_MPH, Config::UNITS_METERS_PER_SECOND);
-        qreal speedKph = SensorUtils::convert(speed, Config::UNITS_KPH, Config::UNITS_METERS_PER_SECOND);
+        qreal speedMph = SensorUtils::convert(speed, Units::UNITS_MPH, Units::UNITS_METERS_PER_SECOND);
+        qreal speedKph = SensorUtils::convert(speed, Units::UNITS_KPH, Units::UNITS_METERS_PER_SECOND);
 
 
 

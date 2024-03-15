@@ -94,22 +94,22 @@ public:
      * @param units: input units
      * @return distance in meters
      */
-    static constexpr qreal toMeters(qreal distance, Config::DistanceUnits units) {
-        if (units == Config::DistanceUnits::INCH) {
+    static constexpr qreal toMeters(qreal distance, Units::DistanceUnits units) {
+        if (units == Units::DistanceUnits::INCH) {
             return distance * METER_PER_IN;
-        } else if (units == Config::DistanceUnits::FOOT) {
+        } else if (units == Units::DistanceUnits::FOOT) {
             return distance * METER_PER_FOOT;
-        } else if (units == Config::DistanceUnits::YARD) {
+        } else if (units == Units::DistanceUnits::YARD) {
             return distance * METER_PER_YARD;
-        } else if (units == Config::DistanceUnits::MILE) {
+        } else if (units == Units::DistanceUnits::MILE) {
             return distance * METER_PER_MILE;
-        } else if (units == Config::DistanceUnits::MILLIMETER) {
+        } else if (units == Units::DistanceUnits::MILLIMETER) {
             return distance / 1000.0;
-        } else if (units == Config::DistanceUnits::CENTIMETER) {
+        } else if (units == Units::DistanceUnits::CENTIMETER) {
             return distance / 100.0;
-        } else if (units == Config::DistanceUnits::METER) {
+        } else if (units == Units::DistanceUnits::METER) {
             return distance;
-        } else if (units == Config::DistanceUnits::KILOMETER) {
+        } else if (units == Units::DistanceUnits::KILOMETER) {
             return distance * 1000.0 ;
         } else {
             return -1;
@@ -122,44 +122,44 @@ public:
      * @param units: input units
      * @return distance in miles
      */
-    static constexpr qreal toMiles(qreal distance, Config::DistanceUnits units) {
-        if (units == Config::DistanceUnits::INCH) {
+    static constexpr qreal toMiles(qreal distance, Units::DistanceUnits units) {
+        if (units == Units::DistanceUnits::INCH) {
             return distance / IN_PER_MILE;
-        } else if (units == Config::DistanceUnits::FOOT) {
+        } else if (units == Units::DistanceUnits::FOOT) {
             return distance / FOOT_PER_MILE;
-        } else if (units == Config::DistanceUnits::YARD) {
+        } else if (units == Units::DistanceUnits::YARD) {
             return distance / YARD_PER_MILE;
-        } else if (units == Config::DistanceUnits::MILE) {
+        } else if (units == Units::DistanceUnits::MILE) {
             return distance;
-        } else if (units == Config::DistanceUnits::MILLIMETER) {
+        } else if (units == Units::DistanceUnits::MILLIMETER) {
             return toMeters(distance, units) / METER_PER_MILE;
-        } else if (units == Config::DistanceUnits::CENTIMETER) {
+        } else if (units == Units::DistanceUnits::CENTIMETER) {
             return toMeters(distance, units) / METER_PER_MILE;
-        } else if (units == Config::DistanceUnits::METER) {
+        } else if (units == Units::DistanceUnits::METER) {
             return toMeters(distance, units) / METER_PER_MILE;
-        } else if (units == Config::DistanceUnits::KILOMETER) {
+        } else if (units == Units::DistanceUnits::KILOMETER) {
             return toMeters(distance, units) / METER_PER_MILE;
         } else {
             return -1;
         }
     }
 
-    static constexpr qreal toFeet(qreal distance, Config::DistanceUnits units) {
-        if (units == Config::DistanceUnits::INCH) {
+    static constexpr qreal toFeet(qreal distance, Units::DistanceUnits units) {
+        if (units == Units::DistanceUnits::INCH) {
             return distance / IN_PER_FOOT;
-        } else if (units == Config::DistanceUnits::FOOT) {
+        } else if (units == Units::DistanceUnits::FOOT) {
             return distance;
-        } else if (units == Config::DistanceUnits::YARD) {
+        } else if (units == Units::DistanceUnits::YARD) {
             return distance * FOOT_PER_YARD;
-        } else if (units == Config::DistanceUnits::MILE) {
+        } else if (units == Units::DistanceUnits::MILE) {
             return distance * FOOT_PER_MILE;
-        } else if (units == Config::DistanceUnits::MILLIMETER) {
+        } else if (units == Units::DistanceUnits::MILLIMETER) {
             return toMeters(distance, units) / METER_PER_FOOT;
-        } else if (units == Config::DistanceUnits::CENTIMETER) {
+        } else if (units == Units::DistanceUnits::CENTIMETER) {
             return toMeters(distance, units) / METER_PER_FOOT;
-        } else if (units == Config::DistanceUnits::METER) {
+        } else if (units == Units::DistanceUnits::METER) {
             return toMeters(distance, units) / METER_PER_FOOT;
-        } else if (units == Config::DistanceUnits::KILOMETER) {
+        } else if (units == Units::DistanceUnits::KILOMETER) {
             return toMeters(distance, units) / METER_PER_FOOT;
         } else {
             return -1;
@@ -168,25 +168,25 @@ public:
 
     static constexpr qreal convertDistance(
             qreal distance,
-            Config::DistanceUnits to,
-            Config::DistanceUnits from) {
+            Units::DistanceUnits to,
+            Units::DistanceUnits from) {
 
         switch (to) {
-        case Config::DistanceUnits::MILE:
+        case Units::DistanceUnits::MILE:
             return toMiles(distance, from);
-        case Config::DistanceUnits::KILOMETER:
+        case Units::DistanceUnits::KILOMETER:
             return toMeters(distance, from) / 1000.0;
-        case Config::DistanceUnits::METER:
+        case Units::DistanceUnits::METER:
             return toMeters(distance, from);
-        case Config::DistanceUnits::CENTIMETER:
+        case Units::DistanceUnits::CENTIMETER:
             return toMeters(distance, from) * 100.0;
-        case Config::DistanceUnits::MILLIMETER:
+        case Units::DistanceUnits::MILLIMETER:
             return toMeters(distance, from) * 1000.0;
-        case Config::DistanceUnits::INCH:
+        case Units::DistanceUnits::INCH:
             return toFeet(distance, from) * IN_PER_FOOT;
-        case Config::DistanceUnits::FOOT:
+        case Units::DistanceUnits::FOOT:
             return toFeet(distance, from);
-        case Config::DistanceUnits::YARD:
+        case Units::DistanceUnits::YARD:
             return toFeet(distance, from) / FOOT_PER_YARD;
         }
 
@@ -199,10 +199,10 @@ public:
      * @param units: input units
      * @return temperature in kelvin
      */
-    static constexpr qreal toKelvin(qreal temp, Config::TemperatureUnits units) {
-        if (units == Config::TemperatureUnits::FAHRENHEIT) {
+    static constexpr qreal toKelvin(qreal temp, Units::TemperatureUnits units) {
+        if (units == Units::TemperatureUnits::FAHRENHEIT) {
             return ((temp - T0_F) / C_CONST) + T0_K;
-        } else if (units == Config::TemperatureUnits::CELSIUS) {
+        } else if (units == Units::TemperatureUnits::CELSIUS) {
             return temp + T0_K;
         } else {
             return temp;
@@ -215,7 +215,7 @@ public:
      * @param units: input units
      * @return temperature in celsius
      */
-    static constexpr qreal toCelsius(qreal temp, Config::TemperatureUnits units) {
+    static constexpr qreal toCelsius(qreal temp, Units::TemperatureUnits units) {
         return toKelvin(temp, units) - T0_K;
     }
 
@@ -225,10 +225,10 @@ public:
      * @param units: input units
      * @return temperature in fahrenheit
      */
-    static constexpr qreal toFahrenheit(qreal temp, Config::TemperatureUnits units) {
-        if (units == Config::TemperatureUnits::KELVIN) {
+    static constexpr qreal toFahrenheit(qreal temp, Units::TemperatureUnits units) {
+        if (units == Units::TemperatureUnits::KELVIN) {
             return ((temp - T0_K) * C_CONST) + T0_F;
-        } else if (units == Config::TemperatureUnits::CELSIUS) {
+        } else if (units == Units::TemperatureUnits::CELSIUS) {
             return (temp * C_CONST) + T0_F;
         } else {
             return temp;
@@ -243,17 +243,17 @@ public:
      * @return temperature in "to" units
      */
     static constexpr qreal convertTemperature(qreal temp,
-                                   Config::TemperatureUnits to,
-                                   Config::TemperatureUnits from) {
+                                   Units::TemperatureUnits to,
+                                   Units::TemperatureUnits from) {
         if (to == from) {
             return temp;
         }
 
-        if (to == Config::TemperatureUnits::FAHRENHEIT) {
+        if (to == Units::TemperatureUnits::FAHRENHEIT) {
             return toFahrenheit(temp, from);
-        } else if (to == Config::TemperatureUnits::CELSIUS) {
+        } else if (to == Units::TemperatureUnits::CELSIUS) {
             return toCelsius(temp, from);
-        } else if (to == Config::TemperatureUnits::KELVIN) {
+        } else if (to == Units::TemperatureUnits::KELVIN) {
             return toKelvin(temp, from);
         }
 
@@ -266,10 +266,10 @@ public:
      * @param units: input pressure units
      * @return pressure in kPa
      */
-    static constexpr qreal toKpa(qreal pressure, Config::PressureUnits units) {
-        if (units == Config::PressureUnits::PSI) {
+    static constexpr qreal toKpa(qreal pressure, Units::PressureUnits units) {
+        if (units == Units::PressureUnits::PSI) {
             return pressure / PSI_PER_KPA;
-        } else if (units == Config::PressureUnits::BAR) {
+        } else if (units == Units::PressureUnits::BAR) {
             return pressure / BAR_PER_KPA;
         } else {
             // kPA
@@ -283,10 +283,10 @@ public:
      * @param units: input pressure units
      * @return pressure in psi
      */
-    static constexpr qreal toPsi(qreal pressure, Config::PressureUnits units) {
-        if (units == Config::PressureUnits::PSI) {
+    static constexpr qreal toPsi(qreal pressure, Units::PressureUnits units) {
+        if (units == Units::PressureUnits::PSI) {
             return pressure;
-        } else if (units == Config::PressureUnits::BAR) {
+        } else if (units == Units::PressureUnits::BAR) {
             return (pressure / BAR_PER_KPA) * PSI_PER_KPA;
         } else {
             // kPA
@@ -300,10 +300,10 @@ public:
      * @param units: input pressure units
      * @return pressure in bar
      */
-    static constexpr qreal toBar(qreal pressure, Config::PressureUnits units) {
-        if (units == Config::PressureUnits::PSI) {
+    static constexpr qreal toBar(qreal pressure, Units::PressureUnits units) {
+        if (units == Units::PressureUnits::PSI) {
             return (pressure / PSI_PER_KPA) * BAR_PER_KPA;
-        } else if (units == Config::PressureUnits::BAR) {
+        } else if (units == Units::PressureUnits::BAR) {
             return pressure;
         } else {
             // kPA
@@ -319,16 +319,16 @@ public:
      * @return pressure in desired units
      */
     static constexpr qreal convertPressure(
-            qreal pressure, Config::PressureUnits to,
-            Config::PressureUnits from) {
+            qreal pressure, Units::PressureUnits to,
+            Units::PressureUnits from) {
         switch (to) {
-        case Config::PressureUnits::PSI:
+        case Units::PressureUnits::PSI:
             return toPsi(pressure, from);
             break;
-        case Config::PressureUnits::BAR:
+        case Units::PressureUnits::BAR:
             return toBar(pressure, from);
             break;
-        case Config::PressureUnits::KPA:
+        case Units::PressureUnits::KPA:
             return toKpa(pressure, from);
             break;
         default:
@@ -337,36 +337,36 @@ public:
     }
 
 
-    static constexpr qreal toMph(qreal speed, Config::SpeedUnits units) {
-        if (units == Config::SpeedUnits::MPH) {
+    static constexpr qreal toMph(qreal speed, Units::SpeedUnits units) {
+        if (units == Units::SpeedUnits::MPH) {
             return speed;
-        } else if (units == Config::SpeedUnits::KPH) {
+        } else if (units == Units::SpeedUnits::KPH) {
             return speed / MPH_TO_KPH;
-        } else if (units == Config::SpeedUnits::METER_PER_SECOND) {
+        } else if (units == Units::SpeedUnits::METER_PER_SECOND) {
             return speed / MPH_TO_KPH / KPH_TO_METERS_PER_SEC;
         }
 
         return 0;
     }
 
-    static constexpr qreal toKph(qreal speed, Config::SpeedUnits units) {
-        if (units == Config::SpeedUnits::MPH) {
+    static constexpr qreal toKph(qreal speed, Units::SpeedUnits units) {
+        if (units == Units::SpeedUnits::MPH) {
             return speed * MPH_TO_KPH;
-        } else if (units == Config::SpeedUnits::KPH) {
+        } else if (units == Units::SpeedUnits::KPH) {
             return speed;
-        } else if (units == Config::SpeedUnits::METER_PER_SECOND) {
+        } else if (units == Units::SpeedUnits::METER_PER_SECOND) {
             return speed / KPH_TO_METERS_PER_SEC;
         }
 
         return 0;
     }
 
-    static constexpr qreal toMetersPerSecond(qreal speed, Config::SpeedUnits units) {
-        if (units == Config::SpeedUnits::MPH) {
+    static constexpr qreal toMetersPerSecond(qreal speed, Units::SpeedUnits units) {
+        if (units == Units::SpeedUnits::MPH) {
             return speed * MPH_TO_KPH * KPH_TO_METERS_PER_SEC;
-        } else if (units == Config::SpeedUnits::KPH) {
+        } else if (units == Units::SpeedUnits::KPH) {
             return speed * KPH_TO_METERS_PER_SEC;
-        } else if (units == Config::SpeedUnits::METER_PER_SECOND) {
+        } else if (units == Units::SpeedUnits::METER_PER_SECOND) {
             return speed;
         }
 
@@ -374,14 +374,14 @@ public:
     }
 
     static constexpr qreal convertSpeed(qreal speed,
-                                  Config::SpeedUnits to,
-                                  Config::SpeedUnits from) {
+                                  Units::SpeedUnits to,
+                                  Units::SpeedUnits from) {
         switch (to) {
-        case Config::SpeedUnits::MPH:
+        case Units::SpeedUnits::MPH:
             return toMph(speed, from);
-        case Config::SpeedUnits::KPH:
+        case Units::SpeedUnits::KPH:
             return toKph(speed, from);
-        case Config::SpeedUnits::METER_PER_SECOND:
+        case Units::SpeedUnits::METER_PER_SECOND:
             return toMetersPerSecond(speed, from);
         }
 
@@ -395,42 +395,42 @@ public:
 
         qreal val = value;
         // Check sensor type
-        if (from.compare(Config::UNITS_C, Qt::CaseInsensitive) == 0 ||
-            from.compare(Config::UNITS_F, Qt::CaseInsensitive) == 0 ||
-            from.compare(Config::UNITS_K, Qt::CaseInsensitive) == 0 ) {
+        if (from.compare(Units::UNITS_C, Qt::CaseInsensitive) == 0 ||
+            from.compare(Units::UNITS_F, Qt::CaseInsensitive) == 0 ||
+            from.compare(Units::UNITS_K, Qt::CaseInsensitive) == 0 ) {
             // temperature sensor
             val = SensorUtils::convertTemperature(value,
-                  Config::getTempUnits(to),
-                  Config::getTempUnits(from));
+                  Units::getTempUnits(to),
+                  Units::getTempUnits(from));
 
-        } else if (from.compare(Config::UNITS_PSI, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Config::UNITS_BAR, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Config::UNITS_KPA, Qt::CaseInsensitive) == 0 ) {
+        } else if (from.compare(Units::UNITS_PSI, Qt::CaseInsensitive) == 0 ||
+                   from.compare(Units::UNITS_BAR, Qt::CaseInsensitive) == 0 ||
+                   from.compare(Units::UNITS_KPA, Qt::CaseInsensitive) == 0 ) {
             // pressure sensor
             val = SensorUtils::convertPressure(value,
-                        Config::getPressureUnits(to),
-                        Config::getPressureUnits(from)
+                        Units::getPressureUnits(to),
+                        Units::getPressureUnits(from)
                         );
-        } else if (from.compare(Config::UNITS_MPH, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Config::UNITS_KPH, Qt::CaseInsensitive) == 0||
-                   from.compare(Config::UNITS_KMH, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Config::UNITS_METERS_PER_SECOND, Qt::CaseInsensitive) == 0) {
+        } else if (from.compare(Units::UNITS_MPH, Qt::CaseInsensitive) == 0 ||
+                   from.compare(Units::UNITS_KPH, Qt::CaseInsensitive) == 0||
+                   from.compare(Units::UNITS_KMH, Qt::CaseInsensitive) == 0 ||
+                   from.compare(Units::UNITS_METERS_PER_SECOND, Qt::CaseInsensitive) == 0) {
             // speed sensor
             val = SensorUtils::convertSpeed(value,
-                        Config::getSpeedUnits(to),
-                        Config::getSpeedUnits(from)
+                        Units::getSpeedUnits(to),
+                        Units::getSpeedUnits(from)
                         );
-        } else if (from.compare(Config::UNITS_MILE, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Config::UNITS_KILOMETER, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Config::UNITS_METER, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Config::UNITS_CENTIMETER, Qt::CaseInsensitive) == 0||
-                   from.compare(Config::UNITS_MILLIMETER, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Config::UNITS_INCH, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Config::UNITS_FOOT, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Config::UNITS_YARD, Qt::CaseInsensitive) == 0) {
+        } else if (from.compare(Units::UNITS_MILE, Qt::CaseInsensitive) == 0 ||
+                   from.compare(Units::UNITS_KILOMETER, Qt::CaseInsensitive) == 0 ||
+                   from.compare(Units::UNITS_METER, Qt::CaseInsensitive) == 0 ||
+                   from.compare(Units::UNITS_CENTIMETER, Qt::CaseInsensitive) == 0||
+                   from.compare(Units::UNITS_MILLIMETER, Qt::CaseInsensitive) == 0 ||
+                   from.compare(Units::UNITS_INCH, Qt::CaseInsensitive) == 0 ||
+                   from.compare(Units::UNITS_FOOT, Qt::CaseInsensitive) == 0 ||
+                   from.compare(Units::UNITS_YARD, Qt::CaseInsensitive) == 0) {
             val = SensorUtils::convertDistance(value,
-                  Config::getDistanceUnits(to),
-                  Config::getDistanceUnits(from)
+                  Units::getDistanceUnits(to),
+                  Units::getDistanceUnits(from)
                   );
         }
 

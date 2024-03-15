@@ -33,7 +33,7 @@ public:
             qreal circumference = SensorUtils::toMiles(mConfig.tireDiameter, mConfig.tireDiameterUnits) * M_PI;
 
             mConfig.pulsePerUnitDistance = std::ceil(1 / circumference * mConfig.pulsePerRot);
-            mConfig.distanceUnits = Config::DistanceUnits::MILE;
+            mConfig.distanceUnits = Units::DistanceUnits::MILE;
         }
 
         // adjust min pulse spacing
@@ -56,7 +56,7 @@ public:
      */
     qreal getKph() {
         qreal mph = getMph();
-        return SensorUtils::toMeters(mph, Config::DistanceUnits::MILE) / 1000.0;
+        return SensorUtils::toMeters(mph, Units::DistanceUnits::MILE) / 1000.0;
     }
 
 

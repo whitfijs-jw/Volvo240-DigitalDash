@@ -10,11 +10,11 @@ void SensorTest::initTestCase() {
 
 void SensorTest::test_sensorSourceConstructor() {
     QCOMPARE(testSource->getNumChannels(), 4);
-    QCOMPARE(testSource->getUnits(0), Config::UNITS_FOOT);
-    QCOMPARE(testSource->getUnits(1), Config::UNITS_INCH);
-    QCOMPARE(testSource->getUnits(2), Config::UNITS_CENTIMETER);
-    QCOMPARE(testSource->getUnits(3), Config::UNITS_METER);
-    QCOMPARE(testSource->getUnits(10), Config::UNITS_FOOT);
+    QCOMPARE(testSource->getUnits(0), Units::UNITS_FOOT);
+    QCOMPARE(testSource->getUnits(1), Units::UNITS_INCH);
+    QCOMPARE(testSource->getUnits(2), Units::UNITS_CENTIMETER);
+    QCOMPARE(testSource->getUnits(3), Units::UNITS_METER);
+    QCOMPARE(testSource->getUnits(10), Units::UNITS_FOOT);
 
 }
 

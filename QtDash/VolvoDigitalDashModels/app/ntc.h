@@ -38,7 +38,7 @@ public:
      * @param units: temperature units
      * @return calculate temperature in desired units
      */
-    qreal calculateTemp(qreal volts, Config::TemperatureUnits units) {
+    qreal calculateTemp(qreal volts, Units::TemperatureUnits units) {
         // calculate NTC resistance
         qreal rNtc = SensorUtils::getResistance(volts, mConfig.vSupply, mConfig.rBalance);
 
@@ -51,7 +51,7 @@ public:
         qreal temp = SensorUtils::convertTemperature(
                     1 / tKelvinInv,
                     units,
-                    Config::TemperatureUnits::KELVIN);
+                    Units::TemperatureUnits::KELVIN);
 
         if (temp != temp) {
             return 0;
@@ -89,7 +89,7 @@ private:
      */
     void calculateCoefficients(qreal r1, qreal t1,
                          qreal r2, qreal t2,
-                         qreal r3, qreal t3, Config::TemperatureUnits units) {
+                         qreal r3, qreal t3, Units::TemperatureUnits units) {
         qreal L1 = qLn(r1);
         qreal L2 = qLn(r2);
         qreal L3 = qLn(r3);

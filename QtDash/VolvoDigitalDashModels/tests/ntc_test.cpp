@@ -29,7 +29,7 @@ void NtcTest::testNtcConstructor() {
     config.rBalance = rBalance;
     config.vSupply = vSupply;
     config.type = static_cast<Config::TemperatureSensorType>(type);
-    config.units = static_cast<Config::TemperatureUnits>(units);
+    config.units = static_cast<Units::TemperatureUnits>(units);
 
     // make new object
     Ntc * testSensor = new Ntc(config);
@@ -63,7 +63,7 @@ void NtcTest::testNtcConstructor_data() {
             << 2.0 << 30000.0
             << 25.0 << 10000.0
             << 100.0 << 300.0
-            << static_cast<int>(Config::TemperatureUnits::CELSIUS)
+            << static_cast<int>(Units::TemperatureUnits::CELSIUS)
             << static_cast<int>(Config::TemperatureSensorType::COOLANT)
             << 2.007961057e-3 << 1.001723351e-4 << 5.419494308e-7;
 
@@ -71,7 +71,7 @@ void NtcTest::testNtcConstructor_data() {
             << 1.0 << 29500.0
             << 25.0 << 10000.0
             << 37.0 << 6200.0
-            << static_cast<int>(Config::TemperatureUnits::CELSIUS)
+            << static_cast<int>(Units::TemperatureUnits::CELSIUS)
             << static_cast<int>(Config::TemperatureSensorType::COOLANT)
             << 0.8521912125e-3 << 2.717226313e-4 << -0.01065764181e-7;
 
@@ -79,7 +79,7 @@ void NtcTest::testNtcConstructor_data() {
             << 0.0 << 9600.0
             << 37.0 << 1600.0
             << 100.0 << 185.0
-            << static_cast<int>(Config::TemperatureUnits::CELSIUS)
+            << static_cast<int>(Units::TemperatureUnits::CELSIUS)
             << static_cast<int>(Config::TemperatureSensorType::COOLANT)
             << 1.314314314e-3 << 2.643027107e-4 << -0.9968011359e-7;
 }
@@ -108,12 +108,12 @@ void NtcTest::testCalculateTemperature() {
     config.rBalance = NtcTest::rBalance;
     config.vSupply = NtcTest::vSupply;
     config.type = static_cast<Config::TemperatureSensorType>(type);
-    config.units = static_cast<Config::TemperatureUnits>(units);
+    config.units = static_cast<Units::TemperatureUnits>(units);
 
     // make new object
     Ntc * testSensor = new Ntc(config);
 
-    COMPARE_F(testSensor->calculateTemp(test_input, Config::TemperatureUnits::CELSIUS),
+    COMPARE_F(testSensor->calculateTemp(test_input, Units::TemperatureUnits::CELSIUS),
               test_temp_C,
               TEMP_DELTA);
 
@@ -137,7 +137,7 @@ void NtcTest::testCalculateTemperature_data() {
             << 2.0 << 30000.0
             << 25.0 << 10000.0
             << 100.0 << 300.0
-            << static_cast<int>(Config::TemperatureUnits::CELSIUS)
+            << static_cast<int>(Units::TemperatureUnits::CELSIUS)
             << static_cast<int>(Config::TemperatureSensorType::COOLANT)
             << 65.5439 << NtcTest::vSupply * (1500 / (NtcTest::rBalance + 1500));
 }

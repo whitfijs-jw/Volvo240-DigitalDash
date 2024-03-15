@@ -124,19 +124,19 @@ public:
             // default values
             switch ((CanDataChannel)channel) {
             case CanDataChannel::MAP:
-                return Config::UNITS_KPA;
+                return Units::UNITS_KPA;
             case CanDataChannel::RPM:
                 return "rpm";
             case CanDataChannel::COOLANT_TEMP:
-                return Config::UNITS_F;
+                return Units::UNITS_F;
             case CanDataChannel::THROTTLE_POS:
-                return Config::UNITS_PCT;
+                return Units::UNITS_PCT;
             case CanDataChannel::PULSE_WIDTH_1:
                 return "msec";
             case CanDataChannel::PULSE_WIDTH_2:
                 return "msec";
             case CanDataChannel::MANIFOLD_AIR_TEMP:
-                return Config::UNITS_F;
+                return Units::UNITS_F;
             case CanDataChannel::IGNITION_ADV:
                 return "deg BTDC";
             case CanDataChannel::AFR_TARGET:
@@ -144,9 +144,9 @@ public:
             case CanDataChannel::AFR:
                 return "AFR";
             case CanDataChannel::EGO_CORRECTION:
-                return Config::UNITS_PCT;
+                return Units::UNITS_PCT;
             case CanDataChannel::EGT:
-                return Config::UNITS_F;
+                return Units::UNITS_F;
             case CanDataChannel::PULSE_WIDTH_SEQUENTIAL:
                 return "msec";
             case CanDataChannel::BATTERY_VOLTAGE:
