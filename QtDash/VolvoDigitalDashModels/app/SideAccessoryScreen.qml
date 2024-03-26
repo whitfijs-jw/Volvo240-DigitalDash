@@ -451,9 +451,17 @@ Window {
         }
     }
 
+    property real rallye140NeedleLength: 0.65
+    property real rallye140NeedleWidth: 0.04;
+    property real rallye140NeedleOffset: 0.1
+    property real rallye140MinAngle: -135
+    property real rallye140MaxAngle: -45
+    property real rallye140YOffset: 0.25
+    property real rallye140NeedleCenterRadius: 0.15
+
     // 140 Rallye gauges
    property list<Item> delegates140Rallye: [
-        Accessory140RallyeStyle {
+        AccessoryGaugeDelegate {
             id: boostDelegate140RallyeStyle
             minAngle: -240
             maxAngle: 60
@@ -463,39 +471,83 @@ Window {
             significatDigits: 1
 
             imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-boost_no_num.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
         },
-        Accessory140RallyeStyle {
+        AccessoryGaugeDelegate {
             id: oilTempDelegate140RallyeStyle
+
+            minAngle: rallye140MinAngle
+            maxAngle: rallye140MaxAngle
+
+            needleOffset: rallye140NeedleOffset
+            needleLength: rallye140NeedleLength
+            needleWidth: rallye140NeedleWidth
+            needleCenterRadius: rallye140NeedleCenterRadius
+            yOffset: rallye140YOffset
+
             significatDigits: 1
 
             imageSource: oilTempF ?
                              "qrc:/gauge-faces-140-rallye/140-rallye-oil-temp.png" :
                              "qrc:/gauge-faces-140-rallye/140-rallye-oil-temp-c.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
         },
-        Accessory140RallyeStyle {
+        AccessoryGaugeDelegate {
             id: oilPressureDelegate140RallyeStyle
-            gaugeMin: 0
+
             gaugeMax: oilPressureBar ? 8 : 120
+
+            minAngle: rallye140MinAngle
+            maxAngle: rallye140MaxAngle
+
+            needleOffset: rallye140NeedleOffset
+            needleLength: rallye140NeedleLength
+            needleWidth: rallye140NeedleWidth
+            needleCenterRadius: rallye140NeedleCenterRadius
+            yOffset: rallye140YOffset
+
             significatDigits: 1
 
             imageSource: oilPressureBar ?
                              "qrc:/gauge-faces-140-rallye/140-rallye-oil-pressure-bar.png" :
                              "qrc:/gauge-faces-140-rallye/140-rallye-oil-pressure-psi.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
         },
-        Accessory140RallyeStyle {
+        AccessoryGaugeDelegate {
             id: coolantTempDelegate140RallyeStyle
+
+            minAngle: rallye140MinAngle
+            maxAngle: rallye140MaxAngle
+
+            needleOffset: rallye140NeedleOffset
+            needleLength: rallye140NeedleLength
+            needleWidth: rallye140NeedleWidth
+            needleCenterRadius: rallye140NeedleCenterRadius
+            yOffset: rallye140YOffset
+
             significatDigits: 1
 
             imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-coolant.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
         },
 
-        Accessory140RallyeStyle {
+        AccessoryGaugeDelegate {
             id: voltmeterDelegate140RallyeStyle
             gaugeMin: 10
             gaugeMax: 18
-            significatDigits: 2
 
+            minAngle: rallye140MinAngle
+            maxAngle: rallye140MaxAngle
+
+            needleOffset: rallye140NeedleOffset
+            needleLength: rallye140NeedleLength
+            needleWidth: rallye140NeedleWidth
+            needleCenterRadius: rallye140NeedleCenterRadius
+            yOffset: rallye140YOffset
+
+            significatDigits: 1
             imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-voltmeter.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
         }
     ]
 
