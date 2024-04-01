@@ -27,6 +27,7 @@ public:
     static constexpr char MCP3008[] = "mcp3008"; //!< MCP3008
 
     /* 5V inputs go through voltage divider for 3.3V ADC inputs -- not quite 100% */
+    static constexpr double DEFAULT_VREF_VOLTAGE = 5.0;
     static constexpr double REFERENCE_VOLTAGE_DIVIDER = (15.0e3 / (15.0e3 + 8.2e3));
     static constexpr double INPUT_VOLTAGE_DIVIDER = (15.0e3 / (15.0e3 + 8.2e3));
     static constexpr double VOLTAGE_CONVERSION_CORRECTION_FACTOR = 3.3 / (INPUT_VOLTAGE_DIVIDER);
@@ -39,106 +40,28 @@ public:
      */
     Adc(std::string name = "mcp3208",
                 std::string path = IIO_DEVICE_PATH,
-                double vRef = 5.0,
-                int referenceChannel = -1) :
-        mDeviceName(name), mVref(vRef), mRefChannel(referenceChannel) {
-        // search in path for the given device.
-        mPath = findDevicePath(path, name);
-
-        if (mPath.empty()) {
-            std::cout << "Device: " << name << " not found in iio subsystem" << std::endl;
-            return;
-        }
-
-        // setup channel number and max values
-        if (name == MCP3208) {
-            mNumChannels = 8;
-            mMaxVal = 4095;
-        } else if (name == MCP3008) {
-            mNumChannels = 8;
-            mMaxVal = 1023;
-        } else if (name == ADS1115){
-            mNumChannels = 4;
-            mMaxVal = 65535;
-        } else {
-            mNumChannels = 0;
-        }
-
-        // setup a map of all of the input channels
-        for (int i = 0; i < mNumChannels; i++) {
-            // we're looking for in_voltageX_raw files in the iio device directory
-            std::string dataPath = CHANNEL_DATA_PATH;
-            std::size_t p = dataPath.find("X");
-            if (p != std::string::npos) {
-                dataPath.replace(p, 1, std::to_string(i));
-            }
-            std::string fullPath = mPath + "/" + dataPath;
-
-            //make sure it exists
-            if (std::filesystem::exists(fullPath)) {
-                // add this to the map
-                mChannelMap.insert(std::pair<int, std::string>(i, fullPath));
-
-                std::cout << "Channel data path: " << mChannelMap.at(i) << std::endl;
-            }
-        }
-
-        if (mRefChannel > 0 && mRefChannel < mNumChannels) {
-            mVref = readValue(mRefChannel, 3.3) / REFERENCE_VOLTAGE_DIVIDER;
-            std::cout << "Reference Voltage measured:" << mVref << std::endl;
-        }
-    }
+                double vRef = DEFAULT_VREF_VOLTAGE,
+                int referenceChannel = -1);
 
     /**
      * @brief Update internal reference with measurement using channel configured to measure
      * the voltage used to drive the sensor inputs
      */
-    void updateReference() {
-        if (mRefChannel > 0 && mRefChannel < mNumChannels) {
-            mVref = readValue(mRefChannel, 3.3) / REFERENCE_VOLTAGE_DIVIDER;
-        }
-    }
+    void updateReference();
 
     /**
      * @brief Read scaled ADC value
      * @param channel: adc channel to read
      * @return current measured voltage
      */
-    double readValue(int channel, double vRef = -1) {
-        double volts = ((double)readRawValue(channel) / (double)mMaxVal);
-
-        if (vRef < 0) {
-            updateReference();
-            return volts * VOLTAGE_CONVERSION_CORRECTION_FACTOR;
-        } else {
-            return volts * vRef;
-        }
-    }
+    double readValue(int channel, double vRef = -1);
 
     /**
      * @brief Read raw ADC value
      * @param channel: adc channel to read
      * @return:
      */
-    int readRawValue(int channel) {
-        if (mChannelMap.find(channel) != mChannelMap.end()) {
-            std::ifstream ifs(mChannelMap.at(channel), std::ios::in);
-            if (!ifs.is_open()) {
-                std::cout << "Error opening channel data file" << std::endl;
-                return -1.0;
-            }
-
-            std::string val;
-            std::getline(ifs, val);
-            ifs.close();
-
-            //std::cout << "Read val: " << val << std::endl;
-
-            return std::stoi(val);
-        }
-
-        return -1.0;
-    }
+    int readRawValue(int channel);
 
     /**
      * @brief Get number of channels
@@ -168,31 +91,7 @@ private:
      * @param name: name of the iio device
      * @return path to the device if found. empty string if not found
      */
-    std::string findDevicePath(std::string& path, std::string name) {
-        for (auto& device : std::filesystem::directory_iterator(path)) {
-            if (std::filesystem::is_directory(device.path())) {
-                std::cout << device << std::endl;
-                auto path = device.path();
-                path /= "name";
-                std::ifstream ifs(path.c_str(), std::ios::in);
-
-                if (!ifs.is_open()) {
-                    std::cout << "Error opening name" << std::endl;
-                    return "";
-                }
-                std::string devName;
-                std::getline(ifs, devName);
-                ifs.close();
-
-                if (devName == name) {
-                    std::cout << "found device: " << devName << std::endl;
-                    return device.path();
-                }
-            }
-        }
-
-        return "";
-    }
+    std::string findDevicePath(std::string& path, std::string name);
 
     std::string mDeviceName; //!< Device name
     std::string mPath; //!< iio device path
