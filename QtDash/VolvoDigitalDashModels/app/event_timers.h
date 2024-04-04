@@ -31,14 +31,7 @@ public:
      * @brief EventTimers Constructor
      * @param parent
      */
-    EventTimers(QObject * parent) : QObject(parent) {
-        // Add the default timers
-        addTimer(static_cast<int>(DataTimers::VERY_FAST_TIMER), VERY_FAST_TIMER_TIMEOUT_MSEC);
-        addTimer(static_cast<int>(DataTimers::FAST_TIMER), FAST_TIMER_TIMEOUT_MSEC);
-        addTimer(static_cast<int>(DataTimers::MEDIUM_TIMER), MEDIUM_TIMER_TIMEOUT_MSEC);
-        addTimer(static_cast<int>(DataTimers::SLOW_TIMER), SLOW_TIMER_TIMEOUT_MSEC);
-    }
-
+    EventTimers(QObject * parent);
     /**
      * @brief Add timer to the collection
      * @param timerId: timer id of timer to add
@@ -46,58 +39,26 @@ public:
      * @param start: Set true to start time immediately
      * @return true if timer was added, false if it already exists
      */
-    bool addTimer(int timerId, int timeoutMSec, bool start = false) {
-        if (!mTimers.contains(timerId)) {
-            QTimer * timer = new QTimer(this->parent());
-            timer->setInterval(timeoutMSec);
-
-            mTimers.insert(timerId, timer);
-
-            if (start) {
-                getTimer(timerId)->start();
-            }
-
-            return true;
-        } else {
-            return false;
-        }
-    }
+    bool addTimer(int timerId, int timeoutMSec, bool start = false);
 
     /**
      * @brief Get timer from collection
      * @param timerId: timer id
      * @return Pointer to timer if it exists in collection, nullptr otherwise
      */
-    QTimer * getTimer(int timerId) {
-        return mTimers.value(timerId, nullptr);
-    }
-
-
-
+    QTimer * getTimer(int timerId);
 signals:
 
 public slots:
     /**
      * @brief Start all timers in collection
      */
-    void start() {
-        for (auto id : mTimers.keys()) {
-            if (getTimer(id) != nullptr) {
-                getTimer(id)->start();
-            }
-        }
-    }
+    void start();
 
     /**
      * @brief Stop all timers in collection
      */
-    void stop() {
-        for (auto id : mTimers.keys()) {
-            if (getTimer(id) != nullptr) {
-                getTimer(id)->stop();
-            }
-        }
-    }
+    void stop();
 private:
     QMap<int, QTimer *> mTimers; //!< map of timers that are running in the app
 };

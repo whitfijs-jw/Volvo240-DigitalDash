@@ -25,6 +25,7 @@ SOURCES += main.cpp \
     config.cpp \
     dash.cpp \
     dash_lights.cpp \
+    event_timers.cpp \
     indicator_model.cpp \
     odometer_model.cpp \
     tachometer_model.cpp \
