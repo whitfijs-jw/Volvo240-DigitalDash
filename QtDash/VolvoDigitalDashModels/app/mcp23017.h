@@ -41,8 +41,6 @@ static inline __s32 i2c_smbus_access(int file, char read_write, __u8 command,
     args.size = size;
     args.data = data;
 
-    //printf("r/w: %d\tcmd: 0x%02x\tsz: %d\tdata: %d\n", args.read_write, args.command, args.size, args.data);
-
     return ioctl(file,I2C_SMBUS,&args);
 }
 
@@ -50,10 +48,11 @@ static inline __s32 i2c_smbus_read_byte_data(int file, __u8 command)
 {
     union i2c_smbus_data data;
     if (i2c_smbus_access(file,I2C_SMBUS_READ,command,
-                         I2C_SMBUS_BYTE_DATA,&data))
+                         I2C_SMBUS_BYTE_DATA,&data)) {
         return -1;
-    else
+    } else {
         return 0x0FF & data.byte;
+    }
 }
 
 /**
@@ -71,7 +70,7 @@ public:
     /**
      * @brief MCP23017 register addresses
      */
-    enum class RegisterAddr{
+    enum class RegisterAddr {
         IODIRA      = 0x00,
         IODIRB      = 0x01,
         IPOLA       = 0x02,
@@ -164,8 +163,6 @@ public:
             printf("i2c-%d device @0x%02X register addr: 0x%02X read failed: %d\n", mBus, (unsigned int)mAddr, (unsigned int)reg, errno);
             return -1;
         }
-
-        //printf("i2c-%d device @0x%02X register addr: 0x%02X read success: 0x%02X\n", mBus, mAddr, reg, ret);
         return ret;
     }
 

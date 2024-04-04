@@ -28,6 +28,7 @@ SOURCES += main.cpp \
     event_timers.cpp \
     gauge_accessory.cpp \
     indicator_model.cpp \
+    map_sensor.cpp \
     odometer_model.cpp \
     tachometer_model.cpp \
     accessory_gauge_model.cpp \

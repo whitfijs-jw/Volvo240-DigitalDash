@@ -14,7 +14,8 @@ SOURCES += \
     sensor_utils_test.cpp \
     test_main.cpp \
     ../app/can_frame_config.cpp \
-    ../app/config.cpp
+    ../app/config.cpp \
+    ../app/map_sensor.cpp
 
 INCLUDEPATH += \
     ../app/
