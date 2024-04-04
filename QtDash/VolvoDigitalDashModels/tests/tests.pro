@@ -12,7 +12,8 @@ SOURCES += \
     ntc_test.cpp \
     sensor_test.cpp \
     sensor_utils_test.cpp \
-    test_main.cpp
+    test_main.cpp \
+    ../app/can_frame_config.cpp
 
 INCLUDEPATH += \
     ../app/

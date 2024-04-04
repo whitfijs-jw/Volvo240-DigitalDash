@@ -4,139 +4,122 @@
 #include <QString>
 #include <QDataStream>
 
+/**
+ * @brief The CAN Frame configuration
+ */
 class CanFrameConfig {
 public:
+    /**
+     * @brief Frame value operations
+     */
     enum class OperationType {
         MULTIPLY,
         DIVIDE,
         ADD
     };
 
-    typedef struct Operation {
+    /**
+     * @brief Operation to perform on
+     */
+    using Operation_t = struct Operation {
         OperationType type;
         qreal value;
-    } Operation_t;
+    };
 
+    /**
+     * @brief CAN Frame config constructor
+     * @param frameId Frame ID
+     * @param offset Frame offset in bytes
+     * @param size Size of the data
+     * @param sign sign/unsigned
+     * @param units Units for the data
+     * @param name Data Name
+     * @param gaugeName Gauge name to route data to
+     */
     CanFrameConfig(uint32_t frameId, uint8_t offset,
                    uint8_t size, bool sign, QString units,
-                   QString name, QString gaugeName = "none") :
-        mFrameId(frameId), mOffset(offset), mSize(size), mSigned(sign),
-        mName(name), mUnits(units), mGaugeName(gaugeName) {
+                   QString name, QString gaugeName = "none");
 
-    }
-
-    uint32_t getFrameId() {
+    /**
+     * @brief getFrameId
+     * @return frame ID
+     */
+    uint32_t getFrameId() const {
         return mFrameId;
     }
 
-    uint8_t getOffset() {
+    /**
+     * @brief Get frame offset
+     * @return frame offset in bytes
+     */
+    uint8_t getOffset() const {
         return mOffset;
     }
 
-    uint8_t getSize() {
+    /**
+     * @brief Get frame data size
+     * @return frame data size in bytes
+     */
+    uint8_t getSize() const {
         return mSize;
     }
 
-    QString getName() {
+    /**
+     * @brief Frame data name
+     * @return frame data name
+     */
+    QString getName() const {
         return mName;
     }
 
-    QString getUnits() {
+    /**
+     * @brief Get the frame data units
+     * @return frame data units
+     */
+    QString getUnits() const {
         return mUnits;
     }
 
-    bool isSigned() {
+    /**
+     * @brief Data sign
+     * @return true if data is signed, false if unsigned
+     */
+    bool isSigned() const {
         return mSigned;
     }
 
-    QString getGauge() {
+    /**
+     * @brief Get gauge name
+     * @return gauge name
+     */
+    QString getGauge() const {
         return mGaugeName;
     }
 
-    int addOperation(OperationType type, qreal value) {
-        Operation_t op;
-        op.type = type;
-        op.value = value;
+    /**
+     * @brief addOperation
+     * @param type
+     * @param value
+     * @return
+     */
+    int addOperation(OperationType type, qreal value);
 
-        mOperations.append(op);
-
-        return mOperations.length();
-    }
-
-    qreal getValue(QByteArray payload) {
-        QDataStream ds(payload);
-        qreal ret = 0;
-        // move to offset (minus 1?)
-        if (ds.skipRawData(mOffset) < 0) {
-            return qQNaN();
-        }
-
-        // get value
-        switch (mSize) {
-        case 1: {
-            if (mSigned) {
-                int8_t value;
-                ds >> value;
-                ret = (qreal)value;
-            } else {
-                uint8_t value;
-                ds >> value;
-                ret = (qreal)value;
-            }
-        }
-            break;
-        case 2: {
-            if (mSigned) {
-                int16_t value;
-                ds >> value;
-                ret = (qreal)value;
-            } else {
-                uint16_t value;
-                ds >> value;
-                ret = (qreal)value;
-            }
-        }
-            break;
-        case 4:{
-            if (mSigned) {
-                int32_t value;
-                ds >> value;
-                ret = (qreal)value;
-            } else {
-                uint32_t value;
-                ds >> value;
-                ret = (qreal)value;
-            }
-        }
-            break;
-        }
-
-        for (Operation_t ops : mOperations) {
-            switch ((int)ops.type) {
-            case (int)OperationType::MULTIPLY:
-                ret *= ops.value;
-                break;
-            case (int) OperationType::DIVIDE:
-                ret /= ops.value;
-                break;
-            case (int) OperationType::ADD:
-                ret += ops.value;
-                break;
-            }
-        }
-
-        return ret;
-    }
+    /**
+     * @brief Get value from raw frame data
+     * @param payload raw frame data
+     * @return frame data value
+     */
+    qreal getValue(QByteArray payload);
 
 private:
-    uint32_t mFrameId;
-    uint8_t mOffset;
-    uint8_t mSize;
-    bool mSigned;
-    QString mName;
-    QString mUnits;
-    QVector<Operation_t> mOperations;
-    QString mGaugeName;
+    uint32_t mFrameId; //!< Frame ID
+    uint8_t mOffset; //!< Frame data offset in bytes
+    uint8_t mSize; //!< Frame data size in bytes
+    bool mSigned; //!< Data sign
+    QString mName; //!< Data name
+    QString mUnits; //!< Data units
+    QVector<Operation_t> mOperations; //!< operations to perform on the data
+    QString mGaugeName; //!< Gauge to route data to
 };
 
 #endif // CAN_FRAME_CONFIG_H

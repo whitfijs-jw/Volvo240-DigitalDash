@@ -21,6 +21,7 @@ SOURCES += main.cpp \
     adc.cpp \
     analog_12v_input.cpp \
     backlight_control.cpp \
+    can_frame_config.cpp \
     indicator_model.cpp \
     odometer_model.cpp \
     tachometer_model.cpp \
