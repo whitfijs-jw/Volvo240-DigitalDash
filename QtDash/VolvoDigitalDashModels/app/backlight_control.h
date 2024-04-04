@@ -17,75 +17,53 @@ public:
     static constexpr qreal DEFAULT_LIGHTS_OFF_DUTY_CYCLE = 0.6;
     static constexpr qreal DEFAULT_LIGHTS_ON_DUTY_CYCLE = 0.4;
 
+    /**
+     * @brief BackLightControl constructor
+     * @param parent Parent Object
+     * @param config Dash Config
+     * @param voltmeter Battery voltage sensor input
+     * @param dimmerVoltage Dimmer Rheostat Voltage
+     */
     BackLightControl(QObject * parent,
                      Config * config,
                      VoltmeterSensor * voltmeter,
-                     VoltmeterSensor * dimmerVoltage) : QObject(parent),
-                    mConfig(config), mBacklightConfig(config->getBackLightConfig()) {
-        // connect voltmeter output to update slot
-        QObject::connect(voltmeter, &Sensor::sensorDataReady,
-                         this, &BackLightControl::batteryVoltageUpdate);
+                     VoltmeterSensor * dimmerVoltage);
 
-        // connect dimmer voltage to update slot
-        QObject::connect(dimmerVoltage, &Sensor::sensorDataReady,
-                         this, &BackLightControl::dimmerVoltageUpdate);
-
-        // initialize pwm
-        mPwm = new Pwm(
-                    Pwm::DEFAULT_PATH,
-                    Pwm::DEFAULT_DEVICE,
-                    Pwm::DEFAULT_PERIOD,
-                    mBacklightConfig.lightsOffDutyCycle,
-                    mBacklightConfig.activeLow
-                    );
-    }
     virtual ~BackLightControl() {}
 
 signals:
 
 public slots:
-    void updateBacklightPwm() {
-        //qDebug() << "Dimmer: " << mCurrentDimmerVoltage << " Battery: " << mCurrentBatteryVoltage;
-        //qDebug() << "Ratio: " << mCurrentDimmerVoltage / mCurrentBatteryVoltage;
-
-        if (mCurrentDimmerVoltage > 5.0) {
-            if (!mBacklightConfig.useDimmer) {
-                mPwm->setDutyCycle(mBacklightConfig.lightsOnDutyCycle);
-            } else {
-                //dimmer has power -- parking lights or headlights are on
-                qreal ratio = mCurrentDimmerVoltage / mCurrentBatteryVoltage;
-                mPwm->setDutyCycle(dutyCycleFromDimmer(ratio));
-            }
-        } else {
-            // dimmer doesn't have power -- default to daytime PWM value
-            mPwm->setDutyCycle(mBacklightConfig.lightsOffDutyCycle);
-        }
-    }
+    /**
+     * @brief Update the backlight pwm
+     */
+    void updateBacklightPwm();
 
 private slots:
-    void batteryVoltageUpdate(QVariant voltage) {
-        mCurrentBatteryVoltage = voltage.toReal();
-        //qDebug() << "Battery Voltage: " << mCurrentBatteryVoltage;
-    }
+    /**
+     * @brief Update the battery voltage
+     * @param voltage Voltage from ADC
+     */
+    void batteryVoltageUpdate(QVariant voltage);
 
-    void dimmerVoltageUpdate(QVariant voltage) {
-        mCurrentDimmerVoltage = voltage.toReal();
-        //qDebug() << "Dimmer Voltage: " << mCurrentDimmerVoltage;
-    }
+    /**
+     * @brief Update the dimmer (rheostat) voltage
+     * @param voltage Voltage from ADC
+     */
+    void dimmerVoltageUpdate(QVariant voltage);
 
 private:
-    Config * mConfig;
     Config::BacklightControlConfig_t mBacklightConfig;
     qreal mCurrentBatteryVoltage = 0.0;
     qreal mCurrentDimmerVoltage = 0.0;
-    Pwm * mPwm;
+    Pwm * mPwm = nullptr;
 
-    float dutyCycleFromDimmer(qreal ratio) {
-        // scale ratio to min/max duty cycles
-        return (ratio - mBacklightConfig.minDimmerRatio) /
-                (mBacklightConfig.maxDimmerRatio - mBacklightConfig.minDimmerRatio) *
-                (mBacklightConfig.maxDutyCycle - mBacklightConfig.minDutyCycle) + mBacklightConfig.minDutyCycle;
-    }
+    /**
+     * @brief Get duty cycle from current dimmer voltage ratio
+     * @param ratio Current dimmer to battery voltage ratio
+     * @return PWM duty cycle
+     */
+    qreal dutyCycleFromDimmer(qreal ratio);
 };
 
 #endif // BACKLIGHT_CONTROL_H

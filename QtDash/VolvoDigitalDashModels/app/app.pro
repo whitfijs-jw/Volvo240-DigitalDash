@@ -20,6 +20,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp \
     adc.cpp \
     analog_12v_input.cpp \
+    backlight_control.cpp \
     indicator_model.cpp \
     odometer_model.cpp \
     tachometer_model.cpp \
