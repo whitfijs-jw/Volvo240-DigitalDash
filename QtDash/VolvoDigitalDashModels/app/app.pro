@@ -23,6 +23,7 @@ SOURCES += main.cpp \
     backlight_control.cpp \
     can_frame_config.cpp \
     config.cpp \
+    dash_lights.cpp \
     indicator_model.cpp \
     odometer_model.cpp \
     tachometer_model.cpp \
