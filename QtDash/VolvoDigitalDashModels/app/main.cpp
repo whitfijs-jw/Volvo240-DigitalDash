@@ -13,7 +13,7 @@
 #include <config.h>
 
 #ifdef RASPBERRY_PI
-#include <dash_new.h>
+#include <dash.h>
 #else
 #include <dash_host.h>
 #endif
@@ -46,11 +46,10 @@ int main(int argc, char *argv[])
 
     // Initialize Dash
 #ifdef RASPBERRY_PI
-    //Dash * dash = new Dash(&app, ctxt); //old style dash
-    DashNew * dash = new DashNew(&app, ctxt); // new scheme with sensor source -> sensor -> gauge -> model
+    Dash * dash = new Dash(&app, ctxt); // new scheme with sensor source -> sensor -> gauge -> model
     ctxt->setContextProperty("RASPBERRY_PI", QVariant(true));
 
-    QObject::connect(dash, &DashNew::keyPress, [&engine](QKeyEvent * ev) {
+    QObject::connect(dash, &Dash::keyPress, [&engine](QKeyEvent * ev) {
         if (ev != nullptr) {
             QCoreApplication::postEvent(engine.rootObjects().first(), ev);
         }

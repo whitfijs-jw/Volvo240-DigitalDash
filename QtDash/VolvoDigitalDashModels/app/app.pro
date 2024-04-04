@@ -23,6 +23,7 @@ SOURCES += main.cpp \
     backlight_control.cpp \
     can_frame_config.cpp \
     config.cpp \
+    dash.cpp \
     dash_lights.cpp \
     indicator_model.cpp \
     odometer_model.cpp \
@@ -417,9 +418,9 @@ HEADERS += \
     backlight_control.h \
     can_frame_config.h \
     config.h \
+    dash.h \
     dash_host.h \
     dash_lights.h \
-    dash_new.h \
     event_timers.h \
     gauge.h \
     gauge_accessory.h \

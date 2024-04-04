@@ -178,6 +178,8 @@ public:
             // return value from frame config
             return mConfig->getCanFrameConfig(mCanMap.value(channel));
         }
+        CanFrameConfig empty(0, 0, 0, false, "", "");
+        return empty;
     }
 
 
