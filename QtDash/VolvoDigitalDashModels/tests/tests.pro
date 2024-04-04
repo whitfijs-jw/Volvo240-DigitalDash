@@ -13,7 +13,8 @@ SOURCES += \
     sensor_test.cpp \
     sensor_utils_test.cpp \
     test_main.cpp \
-    ../app/can_frame_config.cpp
+    ../app/can_frame_config.cpp \
+    ../app/config.cpp
 
 INCLUDEPATH += \
     ../app/
