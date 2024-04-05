@@ -29,6 +29,7 @@ SOURCES += main.cpp \
     gauge_accessory.cpp \
     indicator_model.cpp \
     map_sensor.cpp \
+    mcp23017.cpp \
     odometer_model.cpp \
     tachometer_model.cpp \
     accessory_gauge_model.cpp \

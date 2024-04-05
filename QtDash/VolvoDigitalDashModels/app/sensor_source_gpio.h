@@ -44,12 +44,12 @@ private:
         return ports & (1 << channel);
     }
 
-    mcp23017 mInputs;
+    Mcp23017 mInputs;
 
     uint16_t getInputs() {
         mInputs.openDevice();
-        uint8_t portA = mInputs.read(mcp23017::RegisterAddr::GPIOA);
-        uint8_t portB = mInputs.read(mcp23017::RegisterAddr::GPIOB);
+        uint8_t portA = mInputs.read(Mcp23017::RegisterAddr::GPIOA);
+        uint8_t portB = mInputs.read(Mcp23017::RegisterAddr::GPIOB);
         mInputs.closeDevice();
 
         uint16_t inputs = (portB << 8) | portA;

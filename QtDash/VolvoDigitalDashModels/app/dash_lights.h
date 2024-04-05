@@ -145,7 +145,7 @@ private:
     WarningLightModel mServiceLightModel; //!< service light model
 
 #ifdef RASPBERRY_PI
-    mcp23017 mDashLightInputs; //!< dash light inputs
+    Mcp23017 mDashLightInputs; //!< dash light inputs
 #endif
 
 };

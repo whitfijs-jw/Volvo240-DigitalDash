@@ -47,8 +47,8 @@ void DashLights::update() {
 #ifdef RASPBERRY_PI
     // load raw port values
     mDashLightInputs.openDevice();
-    uint8_t portA = mDashLightInputs.read(mcp23017::RegisterAddr::GPIOA);
-    uint8_t portB = mDashLightInputs.read(mcp23017::RegisterAddr::GPIOB);
+    uint8_t portA = mDashLightInputs.read(Mcp23017::RegisterAddr::GPIOA);
+    uint8_t portB = mDashLightInputs.read(Mcp23017::RegisterAddr::GPIOB);
     mDashLightInputs.closeDevice();
 
     // combine ports
