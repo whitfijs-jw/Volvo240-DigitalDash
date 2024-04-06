@@ -33,6 +33,7 @@ SOURCES += main.cpp \
     ntc.cpp \
     odometer_model.cpp \
     pulse_counter.cpp \
+    pwm.cpp \
     tachometer_model.cpp \
     accessory_gauge_model.cpp \
     speedometer_model.cpp \

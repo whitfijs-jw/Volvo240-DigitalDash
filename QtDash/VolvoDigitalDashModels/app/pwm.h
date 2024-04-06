@@ -8,140 +8,85 @@
 #include <filesystem>
 #include <cmath>
 
+/**
+ * @brief Sysfs PWM class
+ */
 class Pwm {
 public:
-    static constexpr char DEFAULT_PATH[] = "/sys/class/pwm/pwmchip0/";
-    static constexpr char DEFAULT_DEVICE[] = "pwm0";
-    static constexpr char ENABLE[] = "enable";
-    static constexpr char DUTY_CYCLE[] = "duty_cycle";
-    static constexpr char PERIOD[] = "period";
-    static constexpr char POLARITY[] = "polarity";
-    static constexpr int DEFAULT_PERIOD = 33333; //!< 30kHz
-    static constexpr char POLARITY_NORMAL[] = "normal";
-    static constexpr char POLARITY_INVERSED[] = "inversed";
+    static constexpr char DEFAULT_PATH[] = "/sys/class/pwm/pwmchip0/"; //!< default pwm path
+    static constexpr char DEFAULT_DEVICE[] = "pwm0"; //!< default pwm device
+    static constexpr char ENABLE[] = "enable"; //!< enable attribute
+    static constexpr char DUTY_CYCLE[] = "duty_cycle"; //!< duty cycle attribute
+    static constexpr char PERIOD[] = "period"; //!< period attribute
+    static constexpr char POLARITY[] = "polarity"; //!< polarity attribute
+    static constexpr int DEFAULT_PERIOD = 33333; //!< 30kHz period
+    static constexpr char POLARITY_NORMAL[] = "normal"; //!< normal polarity attribute
+    static constexpr char POLARITY_INVERSED[] = "inversed"; //!< inversed (active low) polarity attribute
 
+    /**
+     * @brief Constructor
+     * @param path path to the sysfs device
+     * @param dev device name (pwm0, pwm1, etc)
+     * @param periodNsec period in nsec
+     * @param dutyCycle duty cycle (0.0 to 1.0)
+     * @param activeLow true to make the output active low
+     */
     Pwm(std::string path = DEFAULT_PATH,
         std::string dev = DEFAULT_DEVICE,
         int periodNsec = DEFAULT_PERIOD,
         float dutyCycle = 0.5,
-        bool activeLow = true) :
-        mPath(path), mDev(dev), mPeriod(periodNsec),
-        mDutyCycle(dutyCycle), mIsActiveLow(activeLow) {
-        // make sure pwm0 is enabled
-        writeAttribute("export", 0);
+        bool activeLow = true);
 
-        //check that the device is there now
-        if (std::filesystem::exists(mPath + dev + "/")) {
-            std::cout << "pwm0 exported" << std::endl;
-            // update path
-            mPath += mDev + "/";
+    /**
+     * @brief Enable/Disable PWM output
+     * @param enable true to enable the output
+     * @return >0 when successful
+     */
+    int enable(bool enable);
 
-            // set up period (will configure duty cycle)
-            std::cout << "pwm: setting period" << std::endl;
-            setPeriod(mPeriod);
+    /**
+     * @brief Set PWM frequency
+     * @param frequency frequency in Hz
+     * @return >0 when successful
+     */
+    int setFrequency(float frequency);
 
-            // set polarity
-            std::string polarity = mIsActiveLow ? POLARITY_INVERSED : POLARITY_NORMAL;
-            writeAttribute(POLARITY, polarity);
+    /**
+     * @brief Set the PWM period
+     * @param period desired period in nsec
+     * @return >0 when successful
+     */
+    int setPeriod(int period);
 
-            // enable
-            std::cout << "pwm: enabled" << std::endl;
-            enable(true);
-        }
-    }
-
-    int enable(bool enable) {
-        return writeAttribute(ENABLE, enable);
-    }
-
-    int setFrequency(float frequency) {
-        int nsecPeriod = (int) std::round(1.0 / frequency * 1.0e9);
-        return setPeriod(nsecPeriod);
-    }
-
-    int setPeriod(int period) {
-        // update period
-        if (writeAttribute(PERIOD, period) == period) {
-            mPeriod = period;
-
-            //update duty cycle to reflect new period
-            setDutyCycle(mDutyCycle);
-
-            return period;
-        }
-
-        return -1;
-    }
-
-    int setDutyCycle(float dutyCycle) {
-        if (dutyCycle > 1.0) {
-            dutyCycle = 1.0;
-        } else if (dutyCycle < 0) {
-            dutyCycle = 0;
-        }
-
-        int dc = std::round((float) mPeriod * dutyCycle);
-
-        if (dc == mDutyCycle) {
-            //std::cout << "duty cycle already set" << std::endl;
-            return dc;
-        }
-
-        if (writeAttribute(DUTY_CYCLE, dc) == dc) {
-            mDutyCycle = dc;
-
-            return dc;
-        }
-
-        return -1;
-    }
+    /**
+     * @brief Set the PWM duty cycle
+     * @param dutyCycle duty cycle (0.0 to 1.0)
+     * @return >0 when successful
+     */
+    int setDutyCycle(float dutyCycle);
 
 private:
     /**
-     * @brief Write attribute in the tach input sysfs
+     * @brief Write attribute in the PWM sysfs
      * @param attr: attribute to write
      * @param value: value to write
      * @return: returns value if written successfully
      */
-    int writeAttribute(std::string attr, int value) {
-        // read the nano second spacing variable
-        std::string fullPath = mPath + attr;
-        std::ofstream ofs(fullPath, std::ofstream::out);
-        if (!ofs.is_open()) {
-            std::cout << "Error opening " << attr << std::endl;
-            return -1.0;
-        }
+    int writeAttribute(std::string attr, int value);
 
-        ofs << value;
-        ofs.close();
+    /**
+     * @brief Write attribute to the PWM sysfs
+     * @param attr attribute to write
+     * @param value string value to write to attribute
+     * @return true when successful
+     */
+    bool writeAttribute(std::string attr, std::string value);
 
-        //std::cout << attr << " set to: " << value <<  std::endl;
-
-        return value;
-    }
-
-    bool writeAttribute(std::string attr, std::string value) {
-        // read variable
-        std::string fullPath = mPath + attr;
-        std::ofstream ofs(fullPath, std::ofstream::out);
-        if (!ofs.is_open()) {
-            std::cout << "Error opening " << attr << std::endl;
-            return false;
-        }
-
-        ofs << value;
-        ofs.close();
-
-        std::cout << "Set " << attr << " to: " << value << std::endl;
-
-        return true;
-    }
-
-    std::string mPath;
-    std::string mDev;
-    int mPeriod = DEFAULT_PERIOD;
-    float mDutyCycle = 0.5;
-    bool mIsActiveLow = true;
+    std::string mPath; //!< sysfs device path
+    std::string mDev; //!< PWM device path
+    int mPeriod = DEFAULT_PERIOD; //!< current PWM period
+    float mDutyCycle = 0.5; //!< current PWM duty cycle
+    bool mIsActiveLow = true; //!< current active low status
 };
 
 #endif // PWM_H
