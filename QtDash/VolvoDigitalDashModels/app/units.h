@@ -1,6 +1,8 @@
 #ifndef UNITS_H
 #define UNITS_H
 
+#include <QString>
+
 class Units {
 public:
     // units for sensors
@@ -71,78 +73,28 @@ public:
      * @param units: units string
      * @return @ref PressureUnits
      */
-    static PressureUnits getPressureUnits(QString units) {
-        if (units.compare(UNITS_BAR, Qt::CaseInsensitive) == 0) {
-            return PressureUnits::BAR;
-        } else if (units.compare(UNITS_KPA, Qt::CaseInsensitive) == 0) {
-            return PressureUnits::KPA;
-        } else {
-            //default to psi
-            return PressureUnits::PSI;
-        }
-    }
+    static PressureUnits getPressureUnits(QString units);
 
     /**
      * @brief Get temperature units from string
      * @param units: units string
      * @return @ref TemperatureUnits
      */
-    static TemperatureUnits getTempUnits(QString units) {
-        if (units.compare(UNITS_C, Qt::CaseInsensitive) == 0) {
-            return TemperatureUnits::CELSIUS;
-        } else if (units.compare(UNITS_K, Qt::CaseInsensitive) == 0) {
-            return TemperatureUnits::KELVIN;
-        } else {
-            //default to f
-            return TemperatureUnits::FAHRENHEIT;
-        }
-    }
+    static TemperatureUnits getTempUnits(QString units);
 
     /**
      * @brief Get distance units from string
      * @param units: Units string
      * @return @ref DistanceUnits
      */
-    static DistanceUnits getDistanceUnits(QString units) {
-        if (units.compare(UNITS_INCH, Qt::CaseInsensitive) == 0) {
-            return DistanceUnits::INCH;
-        } else if (units.compare(UNITS_FOOT, Qt::CaseInsensitive) == 0) {
-            return DistanceUnits::FOOT;
-        } else if (units.compare(UNITS_YARD, Qt::CaseInsensitive) == 0) {
-            return DistanceUnits::YARD;
-        } else if (units.compare(UNITS_MILE, Qt::CaseInsensitive) == 0) {
-            return DistanceUnits::MILE;
-        } else if (units.compare(UNITS_MILLIMETER, Qt::CaseInsensitive) == 0) {
-            return DistanceUnits::MILLIMETER;
-        } else if (units.compare(UNITS_CENTIMETER, Qt::CaseInsensitive) == 0) {
-            return DistanceUnits::CENTIMETER;
-        } else if (units.compare(UNITS_METER, Qt::CaseInsensitive) == 0) {
-            return DistanceUnits::METER;
-        } else if (units.compare(UNITS_KILOMETER, Qt::CaseInsensitive) == 0) {
-            return DistanceUnits::KILOMETER;
-        }
-
-        // default to mm:
-        return DistanceUnits::MILLIMETER;
-    }
+    static DistanceUnits getDistanceUnits(QString units);
 
     /**
      * @brief Get speed units from string
      * @param units: units string
      * @return @ref SpeedUnits
      */
-    static SpeedUnits getSpeedUnits(QString units) {
-        if (units.compare(UNITS_MPH, Qt::CaseInsensitive) == 0) {
-            return SpeedUnits::MPH;
-        } else if ((units.compare(UNITS_KPH, Qt::CaseInsensitive) == 0) || (units.compare(UNITS_KMH, Qt::CaseInsensitive) == 0)) {
-            return SpeedUnits::KPH;
-        } else if (units.compare(UNITS_METERS_PER_SECOND, Qt::CaseInsensitive) == 0) {
-            return SpeedUnits::METER_PER_SECOND;
-        }
-
-        //default to mph
-        return SpeedUnits::MPH;
-    }
+    static SpeedUnits getSpeedUnits(QString units);
 };
 
 #endif // UNITS_H

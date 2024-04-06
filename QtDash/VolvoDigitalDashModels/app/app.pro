@@ -38,6 +38,7 @@ SOURCES += main.cpp \
     accessory_gauge_model.cpp \
     speedometer_model.cpp \
     temp_and_fuel_gauge_model.cpp \
+    units.cpp \
     warning_light_model.cpp
 
 RESOURCES += qml.qrc
