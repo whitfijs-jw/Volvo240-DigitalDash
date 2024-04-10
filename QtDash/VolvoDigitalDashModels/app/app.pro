@@ -40,6 +40,7 @@ SOURCES += src/main.cpp \
     src/model/warning_light_model.cpp \
     src/sensor_source/sensor_source_gps.cpp \
     src/utils/event_timers.cpp \
+    src/utils/sensor_utils.cpp \
     src/utils/units.cpp
 
 

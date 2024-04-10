@@ -35,8 +35,8 @@ public:
     static constexpr qreal IN_PER_FOOT = 12; //!< inches per foot
     static constexpr qreal FOOT_PER_YARD = 3.0; //!< feet per yard
     //speed constants
-    static constexpr qreal MPH_TO_KPH = METER_PER_MILE / 1000.0;
-    static constexpr qreal KPH_TO_METERS_PER_SEC = 1000.0 / 3600.0;
+    static constexpr qreal MPH_TO_KPH = METER_PER_MILE / 1000.0; //!< mph to kph
+    static constexpr qreal KPH_TO_METERS_PER_SEC = 1000.0 / 3600.0; //!< kph to m/s
 
     // Check for disconnected or shorted sensor
     static constexpr qreal SENSOR_MAX_PCT = .95; //!< above this percentage and an error is assumed
@@ -144,6 +144,12 @@ public:
         }
     }
 
+    /**
+     * @brief Convert distance to feet
+     * @param distance: input distance
+     * @param units: input units
+     * @return distance in feet
+     */
     static constexpr qreal toFeet(qreal distance, Units::DistanceUnits units) {
         if (units == Units::DistanceUnits::INCH) {
             return distance / IN_PER_FOOT;
@@ -166,6 +172,13 @@ public:
         }
     }
 
+    /**
+     * @brief Convert distance
+     * @param distance: input distance value
+     * @param to: units to convert input to
+     * @param from units of input value
+     * @return converted distance
+     */
     static constexpr qreal convertDistance(
             qreal distance,
             Units::DistanceUnits to,
@@ -336,7 +349,12 @@ public:
         }
     }
 
-
+    /**
+     * @brief Convert speed to MPH
+     * @param speed input speed
+     * @param units units of input speed
+     * @return converted speed
+     */
     static constexpr qreal toMph(qreal speed, Units::SpeedUnits units) {
         if (units == Units::SpeedUnits::MPH) {
             return speed;
@@ -349,6 +367,12 @@ public:
         return 0;
     }
 
+    /**
+     * @brief Convert speed to KPH
+     * @param speed input speed
+     * @param units input speed units
+     * @return speed converted to MPH
+     */
     static constexpr qreal toKph(qreal speed, Units::SpeedUnits units) {
         if (units == Units::SpeedUnits::MPH) {
             return speed * MPH_TO_KPH;
@@ -361,6 +385,12 @@ public:
         return 0;
     }
 
+    /**
+     * @brief Convert speed to meters per second (m/s)
+     * @param speed input speed
+     * @param units input speed units
+     * @return speed converted to m/s
+     */
     static constexpr qreal toMetersPerSecond(qreal speed, Units::SpeedUnits units) {
         if (units == Units::SpeedUnits::MPH) {
             return speed * MPH_TO_KPH * KPH_TO_METERS_PER_SEC;
@@ -373,6 +403,13 @@ public:
         return 0;
     }
 
+    /**
+     * @brief Convert speed to desired units
+     * @param speed input speed
+     * @param to units to convert to
+     * @param from input speed units
+     * @return converted speed
+     */
     static constexpr qreal convertSpeed(qreal speed,
                                   Units::SpeedUnits to,
                                   Units::SpeedUnits from) {
@@ -388,54 +425,14 @@ public:
         return 0.0;
     }
 
-    static qreal convert(qreal value, QString to, QString from) {
-        if (from.compare(to, Qt::CaseInsensitive) == 0) {
-            return value;
-        }
-
-        qreal val = value;
-        // Check sensor type
-        if (from.compare(Units::UNITS_C, Qt::CaseInsensitive) == 0 ||
-            from.compare(Units::UNITS_F, Qt::CaseInsensitive) == 0 ||
-            from.compare(Units::UNITS_K, Qt::CaseInsensitive) == 0 ) {
-            // temperature sensor
-            val = SensorUtils::convertTemperature(value,
-                  Units::getTempUnits(to),
-                  Units::getTempUnits(from));
-
-        } else if (from.compare(Units::UNITS_PSI, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Units::UNITS_BAR, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Units::UNITS_KPA, Qt::CaseInsensitive) == 0 ) {
-            // pressure sensor
-            val = SensorUtils::convertPressure(value,
-                        Units::getPressureUnits(to),
-                        Units::getPressureUnits(from)
-                        );
-        } else if (from.compare(Units::UNITS_MPH, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Units::UNITS_KPH, Qt::CaseInsensitive) == 0||
-                   from.compare(Units::UNITS_KMH, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Units::UNITS_METERS_PER_SECOND, Qt::CaseInsensitive) == 0) {
-            // speed sensor
-            val = SensorUtils::convertSpeed(value,
-                        Units::getSpeedUnits(to),
-                        Units::getSpeedUnits(from)
-                        );
-        } else if (from.compare(Units::UNITS_MILE, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Units::UNITS_KILOMETER, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Units::UNITS_METER, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Units::UNITS_CENTIMETER, Qt::CaseInsensitive) == 0||
-                   from.compare(Units::UNITS_MILLIMETER, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Units::UNITS_INCH, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Units::UNITS_FOOT, Qt::CaseInsensitive) == 0 ||
-                   from.compare(Units::UNITS_YARD, Qt::CaseInsensitive) == 0) {
-            val = SensorUtils::convertDistance(value,
-                  Units::getDistanceUnits(to),
-                  Units::getDistanceUnits(from)
-                  );
-        }
-
-        return val;
-    }
+    /**
+     * @brief Generic conversion
+     * @param value input value
+     * @param to units to convert to
+     * @param from input value units
+     * @return converted value
+     */
+    static qreal convert(qreal value, QString to, QString from);
 
     /**
      * @brief interpolate
@@ -458,39 +455,7 @@ public:
      * @param order: polynomial order
      * @return QList of polynomial coefficients of length (order + 1)
      */
-    static QList<qreal> polynomialRegression(QList<qreal> x, QList<qreal> y, int order) {
-        if (x.length() != y.length()) {
-            // problem
-        }
-
-        Eigen::MatrixXd X(x.size(), order + 1);
-        Eigen::MatrixXd Beta(x.size(), 1);
-        Eigen::MatrixXd Y(y.size(), 1);
-
-        // populate X and Y matrices
-        for (int r = 0; r < x.size(); r++) {
-            for (int c = 0; c <= order; c++) {
-                X(r, c) = qPow(x.at(r), c);
-            }
-
-            Y(r) = y.at(r);
-        }
-
-        // intermediates
-        Eigen::MatrixXd XtX = X.transpose() * X;
-        Eigen::MatrixXd XtXinv = XtX.inverse();
-
-        // do it
-        Beta = XtXinv * X.transpose() * Y;
-
-        // output coefficients (should be x^0 to x^order)
-        QList<qreal> coeff;
-        for (int i = 0; i < (order + 1); i++) {
-            coeff.push_back(Beta(i));
-        }
-
-        return coeff;
-    }
+    static QList<qreal> polynomialRegression(QList<qreal> x, QList<qreal> y, int order);
 
     /**
      * @brief calculate polynomial value given coefficients and x value
@@ -498,15 +463,7 @@ public:
      * @param coeff: polynomial coefficients
      * @return value of polynomial at x
      */
-    static qreal polynomialValue(qreal x, QList<qreal> coeff) {
-        qreal sum = 0;
-        // sum terms
-        for (int i = 0; i < coeff.size(); i++) {
-            sum += qPow(x, i) * coeff.at(i);
-        }
-
-        return sum;
-    }
+    static qreal polynomialValue(qreal x, QList<qreal> coeff);
 
 };
 

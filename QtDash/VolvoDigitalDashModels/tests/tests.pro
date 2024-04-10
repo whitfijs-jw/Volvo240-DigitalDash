@@ -17,7 +17,8 @@ SOURCES += \
     ../app/src/config/config.cpp \
     ../app/src/ll/map_sensor.cpp \
     ../app/src/ll/ntc.cpp \
-    ../app/src/utils/units.cpp
+    ../app/src/utils/units.cpp \
+    ../app/src/utils/sensor_utils.cpp
 
 INCLUDEPATH += \
     ../app/ \
