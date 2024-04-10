@@ -18,29 +18,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += src/main.cpp \
-    src/adc.cpp \
-    src/analog_12v_input.cpp \
-    src/backlight_control.cpp \
-    src/can_frame_config.cpp \
-    src/config.cpp \
-    src/dash.cpp \
-    src/dash_lights.cpp \
-    src/event_timers.cpp \
-    src/gauge_accessory.cpp \
-    src/indicator_model.cpp \
-    src/map_sensor.cpp \
-    src/mcp23017.cpp \
-    src/ntc.cpp \
-    src/odometer_model.cpp \
-    src/pulse_counter.cpp \
-    src/pwm.cpp \
-    src/sensor_source_gps.cpp \
-    src/tachometer_model.cpp \
-    src/accessory_gauge_model.cpp \
-    src/speedometer_model.cpp \
-    src/temp_and_fuel_gauge_model.cpp \
-    src/units.cpp \
-    src/warning_light_model.cpp
+    src/config/can_frame_config.cpp \
+    src/config/config.cpp \
+    src/dash/dash.cpp \
+    src/dash/dash_lights.cpp \
+    src/gauge/gauge_accessory.cpp \
+    src/ll/adc.cpp \
+    src/ll/analog_12v_input.cpp \
+    src/ll/backlight_control.cpp \
+    src/ll/map_sensor.cpp \
+    src/ll/mcp23017.cpp \
+    src/ll/ntc.cpp \
+    src/ll/pulse_counter.cpp \
+    src/ll/pwm.cpp \
+    src/model/accessory_gauge_model.cpp \
+    src/model/indicator_model.cpp \
+    src/model/odometer_model.cpp \
+    src/model/speedometer_model.cpp \
+    src/model/tachometer_model.cpp \
+    src/model/temp_and_fuel_gauge_model.cpp \
+    src/model/warning_light_model.cpp \
+    src/sensor_source/sensor_source_gps.cpp \
+    src/utils/event_timers.cpp \
+    src/utils/units.cpp
+
 
 RESOURCES += qml.qrc
 
@@ -422,60 +423,70 @@ HEADERS += \
     ../../eigen/Eigen/src/plugins/MatrixCwiseBinaryOps.h \
     ../../eigen/Eigen/src/plugins/MatrixCwiseUnaryOps.h \
     ../../eigen/Eigen/src/plugins/ReshapedMethods.h \
-    inc/adc.h \
-    inc/analog_12v_input.h \
-    inc/backlight_control.h \
-    inc/can_frame_config.h \
-    inc/config.h \
-    inc/dash.h \
-    inc/dash_host.h \
-    inc/dash_lights.h \
-    inc/event_timers.h \
-    inc/gauge.h \
-    inc/gauge_accessory.h \
-    inc/gauge_configs.h \
-    inc/gauge_odo.h \
-    inc/gauge_speedo.h \
-    inc/gauge_tach.h \
-    inc/gauge_temp_fuel_cluster.h \
-    inc/gps_helper.h \
-    inc/indicator_model.h \
-    inc/key_press_emitter.h \
-    inc/map_sensor.h \
-    inc/mcp23017.h \
-    inc/ntc.h \
-    inc/odometer_model.h \
-    inc/pulse_counter.h \
-    inc/pwm.h \
-    inc/sensor.h \
-    inc/sensor_can.h \
-    inc/sensor_configs.h \
-    inc/sensor_map.h \
-    inc/sensor_ntc.h \
-    inc/sensor_odometer.h \
-    inc/sensor_resistive.h \
-    inc/sensor_source.h \
-    inc/sensor_source_adc.h \
-    inc/sensor_source_can.h \
-    inc/sensor_source_gpio.h \
-    inc/sensor_source_gps.h \
-    inc/sensor_source_tach.h \
-    inc/sensor_source_vss.h \
-    inc/sensor_speedo.h \
-    inc/sensor_tach.h \
-    inc/sensor_utils.h \
-    inc/sensor_voltmeter.h \
-    inc/tach_input.h \
-    inc/tachometer_model.h \
-    inc/accessory_gauge_model.h \
-    inc/speedometer_model.h \
-    inc/temp_and_fuel_gauge_model.h \
-    inc/units.h \
-    inc/vss_input.h \
-    inc/warning_light_model.h
+    inc/config/can_frame_config.h \
+    inc/config/config.h \
+    inc/config/gauge_configs.h \
+    inc/config/sensor_configs.h \
+    inc/dash/dash.h \
+    inc/dash/dash_host.h \
+    inc/dash/dash_lights.h \
+    inc/gauge/gauge.h \
+    inc/gauge/gauge_accessory.h \
+    inc/gauge/gauge_odo.h \
+    inc/gauge/gauge_speedo.h \
+    inc/gauge/gauge_tach.h \
+    inc/gauge/gauge_temp_fuel_cluster.h \
+    inc/ll/adc.h \
+    inc/ll/analog_12v_input.h \
+    inc/ll/backlight_control.h \
+    inc/ll/map_sensor.h \
+    inc/ll/mcp23017.h \
+    inc/ll/ntc.h \
+    inc/ll/pulse_counter.h \
+    inc/ll/pwm.h \
+    inc/ll/tach_input.h \
+    inc/ll/vss_input.h \
+    inc/model/accessory_gauge_model.h \
+    inc/model/indicator_model.h \
+    inc/model/odometer_model.h \
+    inc/model/speedometer_model.h \
+    inc/model/tachometer_model.h \
+    inc/model/temp_and_fuel_gauge_model.h \
+    inc/model/warning_light_model.h \
+    inc/sensor/sensor.h \
+    inc/sensor/sensor_can.h \
+    inc/sensor/sensor_map.h \
+    inc/sensor/sensor_ntc.h \
+    inc/sensor/sensor_odometer.h \
+    inc/sensor/sensor_resistive.h \
+    inc/sensor/sensor_speedo.h \
+    inc/sensor/sensor_tach.h \
+    inc/sensor/sensor_voltmeter.h \
+    inc/sensor_source/sensor_source.h \
+    inc/sensor_source/sensor_source_adc.h \
+    inc/sensor_source/sensor_source_can.h \
+    inc/sensor_source/sensor_source_gpio.h \
+    inc/sensor_source/sensor_source_gps.h \
+    inc/sensor_source/sensor_source_tach.h \
+    inc/sensor_source/sensor_source_vss.h \
+    inc/utils/event_timers.h \
+    inc/utils/gps_helper.h \
+    inc/utils/key_press_emitter.h \
+    inc/utils/sensor_utils.h \
+    inc/utils/units.h
+
 
 INCLUDEPATH += \
     Headers \
+    inc \
+    inc/config \
+    inc/dash \
+    inc/gauge \
+    inc/ll \
+    inc/model \
+    inc/sensor \
+    inc/sensor_source \
+    inc/utils \
 
 RPI {
     message("rpi is selected")
