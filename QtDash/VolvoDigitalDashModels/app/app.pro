@@ -17,30 +17,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-SOURCES += main.cpp \
-    adc.cpp \
-    analog_12v_input.cpp \
-    backlight_control.cpp \
-    can_frame_config.cpp \
-    config.cpp \
-    dash.cpp \
-    dash_lights.cpp \
-    event_timers.cpp \
-    gauge_accessory.cpp \
-    indicator_model.cpp \
-    map_sensor.cpp \
-    mcp23017.cpp \
-    ntc.cpp \
-    odometer_model.cpp \
-    pulse_counter.cpp \
-    pwm.cpp \
-    sensor_source_gps.cpp \
-    tachometer_model.cpp \
-    accessory_gauge_model.cpp \
-    speedometer_model.cpp \
-    temp_and_fuel_gauge_model.cpp \
-    units.cpp \
-    warning_light_model.cpp
+SOURCES += src/main.cpp \
+    src/adc.cpp \
+    src/analog_12v_input.cpp \
+    src/backlight_control.cpp \
+    src/can_frame_config.cpp \
+    src/config.cpp \
+    src/dash.cpp \
+    src/dash_lights.cpp \
+    src/event_timers.cpp \
+    src/gauge_accessory.cpp \
+    src/indicator_model.cpp \
+    src/map_sensor.cpp \
+    src/mcp23017.cpp \
+    src/ntc.cpp \
+    src/odometer_model.cpp \
+    src/pulse_counter.cpp \
+    src/pwm.cpp \
+    src/sensor_source_gps.cpp \
+    src/tachometer_model.cpp \
+    src/accessory_gauge_model.cpp \
+    src/speedometer_model.cpp \
+    src/temp_and_fuel_gauge_model.cpp \
+    src/units.cpp \
+    src/warning_light_model.cpp
 
 RESOURCES += qml.qrc
 
@@ -422,57 +422,57 @@ HEADERS += \
     ../../eigen/Eigen/src/plugins/MatrixCwiseBinaryOps.h \
     ../../eigen/Eigen/src/plugins/MatrixCwiseUnaryOps.h \
     ../../eigen/Eigen/src/plugins/ReshapedMethods.h \
-    adc.h \
-    analog_12v_input.h \
-    backlight_control.h \
-    can_frame_config.h \
-    config.h \
-    dash.h \
-    dash_host.h \
-    dash_lights.h \
-    event_timers.h \
-    gauge.h \
-    gauge_accessory.h \
-    gauge_configs.h \
-    gauge_odo.h \
-    gauge_speedo.h \
-    gauge_tach.h \
-    gauge_temp_fuel_cluster.h \
-    gps_helper.h \
-    indicator_model.h \
-    key_press_emitter.h \
-    map_sensor.h \
-    mcp23017.h \
-    ntc.h \
-    odometer_model.h \
-    pulse_counter.h \
-    pwm.h \
-    sensor.h \
-    sensor_can.h \
-    sensor_configs.h \
-    sensor_map.h \
-    sensor_ntc.h \
-    sensor_odometer.h \
-    sensor_resistive.h \
-    sensor_source.h \
-    sensor_source_adc.h \
-    sensor_source_can.h \
-    sensor_source_gpio.h \
-    sensor_source_gps.h \
-    sensor_source_tach.h \
-    sensor_source_vss.h \
-    sensor_speedo.h \
-    sensor_tach.h \
-    sensor_utils.h \
-    sensor_voltmeter.h \
-    tach_input.h \
-    tachometer_model.h \
-    accessory_gauge_model.h \
-    speedometer_model.h \
-    temp_and_fuel_gauge_model.h \
-    units.h \
-    vss_input.h \
-    warning_light_model.h
+    inc/adc.h \
+    inc/analog_12v_input.h \
+    inc/backlight_control.h \
+    inc/can_frame_config.h \
+    inc/config.h \
+    inc/dash.h \
+    inc/dash_host.h \
+    inc/dash_lights.h \
+    inc/event_timers.h \
+    inc/gauge.h \
+    inc/gauge_accessory.h \
+    inc/gauge_configs.h \
+    inc/gauge_odo.h \
+    inc/gauge_speedo.h \
+    inc/gauge_tach.h \
+    inc/gauge_temp_fuel_cluster.h \
+    inc/gps_helper.h \
+    inc/indicator_model.h \
+    inc/key_press_emitter.h \
+    inc/map_sensor.h \
+    inc/mcp23017.h \
+    inc/ntc.h \
+    inc/odometer_model.h \
+    inc/pulse_counter.h \
+    inc/pwm.h \
+    inc/sensor.h \
+    inc/sensor_can.h \
+    inc/sensor_configs.h \
+    inc/sensor_map.h \
+    inc/sensor_ntc.h \
+    inc/sensor_odometer.h \
+    inc/sensor_resistive.h \
+    inc/sensor_source.h \
+    inc/sensor_source_adc.h \
+    inc/sensor_source_can.h \
+    inc/sensor_source_gpio.h \
+    inc/sensor_source_gps.h \
+    inc/sensor_source_tach.h \
+    inc/sensor_source_vss.h \
+    inc/sensor_speedo.h \
+    inc/sensor_tach.h \
+    inc/sensor_utils.h \
+    inc/sensor_voltmeter.h \
+    inc/tach_input.h \
+    inc/tachometer_model.h \
+    inc/accessory_gauge_model.h \
+    inc/speedometer_model.h \
+    inc/temp_and_fuel_gauge_model.h \
+    inc/units.h \
+    inc/vss_input.h \
+    inc/warning_light_model.h
 
 INCLUDEPATH += \
     Headers \
