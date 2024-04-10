@@ -24,11 +24,7 @@ SOURCES += src/main.cpp \
     src/dash/dash_lights.cpp \
     src/gauge/gauge_accessory.cpp \
     src/ll/adc.cpp \
-    src/ll/analog_12v_input.cpp \
-    src/ll/backlight_control.cpp \
-    src/ll/map_sensor.cpp \
     src/ll/mcp23017.cpp \
-    src/ll/ntc.cpp \
     src/ll/pulse_counter.cpp \
     src/ll/pwm.cpp \
     src/model/accessory_gauge_model.cpp \
@@ -38,7 +34,11 @@ SOURCES += src/main.cpp \
     src/model/tachometer_model.cpp \
     src/model/temp_and_fuel_gauge_model.cpp \
     src/model/warning_light_model.cpp \
+    src/sensor/ntc.cpp \
+    src/sensor/analog_12v_input.cpp \
+    src/sensor/map_sensor.cpp \
     src/sensor_source/sensor_source_gps.cpp \
+    src/utils/backlight_control.cpp \
     src/utils/event_timers.cpp \
     src/utils/sensor_utils.cpp \
     src/utils/units.cpp
@@ -438,11 +438,7 @@ HEADERS += \
     inc/gauge/gauge_tach.h \
     inc/gauge/gauge_temp_fuel_cluster.h \
     inc/ll/adc.h \
-    inc/ll/analog_12v_input.h \
-    inc/ll/backlight_control.h \
-    inc/ll/map_sensor.h \
     inc/ll/mcp23017.h \
-    inc/ll/ntc.h \
     inc/ll/pulse_counter.h \
     inc/ll/pwm.h \
     inc/ll/tach_input.h \
@@ -454,6 +450,9 @@ HEADERS += \
     inc/model/tachometer_model.h \
     inc/model/temp_and_fuel_gauge_model.h \
     inc/model/warning_light_model.h \
+    inc/sensor/analog_12v_input.h \
+    inc/sensor/map_sensor.h \
+    inc/sensor/ntc.h \
     inc/sensor/sensor.h \
     inc/sensor/sensor_can.h \
     inc/sensor/sensor_map.h \
@@ -470,6 +469,7 @@ HEADERS += \
     inc/sensor_source/sensor_source_gps.h \
     inc/sensor_source/sensor_source_tach.h \
     inc/sensor_source/sensor_source_vss.h \
+    inc/utils/backlight_control.h \
     inc/utils/event_timers.h \
     inc/utils/gps_helper.h \
     inc/utils/key_press_emitter.h \

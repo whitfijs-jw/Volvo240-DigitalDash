@@ -15,8 +15,8 @@ SOURCES += \
     test_main.cpp \
     ../app/src/config/can_frame_config.cpp \
     ../app/src/config/config.cpp \
-    ../app/src/ll/map_sensor.cpp \
-    ../app/src/ll/ntc.cpp \
+    ../app/src/sensor/map_sensor.cpp \
+    ../app/src/sensor/ntc.cpp \
     ../app/src/utils/units.cpp \
     ../app/src/utils/sensor_utils.cpp
 
@@ -32,9 +32,9 @@ INCLUDEPATH += \
     ../app/inc/utils
 
 HEADERS += \
-    ../app/inc/ll/map_sensor.h\
+    ../app/inc/sensor/map_sensor.h\
     ../app/inc/config/config.h\
-    ../app/inc/ll/ntc.h\
+    ../app/inc/sensor/ntc.h\
     ../app/inc/sensor/sensor.h\
     ../app/inc/sensor_source/sensor_source.h\
     compare_float.h \
