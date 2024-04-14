@@ -38,7 +38,6 @@
         <file>OriginalEarly240Layout.qml</file>
         <file>BlinkerEarly240.qml</file>
         <file>BlinkerDelegateEarly240Style.qml</file>
-        <file>Accessory140RallyeStyle.qml</file>
         <file>Original140RallyeLayout.qml</file>
         <file>SpeedoDelegate.qml</file>
         <file>TachometerDelegate.qml</file>
