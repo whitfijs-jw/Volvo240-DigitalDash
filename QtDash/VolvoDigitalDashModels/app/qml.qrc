@@ -24,67 +24,42 @@
         <file>Original544Layout.qml</file>
         <file>OriginalP1800Layout.qml</file>
         <file>OdometerDelegate.qml</file>
-        <file>VoltmeterDelegate240Style.qml</file>
-        <file>BoostDelegate240Style.qml</file>
         <file>SideAccessoryScreen.qml</file>
         <file>SideAccessoryLayout.qml</file>
-        <file>BoostDelegate740Style.qml</file>
-        <file>BoostDelegate850Style.qml</file>
-        <file>OilPressureDelegate240Style.qml</file>
-        <file>OilTempereatureDelegate240Style.qml</file>
         <file>ClockDelegate240Style.qml</file>
-        <file>TachometerDelegate240Style.qml</file>
-        <file>TachometerDelegate740Style.qml</file>
-        <file>SpeedoDelegate240Style.qml</file>
-        <file>SpeedoDelegate740Style.qml</file>
-        <file>TempAndFuelDelegate240Style.qml</file>
-        <file>CoolantTempDelegate740Style.qml</file>
-        <file>FuelLevelDelegate740Style.qml</file>
-        <file>VoltmeterDelegate740Style.qml</file>
-        <file>CoolantTempDelegate850Style.qml</file>
-        <file>FuelLevelDelegate850Style.qml</file>
-        <file>FuelLevelDelegateRSportStyle.qml</file>
-        <file>CoolantTempDelegateRSportStyle.qml</file>
-        <file>OilPressureDelegateRSportStyle.qml</file>
-        <file>VoltmeterDelegateRSportStyle.qml</file>
-        <file>SpeedoDelegateRSportStyle.qml</file>
-        <file>TachoDelegateRSportStyle.qml</file>
         <file>SpeedoDelegate544Style.qml</file>
         <file>TachoDelegate544Style.qml</file>
         <file>VoltmeterDelegate544Style.qml</file>
-        <file>FuelLevelDelegate544Style.qml</file>
         <file>CoolantTempDelegate544Style.qml</file>
         <file>OilPressureDelegate544Style.qml</file>
-        <file>SpeedoDelegateP1800Style.qml</file>
-        <file>TachoDelegateP1800Style.qml</file>
-        <file>CoolantTempDelegateP1800Style.qml</file>
-        <file>OilTempDelegateP1800Style.qml</file>
-        <file>OilPressureDelegateP1800Style.qml</file>
-        <file>FuelLevelDelegateP1800Style.qml</file>
         <file>SideAccessoryScreenControl.qml</file>
         <file>SideAccessoryGauge.qml</file>
-        <file>OilTempDelegate740Style.qml</file>
-        <file>OilPressureDelegate740Style.qml</file>
         <file>ClockDelegateP1800Style.qml</file>
-        <file>BoostDelegateP1800Style.qml</file>
-        <file>OilTempAccDelegateP1800Style.qml</file>
-        <file>BoostDelegateRSportStyle.qml</file>
-        <file>CoolantTempAccDelegateRSportStyle.qml</file>
-        <file>OilTempDelegateRSportStyle.qml</file>
+        <file>OriginalEarly240Layout.qml</file>
+        <file>BlinkerEarly240.qml</file>
+        <file>BlinkerDelegateEarly240Style.qml</file>
+        <file>Original140RallyeLayout.qml</file>
+        <file>SpeedoDelegate.qml</file>
+        <file>TachometerDelegate.qml</file>
+        <file>AccessoryGaugeDelegate.qml</file>
+        <file>LinearGaugeDelegate.qml</file>
+        <file>WarningLightDelegate.qml</file>
+        <file>TempAndFuelDelegate240Style.qml</file>
+        <file>TempAndFuelDelegateEarly240Style.qml</file>
     </qresource>
     <qresource prefix="/mainCluster">
-        <file>85black120.png</file>
         <file>arrow_off.png</file>
         <file>arrow_on.png</file>
-        <file>early120mphspeedolo.png</file>
-        <file>earlyset130lo.png</file>
-        <file>origset81-85black120.png</file>
-        <file>tacho.png</file>
         <file>temp_coolant.png</file>
         <file>temp_coolant_overlay.png</file>
         <file>temp_coolant_overlay_small.png</file>
         <file>temp_coolant_gas_can.png</file>
-        <file>origclockblack.png</file>
+        <file>later-240-speedo.png</file>
+        <file>later-240-tacho.png</file>
+        <file>later-240-temp-fuel.png</file>
+        <file>later-240-temp-fuel-overlay.png</file>
+        <file>later-240-clock.png</file>
+        <file>later-240-speedo-kph.png</file>
     </qresource>
     <qresource prefix="/accCluster">
         <file>volt_black.png</file>
@@ -93,6 +68,12 @@
         <file>ambient_temp_black_f.png</file>
         <file>oil_pressure_black.png</file>
         <file>clock_black.png</file>
+        <file>later-240-oil-temp.png</file>
+        <file>later-240-boost.png</file>
+        <file>later-240-voltmeter.png</file>
+        <file>later-240-oil-pressure.png</file>
+        <file>later-240-oil-temp-c.png</file>
+        <file>later-240-oil-pressure-psi.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>ariblk.ttf</file>
@@ -119,12 +100,16 @@
         <file>740_voltmeter.png</file>
         <file>740_oil_temperature.png</file>
         <file>740_oil_pressure.png</file>
+        <file>740_speedo_kph.png</file>
+        <file>740_oil_temperature-c.png</file>
+        <file>740_oil_pressure-psi.png</file>
     </qresource>
     <qresource prefix="/gauge-faces-850">
         <file>850_unleaded_only.png</file>
         <file>850_fuel_level.png</file>
         <file>850_coolant.png</file>
         <file>850_boost.png</file>
+        <file>850R_tach.png</file>
     </qresource>
     <qresource prefix="/gauge-faces-r-sport">
         <file>r_sport_coolant_fahrenhet.png</file>
@@ -140,6 +125,10 @@
         <file>r_sport_boost.png</file>
         <file>r_sport_oil_temp_F.png</file>
         <file>r_sport_acc_coolant_fahrenhet.png</file>
+        <file>r_sport_speedo_kph.png</file>
+        <file>r_sport_oil_temp_C.png</file>
+        <file>r_sport_oil_pressure_psi.png</file>
+        <file>r_sport_acc_coolant_celsius.png</file>
     </qresource>
     <qresource prefix="/needles">
         <file>needle-240.png</file>
@@ -172,5 +161,41 @@
         <file>clock-p1800.png</file>
         <file>oil-temp-p1800.png</file>
         <file>center-cover-medium-p1800.png</file>
+        <file>speedo-kph-p1800.png</file>
+        <file>oil-temp-p1800-c.png</file>
+        <file>oil-coolant-temp-p1800-oilC-coolantF.png</file>
+        <file>oil-coolant-temp-p1800-oilF-coolantC.png</file>
+        <file>oil-coolant-temp-p1800-metric.png</file>
+        <file>oil-pressure-p1800-psi.png</file>
+        <file>boost-p1800-no-num.png</file>
+    </qresource>
+    <qresource prefix="/gauges-early-240">
+        <file>early-240-clock.png</file>
+        <file>early-240-speedo.png</file>
+        <file>early-240-tach.png</file>
+        <file>early-240-temp-fuel.png.png</file>
+        <file>early-240-temp-fuel-overlay.png</file>
+        <file>early-240-blinker-off.png</file>
+        <file>early-240-blinker-on.png</file>
+        <file>early-240-tach-border.png</file>
+        <file>early-240-temp-fuel-overlay-with-border.png</file>
+        <file>early-240-temp-fuel-with-border.png</file>
+        <file>early-240-speedo-with-border.png</file>
+        <file>early-240-speedo-kph-with-border.png</file>
+    </qresource>
+    <qresource prefix="/gauge-faces-140-rallye">
+        <file>140-rallye-boost_no_num.png</file>
+        <file>140-rallye-boost_psi.png</file>
+        <file>140-rallye-clock.png</file>
+        <file>140-rallye-coolant.png</file>
+        <file>140-rallye-fuel.png</file>
+        <file>140-rallye-oil-pressure-bar.png</file>
+        <file>140-rallye-oil-pressure-psi.png</file>
+        <file>140-rallye-oil-temp.png</file>
+        <file>140-rallye-tach.png</file>
+        <file>140-rallye-speedo.png</file>
+        <file>140-rallye-voltmeter.png</file>
+        <file>140-rallye-speedo-kph.png</file>
+        <file>140-rallye-oil-temp-c.png</file>
     </qresource>
 </RCC>

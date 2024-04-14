@@ -1,44 +1,52 @@
 import QtQuick 2.15
 
-Component {
-    id: tempFuelDelegate
-    Loader {
-        source: "qrc:/TempCoolant.qml"
-        asynchronous: true
-        onLoaded: {
-            item.maxCoolantTemp = tempMax
-            item.minCoolantTemp = tempMin
-            item.units = tempUnits
+Item {
+    id: tempFuel
 
-            item.highAlarm = alarmHighTemp
-            item.lowAlarm = alarmLowFuel
+    property Component component: component
+    width: parent.width
+    height: parent.height
 
-            item.height = tempFuelSize
-            item.width = tempFuelSize
-        }
+    Component {
+        id: component
+        Loader {
+            source: "qrc:/TempCoolant.qml"
+            asynchronous: true
+            onLoaded: {
+                item.maxCoolantTemp = tempMax
+                item.minCoolantTemp = tempMin
+                item.units = tempUnits
 
-        Binding {
-            target: item
-            property: "coolantTemp"
-            value: currentTemp;
-        }
+                item.highAlarm = alarmHighTemp
+                item.lowAlarm = alarmLowFuel
 
-        Binding {
-            target: item
-            property: "fuelLevel"
-            value: currentFuelLevel
-        }
+                item.height = tempFuel.height
+                item.width = tempFuel.width
+            }
 
-        Binding {
-            target: item
-            property: "width"
-            value: tempFuelSize
-        }
+            Binding {
+                target: item
+                property: "coolantTemp"
+                value: currentTemp;
+            }
 
-        Binding {
-            target: item
-            property: "height"
-            value: tempFuelSize
+            Binding {
+                target: item
+                property: "fuelLevel"
+                value: currentFuelLevel
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: tempFuel.width
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: tempFuel.height
+            }
         }
     }
 }

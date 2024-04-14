@@ -1,16 +1,17 @@
 import QtQuick 2.15
 
 Item {
-    property int warningLightHeight: 50;
-    property int warningLightWidth: 70;
-    property int warningLightWideWidth: 100;
-    property int warningLightVerticalMargin: 5;
-    property int warningLightHorizontalMargin: 8
-    property int deadSpaceMiddle: 100;
+    property int warningLightHeight: parent.height * (50/480)
+    property int warningLightWidth: parent.height * (70/480)
+    property int warningLightWideWidth: parent.height * (100/480)
+    property int warningLightVerticalMargin: parent.height * (5/480);
+    property int warningLightHorizontalMargin: parent.height * (8/480)
+    property int deadSpaceMiddle: parent.height * (100/480);
+    property bool showLights: true
 
     Rectangle {
-        width: 1280
-        height: 480
+        width: parent.width
+        height: parent.height
         color: "transparent"
 
         Rectangle {
@@ -18,12 +19,16 @@ Item {
             anchors.top: checkEngineLight.top
             color: "transparent"
             width: deadSpaceMiddle
-            height: warningLightWidth
+            height: warningLightHeight
+            visible: true
 
+            OdometerDelegate {
+                id: odometerDelegate
+            }
 
             ListView {
                 model: odometerModel
-                delegate: odometerDelegate
+                delegate: odometerDelegate.component
                 anchors.fill: parent
             }
         }
@@ -37,10 +42,16 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.rightMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
+
+            WarningLightDelegate {
+                id: serviceLightDelegate
+                color: "orange"
+            }
 
             ListView {
                 model: serviceLightModel
-                delegate: serviceLightDelegate
+                delegate: serviceLightDelegate.component
                 anchors.fill: parent
             }
         }
@@ -54,10 +65,16 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.rightMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
+
+            WarningLightDelegate {
+                id: checkEngineLightDelegate
+                color: "red"
+            }
 
             ListView {
                 model: checkEngineLightModel
-                delegate: checkEngineLightDelegate
+                delegate: checkEngineLightDelegate.component
                 anchors.fill: parent
             }
         }
@@ -71,10 +88,16 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.rightMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
+
+            WarningLightDelegate {
+                id: absWarningLightDelegate
+                color: "red"
+            }
 
             ListView {
                 model: absWarningLightModel
-                delegate: absWarningLightDelegate
+                delegate: absWarningLightDelegate.component
                 anchors.fill: parent
             }
         }
@@ -88,10 +111,17 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.rightMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
+
+            WarningLightDelegate {
+                id: batteryWarningLightDelegate
+                color: "red"
+                imageResource: "qrc:warningLights/battery_charge_icon_no_background.png"
+            }
 
             ListView {
                 model: batteryWarningLightModel
-                delegate: batteryWarningLightDelegate
+                delegate: batteryWarningLightDelegate.component
                 anchors.fill: parent
             }
         }
@@ -105,10 +135,17 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.rightMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
+
+            WarningLightDelegate {
+                id: oilWarningLightDelegate
+                color: "red"
+                imageResource: "qrc:warningLights/oil_icon_no_background.png"
+            }
 
             ListView {
                 model: oilWarningLightModel
-                delegate: oilWarningLightDelegate
+                delegate: oilWarningLightDelegate.component
                 anchors.fill: parent
             }
         }
@@ -123,10 +160,16 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.rightMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
+
+            WarningLightDelegate {
+                id: srsWarningLightDelegate
+                color: "red"
+            }
 
             ListView {
                 model: srsWarningLightModel
-                delegate: srsWarningLightDelegate
+                delegate: srsWarningLightDelegate.component
                 anchors.fill: parent
             }
         }
@@ -141,10 +184,17 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.rightMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
+
+            WarningLightDelegate {
+                id: highBeamLightDelegate
+                color: "lightcyan"
+                imageResource: "qrc:/warningLights/high_beam_icon.png"
+            }
 
             ListView {
                 model: highBeamLightModel
-                delegate: highBeamLightDelegate
+                delegate: highBeamLightDelegate.component
                 anchors.fill: parent
             }
         }
@@ -158,10 +208,16 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.leftMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
+
+            WarningLightDelegate {
+                id: parkingBrakeLightDelegate
+                color: "red"
+            }
 
             ListView {
                 model: parkingBrakeLightModel
-                delegate: parkingBrakeLightDelegate
+                delegate: parkingBrakeLightDelegate.component
                 anchors.fill: parent
             }
         }
@@ -175,10 +231,16 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.leftMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
+
+            WarningLightDelegate {
+                id: brakeFailureLightDelegate
+                color: "red"
+            }
 
             ListView {
                 model: brakeFailureLightModel
-                delegate: brakeFailureLightDelegate
+                delegate: brakeFailureLightDelegate.component
                 anchors.fill: parent
             }
         }
@@ -192,10 +254,17 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.leftMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
+
+            WarningLightDelegate {
+                id: bulbFailureLightDelegate
+                color: "orange"
+                imageResource: "qrc:/warningLights/Bulb_failure_icon_no_background.png"
+            }
 
             ListView {
                 model: bulbFailureLightModel
-                delegate: bulbFailureLightDelegate
+                delegate: bulbFailureLightDelegate.component
                 anchors.fill: parent
             }
         }
@@ -209,10 +278,16 @@ Item {
             anchors.bottomMargin: warningLightVerticalMargin
             anchors.leftMargin: warningLightHorizontalMargin
             color: "transparent"
+            visible: showLights
+
+            WarningLightDelegate {
+                id: shiftUpLightDelegate
+                color: "orange"
+            }
 
             ListView {
                 model: shiftUpLightModel
-                delegate: shiftUpLightDelegate
+                delegate: shiftUpLightDelegate.component
                 anchors.fill: parent
             }
         }

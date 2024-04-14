@@ -1,4 +1,5 @@
 #include "speedometer_model.h"
+#include <QDebug>
 
 SpeedometerModel::SpeedometerModel(QObject *parent) :
     QAbstractListModel(parent)
@@ -206,6 +207,7 @@ void SpeedometerModel::setMinValue(qreal minValue)
 
 void SpeedometerModel::setMaxValue(qreal maxValue)
 {
+    qDebug() << "Set max: " << maxValue;
     mMaxValue = maxValue;
     emit dataChanged(createIndex(0,0),
                      createIndex(1, 0),

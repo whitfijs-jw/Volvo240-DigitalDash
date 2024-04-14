@@ -51,6 +51,7 @@ public:
     static constexpr char UNITS_KILOMETER[] = "kilometer";
     static constexpr char UNITS_MPH[] = "mph";
     static constexpr char UNITS_KPH[] = "kph";
+    static constexpr char UNITS_KMH[] = "km/h";
     static constexpr char UNITS_METERS_PER_SECOND[] = "m/s";
 
     // expected sensor keys
@@ -129,6 +130,7 @@ public:
     static constexpr char VSS_PULSES_PER_DISTANCE[] = "pulse_per_unit_distance";
     static constexpr char VSS_DISTANCE_UNITS[] = "distance_units";
     static constexpr char VSS_MAX_SPEED[] = "max_speed";
+    static constexpr char VSS_USE_GPS[] = "use_gps";
 
     //expected keys for gear indicator input
     static constexpr char GEAR_INDICATOR_GEAR_RATIOS[] = "gear_ratios";
@@ -188,14 +190,51 @@ public:
     static constexpr char BACKLIGHT_ACTIVE_LOW[] = "active_low";
 
     //gauge config groups
+    // boost gauge configs
     static constexpr char BOOST_GAUGE_GROUP[] = "boost";
+    static constexpr qreal DEFAULT_BOOST_GAUGE_MIN_PSI = -20;
+    static constexpr qreal DEFAULT_BOOST_GAUGE_MAX_PSI = 30;
+
+    static constexpr qreal DEFAULT_BOOST_GAUGE_MIN_BAR = -1.0;
+    static constexpr qreal DEFAULT_BOOST_GAUGE_MAX_BAR = 1.5;
+    //coolant temp gauge configs
     static constexpr char COOLANT_TEMP_GAUGE_GROUP[] = "coolant_temp";
+    static constexpr qreal DEFAULT_COOLANT_TEMP_GAUGE_MIN_F = 120.0;
+    static constexpr qreal DEFAULT_COOLANT_TEMP_GAUGE_MAX_F = 250.0;
+
+    static constexpr qreal DEFAULT_COOLANT_TEMP_GAUGE_MIN_C = 50.0;
+    static constexpr qreal DEFAULT_COOLANT_TEMP_GAUGE_MAX_C = 120.0;
+
     static constexpr char FUEL_GAUGE_GROUP[] = "fuel_level";
+    // oil presssure gauge configs
     static constexpr char OIL_PRESSURE_GAUGE_GROUP[] = "oil_pressure";
+    static constexpr qreal DEFAULT_OIL_PRESSURE_GAUGE_MIN_PSI = 0.0;
+    static constexpr qreal DEFAULT_OIL_PRESSURE_GAUGE_MAX_PSI = 80.0;
+
+    static constexpr qreal DEFAULT_OIL_PRESSURE_GAUGE_MIN_BAR = 0.0;
+    static constexpr qreal DEFAULT_OIL_PRESSURE_GAUGE_MAX_BAR = 5.0;
+    //oil temperature gauge configs
     static constexpr char OIL_TEMPERATURE_GAUGE_GROUP[] = "oil_temperature";
+    static constexpr qreal DEFAULT_OIL_TEMP_GAUGE_MIN_F = 120.0;
+    static constexpr qreal DEFAULT_OIL_TEMP_GAUGE_MAX_F = 300.0;
+
+    static constexpr qreal DEFAULT_OIL_TEMP_GAUGE_MIN_C = 50.0;
+    static constexpr qreal DEFAULT_OIL_TEMP_GAUGE_MAX_C = 150.0;
+    // voltmeter
     static constexpr char VOLTMETER_GAUGE_GROUP[] = "voltmeter";
+    static constexpr qreal DEFAULT_VOLTMETER_GAUGE_MIN = 10.0;
+    static constexpr qreal DEFAULT_VOLTMETER_GAUGE_MAX = 16.0;
+    //speedometer gauge configs
     static constexpr char SPEEDOMETER_GAUGE_GROUP[] = "speedo";
+    static constexpr qreal DEFAULT_SPEEDO_GAUGE_MIN_MPH = 0.0;
+    static constexpr qreal DEFAULT_SPEEDO_GAUGE_MAX_MPH = 120.0;
+
+    static constexpr qreal DEFAULT_SPEEDO_GAUGE_MIN_KPH = 0.0;
+    static constexpr qreal DEFAULT_SPEEDO_GAUGE_MAX_KPH = 220.0;
+
     static constexpr char TACHOMETER_GAUGE_GROUP[] = "tacho";
+    static constexpr qreal DEFAULT_TACH_GAUGE_MAX = 7000.0;
+    static constexpr qreal DEFAULT_TACH_GAUGE_REDLINE = 6000.0;
 
 
     // gauge config keys
@@ -223,6 +262,7 @@ public:
     static constexpr char CAN_FRAME_DIVIDE[] = "divide";
     static constexpr char CAN_FRAME_ADD[] = "add";
     static constexpr char CAN_FRAME_GAUGE[] = "gauge";
+
 
     enum class UnitType {
         PRESSURE = 0,
@@ -345,7 +385,7 @@ public:
     static SpeedUnits getSpeedUnits(QString units) {
         if (units.compare(UNITS_MPH, Qt::CaseInsensitive) == 0) {
             return SpeedUnits::MPH;
-        } else if (units.compare(UNITS_KPH, Qt::CaseInsensitive) == 0) {
+        } else if ((units.compare(UNITS_KPH, Qt::CaseInsensitive) == 0) || (units.compare(UNITS_KMH, Qt::CaseInsensitive) == 0)) {
             return SpeedUnits::KPH;
         } else if (units.compare(UNITS_METERS_PER_SECOND, Qt::CaseInsensitive) == 0) {
             return SpeedUnits::METER_PER_SECOND;
@@ -493,6 +533,7 @@ public:
         int pulsePerUnitDistance; //!< Pulses per unit distance.  Will be calculated from tire diameter if left empty
         DistanceUnits distanceUnits; //!< unit of distance for pulsePerUnitDistance
         int maxSpeed; //!< Max speed -- lowest possible value it best will filter out noisy signals better
+        bool useGps = false;
     } VssInputConfig_t;
 
     typedef struct GearIndicatorConfig {
@@ -692,15 +733,81 @@ public:
      */
     bool loadGaugeConfigs() {
         // accessory gauges
-        mGaugeConfigs.insert(BOOST_GAUGE_GROUP, loadGaugeConfig(BOOST_GAUGE_GROUP));
-        mGaugeConfigs.insert(COOLANT_TEMP_GAUGE_GROUP, loadGaugeConfig(COOLANT_TEMP_GAUGE_GROUP));
-        mGaugeConfigs.insert(FUEL_GAUGE_GROUP, loadGaugeConfig(FUEL_GAUGE_GROUP));
-        mGaugeConfigs.insert(OIL_PRESSURE_GAUGE_GROUP, loadGaugeConfig(OIL_PRESSURE_GAUGE_GROUP));
-        mGaugeConfigs.insert(OIL_TEMPERATURE_GAUGE_GROUP, loadGaugeConfig(OIL_TEMPERATURE_GAUGE_GROUP));
-        mGaugeConfigs.insert(VOLTMETER_GAUGE_GROUP, loadGaugeConfig(VOLTMETER_GAUGE_GROUP));
+        // boost gauge
+        GaugeConfig_t boost = loadGaugeConfig(BOOST_GAUGE_GROUP);
+        if (boost.displayUnits.compare(Config::UNITS_PSI, Qt::CaseInsensitive) == 0) {
+            boost.min = DEFAULT_BOOST_GAUGE_MIN_PSI;
+            boost.max = DEFAULT_BOOST_GAUGE_MAX_PSI;
+        } else {
+            boost.min = DEFAULT_BOOST_GAUGE_MIN_BAR;
+            boost.max = DEFAULT_BOOST_GAUGE_MAX_BAR;
+        }
+        mGaugeConfigs.insert(BOOST_GAUGE_GROUP, boost);
+
+        // coolant temp
+        GaugeConfig_t coolantTemp = loadGaugeConfig(COOLANT_TEMP_GAUGE_GROUP);
+        if (coolantTemp.displayUnits.compare(Config::UNITS_F, Qt::CaseInsensitive) == 0) {
+            coolantTemp.min = DEFAULT_COOLANT_TEMP_GAUGE_MIN_F;
+            coolantTemp.max = DEFAULT_COOLANT_TEMP_GAUGE_MAX_F;
+        } else {
+            coolantTemp.min = DEFAULT_COOLANT_TEMP_GAUGE_MIN_C;
+            coolantTemp.max = DEFAULT_COOLANT_TEMP_GAUGE_MAX_C;
+        }
+        mGaugeConfigs.insert(COOLANT_TEMP_GAUGE_GROUP, coolantTemp);
+
+        // fuel level
+        GaugeConfig_t fuelLevel = loadGaugeConfig(FUEL_GAUGE_GROUP);
+        fuelLevel.min = 0.0;
+        fuelLevel.max = 100.0;
+        mGaugeConfigs.insert(FUEL_GAUGE_GROUP, fuelLevel);
+
+        // oil pressure
+        GaugeConfig_t oilPressure = loadGaugeConfig(OIL_PRESSURE_GAUGE_GROUP);
+        if (oilPressure.displayUnits.compare(Config::UNITS_PSI, Qt::CaseInsensitive) == 0) {
+            oilPressure.min = DEFAULT_OIL_PRESSURE_GAUGE_MIN_PSI;
+            oilPressure.max = DEFAULT_OIL_PRESSURE_GAUGE_MAX_PSI;
+        } else {
+            oilPressure.min = DEFAULT_OIL_PRESSURE_GAUGE_MIN_BAR;
+            oilPressure.max = DEFAULT_OIL_PRESSURE_GAUGE_MAX_BAR;
+        }
+        mGaugeConfigs.insert(OIL_PRESSURE_GAUGE_GROUP, oilPressure);
+
+        // oil temperature
+        GaugeConfig_t oilTemp = loadGaugeConfig(OIL_TEMPERATURE_GAUGE_GROUP);
+        if (oilTemp.displayUnits.compare(Config::UNITS_F, Qt::CaseInsensitive) == 0) {
+            oilTemp.min = DEFAULT_OIL_TEMP_GAUGE_MIN_F;
+            oilTemp.max = DEFAULT_OIL_TEMP_GAUGE_MAX_F;
+        } else {
+            oilTemp.min = DEFAULT_OIL_TEMP_GAUGE_MIN_C;
+            oilTemp.max = DEFAULT_OIL_TEMP_GAUGE_MAX_C;
+        }
+        mGaugeConfigs.insert(OIL_TEMPERATURE_GAUGE_GROUP, oilTemp);
+
+        //voltmeter
+        GaugeConfig_t voltmeter = loadGaugeConfig(VOLTMETER_GAUGE_GROUP);
+        voltmeter.min = DEFAULT_VOLTMETER_GAUGE_MIN;
+        voltmeter.max = DEFAULT_VOLTMETER_GAUGE_MAX;
+        mGaugeConfigs.insert(VOLTMETER_GAUGE_GROUP, voltmeter);
 
         // speedo
         mSpeedoGaugeConfig.gaugeConfig = loadGaugeConfig(SPEEDOMETER_GAUGE_GROUP);
+        if (mSpeedoGaugeConfig.gaugeConfig.displayUnits.compare(Config::UNITS_MPH, Qt::CaseInsensitive) == 0) {
+            mSpeedoGaugeConfig.gaugeConfig.min = 0.0;
+            mSpeedoGaugeConfig.gaugeConfig.max =
+                mSpeedoGaugeConfig.gaugeConfig.max == 0 ?
+                    DEFAULT_SPEEDO_GAUGE_MAX_MPH :
+                    mSpeedoGaugeConfig.gaugeConfig.max;
+            mSpeedoGaugeConfig.gaugeConfig.highAlarm = mSpeedoGaugeConfig.gaugeConfig.max;
+            mSpeedoGaugeConfig.gaugeConfig.lowAlarm = mSpeedoGaugeConfig.gaugeConfig.min;
+        } else {
+            mSpeedoGaugeConfig.gaugeConfig.min = 0.0;
+            mSpeedoGaugeConfig.gaugeConfig.max =
+                mSpeedoGaugeConfig.gaugeConfig.max == 0 ?
+                    DEFAULT_SPEEDO_GAUGE_MAX_KPH :
+                    mSpeedoGaugeConfig.gaugeConfig.max;
+            mSpeedoGaugeConfig.gaugeConfig.highAlarm = mSpeedoGaugeConfig.gaugeConfig.max;
+            mSpeedoGaugeConfig.gaugeConfig.lowAlarm = mSpeedoGaugeConfig.gaugeConfig.min;
+        }
         mGaugeConfig->beginGroup(SPEEDOMETER_GAUGE_GROUP);
         mSpeedoGaugeConfig.topSource = mGaugeConfig->value(TOP_VALUE_SOURCE).toString();
         mSpeedoGaugeConfig.topUnits = mGaugeConfig->value(TOP_VALUE_UNITS).toString();
@@ -961,6 +1068,7 @@ public:
         QString distanceUnits = mConfig->value(VSS_DISTANCE_UNITS, "mile").toString().toLower();
         mVssInputConfig.distanceUnits = getDistanceUnits(distanceUnits);
         mVssInputConfig.maxSpeed = mConfig->value(VSS_MAX_SPEED, 160).toInt();
+        mVssInputConfig.useGps = mConfig->value(VSS_USE_GPS, false).toBool();
 
         printKeys("VSS Input: ", mConfig);
 

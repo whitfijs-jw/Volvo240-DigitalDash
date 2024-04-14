@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>NeedleCenter.qml</file>
+        <file>Gauge.qml</file>
+        <file>../VolvoDigitalDashModels/app/needle-240.png</file>
+        <file>../VolvoDigitalDashModels/app/HandelGothReg.ttf</file>
+        <file>SliderValue.qml</file>
+        <file>TextInputValue.qml</file>
+    </qresource>
+    <qresource prefix="/fonts">
+        <file>HandelGothReg.ttf</file>
+    </qresource>
+</RCC>
