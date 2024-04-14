@@ -7,6 +7,7 @@ CONFIG += console
 CONFIG += c++17
 
 SOURCES += \
+    can_frame_config_test.cpp \
     config_test.cpp \
     map_test.cpp \
     ntc_test.cpp \
@@ -37,6 +38,7 @@ HEADERS += \
     ../app/inc/sensor/ntc.h\
     ../app/inc/sensor/sensor.h\
     ../app/inc/sensor_source/sensor_source.h\
+    can_frame_config_test.h \
     compare_float.h \
     map_test.h \
     config_test.h \

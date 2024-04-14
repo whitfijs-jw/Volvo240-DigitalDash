@@ -428,6 +428,11 @@ public:
         return mTachGaugeConfig;
     }
 
+    /**
+     * @brief Get odometer config
+     * @param name odometer/trip counter name
+     * @return Odometer config
+     */
     SensorConfig::OdometerConfig getOdometerConfig(QString name) const {
         for (auto conf : mOdoConfig) {
             if (conf.name == name) {
@@ -437,33 +442,57 @@ public:
         return {Units::DistanceUnits::MILE, 0, 0, ""};
     }
 
+    /**
+     * @brief Get the backlight config
+     * @return backlight config
+     */
     BacklightControlConfig_t getBackLightConfig() const {
         return mBacklightConfig;
     }
 
+    /**
+     * @brief Get the list of CAN frame configs
+     * @return list of CAN frame configs
+     */
     QList<CanFrameConfig> getCanFrameConfigs() const {
         return mCanFrameConfigs;
     }
 
-    CanFrameConfig getCanFrameConfig(QString name) const {
-        for (CanFrameConfig conf : mCanFrameConfigs) {
-            if (conf.getName() == name) {
-                return conf;
+    /**
+     * @brief Get a CAN frame config
+     * @param name name of the frame config
+     * @return pointer to the config
+     */
+    CanFrameConfig * getCanFrameConfig(QString name) {
+        for (int i = 0; i < mCanFrameConfigs.size(); i++) {
+            if (mCanFrameConfigs[i].getName() == name) {
+                return &mCanFrameConfigs[i];
             }
         }
-        // return empty config
-        CanFrameConfig conf(0x00, 0x00, 0x00, false, "", "");
-        return conf;
+        return nullptr;
     }
 
+    /**
+     * @brief Get user input configuration
+     * @return Map of user input configs
+     */
     QMap<int, Qt::Key> geUserInputConfig() const {
         return mUserInputConfig;
     }
 
+    /**
+     * @brief Get user input pin configs
+     * @return Map of user input pin configs
+     */
     QMap<QString, int> getUserInputPinConfig() const {
         return mUserInputPinConfig;
     }
 
+    /**
+     * @brief Get the sensor supply voltage specified in the config file
+     * @return Sensor supply value specified in the config file or the default value
+     * if not set.
+     */
     qreal getSensorSupplyVoltage() const {
         return mSensorSupplyVoltage;
     }
@@ -475,7 +504,7 @@ public slots:
 private:
     QSettings * mConfig = nullptr;  //!< QSettings for reading config.ini file
     QMap<QString, int> mSensorChannelConfig; //!< sensor channel configuration
-    qreal mSensorSupplyVoltage = DEFAULT_V_SUPPLY;
+    qreal mSensorSupplyVoltage = DEFAULT_V_SUPPLY; //!< Sensor supply voltage
     QMap<QString, int> mDashLightConfig; //!< dash light gpio configuration
     QMap<int, Qt::Key> mUserInputConfig; //!< user input configuration
     QMap<QString, int> mUserInputPinConfig; //!< user input pin configuration
@@ -513,7 +542,7 @@ private:
      */
     static QMap<QString, Qt::Key> initKeyMap();
 
-    QMap<QString, Qt::Key> mKeyMap = initKeyMap();
+    QMap<QString, Qt::Key> mKeyMap = initKeyMap(); //!< Key mappings
 
 };
 

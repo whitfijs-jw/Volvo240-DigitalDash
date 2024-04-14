@@ -119,7 +119,12 @@ public:
     QString getUnits(int channel) override {
         if (mCanMap.contains(channel)) {
             // return value from frame config
-            return mConfig->getCanFrameConfig(mCanMap.value(channel)).getUnits();
+            auto conf = mConfig->getCanFrameConfig(mCanMap.value(channel));
+            if (conf != nullptr) {
+                return conf->getUnits();
+            } else {
+                return "";
+            }
         } else {
             // default values
             switch ((CanDataChannel)channel) {
@@ -173,13 +178,12 @@ public:
         return &mCanMap;
     }
 
-    CanFrameConfig getChannelConfig(int channel) {
+    const CanFrameConfig * getChannelConfig(int channel) {
         if (mCanMap.contains(channel)) {
             // return value from frame config
             return mConfig->getCanFrameConfig(mCanMap.value(channel));
         }
-        CanFrameConfig empty(0, 0, 0, false, "", "");
-        return empty;
+        return nullptr;
     }
 
 
@@ -210,9 +214,10 @@ public slots:
 //            /*** test frame end ***/
 
             for (int channel : mCanMap.keys()) {
-                CanFrameConfig frameConfig = mConfig->getCanFrameConfig(mCanMap.value(channel));
-                if (frameConfig.getFrameId() == frame.frameId()) {
-                    qreal value = frameConfig.getValue(frame.payload());
+                auto frameConfig = mConfig->getCanFrameConfig(mCanMap.value(channel));
+                if (frameConfig != nullptr &&
+                    (frameConfig->getFrameId() == frame.frameId())) {
+                    qreal value = frameConfig->getValue(frame.payload());
                     emit dataReady(value, (int) channel);
                 }
             }

@@ -26,8 +26,12 @@ public:
     }
 
     QString getGuage() {
-        CanFrameConfig conf = ((CanSource *)mSource)->getChannelConfig(mChannel);
-        return conf.getGauge();
+        auto conf = ((CanSource *)mSource)->getChannelConfig(mChannel);
+        if (conf != nullptr) {
+            return conf->getGauge();
+        } else {
+            return "";
+        }
     }
 
 public slots:
