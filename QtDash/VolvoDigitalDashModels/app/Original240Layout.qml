@@ -44,6 +44,8 @@ Item {
                 imageSource: container.speedoMph ?
                                  "qrc:/mainCluster/later-240-speedo.png" :
                                  "qrc:/mainCluster/later-240-speedo-kph.png"
+
+                gearInidcatorEnabled: true
             }
 
             id: speedoContainer

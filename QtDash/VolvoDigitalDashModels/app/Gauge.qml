@@ -51,7 +51,7 @@ Item {
 
     property real gearValue: 0
     property real gearTextSize: topTextSize
-    property real gearTextOffset: -parent.height / 4.0
+    property real gearTextOffset: -1 / 10.0
     property bool gearValueEnabled: false
 
     property real dir: RotationAnimation.Numerical
@@ -195,10 +195,10 @@ Item {
 
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: gauge.gearTextOffset
+            anchors.verticalCenterOffset: parent.height * gauge.gearTextOffset
 
             fontSizeMode: Text.Fit
-            font.pixelSize: gauge.gearTextSize
+            font.pixelSize: parent.height * gauge.gearTextSize
 
             text: gauge.gearValue
             color: "white"
