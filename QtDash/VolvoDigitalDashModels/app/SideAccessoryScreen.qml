@@ -12,6 +12,10 @@ Window {
     property int smallGaugeNeedleWidth240: smallGaugeSize * 0.04
     property string currentStyle: "240"
 
+    property bool coolantTempF: coolantTempModel.units === "F"
+    property bool oilTempF: oilTModel.units === "F"
+    property bool oilPressureBar: oilPModel.units === "bar"
+
     onCurrentStyleChanged: {
         currentLayout.update();
     }
@@ -92,7 +96,6 @@ Window {
             minAngle: -228
             maxAngle: 45
 
-
             needleWidth: needleWidth_740
             needleLength: 0.55
             needleOffset: needleOffset_740
@@ -129,7 +132,9 @@ Window {
             minAngle: -125
             maxAngle: -55
 
-            imageSource: "qrc:/gauge-faces-740-940/740_oil_temperature.png"
+            imageSource: oilTempF ?
+                             "qrc:/gauge-faces-740-940/740_oil_temperature.png" :
+                             "qrc:/gauge-faces-740-940/740_oil_temperature-c.png"
             needleResource: "qrc:/needles/needle-740-940.png"
 
             needleWidth: needleWidth_740
@@ -142,7 +147,9 @@ Window {
             minAngle: -125
             maxAngle: -55
 
-            imageSource: "qrc:/gauge-faces-740-940/740_oil_pressure.png"
+            imageSource: oilPressureBar ?
+                             "qrc:/gauge-faces-740-940/740_oil_pressure.png" :
+                             "qrc:/gauge-faces-740-940/740_oil_pressure-psi.png"
             needleResource: "qrc:/needles/needle-740-940.png"
 
             needleWidth: needleWidth_740
@@ -200,10 +207,14 @@ Window {
             yOffset: 0.0
         },
         AccessoryGaugeDelegate {
-            imageSource: "qrc:/accCluster/later-240-oil-temp.png"
+            imageSource: oilTempF ?
+                             "qrc:/accCluster/later-240-oil-temp.png" :
+                             "qrc:/accCluster/later-240-oil-temp-c.png"
         },
         AccessoryGaugeDelegate {
-            imageSource: "qrc:/accCluster/later-240-oil-pressure.png"
+            imageSource: oilPressureBar ?
+                             "qrc:/accCluster/later-240-oil-pressure.png" :
+                             "qrc:/accCluster/later-240-oil-pressure-psi.png"
         },
         AccessoryGaugeDelegate {
         },
@@ -237,13 +248,10 @@ Window {
 
     property list<Item> delegatesP1800: [
         AccessoryGaugeDelegate {
-            gaugeMin: -20
-            gaugeMax: 20
+            minAngle: -230
+            maxAngle: 50
 
-            minAngle: -145
-            maxAngle: -35
-
-            imageSource: "qrc:/gauge-faces-p1800/boost-p1800.png"
+            imageSource: "qrc:/gauge-faces-p1800/boost-p1800-no-num.png"
             needleResource: "qrc:/needles/needle-rsport.png"
 
             needleLength: p1800NeedleLength
@@ -256,7 +264,9 @@ Window {
             minAngle: -155
             maxAngle: -25
 
-            imageSource: "qrc:/gauge-faces-p1800/oil-temp-p1800.png"
+            imageSource: oilTempF ?
+                             "qrc:/gauge-faces-p1800/oil-temp-p1800.png" :
+                             "qrc:/gauge-faces-p1800/oil-temp-p1800-c.png"
             needleResource: "qrc:/needles/needle-rsport.png"
 
             needleLength: p1800NeedleLength
@@ -269,7 +279,11 @@ Window {
             minAngle: -145
             maxAngle: -35
 
-            imageSource: "qrc:/gauge-faces-p1800/oil-pressure-p1800.png"
+            gaugeMax: oilPressureBar ? 6.0 : -1
+
+            imageSource: oilPressureBar ?
+                             "qrc:/gauge-faces-p1800/oil-pressure-p1800.png" :
+                             "qrc:/gauge-faces-p1800/oil-pressure-p1800-psi.png"
             needleResource: "qrc:/needles/needle-rsport.png"
 
             needleLength: p1800NeedleLength
@@ -315,25 +329,6 @@ Window {
         }
     }
 
-    // R-sport gauges
-//    property list<Component> delegatesRSport: [
-//        BoostDelegateRSportStyle {
-//            id: boostDelegateRSportStyle
-//        },
-//        OilTempDelegateRSportStyle {
-//            id: oilTempDelegateRSportStyle
-//        },
-//        OilPressureDelegateRSportStyle {
-//            id: oilPressureDelegateRSportStyle
-//        },
-//        CoolantTempAccDelegateRSportStyle {
-//            id: coolantTempDelegateRSportStyle
-//        },
-//        VoltmeterDelegateRSportStyle {
-//            id: voltmeterDelegateRSportStyle
-//        }
-//    ]
-
     property real rSportNeedleLength: 0.65
     property real rSportNeedleWidth: 0.035;
     property real rSportNeedleOffset: 0.125
@@ -364,7 +359,9 @@ Window {
             minAngle: -48
             maxAngle: 48
 
-            imageSource: "qrc:/gauge-faces-r-sport/r_sport_oil_temp_F.png"
+            imageSource: oilTempF ?
+                             "qrc:/gauge-faces-r-sport/r_sport_oil_temp_F.png" :
+                             "qrc:/gauge-faces-r-sport/r_sport_oil_temp_C.png"
             needleResource: "qrc:/needles/needle-rsport.png"
 
             clockwise: false
@@ -380,7 +377,9 @@ Window {
             minAngle: -48
             maxAngle: 48
 
-            imageSource: "qrc:/gauge-faces-r-sport/r_sport_oil_pressure_5bar.png"
+            imageSource: oilPressureBar ?
+                             "qrc:/gauge-faces-r-sport/r_sport_oil_pressure_5bar.png" :
+                             "qrc:/gauge-faces-r-sport/r_sport_oil_pressure_psi.png"
             needleResource: "qrc:/needles/needle-rsport.png"
 
             clockwise: false
@@ -393,13 +392,15 @@ Window {
             needleCenterRadius: rSportNeedleCenterRadius
         },
         AccessoryGaugeDelegate {
-            gaugeMin: 100
-            gaugeMax: 260
+            gaugeMin: coolantTempF ? 100 : -1
+            gaugeMax: coolantTempF ? 260 : -1
 
             minAngle: -48
             maxAngle: 48
 
-            imageSource: "qrc:/gauge-faces-r-sport/r_sport_acc_coolant_fahrenhet.png"
+            imageSource: coolantTempF ?
+                             "qrc:/gauge-faces-r-sport/r_sport_acc_coolant_fahrenhet.png" :
+                             "qrc:/gauge-faces-r-sport/r_sport_acc_coolant_celsius.png"
             needleResource: "qrc:/needles/needle-rsport.png"
 
             clockwise: false
@@ -450,12 +451,18 @@ Window {
         }
     }
 
+    property real rallye140NeedleLength: 0.65
+    property real rallye140NeedleWidth: 0.04;
+    property real rallye140NeedleOffset: 0.1
+    property real rallye140MinAngle: -135
+    property real rallye140MaxAngle: -45
+    property real rallye140YOffset: 0.25
+    property real rallye140NeedleCenterRadius: 0.15
+
     // 140 Rallye gauges
    property list<Item> delegates140Rallye: [
-        Accessory140RallyeStyle {
+        AccessoryGaugeDelegate {
             id: boostDelegate140RallyeStyle
-            gaugeMin: -20
-            gaugeMax: 30
             minAngle: -240
             maxAngle: 60
             yOffset: 0
@@ -464,38 +471,83 @@ Window {
             significatDigits: 1
 
             imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-boost_no_num.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
         },
-        Accessory140RallyeStyle {
+        AccessoryGaugeDelegate {
             id: oilTempDelegate140RallyeStyle
-            gaugeMin: 120
-            gaugeMax: 300
+
+            minAngle: rallye140MinAngle
+            maxAngle: rallye140MaxAngle
+
+            needleOffset: rallye140NeedleOffset
+            needleLength: rallye140NeedleLength
+            needleWidth: rallye140NeedleWidth
+            needleCenterRadius: rallye140NeedleCenterRadius
+            yOffset: rallye140YOffset
+
             significatDigits: 1
 
-            imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-oil-temp.png"
+            imageSource: oilTempF ?
+                             "qrc:/gauge-faces-140-rallye/140-rallye-oil-temp.png" :
+                             "qrc:/gauge-faces-140-rallye/140-rallye-oil-temp-c.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
         },
-        Accessory140RallyeStyle {
+        AccessoryGaugeDelegate {
             id: oilPressureDelegate140RallyeStyle
-            gaugeMin: 0
-            gaugeMax: 8
-            significatDigits: 2
 
-            imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-oil-pressure-bar.png"
+            gaugeMax: oilPressureBar ? 8 : 120
+
+            minAngle: rallye140MinAngle
+            maxAngle: rallye140MaxAngle
+
+            needleOffset: rallye140NeedleOffset
+            needleLength: rallye140NeedleLength
+            needleWidth: rallye140NeedleWidth
+            needleCenterRadius: rallye140NeedleCenterRadius
+            yOffset: rallye140YOffset
+
+            significatDigits: 1
+
+            imageSource: oilPressureBar ?
+                             "qrc:/gauge-faces-140-rallye/140-rallye-oil-pressure-bar.png" :
+                             "qrc:/gauge-faces-140-rallye/140-rallye-oil-pressure-psi.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
         },
-        Accessory140RallyeStyle {
+        AccessoryGaugeDelegate {
             id: coolantTempDelegate140RallyeStyle
-            gaugeMin: 120
-            gaugeMax: 250
+
+            minAngle: rallye140MinAngle
+            maxAngle: rallye140MaxAngle
+
+            needleOffset: rallye140NeedleOffset
+            needleLength: rallye140NeedleLength
+            needleWidth: rallye140NeedleWidth
+            needleCenterRadius: rallye140NeedleCenterRadius
+            yOffset: rallye140YOffset
+
             significatDigits: 1
 
             imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-coolant.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
         },
-        Accessory140RallyeStyle {
+
+        AccessoryGaugeDelegate {
             id: voltmeterDelegate140RallyeStyle
             gaugeMin: 10
             gaugeMax: 18
-            significatDigits: 2
 
+            minAngle: rallye140MinAngle
+            maxAngle: rallye140MaxAngle
+
+            needleOffset: rallye140NeedleOffset
+            needleLength: rallye140NeedleLength
+            needleWidth: rallye140NeedleWidth
+            needleCenterRadius: rallye140NeedleCenterRadius
+            yOffset: rallye140YOffset
+
+            significatDigits: 1
             imageSource: "qrc:/gauge-faces-140-rallye/140-rallye-voltmeter.png"
+            needleResource: "qrc:/needles/needle-rsport.png"
         }
     ]
 
