@@ -8,6 +8,7 @@ CONFIG += c++17
 
 SOURCES += \
     config_test.cpp \
+    gear_indicator_test.cpp \
     map_test.cpp \
     ntc_test.cpp \
     sensor_test.cpp \
@@ -22,8 +23,12 @@ HEADERS += \
     ../app/config.h\
     ../app/ntc.h\
     ../app/sensor.h\
+    ../app/sensor_gear_indicator.h \
     ../app/sensor_source.h\
+    ../app/sensor_source_tach.h \
+    ../app/sensor_source_vss.h \
     compare_float.h \
+    gear_indicator_test.h \
     map_test.h \
     config_test.h \
     ntc_test.h \
