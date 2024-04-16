@@ -8,21 +8,23 @@
 #include <random>
 
 /**
- * @brief Tach Sensor
+ * @brief Gear Indicator Sensor
  */
 class GearSensor : public Sensor {
 public:
     /**
-     * @brief TachSensor constructor
-     * @param parent
-     * @param config
-     * @param source
-     * @param channel
+     * @brief Gear sensor constructor
+     * @param parent Parent QObject
+     * @param config Dash Config
+     * @param tachSource Tach Sensor Source
+     * @param channel Tach source channel
+     * @param vssSource VSS Sensor source
+     * @param vssChannel VSS source channel
      */
     GearSensor(QObject * parent, Config * config,
-               TachSource * source, int channel,
+               TachSource * tachSource, int channel,
                VssSource * vssSource, int vssChannel) :
-           Sensor(parent, config, source, channel) {
+           Sensor(parent, config, tachSource, channel) {
         // setup additional vss source
         mVssSource = vssSource;
         mVssChannel = vssChannel;
@@ -47,13 +49,21 @@ public:
         }
     }
 
-
+    /**
+     * @brief Get sensor units
+     * @return units string
+     */
     QString getUnits() override {
         return "gear";
     }
 
-
-
+    /**
+     * @brief Estimate the current gear based on current RPM and current speed
+     * @param rpm Current engine RPM
+     * @param speed Current Speed
+     * @param speedUnits Speed units (mph, kmh, m/s)
+     * @return the estimated gear
+     */
     int estimateGear(qreal rpm, qreal speed, Config::SpeedUnits speedUnits) {
         // Get units to agree
         qreal diameterMile = SensorUtils::convertDistance(
@@ -64,8 +74,7 @@ public:
         qreal speedMph = SensorUtils::convertSpeed(
                     speed,
                     Config::SpeedUnits::MPH,
-                    speedUnits
-                    );
+                    speedUnits);
 
         // Estimate the gear ratio from the speed and rpm
         qreal ratioEst = ((rpm * 60.0) * (diameterMile * M_PI)) /
@@ -83,6 +92,7 @@ public:
             }
         }
 
+        // estimate based on pseudo-normal distributions
         qreal gearEstDist = -1;
         qreal probMax = 0;
         for (int i = 0; i < mGearIndicatorConfig.gearRatios.size(); i++) {
@@ -96,8 +106,9 @@ public:
             }
         }
 
-        qDebug() << "Gear Estimate: " << gearEstDist << " | " << gearEst;
-
+        if (gearEst != gearEstDist) {
+            qDebug() << "Gear Estimate: " << gearEstDist << " | " << gearEst;
+        }
         return gearEstDist;
     }
 
@@ -113,6 +124,11 @@ public slots:
         }
     }
 
+    /**
+     * @brief Transform incoming VSS data to estimate the current gear
+     * @param data from VSS source
+     * @param channel VSS source channel
+     */
     void transformVssData(QVariant data, int channel) {
         if (channel == mVssChannel) {
             mCurrentSpeed = data.toReal();
@@ -136,17 +152,17 @@ public slots:
     }
 
 private:
-    static constexpr qreal SIGMA_MAX = 0.25;
-    static constexpr qreal SIGMA_MIN = 0.1;
+    static constexpr qreal SIGMA_MAX = 0.25; //!< pseudo-normal distribution sigma max value
+    static constexpr qreal SIGMA_MIN = 0.1; //!< pseudo-normal distribution sigma min value
 
-    VssSource * mVssSource;
-    int mVssChannel;
+    VssSource * mVssSource; //!< VSS Sensor source
+    int mVssChannel; //!< VSS Source channel
 
-    qreal mCurrentSpeed = 0.0;
-    qreal mCurrentRpm = 0.0;
+    qreal mCurrentSpeed = 0.0; //!< current speed
+    qreal mCurrentRpm = 0.0; //!< current RPM
 
-    Config::GearIndicatorConfig_t mGearIndicatorConfig;
-    QList<qreal> mDistSigma;
+    Config::GearIndicatorConfig_t mGearIndicatorConfig; //!< gear indicator config
+    QList<qreal> mDistSigma; //!< pseudo-normal sigma value for each gear
 };
 
 #endif // SENSOR_GEAR_H

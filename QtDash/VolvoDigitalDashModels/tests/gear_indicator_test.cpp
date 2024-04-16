@@ -111,35 +111,35 @@ void GearIndicatorTest::testEstimateGear_data() {
     QTest::addColumn<int>("expectedGear");
 
     // calculated using : https://www.tremec.com/calculadora.php
-    QTest::addRow("1500_1st_gear") << 1500.0 << 8.33 << "mph" << 100.0 << 1.5 << 1;
+    QTest::addRow("1500_1st_gear") << 1500.0 << 8.33 << "mph" << 100.0 << 2.0 << 1;
     QTest::addRow("2000_1st_gear") << 2000.0 << 11.11 << "mph" << 100.0 << 2.0 << 1;
     QTest::addRow("2500_1st_gear") << 2500.0 << 13.88 << "mph" << 100.0 << 2.0 << 1;
     QTest::addRow("3000_1st_gear") << 3000.0 << 16.66 << "mph" << 100.0 << 2.0 << 1;
     QTest::addRow("3500_1st_gear") << 3500.0 << 19.44 << "mph" << 100.0 << 2.0 << 1;
     QTest::addRow("4000_1st_gear") << 4000.0 << 22.21 << "mph" << 100.0 << 2.0 << 1;
 
-    QTest::addRow("1500_2nd_gear") << 1500.0 << 15.54 << "mph" << 100.0 << 1.5 << 2;
+    QTest::addRow("1500_2nd_gear") << 1500.0 << 15.54 << "mph" << 100.0 << 2.0 << 2;
     QTest::addRow("2000_2nd_gear") << 2000.0 << 20.72 << "mph" << 100.0 << 2.0 << 2;
     QTest::addRow("2500_2nd_gear") << 2500.0 << 25.90 << "mph" << 100.0 << 2.0 << 2;
     QTest::addRow("3000_2nd_gear") << 3000.0 << 31.08 << "mph" << 100.0 << 2.0 << 2;
     QTest::addRow("3500_2nd_gear") << 3500.0 << 36.26 << "mph" << 100.0 << 2.0 << 2;
     QTest::addRow("4000_2nd_gear") << 4000.0 << 41.44 << "mph" << 100.0 << 2.0 << 2;
 
-    QTest::addRow("1500_3rd_gear") << 1500.0 << 24.50 << "mph" << 100.0 << 1.5 << 3;
+    QTest::addRow("1500_3rd_gear") << 1500.0 << 24.50 << "mph" << 100.0 << 2.0 << 3;
     QTest::addRow("2000_3rd_gear") << 2000.0 << 32.67 << "mph" << 100.0 << 2.0 << 3;
     QTest::addRow("2500_3rd_gear") << 2500.0 << 40.84 << "mph" << 100.0 << 2.0 << 3;
     QTest::addRow("3000_3rd_gear") << 3000.0 << 49.01 << "mph" << 100.0 << 2.0 << 3;
     QTest::addRow("3500_3rd_gear") << 3500.0 << 57.17 << "mph" << 100.0 << 2.0 << 3;
     QTest::addRow("4000_3rd_gear") << 4000.0 << 65.34 << "mph" << 100.0 << 2.0 << 3;
 
-    QTest::addRow("1500_4th_gear") << 1500.0 << 33.57 << "mph" << 100.0 << 1.5 << 4;
+    QTest::addRow("1500_4th_gear") << 1500.0 << 33.57 << "mph" << 100.0 << 2.0 << 4;
     QTest::addRow("2000_4th_gear") << 2000.0 << 44.76 << "mph" << 100.0 << 2.0 << 4;
     QTest::addRow("2500_4th_gear") << 2500.0 << 55.95 << "mph" << 100.0 << 2.0 << 4;
     QTest::addRow("3000_4th_gear") << 3000.0 << 67.14 << "mph" << 100.0 << 2.0 << 4;
     QTest::addRow("3500_4th_gear") << 3500.0 << 78.33 << "mph" << 100.0 << 2.0 << 4;
     QTest::addRow("4000_4th_gear") << 4000.0 << 89.52 << "mph" << 100.0 << 2.0 << 4;
 
-    QTest::addRow("1500_5th_gear") << 1500.0 << 40.94 << "mph" << 100.0 << 1.5 << 5;
+    QTest::addRow("1500_5th_gear") << 1500.0 << 40.94 << "mph" << 100.0 << 2.0 << 5;
     QTest::addRow("2000_5th_gear") << 2000.0 << 54.59 << "mph" << 100.0 << 2.0 << 5;
     QTest::addRow("2500_5th_gear") << 2500.0 << 68.23 << "mph" << 100.0 << 2.0 << 5;
     QTest::addRow("3000_5th_gear") << 3000.0 << 81.88 << "mph" << 100.0 << 2.0 << 5;
