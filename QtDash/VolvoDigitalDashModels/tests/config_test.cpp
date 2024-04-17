@@ -168,12 +168,12 @@ void ConfigTest::testLoadMapConfig() {
 
         auto configUnits = testConfig->getMapSensorConfig().units;
         QString compare;
-        if (configUnits == Config::PressureUnits::KPA) {
-            compare = Config::UNITS_KPA;
-        } else if (configUnits == Config::PressureUnits::BAR) {
-            compare = Config::UNITS_BAR;
-        } else if (configUnits == Config::PressureUnits::PSI) {
-            compare = Config::UNITS_PSI;
+        if (configUnits == Units::PressureUnits::KPA) {
+            compare = Units::UNITS_KPA;
+        } else if (configUnits == Units::PressureUnits::BAR) {
+            compare = Units::UNITS_BAR;
+        } else if (configUnits == Units::PressureUnits::PSI) {
+            compare = Units::UNITS_PSI;
         }
 
         QCOMPARE(compare.toLower(), units.toLower());
@@ -262,7 +262,7 @@ void ConfigTest::testLoadTempSensorConfig() {
     Config * testConfig = new Config(this, config);
 
     // check if the settings are valid
-    Config::TempSensorConfig_t conf = testConfig->getTempSensorConfigs()->at(0);
+    SensorConfig::TempSensorConfig conf = testConfig->getTempSensorConfigs()->at(0);
     QCOMPARE(conf.isValid(), result);
 
     if(result) {
@@ -277,12 +277,12 @@ void ConfigTest::testLoadTempSensorConfig() {
 
         auto configUnits = conf.units;
         QString compare;
-        if (configUnits == Config::TemperatureUnits::CELSIUS) {
-            compare = Config::UNITS_C;
-        } else if (configUnits == Config::TemperatureUnits::FAHRENHEIT) {
-            compare = Config::UNITS_F;
-        } else if (configUnits == Config::TemperatureUnits::KELVIN) {
-            compare = Config::UNITS_K;
+        if (configUnits == Units::TemperatureUnits::CELSIUS) {
+            compare = Units::UNITS_C;
+        } else if (configUnits == Units::TemperatureUnits::FAHRENHEIT) {
+            compare = Units::UNITS_F;
+        } else if (configUnits == Units::TemperatureUnits::KELVIN) {
+            compare = Units::UNITS_K;
         }
         QCOMPARE(compare.toLower(), units.toLower());
     }

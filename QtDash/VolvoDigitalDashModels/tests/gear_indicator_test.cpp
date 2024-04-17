@@ -95,7 +95,7 @@ void GearIndicatorTest::testEstimateGear() {
             int gearEst = mGearSensor->estimateGear(
                 currentRpm,
                 currentSpeed,
-                Config::getSpeedUnits(units)
+                Units::getSpeedUnits(units)
             );
             QCOMPARE(expectedGear, gearEst);
         }
