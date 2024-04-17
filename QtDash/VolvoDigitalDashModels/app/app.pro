@@ -37,6 +37,7 @@ SOURCES += src/main.cpp \
     src/sensor/ntc.cpp \
     src/sensor/analog_12v_input.cpp \
     src/sensor/map_sensor.cpp \
+    src/sensor/sensor_gear_indicator.cpp \
     src/sensor_source/sensor_source_gps.cpp \
     src/utils/backlight_control.cpp \
     src/utils/event_timers.cpp \

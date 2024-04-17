@@ -20,6 +20,7 @@ SOURCES += \
     ../app/src/ll/pulse_counter.cpp \
     ../app/src/sensor/map_sensor.cpp \
     ../app/src/sensor/ntc.cpp \
+    ../app/src/sensor/sensor_gear_indicator.cpp \
     ../app/src/utils/units.cpp \
     ../app/src/utils/sensor_utils.cpp \
 
