@@ -30,7 +30,7 @@ AccessoryGauge::AccessoryGauge(QObject *parent, Config *config,
     // connect the sensor output to the model value
     QObject::connect(
         sensors.at(0), &Sensor::sensorDataReady,
-        [&](QVariant data) {
+        [=](QVariant data) {
             // get raw value
             qreal val = data.toReal();
             Sensor * sensor = sensors.at(0);
