@@ -28,15 +28,15 @@ public:
     QString getUnits(int channel) override {
         switch(channel) {
         case 0:
-            return Config::UNITS_FOOT;
+            return Units::UNITS_FOOT;
         case 1:
-            return Config::UNITS_INCH;
+            return Units::UNITS_INCH;
         case 2:
-            return Config::UNITS_CENTIMETER;
+            return Units::UNITS_CENTIMETER;
         case 3:
-            return Config::UNITS_METER;
+            return Units::UNITS_METER;
         default:
-            return Config::UNITS_FOOT;
+            return Units::UNITS_FOOT;
         }
     }
 
@@ -64,7 +64,7 @@ public:
     }
 
     QString getUnits() override {
-        return Config::UNITS_INCH;
+        return Units::UNITS_INCH;
     }
 
 public slots:
@@ -84,7 +84,7 @@ public:
     }
 
     QString getUnits() override {
-        return Config::UNITS_FOOT;
+        return Units::UNITS_FOOT;
     }
 
 public slots:
