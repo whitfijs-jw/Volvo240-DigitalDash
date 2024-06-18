@@ -25,49 +25,54 @@ public:
     SpeedometerGauge(QObject * parent, Config * config, QList<Sensor *> sensors,
                    SpeedometerModel * model, QString modelName, QQmlContext * context) :
     Gauge(parent, config, sensors, model, modelName, context) {
-        GaugeConfig::SpeedoConfig speedoConfig = mConfig->getSpeedoConfig();
+        mSpeedoConfig = mConfig->getSpeedoConfig();
 
         // setup speedo
-        ((SpeedometerModel *)mModel)->setMinValue(speedoConfig.gaugeConfig.min);
-        ((SpeedometerModel *)mModel)->setMaxValue(speedoConfig.gaugeConfig.max);
-        ((SpeedometerModel *)mModel)->setUnits(speedoConfig.gaugeConfig.displayUnits);
+        ((SpeedometerModel *)mModel)->setMinValue(mSpeedoConfig.gaugeConfig.min);
+        ((SpeedometerModel *)mModel)->setMaxValue(mSpeedoConfig.gaugeConfig.max);
+        ((SpeedometerModel *)mModel)->setUnits(mSpeedoConfig.gaugeConfig.displayUnits);
         ((SpeedometerModel *)mModel)->setCurrentValue(0.0);
 
         // setup secondary units display (usually ambient temperature)
-        ((SpeedometerModel *)mModel)->setTopUnits(speedoConfig.topUnits);
+        ((SpeedometerModel *)mModel)->setTopUnits(mSpeedoConfig.topUnits);
         ((SpeedometerModel *)mModel)->setTopValue(0.0);
 
         // connect the speed to the model value
         QObject::connect(
                     sensors.at(0), &Sensor::sensorDataReady,
-                    [=](QVariant data) {
-            QString units = sensors.at(0)->getUnits();
-            QString displayUnits = speedoConfig.gaugeConfig.displayUnits;
-            QString modelUnits = ((SpeedometerModel *)mModel)->units();
+                    [&](QVariant data) {
+            if (mSensors.length() > 0) {
+                QString units = mSensors.at(0)->getUnits();
+                QString displayUnits = mSpeedoConfig.gaugeConfig.displayUnits;
+                QString modelUnits = ((SpeedometerModel *)mModel)->units();
 
-            qreal val = SensorUtils::convert(data.toReal(), modelUnits, units);
-            ((SpeedometerModel *)mModel)->setCurrentValue(val);
+                qreal val = SensorUtils::convert(data.toReal(), modelUnits, units);
+                ((SpeedometerModel *)mModel)->setCurrentValue(val);
+            }
         });
 
         // connect the secondary values
         QObject::connect(
                     sensors.at(1), &Sensor::sensorDataReady,
-                    [=](QVariant data) {
+                    [&](QVariant data) {
             // get raw value
             qreal val = data.toReal();
-            Sensor * sensor = sensors.at(1);
+            if (mSensors.length() > 1) {
+                Sensor * sensor = mSensors.at(1);
 
-            // get units
-            QString units = sensor->getUnits();
-            QString displayUnits = speedoConfig.topUnits;
+                // get units
+                QString units = sensor->getUnits();
+                QString displayUnits = mSpeedoConfig.topUnits;
 
-            val = SensorUtils::convert(val, displayUnits, units);
+                val = SensorUtils::convert(val, displayUnits, units);
 
-            ((SpeedometerModel *)mModel)->setTopValue(val);
+                ((SpeedometerModel *)mModel)->setTopValue(val);
+            }
         });
     }
 
 private:
+    GaugeConfig::SpeedoConfig mSpeedoConfig;
 };
 
 #endif // GAUGE_SPEEDO_H

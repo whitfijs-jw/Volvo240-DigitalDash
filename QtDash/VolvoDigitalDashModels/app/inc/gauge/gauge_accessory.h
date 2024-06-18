@@ -26,7 +26,7 @@ public:
 public slots:
 
 private:
-
+    GaugeConfig::GaugeConfig mGaugeConfig;
 };
 
 #endif // GAUGE_ACCESSORY_H

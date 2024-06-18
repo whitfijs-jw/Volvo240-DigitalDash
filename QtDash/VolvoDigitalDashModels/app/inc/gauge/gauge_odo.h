@@ -33,21 +33,21 @@ public:
         // connect the odo to the model value
         QObject::connect(
                     sensors.at(0), &Sensor::sensorDataReady,
-                    [=](QVariant data) {
+                    [&](QVariant data) {
             ((OdometerModel *)mModel)->setOdometerValue(data.toReal());
         });
 
         // connect the tripA to the model value
         QObject::connect(
                     sensors.at(1), &Sensor::sensorDataReady,
-                    [=](QVariant data) {
+                    [&](QVariant data) {
             ((OdometerModel *)mModel)->setTripAValue(data.toReal());
         });
 
         // connect the odo to the model value
         QObject::connect(
                     sensors.at(2), &Sensor::sensorDataReady,
-                    [=](QVariant data) {
+                    [&](QVariant data) {
             ((OdometerModel *)mModel)->setTripBValue(data.toReal());
         });
 

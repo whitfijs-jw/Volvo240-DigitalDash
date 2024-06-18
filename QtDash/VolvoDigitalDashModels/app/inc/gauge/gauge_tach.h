@@ -30,7 +30,7 @@ public:
 
         QObject::connect(
                     sensors.at(0), &Sensor::sensorDataReady,
-                    [=](QVariant data) {
+                    [&](QVariant data) {
             ((TachometerModel *)mModel)->setRpm(data.toInt());
         });
     }
