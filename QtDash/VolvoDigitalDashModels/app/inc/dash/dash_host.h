@@ -47,10 +47,10 @@ public:
      */
     DashHost(QObject * parent, QQmlContext * context) :
         QObject(parent), mContext(context), mEventTiming(parent),
-        mConfig(parent, "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config.ini",
-                "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config_gauges.ini",
-                "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config_odo.ini",
-                "/home/whitfijs/git/Volvo240-DigitalDash/QtDash/config_can.ini") {
+        mConfig(parent, "/home/jwhitfield/git/Volvo240-DigitalDash/QtDash/config.ini",
+                "/home/jwhitfield/git/Volvo240-DigitalDash/QtDash/config_gauges.ini",
+                "/home/jwhitfield/git/Volvo240-DigitalDash/QtDash/config_odo.ini",
+                "/home/jwhitfield/git/Volvo240-DigitalDash/QtDash/config_can.ini") {
 
         // populate accessory gauge model map
         mAccessoryGaugeModelMap.insert(COOLANT_TEMP_MODEL_NAME, &mCoolantTempModel);
@@ -220,12 +220,30 @@ public slots:
             rpm /= 1000;
             mTachModel.setRpm(rpm);
 
-            qreal boost_psi = ((float)rpm/1000.0) * 5.0;
-            mBoostModel.setCurrentValue(
-                SensorUtils::convert(boost_psi,
-                                     mConfig.getGaugeConfig(Config::BOOST_GAUGE_GROUP).displayUnits,
-                                     Units::UNITS_PSI)
-            );
+            // qreal boost_psi = ((float)rpm/1000.0) * 5.0;
+            static qreal boost_psi = -10;
+
+            auto mGaugeConfig = mConfig.getGaugeConfig(Config::BOOST_GAUGE_GROUP);
+            QString units = Units::UNITS_PSI;
+            QString displayUnits = mGaugeConfig.displayUnits;
+
+            auto val = boost_psi;
+            if (mGaugeConfig.altDisplayUnits.use && mGaugeConfig.altDisplayUnits.checkCutoff(val)) {
+                mBoostModel.setUnits(mGaugeConfig.altDisplayUnits.displayUnits);
+                displayUnits = mGaugeConfig.altDisplayUnits.displayUnits;
+            } else {
+                mBoostModel.setUnits(mGaugeConfig.displayUnits);
+            }
+
+            mBoostModel.setCurrentValue(SensorUtils::convert(boost_psi,
+                                    displayUnits,
+                                    units)
+                );
+
+            boost_psi += 0.3;
+            if (boost_psi > 20) {
+                boost_psi = -20;
+            }
 
             qreal oilPBar = ((float)rpm / 1000.0);
             qreal oilP = SensorUtils::convert(oilPBar,

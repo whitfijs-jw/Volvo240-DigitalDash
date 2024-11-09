@@ -219,6 +219,10 @@ public:
     static constexpr char TOP_VALUE_UNITS[] = "top_value_units";
     static constexpr char MAX_RPM[] = "max_rpm";
     static constexpr char REDLINE[] = "redline";
+    static constexpr char ENABLE_ALT_UNITS[] = "alt_units_enable";
+    static constexpr char GAUGE_ALT_UNITS[] = "alt_units";
+    static constexpr char ALT_UNITS_THRESHOLD[] = "alt_units_thres";
+    static constexpr char ALT_UNITS_ABOVE_THRS[] = "alt_units_above";
 
     //can config keys
     static constexpr char CAN_CONFIG_START[] = "start";
