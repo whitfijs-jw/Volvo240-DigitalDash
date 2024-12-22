@@ -6,6 +6,7 @@
 #include <QMap>
 #include <QFile>
 #include <QKeyEvent>
+#include <QDir>
 
 #include <tachometer_model.h>
 #include <accessory_gauge_model.h>
@@ -47,10 +48,10 @@ public:
      */
     DashHost(QObject * parent, QQmlContext * context) :
         QObject(parent), mContext(context), mEventTiming(parent),
-        mConfig(parent, "/home/jwhitfield/git/Volvo240-DigitalDash/QtDash/config.ini",
-                "/home/jwhitfield/git/Volvo240-DigitalDash/QtDash/config_gauges.ini",
-                "/home/jwhitfield/git/Volvo240-DigitalDash/QtDash/config_odo.ini",
-                "/home/jwhitfield/git/Volvo240-DigitalDash/QtDash/config_can.ini") {
+        mConfig(parent, "../../../config.ini",
+                "../../../config_gauges.ini",
+                "../../../config_odo.ini",
+                "../../../config_can.ini") {
 
         // populate accessory gauge model map
         mAccessoryGaugeModelMap.insert(COOLANT_TEMP_MODEL_NAME, &mCoolantTempModel);
