@@ -3,7 +3,8 @@
 
 #include <sensor.h>
 #include <sensor_source_vss.h>
-
+#include <config.h>
+#include <config_keys.h>
 /**
  * @brief Odometer Sensor
  */
@@ -28,7 +29,7 @@ public:
             mOdoConfig = *odoConfig;
         } else {
             // use the odo values from the config file
-            mOdoConfig = mConfig->getOdometerConfig(Config::ODO_NAME_ODOMETER);
+            mOdoConfig = mConfig->getOdometerConfig(ConfigKeys::ODO_NAME_ODOMETER);
             mCanReset = false;
         }
     }

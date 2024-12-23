@@ -3,6 +3,8 @@
 
 #include <gauge.h>
 #include <temp_and_fuel_gauge_model.h>
+#include <config.h>
+#include <config_keys.h>
 
 /**
  * @brief The TempFuelClusterGauge class
@@ -22,7 +24,7 @@ public:
                          TempAndFuelGaugeModel * model, QString modelName, QQmlContext * context) :
           Gauge(parent, config, sensors, model, modelName, context) {
         // get coolant temp config
-        mCoolantConfig = mConfig->getGaugeConfig(Config::COOLANT_TEMP_GAUGE_GROUP);
+        mCoolantConfig = mConfig->getGaugeConfig(ConfigKeys::COOLANT_TEMP_GAUGE_GROUP);
 
         ((TempAndFuelGaugeModel*) mModel)->setMinTemp(mCoolantConfig.min);
         ((TempAndFuelGaugeModel*) mModel)->setMaxTemp(mCoolantConfig.max);
@@ -31,7 +33,7 @@ public:
         ((TempAndFuelGaugeModel*) mModel)->setCurrentTemp(0.0);
 
         // fuel gauge config
-        GaugeConfig::GaugeConfig fuelLevelConfig = mConfig->getGaugeConfig(Config::FUEL_GAUGE_GROUP);
+        GaugeConfig::GaugeConfig fuelLevelConfig = mConfig->getGaugeConfig(ConfigKeys::FUEL_GAUGE_GROUP);
 
         ((TempAndFuelGaugeModel*) mModel)->setLowFuelAlarm(fuelLevelConfig.lowAlarm);
         ((TempAndFuelGaugeModel*) mModel)->setFuelLevel(0.0);

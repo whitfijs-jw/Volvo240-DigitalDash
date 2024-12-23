@@ -34,6 +34,8 @@ namespace SensorConfig {
         qreal rBalance; //!< balance resistor value in ohms
         QString units; //!< calibration data units
         qreal lag; //!< filtering value (0-1)
+        qreal lagStart; //!< start lag value
+        qreal lagDecay; //!< lag decay constant
         qreal vSupply; //!< supply voltage
 
         /**

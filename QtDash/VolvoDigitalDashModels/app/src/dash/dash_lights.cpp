@@ -1,11 +1,11 @@
 #include <dash_lights.h>
-
+#include <config_keys.h>
 
 DashLights::DashLights(QObject *parent, Config *config) :
     QObject(parent), mConfig(config), mLightsConfig(config->getDashLightConfig()) {
     mActiveInput.longPressDuration =
         mConfig->getUserInputPinConfig().value(
-            Config::USER_INPUT_LONG_PRESS_DURATION, Config::DEFAULT_LONG_PRESS_DURATION_MSEC);
+            ConfigKeys::USER_INPUT_LONG_PRESS_DURATION, ConfigKeys::DEFAULT_LONG_PRESS_DURATION_MSEC);
 }
 
 void DashLights::init() {

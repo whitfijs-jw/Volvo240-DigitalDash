@@ -3,6 +3,8 @@
 
 #include <gauge.h>
 #include <odometer_model.h>
+#include <config.h>
+#include <config_keys.h>
 
 /**
  * @brief The SpeedometerGauge class
@@ -21,9 +23,9 @@ public:
     OdometerGauge(QObject * parent, Config * config, QList<Sensor *> sensors,
                    OdometerModel * model, QString modelName, QQmlContext * context) :
     Gauge(parent, config, sensors, model, modelName, context) {
-        SensorConfig::OdometerConfig odoConfig = mConfig->getOdometerConfig(Config::ODO_NAME_ODOMETER);
-        SensorConfig::OdometerConfig tripAConfig = mConfig->getOdometerConfig(Config::ODO_NAME_TRIPA);
-        SensorConfig::OdometerConfig tripBConfig = mConfig->getOdometerConfig(Config::ODO_NAME_TRIPB);
+        SensorConfig::OdometerConfig odoConfig = mConfig->getOdometerConfig(ConfigKeys::ODO_NAME_ODOMETER);
+        SensorConfig::OdometerConfig tripAConfig = mConfig->getOdometerConfig(ConfigKeys::ODO_NAME_TRIPA);
+        SensorConfig::OdometerConfig tripBConfig = mConfig->getOdometerConfig(ConfigKeys::ODO_NAME_TRIPB);
 
         //setup odo
         ((OdometerModel *)mModel)->setOdometerValue(odoConfig.value);

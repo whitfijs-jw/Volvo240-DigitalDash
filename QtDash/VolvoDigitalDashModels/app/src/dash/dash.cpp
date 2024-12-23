@@ -67,7 +67,7 @@ void Dash::initSensors() {
     //map sensor
     mMapSensor = new Map_Sensor(
         this->parent(), &mConfig, mAdcSource,
-        mConfig.getSensorConfig().value(Config::MAP_SENSOR_KEY)
+        mConfig.getSensorConfig().value(ConfigKeys::MAP_SENSOR_KEY)
         );
 
     QObject::connect(
@@ -80,7 +80,7 @@ void Dash::initSensors() {
     // coolant temp sensor
     mCoolantTempSensor = new NtcSensor(
         this->parent(), &mConfig, mAdcSource,
-        mConfig.getSensorConfig().value(Config::COOLANT_TEMP_KEY),
+        mConfig.getSensorConfig().value(ConfigKeys::COOLANT_TEMP_KEY),
         SensorConfig::TemperatureSensorType::COOLANT);
 
     QObject::connect(
@@ -93,7 +93,7 @@ void Dash::initSensors() {
     // ambient temp sensor
     mAmbientTempSensor = new NtcSensor(
         this->parent(), &mConfig, mAdcSource,
-        mConfig.getSensorConfig().value(Config::AMBIENT_TEMP_KEY),
+        mConfig.getSensorConfig().value(ConfigKeys::AMBIENT_TEMP_KEY),
         SensorConfig::TemperatureSensorType::AMBIENT);
 
     QObject::connect(
@@ -106,7 +106,7 @@ void Dash::initSensors() {
     // oil temp sensor
     mOilTempSensor = new NtcSensor(
         this->parent(), &mConfig, mAdcSource,
-        mConfig.getSensorConfig().value(Config::OIL_TEMP_KEY),
+        mConfig.getSensorConfig().value(ConfigKeys::OIL_TEMP_KEY),
         SensorConfig::TemperatureSensorType::OIL);
 
     QObject::connect(
@@ -119,8 +119,8 @@ void Dash::initSensors() {
     // oil pressure sensor
     mOilPressureSensor = new ResistiveSensor(
         this->parent(), &mConfig, mAdcSource,
-        mConfig.getSensorConfig().value(Config::OIL_PRESSURE_KEY),
-        mConfig.getResistiveSensorConfig(Config::RES_SENSOR_TYPE_OIL_PRESSURE)
+        mConfig.getSensorConfig().value(ConfigKeys::OIL_PRESSURE_KEY),
+        mConfig.getResistiveSensorConfig(ConfigKeys::RES_SENSOR_TYPE_OIL_PRESSURE)
         );
 
     QObject::connect(
@@ -133,8 +133,8 @@ void Dash::initSensors() {
     //fuel level sensor
     mFuelLevelSensor = new ResistiveSensor(
         this->parent(), &mConfig, mAdcSource,
-        mConfig.getSensorConfig().value(Config::FUEL_LEVEL_KEY),
-        mConfig.getResistiveSensorConfig(Config::RES_SENSOR_TYPE_FUEL_LEVEL)
+        mConfig.getSensorConfig().value(ConfigKeys::FUEL_LEVEL_KEY),
+        mConfig.getResistiveSensorConfig(ConfigKeys::RES_SENSOR_TYPE_FUEL_LEVEL)
         );
 
     QObject::connect(
@@ -148,8 +148,8 @@ void Dash::initSensors() {
     // voltmeter
     mVoltmeterSensor = new VoltmeterSensor(
         this->parent(), &mConfig, mAdcSource,
-        mConfig.getSensorConfig().value(Config::FUSE8_12V_KEY),
-        mConfig.getAnalog12VInputConfig(Config::ANALOG_INPUT_12V_VOLTMETER)
+        mConfig.getSensorConfig().value(ConfigKeys::FUSE8_12V_KEY),
+        mConfig.getAnalog12VInputConfig(ConfigKeys::ANALOG_INPUT_12V_VOLTMETER)
         );
 
     QObject::connect(
@@ -162,8 +162,8 @@ void Dash::initSensors() {
     // rheostat/dimmer voltage
     mDimmerVoltageSensor = new VoltmeterSensor(
         this->parent(), &mConfig, mAdcSource,
-        mConfig.getSensorConfig().value(Config::DIMMER_VOLTAGE_KEY),
-        mConfig.getAnalog12VInputConfig(Config::ANALOG_INPUT_12V_RHEOSTAT)
+        mConfig.getSensorConfig().value(ConfigKeys::DIMMER_VOLTAGE_KEY),
+        mConfig.getAnalog12VInputConfig(ConfigKeys::ANALOG_INPUT_12V_RHEOSTAT)
         );
 
     QObject::connect(
@@ -215,13 +215,13 @@ void Dash::initSensors() {
     QObject::connect(
         mOdoSensor, &OdometerSensor::writeOdoValue,
         [=](qreal value) {
-            SensorConfig::OdometerConfig c = mConfig.getOdometerConfig(Config::ODO_NAME_ODOMETER);
+            SensorConfig::OdometerConfig c = mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_ODOMETER);
             c.value = value;
-            mConfig.writeOdometerConfig(Config::ODO_NAME_ODOMETER, c);
+            mConfig.writeOdometerConfig(ConfigKeys::ODO_NAME_ODOMETER, c);
         });
 
     // trip counters
-    SensorConfig::OdometerConfig confA = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA);
+    SensorConfig::OdometerConfig confA = mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_TRIPA);
     mTripAOdoSensor = new OdometerSensor (
         this->parent(), &mConfig, mVssSource,
         (int) VssSource::VssDataChannel::PULSE_COUNT, &confA);
@@ -229,12 +229,12 @@ void Dash::initSensors() {
     QObject::connect(
         mTripAOdoSensor, &OdometerSensor::writeOdoValue,
         [=](qreal value) {
-            SensorConfig::OdometerConfig c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA);
+            SensorConfig::OdometerConfig c = mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_TRIPA);
             c.value = value;
-            mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPA, c);
+            mConfig.writeOdometerConfig(ConfigKeys::ODO_NAME_TRIPA, c);
         });
 
-    SensorConfig::OdometerConfig confB = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB);
+    SensorConfig::OdometerConfig confB = mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_TRIPB);
     mTripBOdoSensor = new OdometerSensor (
         this->parent(), &mConfig, mVssSource,
         (int) VssSource::VssDataChannel::PULSE_COUNT, &confB);
@@ -242,16 +242,16 @@ void Dash::initSensors() {
     QObject::connect(
         mTripBOdoSensor, &OdometerSensor::writeOdoValue,
         [=](qreal value) {
-            SensorConfig::OdometerConfig c = mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB);
+            SensorConfig::OdometerConfig c = mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_TRIPB);
             c.value = value;
-            mConfig.writeOdometerConfig(Config::ODO_NAME_TRIPB, c);
+            mConfig.writeOdometerConfig(ConfigKeys::ODO_NAME_TRIPB, c);
         });
 }
 
 void Dash::initAccessoryGauges() {
     qDebug() << "Accessory Gauge Models Init";
     // boost gauge
-    CanSensor * sensor = getCanSensor(Config::BOOST_GAUGE_GROUP);
+    CanSensor * sensor = getCanSensor(ConfigKeys::BOOST_GAUGE_GROUP);
 
     QList<Sensor *> boostSensors;
     if (sensor != nullptr) {
@@ -266,7 +266,7 @@ void Dash::initAccessoryGauges() {
         mContext);
 
     // coolant temp gauge
-    sensor = getCanSensor(Config::COOLANT_TEMP_GAUGE_GROUP);
+    sensor = getCanSensor(ConfigKeys::COOLANT_TEMP_GAUGE_GROUP);
     QList<Sensor *> coolantSensors;
     if (sensor != nullptr) {
         coolantSensors.push_back(sensor);
@@ -280,7 +280,7 @@ void Dash::initAccessoryGauges() {
         mContext);
 
     // oil temp gauge
-    sensor = getCanSensor(Config::OIL_TEMPERATURE_GAUGE_GROUP);
+    sensor = getCanSensor(ConfigKeys::OIL_TEMPERATURE_GAUGE_GROUP);
     QList<Sensor *> oilTempSensors;
     if (sensor != nullptr) {
         oilTempSensors.push_back(sensor);
@@ -294,7 +294,7 @@ void Dash::initAccessoryGauges() {
         mContext);
 
     // voltmeter
-    sensor = getCanSensor(Config::VOLTMETER_GAUGE_GROUP);
+    sensor = getCanSensor(ConfigKeys::VOLTMETER_GAUGE_GROUP);
     QList<Sensor *> voltmeterSensors;
     if (sensor != nullptr) {
         voltmeterSensors.push_back(sensor);
@@ -309,7 +309,7 @@ void Dash::initAccessoryGauges() {
         );
 
     // fuel level (acc gauge)
-    sensor = getCanSensor(Config::FUEL_GAUGE_GROUP);
+    sensor = getCanSensor(ConfigKeys::FUEL_GAUGE_GROUP);
     QList<Sensor *> fuelGaugeSensors;
     if (sensor != nullptr) {
         fuelGaugeSensors.push_back(sensor);
@@ -324,7 +324,7 @@ void Dash::initAccessoryGauges() {
         );
 
     // oil pressure gauge
-    sensor = getCanSensor(Config::OIL_PRESSURE_GAUGE_GROUP);
+    sensor = getCanSensor(ConfigKeys::OIL_PRESSURE_GAUGE_GROUP);
     QList<Sensor *> oilPressureSensors;
     if (sensor != nullptr) {
         oilPressureSensors.push_back(sensor);
@@ -358,21 +358,21 @@ void Dash::initSpeedo() {
 
     // Speedometer has a secondary output -- assign it now
     QString topSource = mConfig.getSpeedoConfig().topSource;
-    if (topSource == Config::AMBIENT_TEMP_KEY) {
+    if (topSource == ConfigKeys::AMBIENT_TEMP_KEY) {
         speedoSensors.append(mAmbientTempSensor);
-    } else if (topSource == Config::COOLANT_TEMP_KEY) {
+    } else if (topSource == ConfigKeys::COOLANT_TEMP_KEY) {
         speedoSensors.append(mCoolantTempSensor);
-    } else if (topSource == Config::OIL_TEMP_KEY) {
+    } else if (topSource == ConfigKeys::OIL_TEMP_KEY) {
         speedoSensors.append(mOilTempSensor);
-    } else if (topSource == Config::OIL_PRESSURE_KEY) {
+    } else if (topSource == ConfigKeys::OIL_PRESSURE_KEY) {
         speedoSensors.append(mOilPressureSensor);
-    } else if (topSource == Config::MAP_SENSOR_KEY) {
+    } else if (topSource == ConfigKeys::MAP_SENSOR_KEY) {
         speedoSensors.append(mMapSensor);
-    } else if (topSource == Config::ANALOG_INPUT_12V_VOLTMETER) {
+    } else if (topSource == ConfigKeys::ANALOG_INPUT_12V_VOLTMETER) {
         speedoSensors.append(mVoltmeterSensor);
-    } else if (topSource == Config::ANALOG_INPUT_12V_RHEOSTAT) {
+    } else if (topSource == ConfigKeys::ANALOG_INPUT_12V_RHEOSTAT) {
         speedoSensors.append(mDimmerVoltageSensor);
-    } else if (topSource == Config::FUEL_LEVEL_KEY) {
+    } else if (topSource == ConfigKeys::FUEL_LEVEL_KEY) {
         speedoSensors.append(mFuelLevelSensor);
     } else {
         // default to ambient
@@ -392,7 +392,7 @@ void Dash::initTacho() {
 
     // check if we have a can sensor
     for (CanSensor * sensor : mCanSensors) {
-        if (sensor->getGuage().toLower() == Config::TACHOMETER_GAUGE_GROUP) {
+        if (sensor->getGuage().toLower() == ConfigKeys::TACHOMETER_GAUGE_GROUP) {
             tachSensors.push_back(sensor);
         }
     }

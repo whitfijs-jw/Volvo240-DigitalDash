@@ -16,6 +16,7 @@
 #include <odometer_model.h>
 
 #include <config.h>
+#include <config_keys.h>
 #include <gps_helper.h>
 #include <dash_lights.h>
 #include <event_timers.h>
@@ -71,7 +72,7 @@ public:
         initTempFuelCluster();
 
         GaugeConfig::GaugeConfig gaugeConfig;
-        gaugeConfig = mConfig.getGaugeConfig(Config::COOLANT_TEMP_GAUGE_GROUP);
+        gaugeConfig = mConfig.getGaugeConfig(ConfigKeys::COOLANT_TEMP_GAUGE_GROUP);
 
         initAccessoryGuage(
             COOLANT_TEMP_MODEL_NAME,
@@ -82,7 +83,7 @@ public:
             gaugeConfig.highAlarm);
 
         initAccessoryGuage(FUEL_LEVEL_MODEL_NAME, 0.0, 100.0, "%", 10.0, 200.0);
-        gaugeConfig = mConfig.getGaugeConfig(Config::OIL_PRESSURE_GAUGE_GROUP);
+        gaugeConfig = mConfig.getGaugeConfig(ConfigKeys::OIL_PRESSURE_GAUGE_GROUP);
         initAccessoryGuage(
             OIL_PRESSURE_MODEL_NAME,
             gaugeConfig.min,
@@ -92,7 +93,7 @@ public:
             gaugeConfig.highAlarm);
 
 
-        gaugeConfig = mConfig.getGaugeConfig(Config::OIL_TEMPERATURE_GAUGE_GROUP);
+        gaugeConfig = mConfig.getGaugeConfig(ConfigKeys::OIL_TEMPERATURE_GAUGE_GROUP);
         initAccessoryGuage(
             OIL_TEMPERATURE_MODEL_NAME,
             gaugeConfig.min,
@@ -101,7 +102,7 @@ public:
             gaugeConfig.lowAlarm,
             gaugeConfig.highAlarm);
 
-        gaugeConfig = mConfig.getGaugeConfig(Config::BOOST_GAUGE_GROUP);
+        gaugeConfig = mConfig.getGaugeConfig(ConfigKeys::BOOST_GAUGE_GROUP);
         initAccessoryGuage(
             BOOST_GAUGE_MODEL_NAME,
             gaugeConfig.min,
@@ -173,7 +174,7 @@ public slots:
             QString coreTemp = tempStream.readLine();
 
             GaugeConfig::GaugeConfig gaugeConfig;
-            gaugeConfig = mConfig.getGaugeConfig(Config::COOLANT_TEMP_GAUGE_GROUP);
+            gaugeConfig = mConfig.getGaugeConfig(ConfigKeys::COOLANT_TEMP_GAUGE_GROUP);
 
             qreal temp = coreTemp.toFloat() / 1000.0;
             qreal tVal = SensorUtils::convert(temp, gaugeConfig.displayUnits, Units::UNITS_C);
@@ -186,7 +187,7 @@ public slots:
             mOilTemperatureModel.setCurrentValue(
                 SensorUtils::convert(
                     temp,
-                    mConfig.getGaugeConfig(Config::OIL_TEMPERATURE_GAUGE_GROUP).displayUnits,
+                    mConfig.getGaugeConfig(ConfigKeys::OIL_TEMPERATURE_GAUGE_GROUP).displayUnits,
                     Units::UNITS_C)
             );
 
@@ -223,13 +224,13 @@ public slots:
             qreal boost_psi = ((float)rpm/1000.0) * 5.0;
             mBoostModel.setCurrentValue(
                 SensorUtils::convert(boost_psi,
-                                     mConfig.getGaugeConfig(Config::BOOST_GAUGE_GROUP).displayUnits,
+                                     mConfig.getGaugeConfig(ConfigKeys::BOOST_GAUGE_GROUP).displayUnits,
                                      Units::UNITS_PSI)
             );
 
             qreal oilPBar = ((float)rpm / 1000.0);
             qreal oilP = SensorUtils::convert(oilPBar,
-                                             mConfig.getGaugeConfig(Config::OIL_PRESSURE_GAUGE_GROUP).displayUnits,
+                                             mConfig.getGaugeConfig(ConfigKeys::OIL_PRESSURE_GAUGE_GROUP).displayUnits,
                                              Units::UNITS_BAR);
             mOilPressureModel.setCurrentValue( oilP );
 
@@ -327,9 +328,9 @@ private:
     }
 
     void initOdometer() {
-        mOdometerModel.setOdometerValue(mConfig.getOdometerConfig(Config::ODO_NAME_ODOMETER).value);
-        mOdometerModel.setTripAValue(mConfig.getOdometerConfig(Config::ODO_NAME_TRIPA).value);
-        mOdometerModel.setTripBValue(mConfig.getOdometerConfig(Config::ODO_NAME_TRIPB).value);
+        mOdometerModel.setOdometerValue(mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_ODOMETER).value);
+        mOdometerModel.setTripAValue(mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_TRIPA).value);
+        mOdometerModel.setTripBValue(mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_TRIPB).value);
 
         mContext->setContextProperty(OdometerModel::ODOMETER_MODEL_NAME,
                                      &mOdometerModel);
@@ -394,7 +395,7 @@ private:
      */
     void initTempFuelCluster() {
         GaugeConfig::GaugeConfig gaugeConfig;
-        gaugeConfig = mConfig.getGaugeConfig(Config::COOLANT_TEMP_GAUGE_GROUP);
+        gaugeConfig = mConfig.getGaugeConfig(ConfigKeys::COOLANT_TEMP_GAUGE_GROUP);
 
         /** Init temp/fuel gauge **/
         mTempFuelModel.setMinTemp(gaugeConfig.min);

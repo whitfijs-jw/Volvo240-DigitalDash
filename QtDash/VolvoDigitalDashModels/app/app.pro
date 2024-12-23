@@ -426,6 +426,7 @@ HEADERS += \
     ../../eigen/Eigen/src/plugins/ReshapedMethods.h \
     inc/config/can_frame_config.h \
     inc/config/config.h \
+    inc/config/config_keys.h \
     inc/config/gauge_configs.h \
     inc/config/sensor_configs.h \
     inc/dash/dash.h \

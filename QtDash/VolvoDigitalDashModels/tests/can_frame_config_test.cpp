@@ -3,6 +3,7 @@
 #include <QSettings>
 
 #include <config.h>
+#include <config_keys.h>
 
 void CanFrameConfigTest::testLoadValidConfig() {
     QFETCH(QString, canConfig);
@@ -80,26 +81,26 @@ void CanFrameConfigTest::testLoadValidConfig_data() {
 
     QSettings * validConfig = new QSettings("validCanConfig.ini", QSettings::IniFormat);
 
-    validConfig->beginGroup(Config::CAN_CONFIG_START);
-    validConfig->setValue(Config::CAN_CONFIG_ENABLE, true);
+    validConfig->beginGroup(ConfigKeys::CAN_CONFIG_START);
+    validConfig->setValue(ConfigKeys::CAN_CONFIG_ENABLE, true);
     validConfig->endGroup();
 
-    validConfig->beginGroup(Config::CAN_FRAME);
+    validConfig->beginGroup(ConfigKeys::CAN_FRAME);
     validConfig->setValue("size", 1);
     validConfig->endGroup();
 
-    validConfig->beginWriteArray(Config::CAN_FRAME);
+    validConfig->beginWriteArray(ConfigKeys::CAN_FRAME);
     validConfig->setArrayIndex(0);
-    validConfig->setValue(Config::CAN_FRAME_ID, 0x05e8);
-    validConfig->setValue(Config::CAN_FRAME_OFFSET, 0);
-    validConfig->setValue(Config::CAN_FRAME_SIZE, 2);
-    validConfig->setValue(Config::CAN_FRAME_SIGNED, true);
-    validConfig->setValue(Config::CAN_FRAME_NAME, "map");
-    validConfig->setValue(Config::CAN_FRAME_UNITS, "kpa");
-    validConfig->setValue(Config::CAN_FRAME_MULTIPLY, 1.0);
-    validConfig->setValue(Config::CAN_FRAME_DIVIDE, 10.0);
-    validConfig->setValue(Config::CAN_FRAME_ADD, 0.0);
-    validConfig->setValue(Config::CAN_FRAME_GAUGE, "boost");
+    validConfig->setValue(ConfigKeys::CAN_FRAME_ID, 0x05e8);
+    validConfig->setValue(ConfigKeys::CAN_FRAME_OFFSET, 0);
+    validConfig->setValue(ConfigKeys::CAN_FRAME_SIZE, 2);
+    validConfig->setValue(ConfigKeys::CAN_FRAME_SIGNED, true);
+    validConfig->setValue(ConfigKeys::CAN_FRAME_NAME, "map");
+    validConfig->setValue(ConfigKeys::CAN_FRAME_UNITS, "kpa");
+    validConfig->setValue(ConfigKeys::CAN_FRAME_MULTIPLY, 1.0);
+    validConfig->setValue(ConfigKeys::CAN_FRAME_DIVIDE, 10.0);
+    validConfig->setValue(ConfigKeys::CAN_FRAME_ADD, 0.0);
+    validConfig->setValue(ConfigKeys::CAN_FRAME_GAUGE, "boost");
     validConfig->endArray();
 
     QTest::addRow("valid can config") <<
