@@ -4,6 +4,7 @@
 #include <sensor_source.h>
 #include <adc.h>
 #include <config.h>
+#include <config_keys.h>
 
 /**
  * @brief The AdcSource class
@@ -21,7 +22,7 @@ public:
         SensorSource(parent, config, name) {
 
         // setup ref channel (if configured)
-        int refChannel = mConfig->getSensorConfig().value(Config::REFERENCE_MEASUREMENT, -1);
+        int refChannel = mConfig->getSensorConfig().value(ConfigKeys::REFERENCE_MEASUREMENT, -1);
 
         // get the sensor supply voltage
         qreal vRef = mConfig->getSensorSupplyVoltage();

@@ -1,4 +1,5 @@
 #include <gauge_accessory.h>
+#include <config_keys.h>
 
 AccessoryGauge::AccessoryGauge(QObject *parent, Config *config,
                                QList<Sensor *> sensors, AccessoryGaugeModel *model,
@@ -7,17 +8,17 @@ AccessoryGauge::AccessoryGauge(QObject *parent, Config *config,
 
     // pull configs
     if (modelName == AccessoryGaugeModel::BOOST_GAUGE_MODEL_NAME) {
-        mGaugeConfig = config->getGaugeConfig(Config::BOOST_GAUGE_GROUP);
+        mGaugeConfig = config->getGaugeConfig(ConfigKeys::BOOST_GAUGE_GROUP);
     } else if (modelName == AccessoryGaugeModel::COOLANT_TEMP_MODEL_NAME) {
-        mGaugeConfig = config->getGaugeConfig(Config::COOLANT_TEMP_GAUGE_GROUP);
+        mGaugeConfig = config->getGaugeConfig(ConfigKeys::COOLANT_TEMP_GAUGE_GROUP);
     } else if (modelName == AccessoryGaugeModel::OIL_PRESSURE_MODEL_NAME) {
-        mGaugeConfig = config->getGaugeConfig(Config::OIL_PRESSURE_GAUGE_GROUP);
+        mGaugeConfig = config->getGaugeConfig(ConfigKeys::OIL_PRESSURE_GAUGE_GROUP);
     } else if (modelName == AccessoryGaugeModel::OIL_TEMPERATURE_MODEL_NAME) {
-        mGaugeConfig = config->getGaugeConfig(Config::OIL_TEMPERATURE_GAUGE_GROUP);
+        mGaugeConfig = config->getGaugeConfig(ConfigKeys::OIL_TEMPERATURE_GAUGE_GROUP);
     } else if (modelName == AccessoryGaugeModel::VOLT_METER_MODEL_NAME) {
-        mGaugeConfig = config->getGaugeConfig(Config::VOLTMETER_GAUGE_GROUP);
+        mGaugeConfig = config->getGaugeConfig(ConfigKeys::VOLTMETER_GAUGE_GROUP);
     } else if (modelName == AccessoryGaugeModel::FUEL_LEVEL_MODEL_NAME) {
-        mGaugeConfig = config->getGaugeConfig(Config::FUEL_GAUGE_GROUP);
+        mGaugeConfig = config->getGaugeConfig(ConfigKeys::FUEL_GAUGE_GROUP);
     }
 
     ((AccessoryGaugeModel *)mModel)->setMinValue(mGaugeConfig.min);

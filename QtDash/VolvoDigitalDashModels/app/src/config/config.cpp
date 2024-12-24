@@ -1,5 +1,7 @@
 #include <config.h>
 
+using namespace ConfigKeys;
+
 Config::Config(QObject * parent, QString configPath,
        QString gaugeConfigPath, QString odoConfigPath,
        QString canConfigPath): QObject(parent) {
@@ -387,6 +389,13 @@ bool Config::loadConfig() {
 
         // lag coefficient
         rSensorConf.lag = mConfig->value(RES_SENSOR_LAG, 1.0).toReal();
+        rSensorConf.lagDecay = mConfig->value(RES_SENSOR_LAG_DECAY, 0.0).toReal();
+
+        if (rSensorConf.lag == 1.0) {
+            rSensorConf.lagStart = rSensorConf.lag;
+        } else {
+            rSensorConf.lagStart = 1.0 - rSensorConf.lag;
+        }
 
         mResistiveSensorConfig.insert(rSensorConf.type, rSensorConf);
         printKeys("Resistive Sensor: ", mConfig);

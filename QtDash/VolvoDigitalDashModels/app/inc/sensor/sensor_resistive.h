@@ -28,6 +28,7 @@ public:
                     mSensorConfig.x, mSensorConfig.y, mSensorConfig.order);
         // use vref from adc source
         mSensorConfig.vSupply = ((AdcSource *)mSource)->getVRef();
+        mCurrentLag = mSensorConfig.lagStart;
     }
 
     QString getUnits() override {
@@ -42,6 +43,7 @@ public slots:
      */
     void transform(QVariant data, int channel) override {
         if (channel == getChannel()) {
+
             qreal volts = data.toReal();
 
             qreal resistance = SensorUtils::getResistance(
@@ -60,7 +62,17 @@ public slots:
                 value = 0;
             }
 
-            value = (mSensorConfig.lag * value) + (1 - mSensorConfig.lag) * mPreviousValue;
+            if (!mSteadyState && mSensorConfig.lag != 1.0) {
+                mCurrentLag = mSensorConfig.lagStart * qPow(1.0 - mSensorConfig.lagDecay, mDecayCount);
+                mDecayCount++;
+
+                if (mCurrentLag < mSensorConfig.lag) {
+                    mCurrentLag = mSensorConfig.lag;
+                    mSteadyState = true;
+                }
+            }
+
+            value = (mCurrentLag * value) + (1 - mCurrentLag) * mPreviousValue;
 
             mPreviousValue = value;
 
@@ -71,6 +83,9 @@ public slots:
 private:
     SensorConfig::ResistiveSensorConfig mSensorConfig; //!< resistive sensor config
     qreal mPreviousValue = 0; //!< previous value (used for filtering)
+    qreal mCurrentLag = 1.0;
+    bool mSteadyState = false;
+    uint32_t mDecayCount = 0;
 };
 
 #endif // SENSOR_RESISTIVE_H
