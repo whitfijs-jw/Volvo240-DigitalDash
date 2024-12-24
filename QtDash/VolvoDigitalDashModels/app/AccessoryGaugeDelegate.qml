@@ -87,6 +87,12 @@ Item {
                 property: "height"
                 value: accGauge.height
             }
+
+            Binding {
+                target: item
+                property: "units"
+                value: gaugeUnits
+            }
         }
     }
 }

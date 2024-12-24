@@ -45,6 +45,13 @@ AccessoryGauge::AccessoryGauge(QObject *parent, Config *config,
                 QString units = sensor->getUnits();
                 QString displayUnits = mGaugeConfig.displayUnits;
 
+                if (mGaugeConfig.altDisplayUnits.use && mGaugeConfig.altDisplayUnits.checkCutoff(val)) {
+                    static_cast<AccessoryGaugeModel*>(mModel)->setUnits(mGaugeConfig.altDisplayUnits.displayUnits);
+                    displayUnits = mGaugeConfig.altDisplayUnits.displayUnits;
+                } else {
+                    static_cast<AccessoryGaugeModel*>(mModel)->setUnits(mGaugeConfig.displayUnits);
+                }
+
                 val = SensorUtils::convert(val, displayUnits, units);
 
                 ((AccessoryGaugeModel *)mModel)->setCurrentValue(val);
