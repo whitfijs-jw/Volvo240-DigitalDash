@@ -5,6 +5,10 @@ Units::PressureUnits Units::getPressureUnits(QString units) {
         return PressureUnits::BAR;
     } else if (units.compare(UNITS_KPA, Qt::CaseInsensitive) == 0) {
         return PressureUnits::KPA;
+    } else if (units.compare(UNITS_INHG, Qt::CaseInsensitive) == 0) {
+        return PressureUnits::INHG;
+    } else if (units.compare(UNITS_MMHG, Qt::CaseInsensitive) == 0) {
+        return PressureUnits::MMHG;
     } else {
         //default to psi
         return PressureUnits::PSI;

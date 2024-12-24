@@ -9,6 +9,8 @@ public:
     static constexpr char UNITS_KPA[] = "kpa";
     static constexpr char UNITS_PSI[] = "psi";
     static constexpr char UNITS_BAR[] = "bar";
+    static constexpr char UNITS_INHG[] = "inhg";
+    static constexpr char UNITS_MMHG[] = "mmhg";
     static constexpr char UNITS_F[] = "F";
     static constexpr char UNITS_C[] = "C";
     static constexpr char UNITS_K[] = "K";
@@ -33,6 +35,8 @@ public:
         KPA = 0, //!< Kilopascals
         PSI, //!< pounds per square inch
         BAR, //!< Bar
+        INHG, //!< inches of mercury
+        MMHG, //!< millimeters of mercury
     };
 
     /**

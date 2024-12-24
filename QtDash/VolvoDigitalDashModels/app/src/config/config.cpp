@@ -219,6 +219,11 @@ GaugeConfig::GaugeConfig Config::loadGaugeConfig(QString groupName) {
     conf.lowAlarm = mGaugeConfig->value(LOW_ALARM, "").toReal();
     conf.displayUnits = mGaugeConfig->value(GAUGE_UNITS, "").toString();
 
+    conf.altDisplayUnits.use = mGaugeConfig->value(ENABLE_ALT_UNITS, false).toBool();
+    conf.altDisplayUnits.displayUnits = mGaugeConfig->value(GAUGE_ALT_UNITS, "").toString();
+    conf.altDisplayUnits.aboveCutoff = mGaugeConfig->value(ALT_UNITS_ABOVE_THRS, false).toBool();
+    conf.altDisplayUnits.cutoff = mGaugeConfig->value(ALT_UNITS_THRESHOLD, 0.0).toReal();
+
     printKeys(groupName, mGaugeConfig);
 
     mGaugeConfig->endGroup();
