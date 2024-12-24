@@ -423,7 +423,8 @@ An array of resistive sensor configurations. Calibration values can be interpola
 | *r* | Calibration resistance values.|
 | *y* | Calibration y values |
 | *units* | Units of calibration y values |
-| *lag* | Lag factor (0-1).  Used to filter values with the difference equation: **y[n] = lag \* x[n] + (1 - lag) \* y[n-1]** |
+| *lag* | Lag factor (0-1).  Used to filter values with the difference equation: **y[n] = lag \* x[n] + (1 - lag) \* y[n-1]** Default value is 1.0. |
+|*lag_decay*| Lag decay factor.  If set to a non-zero value the following equation will dictate the lag factor value used above: **lagStart=1-*lag*, lag[n] = lagStart \* (1 - *lag_decay*)^(n)** and saturates at the value set by *lag*. Large values will decay quickly, small values slowly.  Default value is 0.0.  |
 
 The default configuration is designed for a VDO 360-028 Oil pressure sender and a 240-33Ohm Volvo 240 Fuel level sender.
 
@@ -587,11 +588,15 @@ active_low=1
 There are a few options in setting up the gauge units and high/low warning indications.  There settings are found within the file config_gauges.ini.  The app will parse this file and will set the various gauge units, min/max values, and high/low warnings.
 
 #### Gauge Config Parameters
-| Parameter | Description |
+| Parameter | Description | Default Value |
 |---|---|
-|*units*| Gauge Display Units |
-|*low_alarm*| Value below which gauge will indicate a warning |
-|*high_alarm*| Value above which gauge will indicate a warning |
+|*units*| Gauge Display Units ||
+|*low_alarm*| Value below which gauge will indicate a warning ||
+|*high_alarm*| Value above which gauge will indicate a warning ||
+|*alt_units_enable*| Enable alternate units|*false*|
+|*alt_units*|Alternate units|\"\"|
+|*alt_units_thres*|Threshold value to switch units|*0.0*|
+|*alt_units_above*|If true, use alternate units above threshold.  Otherwise the alternate units are used below the threshold|*false*|
 
 ##### Example:
 This example sets the units for coolant temperature gauges, in all screens, to celsius.  The gauge will indicate an alarm when the temperature exceeds 100C.
@@ -607,7 +612,7 @@ Below are the available units for each gauge type
 
 | Gauge Type | Available Units |
 |---|---|
-|**[boost]**|```"bar"``` ```"psi"```|
+|**[boost]**|```"bar"``` ```"psi"``` ```"inHg"```|
 |**[coolant_temp]**|```"C"``` ```"F"```|
 |**[fuel_level]**|```"%"```|
 |**[oil_pressure]**|```"bar"``` ```"psi"```|
