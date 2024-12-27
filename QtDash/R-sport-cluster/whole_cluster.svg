@@ -21,6 +21,20 @@
      id="defs2">
     <inkscape:path-effect
        effect="ruler"
+       id="path-effect16699"
+       is_visible="true"
+       lpeversion="1"
+       unit="px"
+       mark_distance="20.7"
+       mark_length="27"
+       minor_mark_length="7"
+       major_mark_steps="5"
+       shift="0"
+       offset="0"
+       mark_dir="right"
+       border_marks="both" />
+    <inkscape:path-effect
+       effect="ruler"
        id="path-effect27985"
        is_visible="true"
        lpeversion="1"
@@ -1359,6 +1373,20 @@
        offset="0"
        mark_dir="right"
        border_marks="start" />
+    <inkscape:path-effect
+       effect="ruler"
+       id="path-effect16699-1"
+       is_visible="true"
+       lpeversion="1"
+       unit="px"
+       mark_distance="20.7"
+       mark_length="27"
+       minor_mark_length="7"
+       major_mark_steps="5"
+       shift="0"
+       offset="0"
+       mark_dir="right"
+       border_marks="both" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -1367,14 +1395,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="-1169.201"
-     inkscape:cy="-805.3946"
+     inkscape:zoom="1.6718444"
+     inkscape:cx="-16.74797"
+     inkscape:cy="-243.74277"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1043"
+     inkscape:window-width="1850"
+     inkscape:window-height="1016"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -8297,6 +8325,240 @@
          x="-192.98271"
          id="tspan1117-7-7-2-2-4-3-0-8"
          sodipodi:role="line">uac</tspan></text>
+    <circle
+       r="32.000004"
+       cy="-157.60071"
+       cx="-112.05724"
+       id="path2674-2-5-9-1-3"
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.04294;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt2.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <path
+       style="fill:#000000;fill-opacity:0;stroke:#ffff32;stroke-width:1.23926;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       d="m -62.036196,-190.41632 -3.73735,3.73736 m 11.265692,8.06167 -4.887562,1.86532 m 7.384992,11.83473 -1.735248,-0.002 -3.533872,-0.005 m 2.73563,13.69992 -4.882052,-1.87874 m -2.68353,13.65601 -3.7239,-3.74835"
+       id="path1652-4-6-2-4-5-0-0-6"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccc"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87778px;line-height:1.25;font-family:'Bulletproof BB';-inkscape-font-specification:'Bulletproof BB';letter-spacing:-0.0661458px;word-spacing:0px;fill:#ffff32;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="-75.952026"
+       y="-180.87291"
+       id="text841-3-22-6-0-4-9-3-7"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06"><tspan
+         sodipodi:role="line"
+         id="tspan839-60-6-6-2-7-1-0-5"
+         x="-75.952026"
+         y="-180.87291"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;font-family:R-Cluster;-inkscape-font-specification:'R-Cluster, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:-0.616479px;fill:#ffff32;fill-opacity:1;stroke-width:0.264583">20</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87778px;line-height:1.25;font-family:'Bulletproof BB';-inkscape-font-specification:'Bulletproof BB';letter-spacing:-0.0661458px;word-spacing:0px;fill:#ffff32;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="-67.773628"
+       y="-173.05266"
+       id="text841-3-5-4-4-9-4-7-4-3"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06"><tspan
+         sodipodi:role="line"
+         id="tspan839-60-0-1-6-0-4-7-4-5"
+         x="-67.773628"
+         y="-173.05266"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;font-family:R-Cluster;-inkscape-font-specification:'R-Cluster, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:-0.616479px;fill:#ffff32;fill-opacity:1;stroke-width:0.264583">10</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87778px;line-height:1.25;font-family:'Bulletproof BB';-inkscape-font-specification:'Bulletproof BB';letter-spacing:-0.0661458px;word-spacing:0px;fill:#ffff32;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="-64.086609"
+       y="-162.35101"
+       id="text841-3-4-8-2-9-3-1-4-6"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06"><tspan
+         sodipodi:role="line"
+         id="tspan839-60-3-9-8-9-0-1-4-2"
+         x="-64.086609"
+         y="-162.35101"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;font-family:R-Cluster;-inkscape-font-specification:'R-Cluster, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:-0.616479px;fill:#ffff32;fill-opacity:1;stroke-width:0.264583">0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87778px;line-height:1.25;font-family:'Bulletproof BB';-inkscape-font-specification:'Bulletproof BB';letter-spacing:-0.0661458px;word-spacing:0px;fill:#ffff32;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="-67.773628"
+       y="-151.54608"
+       id="text841-3-51-2-9-4-7-5-7-9"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06"><tspan
+         sodipodi:role="line"
+         id="tspan839-60-7-8-6-5-8-9-6-1"
+         x="-67.773628"
+         y="-151.54608"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;font-family:R-Cluster;-inkscape-font-specification:'R-Cluster, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:-0.616479px;fill:#ffff32;fill-opacity:1;stroke-width:0.264583">10</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87778px;line-height:1.25;font-family:'Bulletproof BB';-inkscape-font-specification:'Bulletproof BB';letter-spacing:-0.0661458px;word-spacing:0px;fill:#ffff32;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="-75.952026"
+       y="-143.38759"
+       id="text841-3-51-2-9-4-7-5-7-3-2"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06"><tspan
+         sodipodi:role="line"
+         id="tspan839-60-7-8-6-5-8-9-6-8-7"
+         x="-75.952026"
+         y="-143.38759"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;font-family:R-Cluster;-inkscape-font-specification:'R-Cluster, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:-0.616479px;fill:#ffff32;fill-opacity:1;stroke-width:0.264583">20</tspan></text>
+    <path
+       style="fill:none;fill-opacity:0;stroke:#ffff32;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       d="m -57.631934,-184.88081 -1.40271,0.89134 m 6.41755,12.10145 -1.64641,0.29568 m 1.62837,13.6442 -1.64553,-0.29995 m -3.40538,13.27906 -1.40008,-0.8956"
+       id="path2601-3-8-1-6-3-0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <circle
+       style="fill:#990000;fill-opacity:1;stroke:none;stroke-width:1.10207;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="path2724-6-4-7-1-9"
+       cx="-112.05724"
+       cy="-157.60071"
+       r="2.5"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt2.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <g
+       transform="matrix(0.08220889,0,0,0.08220889,-122.67151,-176.04426)"
+       id="g2870-8-2-4-0-9-3-7-3"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt2.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06">
+      <g
+         id="g2826-8-1-8-6-2-6-5-6"
+         transform="matrix(0.26458333,0,0,0.26458333,23.283335,496.22252)">
+        <g
+           id="Grade-58-7-1-08-0-5-9-0"
+           style="display:none" />
+        <g
+           id="Camada_1-4-8-2-5-6-6-6-6" />
+        <g
+           id="Área_de_trabalho-3-5-8-3-8-3-2-2" />
+        <g
+           id="Linhas-guia-7-7-9-94-9-9-1-6" />
+        <g
+           id="Page_1-1-4-3-1-2-4-7-1">
+          <g
+             id="Camada_1_1_-38-1-68-54-6-8-8-8">
+            <g
+               id="g10-09-8-02-1-6-1-5-7">
+              <path
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="M 113.74,81.595 77.933,19.301 104.05,19.184 104.004,4.723 H 0 V 19.33 h 23.959 l 46.887,87.931 h 57.697 l 46.887,-88.077 23.955,-0.151 0.052,-14.31 h -71.676 v 14.36 h 19.088 z"
+                 id="polygon12-7-5-1-5-4-2-7-9"
+                 inkscape:connector-curvature="0" />
+              <path
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="M 576.141,81.595 540.33,19.301 566.455,19.184 566.406,4.723 H 462.405 V 19.33 h 23.952 l 46.888,87.931 h 57.699 l 46.887,-88.077 23.958,-0.151 0.043,-14.31 h -71.663 v 14.36 h 19.08 z"
+                 id="polygon14-99-9-0-5-9-9-4-2"
+                 inkscape:connector-curvature="0" />
+              <path
+                 id="path16-32-7-5-4-5-3-1-0"
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="M 344.515,4.723 V 19.33 h 23.955 l 0.04,71.788 h -25.255 v 16.001 l 25.272,0.143 h 119.612 v -47.73 h -15.581 c -0.854,25.271 -22.776,31.62 -32.01,31.62 -8.461,0 -24.855,-0.033 -24.855,-0.033 V 19.301 l 23.595,-0.118 -0.032,-14.461 h -94.741 z"
+                 inkscape:connector-curvature="0" />
+              <path
+                 id="path18-4-5-1-9-0-9-8-2"
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="m 262.808,94.13 c -14.355,0 -25.986,-17.195 -25.986,-38.417 0,-21.227 11.631,-38.435 25.986,-38.435 14.351,0 25.986,17.208 25.986,38.435 0,21.222 -11.635,38.417 -25.986,38.417 z m 1.056,-92.353 c -40.72,0 -73.729,24.247 -73.729,54.145 0,29.9 33.008,54.144 73.729,54.144 40.717,0 73.731,-24.244 73.731,-54.144 0,-29.898 -33.014,-54.145 -73.731,-54.145 z"
+                 inkscape:connector-curvature="0" />
+              <path
+                 id="path20-3-3-1-8-4-0-5-3"
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="m 725.215,93.857 c -14.35,0 -25.98,-17.48 -25.98,-39.053 0,-21.565 11.631,-39.049 25.98,-39.049 14.352,0 25.98,17.484 25.98,39.049 10e-4,21.572 -11.628,39.053 -25.98,39.053 z M 726.276,0 c -40.729,0 -73.728,24.642 -73.728,55.028 0,30.385 32.998,55.022 73.728,55.022 C 766.99,110.05 800,85.413 800,55.028 800,24.642 766.99,0 726.276,0 Z"
+                 inkscape:connector-curvature="0" />
+            </g>
+          </g>
+        </g>
+      </g>
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 135.43526,1938.6344 -23.35931,-43.8648 h -11.9532 -11.953193 v -7.25 -7.25 h 51.875003 51.875 v 7.0883 7.0883 l -12.88493,0.1299 c -7.08672,0.072 -12.94104,0.1861 -13.00962,0.2547 -0.18976,0.1897 35.48719,62.1888 35.7408,62.11 0.17813,-0.055 33.15375,-62.0615 33.15375,-62.3411 0,-0.044 -4.275,-0.08 -9.5,-0.08 h -9.5 v -7.125 -7.125 h 35.75 35.75 l -7.5e-4,2.8125 c -5e-4,1.5468 -0.0743,4.752 -0.16426,7.1226 l -0.16351,4.3101 -11.88854,0.065 -11.88854,0.065 -23.3847,43.9359 -23.3847,43.9359 -28.875,-0.01 -28.875,-0.01 z"
+         id="path2842-71-8-0-3-8-8-9-7"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 346.12171,1985.2519 c -14.27448,-0.7558 -28.96041,-5.0057 -40.125,-11.6117 -14.38676,-8.5125 -23.63999,-20.0855 -26.78165,-33.4956 -0.65884,-2.8123 -0.70331,-3.352 -0.71058,-8.625 -0.007,-5.0067 0.0567,-5.9129 0.57832,-8.2437 2.07821,-9.2856 6.70839,-17.2743 14.21549,-24.5268 11.0869,-10.7109 27.06818,-17.9473 45.19842,-20.4661 9.01552,-1.2525 20.65961,-1.0568 30,0.5042 26.85324,4.4879 48.26553,20.0523 54.86599,39.8815 1.60347,4.8172 2.08908,8.2927 1.93529,13.8509 -0.17783,6.4273 -1.20033,10.8495 -3.78618,16.375 -9.62321,20.5629 -34.89788,34.8004 -64.57779,36.3773 -4.89125,0.2598 -5.55092,0.2586 -10.81231,-0.02 z m 7.75,-15.8393 c 10.86567,-1.9672 19.54421,-13.2778 22.26543,-29.018 0.74653,-4.3182 0.91196,-10.9948 0.38472,-15.5271 -1.88615,-16.2136 -10.40245,-28.8768 -21.25264,-31.6014 -2.63863,-0.6626 -6.39528,-0.6685 -8.95393,-0.014 -7.53945,1.9283 -14.22867,8.8622 -18.16362,18.8281 -1.73246,4.3877 -2.86396,9.6889 -3.2842,15.3866 -1.11024,15.0533 4.28967,30.1953 13.35466,37.4482 4.95929,3.9679 10.22198,5.4804 15.64958,4.4977 z"
+         id="path2844-2-8-8-8-7-8-7-5"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 431.36763,1974.6446 v -7.875 h 12.625 12.625 v -36 -36 h -12 -12 v -7.25 -7.25 h 47.25 47.25 v 7.125 7.125 h -7.58507 c -4.17179,0 -9.45929,0.074 -11.75,0.1642 l -4.16493,0.1643 v 35.9756 35.9756 l 14.3125,-0.096 c 13.73194,-0.092 14.41357,-0.1184 16.80418,-0.6561 14.94511,-3.3615 24.60501,-14.1694 25.77729,-28.8405 l 0.17479,-2.1875 h 7.71562 7.71562 v 23.75 23.75 h -72.375 -72.375 z"
+         id="path2846-2-3-5-5-1-5-5-9"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 621.13491,1982.2071 c -0.1312,-0.1719 -10.68608,-19.9157 -23.45529,-43.875 l -23.21675,-43.5625 h -11.95032 -11.95031 v -7.25 -7.25 h 51.875 51.875 v 7.0883 7.0883 l -12.88494,0.1299 c -7.08671,0.072 -12.94022,0.1853 -13.00779,0.2529 -0.18827,0.1882 35.48665,62.1877 35.73892,62.1106 0.17314,-0.053 32.55261,-60.8508 33.07692,-62.1075 0.10298,-0.2468 -1.8721,-0.3125 -9.39637,-0.3125 h -9.52674 v -7.125 -7.125 h 35.75 35.75 v 4.4611 c 0,2.4536 -0.0733,5.6588 -0.16285,7.1226 l -0.16284,2.6615 -11.88587,0.065 -11.88587,0.065 -23.38879,43.9372 -23.38878,43.9372 -28.78189,2e-4 c -22.73191,3e-4 -28.83203,-0.065 -29.02044,-0.3121 z"
+         id="path2848-02-1-0-2-7-0-3-2"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 809.1065,1985.2619 c -23.92056,-1.2168 -45.81185,-11.2866 -58.09537,-26.7232 -4.97618,-6.2535 -8.34723,-13.436 -9.6892,-20.6441 -0.7098,-3.8126 -0.65695,-11.523 0.10488,-15.2993 4.6147,-22.8745 27.55955,-41.0584 57.80469,-45.8105 5.31025,-0.8343 8.8892,-1.0881 15.25,-1.0816 14.9761,0.015 27.87269,2.9147 40.375,9.0764 17.86551,8.8049 29.58688,22.8004 32.40778,38.6955 0.7237,4.0779 0.71915,10.0358 -0.0108,14.1521 -5.10489,28.7871 -39.26979,49.6124 -78.14698,47.6347 z m 8.85831,-16.5045 c 10.83126,-3.0015 19.22358,-15.904 21.00306,-32.2905 0.331,-3.048 0.33726,-9.3651 0.0122,-12.3223 -1.59464,-14.5079 -8.41678,-26.5115 -17.62359,-31.009 -2.88635,-1.41 -5.08693,-1.9182 -8.25,-1.9053 -3.09389,0.013 -5.65307,0.6384 -8.35121,2.0421 -8.27103,4.3031 -14.51002,14.411 -16.81795,27.2472 -0.7456,4.1468 -0.91499,12.4843 -0.34467,16.9651 2.71015,21.2927 16.21335,35.1963 30.37214,31.2727 z"
+         id="path2850-1-8-6-2-2-9-8-2"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+    </g>
+    <text
+       inkscape:export-ydpi="119.06"
+       inkscape:export-xdpi="119.06"
+       id="text1119-4-5-1-6-8-3-8"
+       y="-148.86067"
+       x="-158.37794"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;line-height:1.25;font-family:'Bulletproof BB';-inkscape-font-specification:'Bulletproof BB';letter-spacing:-0.0661458px;word-spacing:0px;fill:#ffff32;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       xml:space="preserve"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost.png"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:R-Cluster;-inkscape-font-specification:R-Cluster;letter-spacing:-1.4949px;fill:#ffff32;fill-opacity:1;stroke-width:0.264583"
+         y="-148.86067"
+         x="-158.37794"
+         id="tspan1117-7-7-2-2-4-3-9"
+         sodipodi:role="line">psi</tspan></text>
+    <text
+       inkscape:export-ydpi="119.06"
+       inkscape:export-xdpi="119.06"
+       id="text1119-4-5-1-6-8-3-6-7"
+       y="-188.90979"
+       x="-75.861984"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Bulletproof BB';-inkscape-font-specification:'Bulletproof BB';letter-spacing:-0.992188px;word-spacing:0px;fill:#ffff32;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       xml:space="preserve"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost.png"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:R-Cluster;-inkscape-font-specification:R-Cluster;fill:#ffff32;fill-opacity:1;stroke-width:0.264583"
+         y="-188.90979"
+         x="-75.861984"
+         id="tspan1117-7-7-2-2-4-3-0-3"
+         sodipodi:role="line">boo<tspan
+   style="letter-spacing:-1.23825px"
+   id="tspan171701-6">st</tspan></tspan></text>
+    <text
+       inkscape:export-ydpi="119.06"
+       inkscape:export-xdpi="119.06"
+       id="text1119-4-5-1-6-8-3-6-4-1"
+       y="-138.39452"
+       x="-74.303871"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Bulletproof BB';-inkscape-font-specification:'Bulletproof BB';letter-spacing:-0.992188px;word-spacing:0px;fill:#ffff32;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       xml:space="preserve"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost.png"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:R-Cluster;-inkscape-font-specification:R-Cluster;fill:#ffff32;fill-opacity:1;stroke-width:0.264583"
+         y="-138.39452"
+         x="-74.303871"
+         id="tspan1117-7-7-2-2-4-3-0-8-2"
+         sodipodi:role="line">uac</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;line-height:1.25;font-family:R-Cluster;-inkscape-font-specification:R-Cluster;letter-spacing:-0.0661458px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -9388,5 +9650,648 @@
          style="fill:none;fill-opacity:1;stroke:#ffff32;stroke-width:1.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          sodipodi:nodetypes="cccccccc" />
     </g>
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:4;stroke-linecap:square;stroke-linejoin:round;paint-order:markers fill stroke"
+       id="path2815"
+       sodipodi:type="arc"
+       sodipodi:cx="-146.63367"
+       sodipodi:cy="-207.79886"
+       sodipodi:rx="10.148099"
+       sodipodi:ry="9.9365273"
+       sodipodi:start="4.1713369"
+       sodipodi:end="5.253441"
+       sodipodi:open="true"
+       sodipodi:arc-type="arc"
+       d="m -151.86032,-216.31612 a 10.148099,9.9365273 0 0 1 10.45331,0" />
+    <path
+       style="fill:none;stroke:#ffff32;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m -130.05529,-136.15146 3.85672,-4.59627"
+       id="path3166"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt2.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <circle
+       style="fill:none;stroke:#ffff32;stroke-width:5.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="path10010"
+       sodipodi:type="arc"
+       sodipodi:cx="-112.05724"
+       sodipodi:cy="-157.60071"
+       sodipodi:rx="25"
+       sodipodi:ry="25"
+       sodipodi:start="4.1887902"
+       sodipodi:end="0.87266463"
+       sodipodi:arc-type="arc"
+       d="m -124.55724,-179.25134 a 25,25 0 0 1 32.978798,7.31122 25,25 0 0 1 -4.409111,33.49052"
+       sodipodi:open="true"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt2.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <path
+       style="fill:none;stroke:#ffa40b;stroke-width:5.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="path10010-6"
+       sodipodi:type="arc"
+       sodipodi:cx="-112.05724"
+       sodipodi:cy="-157.60071"
+       sodipodi:rx="25"
+       sodipodi:ry="25"
+       sodipodi:start="5.846853"
+       sodipodi:end="0.87266463"
+       sodipodi:arc-type="arc"
+       d="m -89.399549,-168.16616 a 25,25 0 0 1 -6.588004,29.71656"
+       sodipodi:open="true"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt2.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <path
+       style="fill:none;stroke:#ffff32;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -94.05919,-136.15146 -3.856726,-4.59627"
+       id="path3166-6"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt2.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -97.915914,-140.74773 c -0.710554,-3.82355 -0.710554,-3.82355 0,0"
+       id="path12815"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt2.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <circle
+       r="32.000004"
+       cy="-155.63437"
+       cx="-2.2626069"
+       id="path2674-2-5-9-1-3-2"
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.04294;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <circle
+       style="fill:#990000;fill-opacity:1;stroke:none;stroke-width:1.10207;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="path2724-6-4-7-1-9-7"
+       cx="-2.2626069"
+       cy="-155.63437"
+       r="2.5"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <g
+       transform="matrix(0.08220889,0,0,0.08220889,-12.876873,-174.07794)"
+       id="g2870-8-2-4-0-9-3-7-3-0"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06">
+      <g
+         id="g2826-8-1-8-6-2-6-5-6-9"
+         transform="matrix(0.26458333,0,0,0.26458333,23.283335,496.22252)">
+        <g
+           id="Grade-58-7-1-08-0-5-9-0-3"
+           style="display:none" />
+        <g
+           id="Camada_1-4-8-2-5-6-6-6-6-6" />
+        <g
+           id="Área_de_trabalho-3-5-8-3-8-3-2-2-0" />
+        <g
+           id="Linhas-guia-7-7-9-94-9-9-1-6-6" />
+        <g
+           id="Page_1-1-4-3-1-2-4-7-1-2">
+          <g
+             id="Camada_1_1_-38-1-68-54-6-8-8-8-6">
+            <g
+               id="g10-09-8-02-1-6-1-5-7-1">
+              <path
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="M 113.74,81.595 77.933,19.301 104.05,19.184 104.004,4.723 H 0 V 19.33 h 23.959 l 46.887,87.931 h 57.697 l 46.887,-88.077 23.955,-0.151 0.052,-14.31 h -71.676 v 14.36 h 19.088 z"
+                 id="polygon12-7-5-1-5-4-2-7-9-8"
+                 inkscape:connector-curvature="0" />
+              <path
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="M 576.141,81.595 540.33,19.301 566.455,19.184 566.406,4.723 H 462.405 V 19.33 h 23.952 l 46.888,87.931 h 57.699 l 46.887,-88.077 23.958,-0.151 0.043,-14.31 h -71.663 v 14.36 h 19.08 z"
+                 id="polygon14-99-9-0-5-9-9-4-2-7"
+                 inkscape:connector-curvature="0" />
+              <path
+                 id="path16-32-7-5-4-5-3-1-0-9"
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="M 344.515,4.723 V 19.33 h 23.955 l 0.04,71.788 h -25.255 v 16.001 l 25.272,0.143 h 119.612 v -47.73 h -15.581 c -0.854,25.271 -22.776,31.62 -32.01,31.62 -8.461,0 -24.855,-0.033 -24.855,-0.033 V 19.301 l 23.595,-0.118 -0.032,-14.461 h -94.741 z"
+                 inkscape:connector-curvature="0" />
+              <path
+                 id="path18-4-5-1-9-0-9-8-2-2"
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="m 262.808,94.13 c -14.355,0 -25.986,-17.195 -25.986,-38.417 0,-21.227 11.631,-38.435 25.986,-38.435 14.351,0 25.986,17.208 25.986,38.435 0,21.222 -11.635,38.417 -25.986,38.417 z m 1.056,-92.353 c -40.72,0 -73.729,24.247 -73.729,54.145 0,29.9 33.008,54.144 73.729,54.144 40.717,0 73.731,-24.244 73.731,-54.144 0,-29.898 -33.014,-54.145 -73.731,-54.145 z"
+                 inkscape:connector-curvature="0" />
+              <path
+                 id="path20-3-3-1-8-4-0-5-3-0"
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="m 725.215,93.857 c -14.35,0 -25.98,-17.48 -25.98,-39.053 0,-21.565 11.631,-39.049 25.98,-39.049 14.352,0 25.98,17.484 25.98,39.049 10e-4,21.572 -11.628,39.053 -25.98,39.053 z M 726.276,0 c -40.729,0 -73.728,24.642 -73.728,55.028 0,30.385 32.998,55.022 73.728,55.022 C 766.99,110.05 800,85.413 800,55.028 800,24.642 766.99,0 726.276,0 Z"
+                 inkscape:connector-curvature="0" />
+            </g>
+          </g>
+        </g>
+      </g>
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 135.43526,1938.6344 -23.35931,-43.8648 h -11.9532 -11.953193 v -7.25 -7.25 h 51.875003 51.875 v 7.0883 7.0883 l -12.88493,0.1299 c -7.08672,0.072 -12.94104,0.1861 -13.00962,0.2547 -0.18976,0.1897 35.48719,62.1888 35.7408,62.11 0.17813,-0.055 33.15375,-62.0615 33.15375,-62.3411 0,-0.044 -4.275,-0.08 -9.5,-0.08 h -9.5 v -7.125 -7.125 h 35.75 35.75 l -7.5e-4,2.8125 c -5e-4,1.5468 -0.0743,4.752 -0.16426,7.1226 l -0.16351,4.3101 -11.88854,0.065 -11.88854,0.065 -23.3847,43.9359 -23.3847,43.9359 -28.875,-0.01 -28.875,-0.01 z"
+         id="path2842-71-8-0-3-8-8-9-7-2"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 346.12171,1985.2519 c -14.27448,-0.7558 -28.96041,-5.0057 -40.125,-11.6117 -14.38676,-8.5125 -23.63999,-20.0855 -26.78165,-33.4956 -0.65884,-2.8123 -0.70331,-3.352 -0.71058,-8.625 -0.007,-5.0067 0.0567,-5.9129 0.57832,-8.2437 2.07821,-9.2856 6.70839,-17.2743 14.21549,-24.5268 11.0869,-10.7109 27.06818,-17.9473 45.19842,-20.4661 9.01552,-1.2525 20.65961,-1.0568 30,0.5042 26.85324,4.4879 48.26553,20.0523 54.86599,39.8815 1.60347,4.8172 2.08908,8.2927 1.93529,13.8509 -0.17783,6.4273 -1.20033,10.8495 -3.78618,16.375 -9.62321,20.5629 -34.89788,34.8004 -64.57779,36.3773 -4.89125,0.2598 -5.55092,0.2586 -10.81231,-0.02 z m 7.75,-15.8393 c 10.86567,-1.9672 19.54421,-13.2778 22.26543,-29.018 0.74653,-4.3182 0.91196,-10.9948 0.38472,-15.5271 -1.88615,-16.2136 -10.40245,-28.8768 -21.25264,-31.6014 -2.63863,-0.6626 -6.39528,-0.6685 -8.95393,-0.014 -7.53945,1.9283 -14.22867,8.8622 -18.16362,18.8281 -1.73246,4.3877 -2.86396,9.6889 -3.2842,15.3866 -1.11024,15.0533 4.28967,30.1953 13.35466,37.4482 4.95929,3.9679 10.22198,5.4804 15.64958,4.4977 z"
+         id="path2844-2-8-8-8-7-8-7-5-3"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 431.36763,1974.6446 v -7.875 h 12.625 12.625 v -36 -36 h -12 -12 v -7.25 -7.25 h 47.25 47.25 v 7.125 7.125 h -7.58507 c -4.17179,0 -9.45929,0.074 -11.75,0.1642 l -4.16493,0.1643 v 35.9756 35.9756 l 14.3125,-0.096 c 13.73194,-0.092 14.41357,-0.1184 16.80418,-0.6561 14.94511,-3.3615 24.60501,-14.1694 25.77729,-28.8405 l 0.17479,-2.1875 h 7.71562 7.71562 v 23.75 23.75 h -72.375 -72.375 z"
+         id="path2846-2-3-5-5-1-5-5-9-7"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 621.13491,1982.2071 c -0.1312,-0.1719 -10.68608,-19.9157 -23.45529,-43.875 l -23.21675,-43.5625 h -11.95032 -11.95031 v -7.25 -7.25 h 51.875 51.875 v 7.0883 7.0883 l -12.88494,0.1299 c -7.08671,0.072 -12.94022,0.1853 -13.00779,0.2529 -0.18827,0.1882 35.48665,62.1877 35.73892,62.1106 0.17314,-0.053 32.55261,-60.8508 33.07692,-62.1075 0.10298,-0.2468 -1.8721,-0.3125 -9.39637,-0.3125 h -9.52674 v -7.125 -7.125 h 35.75 35.75 v 4.4611 c 0,2.4536 -0.0733,5.6588 -0.16285,7.1226 l -0.16284,2.6615 -11.88587,0.065 -11.88587,0.065 -23.38879,43.9372 -23.38878,43.9372 -28.78189,2e-4 c -22.73191,3e-4 -28.83203,-0.065 -29.02044,-0.3121 z"
+         id="path2848-02-1-0-2-7-0-3-2-5"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 809.1065,1985.2619 c -23.92056,-1.2168 -45.81185,-11.2866 -58.09537,-26.7232 -4.97618,-6.2535 -8.34723,-13.436 -9.6892,-20.6441 -0.7098,-3.8126 -0.65695,-11.523 0.10488,-15.2993 4.6147,-22.8745 27.55955,-41.0584 57.80469,-45.8105 5.31025,-0.8343 8.8892,-1.0881 15.25,-1.0816 14.9761,0.015 27.87269,2.9147 40.375,9.0764 17.86551,8.8049 29.58688,22.8004 32.40778,38.6955 0.7237,4.0779 0.71915,10.0358 -0.0108,14.1521 -5.10489,28.7871 -39.26979,49.6124 -78.14698,47.6347 z m 8.85831,-16.5045 c 10.83126,-3.0015 19.22358,-15.904 21.00306,-32.2905 0.331,-3.048 0.33726,-9.3651 0.0122,-12.3223 -1.59464,-14.5079 -8.41678,-26.5115 -17.62359,-31.009 -2.88635,-1.41 -5.08693,-1.9182 -8.25,-1.9053 -3.09389,0.013 -5.65307,0.6384 -8.35121,2.0421 -8.27103,4.3031 -14.51002,14.411 -16.81795,27.2472 -0.7456,4.1468 -0.91499,12.4843 -0.34467,16.9651 2.71015,21.2927 16.21335,35.1963 30.37214,31.2727 z"
+         id="path2850-1-8-6-2-2-9-8-2-9"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+    </g>
+    <path
+       style="fill:none;stroke:#ffff32;stroke-width:1.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="path2921-2"
+       sodipodi:type="arc"
+       sodipodi:cx="-2.2626069"
+       sodipodi:cy="-155.63437"
+       sodipodi:rx="28"
+       sodipodi:ry="28"
+       sodipodi:start="2.268928"
+       sodipodi:end="0.87266463"
+       sodipodi:arc-type="arc"
+       sodipodi:open="true"
+       d="m -20.260659,-134.18512 c -9.017228,-7.56636 -12.339313,-19.96454 -8.313341,-31.02581 4.025971,-11.06127 14.540238,-18.42344 26.3113931,-18.42344 11.7711548,0 22.2854209,7.36217 26.3113929,18.42344 4.025973,11.06126 0.703888,23.45945 -8.31334,31.02581 m -35.996105,0 4.591913,-5.47243 m -8.41753,1.56534 1.443544,-1.16034 m -4.436838,-3.41577 1.641539,-0.85765 m -3.688349,-4.21298 1.776927,-0.52224 m -2.79919,-4.8495 1.844545,-0.16693 m -1.803276,-5.30106 7.104145,0.75119 m -6.000915,-6.10689 1.768841,0.54901 m 0.354273,-5.58816 1.628406,0.88233 m 1.433619,-5.41274 1.425866,1.18199 m 2.45829,-5.03089 1.168945,1.43659 m 3.389205,-4.45717 3.34585,6.31177 m 1.712452,-8.38884 0.5328571,1.77378 m 4.832682,-2.82812 0.1779489,1.84352 m 5.2901924,-1.83492 -0.18374587,1.84295 m 5.54594237,-0.77174 -0.5384328,1.77209 m 5.5901779,0.32088 -3.3656838,6.30121 m 7.9143118,-3.26631 -1.173458,1.4329 m 5.045489,2.42819 -1.429576,1.17751 m 4.477338,3.36251 -1.631173,0.8772 m 3.738428,4.1686 -1.770559,0.54345 m 2.85694,4.8157 -7.106472,0.72884 m 7.130545,4.73925 -1.844011,-0.17273 m 0.804858,5.54123 -1.775275,-0.52783 m -0.287472,5.59199 -1.638833,-0.86281 m -1.368837,5.42949 -1.439889,-1.16487 m -2.33045,5.00341 -4.591914,-5.47243"
+       inkscape:path-effect="#path-effect16699" />
+    <path
+       style="fill:none;stroke:#ffff32;stroke-width:1.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="path2921-3-2"
+       sodipodi:type="arc"
+       sodipodi:cx="-2.2626069"
+       sodipodi:cy="-155.63437"
+       sodipodi:rx="20"
+       sodipodi:ry="20"
+       sodipodi:start="2.268928"
+       sodipodi:end="0.87266463"
+       sodipodi:arc-type="arc"
+       sodipodi:open="true"
+       d="m -15.118359,-140.31348 a 20,20 0 0 1 -5.9381,-22.16129 20,20 0 0 1 18.7938521,-13.1596 20,20 0 0 1 18.7938529,13.1596 20,20 0 0 1 -5.938101,22.16129" />
+    <path
+       style="fill:none;stroke:#ffff32;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -20.260653,-134.18513 3.85672,-4.59627"
+       id="path3166-8" />
+    <path
+       style="fill:none;stroke:#ffff32;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 15.735447,-134.18513 -3.856726,-4.59627"
+       id="path3166-6-9"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 11.878723,-138.7814 c -0.710554,-3.82355 -0.710554,-3.82355 0,0"
+       id="path12815-3" />
+    <circle
+       r="32.000004"
+       cy="-153.78688"
+       cx="71.093689"
+       id="path2674-2-5-9-1-3-2-2"
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.04294;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt1.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <path
+       style="fill:none;stroke:#ffa40b;stroke-width:9;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="path10010-6-6"
+       sodipodi:type="arc"
+       sodipodi:cx="71.093689"
+       sodipodi:cy="-153.78688"
+       sodipodi:rx="24"
+       sodipodi:ry="24"
+       sodipodi:start="6.1959188"
+       sodipodi:end="0.87266463"
+       sodipodi:arc-type="arc"
+       d="m 95.002362,-155.87862 a 24,24 0 0 1 -8.48177,20.47681"
+       sodipodi:open="true"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt1.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <circle
+       r="32.000004"
+       cy="-70.393959"
+       cx="1.358083"
+       id="path2674-2-5-9-1-3-2-2-4"
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.04294;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt3.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <path
+       style="fill:none;stroke:#ffa40b;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="path10010-6-6-3"
+       sodipodi:type="arc"
+       sodipodi:cx="1.358083"
+       sodipodi:cy="-70.393959"
+       sodipodi:rx="22"
+       sodipodi:ry="22"
+       sodipodi:start="6.1959188"
+       sodipodi:end="0.87266463"
+       sodipodi:arc-type="arc"
+       sodipodi:open="true"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt3.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06"
+       d="M 23.274366,-72.311385 A 22,22 0 0 1 15.49941,-53.540981" />
+    <path
+       style="fill:none;stroke:#ffff32;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="path10010-6-6-4"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt3.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06"
+       sodipodi:type="arc"
+       sodipodi:cx="1.358083"
+       sodipodi:cy="-70.393959"
+       sodipodi:rx="22"
+       sodipodi:ry="22"
+       sodipodi:start="4.2399807"
+       sodipodi:end="6.175539"
+       sodipodi:arc-type="arc"
+       d="m -8.6526236,-89.98441 a 22,22 0 0 1 20.4685816,0.235017 22,22 0 0 1 11.414783,16.991786"
+       sodipodi:open="true" />
+    <circle
+       style="fill:#990000;fill-opacity:1;stroke:none;stroke-width:1.10207;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="path2724-6-4-7-1-9-7-9"
+       cx="71.093689"
+       cy="-153.78688"
+       r="2.5"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt1.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <g
+       transform="matrix(0.08220889,0,0,0.08220889,60.479426,-172.23045)"
+       id="g2870-8-2-4-0-9-3-7-3-0-3"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt1.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06">
+      <g
+         id="g2826-8-1-8-6-2-6-5-6-9-1"
+         transform="matrix(0.26458333,0,0,0.26458333,23.283335,496.22252)">
+        <g
+           id="Grade-58-7-1-08-0-5-9-0-3-9"
+           style="display:none" />
+        <g
+           id="Camada_1-4-8-2-5-6-6-6-6-6-4" />
+        <g
+           id="Área_de_trabalho-3-5-8-3-8-3-2-2-0-7" />
+        <g
+           id="Linhas-guia-7-7-9-94-9-9-1-6-6-8" />
+        <g
+           id="Page_1-1-4-3-1-2-4-7-1-2-4">
+          <g
+             id="Camada_1_1_-38-1-68-54-6-8-8-8-6-5">
+            <g
+               id="g10-09-8-02-1-6-1-5-7-1-0">
+              <path
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="M 113.74,81.595 77.933,19.301 104.05,19.184 104.004,4.723 H 0 V 19.33 h 23.959 l 46.887,87.931 h 57.697 l 46.887,-88.077 23.955,-0.151 0.052,-14.31 h -71.676 v 14.36 h 19.088 z"
+                 id="polygon12-7-5-1-5-4-2-7-9-8-3"
+                 inkscape:connector-curvature="0" />
+              <path
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="M 576.141,81.595 540.33,19.301 566.455,19.184 566.406,4.723 H 462.405 V 19.33 h 23.952 l 46.888,87.931 h 57.699 l 46.887,-88.077 23.958,-0.151 0.043,-14.31 h -71.663 v 14.36 h 19.08 z"
+                 id="polygon14-99-9-0-5-9-9-4-2-7-6"
+                 inkscape:connector-curvature="0" />
+              <path
+                 id="path16-32-7-5-4-5-3-1-0-9-1"
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="M 344.515,4.723 V 19.33 h 23.955 l 0.04,71.788 h -25.255 v 16.001 l 25.272,0.143 h 119.612 v -47.73 h -15.581 c -0.854,25.271 -22.776,31.62 -32.01,31.62 -8.461,0 -24.855,-0.033 -24.855,-0.033 V 19.301 l 23.595,-0.118 -0.032,-14.461 h -94.741 z"
+                 inkscape:connector-curvature="0" />
+              <path
+                 id="path18-4-5-1-9-0-9-8-2-2-0"
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="m 262.808,94.13 c -14.355,0 -25.986,-17.195 -25.986,-38.417 0,-21.227 11.631,-38.435 25.986,-38.435 14.351,0 25.986,17.208 25.986,38.435 0,21.222 -11.635,38.417 -25.986,38.417 z m 1.056,-92.353 c -40.72,0 -73.729,24.247 -73.729,54.145 0,29.9 33.008,54.144 73.729,54.144 40.717,0 73.731,-24.244 73.731,-54.144 0,-29.898 -33.014,-54.145 -73.731,-54.145 z"
+                 inkscape:connector-curvature="0" />
+              <path
+                 id="path20-3-3-1-8-4-0-5-3-0-6"
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="m 725.215,93.857 c -14.35,0 -25.98,-17.48 -25.98,-39.053 0,-21.565 11.631,-39.049 25.98,-39.049 14.352,0 25.98,17.484 25.98,39.049 10e-4,21.572 -11.628,39.053 -25.98,39.053 z M 726.276,0 c -40.729,0 -73.728,24.642 -73.728,55.028 0,30.385 32.998,55.022 73.728,55.022 C 766.99,110.05 800,85.413 800,55.028 800,24.642 766.99,0 726.276,0 Z"
+                 inkscape:connector-curvature="0" />
+            </g>
+          </g>
+        </g>
+      </g>
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 135.43526,1938.6344 -23.35931,-43.8648 h -11.9532 -11.953193 v -7.25 -7.25 h 51.875003 51.875 v 7.0883 7.0883 l -12.88493,0.1299 c -7.08672,0.072 -12.94104,0.1861 -13.00962,0.2547 -0.18976,0.1897 35.48719,62.1888 35.7408,62.11 0.17813,-0.055 33.15375,-62.0615 33.15375,-62.3411 0,-0.044 -4.275,-0.08 -9.5,-0.08 h -9.5 v -7.125 -7.125 h 35.75 35.75 l -7.5e-4,2.8125 c -5e-4,1.5468 -0.0743,4.752 -0.16426,7.1226 l -0.16351,4.3101 -11.88854,0.065 -11.88854,0.065 -23.3847,43.9359 -23.3847,43.9359 -28.875,-0.01 -28.875,-0.01 z"
+         id="path2842-71-8-0-3-8-8-9-7-2-3"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 346.12171,1985.2519 c -14.27448,-0.7558 -28.96041,-5.0057 -40.125,-11.6117 -14.38676,-8.5125 -23.63999,-20.0855 -26.78165,-33.4956 -0.65884,-2.8123 -0.70331,-3.352 -0.71058,-8.625 -0.007,-5.0067 0.0567,-5.9129 0.57832,-8.2437 2.07821,-9.2856 6.70839,-17.2743 14.21549,-24.5268 11.0869,-10.7109 27.06818,-17.9473 45.19842,-20.4661 9.01552,-1.2525 20.65961,-1.0568 30,0.5042 26.85324,4.4879 48.26553,20.0523 54.86599,39.8815 1.60347,4.8172 2.08908,8.2927 1.93529,13.8509 -0.17783,6.4273 -1.20033,10.8495 -3.78618,16.375 -9.62321,20.5629 -34.89788,34.8004 -64.57779,36.3773 -4.89125,0.2598 -5.55092,0.2586 -10.81231,-0.02 z m 7.75,-15.8393 c 10.86567,-1.9672 19.54421,-13.2778 22.26543,-29.018 0.74653,-4.3182 0.91196,-10.9948 0.38472,-15.5271 -1.88615,-16.2136 -10.40245,-28.8768 -21.25264,-31.6014 -2.63863,-0.6626 -6.39528,-0.6685 -8.95393,-0.014 -7.53945,1.9283 -14.22867,8.8622 -18.16362,18.8281 -1.73246,4.3877 -2.86396,9.6889 -3.2842,15.3866 -1.11024,15.0533 4.28967,30.1953 13.35466,37.4482 4.95929,3.9679 10.22198,5.4804 15.64958,4.4977 z"
+         id="path2844-2-8-8-8-7-8-7-5-3-2"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 431.36763,1974.6446 v -7.875 h 12.625 12.625 v -36 -36 h -12 -12 v -7.25 -7.25 h 47.25 47.25 v 7.125 7.125 h -7.58507 c -4.17179,0 -9.45929,0.074 -11.75,0.1642 l -4.16493,0.1643 v 35.9756 35.9756 l 14.3125,-0.096 c 13.73194,-0.092 14.41357,-0.1184 16.80418,-0.6561 14.94511,-3.3615 24.60501,-14.1694 25.77729,-28.8405 l 0.17479,-2.1875 h 7.71562 7.71562 v 23.75 23.75 h -72.375 -72.375 z"
+         id="path2846-2-3-5-5-1-5-5-9-7-0"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 621.13491,1982.2071 c -0.1312,-0.1719 -10.68608,-19.9157 -23.45529,-43.875 l -23.21675,-43.5625 h -11.95032 -11.95031 v -7.25 -7.25 h 51.875 51.875 v 7.0883 7.0883 l -12.88494,0.1299 c -7.08671,0.072 -12.94022,0.1853 -13.00779,0.2529 -0.18827,0.1882 35.48665,62.1877 35.73892,62.1106 0.17314,-0.053 32.55261,-60.8508 33.07692,-62.1075 0.10298,-0.2468 -1.8721,-0.3125 -9.39637,-0.3125 h -9.52674 v -7.125 -7.125 h 35.75 35.75 v 4.4611 c 0,2.4536 -0.0733,5.6588 -0.16285,7.1226 l -0.16284,2.6615 -11.88587,0.065 -11.88587,0.065 -23.38879,43.9372 -23.38878,43.9372 -28.78189,2e-4 c -22.73191,3e-4 -28.83203,-0.065 -29.02044,-0.3121 z"
+         id="path2848-02-1-0-2-7-0-3-2-5-6"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 809.1065,1985.2619 c -23.92056,-1.2168 -45.81185,-11.2866 -58.09537,-26.7232 -4.97618,-6.2535 -8.34723,-13.436 -9.6892,-20.6441 -0.7098,-3.8126 -0.65695,-11.523 0.10488,-15.2993 4.6147,-22.8745 27.55955,-41.0584 57.80469,-45.8105 5.31025,-0.8343 8.8892,-1.0881 15.25,-1.0816 14.9761,0.015 27.87269,2.9147 40.375,9.0764 17.86551,8.8049 29.58688,22.8004 32.40778,38.6955 0.7237,4.0779 0.71915,10.0358 -0.0108,14.1521 -5.10489,28.7871 -39.26979,49.6124 -78.14698,47.6347 z m 8.85831,-16.5045 c 10.83126,-3.0015 19.22358,-15.904 21.00306,-32.2905 0.331,-3.048 0.33726,-9.3651 0.0122,-12.3223 -1.59464,-14.5079 -8.41678,-26.5115 -17.62359,-31.009 -2.88635,-1.41 -5.08693,-1.9182 -8.25,-1.9053 -3.09389,0.013 -5.65307,0.6384 -8.35121,2.0421 -8.27103,4.3031 -14.51002,14.411 -16.81795,27.2472 -0.7456,4.1468 -0.91499,12.4843 -0.34467,16.9651 2.71015,21.2927 16.21335,35.1963 30.37214,31.2727 z"
+         id="path2850-1-8-6-2-2-9-8-2-9-1"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+    </g>
+    <path
+       id="path2921-2-5"
+       d="m 53.095636,-132.33764 c -9.017227,-7.56635 -12.339312,-19.96454 -8.313341,-31.0258 4.025972,-11.06127 14.540239,-18.42344 26.311394,-18.42344 11.771155,0 22.285421,7.36217 26.311393,18.42344 4.025968,11.06126 0.703888,23.45945 -8.31334,31.0258 m -35.996106,0 4.591914,-5.47243 m -8.417531,1.56535 1.443545,-1.16034 m -4.436838,-3.41577 1.641539,-0.85765 m -3.688349,-4.21298 1.776927,-0.52225 m -2.799191,-4.84949 1.844546,-0.16693 m -1.803276,-5.30106 7.104145,0.75119 m -6.000915,-6.10689 1.768841,0.54901 m 0.354273,-5.58816 1.628406,0.88233 m 1.433619,-5.41275 1.425866,1.182 m 2.45829,-5.03089 1.168945,1.43659 m 3.389204,-4.45717 3.34585,6.31177 m 1.712453,-8.38884 0.532857,1.77377 m 4.832682,-2.82811 0.177949,1.84351 m 5.290192,-1.83491 -0.183746,1.84294 m 5.545943,-0.77173 -0.538433,1.77209 m 5.590178,0.32088 -3.365684,6.30121 m 7.914311,-3.26631 -1.173457,1.4329 m 5.045489,2.42819 -1.429576,1.17751 m 4.477338,3.36251 -1.631173,0.8772 m 3.738428,4.1686 -1.770559,0.54345 m 2.85694,4.81569 -7.106472,0.72885 m 7.130545,4.73925 -1.844011,-0.17273 m 0.804858,5.54123 -1.775276,-0.52783 m -0.287471,5.59199 -1.638833,-0.86281 m -1.368837,5.42949 -1.439889,-1.16487 m -2.33045,5.0034 -4.591914,-5.47243"
+       style="fill:none;stroke:#ffff32;stroke-width:1.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt1.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <path
+       style="fill:none;stroke:#ffff32;stroke-width:1.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="path2921-3-2-5"
+       sodipodi:type="arc"
+       sodipodi:cx="71.093689"
+       sodipodi:cy="-153.78688"
+       sodipodi:rx="20"
+       sodipodi:ry="20"
+       sodipodi:start="2.268928"
+       sodipodi:end="0.87266463"
+       sodipodi:arc-type="arc"
+       sodipodi:open="true"
+       d="m 58.237937,-138.46599 a 20,20 0 0 1 -5.938101,-22.16129 20,20 0 0 1 18.793853,-13.1596 20,20 0 0 1 18.793852,13.1596 20,20 0 0 1 -5.9381,22.16129"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt1.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <path
+       style="fill:none;stroke:#ffff32;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 53.095646,-132.33764 3.85672,-4.59627"
+       id="path3166-8-4"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt1.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <path
+       style="fill:none;stroke:#ffff32;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 89.091746,-132.33764 -3.856726,-4.59627"
+       id="path3166-6-9-7"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt1.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 85.235022,-136.93391 c -0.710554,-3.82355 -0.710554,-3.82355 0,0"
+       id="path12815-3-6"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt1.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <path
+       style="fill:none;stroke:#ffff32;stroke-width:0.75;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="path2921"
+       sodipodi:type="arc"
+       sodipodi:cx="-112.05724"
+       sodipodi:cy="-157.60071"
+       sodipodi:rx="28"
+       sodipodi:ry="28"
+       sodipodi:start="2.268928"
+       sodipodi:end="0.87266463"
+       sodipodi:arc-type="arc"
+       d="m -130.0553,-136.15146 a 28,28 0 0 1 -8.31334,-31.02581 28,28 0 0 1 26.3114,-18.42344 28,28 0 0 1 26.31139,18.42344 28,28 0 0 1 -8.31334,31.02581"
+       sodipodi:open="true"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt2.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <path
+       style="fill:none;stroke:#ffff32;stroke-width:0.75;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="path2921-3"
+       sodipodi:type="arc"
+       sodipodi:cx="-112.05724"
+       sodipodi:cy="-157.60071"
+       sodipodi:rx="22"
+       sodipodi:ry="22"
+       sodipodi:start="2.268928"
+       sodipodi:end="0.87266463"
+       sodipodi:arc-type="arc"
+       d="m -126.19857,-140.74773 a 22,22 0 0 1 -6.53191,-24.37742 22,22 0 0 1 20.67324,-14.47556 22,22 0 0 1 20.673234,14.47556 22,22 0 0 1 -6.53191,24.37742"
+       sodipodi:open="true"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt2.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <text
+       inkscape:export-ydpi="119.06"
+       inkscape:export-xdpi="119.06"
+       id="text1119-4-5-1-6-8-3-6-5"
+       y="-140.58601"
+       x="75.669312"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Bulletproof BB';-inkscape-font-specification:'Bulletproof BB';letter-spacing:-0.992188px;word-spacing:0px;fill:#ffff32;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       xml:space="preserve"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt1.png"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:R-Cluster;-inkscape-font-specification:R-Cluster;fill:#ffff32;fill-opacity:1;stroke-width:0.264583"
+         y="-140.58601"
+         x="75.669312"
+         id="tspan1117-7-7-2-2-4-3-0-2"
+         sodipodi:role="line">boo<tspan
+   style="letter-spacing:-1.23825px"
+   id="tspan171701-5">st</tspan></tspan></text>
+    <text
+       inkscape:export-ydpi="119.06"
+       inkscape:export-xdpi="119.06"
+       id="text1119-4-5-1-6-8-3-6-4-4"
+       y="-140.95007"
+       x="57.532688"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Bulletproof BB';-inkscape-font-specification:'Bulletproof BB';letter-spacing:-0.992188px;word-spacing:0px;fill:#ffff32;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       xml:space="preserve"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt1.png"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:R-Cluster;-inkscape-font-specification:R-Cluster;fill:#ffff32;fill-opacity:1;stroke-width:0.264583"
+         y="-140.95007"
+         x="57.532688"
+         id="tspan1117-7-7-2-2-4-3-0-8-7"
+         sodipodi:role="line">uac</tspan></text>
+    <circle
+       style="fill:#990000;fill-opacity:1;stroke:none;stroke-width:1.10207;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="path2724-6-4-7-1-9-7-9-0"
+       cx="1.358083"
+       cy="-70.393959"
+       r="2.5"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt3.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <g
+       transform="matrix(0.08220889,0,0,0.08220889,-9.25618,-88.837526)"
+       id="g2870-8-2-4-0-9-3-7-3-0-3-7"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt3.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06">
+      <g
+         id="g2826-8-1-8-6-2-6-5-6-9-1-8"
+         transform="matrix(0.26458333,0,0,0.26458333,23.283335,496.22252)">
+        <g
+           id="Grade-58-7-1-08-0-5-9-0-3-9-6"
+           style="display:none" />
+        <g
+           id="Camada_1-4-8-2-5-6-6-6-6-6-4-8" />
+        <g
+           id="Área_de_trabalho-3-5-8-3-8-3-2-2-0-7-8" />
+        <g
+           id="Linhas-guia-7-7-9-94-9-9-1-6-6-8-4" />
+        <g
+           id="Page_1-1-4-3-1-2-4-7-1-2-4-3">
+          <g
+             id="Camada_1_1_-38-1-68-54-6-8-8-8-6-5-1">
+            <g
+               id="g10-09-8-02-1-6-1-5-7-1-0-4">
+              <path
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="M 113.74,81.595 77.933,19.301 104.05,19.184 104.004,4.723 H 0 V 19.33 h 23.959 l 46.887,87.931 h 57.697 l 46.887,-88.077 23.955,-0.151 0.052,-14.31 h -71.676 v 14.36 h 19.088 z"
+                 id="polygon12-7-5-1-5-4-2-7-9-8-3-9"
+                 inkscape:connector-curvature="0" />
+              <path
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="M 576.141,81.595 540.33,19.301 566.455,19.184 566.406,4.723 H 462.405 V 19.33 h 23.952 l 46.888,87.931 h 57.699 l 46.887,-88.077 23.958,-0.151 0.043,-14.31 h -71.663 v 14.36 h 19.08 z"
+                 id="polygon14-99-9-0-5-9-9-4-2-7-6-2"
+                 inkscape:connector-curvature="0" />
+              <path
+                 id="path16-32-7-5-4-5-3-1-0-9-1-0"
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="M 344.515,4.723 V 19.33 h 23.955 l 0.04,71.788 h -25.255 v 16.001 l 25.272,0.143 h 119.612 v -47.73 h -15.581 c -0.854,25.271 -22.776,31.62 -32.01,31.62 -8.461,0 -24.855,-0.033 -24.855,-0.033 V 19.301 l 23.595,-0.118 -0.032,-14.461 h -94.741 z"
+                 inkscape:connector-curvature="0" />
+              <path
+                 id="path18-4-5-1-9-0-9-8-2-2-0-6"
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="m 262.808,94.13 c -14.355,0 -25.986,-17.195 -25.986,-38.417 0,-21.227 11.631,-38.435 25.986,-38.435 14.351,0 25.986,17.208 25.986,38.435 0,21.222 -11.635,38.417 -25.986,38.417 z m 1.056,-92.353 c -40.72,0 -73.729,24.247 -73.729,54.145 0,29.9 33.008,54.144 73.729,54.144 40.717,0 73.731,-24.244 73.731,-54.144 0,-29.898 -33.014,-54.145 -73.731,-54.145 z"
+                 inkscape:connector-curvature="0" />
+              <path
+                 id="path20-3-3-1-8-4-0-5-3-0-6-8"
+                 style="fill:#0d3896;fill-rule:evenodd"
+                 d="m 725.215,93.857 c -14.35,0 -25.98,-17.48 -25.98,-39.053 0,-21.565 11.631,-39.049 25.98,-39.049 14.352,0 25.98,17.484 25.98,39.049 10e-4,21.572 -11.628,39.053 -25.98,39.053 z M 726.276,0 c -40.729,0 -73.728,24.642 -73.728,55.028 0,30.385 32.998,55.022 73.728,55.022 C 766.99,110.05 800,85.413 800,55.028 800,24.642 766.99,0 726.276,0 Z"
+                 inkscape:connector-curvature="0" />
+            </g>
+          </g>
+        </g>
+      </g>
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 135.43526,1938.6344 -23.35931,-43.8648 h -11.9532 -11.953193 v -7.25 -7.25 h 51.875003 51.875 v 7.0883 7.0883 l -12.88493,0.1299 c -7.08672,0.072 -12.94104,0.1861 -13.00962,0.2547 -0.18976,0.1897 35.48719,62.1888 35.7408,62.11 0.17813,-0.055 33.15375,-62.0615 33.15375,-62.3411 0,-0.044 -4.275,-0.08 -9.5,-0.08 h -9.5 v -7.125 -7.125 h 35.75 35.75 l -7.5e-4,2.8125 c -5e-4,1.5468 -0.0743,4.752 -0.16426,7.1226 l -0.16351,4.3101 -11.88854,0.065 -11.88854,0.065 -23.3847,43.9359 -23.3847,43.9359 -28.875,-0.01 -28.875,-0.01 z"
+         id="path2842-71-8-0-3-8-8-9-7-2-3-9"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 346.12171,1985.2519 c -14.27448,-0.7558 -28.96041,-5.0057 -40.125,-11.6117 -14.38676,-8.5125 -23.63999,-20.0855 -26.78165,-33.4956 -0.65884,-2.8123 -0.70331,-3.352 -0.71058,-8.625 -0.007,-5.0067 0.0567,-5.9129 0.57832,-8.2437 2.07821,-9.2856 6.70839,-17.2743 14.21549,-24.5268 11.0869,-10.7109 27.06818,-17.9473 45.19842,-20.4661 9.01552,-1.2525 20.65961,-1.0568 30,0.5042 26.85324,4.4879 48.26553,20.0523 54.86599,39.8815 1.60347,4.8172 2.08908,8.2927 1.93529,13.8509 -0.17783,6.4273 -1.20033,10.8495 -3.78618,16.375 -9.62321,20.5629 -34.89788,34.8004 -64.57779,36.3773 -4.89125,0.2598 -5.55092,0.2586 -10.81231,-0.02 z m 7.75,-15.8393 c 10.86567,-1.9672 19.54421,-13.2778 22.26543,-29.018 0.74653,-4.3182 0.91196,-10.9948 0.38472,-15.5271 -1.88615,-16.2136 -10.40245,-28.8768 -21.25264,-31.6014 -2.63863,-0.6626 -6.39528,-0.6685 -8.95393,-0.014 -7.53945,1.9283 -14.22867,8.8622 -18.16362,18.8281 -1.73246,4.3877 -2.86396,9.6889 -3.2842,15.3866 -1.11024,15.0533 4.28967,30.1953 13.35466,37.4482 4.95929,3.9679 10.22198,5.4804 15.64958,4.4977 z"
+         id="path2844-2-8-8-8-7-8-7-5-3-2-2"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 431.36763,1974.6446 v -7.875 h 12.625 12.625 v -36 -36 h -12 -12 v -7.25 -7.25 h 47.25 47.25 v 7.125 7.125 h -7.58507 c -4.17179,0 -9.45929,0.074 -11.75,0.1642 l -4.16493,0.1643 v 35.9756 35.9756 l 14.3125,-0.096 c 13.73194,-0.092 14.41357,-0.1184 16.80418,-0.6561 14.94511,-3.3615 24.60501,-14.1694 25.77729,-28.8405 l 0.17479,-2.1875 h 7.71562 7.71562 v 23.75 23.75 h -72.375 -72.375 z"
+         id="path2846-2-3-5-5-1-5-5-9-7-0-6"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 621.13491,1982.2071 c -0.1312,-0.1719 -10.68608,-19.9157 -23.45529,-43.875 l -23.21675,-43.5625 h -11.95032 -11.95031 v -7.25 -7.25 h 51.875 51.875 v 7.0883 7.0883 l -12.88494,0.1299 c -7.08671,0.072 -12.94022,0.1853 -13.00779,0.2529 -0.18827,0.1882 35.48665,62.1877 35.73892,62.1106 0.17314,-0.053 32.55261,-60.8508 33.07692,-62.1075 0.10298,-0.2468 -1.8721,-0.3125 -9.39637,-0.3125 h -9.52674 v -7.125 -7.125 h 35.75 35.75 v 4.4611 c 0,2.4536 -0.0733,5.6588 -0.16285,7.1226 l -0.16284,2.6615 -11.88587,0.065 -11.88587,0.065 -23.38879,43.9372 -23.38878,43.9372 -28.78189,2e-4 c -22.73191,3e-4 -28.83203,-0.065 -29.02044,-0.3121 z"
+         id="path2848-02-1-0-2-7-0-3-2-5-6-6"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+      <path
+         style="fill:#ffff32;fill-opacity:1;stroke:#ffff32;stroke-width:0.472441;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         d="m 809.1065,1985.2619 c -23.92056,-1.2168 -45.81185,-11.2866 -58.09537,-26.7232 -4.97618,-6.2535 -8.34723,-13.436 -9.6892,-20.6441 -0.7098,-3.8126 -0.65695,-11.523 0.10488,-15.2993 4.6147,-22.8745 27.55955,-41.0584 57.80469,-45.8105 5.31025,-0.8343 8.8892,-1.0881 15.25,-1.0816 14.9761,0.015 27.87269,2.9147 40.375,9.0764 17.86551,8.8049 29.58688,22.8004 32.40778,38.6955 0.7237,4.0779 0.71915,10.0358 -0.0108,14.1521 -5.10489,28.7871 -39.26979,49.6124 -78.14698,47.6347 z m 8.85831,-16.5045 c 10.83126,-3.0015 19.22358,-15.904 21.00306,-32.2905 0.331,-3.048 0.33726,-9.3651 0.0122,-12.3223 -1.59464,-14.5079 -8.41678,-26.5115 -17.62359,-31.009 -2.88635,-1.41 -5.08693,-1.9182 -8.25,-1.9053 -3.09389,0.013 -5.65307,0.6384 -8.35121,2.0421 -8.27103,4.3031 -14.51002,14.411 -16.81795,27.2472 -0.7456,4.1468 -0.91499,12.4843 -0.34467,16.9651 2.71015,21.2927 16.21335,35.1963 30.37214,31.2727 z"
+         id="path2850-1-8-6-2-2-9-8-2-9-1-4"
+         inkscape:connector-curvature="0"
+         transform="scale(0.26458333)" />
+    </g>
+    <path
+       id="path2921-2-5-9"
+       d="m -16.63997,-48.944716 c -9.017227,-7.56635 -12.339312,-19.96454 -8.313341,-31.0258 4.025972,-11.06127 14.540239,-18.42344 26.311394,-18.42344 11.771155,0 22.285421,7.36217 26.311393,18.42344 4.025968,11.06126 0.703888,23.45945 -8.31334,31.0258 m -35.996106,0 4.591914,-5.47243 m -8.417531,1.56535 1.443545,-1.16034 m -4.436838,-3.41577 1.641539,-0.85765 m -3.688349,-4.21298 1.776927,-0.52225 m -2.799191,-4.84949 1.844546,-0.16693 m -1.803276,-5.30106 7.104145,0.75119 m -6.000915,-6.10689 1.768841,0.54901 m 0.354273,-5.58816 1.628406,0.88233 m 1.433619,-5.41275 1.425866,1.182 m 2.45829,-5.03089 1.168945,1.43659 m 3.389204,-4.45717 3.34585,6.31177 m 1.712453,-8.38884 0.532857,1.77377 m 4.832682,-2.82811 0.177949,1.84351 m 5.290192,-1.83491 -0.183746,1.84294 m 5.545943,-0.77173 -0.538433,1.77209 m 5.590178,0.32088 -3.365684,6.30121 m 7.914311,-3.26631 -1.173457,1.4329 m 5.045489,2.42819 -1.429576,1.17751 m 4.477338,3.36251 -1.631173,0.8772 m 3.738428,4.1686 -1.770559,0.54345 m 2.85694,4.81569 -7.106472,0.72885 m 7.130545,4.73925 -1.844011,-0.17273 m 0.804858,5.54123 -1.775276,-0.52783 m -0.287471,5.59199 -1.638833,-0.86281 m -1.368837,5.42949 -1.439889,-1.16487 m -2.33045,5.0034 -4.591914,-5.47243"
+       style="fill:none;stroke:#ffff32;stroke-width:1.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt3.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <path
+       style="fill:none;stroke:#ffff32;stroke-width:1.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="path2921-3-2-5-5"
+       sodipodi:type="arc"
+       sodipodi:cx="1.358083"
+       sodipodi:cy="-70.393959"
+       sodipodi:rx="20"
+       sodipodi:ry="20"
+       sodipodi:start="2.268928"
+       sodipodi:end="0.87266463"
+       sodipodi:arc-type="arc"
+       sodipodi:open="true"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt3.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06"
+       d="m -11.497669,-55.07307 a 20,20 0 0 1 -5.938101,-22.161292 20,20 0 0 1 18.793853,-13.159597 20,20 0 0 1 18.793852,13.159597 20,20 0 0 1 -5.9381,22.161292" />
+    <path
+       style="fill:none;stroke:#ffff32;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -16.63996,-48.944716 3.85672,-4.59627"
+       id="path3166-8-4-0"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt3.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <path
+       style="fill:none;stroke:#ffff32;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 19.35614,-48.944716 -3.856726,-4.59627"
+       id="path3166-6-9-7-4"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt3.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 15.499416,-53.540986 c -0.710554,-3.82355 -0.710554,-3.82355 0,0"
+       id="path12815-3-6-8"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt3.png"
+       inkscape:export-xdpi="119.06"
+       inkscape:export-ydpi="119.06" />
+    <text
+       inkscape:export-ydpi="119.06"
+       inkscape:export-xdpi="119.06"
+       id="text1119-4-5-1-6-8-3-6-5-7"
+       y="-57.193089"
+       x="5.9337053"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Bulletproof BB';-inkscape-font-specification:'Bulletproof BB';letter-spacing:-0.992188px;word-spacing:0px;fill:#ffff32;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       xml:space="preserve"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt3.png"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:R-Cluster;-inkscape-font-specification:R-Cluster;fill:#ffff32;fill-opacity:1;stroke-width:0.264583"
+         y="-57.193089"
+         x="5.9337053"
+         id="tspan1117-7-7-2-2-4-3-0-2-1"
+         sodipodi:role="line">boo<tspan
+   style="letter-spacing:-1.23825px"
+   id="tspan171701-5-7">st</tspan></tspan></text>
+    <text
+       inkscape:export-ydpi="119.06"
+       inkscape:export-xdpi="119.06"
+       id="text1119-4-5-1-6-8-3-6-4-4-2"
+       y="-57.557148"
+       x="-12.202918"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:'Bulletproof BB';-inkscape-font-specification:'Bulletproof BB';letter-spacing:-0.992188px;word-spacing:0px;fill:#ffff32;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       xml:space="preserve"
+       inkscape:export-filename="/home/whitfijs/git/Volvo240-DigitalDash/QtDash/VolvoDigitalDashModels/app/r_sport_boost_alt3.png"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:R-Cluster;-inkscape-font-specification:R-Cluster;fill:#ffff32;fill-opacity:1;stroke-width:0.264583"
+         y="-57.557148"
+         x="-12.202918"
+         id="tspan1117-7-7-2-2-4-3-0-8-7-7"
+         sodipodi:role="line">uac</tspan></text>
   </g>
 </svg>

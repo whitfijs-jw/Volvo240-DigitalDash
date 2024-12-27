@@ -337,21 +337,16 @@ Window {
 
     property list<Item> delegatesRSport: [
         AccessoryGaugeDelegate {
-            gaugeMin: -20
-            gaugeMax: 20
+            minAngle: -230
+            maxAngle: 50
 
-            minAngle: -48
-            maxAngle: 48
-
-            imageSource: "qrc:/gauge-faces-r-sport/r_sport_boost.png"
+            imageSource: "qrc:/gauge-faces-r-sport/r_sport_boost_alt3.png"
             needleResource: "qrc:/needles/needle-rsport.png"
 
-            clockwise: false
-
             needleWidth: rSportNeedleWidth
-            needleLength: rSportNeedleLength
+            needleLength: 0.55
             needleOffset: rSportNeedleOffset
-            xOffset: rSportGaugeXOffset
+            xOffset: 0
             yOffset: 0
             needleCenterRadius: rSportNeedleCenterRadius
         },
