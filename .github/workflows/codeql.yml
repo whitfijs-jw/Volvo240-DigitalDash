@@ -74,7 +74,7 @@ jobs:
         cd QtDash/VolvoDigitalDashModels
         mkdir build
         cd build
-        qmake ../subdir.pro
+        qmake ../subdirs.pro
         make -j$(nproc)
 
     - name: Perform CodeQL Analysis
