@@ -55,7 +55,7 @@ jobs:
       uses: jurplel/install-qt-action@v4.1.1
       with:
         version: 5.15.2
-        modules: qtquick qtserialport qtpositioning qtserialbus qtqml
+        modules: qtquick qtserialport qtpositioning qtserialbus
         archives: qtbase qtdeclarative 
 
     - name: Setup
