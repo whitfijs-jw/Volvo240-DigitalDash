@@ -53,7 +53,7 @@ jobs:
 
     - name: Install Qt
       run: |
-        sudo apt-get install qtbase5-dev qt5-qmake cmake
+        sudo apt-get install qtbase5-dev qt5-qmake cmake qtdeclarative5-dev libqt5serialport-dev libqt5serialbus-dev libqt5positioning5
 
     - name: Setup
       run: |
