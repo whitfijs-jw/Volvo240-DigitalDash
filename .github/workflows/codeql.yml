@@ -66,8 +66,8 @@ jobs:
       with:
         languages: ${{ matrix.language }}
         build-mode: ${{ matrix.build-mode }}
-
-    - name: Build
+    - if: ${{ matrix.build-mode == 'manual' }}
+      name: Build C and C++ code
       run: |
         cd QtDash/VolvoDigitalDashModels
         mkdir build
