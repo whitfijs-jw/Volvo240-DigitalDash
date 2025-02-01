@@ -92,6 +92,7 @@ bool Config::loadOdometerConfigs() {
         conf.name = mOdometerConfig->value(ODO_NAME, "").toString();
 
         mOdoConfig.push_back(conf);
+        printKeys("odo-vals", mOdometerConfig);
     }
 
     mOdometerConfig->endArray();

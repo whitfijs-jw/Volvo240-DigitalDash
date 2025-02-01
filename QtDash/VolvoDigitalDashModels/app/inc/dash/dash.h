@@ -65,6 +65,8 @@ public:
      * @param context: qml context to link the gauge models to their respective c++ model
      */
     Dash(QObject * parent, QQmlContext * context);
+
+    ~Dash() final;
     /**
      * @brief Initialize everything
      */
@@ -106,17 +108,17 @@ private:
     Map_Sensor mMapSensor; //!< map sensor
     NtcSensor mCoolantTempSensor; //!< coolant temp sensor
     NtcSensor mAmbientTempSensor; //!< ambient temp sensor
-    NtcSensor * mOilTempSensor; //!< oil temp sensor
-    VoltmeterSensor * mVoltmeterSensor; //!< voltmeter sensor
-    VoltmeterSensor * mDimmerVoltageSensor; //!< rheostat dimmer voltage
-    ResistiveSensor * mOilPressureSensor; //!< oil pressure sensor
-    ResistiveSensor * mFuelLevelSensor; //!< fuel level sensor
-    SpeedometerSensor<GpsSource> * mGpsSpeedoSensor; //!< speedometer w/ gps input
-    SpeedometerSensor<VssSource> * mSpeedoSensor; //!< speedometer w/ vss input
-    TachSensor * mTachSensor; //!< tachometer sensor
-    OdometerSensor * mOdoSensor; //!< odometer
-    OdometerSensor * mTripAOdoSensor; //!< trip a counter
-    OdometerSensor * mTripBOdoSensor; //!< trip b counter
+    NtcSensor mOilTempSensor; //!< oil temp sensor
+    VoltmeterSensor mVoltmeterSensor; //!< voltmeter sensor
+    VoltmeterSensor mDimmerVoltageSensor; //!< rheostat dimmer voltage
+    ResistiveSensor mOilPressureSensor; //!< oil pressure sensor
+    ResistiveSensor mFuelLevelSensor; //!< fuel level sensor
+    SpeedometerSensor<GpsSource> mGpsSpeedoSensor; //!< speedometer w/ gps input
+    SpeedometerSensor<VssSource> mSpeedoSensor; //!< speedometer w/ vss input
+    TachSensor mTachSensor; //!< tachometer sensor
+    OdometerSensor mOdoSensor; //!< odometer
+    OdometerSensor mTripAOdoSensor; //!< trip a counter
+    OdometerSensor mTripBOdoSensor; //!< trip b counter
 
     AccessoryGaugeModel mBoostModel; //!< boost pressure QML model
     AccessoryGaugeModel mOilTemperatureModel; //!< oil temperature QML model

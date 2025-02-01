@@ -20,13 +20,13 @@ public:
      */
     OdometerSensor(QObject * parent, Config * config,
                    VssSource * source, int channel,
-                   SensorConfig::OdometerConfig * odoConfig = nullptr) :
+                   SensorConfig::OdometerConfig odoConfig) :
            Sensor(parent, config, source, channel) {
 
         // Check if the optional input
-        if (odoConfig != nullptr) {
+        if (odoConfig.name != ConfigKeys::ODO_NAME_ODOMETER) {
             // this has its own config -- likely a trip counter
-            mOdoConfig = *odoConfig;
+            mOdoConfig = odoConfig;
         } else {
             // use the odo values from the config file
             mOdoConfig = mConfig->getOdometerConfig(ConfigKeys::ODO_NAME_ODOMETER);
