@@ -6,6 +6,8 @@
 #include <QMap>
 #include <QKeyEvent>
 
+#include <memory>
+
 #include <tachometer_model.h>
 #include <accessory_gauge_model.h>
 #include <speedometer_model.h>
@@ -132,17 +134,18 @@ private:
     SpeedometerModel mSpeedoModel; //!< speedometer QML model
     TachometerModel mTachoModel; //!< Tachometer QML model
 
-    AccessoryGauge * mBoostGauge; //!< boost pressure gauge
-    AccessoryGauge * mCoolantTempGauge; //!< coolant temp gauge
-    AccessoryGauge * mOilTempGauge; //!< oil temp gauge
-    AccessoryGauge * mVoltmeterGauge; //!< voltmeter gauge
-    AccessoryGauge * mOilPressureGauge; //!< oil pressure gauge
-    AccessoryGauge * mFuelLevelGauge; //!< fuel level gauge
-    TempFuelClusterGauge * mTempFuelClusterGauge; //!< 240 combined temp/fuel gauge
+    // QScopedPointer<AccessoryGauge> mBoostGauge;
+    std::unique_ptr<AccessoryGauge> mBoostGauge;
+    std::unique_ptr<AccessoryGauge> mCoolantTempGauge; //!< coolant temp gauge
+    std::unique_ptr<AccessoryGauge> mOilTempGauge; //!< oil temp gauge
+    std::unique_ptr<AccessoryGauge> mVoltmeterGauge; //!< voltmeter gauge
+    std::unique_ptr<AccessoryGauge> mOilPressureGauge; //!< oil pressure gauge
+    std::unique_ptr<AccessoryGauge> mFuelLevelGauge; //!< fuel level gauge
+    std::unique_ptr<TempFuelClusterGauge> mTempFuelClusterGauge; //!< 240 combined temp/fuel gauge
 
-    SpeedometerGauge * mSpeedoGauge; //!< speedometer gauge
-    TachometerGauge * mTachoGauge; //!< tachometer gauge
-    OdometerGauge * mOdoGauge; //!< odometer gauge
+    std::unique_ptr<SpeedometerGauge> mSpeedoGauge; //!< speedometer gauge
+    std::unique_ptr<TachometerGauge> mTachoGauge; //!< tachometer gauge
+    std::unique_ptr<OdometerGauge> mOdoGauge; //!< odometer gauge
 
     BackLightControl * mBacklightControl;
 

@@ -28,17 +28,12 @@ Dash::Dash(QObject *parent, QQmlContext *context) :
 }
 
 Dash::~Dash() {
-    delete mBoostGauge;
-    delete mCoolantTempGauge;
-    delete mOilTempGauge;
-    delete mVoltmeterGauge;
-    delete mOilPressureGauge;
-    delete mFuelLevelGauge;
-    delete mTempFuelClusterGauge;
-    delete mSpeedoGauge;
-    delete mTachoGauge;
-    delete mOdoGauge;
     delete mBacklightControl;
+
+    for (auto sensor : mCanSensors) {
+        delete sensor;
+    }
+    mCanSensors.clear();
 }
 
 void Dash::init() {
@@ -52,11 +47,6 @@ void Dash::init() {
     initBackLightControl();
 
     initDashLights();
-
-    for (auto sensor : mCanSensors) {
-        delete sensor;
-    }
-    mCanSensors.clear();
 }
 
 void Dash::odoTripReset(int trip) {
@@ -227,10 +217,15 @@ void Dash::initAccessoryGauges() {
         boostSensors.push_back(&mMapSensor);
     }
 
-    mBoostGauge = new AccessoryGauge(
-        this->parent(), &mConfig, boostSensors, &mBoostModel,
-        AccessoryGaugeModel::BOOST_GAUGE_MODEL_NAME,
-        mContext);
+    mBoostGauge.reset(
+        new AccessoryGauge(
+            this->parent(),
+            &mConfig,
+            boostSensors,
+            &mBoostModel,
+            AccessoryGaugeModel::BOOST_GAUGE_MODEL_NAME,
+            mContext)
+    );
 
     // coolant temp gauge
     sensor = getCanSensor(ConfigKeys::COOLANT_TEMP_GAUGE_GROUP);
@@ -241,10 +236,15 @@ void Dash::initAccessoryGauges() {
         coolantSensors.push_back(&mCoolantTempSensor);
     }
 
-    mCoolantTempGauge = new AccessoryGauge(
-        this->parent(), &mConfig, coolantSensors,
-        &mCoolantTempModel, AccessoryGaugeModel::COOLANT_TEMP_MODEL_NAME,
-        mContext);
+    mCoolantTempGauge.reset(
+        new AccessoryGauge(
+            this->parent(),
+            &mConfig,
+            coolantSensors,
+            &mCoolantTempModel,
+            AccessoryGaugeModel::COOLANT_TEMP_MODEL_NAME,
+            mContext)
+    );
 
     // oil temp gauge
     sensor = getCanSensor(ConfigKeys::OIL_TEMPERATURE_GAUGE_GROUP);
@@ -255,10 +255,15 @@ void Dash::initAccessoryGauges() {
         oilTempSensors.push_back(&mOilTempSensor);
     }
 
-    mOilTempGauge = new AccessoryGauge(
-        this->parent(), &mConfig, oilTempSensors,
-        &mOilTemperatureModel, AccessoryGaugeModel::OIL_TEMPERATURE_MODEL_NAME,
-        mContext);
+    mOilTempGauge.reset(
+        new AccessoryGauge(
+            this->parent(),
+            &mConfig,
+            oilTempSensors,
+            &mOilTemperatureModel,
+            AccessoryGaugeModel::OIL_TEMPERATURE_MODEL_NAME,
+            mContext)
+    );
 
     // voltmeter
     sensor = getCanSensor(ConfigKeys::VOLTMETER_GAUGE_GROUP);
@@ -269,11 +274,16 @@ void Dash::initAccessoryGauges() {
         voltmeterSensors.push_back(&mVoltmeterSensor);
     }
 
-    mVoltmeterGauge = new AccessoryGauge(
-        this->parent(), &mConfig, voltmeterSensors,
-        &mVoltMeterModel, AccessoryGaugeModel::VOLT_METER_MODEL_NAME,
-        mContext
-        );
+    mVoltmeterGauge.reset(
+        new AccessoryGauge(
+            this->parent(),
+            &mConfig,
+            voltmeterSensors,
+            &mVoltMeterModel,
+            AccessoryGaugeModel::VOLT_METER_MODEL_NAME,
+            mContext
+        )
+    );
 
     // fuel level (acc gauge)
     sensor = getCanSensor(ConfigKeys::FUEL_GAUGE_GROUP);
@@ -284,11 +294,16 @@ void Dash::initAccessoryGauges() {
         fuelGaugeSensors.push_back(&mFuelLevelSensor);
     }
 
-    mFuelLevelGauge = new AccessoryGauge(
-        this->parent(), &mConfig, fuelGaugeSensors,
-        &mFuelLevelModel, AccessoryGaugeModel::FUEL_LEVEL_MODEL_NAME,
-        mContext
-        );
+    mFuelLevelGauge.reset(
+        new AccessoryGauge(
+            this->parent(),
+            &mConfig,
+            fuelGaugeSensors,
+            &mFuelLevelModel,
+            AccessoryGaugeModel::FUEL_LEVEL_MODEL_NAME,
+            mContext
+        )
+    );
 
     // oil pressure gauge
     sensor = getCanSensor(ConfigKeys::OIL_PRESSURE_GAUGE_GROUP);
@@ -299,19 +314,30 @@ void Dash::initAccessoryGauges() {
         oilPressureSensors.push_back(&mOilPressureSensor);
     }
 
-    mOilPressureGauge = new AccessoryGauge(
-        this->parent(), &mConfig, oilPressureSensors,
-        &mOilPressureModel, AccessoryGaugeModel::OIL_PRESSURE_MODEL_NAME,
-        mContext
-        );
+    mOilPressureGauge.reset(
+        new AccessoryGauge(
+            this->parent(),
+            &mConfig,
+            oilPressureSensors,
+            &mOilPressureModel,
+            AccessoryGaugeModel::OIL_PRESSURE_MODEL_NAME,
+            mContext
+        )
+    );
 
     //temp and fuel cluster
     QList<Sensor *> tempAndFuelSensors = {coolantSensors.at(0), fuelGaugeSensors.at(0)};
-    mTempFuelClusterGauge = new TempFuelClusterGauge(
-        this->parent(), &mConfig, tempAndFuelSensors,
-        &mTempFuelModel, TempAndFuelGaugeModel::TEMP_FUEL_CLUSTER_MODEL_NAME,
-        mContext
-        );
+
+    mTempFuelClusterGauge.reset(
+        new TempFuelClusterGauge(
+            this->parent(),
+            &mConfig,
+            tempAndFuelSensors,
+            &mTempFuelModel,
+            TempAndFuelGaugeModel::TEMP_FUEL_CLUSTER_MODEL_NAME,
+            mContext
+        )
+    );
 }
 
 void Dash::initSpeedo() {
@@ -346,11 +372,16 @@ void Dash::initSpeedo() {
         speedoSensors.append(&mAmbientTempSensor);
     }
 
-    mSpeedoGauge = new SpeedometerGauge(
-        this->parent(), &mConfig, speedoSensors,
-        &mSpeedoModel, SpeedometerModel::SPEEDO_MODEL_NAME,
-        mContext
-        );
+    mSpeedoGauge.reset(
+        new SpeedometerGauge(
+            this->parent(),
+            &mConfig,
+            speedoSensors,
+            &mSpeedoModel,
+            SpeedometerModel::SPEEDO_MODEL_NAME,
+            mContext
+        )
+    );
 }
 
 void Dash::initTacho() {
@@ -370,20 +401,31 @@ void Dash::initTacho() {
     }
 
     // initialize
-    mTachoGauge = new TachometerGauge(
-        this->parent(), &mConfig, tachSensors,
-        &mTachoModel, TachometerModel::TACH_MODEL_NAME,
-        mContext
-        );
+    mTachoGauge.reset(
+        new TachometerGauge(
+            this->parent(),
+            &mConfig,
+            tachSensors,
+            &mTachoModel,
+            TachometerModel::TACH_MODEL_NAME,
+            mContext
+        )
+    );
 }
 
 void Dash::initOdometer() {
     QList<Sensor *> odoSensors = {&mOdoSensor, &mTripAOdoSensor, &mTripBOdoSensor};
-    mOdoGauge = new OdometerGauge(
-        this->parent(), &mConfig, odoSensors,
-        &mOdometerModel, OdometerModel::ODOMETER_MODEL_NAME,
-        mContext
-        );
+
+    mOdoGauge.reset(
+        new OdometerGauge(
+            this->parent(),
+            &mConfig,
+            odoSensors,
+            &mOdometerModel,
+            OdometerModel::ODOMETER_MODEL_NAME,
+            mContext
+        )
+    );
 }
 
 void Dash::initDashLights() {
