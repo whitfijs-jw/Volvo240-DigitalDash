@@ -1,8 +1,19 @@
 #include <dash.h>
 
-
 Dash::Dash(QObject *parent, QQmlContext *context) :
-    QObject(parent), mContext(context), mEventTiming(parent), mConfig(parent) {
+    QObject(parent),
+    mContext(context),
+    mEventTiming(parent),
+    mConfig(parent),
+    mAdcSource(parent, &mConfig),
+    mGpsSource(parent, &mConfig),
+    mTachSource(parent, &mConfig),
+    mVssSource(parent, &mConfig),
+    mCanSource(parent, &mConfig),
+    mMapSensor(parent, &mConfig, &mAdcSource, mConfig.getSensorConfig().value(ConfigKeys::MAP_SENSOR_KEY)),
+    mCoolantTempSensor(parent, &mConfig, &mAdcSource, mConfig.getSensorConfig().value(ConfigKeys::COOLANT_TEMP_KEY), SensorConfig::TemperatureSensorType::COOLANT),
+    mAmbientTempSensor(parent, &mConfig, &mAdcSource, mConfig.getSensorConfig().value(ConfigKeys::AMBIENT_TEMP_KEY), SensorConfig::TemperatureSensorType::AMBIENT)
+{
 }
 
 void Dash::init() {
@@ -33,18 +44,18 @@ void Dash::odoTripReset(int trip) {
 
 void Dash::initSensorSources() {
     qDebug() << "Sensor Source Init";
-    mAdcSource = new AdcSource(this->parent(), &mConfig);
-    mGpsSource = new GpsSource(this->parent(), &mConfig);
-    mTachSource = new TachSource(this->parent(), &mConfig);
-    mVssSource = new VssSource(this->parent(), &mConfig);
-    mCanSource = new CanSource(this->parent(), &mConfig);
+    // mAdcSource = new AdcSource(this->parent(), &mConfig);
+    // mGpsSource = new GpsSource(this->parent(), &mConfig);
+    // mTachSource = new TachSource(this->parent(), &mConfig);
+    // mVssSource = new VssSource(this->parent(), &mConfig);
+    // mCanSource = new CanSource(this->parent(), &mConfig);
 }
 
 void Dash::initCanSensors() {
-    for (int channel : mCanSource->getChannelConfigs()->keys()) {
+    for (int channel : mCanSource.getChannelConfigs()->keys()) {
         qDebug() << "CAN Sensor Channel: " << channel;
         CanSensor * sensor = new CanSensor(this->parent(), &mConfig,
-                                          mCanSource, channel);
+                                          &mCanSource, channel);
         qDebug() << "CAN Sensor: " << sensor->getGuage();
         mCanSensors.push_back(sensor);
     }
@@ -65,47 +76,32 @@ CanSensor * Dash::getCanSensor(QString gaugeName) {
 void Dash::initSensors() {
     qDebug() << "Sensor Init";
     //map sensor
-    mMapSensor = new Map_Sensor(
-        this->parent(), &mConfig, mAdcSource,
-        mConfig.getSensorConfig().value(ConfigKeys::MAP_SENSOR_KEY)
-        );
-
     QObject::connect(
         mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::FAST_TIMER)),
         &QTimer::timeout,
-        [=]() {
-            mAdcSource->update(mMapSensor->getChannel());
+        [&adcSource = mAdcSource, &mapSensor = mMapSensor]() {
+            adcSource.update(mapSensor.getChannel());
         });
 
     // coolant temp sensor
-    mCoolantTempSensor = new NtcSensor(
-        this->parent(), &mConfig, mAdcSource,
-        mConfig.getSensorConfig().value(ConfigKeys::COOLANT_TEMP_KEY),
-        SensorConfig::TemperatureSensorType::COOLANT);
-
     QObject::connect(
         mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
         &QTimer::timeout,
-        [=]() {
-            mAdcSource->update(mCoolantTempSensor->getChannel());
+        [&adcSource = mAdcSource, &coolantTempSensor = mCoolantTempSensor]() {
+            adcSource.update(coolantTempSensor.getChannel());
         });
 
     // ambient temp sensor
-    mAmbientTempSensor = new NtcSensor(
-        this->parent(), &mConfig, mAdcSource,
-        mConfig.getSensorConfig().value(ConfigKeys::AMBIENT_TEMP_KEY),
-        SensorConfig::TemperatureSensorType::AMBIENT);
-
     QObject::connect(
         mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
         &QTimer::timeout,
-        [=]() {
-            mAdcSource->update(mAmbientTempSensor->getChannel());
+        [&]() {
+            mAdcSource.update(mAmbientTempSensor.getChannel());
         });
 
     // oil temp sensor
     mOilTempSensor = new NtcSensor(
-        this->parent(), &mConfig, mAdcSource,
+        this->parent(), &mConfig, &mAdcSource,
         mConfig.getSensorConfig().value(ConfigKeys::OIL_TEMP_KEY),
         SensorConfig::TemperatureSensorType::OIL);
 
@@ -113,12 +109,12 @@ void Dash::initSensors() {
         mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
         &QTimer::timeout,
         [=]() {
-            mAdcSource->update(mOilTempSensor->getChannel());
+            mAdcSource.update(mOilTempSensor->getChannel());
         });
 
     // oil pressure sensor
     mOilPressureSensor = new ResistiveSensor(
-        this->parent(), &mConfig, mAdcSource,
+        this->parent(), &mConfig, &mAdcSource,
         mConfig.getSensorConfig().value(ConfigKeys::OIL_PRESSURE_KEY),
         mConfig.getResistiveSensorConfig(ConfigKeys::RES_SENSOR_TYPE_OIL_PRESSURE)
         );
@@ -127,12 +123,12 @@ void Dash::initSensors() {
         mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::FAST_TIMER)),
         &QTimer::timeout,
         [=]() {
-            mAdcSource->update(mOilPressureSensor->getChannel());
+            mAdcSource.update(mOilPressureSensor->getChannel());
         });
 
     //fuel level sensor
     mFuelLevelSensor = new ResistiveSensor(
-        this->parent(), &mConfig, mAdcSource,
+        this->parent(), &mConfig, &mAdcSource,
         mConfig.getSensorConfig().value(ConfigKeys::FUEL_LEVEL_KEY),
         mConfig.getResistiveSensorConfig(ConfigKeys::RES_SENSOR_TYPE_FUEL_LEVEL)
         );
@@ -141,13 +137,13 @@ void Dash::initSensors() {
         mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
         &QTimer::timeout,
         [=]() {
-            mAdcSource->update(mFuelLevelSensor->getChannel());
+            mAdcSource.update(mFuelLevelSensor->getChannel());
         });
 
 
     // voltmeter
     mVoltmeterSensor = new VoltmeterSensor(
-        this->parent(), &mConfig, mAdcSource,
+        this->parent(), &mConfig, &mAdcSource,
         mConfig.getSensorConfig().value(ConfigKeys::FUSE8_12V_KEY),
         mConfig.getAnalog12VInputConfig(ConfigKeys::ANALOG_INPUT_12V_VOLTMETER)
         );
@@ -156,12 +152,12 @@ void Dash::initSensors() {
         mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
         &QTimer::timeout,
         [=]() {
-            mAdcSource->update(mVoltmeterSensor->getChannel());
+            mAdcSource.update(mVoltmeterSensor->getChannel());
         });
 
     // rheostat/dimmer voltage
     mDimmerVoltageSensor = new VoltmeterSensor(
-        this->parent(), &mConfig, mAdcSource,
+        this->parent(), &mConfig, &mAdcSource,
         mConfig.getSensorConfig().value(ConfigKeys::DIMMER_VOLTAGE_KEY),
         mConfig.getAnalog12VInputConfig(ConfigKeys::ANALOG_INPUT_12V_RHEOSTAT)
         );
@@ -170,46 +166,46 @@ void Dash::initSensors() {
         mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::MEDIUM_TIMER)),
         &QTimer::timeout,
         [=]() {
-            mAdcSource->update(mDimmerVoltageSensor->getChannel());
+            mAdcSource.update(mDimmerVoltageSensor->getChannel());
         });
 
     // speedometer
     mGpsSpeedoSensor = new SpeedometerSensor(
-        this->parent(), &mConfig, mGpsSource,
+        this->parent(), &mConfig, &mGpsSource,
         (int) GpsSource::GpsDataChannel::SPEED_MILES_PER_HOUR);
 
     mSpeedoSensor = new SpeedometerSensor(
-        this->parent(), &mConfig, mVssSource,
+        this->parent(), &mConfig, &mVssSource,
         (int) VssSource::VssDataChannel::MPH);
 
     QObject::connect(
         mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::VERY_FAST_TIMER)),
         &QTimer::timeout,
         [=]() {
-            mVssSource->update((int) VssSource::VssDataChannel::MPH);
+            mVssSource.update((int) VssSource::VssDataChannel::MPH);
         });
 
     // tacho
     mTachSensor = new TachSensor(
-        this->parent(), &mConfig, mTachSource,
+        this->parent(), &mConfig, &mTachSource,
         (int) TachSource::TachDataChannel::RPM_CHANNEL);
 
     QObject::connect(
         mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::VERY_FAST_TIMER)),
         &QTimer::timeout,
         [=]() {
-            mTachSource->update((int) TachSource::TachDataChannel::RPM_CHANNEL);
+            mTachSource.update((int) TachSource::TachDataChannel::RPM_CHANNEL);
         });
 
     mOdoSensor = new OdometerSensor (
-        this->parent(), &mConfig, mVssSource,
+        this->parent(), &mConfig, &mVssSource,
         (int) VssSource::VssDataChannel::PULSE_COUNT);
 
     QObject::connect(
         mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::SLOW_TIMER)),
         &QTimer::timeout,
         [=]() {
-            mVssSource->update((int) VssSource::VssDataChannel::PULSE_COUNT);
+            mVssSource.update((int) VssSource::VssDataChannel::PULSE_COUNT);
         });
 
     QObject::connect(
@@ -223,7 +219,7 @@ void Dash::initSensors() {
     // trip counters
     SensorConfig::OdometerConfig confA = mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_TRIPA);
     mTripAOdoSensor = new OdometerSensor (
-        this->parent(), &mConfig, mVssSource,
+        this->parent(), &mConfig, &mVssSource,
         (int) VssSource::VssDataChannel::PULSE_COUNT, &confA);
 
     QObject::connect(
@@ -236,7 +232,7 @@ void Dash::initSensors() {
 
     SensorConfig::OdometerConfig confB = mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_TRIPB);
     mTripBOdoSensor = new OdometerSensor (
-        this->parent(), &mConfig, mVssSource,
+        this->parent(), &mConfig, &mVssSource,
         (int) VssSource::VssDataChannel::PULSE_COUNT, &confB);
 
     QObject::connect(
@@ -257,7 +253,7 @@ void Dash::initAccessoryGauges() {
     if (sensor != nullptr) {
         boostSensors.push_back(sensor);
     } else {
-        boostSensors.push_back(mMapSensor);
+        boostSensors.push_back(&mMapSensor);
     }
 
     mBoostGauge = new AccessoryGauge(
@@ -271,7 +267,7 @@ void Dash::initAccessoryGauges() {
     if (sensor != nullptr) {
         coolantSensors.push_back(sensor);
     } else {
-        coolantSensors.push_back(mCoolantTempSensor);
+        coolantSensors.push_back(&mCoolantTempSensor);
     }
 
     mCoolantTempGauge = new AccessoryGauge(
@@ -359,15 +355,15 @@ void Dash::initSpeedo() {
     // Speedometer has a secondary output -- assign it now
     QString topSource = mConfig.getSpeedoConfig().topSource;
     if (topSource == ConfigKeys::AMBIENT_TEMP_KEY) {
-        speedoSensors.append(mAmbientTempSensor);
+        speedoSensors.append(&mAmbientTempSensor);
     } else if (topSource == ConfigKeys::COOLANT_TEMP_KEY) {
-        speedoSensors.append(mCoolantTempSensor);
+        speedoSensors.append(&mCoolantTempSensor);
     } else if (topSource == ConfigKeys::OIL_TEMP_KEY) {
         speedoSensors.append(mOilTempSensor);
     } else if (topSource == ConfigKeys::OIL_PRESSURE_KEY) {
         speedoSensors.append(mOilPressureSensor);
     } else if (topSource == ConfigKeys::MAP_SENSOR_KEY) {
-        speedoSensors.append(mMapSensor);
+        speedoSensors.append(&mMapSensor);
     } else if (topSource == ConfigKeys::ANALOG_INPUT_12V_VOLTMETER) {
         speedoSensors.append(mVoltmeterSensor);
     } else if (topSource == ConfigKeys::ANALOG_INPUT_12V_RHEOSTAT) {
@@ -376,7 +372,7 @@ void Dash::initSpeedo() {
         speedoSensors.append(mFuelLevelSensor);
     } else {
         // default to ambient
-        speedoSensors.append(mAmbientTempSensor);
+        speedoSensors.append(&mAmbientTempSensor);
     }
 
     mSpeedoGauge = new SpeedometerGauge(

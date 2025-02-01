@@ -97,15 +97,15 @@ private:
 
     DashLights * mDashLights; //!< Dash lights
 
-    AdcSource * mAdcSource; //!< ADC source
-    GpsSource * mGpsSource; //!< GPS speed/position/heading source
-    TachSource * mTachSource; //!< tach source (pulse counter)
-    VssSource * mVssSource; //!< vehicle speed sensor source (pulse counter)
-    CanSource * mCanSource; //!< can data source
+    AdcSource mAdcSource; //!< ADC source
+    GpsSource mGpsSource; //!< GPS speed/position/heading source
+    TachSource mTachSource; //!< tach source (pulse counter)
+    VssSource mVssSource; //!< vehicle speed sensor source (pulse counter)
+    CanSource mCanSource; //!< can data source
 
-    Map_Sensor * mMapSensor; //!< map sensor
-    NtcSensor * mCoolantTempSensor; //!< coolant temp sensor
-    NtcSensor * mAmbientTempSensor; //!< ambient temp sensor
+    Map_Sensor mMapSensor; //!< map sensor
+    NtcSensor mCoolantTempSensor; //!< coolant temp sensor
+    NtcSensor mAmbientTempSensor; //!< ambient temp sensor
     NtcSensor * mOilTempSensor; //!< oil temp sensor
     VoltmeterSensor * mVoltmeterSensor; //!< voltmeter sensor
     VoltmeterSensor * mDimmerVoltageSensor; //!< rheostat dimmer voltage
