@@ -475,7 +475,8 @@ HEADERS += \
     inc/utils/gps_helper.h \
     inc/utils/key_press_emitter.h \
     inc/utils/sensor_utils.h \
-    inc/utils/units.h
+    inc/utils/units.h \
+    inc/utils/utils.h
 
 
 INCLUDEPATH += \

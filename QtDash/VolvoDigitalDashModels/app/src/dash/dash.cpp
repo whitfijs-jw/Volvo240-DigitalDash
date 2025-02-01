@@ -1,4 +1,5 @@
 #include <dash.h>
+#include <utils.h>
 
 Dash::Dash(QObject *parent, QQmlContext *context) :
     QObject(parent),
@@ -18,12 +19,12 @@ Dash::Dash(QObject *parent, QQmlContext *context) :
     mDimmerVoltageSensor(parent, &mConfig, &mAdcSource, mConfig.getSensorConfig().value(ConfigKeys::DIMMER_VOLTAGE_KEY), mConfig.getAnalog12VInputConfig(ConfigKeys::ANALOG_INPUT_12V_RHEOSTAT)),
     mOilPressureSensor(parent, &mConfig, &mAdcSource, mConfig.getSensorConfig().value(ConfigKeys::OIL_PRESSURE_KEY), mConfig.getResistiveSensorConfig(ConfigKeys::RES_SENSOR_TYPE_OIL_PRESSURE)),
     mFuelLevelSensor(parent, &mConfig, &mAdcSource, mConfig.getSensorConfig().value(ConfigKeys::FUEL_LEVEL_KEY), mConfig.getResistiveSensorConfig(ConfigKeys::RES_SENSOR_TYPE_FUEL_LEVEL)),
-    mGpsSpeedoSensor(parent, &mConfig, &mGpsSource, (int) GpsSource::GpsDataChannel::SPEED_MILES_PER_HOUR),
-    mSpeedoSensor(parent, &mConfig, &mVssSource, (int) VssSource::VssDataChannel::MPH),
-    mTachSensor(parent, &mConfig, &mTachSource, (int) TachSource::TachDataChannel::RPM_CHANNEL),
-    mOdoSensor(parent, &mConfig, &mVssSource, (int) VssSource::VssDataChannel::PULSE_COUNT, mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_ODOMETER)),
-    mTripAOdoSensor(parent, &mConfig, &mVssSource, (int) VssSource::VssDataChannel::PULSE_COUNT, mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_TRIPA)),
-    mTripBOdoSensor(parent, &mConfig, &mVssSource, (int) VssSource::VssDataChannel::PULSE_COUNT, mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_TRIPB))
+    mGpsSpeedoSensor(parent, &mConfig, &mGpsSource, DashUtils::to_underlying(GpsSource::GpsDataChannel::SPEED_MILES_PER_HOUR)),
+    mSpeedoSensor(parent, &mConfig, &mVssSource, DashUtils::to_underlying(VssSource::VssDataChannel::MPH)),
+    mTachSensor(parent, &mConfig, &mTachSource, DashUtils::to_underlying(TachSource::TachDataChannel::RPM_CHANNEL)),
+    mOdoSensor(parent, &mConfig, &mVssSource, DashUtils::to_underlying(VssSource::VssDataChannel::PULSE_COUNT), mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_ODOMETER)),
+    mTripAOdoSensor(parent, &mConfig, &mVssSource, DashUtils::to_underlying(VssSource::VssDataChannel::PULSE_COUNT), mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_TRIPA)),
+    mTripBOdoSensor(parent, &mConfig, &mVssSource, DashUtils::to_underlying(VssSource::VssDataChannel::PULSE_COUNT), mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_TRIPB))
 {
 }
 
@@ -160,7 +161,7 @@ void Dash::initSensors() {
         mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::VERY_FAST_TIMER)),
         &QTimer::timeout,
         [&vssSource = mVssSource]() {
-            vssSource.update((int) VssSource::VssDataChannel::MPH);
+            vssSource.update(DashUtils::to_underlying(VssSource::VssDataChannel::MPH));
         });
 
     // tacho
@@ -168,7 +169,7 @@ void Dash::initSensors() {
         mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::VERY_FAST_TIMER)),
         &QTimer::timeout,
         [&tachSource = mTachSource]() {
-            tachSource.update((int) TachSource::TachDataChannel::RPM_CHANNEL);
+            tachSource.update(DashUtils::to_underlying(TachSource::TachDataChannel::RPM_CHANNEL));
         });
 
     // odometer sensor
@@ -176,7 +177,7 @@ void Dash::initSensors() {
         mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::SLOW_TIMER)),
         &QTimer::timeout,
         [&vssSource = mVssSource]() {
-            vssSource.update((int) VssSource::VssDataChannel::PULSE_COUNT);
+            vssSource.update(DashUtils::to_underlying(VssSource::VssDataChannel::PULSE_COUNT));
         });
 
     QObject::connect(
