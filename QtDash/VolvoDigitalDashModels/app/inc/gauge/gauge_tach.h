@@ -18,7 +18,7 @@ public:
      * @param modelName: model name
      * @param context: QML context to register model
      */
-    TachometerGauge(QObject * parent, Config * config, QList<Sensor *> sensors,
+    TachometerGauge(QObject * parent, Config * config, QList<const Sensor *> sensors,
                    TachometerModel * model, QString modelName, QQmlContext * context) :
     Gauge(parent, config, sensors, model, modelName, context) {
 

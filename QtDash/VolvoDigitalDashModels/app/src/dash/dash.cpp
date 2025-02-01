@@ -29,10 +29,6 @@ Dash::Dash(QObject *parent, QQmlContext *context) :
 }
 
 Dash::~Dash() {
-    for (auto sensor : mCanSensors) {
-        delete sensor;
-    }
-    mCanSensors.clear();
 }
 
 void Dash::init() {
@@ -68,20 +64,25 @@ void Dash::initSensorSources() {
 void Dash::initCanSensors() {
     for (int channel : mCanSource.getChannelConfigs()->keys()) {
         qDebug() << "CAN Sensor Channel: " << channel;
-        CanSensor * sensor = new CanSensor(this->parent(), &mConfig,
-                                          &mCanSource, channel);
-        qDebug() << "CAN Sensor: " << sensor->getGuage();
-        mCanSensors.push_back(sensor);
+        mCanSensors.push_back(
+            std::make_unique<CanSensor>(
+                this->parent(),
+                &mConfig,
+                &mCanSource,
+                channel
+            )
+        );
+        qDebug() << "CAN Sensor: " << mCanSensors.back().get()->getGuage();
     }
 }
 
-CanSensor * Dash::getCanSensor(QString gaugeName) {
+const CanSensor * Dash::getCanSensor(QString gaugeName) {
     // check if we have a can sensor
     qDebug() << "Get Can Sensor for: " << gaugeName;
-    for (CanSensor * sensor : mCanSensors) {
+    for (const auto& sensor : mCanSensors) {
         qDebug() << "Sensor found: " << sensor->getGuage();
-        if (sensor->getGuage().toLower() == gaugeName) {
-            return sensor;
+        if (sensor.get()->getGuage().toLower() == gaugeName) {
+            return sensor.get();
         }
     }
     return nullptr;
@@ -207,9 +208,9 @@ void Dash::initSensors() {
 void Dash::initAccessoryGauges() {
     qDebug() << "Accessory Gauge Models Init";
     // boost gauge
-    CanSensor * sensor = getCanSensor(ConfigKeys::BOOST_GAUGE_GROUP);
+    const CanSensor * sensor = getCanSensor(ConfigKeys::BOOST_GAUGE_GROUP);
 
-    QList<Sensor *> boostSensors;
+    QList<const Sensor *> boostSensors;
     if (sensor != nullptr) {
         boostSensors.push_back(sensor);
     } else {
@@ -228,7 +229,7 @@ void Dash::initAccessoryGauges() {
 
     // coolant temp gauge
     sensor = getCanSensor(ConfigKeys::COOLANT_TEMP_GAUGE_GROUP);
-    QList<Sensor *> coolantSensors;
+    QList<const Sensor *> coolantSensors;
     if (sensor != nullptr) {
         coolantSensors.push_back(sensor);
     } else {
@@ -247,7 +248,7 @@ void Dash::initAccessoryGauges() {
 
     // oil temp gauge
     sensor = getCanSensor(ConfigKeys::OIL_TEMPERATURE_GAUGE_GROUP);
-    QList<Sensor *> oilTempSensors;
+    QList<const Sensor *> oilTempSensors;
     if (sensor != nullptr) {
         oilTempSensors.push_back(sensor);
     } else {
@@ -266,7 +267,7 @@ void Dash::initAccessoryGauges() {
 
     // voltmeter
     sensor = getCanSensor(ConfigKeys::VOLTMETER_GAUGE_GROUP);
-    QList<Sensor *> voltmeterSensors;
+    QList<const Sensor *> voltmeterSensors;
     if (sensor != nullptr) {
         voltmeterSensors.push_back(sensor);
     } else {
@@ -286,7 +287,7 @@ void Dash::initAccessoryGauges() {
 
     // fuel level (acc gauge)
     sensor = getCanSensor(ConfigKeys::FUEL_GAUGE_GROUP);
-    QList<Sensor *> fuelGaugeSensors;
+    QList<const Sensor *> fuelGaugeSensors;
     if (sensor != nullptr) {
         fuelGaugeSensors.push_back(sensor);
     } else {
@@ -306,7 +307,7 @@ void Dash::initAccessoryGauges() {
 
     // oil pressure gauge
     sensor = getCanSensor(ConfigKeys::OIL_PRESSURE_GAUGE_GROUP);
-    QList<Sensor *> oilPressureSensors;
+    QList<const Sensor *> oilPressureSensors;
     if (sensor != nullptr) {
         oilPressureSensors.push_back(sensor);
     } else {
@@ -325,7 +326,7 @@ void Dash::initAccessoryGauges() {
     );
 
     //temp and fuel cluster
-    QList<Sensor *> tempAndFuelSensors = {coolantSensors.at(0), fuelGaugeSensors.at(0)};
+    QList<const Sensor *> tempAndFuelSensors = {coolantSensors.at(0), fuelGaugeSensors.at(0)};
 
     mTempFuelClusterGauge.reset(
         new TempFuelClusterGauge(
@@ -343,7 +344,7 @@ void Dash::initSpeedo() {
     qDebug() << "Speedometer Gauge Model Init";
 
     // init gauge -- default is VSS
-    QList<Sensor *> speedoSensors = {&mSpeedoSensor};
+    QList<const Sensor *> speedoSensors = {&mSpeedoSensor};
     if (mConfig.getVssConfig().useGps) {
         speedoSensors.replace(0, &mGpsSpeedoSensor);
     }
@@ -385,12 +386,12 @@ void Dash::initSpeedo() {
 
 void Dash::initTacho() {
     qDebug() << "Tachometer Gauge Model Init";
-    QList<Sensor *> tachSensors;
+    QList<const Sensor *> tachSensors;
 
     // check if we have a can sensor
-    for (CanSensor * sensor : mCanSensors) {
-        if (sensor->getGuage().toLower() == ConfigKeys::TACHOMETER_GAUGE_GROUP) {
-            tachSensors.push_back(sensor);
+    for (const auto& sensor : mCanSensors) {
+        if (sensor.get()->getGuage().toLower() == ConfigKeys::TACHOMETER_GAUGE_GROUP) {
+            tachSensors.push_back(sensor.get());
         }
     }
 
@@ -413,7 +414,7 @@ void Dash::initTacho() {
 }
 
 void Dash::initOdometer() {
-    QList<Sensor *> odoSensors = {&mOdoSensor, &mTripAOdoSensor, &mTripBOdoSensor};
+    QList<const Sensor *> odoSensors = {&mOdoSensor, &mTripAOdoSensor, &mTripBOdoSensor};
 
     mOdoGauge.reset(
         new OdometerGauge(

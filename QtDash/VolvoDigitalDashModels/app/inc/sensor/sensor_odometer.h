@@ -34,7 +34,7 @@ public:
         }
     }
 
-    QString getUnits() override {
+    QString getUnits() const override {
         Units::DistanceUnits units = mOdoConfig.units;
 
         switch ((int) units) {

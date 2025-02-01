@@ -6,6 +6,7 @@
 #include <QMap>
 #include <QKeyEvent>
 
+#include <vector>
 #include <memory>
 
 #include <tachometer_model.h>
@@ -134,7 +135,6 @@ private:
     SpeedometerModel mSpeedoModel; //!< speedometer QML model
     TachometerModel mTachoModel; //!< Tachometer QML model
 
-    // QScopedPointer<AccessoryGauge> mBoostGauge;
     std::unique_ptr<AccessoryGauge> mBoostGauge;
     std::unique_ptr<AccessoryGauge> mCoolantTempGauge; //!< coolant temp gauge
     std::unique_ptr<AccessoryGauge> mOilTempGauge; //!< oil temp gauge
@@ -149,7 +149,7 @@ private:
 
     std::unique_ptr<BackLightControl> mBacklightControl;
 
-    QVector<CanSensor *> mCanSensors;
+    std::vector<std::unique_ptr<CanSensor>> mCanSensors;
 
     /**
      * @brief Initialize sensor sources
@@ -166,7 +166,7 @@ private:
      * @param gaugeName Gauge name
      * @return pointer to the CAN sensor or nullptr
      */
-    CanSensor * getCanSensor(QString gaugeName);
+    const CanSensor * getCanSensor(QString gaugeName);
 
     /**
      * @brief Initialize sensors and connect the sensor sources

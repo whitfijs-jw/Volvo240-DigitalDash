@@ -2,7 +2,7 @@
 #include <config_keys.h>
 
 AccessoryGauge::AccessoryGauge(QObject *parent, Config *config,
-                               QList<Sensor *> sensors, AccessoryGaugeModel *model,
+                               QList<const Sensor *> sensors, AccessoryGaugeModel *model,
                                QString modelName, QQmlContext *context) :
     Gauge(parent, config, sensors, model, modelName, context) {
 
@@ -34,7 +34,7 @@ AccessoryGauge::AccessoryGauge(QObject *parent, Config *config,
             // get raw value
             qreal val = data.toReal();
             if (mSensors.length() > 0) {
-                Sensor * sensor = mSensors.at(0);
+                auto sensor = mSensors.at(0);
 
                 if (sensor == nullptr) {
                     qDebug() << "No Sensor";
