@@ -25,11 +25,7 @@ Dash::Dash(QObject *parent, QQmlContext *context) :
     mOdoSensor(parent, &mConfig, &mVssSource, DashUtils::to_underlying(VssSource::VssDataChannel::PULSE_COUNT), mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_ODOMETER)),
     mTripAOdoSensor(parent, &mConfig, &mVssSource, DashUtils::to_underlying(VssSource::VssDataChannel::PULSE_COUNT), mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_TRIPA)),
     mTripBOdoSensor(parent, &mConfig, &mVssSource, DashUtils::to_underlying(VssSource::VssDataChannel::PULSE_COUNT), mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_TRIPB))
-{
-}
-
-Dash::~Dash() {
-}
+{}
 
 void Dash::init() {
     initSensorSources();
@@ -326,7 +322,7 @@ void Dash::initAccessoryGauges() {
     );
 
     //temp and fuel cluster
-    QList<const Sensor *> tempAndFuelSensors = {coolantSensors.at(0), fuelGaugeSensors.at(0)};
+    QList tempAndFuelSensors = {coolantSensors.at(0), fuelGaugeSensors.at(0)};
 
     mTempFuelClusterGauge.reset(
         new TempFuelClusterGauge(
