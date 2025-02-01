@@ -29,8 +29,6 @@ Dash::Dash(QObject *parent, QQmlContext *context) :
 }
 
 Dash::~Dash() {
-    delete mBacklightControl;
-
     for (auto sensor : mCanSensors) {
         delete sensor;
     }
@@ -486,16 +484,19 @@ void Dash::initDashLights() {
 }
 
 void Dash::initBackLightControl() {
-    mBacklightControl = new BackLightControl(
-        this,
-        &mConfig,
-        &mVoltmeterSensor,
-        &mDimmerVoltageSensor);
+    mBacklightControl.reset(
+        new BackLightControl(
+            this,
+            &mConfig,
+            &mVoltmeterSensor,
+            &mDimmerVoltageSensor
+        )
+    );
 
     QObject::connect(
         mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::SLOW_TIMER)),
         &QTimer::timeout,
-        mBacklightControl,
+        mBacklightControl.get(),
         &BackLightControl::updateBacklightPwm
         );
 }

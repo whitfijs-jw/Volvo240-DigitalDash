@@ -147,7 +147,7 @@ private:
     std::unique_ptr<TachometerGauge> mTachoGauge; //!< tachometer gauge
     std::unique_ptr<OdometerGauge> mOdoGauge; //!< odometer gauge
 
-    BackLightControl * mBacklightControl;
+    std::unique_ptr<BackLightControl> mBacklightControl;
 
     QVector<CanSensor *> mCanSensors;
 
