@@ -20,7 +20,7 @@ public:
      */
     OdometerSensor(QObject * parent, Config * config,
                    VssSource * source, int channel,
-                   SensorConfig::OdometerConfig odoConfig) :
+                   const SensorConfig::OdometerConfig& odoConfig) :
            Sensor(parent, config, source, channel) {
 
         // Check if the optional input

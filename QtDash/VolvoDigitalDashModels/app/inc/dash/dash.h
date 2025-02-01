@@ -69,7 +69,7 @@ public:
      */
     Dash(QObject * parent, QQmlContext * context);
 
-    ~Dash() = default;
+    ~Dash() final = default;
     /**
      * @brief Initialize everything
      */
