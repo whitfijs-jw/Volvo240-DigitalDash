@@ -85,20 +85,20 @@ public:
      */
     QHash<int, QByteArray> roleNames() const override;
 
-    qreal minValue();
-    qreal maxValue();
-    qreal currentValue();
-    QString units();
-    qreal lowAlarm();
-    qreal highAlarm();
+    qreal minValue() const;
+    qreal maxValue() const;
+    qreal currentValue() const;
+    QString units() const;
+    qreal lowAlarm() const;
+    qreal highAlarm() const;
 
 private:
-    qreal mMinValue;
-    qreal mMaxValue;
-    qreal mCurrentValue;
-    QString mUnits;
-    qreal mLowAlarm;
-    qreal mHighAlarm;
+    qreal mMinValue {0.0};
+    qreal mMaxValue {0.0};
+    qreal mCurrentValue {0.0};
+    QString mUnits {""};
+    qreal mLowAlarm {0.0};
+    qreal mHighAlarm {0.0};
 
 signals:
     void minValueChanged();

@@ -1,8 +1,7 @@
 #include "tachometer_model.h"
 
 TachometerModel::TachometerModel(QObject *parent) :
-    QAbstractListModel(parent),
-    mRpm(0)
+    QAbstractListModel(parent)
 {
 
 }
@@ -101,7 +100,7 @@ void TachometerModel::setRpm(int rpm)
     emit rpmChanged();
 }
 
-int TachometerModel::rpm()
+int TachometerModel::rpm() const
 {
     return mRpm;
 }
@@ -113,7 +112,7 @@ void TachometerModel::setRedLine(int redLine)
     emit redLineChanged();
 }
 
-int TachometerModel::redLine()
+int TachometerModel::redLine() const
 {
     return mRedLine;
 }
@@ -125,7 +124,7 @@ void TachometerModel::setMaxRpm(int maxRpm)
     emit redLineChanged();
 }
 
-int TachometerModel::maxRpm()
+int TachometerModel::maxRpm() const
 {
     return mMaxRpm;
 }

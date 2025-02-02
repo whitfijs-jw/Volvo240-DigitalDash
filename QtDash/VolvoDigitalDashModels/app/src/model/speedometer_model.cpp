@@ -151,32 +151,32 @@ Qt::ItemFlags SpeedometerModel::flags(const QModelIndex &index) const
     return Qt::ItemIsEditable;
 }
 
-qreal SpeedometerModel::minValue()
+qreal SpeedometerModel::minValue() const
 {
     return mMinValue;
 }
 
-qreal SpeedometerModel::maxValue()
+qreal SpeedometerModel::maxValue() const
 {
     return mMaxValue;
 }
 
-qreal SpeedometerModel::currentValue()
+qreal SpeedometerModel::currentValue() const
 {
     return mCurrentValue;
 }
 
-QString SpeedometerModel::units()
+QString SpeedometerModel::units() const
 {
     return mUnits;
 }
 
-qreal SpeedometerModel::topValue()
+qreal SpeedometerModel::topValue() const
 {
     return mTopValue;
 }
 
-QString SpeedometerModel::topUnits()
+QString SpeedometerModel::topUnits() const
 {
     return mTopUnits;
 }

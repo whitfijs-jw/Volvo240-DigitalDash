@@ -166,37 +166,37 @@ Qt::ItemFlags TempAndFuelGaugeModel::flags(const QModelIndex &index) const
     return Qt::ItemIsEditable;
 }
 
-qreal TempAndFuelGaugeModel::maxTemp()
+qreal TempAndFuelGaugeModel::maxTemp() const
 {
     return mMaxTemp;
 }
 
-qreal TempAndFuelGaugeModel::minTemp()
+qreal TempAndFuelGaugeModel::minTemp() const
 {
     return mMinTemp;
 }
 
-qreal TempAndFuelGaugeModel::currentTemp()
+qreal TempAndFuelGaugeModel::currentTemp() const
 {
     return mCurrentTemp;
 }
 
-QString TempAndFuelGaugeModel::tempUnits()
+QString TempAndFuelGaugeModel::tempUnits() const
 {
     return mTempUnits;
 }
 
-qreal TempAndFuelGaugeModel::fuelLevel()
+qreal TempAndFuelGaugeModel::fuelLevel() const
 {
     return mFuelLevel;
 }
 
-qreal TempAndFuelGaugeModel::highTempAlarm()
+qreal TempAndFuelGaugeModel::highTempAlarm() const
 {
     return mHighTempAlarm;
 }
 
-qreal TempAndFuelGaugeModel::lowFuelAlarm()
+qreal TempAndFuelGaugeModel::lowFuelAlarm() const
 {
     return mLowFuelAlarm;
 }

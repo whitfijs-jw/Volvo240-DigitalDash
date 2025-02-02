@@ -1,8 +1,7 @@
 #include "indicator_model.h"
 
 IndicatorModel::IndicatorModel(QObject *parent) :
-    QAbstractListModel(parent),
-    mOn(false), mFlipped(false)
+    QAbstractListModel(parent)
 {
 
 }
@@ -83,12 +82,12 @@ Qt::ItemFlags IndicatorModel::flags(const QModelIndex &index) const
     return Qt::ItemIsEditable;
 }
 
-bool IndicatorModel::on()
+bool IndicatorModel::on() const
 {
     return mOn;
 }
 
-bool IndicatorModel::flipped()
+bool IndicatorModel::flipped() const
 {
     return mFlipped;
 }

@@ -1,11 +1,7 @@
 #include "accessory_gauge_model.h"
 
 AccessoryGaugeModel::AccessoryGaugeModel(QObject *parent) :
-    QAbstractListModel(parent),
-    mMinValue(0),
-    mMaxValue(1),
-    mCurrentValue(0),
-    mUnits("")
+    QAbstractListModel(parent)
 {
 
 }
@@ -154,32 +150,32 @@ Qt::ItemFlags AccessoryGaugeModel::flags(const QModelIndex &index) const
     return Qt::ItemIsEditable;
 }
 
-qreal AccessoryGaugeModel::minValue()
+qreal AccessoryGaugeModel::minValue() const
 {
     return mMinValue;
 }
 
-qreal AccessoryGaugeModel::maxValue()
+qreal AccessoryGaugeModel::maxValue() const
 {
     return mMaxValue;
 }
 
-qreal AccessoryGaugeModel::currentValue()
+qreal AccessoryGaugeModel::currentValue() const
 {
     return mCurrentValue;
 }
 
-QString AccessoryGaugeModel::units()
+QString AccessoryGaugeModel::units() const
 {
     return mUnits;
 }
 
-qreal AccessoryGaugeModel::lowAlarm()
+qreal AccessoryGaugeModel::lowAlarm() const
 {
     return mLowAlarm;
 }
 
-qreal AccessoryGaugeModel::highAlarm()
+qreal AccessoryGaugeModel::highAlarm() const
 {
     return mHighAlarm;
 }
