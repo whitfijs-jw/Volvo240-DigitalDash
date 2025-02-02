@@ -25,7 +25,7 @@ public:
 
     }
 
-    QString getUnits() override {
+    QString getUnits() const override {
         // pass through the units
         return mSource->getUnits(getChannel());
     }

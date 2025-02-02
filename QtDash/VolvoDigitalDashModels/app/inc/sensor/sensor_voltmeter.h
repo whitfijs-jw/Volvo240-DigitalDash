@@ -24,7 +24,7 @@ public:
         Sensor(parent, config, source, channel), m12VInput(analogConfig) {
     }
 
-    QString getUnits() override {
+    QString getUnits() const override {
         return "V";
     }
 

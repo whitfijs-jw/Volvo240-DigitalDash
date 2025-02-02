@@ -63,7 +63,7 @@ public:
 
     }
 
-    QString getUnits() override {
+    QString getUnits() const override {
         return Units::UNITS_INCH;
     }
 
@@ -83,7 +83,7 @@ public:
 
     }
 
-    QString getUnits() override {
+    QString getUnits() const override {
         return Units::UNITS_FOOT;
     }
 

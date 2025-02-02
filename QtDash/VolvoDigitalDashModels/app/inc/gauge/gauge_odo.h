@@ -20,7 +20,7 @@ public:
      * @param modelName: model name
      * @param context: QML context to register model
      */
-    OdometerGauge(QObject * parent, Config * config, QList<Sensor *> sensors,
+    OdometerGauge(QObject * parent, Config * config, QList<const Sensor *> sensors,
                    OdometerModel * model, QString modelName, QQmlContext * context) :
     Gauge(parent, config, sensors, model, modelName, context) {
         SensorConfig::OdometerConfig odoConfig = mConfig->getOdometerConfig(ConfigKeys::ODO_NAME_ODOMETER);

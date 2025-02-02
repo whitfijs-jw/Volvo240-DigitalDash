@@ -31,7 +31,7 @@ public:
      * @param modelName: Gauge model name (used to register model with Qml Context)
      * @param context: QML context in which the gauge will be registered
      */
-    Gauge(QObject * parent, Config * config, QList<Sensor *> sensors,
+    Gauge(QObject * parent, Config * config, QList<const Sensor *> sensors,
           QAbstractListModel * model, QString modelName, QQmlContext * context) :
           QObject(parent), mConfig(config), mSensors(sensors), mModel(model) {
 
@@ -41,7 +41,7 @@ public:
 
 protected:
     Config * mConfig; //!< Dash config
-    QList<Sensor *> mSensors; //!< sensor list
+    QList<const Sensor *> mSensors; //!< sensor list
     QAbstractListModel * mModel; //!< gauge model
 };
 

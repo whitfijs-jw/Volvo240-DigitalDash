@@ -31,7 +31,7 @@ public:
         mCurrentLag = mSensorConfig.lagStart;
     }
 
-    QString getUnits() override {
+    QString getUnits() const override{
         return mSensorConfig.units;
     }
 

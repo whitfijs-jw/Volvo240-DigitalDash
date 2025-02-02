@@ -21,7 +21,7 @@ public:
            Sensor(parent, config, source, channel) {
     }
 
-    QString getUnits() override {
+    QString getUnits() const override {
         return "rpm";
     }
 

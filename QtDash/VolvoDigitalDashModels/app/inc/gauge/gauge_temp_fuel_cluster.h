@@ -20,7 +20,7 @@ public:
      * @param modelName: model name
      * @param context: QML context to register model
      */
-    TempFuelClusterGauge(QObject * parent, Config * config, QList<Sensor *> sensors,
+    TempFuelClusterGauge(QObject * parent, Config * config, QList<const Sensor *> sensors,
                          TempAndFuelGaugeModel * model, QString modelName, QQmlContext * context) :
           Gauge(parent, config, sensors, model, modelName, context) {
         // get coolant temp config
@@ -47,7 +47,7 @@ public:
             qreal val = data.toReal();
 
             if (mSensors.length() > 0) {
-                Sensor * sensor = mSensors.at(0);
+                auto sensor = mSensors.at(0);
 
                 // get units
                 QString units = sensor->getUnits();

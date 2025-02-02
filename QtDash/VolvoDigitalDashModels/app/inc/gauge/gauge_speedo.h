@@ -22,7 +22,7 @@ public:
      * @param modelName: model name
      * @param context: QML context to register model
      */
-    SpeedometerGauge(QObject * parent, Config * config, QList<Sensor *> sensors,
+    SpeedometerGauge(QObject * parent, Config * config, QList<const Sensor *> sensors,
                    SpeedometerModel * model, QString modelName, QQmlContext * context) :
     Gauge(parent, config, sensors, model, modelName, context) {
         mSpeedoConfig = mConfig->getSpeedoConfig();
@@ -58,7 +58,7 @@ public:
             // get raw value
             qreal val = data.toReal();
             if (mSensors.length() > 1) {
-                Sensor * sensor = mSensors.at(1);
+                auto sensor = mSensors.at(1);
 
                 // get units
                 QString units = sensor->getUnits();

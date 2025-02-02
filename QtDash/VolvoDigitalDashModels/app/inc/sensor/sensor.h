@@ -34,7 +34,7 @@ public:
      * @brief get the channel that we should be waiting on from the source
      * @return: channel
      */
-    int getChannel() {
+    int getChannel() const {
         return mChannel;
     }
 
@@ -42,7 +42,7 @@ public:
      * @brief getUnits
      * @return Expected units
      */
-    virtual QString getUnits() = 0;
+    virtual QString getUnits() const = 0;
 
 signals:
     /**
