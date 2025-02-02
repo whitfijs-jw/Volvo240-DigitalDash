@@ -488,7 +488,7 @@ bool Config::loadConfig() {
 bool Config::loadScreenConfig() {
     mConfig->beginGroup(SCREEN_PROP_GROUP);
     mScreenConfig.use = mConfig->value(SCREEN_PROP_USE, false).toBool();
-    mScreenConfig.screenRotationAngle = mConfig->value((SCREEN_PROP_ORIENTATION), 180).toReal();
+    mScreenConfig.screenRotationAngle = mConfig->value(SCREEN_PROP_ORIENTATION, 180).toReal();
 
     printKeys("Screen Properties: ", mConfig.get());
 
