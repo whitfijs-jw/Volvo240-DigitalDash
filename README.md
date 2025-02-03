@@ -142,37 +142,7 @@ This directory contains the outputs of the buildroot compilation process. After 
 
 Buildroot will build the custom linux image.  The image being build is based on the raspberry-piX 32-bit images provided from the buildroot project.  Right now there is only support for raspberry pi 3 and pi 4/400.  Things are still a bit of a mess here and depending on your flavor of Linux you might have to setup your system a little differently than others.  You can find a lot of good information here on host packages that are absolutely necessary: [Buildroot System Requirements](https://buildroot.org/downloads/manual/manual.html#requirement)
 
-
-1. To get things started:
-
-From within the main project directory:
-
-`cd buildroot`
-
-For Raspberry Pi 3B/3B+:
-
-`make volvodash_defconfig`
-
-For Raspberry Pi 4 or Pi 400:
-
-`make volvodash_rpi4_defconfig`
-
-
-This will get buildroot configured to build the linux image. 
-
-
-2. Start the build:
-
-`make` 
-
-This will take a while, go get a coffee or if you're on a laptop run it before going to bed. You might be missing packages dependencies here and there. Check the output and use your package manager to install what's missing. This will also build the host tools for building the qt app that actually runs the dash. As one of the last steps of this process the Qt App, called VolvoDigitalDashModels, is built and copied to the target /opt directory along with the config files.
-
-
-3. Flash Image onto
-
-At the end of the build that completed in the last step there should be a file called "sdcard.img" in the `buildroot/output/images` directory. The easiest way to flash this image onto an SD card for use on a pi is a utility like the [Raspberry Pi Imager](https://www.raspberrypi.com/software/). In the imager utility select the "Choose OS" option, scroll all the way down and select the "Use Custom" option. Navigate to where the repository is cloned then to `buildroot/output/images`.  There should be a file named `sdcard.img`.  After selecting the image file, select your sdcard using the "Choose Storage" option. Hit write and wait. 
-
-After writing has completed you can plug the SD card into the pi and boot. The dash should start up after boot and using the numpad on a keyboard you should be able to switch between dash screens.
+Detailed instructions for setting up a virtual machine and the build environment is found [here](SetupBuildEnv.md)
 
 ## Remote Access
 
