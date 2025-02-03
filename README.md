@@ -142,7 +142,7 @@ This directory contains the outputs of the buildroot compilation process. After 
 
 Buildroot will build the custom linux image.  The image being build is based on the raspberry-piX 32-bit images provided from the buildroot project.  Right now there is only support for raspberry pi 3 and pi 4/400.  Things are still a bit of a mess here and depending on your flavor of Linux you might have to setup your system a little differently than others.  You can find a lot of good information here on host packages that are absolutely necessary: [Buildroot System Requirements](https://buildroot.org/downloads/manual/manual.html#requirement)
 
-Detailed instructions for setting up a virtual machine and the build environment is found [here](SetupBuildEnv.md)
+Detailed instructions for setting up a virtual machine and the build environment are found [here](SetupBuildEnv.md)
 
 ## Remote Access
 
