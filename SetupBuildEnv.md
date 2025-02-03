@@ -71,10 +71,6 @@ The output produced from build are located here:
 
 This directory contains the outputs of the buildroot compilation process. After buildroot is done compiling the custom linux image, compiling the specified target packages, and constructing the target rootfs and bootfs, an image that can be flashed on to an SD card is placed here. ```sdcard.img``` can then be flashed on to an SD card to be used on a pi. As a part of the compilation/building the Qt Dash app should be compiled and placed within this image.
 
-## Getting the image out of virtual box
-
-
-
 ## Flashing the image to an SD card
 
 The easiest way to flash the image (```sdcard.img```) onto an SD card for use on a pi is to use a utility like the [Raspberry Pi Imager](https://www.raspberrypi.com/software/). In the imager utility select the "Choose OS" option, scroll all the way down and select the "Use Custom" option. Navigate to where the repository is cloned then to ```buildroot/output/images```. There should be a file named ```sdcard.img```. After selecting the image file, select your sdcard using the "Choose Storage" option. Hit write and wait.
