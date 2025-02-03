@@ -13,7 +13,7 @@ class BaseGaugeModel : public QAbstractListModel
     Q_PROPERTY(QString units READ units WRITE setUnits NOTIFY unitsChanged)
 
 public:
-    enum BaseGaugeRoles {
+    enum class BaseGaugeRoles {
         MinValueRole        = Qt::UserRole + 1,
         MaxValueRole        = Qt::UserRole + 2,
         CurrentValueRole    = Qt::UserRole + 3,

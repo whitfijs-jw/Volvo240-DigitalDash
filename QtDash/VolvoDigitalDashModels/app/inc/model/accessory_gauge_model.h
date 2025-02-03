@@ -3,7 +3,6 @@
 
 #include <QObject>
 #include <base_gauge_model.h>
-#include <QAbstractListModel>
 
 class AccessoryGaugeModel : public BaseGaugeModel
 {
@@ -19,7 +18,7 @@ public:
     static constexpr char BOOST_GAUGE_MODEL_NAME[] = "boostModel";
     static constexpr char VOLT_METER_MODEL_NAME[] = "voltMeterModel";
 
-    enum AccessoryGaugeRoles {
+    enum class AccessoryGaugeRoles {
         LowAlarmRole        = Qt::UserRole + 5,
         HighAlarmRole       = Qt::UserRole + 6,
     };

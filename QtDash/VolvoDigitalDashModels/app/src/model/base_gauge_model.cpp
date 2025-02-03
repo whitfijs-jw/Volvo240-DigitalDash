@@ -1,4 +1,5 @@
 #include <base_gauge_model.h>
+#include <utils.h>
 
 BaseGaugeModel::BaseGaugeModel(QObject * parent) : QAbstractListModel(parent) {
 
@@ -7,10 +8,10 @@ BaseGaugeModel::BaseGaugeModel(QObject * parent) : QAbstractListModel(parent) {
 QHash<int, QByteArray> BaseGaugeModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
-    roles[BaseGaugeRoles::MinValueRole] = "gaugeMin";
-    roles[BaseGaugeRoles::MaxValueRole] = "gaugeMax";
-    roles[BaseGaugeRoles::CurrentValueRole] = "currentValue";
-    roles[BaseGaugeRoles::UnitsRole] = "gaugeUnits";
+    roles[DashUtils::to_underlying(BaseGaugeRoles::MinValueRole)] = "gaugeMin";
+    roles[DashUtils::to_underlying(BaseGaugeRoles::MaxValueRole)] = "gaugeMax";
+    roles[DashUtils::to_underlying(BaseGaugeRoles::CurrentValueRole)] = "currentValue";
+    roles[DashUtils::to_underlying(BaseGaugeRoles::UnitsRole)] = "gaugeUnits";
     return roles;
 }
 
@@ -18,19 +19,19 @@ QVariant BaseGaugeModel::headerData(int section, Qt::Orientation orientation, in
 {
     (void)section;
     (void)orientation;
-    if (role == BaseGaugeRoles::MinValueRole)
+    if (role == DashUtils::to_underlying(BaseGaugeRoles::MinValueRole))
     {
         return QVariant("gaugeMin");
     }
-    else if(role == BaseGaugeRoles::MaxValueRole)
+    else if(role == DashUtils::to_underlying(BaseGaugeRoles::MaxValueRole))
     {
         return QVariant("gaugeMax");
     }
-    else if(role == BaseGaugeRoles::CurrentValueRole)
+    else if(role == DashUtils::to_underlying(BaseGaugeRoles::CurrentValueRole))
     {
         return QVariant("currentValue");
     }
-    else if(role == BaseGaugeRoles::UnitsRole)
+    else if(role == DashUtils::to_underlying(BaseGaugeRoles::UnitsRole))
     {
         return QVariant("gaugeUnits");
     }
@@ -46,19 +47,19 @@ int BaseGaugeModel::rowCount(const QModelIndex &parent) const
 QVariant BaseGaugeModel::data(const QModelIndex &index, int role) const
 {
     (void)index;
-    if (role == BaseGaugeRoles::MinValueRole)
+    if (role == DashUtils::to_underlying(BaseGaugeRoles::MinValueRole))
     {
         return mMinValue;
     }
-    else if(role == BaseGaugeRoles::MaxValueRole)
+    else if(role == DashUtils::to_underlying(BaseGaugeRoles::MaxValueRole))
     {
         return mMaxValue;
     }
-    else if(role == BaseGaugeRoles::CurrentValueRole)
+    else if(role == DashUtils::to_underlying(BaseGaugeRoles::CurrentValueRole))
     {
         return mCurrentValue;
     }
-    else if(role == BaseGaugeRoles::UnitsRole)
+    else if(role == DashUtils::to_underlying(BaseGaugeRoles::UnitsRole))
     {
         return mUnits;
     }
@@ -69,39 +70,39 @@ QVariant BaseGaugeModel::data(const QModelIndex &index, int role) const
 bool BaseGaugeModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     (void)index;
-    if (role == BaseGaugeRoles::MinValueRole)
+    if (role == DashUtils::to_underlying(BaseGaugeRoles::MinValueRole))
     {
         mMinValue = value.toReal();
         emit dataChanged(createIndex(0,0),
                          createIndex(1, 0),
-                         QVector<int>() << BaseGaugeRoles::MinValueRole);
+                         QVector<int>() << DashUtils::to_underlying(BaseGaugeRoles::MinValueRole));
         emit minValueChanged();
         return true;
     }
-    else if(role == BaseGaugeRoles::MaxValueRole)
+    else if(role == DashUtils::to_underlying(BaseGaugeRoles::MaxValueRole))
     {
         mMaxValue = value.toReal();
         emit dataChanged(createIndex(0,0),
                          createIndex(1, 0),
-                         QVector<int>() << BaseGaugeRoles::MaxValueRole);
+                         QVector<int>() << DashUtils::to_underlying(BaseGaugeRoles::MaxValueRole));
         emit maxValueChanged();
         return true;
     }
-    else if(role == BaseGaugeRoles::CurrentValueRole)
+    else if(role == DashUtils::to_underlying(BaseGaugeRoles::CurrentValueRole))
     {
         mCurrentValue = value.toReal();
         emit dataChanged(createIndex(0,0),
                          createIndex(1, 0),
-                         QVector<int>() << BaseGaugeRoles::CurrentValueRole);
+                         QVector<int>() << DashUtils::to_underlying(BaseGaugeRoles::CurrentValueRole));
         emit currentValueChanged();
         return true;
     }
-    else if(role == BaseGaugeRoles::UnitsRole)
+    else if(role == DashUtils::to_underlying(BaseGaugeRoles::UnitsRole))
     {
         mUnits = value.toString();
         emit dataChanged(createIndex(0,0),
                          createIndex(1, 0),
-                         QVector<int>() << BaseGaugeRoles::UnitsRole);
+                         QVector<int>() << DashUtils::to_underlying(BaseGaugeRoles::UnitsRole));
         emit unitsChanged();
         return true;
     }
@@ -143,7 +144,7 @@ void BaseGaugeModel::setMinValue(qreal minValue)
     mMinValue = minValue;
     emit dataChanged(createIndex(0,0),
                      createIndex(1, 0),
-                     QVector<int>() << BaseGaugeRoles::MinValueRole);
+                     QVector<int>() << DashUtils::to_underlying(BaseGaugeRoles::MinValueRole));
     emit minValueChanged();
 }
 
@@ -152,7 +153,7 @@ void BaseGaugeModel::setMaxValue(qreal maxValue)
     mMaxValue = maxValue;
     emit dataChanged(createIndex(0,0),
                      createIndex(1, 0),
-                     QVector<int>() << BaseGaugeRoles::MaxValueRole);
+                     QVector<int>() << DashUtils::to_underlying(BaseGaugeRoles::MaxValueRole));
     emit maxValueChanged();
 }
 
@@ -161,7 +162,7 @@ void BaseGaugeModel::setCurrentValue(qreal currentValue)
     mCurrentValue = currentValue;
     emit dataChanged(createIndex(0,0),
                      createIndex(1, 0),
-                     QVector<int>() << BaseGaugeRoles::CurrentValueRole);
+                     QVector<int>() << DashUtils::to_underlying(BaseGaugeRoles::CurrentValueRole));
     emit currentValueChanged();
 }
 
@@ -170,6 +171,6 @@ void BaseGaugeModel::setUnits(QString units)
     mUnits = units;
     emit dataChanged(createIndex(0, 0),
                      createIndex(1, 0),
-                     QVector<int>() << BaseGaugeRoles::UnitsRole);
+                     QVector<int>() << DashUtils::to_underlying(BaseGaugeRoles::UnitsRole));
     emit unitsChanged();
 }
