@@ -74,11 +74,11 @@ public:
      */
     QHash<int, QByteArray> roleNames() const override;
 
-    int rpm();
+    int rpm() const;
 
-    int redLine();
+    int redLine() const;
 
-    int maxRpm();
+    int maxRpm() const;
 
 
 public slots:
@@ -94,9 +94,9 @@ signals:
     void maxRpmChanged();
 
 private:
-    int mRpm;
-    int mRedLine;
-    int mMaxRpm;
+    int mRpm {0};
+    int mRedLine {1};
+    int mMaxRpm {1};
 
 };
 

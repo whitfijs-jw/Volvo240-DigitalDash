@@ -1,10 +1,8 @@
 #include "warning_light_model.h"
 
 WarningLightModel::WarningLightModel(QObject *parent) :
-    QAbstractListModel(parent),
-    mOn(false), mFlipped(false), mWarningText(""), mLightColor(0,0,0)
+    QAbstractListModel(parent)
 {
-
 }
 
 QHash<int, QByteArray> WarningLightModel::roleNames() const
@@ -117,22 +115,22 @@ Qt::ItemFlags WarningLightModel::flags(const QModelIndex &index) const
     return Qt::ItemIsEditable;
 }
 
-bool WarningLightModel::on()
+bool WarningLightModel::on() const
 {
     return mOn;
 }
 
-bool WarningLightModel::flipped()
+bool WarningLightModel::flipped() const
 {
     return mFlipped;
 }
 
-QString WarningLightModel::warningText()
+QString WarningLightModel::warningText() const
 {
     return mWarningText;
 }
 
-QColor WarningLightModel::lightColor()
+QColor WarningLightModel::lightColor() const
 {
     return mLightColor;
 }

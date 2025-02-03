@@ -1,26 +1,26 @@
-#ifndef ODOMETER_MODEL_H
-#define ODOMETER_MODEL_H
+#ifndef BASE_GAUGE_MODEL_H
+#define BASE_GAUGE_MODEL_H
 
-#include <QAbstractListModel>
 #include <QObject>
+#include <QAbstractListModel>
 
-class OdometerModel : public QAbstractListModel
+class BaseGaugeModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(qreal odometerValue READ odometerValue WRITE setOdometerValue NOTIFY odometerValueChanged)
-    Q_PROPERTY(qreal tripAValue READ tripAValue WRITE setTripAValue NOTIFY tripAValueChanged)
-    Q_PROPERTY(qreal tripBValue READ tripBValue WRITE setTripBValue NOTIFY tripBValueChanged)
+    Q_PROPERTY(qreal minValue READ minValue WRITE setMinValue NOTIFY minValueChanged)
+    Q_PROPERTY(qreal maxValue READ maxValue WRITE setMaxValue NOTIFY maxValueChanged)
+    Q_PROPERTY(qreal currentValue READ currentValue WRITE setCurrentValue NOTIFY currentValueChanged)
+    Q_PROPERTY(QString units READ units WRITE setUnits NOTIFY unitsChanged)
 
 public:
-    static constexpr char ODOMETER_MODEL_NAME[] = "odometerModel";
-
-    enum OdometerModelRoles{
-        OdoValueRole      = Qt::UserRole + 1,
-        TripAValueRole    = Qt::UserRole + 2,
-        TripBValueRole    = Qt::UserRole + 3,
+    enum class BaseGaugeRoles {
+        MinValueRole        = Qt::UserRole + 1,
+        MaxValueRole        = Qt::UserRole + 2,
+        CurrentValueRole    = Qt::UserRole + 3,
+        UnitsRole           = Qt::UserRole + 4,
     };
 
-    explicit OdometerModel(QObject *parent = nullptr);
+    explicit BaseGaugeModel(QObject * parent = nullptr);
 
     /**
      * Provides the header data for given params.
@@ -74,24 +74,28 @@ public:
      */
     QHash<int, QByteArray> roleNames() const override;
 
-    qreal odometerValue() const;
-    qreal tripAValue() const;
-    qreal tripBValue() const;
-
-private:
-    qreal mOdometerValue {0.0};
-    qreal mTripAValue {0.0};
-    qreal mTripBValue {0.0};
+    qreal minValue() const;
+    qreal maxValue() const;
+    qreal currentValue() const;
+    QString units() const;
 
 signals:
-    void odometerValueChanged();
-    void tripAValueChanged();
-    void tripBValueChanged();
+    void minValueChanged();
+    void maxValueChanged();
+    void currentValueChanged();
+    void unitsChanged();
 
 public slots:
-    void setOdometerValue(qreal odoValue);
-    void setTripAValue(qreal tripAValue);
-    void setTripBValue(qreal tripBValue);
+    void setMinValue(qreal minValue);
+    void setMaxValue(qreal maxValue);
+    void setCurrentValue(qreal currentValue);
+    void setUnits(QString units);
+
+private:
+    qreal mMinValue {0.0};
+    qreal mMaxValue {0.0};
+    qreal mCurrentValue {0.0};
+    QString mUnits {""};
 };
 
-#endif // ODOMETER_MODEL_H
+#endif // BASE_GAUGE_MODEL_H

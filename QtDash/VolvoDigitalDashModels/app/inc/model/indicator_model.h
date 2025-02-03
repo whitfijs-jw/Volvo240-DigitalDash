@@ -70,12 +70,12 @@ public:
      */
     QHash<int, QByteArray> roleNames() const override;
 
-    bool on();
-    bool flipped();
+    bool on() const;
+    bool flipped() const;
 
 private:
-    bool mOn;
-    bool mFlipped;
+    bool mOn {false};
+    bool mFlipped {false};
 
 signals:
     void onChanged();

@@ -72,15 +72,15 @@ Qt::ItemFlags OdometerModel::flags(const QModelIndex &index) const {
     return Qt::ItemIsEditable;
 }
 
-qreal OdometerModel::odometerValue() {
+qreal OdometerModel::odometerValue() const {
     return mOdometerValue;
 }
 
-qreal OdometerModel::tripAValue() {
+qreal OdometerModel::tripAValue() const{
     return mTripAValue;
 }
 
-qreal OdometerModel::tripBValue() {
+qreal OdometerModel::tripBValue() const {
     return mTripBValue;
 }
 
