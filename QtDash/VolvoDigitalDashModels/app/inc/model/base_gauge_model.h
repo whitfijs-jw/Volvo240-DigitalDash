@@ -1,30 +1,26 @@
-#ifndef ACCESSORY_GAUGE_MODEL_H
-#define ACCESSORY_GAUGE_MODEL_H
+#ifndef BASE_GAUGE_MODEL_H
+#define BASE_GAUGE_MODEL_H
 
 #include <QObject>
-#include <base_gauge_model.h>
 #include <QAbstractListModel>
 
-class AccessoryGaugeModel : public BaseGaugeModel
+class BaseGaugeModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(qreal lowAlarm READ lowAlarm WRITE setLowAlarm NOTIFY lowAlarmChanged)
-    Q_PROPERTY(qreal highAlarm READ highAlarm WRITE setHighAlarm NOTIFY highAlarmChanged)
+    Q_PROPERTY(qreal minValue READ minValue WRITE setMinValue NOTIFY minValueChanged)
+    Q_PROPERTY(qreal maxValue READ maxValue WRITE setMaxValue NOTIFY maxValueChanged)
+    Q_PROPERTY(qreal currentValue READ currentValue WRITE setCurrentValue NOTIFY currentValueChanged)
+    Q_PROPERTY(QString units READ units WRITE setUnits NOTIFY unitsChanged)
 
 public:
-    static constexpr char COOLANT_TEMP_MODEL_NAME[] = "coolantTempModel";
-    static constexpr char FUEL_LEVEL_MODEL_NAME[] = "fuelLevelModel";
-    static constexpr char OIL_PRESSURE_MODEL_NAME[] = "oilPModel";
-    static constexpr char OIL_TEMPERATURE_MODEL_NAME[] = "oilTModel";
-    static constexpr char BOOST_GAUGE_MODEL_NAME[] = "boostModel";
-    static constexpr char VOLT_METER_MODEL_NAME[] = "voltMeterModel";
-
-    enum AccessoryGaugeRoles {
-        LowAlarmRole        = Qt::UserRole + 5,
-        HighAlarmRole       = Qt::UserRole + 6,
+    enum BaseGaugeRoles {
+        MinValueRole        = Qt::UserRole + 1,
+        MaxValueRole        = Qt::UserRole + 2,
+        CurrentValueRole    = Qt::UserRole + 3,
+        UnitsRole           = Qt::UserRole + 4,
     };
 
-    explicit AccessoryGaugeModel(QObject *parent = nullptr);
+    explicit BaseGaugeModel(QObject * parent = nullptr);
 
     /**
      * Provides the header data for given params.
@@ -78,21 +74,28 @@ public:
      */
     QHash<int, QByteArray> roleNames() const override;
 
-    qreal lowAlarm() const;
-    qreal highAlarm() const;
-
-private:
-    qreal mLowAlarm {0.0};
-    qreal mHighAlarm {0.0};
+    qreal minValue() const;
+    qreal maxValue() const;
+    qreal currentValue() const;
+    QString units() const;
 
 signals:
-    void lowAlarmChanged();
-    void highAlarmChanged();
+    void minValueChanged();
+    void maxValueChanged();
+    void currentValueChanged();
+    void unitsChanged();
 
 public slots:
-    void setLowAlarm(qreal lowAlarm);
-    void setHighAlarm(qreal highAlarm);
+    void setMinValue(qreal minValue);
+    void setMaxValue(qreal maxValue);
+    void setCurrentValue(qreal currentValue);
+    void setUnits(QString units);
 
+private:
+    qreal mMinValue {0.0};
+    qreal mMaxValue {0.0};
+    qreal mCurrentValue {0.0};
+    QString mUnits {""};
 };
 
-#endif // ACCESSORY_GAUGE_MODEL_H
+#endif // BASE_GAUGE_MODEL_H

@@ -28,6 +28,7 @@ SOURCES += src/main.cpp \
     src/ll/pulse_counter.cpp \
     src/ll/pwm.cpp \
     src/model/accessory_gauge_model.cpp \
+    src/model/base_gauge_model.cpp \
     src/model/indicator_model.cpp \
     src/model/odometer_model.cpp \
     src/model/speedometer_model.cpp \
@@ -445,6 +446,7 @@ HEADERS += \
     inc/ll/tach_input.h \
     inc/ll/vss_input.h \
     inc/model/accessory_gauge_model.h \
+    inc/model/base_gauge_model.h \
     inc/model/indicator_model.h \
     inc/model/odometer_model.h \
     inc/model/speedometer_model.h \
