@@ -31,8 +31,8 @@ public:
      * @param dutyCycle duty cycle (0.0 to 1.0)
      * @param activeLow true to make the output active low
      */
-    Pwm(std::string path = DEFAULT_PATH,
-        std::string dev = DEFAULT_DEVICE,
+    Pwm(const std::string& path = DEFAULT_PATH,
+        const std::string& dev = DEFAULT_DEVICE,
         int periodNsec = DEFAULT_PERIOD,
         float dutyCycle = 0.5,
         bool activeLow = true);
@@ -42,7 +42,7 @@ public:
      * @param enable true to enable the output
      * @return >0 when successful
      */
-    int enable(bool enable);
+    int enable(bool enable) const ;
 
     /**
      * @brief Set PWM frequency
@@ -72,7 +72,7 @@ private:
      * @param value: value to write
      * @return: returns value if written successfully
      */
-    int writeAttribute(std::string attr, int value);
+    int writeAttribute(const std::string& attr, int value) const;
 
     /**
      * @brief Write attribute to the PWM sysfs
@@ -80,7 +80,7 @@ private:
      * @param value string value to write to attribute
      * @return true when successful
      */
-    bool writeAttribute(std::string attr, std::string value);
+    bool writeAttribute(const std::string& attr, const std::string& value) const;
 
     std::string mPath; //!< sysfs device path
     std::string mDev; //!< PWM device path

@@ -1,6 +1,6 @@
 #include <pulse_counter.h>
 
-int PulseCounter::getFrequency() {
+int PulseCounter::getFrequency() const {
     // read the nano second spacing variable
     std::string fullPath = mPath + PULSE_SPACING_AVG;
     std::ifstream ifs(fullPath, std::ios::in);
@@ -17,11 +17,9 @@ int PulseCounter::getFrequency() {
     try {
         spacingNano = std::stoi(val);
     } catch (std::invalid_argument& e) {
-        std::cout << "tach input, invalid argument -- rpm will be 0" << std::endl;
+        std::cout << "tach input, invalid argument -- rpm will be 0 -- " << e.what() <<  std::endl;
     } catch (std::out_of_range& e) {
-        std::cout << "tach input, out of range -- rpm will be 0" << std::endl;
-    } catch (...) {
-        std::cout << "tach input, other exception -- rpm will be 0" << std::endl;
+        std::cout << "tach input, out of range -- rpm will be 0 -- " << e.what() <<  std::endl;
     }
 
     if (spacingNano != 0) {
@@ -31,7 +29,7 @@ int PulseCounter::getFrequency() {
     }
 }
 
-int PulseCounter::getPulseCount() {
+int PulseCounter::getPulseCount() const {
     std::string fullPath = mPath + PULSE_COUNT_ATTR;
     std::ifstream ifs(fullPath, std::ios::in);
     if (!ifs.is_open()) {
@@ -47,27 +45,25 @@ int PulseCounter::getPulseCount() {
     try {
         count = std::stoi(val);
     } catch (std::invalid_argument& e) {
-        std::cout << "tach input, invalid argument -- count will be 0" << std::endl;
+        std::cout << "tach input, invalid argument -- count will be 0 -- " << e.what() << std::endl;
     } catch (std::out_of_range& e) {
-        std::cout << "tach input, out of range -- count will be 0" << std::endl;
-    } catch (...) {
-        std::cout << "tach input, other exception -- count will be 0" << std::endl;
+        std::cout << "tach input, out of range -- count will be 0 -- " << e.what() << std::endl;
     }
 
     return count;
 }
 
-int PulseCounter::setMaxFrequency(qreal freq)  {
+int PulseCounter::setMaxFrequency(qreal freq) const {
     int nsec = (int) std::round(1.0 / freq * 1.0e9);
 
     return writeAttribute(PULSE_SPACING_MIN, nsec);
 }
 
-int PulseCounter::setNumSamplesToAvg(int num) {
+int PulseCounter::setNumSamplesToAvg(int num) const {
     return writeAttribute(PULSE_SPACING_AVG_NUM_SAMPLES, num);
 }
 
-int PulseCounter::writeAttribute(std::string attr, int value) {
+int PulseCounter::writeAttribute(const std::string& attr, int value) const {
     // read the nano second spacing variable
     std::string fullPath = mPath + attr;
     std::ofstream ofs(fullPath, std::ofstream::out);

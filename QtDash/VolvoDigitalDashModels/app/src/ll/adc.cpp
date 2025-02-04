@@ -1,6 +1,6 @@
 #include <adc.h>
 
-Adc::Adc(std::string name, std::string path, double vRef, int referenceChannel):
+Adc::Adc(const std::string& name, const std::string& path, double vRef, int referenceChannel):
     mDeviceName(name), mVref(vRef), mRefChannel(referenceChannel) {
     // search in path for the given device.
     mPath = findDevicePath(path, name);
@@ -28,8 +28,7 @@ Adc::Adc(std::string name, std::string path, double vRef, int referenceChannel):
     for (int i = 0; i < mNumChannels; i++) {
         // we're looking for in_voltageX_raw files in the iio device directory
         std::string dataPath = CHANNEL_DATA_PATH;
-        std::size_t p = dataPath.find("X");
-        if (p != std::string::npos) {
+        if (std::size_t p = dataPath.find("X"); p != std::string::npos) {
             dataPath.replace(p, 1, std::to_string(i));
         }
         std::string fullPath = mPath + "/" + dataPath;
@@ -37,7 +36,7 @@ Adc::Adc(std::string name, std::string path, double vRef, int referenceChannel):
         //make sure it exists
         if (std::filesystem::exists(fullPath)) {
             // add this to the map
-            mChannelMap.insert(std::pair<int, std::string>(i, fullPath));
+            mChannelMap.try_emplace(i, fullPath);
 
             std::cout << "Channel data path: " << mChannelMap.at(i) << std::endl;
         }
@@ -78,21 +77,19 @@ int Adc::readRawValue(int channel){
         std::getline(ifs, val);
         ifs.close();
 
-        //std::cout << "Read val: " << val << std::endl;
-
         return std::stoi(val);
     }
 
     return -1;
 }
 
-std::string Adc::findDevicePath(std::string &path, std::string name) {
+std::string Adc::findDevicePath(const std::string &path, std::string_view name) const {
     for (auto& device : std::filesystem::directory_iterator(path)) {
         if (std::filesystem::is_directory(device.path())) {
             std::cout << device << std::endl;
-            auto path = device.path();
-            path /= "name";
-            std::ifstream ifs(path.c_str(), std::ios::in);
+            auto tempPath = device.path();
+            tempPath /= "name";
+            std::ifstream ifs(tempPath.c_str(), std::ios::in);
 
             if (!ifs.is_open()) {
                 std::cout << "Error opening name" << std::endl;
