@@ -1,4 +1,7 @@
 #include <mcp23017.h>
+#include <string>
+#include <sstream>
+#include <iostream>
 
 extern "C" {
 #include <linux/i2c.h>
@@ -32,9 +35,14 @@ Mcp23017::Mcp23017(uint8_t bus, uint8_t addr) : mAddr(addr), mBus(bus) {
 }
 
 bool Mcp23017::openDevice() {
-    char fname[32];
-    snprintf(fname, 32, "/dev/i2c-%d", mBus);
-    mFd = open(fname, O_RDWR);
+    std::string baseFileName {"/dev/i2c-"};
+    std::stringstream ss;
+    ss << baseFileName << static_cast<int>(mBus);
+
+    std::string fname;
+    ss >> fname;
+
+    mFd = open(fname.c_str(), O_RDWR);
 
     if (mFd < 0) {
         printf("Error opening /dev/i2c-%d: %d\n", mBus, errno);
@@ -65,7 +73,7 @@ bool Mcp23017::closeDevice() {
     return false;
 }
 
-uint8_t Mcp23017::read(RegisterAddr reg) {
+uint8_t Mcp23017::read(RegisterAddr reg) const {
     if (!mIsOpen) {
         printf("read failed: device not open\n");
         return -1;
