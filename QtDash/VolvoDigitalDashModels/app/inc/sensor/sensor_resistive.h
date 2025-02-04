@@ -27,7 +27,7 @@ public:
         mSensorConfig.coeff = SensorUtils::polynomialRegression(
                     mSensorConfig.x, mSensorConfig.y, mSensorConfig.order);
         // use vref from adc source
-        mSensorConfig.vSupply = ((AdcSource *)mSource)->getVRef();
+        mSensorConfig.vSupply = mConfig->getSensorSupplyVoltage();
         mCurrentLag = mSensorConfig.lagStart;
     }
 
@@ -41,7 +41,7 @@ public slots:
      * @param data: adc source data
      * @param channel: adc source channel
      */
-    void transform(QVariant data, int channel) override {
+    void transform(const QVariant& data, int channel) override {
         if (channel == getChannel()) {
 
             qreal volts = data.toReal();
@@ -57,7 +57,7 @@ public slots:
             }
 
             // Check that we're not shorted to ground or VDD (could be disconnected)
-            qreal vRef = ((AdcSource *)mSource)->getVRef();
+            qreal vRef = mConfig->getSensorSupplyVoltage();
             if (!SensorUtils::isValid(volts, vRef)) {
                 value = 0;
             }

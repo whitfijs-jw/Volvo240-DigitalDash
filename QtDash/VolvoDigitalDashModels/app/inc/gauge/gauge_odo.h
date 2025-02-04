@@ -28,34 +28,33 @@ public:
         SensorConfig::OdometerConfig tripBConfig = mConfig->getOdometerConfig(ConfigKeys::ODO_NAME_TRIPB);
 
         //setup odo
-        ((OdometerModel *)mModel)->setOdometerValue(odoConfig.value);
-        ((OdometerModel *)mModel)->setTripAValue(tripAConfig.value);
-        ((OdometerModel *)mModel)->setTripBValue(tripBConfig.value);
+        auto odoModel = static_cast<OdometerModel*>(mModel);
+        odoModel->setOdometerValue(odoConfig.value);
+        odoModel->setTripAValue(tripAConfig.value);
+        odoModel->setTripBValue(tripBConfig.value);
 
         // connect the odo to the model value
         QObject::connect(
                     sensors.at(0), &Sensor::sensorDataReady,
-                    [&](QVariant data) {
-            ((OdometerModel *)mModel)->setOdometerValue(data.toReal());
+                    [&gaugeModel = mModel](const QVariant& data) {
+                static_cast<OdometerModel*>(gaugeModel)->setOdometerValue(data.toReal());
         });
 
         // connect the tripA to the model value
         QObject::connect(
                     sensors.at(1), &Sensor::sensorDataReady,
-                    [&](QVariant data) {
-            ((OdometerModel *)mModel)->setTripAValue(data.toReal());
+            [&gaugeModel = mModel](const QVariant& data) {
+                static_cast<OdometerModel*>(gaugeModel)->setTripAValue(data.toReal());
         });
 
         // connect the odo to the model value
         QObject::connect(
                     sensors.at(2), &Sensor::sensorDataReady,
-                    [&](QVariant data) {
-            ((OdometerModel *)mModel)->setTripBValue(data.toReal());
+            [&gaugeModel = mModel](const QVariant& data) {
+                static_cast<OdometerModel*>(gaugeModel)->setTripBValue(data.toReal());
         });
 
     }
-
-private:
 };
 
 #endif // GAUGE_SPEEDO_H

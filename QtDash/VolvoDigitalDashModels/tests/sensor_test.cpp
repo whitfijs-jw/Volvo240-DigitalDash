@@ -18,11 +18,11 @@ void SensorTest::test_sensorSourceConstructor() {
 
 }
 
-void SensorTest::test_sensorConstructor() {
+void SensorTest::test_sensorConstructor() const {
     QCOMPARE(testSensor->getUnits(), "inch");
 }
 
-void SensorTest::test_sensor1Constructor() {
+void SensorTest::test_sensor1Constructor() const {
     QCOMPARE(testSensor1->getUnits(), "foot");
 }
 

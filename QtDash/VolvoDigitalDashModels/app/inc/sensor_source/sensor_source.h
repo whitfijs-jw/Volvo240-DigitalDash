@@ -57,7 +57,7 @@ signals:
      * @param data: data read from hardware device
      * @param channel: channel read from
      */
-    void dataReady(QVariant data, int channel);
+    void dataReady(const QVariant& data, int channel);
 
 public slots:
     /**
@@ -71,7 +71,7 @@ public slots:
      */
     virtual void update(int channel) = 0;
 
-protected:
+public:
     Config * mConfig; //!< Dash config
     QString mName; //!< Source name
 };

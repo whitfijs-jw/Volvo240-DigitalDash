@@ -26,44 +26,47 @@ public:
         // get coolant temp config
         mCoolantConfig = mConfig->getGaugeConfig(ConfigKeys::COOLANT_TEMP_GAUGE_GROUP);
 
-        ((TempAndFuelGaugeModel*) mModel)->setMinTemp(mCoolantConfig.min);
-        ((TempAndFuelGaugeModel*) mModel)->setMaxTemp(mCoolantConfig.max);
-        ((TempAndFuelGaugeModel*) mModel)->setHighTempAlarm(mCoolantConfig.highAlarm);
-        ((TempAndFuelGaugeModel*) mModel)->setTempUnits(mCoolantConfig.displayUnits);
-        ((TempAndFuelGaugeModel*) mModel)->setCurrentTemp(0.0);
+        // setup model
+        auto tempFuelModel = static_cast<TempAndFuelGaugeModel*>(mModel);
+        tempFuelModel->setMinTemp(mCoolantConfig.min);
+        tempFuelModel->setMaxTemp(mCoolantConfig.max);
+        tempFuelModel->setHighTempAlarm(mCoolantConfig.highAlarm);
+        tempFuelModel->setTempUnits(mCoolantConfig.displayUnits);
+        tempFuelModel->setCurrentTemp(0.0);
 
         // fuel gauge config
         GaugeConfig::GaugeConfig fuelLevelConfig = mConfig->getGaugeConfig(ConfigKeys::FUEL_GAUGE_GROUP);
 
-        ((TempAndFuelGaugeModel*) mModel)->setLowFuelAlarm(fuelLevelConfig.lowAlarm);
-        ((TempAndFuelGaugeModel*) mModel)->setFuelLevel(0.0);
+        tempFuelModel->setLowFuelAlarm(fuelLevelConfig.lowAlarm);
+        tempFuelModel->setFuelLevel(0.0);
 
         //hook it up
         QObject::connect(
-                    sensors.at(0), &Sensor::sensorDataReady,
-                    this, [&](QVariant data) {
-
+                    mSensors.at(0),
+                    &Sensor::sensorDataReady,
+                    [&gaugeSensors = mSensors, &coolantConfig = mCoolantConfig, &gaugeModel = mModel](const QVariant& data) {
             // get raw value
             qreal val = data.toReal();
 
-            if (mSensors.length() > 0) {
-                auto sensor = mSensors.at(0);
+            if (!gaugeSensors.isEmpty()) {
+                auto sensor = gaugeSensors.at(0);
 
                 // get units
                 QString units = sensor->getUnits();
-                QString displayUnits = mCoolantConfig.displayUnits;
+                QString displayUnits = coolantConfig.displayUnits;
 
                 val = SensorUtils::convert(val, displayUnits, units);
 
-                ((TempAndFuelGaugeModel *)mModel)->setCurrentTemp(val);
+                static_cast<TempAndFuelGaugeModel*>(gaugeModel)->setCurrentTemp(val);
             }
         });
 
         // connect the secondary values
         QObject::connect(
-                    sensors.at(1), &Sensor::sensorDataReady,
-                    [&](QVariant data) {
-            ((TempAndFuelGaugeModel *)mModel)->setFuelLevel(data.toReal());
+                    mSensors.at(1),
+                    &Sensor::sensorDataReady,
+                    [&gaugeModel = mModel](const QVariant& data) {
+            static_cast<TempAndFuelGaugeModel*>(gaugeModel)->setFuelLevel(data.toReal());
         });
 
     }

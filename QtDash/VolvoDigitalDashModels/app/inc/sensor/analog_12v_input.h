@@ -44,14 +44,14 @@ public:
      * @brief Constructor
      * @param conf: 12V Analog input config
      */
-    Analog12VInput(Analog12VInputConfig conf);
+    Analog12VInput(const Analog12VInputConfig& conf);
 
     /**
      * @brief Get current voltage
      * @param volts: voltage measured at ADC (0-Vref)
      * @return: measured voltage
      */
-    qreal getVoltage(qreal volts);
+    qreal getVoltage(qreal volts) const;
 private:
     Analog12VInputConfig mConfig; //!< 12V input config
 };

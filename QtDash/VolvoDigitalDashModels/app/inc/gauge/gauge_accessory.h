@@ -23,8 +23,6 @@ public:
                    QList<const Sensor *> sensors, AccessoryGaugeModel * model,
                    QString modelName, QQmlContext * context);
 
-public slots:
-
 private:
     GaugeConfig::GaugeConfig mGaugeConfig;
 };

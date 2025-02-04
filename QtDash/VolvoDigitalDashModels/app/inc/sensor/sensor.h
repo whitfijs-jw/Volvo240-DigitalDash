@@ -49,7 +49,7 @@ signals:
      * @brief Signal to emit when the data has been transformed -- picked up by the gauge
      * @param data: data that has been transformed
      */
-    void sensorDataReady(QVariant data);
+    void sensorDataReady(const QVariant& data);
 public slots:
     /**
      * @brief Transform the raw data from the sensor source to the desired units.
@@ -59,7 +59,7 @@ public slots:
      * @param data: data from the sensor source
      * @param channel: channel that has been read
      */
-    virtual void transform(QVariant data, int channel) {
+    virtual void transform(const QVariant& data, int channel) {
         if (channel == mChannel) {
             emit sensorDataReady(data);
         }

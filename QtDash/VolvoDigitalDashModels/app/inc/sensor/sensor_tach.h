@@ -31,7 +31,7 @@ public slots:
      * @param data: data from source
      * @param channel: source channel
      */
-    void transform(QVariant data, int channel) override {
+    void transform(const QVariant& data, int channel) override {
         if (channel == getChannel()) {
             int rpm = data.toInt();
             emit sensorDataReady(rpm);

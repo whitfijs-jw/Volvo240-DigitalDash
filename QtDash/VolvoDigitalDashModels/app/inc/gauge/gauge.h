@@ -39,7 +39,6 @@ public:
         context->setContextProperty(modelName, mModel);
     }
 
-protected:
     Config * mConfig; //!< Dash config
     QList<const Sensor *> mSensors; //!< sensor list
     QAbstractListModel * mModel; //!< gauge model

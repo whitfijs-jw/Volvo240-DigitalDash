@@ -21,20 +21,20 @@ AccessoryGauge::AccessoryGauge(QObject *parent, Config *config,
         mGaugeConfig = config->getGaugeConfig(ConfigKeys::FUEL_GAUGE_GROUP);
     }
 
-    ((AccessoryGaugeModel *)mModel)->setMinValue(mGaugeConfig.min);
-    ((AccessoryGaugeModel *)mModel)->setMaxValue(mGaugeConfig.max);
-    ((AccessoryGaugeModel *)mModel)->setHighAlarm(mGaugeConfig.highAlarm);
-    ((AccessoryGaugeModel *)mModel)->setLowAlarm(mGaugeConfig.lowAlarm);
-    ((AccessoryGaugeModel *)mModel)->setUnits(mGaugeConfig.displayUnits);
+    model->setMinValue(mGaugeConfig.min);
+    model->setMaxValue(mGaugeConfig.max);
+    model->setHighAlarm(mGaugeConfig.highAlarm);
+    model->setLowAlarm(mGaugeConfig.lowAlarm);
+    model->setUnits(mGaugeConfig.displayUnits);
 
     // connect the sensor output to the model value
     QObject::connect(
         sensors.at(0), &Sensor::sensorDataReady,
-        [&](QVariant data) {
+        [&gaugeSensors = mSensors, &gaugeConfig = mGaugeConfig, &gaugeModel = mModel](const QVariant& data) {
             // get raw value
             qreal val = data.toReal();
-            if (mSensors.length() > 0) {
-                auto sensor = mSensors.at(0);
+            if (!gaugeSensors.isEmpty()) {
+                auto sensor = gaugeSensors.at(0);
 
                 if (sensor == nullptr) {
                     qDebug() << "No Sensor";
@@ -43,18 +43,18 @@ AccessoryGauge::AccessoryGauge(QObject *parent, Config *config,
 
                 // get units
                 QString units = sensor->getUnits();
-                QString displayUnits = mGaugeConfig.displayUnits;
+                QString displayUnits = gaugeConfig.displayUnits;
 
-                if (mGaugeConfig.altDisplayUnits.use && mGaugeConfig.altDisplayUnits.checkCutoff(val)) {
-                    static_cast<AccessoryGaugeModel*>(mModel)->setUnits(mGaugeConfig.altDisplayUnits.displayUnits);
-                    displayUnits = mGaugeConfig.altDisplayUnits.displayUnits;
+                if (gaugeConfig.altDisplayUnits.use && gaugeConfig.altDisplayUnits.checkCutoff(val)) {
+                    static_cast<AccessoryGaugeModel*>(gaugeModel)->setUnits(gaugeConfig.altDisplayUnits.displayUnits);
+                    displayUnits = gaugeConfig.altDisplayUnits.displayUnits;
                 } else {
-                    static_cast<AccessoryGaugeModel*>(mModel)->setUnits(mGaugeConfig.displayUnits);
+                    static_cast<AccessoryGaugeModel*>(gaugeModel)->setUnits(gaugeConfig.displayUnits);
                 }
 
                 val = SensorUtils::convert(val, displayUnits, units);
 
-                ((AccessoryGaugeModel *)mModel)->setCurrentValue(val);
+                static_cast<AccessoryGaugeModel*>(gaugeModel)->setCurrentValue(val);
             }
         });
 }
