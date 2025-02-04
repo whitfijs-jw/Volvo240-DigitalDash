@@ -49,7 +49,7 @@ public slots:
      * @param data: data from ADC source
      * @param channel: adc channel
      */
-    void transform(QVariant data, int channel) override {
+    void transform(const QVariant& data, int channel) override {
         if (channel == getChannel()) {
             qreal volts = data.toReal();
             qreal pressure = mMapSensor->getAbsolutePressure(volts, Units::PressureUnits::PSI) - mPressureAtm;

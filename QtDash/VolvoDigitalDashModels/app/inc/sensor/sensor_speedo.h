@@ -36,7 +36,7 @@ public slots:
      * @param data: source data
      * @param channel: source channel
      */
-    void transform(QVariant data, int channel) override {
+    void transform(const QVariant& data, int channel) override {
         if (std::is_base_of<T, GpsSource>::value) {
             // gps speed
             if (channel == getChannel()) {

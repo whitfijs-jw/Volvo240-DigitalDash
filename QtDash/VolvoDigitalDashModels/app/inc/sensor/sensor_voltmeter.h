@@ -34,7 +34,7 @@ public slots:
      * @param data: data from source
      * @param channel: source channel
      */
-    void transform(QVariant data, int channel) override {
+    void transform(const QVariant& data, int channel) override {
         if (channel == getChannel()) {
             // these are true 3.3V inputs -- remove correction factor
             qreal adcVolts = data.toReal();

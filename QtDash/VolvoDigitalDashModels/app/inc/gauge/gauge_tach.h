@@ -25,13 +25,16 @@ public:
         // get config
         GaugeConfig::TachoConfig gaugeConfig = mConfig->getTachGaugeConfig();
 
-        ((TachometerModel *)mModel)->setMaxRpm(gaugeConfig.maxRpm);
-        ((TachometerModel *)mModel)->setRedLine(gaugeConfig.redline);
+        // setup model
+        auto tachModel = static_cast<TachometerModel*>(mModel);
+        tachModel->setMaxRpm(gaugeConfig.maxRpm);
+        tachModel->setRedLine(gaugeConfig.redline);
 
         QObject::connect(
-                    sensors.at(0), &Sensor::sensorDataReady,
-                    [&](QVariant data) {
-            ((TachometerModel *)mModel)->setRpm(data.toInt());
+                    sensors.at(0),
+                    &Sensor::sensorDataReady,
+                    [&gaugeModel = mModel](const QVariant& data) {
+            static_cast<TachometerModel*>(gaugeModel)->setRpm(data.toInt());
         });
     }
 };

@@ -41,7 +41,7 @@ public slots:
      * @param data: adc source data
      * @param channel: adc source channel
      */
-    void transform(QVariant data, int channel) override {
+    void transform(const QVariant& data, int channel) override {
         if (channel == getChannel()) {
 
             qreal volts = data.toReal();

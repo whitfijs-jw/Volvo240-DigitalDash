@@ -67,7 +67,7 @@ public slots:
      * @param data: data from source
      * @param channel: source channel
      */
-    void transform(QVariant data, int channel) override {
+    void transform(const QVariant& data, int channel) override {
         if (channel == getChannel()) {
             // Calculate distance traveled
             int pulseCount = data.toInt();

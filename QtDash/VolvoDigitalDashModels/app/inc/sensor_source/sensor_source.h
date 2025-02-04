@@ -57,7 +57,7 @@ signals:
      * @param data: data read from hardware device
      * @param channel: channel read from
      */
-    void dataReady(QVariant data, int channel);
+    void dataReady(const QVariant& data, int channel);
 
 public slots:
     /**

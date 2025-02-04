@@ -68,7 +68,7 @@ public:
     }
 
 public slots:
-    void transform(QVariant data, int channel) override {
+    void transform(const QVariant& data, int channel) override {
         if (channel == getChannel()) {
             emit sensorDataReady(SensorUtils::convert(data.toReal(), getUnits(), mSource->getUnits(channel)));
         }
@@ -88,7 +88,7 @@ public:
     }
 
 public slots:
-    void transform(QVariant data, int channel) override {
+    void transform(const QVariant& data, int channel) override {
         if (channel == getChannel()) {
             emit sensorDataReady(SensorUtils::convert(data.toReal(), getUnits(), mSource->getUnits(channel)));
         }
