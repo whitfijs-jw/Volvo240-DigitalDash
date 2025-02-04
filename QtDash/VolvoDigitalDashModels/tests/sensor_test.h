@@ -106,8 +106,8 @@ private slots:
     void initTestCase();
 
     void test_sensorSourceConstructor();
-    void test_sensorConstructor();
-    void test_sensor1Constructor();
+    void test_sensorConstructor() const;
+    void test_sensor1Constructor() const;
     void test_channelUpdate();
 
     void cleanupTestCase();
