@@ -19,23 +19,28 @@
 class PulseCounter {
 
 public:
+    static constexpr char PULSE_COUNT_ATTR[] = "pulse_count"; //!< total pulses detected attribute
+    static constexpr char PULSE_SPACING_AVG[] = "pulse_spacing_avg"; //!< average pulse spacing attribute
+    static constexpr char PULSE_SPACING_MIN[] = "pulse_spacing_min"; //!< minimum pulse spacing (in nsec)
+    static constexpr char PULSE_SPACING_AVG_NUM_SAMPLES[] = "pulse_spacing_avg_num_samples"; //!< number of samples to average over
+
     /**
      * @brief Constructor
      * @param path: path where the sysfs pulse_counter device is found
      */
-    PulseCounter(std::string path) : mPath(path) {}
+    explicit PulseCounter(const std::string& path) : mPath(path) {}
 
     /**
      * @brief Get the current pulse frequency
      * @return -1 if invalid 0 to max rpm if valid
      */
-    int getFrequency();
+    int getFrequency() const;
 
     /**
      * @brief Get the current pulse count since boot
      * @return current pulse count
      */
-    int getPulseCount();
+    int getPulseCount() const;
 
     /**
      * @brief Set the maximum frequency for incoming pulses.
@@ -53,20 +58,15 @@ public:
      */
     int setNumSamplesToAvg(int num);
 
-protected:
-
-    static constexpr char PULSE_COUNT_ATTR[] = "pulse_count"; //!< total pulses detected attribute
-    static constexpr char PULSE_SPACING_AVG[] = "pulse_spacing_avg"; //!< average pulse spacing attribute
-    static constexpr char PULSE_SPACING_MIN[] = "pulse_spacing_min"; //!< minimum pulse spacing (in nsec)
-    static constexpr char PULSE_SPACING_AVG_NUM_SAMPLES[] = "pulse_spacing_avg_num_samples"; //!< number of samples to average over
-
     /**
      * @brief Write attribute in the tach input sysfs
      * @param attr: attribute to write
      * @param value: value to write
      * @return: returns value if written successfully
      */
-    int writeAttribute(std::string attr, int value);
+    int writeAttribute(const std::string& attr, int value);
+
+private:
 
     std::string mPath; //!< path to sysfs tach input class
 };

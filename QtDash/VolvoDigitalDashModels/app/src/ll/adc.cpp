@@ -83,7 +83,7 @@ int Adc::readRawValue(int channel){
     return -1;
 }
 
-std::string Adc::findDevicePath(const std::string &path, const std::string& name) const {
+std::string Adc::findDevicePath(const std::string &path, std::string_view name) const {
     for (auto& device : std::filesystem::directory_iterator(path)) {
         if (std::filesystem::is_directory(device.path())) {
             std::cout << device << std::endl;

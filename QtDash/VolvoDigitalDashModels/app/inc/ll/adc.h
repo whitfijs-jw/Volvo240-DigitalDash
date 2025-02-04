@@ -91,7 +91,7 @@ private:
      * @param name: name of the iio device
      * @return path to the device if found. empty string if not found
      */
-    std::string findDevicePath(const std::string& path, const std::string& name) const;
+    std::string findDevicePath(const std::string& path, std::string_view name) const;
 
     std::string mDeviceName {""}; //!< Device name
     std::string mPath {""}; //!< iio device path
