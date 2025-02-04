@@ -31,7 +31,7 @@ public:
 
         for (SensorConfig::TempSensorConfig config : *tempSensorConfigs) {
             // use the sensor source vref
-            config.vSupply = source->getVRef();
+            config.vSupply = mConfig->getSensorSupplyVoltage();
 
             // check if its a valid config
             if (config.isValid()) {
@@ -61,7 +61,7 @@ public slots:
             qreal volts = data.toReal();
 
             qreal value = mNtc->calculateTemp(volts, NTC_INTERNAL_UNITS);
-            qreal vRef = ((AdcSource *)mSource)->getVRef();
+            qreal vRef = mConfig->getSensorSupplyVoltage();
             // Check that we're not shorted to ground or VDD (could be disconnected)
             if (!SensorUtils::isValid(volts, vRef)) {
                 value = 0;

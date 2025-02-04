@@ -41,7 +41,7 @@ public:
         // connect the speed to the model value
         QObject::connect(
                     mSensors.at(0), &Sensor::sensorDataReady,
-                    [&gaugeSensors = mSensors, &speedoConfig = mSpeedoConfig, &gaugeModel = mModel](const QVariant& data) {
+                    [&gaugeSensors = mSensors, &gaugeModel = mModel](const QVariant& data) {
                 if (!gaugeSensors.isEmpty()) {
                 QString units = gaugeSensors.at(0)->getUnits();
                 QString modelUnits = static_cast<SpeedometerModel*>(gaugeModel)->units();

@@ -55,8 +55,6 @@ public:
         });
 
     }
-
-private:
 };
 
 #endif // GAUGE_SPEEDO_H

@@ -71,7 +71,7 @@ public slots:
      */
     virtual void update(int channel) = 0;
 
-protected:
+public:
     Config * mConfig; //!< Dash config
     QString mName; //!< Source name
 };

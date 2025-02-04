@@ -26,7 +26,7 @@ public:
         mMapSensor = new MapSensor(
                     mConfig->getMapSensorConfig().p0V,
                     mConfig->getMapSensorConfig().p5V,
-                    source->getVRef(), // vref from source
+                    mConfig->getSensorSupplyVoltage(), // vref from source
                     mConfig->getMapSensorConfig().units
                     );
         // check that a valid atm pressure is available

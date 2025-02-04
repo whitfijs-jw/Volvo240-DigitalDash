@@ -1,13 +1,13 @@
 #include <ntc.h>
 
-Ntc::Ntc(SensorConfig::TempSensorConfig config) : mConfig(config){
+Ntc::Ntc(const SensorConfig::TempSensorConfig& config) : mConfig(config){
     calculateCoefficients(config.r1, config.t1,
                           config.r2, config.t2,
                           config.r3, config.t3,
                           config.units);
 }
 
-qreal Ntc::calculateTemp(qreal volts, Units::TemperatureUnits units) {
+qreal Ntc::calculateTemp(qreal volts, Units::TemperatureUnits units) const {
     // calculate NTC resistance
     qreal rNtc = SensorUtils::getResistance(volts, mConfig.vSupply, mConfig.rBalance);
 

@@ -82,6 +82,10 @@ public slots:
             break;
         case (int) TachDataChannel::COUNT:
             emit dataReady(mTachInput.getPulseCount(), channel);
+            break;
+        default:
+            //empty
+            break;
         }
     }
 
@@ -93,7 +97,7 @@ private:
      * @param channel
      * @return
      */
-    QVariant getValue(int channel) {
+    QVariant getValue(int channel) const {
         (void) channel;
         return mTachInput.getRpm();
     }

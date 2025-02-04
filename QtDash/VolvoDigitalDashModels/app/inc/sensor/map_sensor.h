@@ -15,7 +15,7 @@ public:
      * @brief MapSensor constructor
      * @param config: MAP sensor config
      */
-    MapSensor(SensorConfig::MapSensorConfig config, qreal vRef);
+    MapSensor(const SensorConfig::MapSensorConfig& config, qreal vRef);
     /**
      * @brief MapSensor constructor
      * @param pressure0V: pressure when MAP sensor is at 0V
@@ -30,7 +30,7 @@ public:
      * @param units: pressure units
      * @return Pressure in desired units
      */
-    qreal getAbsolutePressure(qreal volts, Units::PressureUnits units);
+    qreal getAbsolutePressure(qreal volts, Units::PressureUnits units) const;
 
 private:
     static constexpr qreal VDD = 5.0; //!< sensor VDD
