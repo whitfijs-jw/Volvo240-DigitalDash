@@ -53,13 +53,13 @@ int PulseCounter::getPulseCount() const {
     return count;
 }
 
-int PulseCounter::setMaxFrequency(qreal freq)  {
+int PulseCounter::setMaxFrequency(qreal freq) const {
     int nsec = (int) std::round(1.0 / freq * 1.0e9);
 
     return writeAttribute(PULSE_SPACING_MIN, nsec);
 }
 
-int PulseCounter::setNumSamplesToAvg(int num) {
+int PulseCounter::setNumSamplesToAvg(int num) const {
     return writeAttribute(PULSE_SPACING_AVG_NUM_SAMPLES, num);
 }
 

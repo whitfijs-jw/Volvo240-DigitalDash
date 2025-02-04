@@ -49,14 +49,14 @@ public:
      * @param freq
      * @return: returns new value if written to sysfs.  returns -1 if failed
      */
-    int setMaxFrequency(qreal freq);
+    int setMaxFrequency(qreal freq) const;
 
     /**
      * @brief Set number of pulses to average over
      * @param num: number of samples to average
      * @return: returns new value if written to sysfs.  returns -1 if failed
      */
-    int setNumSamplesToAvg(int num);
+    int setNumSamplesToAvg(int num) const;
 
     /**
      * @brief Write attribute in the tach input sysfs

@@ -37,7 +37,7 @@ public:
      * @brief Get the current rpm
      * @return -1 if invalid 0 to max rpm if valid
      */
-    int getRpm() {
+    int getRpm() const {
         return static_cast<int>(std::round(getFrequency() * 60.0 / mConfig.pulsesPerRot));
     }
 
@@ -46,7 +46,7 @@ public:
      * @param rpm: RPM to be the new max
      * @return returns new max if written to sysfs.  returns -1 if failed
      */
-    int setMaxRpm(int rpm) {
+    int setMaxRpm(int rpm) const {
         //calculate min time in nsec
         auto nsec = static_cast<int>(std::round(1.0e9 * 60.0 / (rpm * mConfig.pulsesPerRot)));
 
