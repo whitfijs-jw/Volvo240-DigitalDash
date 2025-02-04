@@ -30,7 +30,7 @@ Pwm::Pwm(const std::string& path,
 }
 
 
-int Pwm::enable(bool enable){
+int Pwm::enable(bool enable) const {
     return writeAttribute(ENABLE, enable);
 }
 

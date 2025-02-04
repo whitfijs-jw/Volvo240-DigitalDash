@@ -64,7 +64,7 @@ public:
      * @param value: value to write
      * @return: returns value if written successfully
      */
-    int writeAttribute(const std::string& attr, int value);
+    int writeAttribute(const std::string& attr, int value) const;
 
 private:
 

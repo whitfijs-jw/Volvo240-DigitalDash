@@ -45,7 +45,7 @@ public:
      * @brief Get speed in mph
      * @return speed in mph
      */
-    qreal getMph() {
+    qreal getMph() const {
         qreal pulsesPerSecond = getFrequency();
         return pulsesPerSecond * (1.0 / mConfig.pulsePerUnitDistance) * 3600.0;
     }
@@ -54,7 +54,7 @@ public:
      * @brief Get speed in kph
      * @return speed in kph
      */
-    qreal getKph() {
+    qreal getKph() const {
         qreal mph = getMph();
         return SensorUtils::toMeters(mph, Units::DistanceUnits::MILE) / 1000.0;
     }

@@ -63,7 +63,7 @@ int PulseCounter::setNumSamplesToAvg(int num) {
     return writeAttribute(PULSE_SPACING_AVG_NUM_SAMPLES, num);
 }
 
-int PulseCounter::writeAttribute(const std::string& attr, int value) {
+int PulseCounter::writeAttribute(const std::string& attr, int value) const {
     // read the nano second spacing variable
     std::string fullPath = mPath + attr;
     std::ofstream ofs(fullPath, std::ofstream::out);

@@ -42,7 +42,7 @@ public:
      * @param enable true to enable the output
      * @return >0 when successful
      */
-    int enable(bool enable);
+    int enable(bool enable) const ;
 
     /**
      * @brief Set PWM frequency
