@@ -589,7 +589,7 @@ Below are the available units for each gauge type
 |**[oil_temperature]**|```"C"``` ```"F"```|
 |**[voltmeter]**|```"V"```|
 |**[speedo]**|```"mph"``` ```"kph"``` ```"km/h"```|
-|**[techo]**|*none*|
+|**[tacho]**|*none*|
 
 #### Default Gauge Ranges
 
