@@ -94,16 +94,16 @@ public:
     GaugeConfig::GaugeConfig loadGaugeConfig(QString groupName);
 
 
-    bool loadSensorChannelConfig(QSettings * config, QMap<QString, int>& sensorChannelConfig, qreal& sensorSupplyVoltage);
-    bool loadDashLightConfig(QSettings * config, QMap<QString, int>& dashLightConfig);
-    bool loadUserInputConfig(QSettings * config, QMap<int, Qt::Key>& userInputConfig, QMap<QString, int>& userInputPingConfig);
-    bool loadMapSensorConfig(QSettings * config, SensorConfig::MapSensorConfig& mapSensorConfig);
-    bool loadTempSensorConfig(QSettings * config, QList<SensorConfig::TempSensorConfig>& tempSensorConfigs);
-    bool loadTachInputConfig(QSettings * config, SensorConfig::TachInputConfig& tachInputConfig);
-    bool loadResistiveSensorConfig(QSettings * config, QMap<QString, SensorConfig::ResistiveSensorConfig>& resistiveSensorConfig);
-    bool load12VAnalogConfig(QSettings * config, QMap<QString, Analog12VInput::Analog12VInputConfig>& analog12VInputConfig);
-    bool loadVssInputConfig(QSettings * config, SensorConfig::VssInputConfig& vssInputConfig);
-    bool loadBacklighConfig(QSettings * config, BacklightControlConfig_t& backlightConfig);
+    bool loadSensorChannelConfig(QSettings * config, QMap<QString, int>& sensorChannelConfig, qreal& sensorSupplyVoltage) const;
+    bool loadDashLightConfig(QSettings * config, QMap<QString, int>& dashLightConfig) const;
+    bool loadUserInputConfig(QSettings * config, QMap<int, Qt::Key>& userInputConfig, QMap<QString, int>& userInputPingConfig) const;
+    bool loadMapSensorConfig(QSettings * config, SensorConfig::MapSensorConfig& mapSensorConfig) const;
+    bool loadTempSensorConfig(QSettings * config, QList<SensorConfig::TempSensorConfig>& tempSensorConfigs) const;
+    bool loadTachInputConfig(QSettings * config, SensorConfig::TachInputConfig& tachInputConfig) const;
+    bool loadResistiveSensorConfig(QSettings * config, QMap<QString, SensorConfig::ResistiveSensorConfig>& resistiveSensorConfig) const;
+    bool load12VAnalogConfig(QSettings * config, QMap<QString, Analog12VInput::Analog12VInputConfig>& analog12VInputConfig) const;
+    bool loadVssInputConfig(QSettings * config, SensorConfig::VssInputConfig& vssInputConfig) const;
+    bool loadBacklighConfig(QSettings * config, BacklightControlConfig_t& backlightConfig) const;
 
     /**
      * @brief Load config from config.ini file
@@ -116,7 +116,7 @@ public:
      * @param setting: Group name to output to log
      */
     void printKeys(QString setting, QSettings * config) const {
-        for (auto key : config->childKeys()) {
+        for (const auto& key : config->childKeys()) {
             qDebug() << setting << key << ": " << config->value(key, "N/A").toStringList();
         }
     }
@@ -166,7 +166,7 @@ public:
      * @return: sensor channel config
      */
     bool isSensorConfigValid() {
-        return isMapConfigValid(&mSensorChannelConfig);
+        return isMapConfigValid(mSensorChannelConfig);
     }
 
     /**
@@ -174,7 +174,7 @@ public:
      * @return true if config is valid
      */
     bool isDashLightConfigValid() {
-        return isMapConfigValid(&mDashLightConfig);
+        return isMapConfigValid(mDashLightConfig);
     }
 
     /**
@@ -237,7 +237,7 @@ public:
      * @return Odometer config
      */
     SensorConfig::OdometerConfig getOdometerConfig(QString name) const {
-        for (auto conf : mOdoConfig) {
+        for (const auto& conf : mOdoConfig) {
             if (conf.name == name) {
                 return conf;
             }
@@ -337,7 +337,7 @@ private:
      * @param map: map to check
      * @return: true is map config values are valid
      */
-    bool isMapConfigValid(QMap<QString, int> *map);
+    bool isMapConfigValid(const QMap<QString, int>& map) const;
 
     /**
      * @brief Initialize User Input Keymap -- this is gross

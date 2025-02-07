@@ -256,7 +256,7 @@ GaugeConfig::GaugeConfig Config::loadGaugeConfig(QString groupName) {
 
 bool Config::loadSensorChannelConfig(QSettings * config,
                                      QMap<QString, int>& sensorChannelConfig,
-                                     qreal& sensorSupplyVoltage) {
+                                     qreal& sensorSupplyVoltage) const {
     // Load sensor configuration
     config->beginGroup(SENSOR_CHANNEL_GROUP);
 
@@ -275,7 +275,7 @@ bool Config::loadSensorChannelConfig(QSettings * config,
     return true;
 }
 
-bool Config::loadDashLightConfig(QSettings * config, QMap<QString, int>& dashLightConfig) {
+bool Config::loadDashLightConfig(QSettings * config, QMap<QString, int>& dashLightConfig) const {
     // Load dash light configuration
     config->beginGroup(DASH_LIGHT_GROUP);
 
@@ -290,7 +290,7 @@ bool Config::loadDashLightConfig(QSettings * config, QMap<QString, int>& dashLig
     return true;
 }
 
-bool Config::loadUserInputConfig(QSettings* config, QMap<int, Qt::Key>& userInputConfig, QMap<QString, int>& userInputPinConfig) {
+bool Config::loadUserInputConfig(QSettings* config, QMap<int, Qt::Key>& userInputConfig, QMap<QString, int>& userInputPinConfig) const {
     config->beginGroup(USER_INPUT_GROUP);
 
     for (const QString& key : config->childKeys()) {
@@ -315,7 +315,7 @@ bool Config::loadUserInputConfig(QSettings* config, QMap<int, Qt::Key>& userInpu
     return true;
 }
 
-bool Config::loadMapSensorConfig(QSettings* config, SensorConfig::MapSensorConfig& mapSensorConfig) {
+bool Config::loadMapSensorConfig(QSettings* config, SensorConfig::MapSensorConfig& mapSensorConfig) const {
     config->beginGroup(MAP_SENSOR_GROUP);
 
     for (const auto& key : config->childKeys()) {
@@ -339,7 +339,7 @@ bool Config::loadMapSensorConfig(QSettings* config, SensorConfig::MapSensorConfi
     return true;
 }
 
-bool Config::loadTempSensorConfig(QSettings* config, QList<SensorConfig::TempSensorConfig>& tempSensorConfigs) {
+bool Config::loadTempSensorConfig(QSettings* config, QList<SensorConfig::TempSensorConfig>& tempSensorConfigs) const {
     // load temp sensor config
     int size = config->beginReadArray(TEMP_SENSOR_GROUP);
     for (int i = 0; i < size; ++i) {
@@ -378,7 +378,7 @@ bool Config::loadTempSensorConfig(QSettings* config, QList<SensorConfig::TempSen
     return true;
 }
 
-bool Config::loadTachInputConfig(QSettings* config, SensorConfig::TachInputConfig& tachInputConfig) {
+bool Config::loadTachInputConfig(QSettings* config, SensorConfig::TachInputConfig& tachInputConfig) const {
     // load tach config
     config->beginGroup(TACH_INPUT_GROUP);
 
@@ -393,7 +393,7 @@ bool Config::loadTachInputConfig(QSettings* config, SensorConfig::TachInputConfi
     return true;
 }
 
-bool Config::loadResistiveSensorConfig(QSettings* config, QMap<QString, SensorConfig::ResistiveSensorConfig>& resistiveSensorConfig) {
+bool Config::loadResistiveSensorConfig(QSettings* config, QMap<QString, SensorConfig::ResistiveSensorConfig>& resistiveSensorConfig) const {
     int size = config->beginReadArray(RESISTIVE_SENSOR_GROUP);
     for (int i = 0; i < size; ++i) {
         config->setArrayIndex(i);
@@ -447,7 +447,7 @@ bool Config::loadResistiveSensorConfig(QSettings* config, QMap<QString, SensorCo
     return true;
 }
 
-bool Config::load12VAnalogConfig(QSettings* config, QMap<QString, Analog12VInput::Analog12VInputConfig>& analog12VInputConfig) {
+bool Config::load12VAnalogConfig(QSettings* config, QMap<QString, Analog12VInput::Analog12VInputConfig>& analog12VInputConfig) const {
     int size = config->beginReadArray(ANALOG_INPUT_12V_GROUP);
     for (int i = 0; i < size; ++i) {
         config->setArrayIndex(i);
@@ -487,7 +487,7 @@ bool Config::load12VAnalogConfig(QSettings* config, QMap<QString, Analog12VInput
     return true;
 }
 
-bool Config::loadVssInputConfig(QSettings* config, SensorConfig::VssInputConfig& vssInputConfig) {
+bool Config::loadVssInputConfig(QSettings* config, SensorConfig::VssInputConfig& vssInputConfig) const {
     config->beginGroup(VSS_INPUT_GROUP);
 
     vssInputConfig.pulsePerRot = config->value(VSS_PULSES_PER_ROTATION, 12).toInt();
@@ -509,7 +509,7 @@ bool Config::loadVssInputConfig(QSettings* config, SensorConfig::VssInputConfig&
     return true;
 }
 
-bool Config::loadBacklighConfig(QSettings *config, BacklightControlConfig_t &backlightConfig) {
+bool Config::loadBacklighConfig(QSettings *config, BacklightControlConfig_t &backlightConfig) const {
     config->beginGroup(BACKLIGHT_GROUP);
 
     backlightConfig.minDutyCycle = config->value(BACKLIGHT_MIN_DUTY_CYCLE, 0.2).toReal();
@@ -584,9 +584,9 @@ bool Config::loadConfig() {
     return keys.size() > 0;
 }
 
-bool Config::isMapConfigValid(QMap<QString, int> *map) {
+bool Config::isMapConfigValid(const QMap<QString, int>& map) const {
     QSet<int> values;
-    for (int val : map->values()) {
+    for (int val : map.values()) {
         // check that the value is valid
         if (val < 0) {
             return false;
