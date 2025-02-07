@@ -149,7 +149,7 @@ public:
      * @brief Get temp sensor configurations
      * @return QList of temperature sensor configurations
      */
-    QList<SensorConfig::TempSensorConfig> * getTempSensorConfigs(){
+    QList<SensorConfig::TempSensorConfig> * getTempSensorConfigs() {
         return &mTempSensorConfigs;
     }
 
@@ -165,7 +165,7 @@ public:
      * @brief Check if sensor channel config is valid
      * @return: sensor channel config
      */
-    bool isSensorConfigValid() {
+    bool isSensorConfigValid() const {
         return isMapConfigValid(mSensorChannelConfig);
     }
 
@@ -173,7 +173,7 @@ public:
      * @brief Check if the dash light config is valid
      * @return true if config is valid
      */
-    bool isDashLightConfigValid() {
+    bool isDashLightConfigValid() const {
         return isMapConfigValid(mDashLightConfig);
     }
 
@@ -267,9 +267,10 @@ public:
      * @return pointer to the config
      */
     CanFrameConfig * getCanFrameConfig(QString name) {
-        for (int i = 0; i < mCanFrameConfigs.size(); i++) {
-            if (mCanFrameConfigs[i].getName() == name) {
-                return &mCanFrameConfigs[i];
+        qDebug() << "getCanFrameConfig: " << name;
+        for(auto& config : mCanFrameConfigs) {
+            if (config.getName() == name) {
+                return &config;
             }
         }
         return nullptr;
@@ -299,10 +300,6 @@ public:
     qreal getSensorSupplyVoltage() const {
         return mSensorSupplyVoltage;
     }
-
-signals:
-
-public slots:
 
 private:
     std::unique_ptr<QSettings> mConfig = nullptr;  //!< QSettings for reading config.ini file
