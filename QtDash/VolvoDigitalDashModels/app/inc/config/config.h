@@ -26,20 +26,6 @@
 class Config : public QObject {
 Q_OBJECT
 public:
-    /**
-     * @struct BacklightControlConfig
-     */
-    typedef struct BacklightControlConfig {
-        qreal minDutyCycle;
-        qreal maxDutyCycle;
-        qreal lightsOffDutyCycle;
-        qreal lightsOnDutyCycle;
-        qreal minDimmerRatio;
-        qreal maxDimmerRatio;
-        bool useDimmer;
-        bool activeLow;
-    } BacklightControlConfig_t;
-
     static constexpr char DEFAULT_CONFIG_PATH[] = "/opt/config.ini"; //!< deafult config location
     static constexpr char DEFAULT_GAUGE_CONFIG_PATH[] = "/opt/config_gauges.ini"; //!< default gauge config location
     static constexpr char DEFAULT_ODO_CONFIG_PATH[] = "/opt/config_odo.ini"; //!< default odometer config location
@@ -103,7 +89,7 @@ public:
     bool loadResistiveSensorConfig(QSettings * config, QMap<QString, SensorConfig::ResistiveSensorConfig>& resistiveSensorConfig) const;
     bool load12VAnalogConfig(QSettings * config, QMap<QString, Analog12VInput::Analog12VInputConfig>& analog12VInputConfig) const;
     bool loadVssInputConfig(QSettings * config, SensorConfig::VssInputConfig& vssInputConfig) const;
-    bool loadBacklighConfig(QSettings * config, BacklightControlConfig_t& backlightConfig) const;
+    bool loadBacklighConfig(QSettings * config, SensorConfig::BacklightControlConfig_t& backlightConfig) const;
 
     /**
      * @brief Load config from config.ini file
@@ -249,7 +235,7 @@ public:
      * @brief Get the backlight config
      * @return backlight config
      */
-    BacklightControlConfig_t getBackLightConfig() const {
+    SensorConfig::BacklightControlConfig_t getBackLightConfig() const {
         return mBacklightConfig;
     }
 
@@ -323,7 +309,7 @@ private:
     std::unique_ptr<QSettings> mOdometerConfig = nullptr; //!< odometer configration QSettings
     QList<SensorConfig::OdometerConfig> mOdoConfig; //!< odometer config
 
-    BacklightControlConfig_t mBacklightConfig; //!< backlight configuration
+    SensorConfig::BacklightControlConfig_t mBacklightConfig; //!< backlight configuration
 
     std::unique_ptr<QSettings> mCanConfig; //!< can config Qsettings
     bool mEnableCan = false; //!< is Can enabled

@@ -509,7 +509,7 @@ bool Config::loadVssInputConfig(QSettings* config, SensorConfig::VssInputConfig&
     return true;
 }
 
-bool Config::loadBacklighConfig(QSettings *config, BacklightControlConfig_t &backlightConfig) const {
+bool Config::loadBacklighConfig(QSettings *config, SensorConfig::BacklightControlConfig_t &backlightConfig) const {
     config->beginGroup(BACKLIGHT_GROUP);
 
     backlightConfig.minDutyCycle = config->value(BACKLIGHT_MIN_DUTY_CYCLE, 0.2).toReal();
