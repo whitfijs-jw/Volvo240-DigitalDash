@@ -129,6 +129,21 @@ namespace SensorConfig {
         int writeInterval; //!< number of pulses between writing to back to non-volatile memory
         QString name;
     };
+
+    /**
+     * @struct BacklightControlConfig
+     */
+    using BacklightControlConfig_t = struct BACKLIGHTCONTROLCONFIG {
+        qreal minDutyCycle;
+        qreal maxDutyCycle;
+        qreal lightsOffDutyCycle;
+        qreal lightsOnDutyCycle;
+        qreal minDimmerRatio;
+        qreal maxDimmerRatio;
+        bool useDimmer;
+        bool activeLow;
+    };
+
 }
 
 #endif // SENSOR_CONFIGS_H

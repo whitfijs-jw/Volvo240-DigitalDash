@@ -5,29 +5,49 @@ using namespace ConfigKeys;
 Config::Config(QObject * parent, QString configPath,
        QString gaugeConfigPath, QString odoConfigPath,
        QString canConfigPath): QObject(parent) {
-    mConfig = new QSettings(configPath, QSettings::IniFormat);
+    mConfig.reset(
+        new QSettings(
+            configPath,
+            QSettings::IniFormat
+        )
+    );
     loadConfig();
 
-    mGaugeConfig = new QSettings(gaugeConfigPath, QSettings::IniFormat);
+    mGaugeConfig.reset(
+         new QSettings(
+            gaugeConfigPath,
+            QSettings::IniFormat
+        )
+    );
     loadGaugeConfigs();
 
-    mOdometerConfig = new QSettings(odoConfigPath, QSettings::IniFormat);
+    mOdometerConfig.reset(
+        new QSettings
+            (odoConfigPath,
+            QSettings::IniFormat
+        )
+    );
     loadOdometerConfigs();
 
-    mCanConfig = new QSettings(canConfigPath, QSettings::IniFormat);
+    mCanConfig.reset(
+        new QSettings(
+            canConfigPath,
+            QSettings::IniFormat
+        )
+    );
     loadCanFrameConfigs();
 }
 
 bool Config::loadCanFrameConfigs() {
     // parse enable/disable
     mCanConfig->beginGroup(CAN_CONFIG_START);
-    printKeys("can", mCanConfig);
+    printKeys("can", mCanConfig.get());
     mEnableCan = mCanConfig->value(CAN_CONFIG_ENABLE, false).toBool();
     mCanConfig->endGroup();
 
     // dump keys to log
     mCanConfig->beginGroup(CAN_FRAME);
-    printKeys("can", mCanConfig);
+    printKeys("can", mCanConfig.get());
     mCanConfig->endGroup();
 
     // parse can frame data configs
@@ -37,14 +57,14 @@ bool Config::loadCanFrameConfigs() {
 
         uint32_t frameId = mCanConfig->value(CAN_FRAME_ID, 0).toUInt();
         uint8_t offset = mCanConfig->value(CAN_FRAME_OFFSET, 0).toInt();
-        uint8_t size = mCanConfig->value(CAN_FRAME_SIZE, 0).toInt();
+        uint8_t frameSize = mCanConfig->value(CAN_FRAME_SIZE, 0).toInt();
         bool sign = mCanConfig->value(CAN_FRAME_SIGNED, false).toBool();
         QString units = mCanConfig->value(CAN_FRAME_UNITS, "").toString();
         QString name = mCanConfig->value(CAN_FRAME_NAME, "").toString();
         QString gauge = mCanConfig->value(CAN_FRAME_GAUGE, "none").toString();
 
         // create new can frame config
-        CanFrameConfig config(frameId, offset, size, sign, units, name, gauge);
+        CanFrameConfig config(frameId, offset, frameSize, sign, units, name, gauge);
 
         qreal multiply = mCanConfig->value(CAN_FRAME_MULTIPLY, 1).toReal();
         qreal divide = mCanConfig->value(CAN_FRAME_DIVIDE, 1).toReal();
@@ -63,7 +83,7 @@ bool Config::loadCanFrameConfigs() {
         }
 
         mCanFrameConfigs.append(config);
-        printKeys("can: ", mCanConfig);
+        printKeys("can: ", mCanConfig.get());
     }
     mCanConfig->endArray();
 
@@ -73,11 +93,11 @@ bool Config::loadCanFrameConfigs() {
 bool Config::loadOdometerConfigs() {
 
     mOdometerConfig->beginGroup("start");
-    printKeys("odo", mOdometerConfig);
+    printKeys("odo", mOdometerConfig.get());
     mOdometerConfig->endGroup();
 
     mOdometerConfig->beginGroup(ODOMETER_GROUP);
-    printKeys("odo", mOdometerConfig);
+    printKeys("odo", mOdometerConfig.get());
     mOdometerConfig->endGroup();
 
     int size = mOdometerConfig->beginReadArray(ODOMETER_GROUP);
@@ -92,14 +112,14 @@ bool Config::loadOdometerConfigs() {
         conf.name = mOdometerConfig->value(ODO_NAME, "").toString();
 
         mOdoConfig.push_back(conf);
-        printKeys("odo-vals", mOdometerConfig);
+        printKeys("odo-vals", mOdometerConfig.get());
     }
 
     mOdometerConfig->endArray();
     return true;
 }
 
-bool Config::writeOdometerConfig(QString name, SensorConfig::OdometerConfig conf) {
+bool Config::writeOdometerConfig(QString name, const SensorConfig::OdometerConfig& conf) {
     //write to disk
     mOdometerConfig->beginWriteArray(ODOMETER_GROUP);
     for (int i = 0; i < mOdoConfig.size(); i++) {
@@ -195,7 +215,7 @@ bool Config::loadGaugeConfigs() {
     mSpeedoGaugeConfig.topSource = mGaugeConfig->value(TOP_VALUE_SOURCE).toString();
     mSpeedoGaugeConfig.topUnits = mGaugeConfig->value(TOP_VALUE_UNITS).toString();
 
-    printKeys("Speedometer: ", mGaugeConfig);
+    printKeys("Speedometer: ", mGaugeConfig.get());
 
     mGaugeConfig->endGroup();
 
@@ -204,7 +224,7 @@ bool Config::loadGaugeConfigs() {
     mTachGaugeConfig.maxRpm = mGaugeConfig->value(MAX_RPM).toInt();
     mTachGaugeConfig.redline = mGaugeConfig->value(REDLINE).toInt();
 
-    printKeys("Tachometer: ", mGaugeConfig);
+    printKeys("Tachometer: ", mGaugeConfig.get());
 
     mGaugeConfig->endGroup();
 
@@ -227,103 +247,117 @@ GaugeConfig::GaugeConfig Config::loadGaugeConfig(QString groupName) {
     conf.altDisplayUnits.aboveCutoff = mGaugeConfig->value(ALT_UNITS_ABOVE_THRS, false).toBool();
     conf.altDisplayUnits.cutoff = mGaugeConfig->value(ALT_UNITS_THRESHOLD, 0.0).toReal();
 
-    printKeys(groupName, mGaugeConfig);
+    printKeys(groupName, mGaugeConfig.get());
 
     mGaugeConfig->endGroup();
 
     return conf;
 }
 
-bool Config::loadConfig() {
-    QStringList keys = mConfig->allKeys();
-
+bool Config::loadSensorChannelConfig(QSettings * config,
+                                     QMap<QString, int>& sensorChannelConfig,
+                                     qreal& sensorSupplyVoltage) const {
     // Load sensor configuration
-    mConfig->beginGroup(SENSOR_CHANNEL_GROUP);
+    config->beginGroup(SENSOR_CHANNEL_GROUP);
 
-    for (auto key : mConfig->childKeys()) {
+    for (const auto& key : config->childKeys()) {
         if (key == V_SUPPLY_KEY) {
-            mSensorSupplyVoltage = mConfig->value(key, DEFAULT_V_SUPPLY).toReal();
+            sensorSupplyVoltage = config->value(key, DEFAULT_V_SUPPLY).toReal();
         } else {
-            mSensorChannelConfig.insert(key, mConfig->value(key, -1).toInt());
+            sensorChannelConfig.insert(key, config->value(key, -1).toInt());
         }
     }
 
-    printKeys("Sensor Channels ", mConfig);
+    printKeys("Sensor Channels ", config);
 
-    mConfig->endGroup();
+    config->endGroup();
 
+    return true;
+}
+
+bool Config::loadDashLightConfig(QSettings * config, QMap<QString, int>& dashLightConfig) const {
     // Load dash light configuration
-    mConfig->beginGroup(DASH_LIGHT_GROUP);
+    config->beginGroup(DASH_LIGHT_GROUP);
 
-    for (auto key : mConfig->childKeys()) {
-        mDashLightConfig.insert(key, mConfig->value(key, -1).toInt());
+    for (const auto& key : config->childKeys()) {
+        dashLightConfig.insert(key, config->value(key, -1).toInt());
     }
 
-    printKeys("Dash Light Config ", mConfig);
+    printKeys("Dash Light Config ", config);
 
-    mConfig->endGroup();
+    config->endGroup();
 
-    // user input group
-    mConfig->beginGroup(USER_INPUT_GROUP);
+    return true;
+}
 
-    for (QString key : mConfig->childKeys()) {
+bool Config::loadUserInputConfig(QSettings* config, QMap<int, Qt::Key>& userInputConfig, QMap<QString, int>& userInputPinConfig) const {
+    config->beginGroup(USER_INPUT_GROUP);
+
+    for (const QString& key : config->childKeys()) {
         if (QString::compare(key, USER_INPUT1_MAP) == 0) {
-            mUserInputConfig.insert(0, mKeyMap.value(mConfig->value(key, "Key_Left").toString(), USER_INPUT_DEFAULT_KEY));
+            userInputConfig.insert(0, mKeyMap.value(config->value(key, "Key_Left").toString(), USER_INPUT_DEFAULT_KEY));
         } else if (QString::compare(key, USER_INPUT2_MAP) == 0) {
-            mUserInputConfig.insert(1, mKeyMap.value(mConfig->value(key, "Key_A").toString(), USER_INPUT_DEFAULT_KEY));
+            userInputConfig.insert(1, mKeyMap.value(config->value(key, "Key_A").toString(), USER_INPUT_DEFAULT_KEY));
         } else if (QString::compare(key, USER_INPUT3_MAP) == 0) {
-            mUserInputConfig.insert(2, mKeyMap.value(mConfig->value(key, "Key_B").toString(), USER_INPUT_DEFAULT_KEY));
+            userInputConfig.insert(2, mKeyMap.value(config->value(key, "Key_B").toString(), USER_INPUT_DEFAULT_KEY));
         } else if (QString::compare(key, USER_INPUT4_MAP) == 0) {
-            mUserInputConfig.insert(3, mKeyMap.value(mConfig->value(key, "Key_Right").toString(), USER_INPUT_DEFAULT_KEY));
+            userInputConfig.insert(3, mKeyMap.value(config->value(key, "Key_Right").toString(), USER_INPUT_DEFAULT_KEY));
         } else if (QString::compare(key, USER_INPUT_LONG_PRESS_DURATION) == 0) {
-            mUserInputPinConfig.insert(key, mConfig->value(key, DEFAULT_LONG_PRESS_DURATION_MSEC).toInt());
+            userInputPinConfig.insert(key, config->value(key, DEFAULT_LONG_PRESS_DURATION_MSEC).toInt());
         } else {
-            mUserInputPinConfig.insert(key, mConfig->value(key).toInt());
+            userInputPinConfig.insert(key, config->value(key).toInt());
         }
     }
 
-    printKeys("User Inputs: ", mConfig);
-    mConfig->endGroup();
+    printKeys("User Inputs: ", config);
+    config->endGroup();
 
-    //load map sensor config
-    mConfig->beginGroup(MAP_SENSOR_GROUP);
+    return true;
+}
 
-    for (auto key : mConfig->childKeys()) {
+bool Config::loadMapSensorConfig(QSettings* config, SensorConfig::MapSensorConfig& mapSensorConfig) const {
+    config->beginGroup(MAP_SENSOR_GROUP);
+
+    for (const auto& key : config->childKeys()) {
         if (key == PRESSURE_AT_0V) {
-            mMapSensorConfig.p0V = mConfig->value(key, -1).toReal();
+            mapSensorConfig.p0V = config->value(key, -1).toReal();
         } else if (key == PRESSURE_AT_5V) {
-            mMapSensorConfig.p5V = mConfig->value(key, -1).toReal();
+            mapSensorConfig.p5V = config->value(key, -1).toReal();
         } else if (key == PRESSURE_ATM) {
-            mMapSensorConfig.pAtm = mConfig->value(key, -1).toReal();
+            mapSensorConfig.pAtm = config->value(key, -1).toReal();
         } else if (key == PRESSURE_UNITS) {
             // default to kPa
-            QString units = mConfig->value(key, Units::UNITS_KPA).toString();
-            mMapSensorConfig.units = Units::getPressureUnits(units);
+            QString units = config->value(key, Units::UNITS_KPA).toString();
+            mapSensorConfig.units = Units::getPressureUnits(units);
         }
     }
 
-    printKeys("Map Sensor ", mConfig);
+    printKeys("Map Sensor ", config);
 
-    mConfig->endGroup();
+    config->endGroup();
 
-    // Temperature sensor config
-    int size = mConfig->beginReadArray(TEMP_SENSOR_GROUP);
+    return true;
+}
+
+bool Config::loadTempSensorConfig(QSettings* config, QList<SensorConfig::TempSensorConfig>& tempSensorConfigs) const {
+    // load temp sensor config
+    int size = config->beginReadArray(TEMP_SENSOR_GROUP);
     for (int i = 0; i < size; ++i) {
         SensorConfig::TempSensorConfig conf;
-        mConfig->setArrayIndex(i);
+        config->setArrayIndex(i);
 
-        conf.rBalance = mConfig->value(TEMP_R_BALANCE, 1000).toReal();
-        conf.t1 = mConfig->value(T1_TEMP, -1).toReal();
-        conf.t2 = mConfig->value(T2_TEMP, -1).toReal();
-        conf.t3 = mConfig->value(T3_TEMP, -1).toReal();
-        conf.r1 = mConfig->value(T1_RES, -1).toReal();
-        conf.r2 = mConfig->value(T2_RES, -1).toReal();
-        conf.r3 = mConfig->value(T3_RES, -1).toReal();
+        conf.rBalance = config->value(TEMP_R_BALANCE, 1000).toReal();
+        conf.t1 = config->value(T1_TEMP, -1).toReal();
+        conf.t2 = config->value(T2_TEMP, -1).toReal();
+        conf.t3 = config->value(T3_TEMP, -1).toReal();
+        conf.r1 = config->value(T1_RES, -1).toReal();
+        conf.r2 = config->value(T2_RES, -1).toReal();
+        conf.r3 = config->value(T3_RES, -1).toReal();
 
-        QString units = mConfig->value(TEMP_UNITS, Units::UNITS_K).toString();
+        QString units = config->value(TEMP_UNITS, Units::UNITS_K).toString();
         conf.units = Units::getTempUnits(units);
 
-        QString type = mConfig->value(TEMP_TYPE, TEMP_TYPE_COOLANT).toString();
+        QString type = config->value(TEMP_TYPE, TEMP_TYPE_COOLANT).toString();
         if (type.compare(TEMP_TYPE_COOLANT, Qt::CaseInsensitive) == 0) {
             conf.type = SensorConfig::TemperatureSensorType::COOLANT;
         } else if (type.compare(TEMP_TYPE_OIL, Qt::CaseInsensitive) == 0) {
@@ -335,34 +369,41 @@ bool Config::loadConfig() {
             conf.type = SensorConfig::TemperatureSensorType::COOLANT;
         }
 
-        mTempSensorConfigs.append(conf);
+        tempSensorConfigs.append(conf);
 
-        printKeys("Temp Sensor ", mConfig);
+        printKeys("Temp Sensor ", config);
     }
-    mConfig->endArray();
+    config->endArray();
 
-    //tach input config
-    mConfig->beginGroup(TACH_INPUT_GROUP);
+    return true;
+}
 
-    mTachConfig.pulsesPerRot = mConfig->value(TACH_PULSES_PER_ROTATION, 2).toInt(); // default to 4 cylinder
-    mTachConfig.maxRpm = mConfig->value(TACH_MAX_RPM, 9000).toInt(); // default rpm is 9000 (a bit aspirational)
-    mTachConfig.avgNumSamples = mConfig->value(TACH_AVG_NUM_SAMPLES, 4).toInt(); // default is to average over last 4 tach pulse spacing
+bool Config::loadTachInputConfig(QSettings* config, SensorConfig::TachInputConfig& tachInputConfig) const {
+    // load tach config
+    config->beginGroup(TACH_INPUT_GROUP);
 
-    printKeys("Tach Input ", mConfig);
+    tachInputConfig.pulsesPerRot = config->value(TACH_PULSES_PER_ROTATION, 2).toInt(); // default to 4 cylinder
+    tachInputConfig.maxRpm = config->value(TACH_MAX_RPM, 9000).toInt(); // default rpm is 9000 (a bit aspirational)
+    tachInputConfig.avgNumSamples = config->value(TACH_AVG_NUM_SAMPLES, 4).toInt(); // default is to average over last 4 tach pulse spacing
 
-    mConfig->endGroup();
+    printKeys("Tach Input ", config);
 
-    size = 0;
-    size = mConfig->beginReadArray(RESISTIVE_SENSOR_GROUP);
+    config->endGroup();
+
+    return true;
+}
+
+bool Config::loadResistiveSensorConfig(QSettings* config, QMap<QString, SensorConfig::ResistiveSensorConfig>& resistiveSensorConfig) const {
+    int size = config->beginReadArray(RESISTIVE_SENSOR_GROUP);
     for (int i = 0; i < size; ++i) {
-        mConfig->setArrayIndex(i);
+        config->setArrayIndex(i);
         SensorConfig::ResistiveSensorConfig rSensorConf;
         // sensor type/name
-        rSensorConf.type = mConfig->value(RES_SENSOR_TYPE, "").toString();
+        rSensorConf.type = config->value(RES_SENSOR_TYPE, "").toString();
 
         // sensor fit type
-        QList fit = mConfig->value(RES_SENSOR_FIT_TYPE, "").toList();
-        if (fit.at(0).toString() == RES_SENSOR_FIT_TYPE_POLYNOMIAL && fit.length() == 2) {
+        if (QList fit = config->value(RES_SENSOR_FIT_TYPE, "").toList();
+            fit.at(0).toString() == RES_SENSOR_FIT_TYPE_POLYNOMIAL && fit.length() == 2) {
             rSensorConf.fitType = SensorConfig::ResistiveSensorType::POLYNOMIAL;
             rSensorConf.order = fit.at(1).toInt();
         } else {
@@ -371,26 +412,26 @@ bool Config::loadConfig() {
         }
 
         // balance/pullup/high side whatever resistor
-        rSensorConf.rBalance = mConfig->value(RES_SENSOR_R_BALANCE, "1000.0").toReal();
+        rSensorConf.rBalance = config->value(RES_SENSOR_R_BALANCE, "1000.0").toReal();
 
         // resistance values
-        QList r = mConfig->value(RES_SENSOR_R_VALUES, "").toList();
-        for (QVariant val : r) {
+        QList r = config->value(RES_SENSOR_R_VALUES, "").toList();
+        for (const QVariant& val : r) {
             rSensorConf.x.push_back(val.toReal());
         }
 
         // y values (fuel level, pressure, etc)
-        QList y = mConfig->value(RES_SENSOR_Y_VALUES, "").toList();
-        for (QVariant val : y) {
+        QList y = config->value(RES_SENSOR_Y_VALUES, "").toList();
+        for (const QVariant& val : y) {
             rSensorConf.y.push_back(val.toReal());
         }
 
         // y value units
-        rSensorConf.units = mConfig->value(RES_SENSOR_UNITS, "").toString();
+        rSensorConf.units = config->value(RES_SENSOR_UNITS, "").toString();
 
         // lag coefficient
-        rSensorConf.lag = mConfig->value(RES_SENSOR_LAG, 1.0).toReal();
-        rSensorConf.lagDecay = mConfig->value(RES_SENSOR_LAG_DECAY, 0.0).toReal();
+        rSensorConf.lag = config->value(RES_SENSOR_LAG, 1.0).toReal();
+        rSensorConf.lagDecay = config->value(RES_SENSOR_LAG_DECAY, 0.0).toReal();
 
         if (rSensorConf.lag == 1.0) {
             rSensorConf.lagStart = rSensorConf.lag;
@@ -398,37 +439,38 @@ bool Config::loadConfig() {
             rSensorConf.lagStart = 1.0 - rSensorConf.lag;
         }
 
-        mResistiveSensorConfig.insert(rSensorConf.type, rSensorConf);
-        printKeys("Resistive Sensor: ", mConfig);
-
-
+        resistiveSensorConfig.insert(rSensorConf.type, rSensorConf);
+        printKeys("Resistive Sensor: ", config);
     }
-    mConfig->endArray();
+    config->endArray();
 
-    size = 0;
-    size = mConfig->beginReadArray(ANALOG_INPUT_12V_GROUP);
+    return true;
+}
+
+bool Config::load12VAnalogConfig(QSettings* config, QMap<QString, Analog12VInput::Analog12VInputConfig>& analog12VInputConfig) const {
+    int size = config->beginReadArray(ANALOG_INPUT_12V_GROUP);
     for (int i = 0; i < size; ++i) {
-        mConfig->setArrayIndex(i);
+        config->setArrayIndex(i);
 
         Analog12VInput::Analog12VInputConfig conf;
 
-        conf.type = mConfig->value(ANALOG_INPUT_12V_NAME, "").toString();
-        conf.optoR1 = mConfig->value(ANALOG_INPUT_12V_OPTO_R1, 1).toReal();
-        conf.optoR2 = mConfig->value(ANALOG_INPUT_12V_OPTO_R2, 1).toReal();
-        conf.inputR1 = mConfig->value(ANALOG_INPUT_12V_INPUT_R1, 1).toReal();
-        conf.inputR2 = mConfig->value(ANALOG_INPUT_12V_INPUT_R2, 1).toReal();
-        conf.gainK3 = mConfig->value(ANALOG_INPUT_12V_OPTO_GAIN_K3, 1).toReal();
-        conf.offset = mConfig->value(ANALOG_INPUT_12V_OFFSET, 0).toReal();
+        conf.type = config->value(ANALOG_INPUT_12V_NAME, "").toString();
+        conf.optoR1 = config->value(ANALOG_INPUT_12V_OPTO_R1, 1).toReal();
+        conf.optoR2 = config->value(ANALOG_INPUT_12V_OPTO_R2, 1).toReal();
+        conf.inputR1 = config->value(ANALOG_INPUT_12V_INPUT_R1, 1).toReal();
+        conf.inputR2 = config->value(ANALOG_INPUT_12V_INPUT_R2, 1).toReal();
+        conf.gainK3 = config->value(ANALOG_INPUT_12V_OPTO_GAIN_K3, 1).toReal();
+        conf.offset = config->value(ANALOG_INPUT_12V_OFFSET, 0).toReal();
 
         // resistance values
-        QList r = mConfig->value(ANALOG_INPUT_12V_X_VALUES, "").toList();
-        for (QVariant val : r) {
+        QList r = config->value(ANALOG_INPUT_12V_X_VALUES, "").toList();
+        for (const QVariant& val : r) {
             conf.x.push_back(val.toReal());
         }
 
         // y values (fuel level, pressure, etc)
-        QList y = mConfig->value(ANALOG_INPUT_12V_Y_VALUES, "").toList();
-        for (QVariant val : y) {
+        QList y = config->value(ANALOG_INPUT_12V_Y_VALUES, "").toList();
+        for (const QVariant& val : y) {
             conf.y.push_back(val.toReal());
         }
         if (conf.x.length() > 0) {
@@ -437,49 +479,114 @@ bool Config::loadConfig() {
             conf.order = 0;
         }
 
-        mAnalog12VInputConfig.insert(conf.type, conf);
-        printKeys("Analog 12V input: ", mConfig);
+        analog12VInputConfig.insert(conf.type, conf);
+        printKeys("Analog 12V input: ", config);
     }
-    mConfig->endArray();
+    config->endArray();
 
+    return true;
+}
+
+bool Config::loadVssInputConfig(QSettings* config, SensorConfig::VssInputConfig& vssInputConfig) const {
+    config->beginGroup(VSS_INPUT_GROUP);
+
+    vssInputConfig.pulsePerRot = config->value(VSS_PULSES_PER_ROTATION, 12).toInt();
+    vssInputConfig.tireDiameter = config->value(VSS_TIRE_DIAMETER, 24.9).toReal();
+
+    QString diameterUnits =  config->value(VSS_TIRE_DIAMETER_UNITS, "inch").toString().toLower();
+    vssInputConfig.tireDiameterUnits = Units::getDistanceUnits(diameterUnits);
+    vssInputConfig.pulsePerUnitDistance = config->value(VSS_PULSES_PER_DISTANCE, 0).toInt();
+
+    QString distanceUnits = config->value(VSS_DISTANCE_UNITS, "mile").toString().toLower();
+    vssInputConfig.distanceUnits = Units::getDistanceUnits(distanceUnits);
+    vssInputConfig.maxSpeed = config->value(VSS_MAX_SPEED, 160).toInt();
+    vssInputConfig.useGps = config->value(VSS_USE_GPS, false).toBool();
+
+    printKeys("VSS Input: ", config);
+
+    config->endGroup();
+
+    return true;
+}
+
+bool Config::loadBacklighConfig(QSettings *config, SensorConfig::BacklightControlConfig_t &backlightConfig) const {
+    config->beginGroup(BACKLIGHT_GROUP);
+
+    backlightConfig.minDutyCycle = config->value(BACKLIGHT_MIN_DUTY_CYCLE, 0.2).toReal();
+    backlightConfig.maxDutyCycle = config->value(BACKLIGHT_MAX_DUTY_CYCLE, 1.0).toReal();
+    backlightConfig.lightsOffDutyCycle = config->value(BACKLIGHT_LIGHTS_OFF_DUTY_CYCLE, 1.0).toReal();
+    backlightConfig.lightsOnDutyCycle = config->value(BACKLIGHT_LIGHTS_ON_DUTY_CYCLE, 0.6).toReal();
+    backlightConfig.minDimmerRatio = config->value(BACKLIGHT_MIN_DIMMER_RATIO, 0.82).toReal();
+    backlightConfig.maxDimmerRatio = config->value(BACKLIGHT_MAX_DIMMER_RATIO, 0.93).toReal();
+    backlightConfig.useDimmer = config->value(BACKLIGHT_USE_DIMMER, true).toBool();
+    backlightConfig.activeLow = config->value(BACKLIGHT_ACTIVE_LOW, false).toBool();
+
+    printKeys("Backlight Config: ", config);
+
+    config->endGroup();
+
+    return true;
+}
+
+bool Config::loadConfig() {
+    QStringList keys = mConfig->allKeys();
+
+    // Load sensor configuration
+    if (auto ret = loadSensorChannelConfig(mConfig.get(), mSensorChannelConfig, mSensorSupplyVoltage); ret != true) {
+        return ret;
+    }
+
+    // Load dash light configuration
+    if (auto ret = loadDashLightConfig(mConfig.get(), mDashLightConfig); ret != true) {
+        return ret;
+    }
+
+    // user input group
+    if (auto ret = loadUserInputConfig(mConfig.get(), mUserInputConfig, mUserInputPinConfig); ret != true) {
+        return ret;
+    }
+
+    //load map sensor config
+    if (auto ret = loadMapSensorConfig(mConfig.get(), mMapSensorConfig); ret != true) {
+        return ret;
+    }
+
+    // Temperature sensor config
+    if (auto ret = loadTempSensorConfig(mConfig.get(), mTempSensorConfigs); ret != true) {
+        return ret;
+    }
+
+    //tach input config
+    if (auto ret = loadTachInputConfig(mConfig.get(), mTachConfig); ret != true) {
+        return ret;
+    }
+
+    // Resistive sensor config
+    if (auto ret = loadResistiveSensorConfig(mConfig.get(), mResistiveSensorConfig); ret != true) {
+        return ret;
+    }
+
+    // Load 12V analog inputs
+    if (auto ret = load12VAnalogConfig(mConfig.get(), mAnalog12VInputConfig); ret != true) {
+        return ret;
+    }
 
     // VSS Input Configuration
-    mConfig->beginGroup(VSS_INPUT_GROUP);
+    if (auto ret = loadVssInputConfig(mConfig.get(), mVssInputConfig); ret != true) {
+        return ret;
+    }
 
-    mVssInputConfig.pulsePerRot = mConfig->value(VSS_PULSES_PER_ROTATION, 12).toInt();
-    mVssInputConfig.tireDiameter = mConfig->value(VSS_TIRE_DIAMETER, 24.9).toReal();
-    QString diameterUnits =  mConfig->value(VSS_TIRE_DIAMETER_UNITS, "inch").toString().toLower();
-    mVssInputConfig.tireDiameterUnits = Units::getDistanceUnits(diameterUnits);
-    mVssInputConfig.pulsePerUnitDistance = mConfig->value(VSS_PULSES_PER_DISTANCE, 0).toInt();
-    QString distanceUnits = mConfig->value(VSS_DISTANCE_UNITS, "mile").toString().toLower();
-    mVssInputConfig.distanceUnits = Units::getDistanceUnits(distanceUnits);
-    mVssInputConfig.maxSpeed = mConfig->value(VSS_MAX_SPEED, 160).toInt();
-    mVssInputConfig.useGps = mConfig->value(VSS_USE_GPS, false).toBool();
-
-    printKeys("VSS Input: ", mConfig);
-
-    mConfig->endGroup();
-
-    mConfig->beginGroup(BACKLIGHT_GROUP);
-    mBacklightConfig.minDutyCycle = mConfig->value(BACKLIGHT_MIN_DUTY_CYCLE, 0.2).toReal();
-    mBacklightConfig.maxDutyCycle = mConfig->value(BACKLIGHT_MAX_DUTY_CYCLE, 1.0).toReal();
-    mBacklightConfig.lightsOffDutyCycle = mConfig->value(BACKLIGHT_LIGHTS_OFF_DUTY_CYCLE, 1.0).toReal();
-    mBacklightConfig.lightsOnDutyCycle = mConfig->value(BACKLIGHT_LIGHTS_ON_DUTY_CYCLE, 0.6).toReal();
-    mBacklightConfig.minDimmerRatio = mConfig->value(BACKLIGHT_MIN_DIMMER_RATIO, 0.82).toReal();
-    mBacklightConfig.maxDimmerRatio = mConfig->value(BACKLIGHT_MAX_DIMMER_RATIO, 0.93).toReal();
-    mBacklightConfig.useDimmer = mConfig->value(BACKLIGHT_USE_DIMMER, true).toBool();
-    mBacklightConfig.activeLow = mConfig->value(BACKLIGHT_ACTIVE_LOW, false).toBool();
-
-    printKeys("Backlight Config: ", mConfig);
-
-    mConfig->endGroup();
+    // Backlight Config
+    if (auto ret = loadBacklighConfig(mConfig.get(), mBacklightConfig); ret != true) {
+        return ret;
+    }
 
     return keys.size() > 0;
 }
 
-bool Config::isMapConfigValid(QMap<QString, int> *map) {
+bool Config::isMapConfigValid(const QMap<QString, int>& map) const {
     QSet<int> values;
-    for (int val : map->values()) {
+    for (int val : map.values()) {
         // check that the value is valid
         if (val < 0) {
             return false;

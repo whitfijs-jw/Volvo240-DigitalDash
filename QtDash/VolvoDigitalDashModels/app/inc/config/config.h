@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QSettings>
 #include <QDebug>
-#include <iostream>
 
 #include <config_keys.h>
 #include <can_frame_config.h>
@@ -13,6 +12,8 @@
 #include <analog_12v_input.h>
 #include <sensor_configs.h>
 #include <gauge_configs.h>
+
+#include <memory>
 
 /**
  * @brief Dash config class
@@ -25,20 +26,6 @@
 class Config : public QObject {
 Q_OBJECT
 public:
-    /**
-     * @struct BacklightControlConfig
-     */
-    typedef struct BacklightControlConfig {
-        qreal minDutyCycle;
-        qreal maxDutyCycle;
-        qreal lightsOffDutyCycle;
-        qreal lightsOnDutyCycle;
-        qreal minDimmerRatio;
-        qreal maxDimmerRatio;
-        bool useDimmer;
-        bool activeLow;
-    } BacklightControlConfig_t;
-
     static constexpr char DEFAULT_CONFIG_PATH[] = "/opt/config.ini"; //!< deafult config location
     static constexpr char DEFAULT_GAUGE_CONFIG_PATH[] = "/opt/config_gauges.ini"; //!< default gauge config location
     static constexpr char DEFAULT_ODO_CONFIG_PATH[] = "/opt/config_odo.ini"; //!< default odometer config location
@@ -77,7 +64,7 @@ public:
      * @param conf Odometer configuration
      * @return true if successful
      */
-    bool writeOdometerConfig(QString name, SensorConfig::OdometerConfig conf);
+    bool writeOdometerConfig(QString name, const SensorConfig::OdometerConfig& conf);
 
     /**
      * @brief Load gauge configs from the .ini file
@@ -92,6 +79,18 @@ public:
      */
     GaugeConfig::GaugeConfig loadGaugeConfig(QString groupName);
 
+
+    bool loadSensorChannelConfig(QSettings * config, QMap<QString, int>& sensorChannelConfig, qreal& sensorSupplyVoltage) const;
+    bool loadDashLightConfig(QSettings * config, QMap<QString, int>& dashLightConfig) const;
+    bool loadUserInputConfig(QSettings * config, QMap<int, Qt::Key>& userInputConfig, QMap<QString, int>& userInputPingConfig) const;
+    bool loadMapSensorConfig(QSettings * config, SensorConfig::MapSensorConfig& mapSensorConfig) const;
+    bool loadTempSensorConfig(QSettings * config, QList<SensorConfig::TempSensorConfig>& tempSensorConfigs) const;
+    bool loadTachInputConfig(QSettings * config, SensorConfig::TachInputConfig& tachInputConfig) const;
+    bool loadResistiveSensorConfig(QSettings * config, QMap<QString, SensorConfig::ResistiveSensorConfig>& resistiveSensorConfig) const;
+    bool load12VAnalogConfig(QSettings * config, QMap<QString, Analog12VInput::Analog12VInputConfig>& analog12VInputConfig) const;
+    bool loadVssInputConfig(QSettings * config, SensorConfig::VssInputConfig& vssInputConfig) const;
+    bool loadBacklighConfig(QSettings * config, SensorConfig::BacklightControlConfig_t& backlightConfig) const;
+
     /**
      * @brief Load config from config.ini file
      * @return true on successful completion
@@ -103,7 +102,7 @@ public:
      * @param setting: Group name to output to log
      */
     void printKeys(QString setting, QSettings * config) const {
-        for (auto key : config->childKeys()) {
+        for (const auto& key : config->childKeys()) {
             qDebug() << setting << key << ": " << config->value(key, "N/A").toStringList();
         }
     }
@@ -136,7 +135,7 @@ public:
      * @brief Get temp sensor configurations
      * @return QList of temperature sensor configurations
      */
-    QList<SensorConfig::TempSensorConfig> * getTempSensorConfigs(){
+    QList<SensorConfig::TempSensorConfig> * getTempSensorConfigs() {
         return &mTempSensorConfigs;
     }
 
@@ -152,16 +151,16 @@ public:
      * @brief Check if sensor channel config is valid
      * @return: sensor channel config
      */
-    bool isSensorConfigValid() {
-        return isMapConfigValid(&mSensorChannelConfig);
+    bool isSensorConfigValid() const {
+        return isMapConfigValid(mSensorChannelConfig);
     }
 
     /**
      * @brief Check if the dash light config is valid
      * @return true if config is valid
      */
-    bool isDashLightConfigValid() {
-        return isMapConfigValid(&mDashLightConfig);
+    bool isDashLightConfigValid() const {
+        return isMapConfigValid(mDashLightConfig);
     }
 
     /**
@@ -224,7 +223,7 @@ public:
      * @return Odometer config
      */
     SensorConfig::OdometerConfig getOdometerConfig(QString name) const {
-        for (auto conf : mOdoConfig) {
+        for (const auto& conf : mOdoConfig) {
             if (conf.name == name) {
                 return conf;
             }
@@ -236,7 +235,7 @@ public:
      * @brief Get the backlight config
      * @return backlight config
      */
-    BacklightControlConfig_t getBackLightConfig() const {
+    SensorConfig::BacklightControlConfig_t getBackLightConfig() const {
         return mBacklightConfig;
     }
 
@@ -254,9 +253,10 @@ public:
      * @return pointer to the config
      */
     CanFrameConfig * getCanFrameConfig(QString name) {
-        for (int i = 0; i < mCanFrameConfigs.size(); i++) {
-            if (mCanFrameConfigs[i].getName() == name) {
-                return &mCanFrameConfigs[i];
+        qDebug() << "getCanFrameConfig: " << name;
+        for(auto& config : mCanFrameConfigs) {
+            if (config.getName() == name) {
+                return &config;
             }
         }
         return nullptr;
@@ -287,12 +287,8 @@ public:
         return mSensorSupplyVoltage;
     }
 
-signals:
-
-public slots:
-
 private:
-    QSettings * mConfig = nullptr;  //!< QSettings for reading config.ini file
+    std::unique_ptr<QSettings> mConfig = nullptr;  //!< QSettings for reading config.ini file
     QMap<QString, int> mSensorChannelConfig; //!< sensor channel configuration
     qreal mSensorSupplyVoltage = ConfigKeys::DEFAULT_V_SUPPLY; //!< Sensor supply voltage
     QMap<QString, int> mDashLightConfig; //!< dash light gpio configuration
@@ -304,18 +300,18 @@ private:
     QMap<QString, SensorConfig::ResistiveSensorConfig> mResistiveSensorConfig; //!< Resistive sensor configs
     QMap<QString, Analog12VInput::Analog12VInputConfig> mAnalog12VInputConfig; //!< 12V analog configs
 
-    QSettings * mGaugeConfig = nullptr; //!< Gauge config QSettings
+    std::unique_ptr<QSettings> mGaugeConfig = nullptr; //!< Gauge config QSettings
     QMap<QString, GaugeConfig::GaugeConfig> mGaugeConfigs; //!< map of gauge configs
     GaugeConfig::SpeedoConfig mSpeedoGaugeConfig; //!< speedo gauge config
     GaugeConfig::TachoConfig mTachGaugeConfig; //!< tacho gauge config
     SensorConfig::VssInputConfig mVssInputConfig; //!< vehicle speed sensor config
 
-    QSettings * mOdometerConfig = nullptr; //!< odometer configration QSettings
+    std::unique_ptr<QSettings> mOdometerConfig = nullptr; //!< odometer configration QSettings
     QList<SensorConfig::OdometerConfig> mOdoConfig; //!< odometer config
 
-    BacklightControlConfig_t mBacklightConfig; //!< backlight configuration
+    SensorConfig::BacklightControlConfig_t mBacklightConfig; //!< backlight configuration
 
-    QSettings * mCanConfig; //!< can config Qsettings
+    std::unique_ptr<QSettings> mCanConfig; //!< can config Qsettings
     bool mEnableCan = false; //!< is Can enabled
     QList<CanFrameConfig> mCanFrameConfigs; //!< CAN frame configss
 
@@ -324,7 +320,7 @@ private:
      * @param map: map to check
      * @return: true is map config values are valid
      */
-    bool isMapConfigValid(QMap<QString, int> *map);
+    bool isMapConfigValid(const QMap<QString, int>& map) const;
 
     /**
      * @brief Initialize User Input Keymap -- this is gross
