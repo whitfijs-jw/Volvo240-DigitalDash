@@ -11,7 +11,7 @@ class IndicatorModel : public QAbstractListModel
     Q_PROPERTY(bool flipped READ flipped WRITE setFlipped NOTIFY onFlipped)
 
 public:
-    enum IndicatorRoles {
+    enum class IndicatorRoles {
         onRole        = Qt::UserRole + 1,
         flippedRole   = Qt::UserRole + 2,
     };

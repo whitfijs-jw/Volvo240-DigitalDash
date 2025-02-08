@@ -18,7 +18,7 @@ class TempAndFuelGaugeModel : public QAbstractListModel
 public:
     static constexpr char TEMP_FUEL_CLUSTER_MODEL_NAME[] = "tempFuelModel";
 
-    enum TempAndFuelGaugeModelRoles {
+    enum class TempAndFuelGaugeModelRoles {
         MaxTempRole         = Qt::UserRole + 1,
         MinTempRole         = Qt::UserRole + 2,
         CurrentTempRole     = Qt::UserRole + 3,

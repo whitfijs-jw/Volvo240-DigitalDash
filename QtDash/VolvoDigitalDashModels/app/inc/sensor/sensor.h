@@ -65,7 +65,7 @@ public slots:
         }
     }
 
-protected:
+public:
     Config * mConfig; //!< Dash config
     SensorSource * mSource; //!< Sensor source
     int mChannel; //!< Channel from the sensor source

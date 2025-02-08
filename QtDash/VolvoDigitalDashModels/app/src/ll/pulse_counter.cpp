@@ -54,7 +54,7 @@ int PulseCounter::getPulseCount() const {
 }
 
 int PulseCounter::setMaxFrequency(qreal freq) const {
-    int nsec = (int) std::round(1.0 / freq * 1.0e9);
+    auto nsec = static_cast<int>(std::round(1.0 / freq * 1.0e9));
 
     return writeAttribute(PULSE_SPACING_MIN, nsec);
 }

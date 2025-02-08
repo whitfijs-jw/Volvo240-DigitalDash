@@ -24,7 +24,7 @@ public:
      * @brief Ntc constructor
      * @param config: sensor config
      */
-    Ntc(const SensorConfig::TempSensorConfig& config);
+    explicit Ntc(const SensorConfig::TempSensorConfig& config);
 
     /**
      * @brief Calculate temp from ADC voltage
@@ -38,7 +38,7 @@ public:
      * @brief Get calibration curve coefficients
      * @return current coefficients
      */
-    SteinhartHartCoefficients_t getCoefficients() {
+    SteinhartHartCoefficients_t getCoefficients() const {
         return mCoeff;
     }
 

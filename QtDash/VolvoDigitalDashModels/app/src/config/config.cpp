@@ -357,8 +357,8 @@ bool Config::loadTempSensorConfig(QSettings* config, QList<SensorConfig::TempSen
         QString units = config->value(TEMP_UNITS, Units::UNITS_K).toString();
         conf.units = Units::getTempUnits(units);
 
-        QString type = config->value(TEMP_TYPE, TEMP_TYPE_COOLANT).toString();
-        if (type.compare(TEMP_TYPE_COOLANT, Qt::CaseInsensitive) == 0) {
+
+        if (QString type = config->value(TEMP_TYPE, TEMP_TYPE_COOLANT).toString(); type.compare(TEMP_TYPE_COOLANT, Qt::CaseInsensitive) == 0) {
             conf.type = SensorConfig::TemperatureSensorType::COOLANT;
         } else if (type.compare(TEMP_TYPE_OIL, Qt::CaseInsensitive) == 0) {
             conf.type = SensorConfig::TemperatureSensorType::OIL;
@@ -473,7 +473,7 @@ bool Config::load12VAnalogConfig(QSettings* config, QMap<QString, Analog12VInput
         for (const QVariant& val : y) {
             conf.y.push_back(val.toReal());
         }
-        if (conf.x.length() > 0) {
+        if (!conf.x.isEmpty()) {
             conf.order = 1;
         } else {
             conf.order = 0;

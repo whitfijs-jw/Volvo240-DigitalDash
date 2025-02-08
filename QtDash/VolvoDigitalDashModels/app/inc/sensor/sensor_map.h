@@ -4,6 +4,7 @@
 #include <sensor.h>
 #include <sensor_source_adc.h>
 #include <map_sensor.h>
+#include <memory>
 
 /**
  * @brief The Map_Sensor class
@@ -21,14 +22,13 @@ public:
      */
     Map_Sensor(QObject * parent, Config * config,
                AdcSource * source, int channel) :
-    Sensor(parent, config, source, channel) {
-        // setup map sensor
-        mMapSensor = new MapSensor(
-                    mConfig->getMapSensorConfig().p0V,
-                    mConfig->getMapSensorConfig().p5V,
-                    mConfig->getSensorSupplyVoltage(), // vref from source
-                    mConfig->getMapSensorConfig().units
-                    );
+        Sensor(parent, config, source, channel),
+        mMapSensor(new MapSensor(
+              mConfig->getMapSensorConfig().p0V,
+              mConfig->getMapSensorConfig().p5V,
+              mConfig->getSensorSupplyVoltage(), // vref from source
+              mConfig->getMapSensorConfig().units
+              )) {
         // check that a valid atm pressure is available
         if (mConfig->getMapSensorConfig().pAtm > 0) {
             // convert atm pressure to PSI to be used internally
@@ -58,7 +58,7 @@ public slots:
     }
 
 private:
-    MapSensor * mMapSensor;
+    std::unique_ptr<MapSensor> mMapSensor;
     qreal mPressureAtm = DEFAULT_P_ATM_PSI;
 };
 

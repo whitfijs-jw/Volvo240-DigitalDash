@@ -29,7 +29,7 @@ public:
                      VoltmeterSensor * voltmeter,
                      VoltmeterSensor * dimmerVoltage);
 
-    virtual ~BackLightControl() {}
+    ~BackLightControl() final = default;
 
 signals:
 
