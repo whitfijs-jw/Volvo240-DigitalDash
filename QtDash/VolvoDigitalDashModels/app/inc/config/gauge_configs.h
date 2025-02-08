@@ -15,7 +15,7 @@ namespace GaugeConfig {
         qreal cutoff;
         QString displayUnits;
 
-        bool checkCutoff(qreal val) {
+        bool checkCutoff(qreal val) const {
             if (aboveCutoff) {
                 return val > cutoff;
             } else {

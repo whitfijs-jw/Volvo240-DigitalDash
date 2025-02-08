@@ -20,8 +20,9 @@ public:
      */
     VoltmeterSensor(QObject * parent, Config * config,
                     AdcSource * source, int channel,
-                    Analog12VInput::Analog12VInputConfig analogConfig) :
-        Sensor(parent, config, source, channel), m12VInput(analogConfig) {
+                    const Analog12VInput::Analog12VInputConfig& analogConfig) :
+        Sensor(parent, config, source, channel),
+        m12VInput(analogConfig) {
     }
 
     QString getUnits() const override {

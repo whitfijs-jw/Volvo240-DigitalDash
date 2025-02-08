@@ -37,18 +37,12 @@ public slots:
      * @param channel: source channel
      */
     void transform(const QVariant& data, int channel) override {
-        if (std::is_base_of<T, GpsSource>::value) {
-            // gps speed
-            if (channel == getChannel()) {
-                qreal speed = data.toReal();
-                sensorDataReady(speed);
-            }
-        } else if (std::is_base_of<T, VssSource>::value) {
-            // vss speed
-            if (channel == getChannel()) {
-                qreal speed = data.toReal();
-                sensorDataReady(speed);
-            }
+        if (std::is_base_of_v<T, GpsSource> && channel == getChannel()) {
+            qreal speed = data.toReal();
+            sensorDataReady(speed);
+        } else if (std::is_base_of_v<T, VssSource> && channel == getChannel()) {
+            qreal speed = data.toReal();
+            sensorDataReady(speed);
         }
     }
 };

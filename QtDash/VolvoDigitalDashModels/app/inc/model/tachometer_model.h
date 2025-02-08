@@ -14,7 +14,7 @@ class TachometerModel : public QAbstractListModel
 public:
     static constexpr char TACH_MODEL_NAME[] = "rpmModel";
 
-    enum TachometerRoles {
+    enum class TachometerRoles {
         RpmRole     = Qt::UserRole + 1,
         RedLineRole = Qt::UserRole + 2,
         MaxRpmRole  = Qt::UserRole + 3,

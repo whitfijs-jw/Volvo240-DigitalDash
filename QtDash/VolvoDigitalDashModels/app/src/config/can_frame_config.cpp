@@ -64,6 +64,9 @@ qreal CanFrameConfig::getValue(QByteArray payload){
         }
     }
     break;
+    default:
+        // empty
+    break;
     }
 
     for (Operation_t ops : mOperations) {

@@ -1,4 +1,6 @@
 #include "warning_light_model.h"
+#include <utils.h>
+
 
 WarningLightModel::WarningLightModel(QObject *parent) :
     QAbstractListModel(parent)
@@ -8,10 +10,10 @@ WarningLightModel::WarningLightModel(QObject *parent) :
 QHash<int, QByteArray> WarningLightModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
-    roles[WarningLightRoles::onRole] = "warningLightOn";
-    roles[WarningLightRoles::flippedRole] = "warningLightFlipped";
-    roles[WarningLightRoles::textRole] = "warningLightText";
-    roles[WarningLightRoles::colorRole] = "warningLightColor";
+    roles[DashUtils::to_underlying(WarningLightRoles::onRole)] = "warningLightOn";
+    roles[DashUtils::to_underlying(WarningLightRoles::flippedRole)] = "warningLightFlipped";
+    roles[DashUtils::to_underlying(WarningLightRoles::textRole)] = "warningLightText";
+    roles[DashUtils::to_underlying(WarningLightRoles::colorRole)] = "warningLightColor";
     return roles;
 }
 
@@ -19,19 +21,19 @@ QVariant WarningLightModel::headerData(int section, Qt::Orientation orientation,
 {
     (void)section;
     (void)orientation;
-    if (role == WarningLightRoles::onRole)
+    if (role == DashUtils::to_underlying(WarningLightRoles::onRole))
     {
         return QVariant("warningLightOn");
     }
-    else if (role == WarningLightRoles::flippedRole)
+    else if (role == DashUtils::to_underlying(WarningLightRoles::flippedRole))
     {
         return QVariant("warningLightFlipped");
     }
-    else if (role == WarningLightRoles::textRole)
+    else if (role == DashUtils::to_underlying(WarningLightRoles::textRole))
     {
         return QVariant("warningLightText");
     }
-    else if (role == WarningLightRoles::colorRole)
+    else if (role == DashUtils::to_underlying(WarningLightRoles::colorRole))
     {
         return QVariant("warningLightColor");
     }
@@ -47,19 +49,19 @@ int WarningLightModel::rowCount(const QModelIndex &parent) const
 QVariant WarningLightModel::data(const QModelIndex &index, int role) const
 {
     (void)index;
-    if (role == WarningLightRoles::onRole)
+    if (role == DashUtils::to_underlying(WarningLightRoles::onRole))
     {
         return mOn;
     }
-    else if (role == WarningLightRoles::flippedRole)
+    else if (role == DashUtils::to_underlying(WarningLightRoles::flippedRole))
     {
         return mFlipped;
     }
-    else if (role == WarningLightRoles::textRole)
+    else if (role == DashUtils::to_underlying(WarningLightRoles::textRole))
     {
         return mWarningText;
     }
-    else if (role == WarningLightRoles::colorRole)
+    else if (role == DashUtils::to_underlying(WarningLightRoles::colorRole))
     {
         return mLightColor;
     }
@@ -70,36 +72,36 @@ QVariant WarningLightModel::data(const QModelIndex &index, int role) const
 bool WarningLightModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     (void)index;
-    if (role == WarningLightRoles::onRole)
+    if (role == DashUtils::to_underlying(WarningLightRoles::onRole))
     {
         mOn = value.toBool();
         emit dataChanged(createIndex(0,0),
                          createIndex(1, 0),
-                         QVector<int>() << WarningLightRoles::onRole);
+                         QVector<int>() << DashUtils::to_underlying(WarningLightRoles::onRole));
         emit onChanged();
     }
-    else if (role == WarningLightRoles::flippedRole)
+    else if (role == DashUtils::to_underlying(WarningLightRoles::flippedRole))
     {
         mFlipped = value.toBool();
         emit dataChanged(createIndex(0,0),
                          createIndex(1, 0),
-                         QVector<int>() << WarningLightRoles::flippedRole);
+                         QVector<int>() << DashUtils::to_underlying(WarningLightRoles::flippedRole));
         emit onFlipped();
     }
-    else if (role == WarningLightRoles::textRole)
+    else if (role == DashUtils::to_underlying(WarningLightRoles::textRole))
     {
         mWarningText = value.toString();
         emit dataChanged(createIndex(0,0),
                          createIndex(1, 0),
-                         QVector<int>() << WarningLightRoles::textRole);
+                         QVector<int>() << DashUtils::to_underlying(WarningLightRoles::textRole));
         emit onTextChanged();
     }
-    else if (role == WarningLightRoles::colorRole)
+    else if (role == DashUtils::to_underlying(WarningLightRoles::colorRole))
     {
         mLightColor = value.value<QColor>();
         emit dataChanged(createIndex(0,0),
                          createIndex(1, 0),
-                         QVector<int>() << WarningLightRoles::colorRole);
+                         QVector<int>() << DashUtils::to_underlying(WarningLightRoles::colorRole));
         emit onLightColorChanged();
     }
     else
@@ -140,7 +142,7 @@ void WarningLightModel::setOn(bool on)
     mOn = on;
     emit dataChanged(createIndex(0,0),
                      createIndex(1, 0),
-                     QVector<int>() << WarningLightRoles::onRole);
+                     QVector<int>() << DashUtils::to_underlying(WarningLightRoles::onRole));
     emit onChanged();
 }
 
@@ -149,7 +151,7 @@ void WarningLightModel::setFlipped(bool flipped)
     mFlipped = flipped;
     emit dataChanged(createIndex(0,0),
                      createIndex(1, 0),
-                     QVector<int>() << WarningLightRoles::flippedRole);
+                     QVector<int>() << DashUtils::to_underlying(WarningLightRoles::flippedRole));
     emit onFlipped();
 }
 
@@ -158,7 +160,7 @@ void WarningLightModel::setText(QString text)
     mWarningText = text;
     emit dataChanged(createIndex(0,0),
                      createIndex(1, 0),
-                     QVector<int>() << WarningLightRoles::textRole);
+                     QVector<int>() << DashUtils::to_underlying(WarningLightRoles::textRole));
     emit onTextChanged();
 }
 
@@ -167,6 +169,6 @@ void WarningLightModel::setLightColor(QColor color)
     mLightColor = color;
     emit dataChanged(createIndex(0,0),
                      createIndex(1, 0),
-                     QVector<int>() << WarningLightRoles::colorRole);
+                     QVector<int>() << DashUtils::to_underlying(WarningLightRoles::colorRole));
     emit onLightColorChanged();
 }

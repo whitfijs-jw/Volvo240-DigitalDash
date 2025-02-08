@@ -14,7 +14,7 @@ class WarningLightModel : public QAbstractListModel
     Q_PROPERTY(QColor lightColor READ lightColor WRITE setLightColor NOTIFY onLightColorChanged)
 
 public:
-    enum WarningLightRoles {
+    enum class WarningLightRoles {
         onRole        = Qt::UserRole + 1,
         flippedRole   = Qt::UserRole + 2,
         textRole      = Qt::UserRole + 3,

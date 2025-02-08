@@ -42,8 +42,8 @@ namespace SensorConfig {
          * @brief isValid
          * @return is config valid
          */
-        bool isValid() {
-            return true; //TODO: yea
+        bool isValid() const {
+            return true;
         }
     };
 
@@ -60,7 +60,7 @@ namespace SensorConfig {
          * @brief Check if calibration is valid
          * @return true if valid
          */
-        bool isValid() {
+        bool isValid() const {
             // we're assuming absolute pressure.
             return (p0V >= 0) && (p5V != p0V);
         }
@@ -85,7 +85,7 @@ namespace SensorConfig {
          * @brief Check if configuration is valid
          * @return true if valid
          */
-        bool isValid() {
+        bool isValid() const {
             return (t1 >= INVALID_TEMP) &&
                    (t2 >= INVALID_TEMP) &&
                    (t3 >= INVALID_TEMP) &&
