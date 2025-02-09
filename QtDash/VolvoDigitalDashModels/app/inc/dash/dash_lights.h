@@ -30,8 +30,12 @@ public:
         /**
          * @brief Active input constructor
          */
-        ActiveInput() {
-        }
+        ActiveInput() = default;
+
+        /**
+         * @brief destructor
+         */
+        ~ActiveInput() = default;
 
         /**
          * @brief Activate the input timer
