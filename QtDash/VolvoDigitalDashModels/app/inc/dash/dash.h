@@ -90,7 +90,7 @@ public:
     }
 
 signals:
-    void keyPress(QKeyEvent * event);
+    void keyPress(QKeyEvent* event);
 
 public slots:
     void odoTripReset(int trip);
@@ -100,7 +100,7 @@ private:
     EventTimers mEventTiming; //!< Event Timer
     Config mConfig; //!< Dash Config
 
-    DashLights * mDashLights; //!< Dash lights
+    std::unique_ptr<DashLights> mDashLights; //!< Dash lights
 
     AdcSource mAdcSource; //!< ADC source
     GpsSource mGpsSource; //!< GPS speed/position/heading source

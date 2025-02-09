@@ -22,7 +22,7 @@ qreal Ntc::calculateTemp(qreal volts, Units::TemperatureUnits units) const {
         units,
         Units::TemperatureUnits::KELVIN);
 
-    if (temp != temp) {
+    if (std::isnan(temp)) {
         return 0;
     } else {
         return temp;

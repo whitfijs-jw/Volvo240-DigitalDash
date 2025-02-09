@@ -1,4 +1,5 @@
 #include "indicator_model.h"
+#include <utils.h>
 
 IndicatorModel::IndicatorModel(QObject *parent) :
     QAbstractListModel(parent)
@@ -9,8 +10,8 @@ IndicatorModel::IndicatorModel(QObject *parent) :
 QHash<int, QByteArray> IndicatorModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
-    roles[IndicatorRoles::onRole] = "indicatorOn";
-    roles[IndicatorRoles::flippedRole] = "indicatorFlipped";
+    roles[DashUtils::to_underlying(IndicatorRoles::onRole)] = "indicatorOn";
+    roles[DashUtils::to_underlying(IndicatorRoles::flippedRole)] = "indicatorFlipped";
     return roles;
 }
 
@@ -18,11 +19,11 @@ QVariant IndicatorModel::headerData(int section, Qt::Orientation orientation, in
 {
     (void)section;
     (void)orientation;
-    if (role == IndicatorRoles::onRole)
+    if (role == DashUtils::to_underlying(IndicatorRoles::onRole))
     {
         return QVariant("indicatorOn");
     }
-    else if (role == IndicatorRoles::flippedRole)
+    else if (role == DashUtils::to_underlying(IndicatorRoles::flippedRole))
     {
         return QVariant("indicatorFlipped");
     }
@@ -38,11 +39,11 @@ int IndicatorModel::rowCount(const QModelIndex &parent) const
 QVariant IndicatorModel::data(const QModelIndex &index, int role) const
 {
     (void)index;
-    if (role == IndicatorRoles::onRole)
+    if (role == DashUtils::to_underlying(IndicatorRoles::onRole))
     {
         return mOn;
     }
-    else if (role == IndicatorRoles::flippedRole)
+    else if (role == DashUtils::to_underlying(IndicatorRoles::flippedRole))
     {
         return mFlipped;
     }
@@ -53,20 +54,20 @@ QVariant IndicatorModel::data(const QModelIndex &index, int role) const
 bool IndicatorModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     (void)index;
-    if (role == IndicatorRoles::onRole)
+    if (role ==  DashUtils::to_underlying(IndicatorRoles::onRole))
     {
         mOn = value.toBool();
         emit dataChanged(createIndex(0,0),
                          createIndex(1, 0),
-                         QVector<int>() << IndicatorRoles::onRole);
+                         QVector<int>() <<  DashUtils::to_underlying(IndicatorRoles::onRole));
         emit onChanged();
     }
-    else if (role == IndicatorRoles::flippedRole)
+    else if (role ==  DashUtils::to_underlying(IndicatorRoles::flippedRole))
     {
         mFlipped = value.toBool();
         emit dataChanged(createIndex(0,0),
                          createIndex(1, 0),
-                         QVector<int>() << IndicatorRoles::flippedRole);
+                         QVector<int>() <<  DashUtils::to_underlying(IndicatorRoles::flippedRole));
         emit onFlipped();
     }
     else
@@ -97,7 +98,7 @@ void IndicatorModel::setOn(bool on)
     mOn = on;
     emit dataChanged(createIndex(0,0),
                      createIndex(1, 0),
-                     QVector<int>() << IndicatorRoles::onRole);
+                     QVector<int>() <<  DashUtils::to_underlying(IndicatorRoles::onRole));
     emit onChanged();
 }
 
@@ -106,6 +107,6 @@ void IndicatorModel::setFlipped(bool flipped)
     mFlipped = flipped;
     emit dataChanged(createIndex(0,0),
                      createIndex(1, 0),
-                     QVector<int>() << IndicatorRoles::flippedRole);
+                     QVector<int>() <<  DashUtils::to_underlying(IndicatorRoles::flippedRole));
     emit onFlipped();
 }

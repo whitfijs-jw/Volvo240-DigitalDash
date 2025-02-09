@@ -14,7 +14,7 @@ class OdometerModel : public QAbstractListModel
 public:
     static constexpr char ODOMETER_MODEL_NAME[] = "odometerModel";
 
-    enum OdometerModelRoles{
+    enum class OdometerModelRoles{
         OdoValueRole      = Qt::UserRole + 1,
         TripAValueRole    = Qt::UserRole + 2,
         TripBValueRole    = Qt::UserRole + 3,

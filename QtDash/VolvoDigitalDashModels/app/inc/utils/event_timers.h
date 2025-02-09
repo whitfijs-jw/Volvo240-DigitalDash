@@ -31,7 +31,7 @@ public:
      * @brief EventTimers Constructor
      * @param parent
      */
-    EventTimers(QObject * parent);
+    explicit EventTimers(QObject * parent);
     /**
      * @brief Add timer to the collection
      * @param timerId: timer id of timer to add
@@ -47,8 +47,6 @@ public:
      * @return Pointer to timer if it exists in collection, nullptr otherwise
      */
     QTimer * getTimer(int timerId);
-signals:
-
 public slots:
     /**
      * @brief Start all timers in collection

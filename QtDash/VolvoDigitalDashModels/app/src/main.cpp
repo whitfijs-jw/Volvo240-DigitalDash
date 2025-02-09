@@ -11,6 +11,7 @@
 #include <key_press_emitter.h>
 
 #include <config.h>
+#include <QMetaType>
 
 #ifdef RASPBERRY_PI
 #include <dash.h>
@@ -23,7 +24,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
 
-    QList<QScreen *> screens = app.screens();
+    QList<QScreen *> screens = QGuiApplication::screens();
     qDebug("Application sees %d screens", screens.count());
     for (auto screen : screens) {
         qDebug() << "Screen: " << screen;
@@ -35,7 +36,7 @@ int main(int argc, char *argv[])
     QFontDatabase::addApplicationFont(":/fonts/HandelGothReg.ttf");
     QFont mFont;
     mFont.setFamily("Handel Gothic");
-    app.setFont(mFont);
+    QGuiApplication::setFont(mFont);
 
     //Setup QML
     QQmlApplicationEngine engine;
@@ -46,22 +47,30 @@ int main(int argc, char *argv[])
 
     // Initialize Dash
 #ifdef RASPBERRY_PI
-    Dash * dash = new Dash(&app, ctxt); // new scheme with sensor source -> sensor -> gauge -> model
+    auto dash = std::make_unique<Dash>(&app, ctxt); // new scheme with sensor source -> sensor -> gauge -> model
+
     ctxt->setContextProperty("RASPBERRY_PI", QVariant(true));
 
-    QObject::connect(dash, &Dash::keyPress, [&engine](QKeyEvent * ev) {
-        if (ev != nullptr) {
-            QCoreApplication::postEvent(engine.rootObjects().first(), ev);
+    QObject::connect(
+        dash.get(),
+        &Dash::keyPress,
+        [&engine](QKeyEvent* ev) {
+            if (ev != nullptr) {
+                qDebug() << "Event:" << ev;
+                QCoreApplication::postEvent(
+                    engine.rootObjects().first(),
+                    ev);
+            }
         }
-    });
+    );
 
-    QObject::connect(sideScreenKeyPress, &KeyPressEmitter::keyPressAndHold, [dash](Qt::Key key) {
+    QObject::connect(sideScreenKeyPress, &KeyPressEmitter::keyPressAndHold, [&dashClass = dash](Qt::Key key) {
        switch (key) {
        case Qt::Key_A:
-           dash->odoTripReset(0);
+           dashClass->odoTripReset(0);
            break;
        case Qt::Key_B:
-           dash->odoTripReset(1);
+           dashClass->odoTripReset(1);
            break;
        default:
            break;
@@ -129,5 +138,5 @@ int main(int argc, char *argv[])
     // Start Dash
     dash->start();
 
-    return app.exec();
+    return QGuiApplication::exec();
 }

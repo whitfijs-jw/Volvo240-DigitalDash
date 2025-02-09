@@ -426,46 +426,57 @@ void Dash::initOdometer() {
 
 void Dash::initDashLights() {
     // init models
-    mDashLights = new DashLights(this->parent(), &mConfig);
+    mDashLights.reset(new DashLights(this->parent(), &mConfig));
     mDashLights->init();
 
     // Hook up key press events
-    QObject::connect(mDashLights, &DashLights::userInputActive, [=] (uint8_t n) {
-        QKeyEvent * event = nullptr;
-        if (n <= 3) {
-            event = new QKeyEvent(QKeyEvent::KeyPress, mConfig.geUserInputConfig().value(n, Qt::Key::Key_Left), Qt::NoModifier);
-            emit keyPress(event);
+    QObject::connect(
+        mDashLights.get(),
+        &DashLights::userInputActive,
+        [&config = mConfig, obj = this] (uint8_t n) {
+            if (n <= 3) {
+                qDebug() << "Key Press: " << n;
+                auto* event = new QKeyEvent(
+                    QKeyEvent::KeyPress,
+                    config.geUserInputConfig().value(n, Qt::Key::Key_Left),
+                    Qt::NoModifier);
+                emit obj->keyPress(event);
+            }
         }
-    });
+    );
 
     // hook up long press events -- this will need to be configurable at some point:
-    QObject::connect(mDashLights, &DashLights::userInputLongPress, [=] (uint8_t n) {
+    QObject::connect(
+        mDashLights.get(),
+        &DashLights::userInputLongPress,
+        [&tripAOdoSensor = mTripAOdoSensor, &tripBOdoSensor = mTripBOdoSensor] (uint8_t n) {
         qDebug() << "Long press detected: " << n;
-        switch(n) {
-        case 0:
-            break;
-        case 1:
-            mTripAOdoSensor.reset();
-            break;
-        case 2:
-            mTripBOdoSensor.reset();
-            break;
-        case 3:
-            break;
-        default:
-            break;
+            switch(n) {
+            case 0:
+                break;
+            case 1:
+                tripAOdoSensor.reset();
+                break;
+            case 2:
+                tripBOdoSensor.reset();
+                break;
+            case 3:
+                break;
+            default:
+                break;
+            }
         }
-    });
+    );
 
     // hook up models in QML context
-    for (auto modelName : mDashLights->getWarningLightModels()->keys()) {
+    for (const auto& modelName : mDashLights->getWarningLightModels()->keys()) {
         mContext->setContextProperty(
             modelName,
             mDashLights->getWarningLightModels()->value(modelName));
     }
 
     // Connect indicator models to qml
-    for (auto modelName : mDashLights->getIndicatorModels()->keys()) {
+    for (const auto& modelName : mDashLights->getIndicatorModels()->keys()) {
         mContext->setContextProperty(
             modelName,
             mDashLights->getIndicatorModels()->value(modelName));
@@ -475,7 +486,7 @@ void Dash::initDashLights() {
     QObject::connect(
         mEventTiming.getTimer(static_cast<int>(EventTimers::DataTimers::FAST_TIMER)),
         &QTimer::timeout,
-        mDashLights,
+        mDashLights.get(),
         &DashLights::update
         );
 }

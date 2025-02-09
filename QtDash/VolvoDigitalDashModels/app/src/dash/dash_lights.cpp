@@ -63,7 +63,7 @@ void DashLights::update() {
     mHighBeamLightModel.setOn(readPin(lightConf.value(ConfigKeys::HIGH_BEAM_KEY), inputs, activeLow));
     mParkingBrakeLightModel.setOn(readPin(lightConf.value(ConfigKeys::PARKING_BRAKE_KEY), inputs, activeLow));
     mBrakeFailureLightModel.setOn(readPin(lightConf.value(ConfigKeys::BRAKE_FAILURE_KEY), inputs, activeLow));
-    mBulbFailureLightModel.setOn(readPin(lightConf.value(ConfigKeys::BULB_FAILURE_KEY), inputs, activeLow));;
+    mBulbFailureLightModel.setOn(readPin(lightConf.value(ConfigKeys::BULB_FAILURE_KEY), inputs, activeLow));
     mSrsWarningLightModel.setOn(readPin(lightConf.value(ConfigKeys::OD_LAMP_KEY), inputs, activeLow));
     mOilWarningLightModel.setOn(readPin(lightConf.value(ConfigKeys::OIL_PRESSURE_SW_KEY), inputs, activeLow));
     mBatteryWarningLightModel.setOn(readPin(lightConf.value(ConfigKeys::CHARGING_LIGHT_KEY), inputs, activeLow));
@@ -71,8 +71,8 @@ void DashLights::update() {
     mCheckEngineLightModel.setOn(readPin(lightConf.value(ConfigKeys::CHECK_ENGINE_KEY), inputs, activeLow));
 
     // not used at the moment?
-    mShiftUpLightModel.setOn(0);
-    mServiceLightModel.setOn(0);
+    mShiftUpLightModel.setOn(false);
+    mServiceLightModel.setOn(false);
 
     // deal with user inputs here
     auto userInputPinConfig = mConfig->getUserInputPinConfig();
@@ -131,7 +131,7 @@ void DashLights::update() {
 #endif
 }
 
-bool DashLights::readPin(int pin, uint16_t inputs, bool activeLow) {
+bool DashLights::readPin(int pin, uint16_t inputs, bool activeLow) const {
     bool val = inputs & (1 << pin);
 
     if (activeLow) {

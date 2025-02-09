@@ -21,8 +21,9 @@ public:
      */
     ResistiveSensor(QObject * parent, Config * config,
                     AdcSource * source, int channel,
-                    SensorConfig::ResistiveSensorConfig sensorConfig) :
-        Sensor(parent, config, source, channel), mSensorConfig(sensorConfig) {
+                    const SensorConfig::ResistiveSensorConfig& sensorConfig) :
+        Sensor(parent, config, source, channel),
+        mSensorConfig(sensorConfig) {
         // calculate curve
         mSensorConfig.coeff = SensorUtils::polynomialRegression(
                     mSensorConfig.x, mSensorConfig.y, mSensorConfig.order);
@@ -52,13 +53,12 @@ public slots:
                         resistance, mSensorConfig.coeff);
 
             // check for nan
-            if (value != value) {
+            if (std::isnan(value)) {
                 value = 0;
             }
 
             // Check that we're not shorted to ground or VDD (could be disconnected)
-            qreal vRef = mConfig->getSensorSupplyVoltage();
-            if (!SensorUtils::isValid(volts, vRef)) {
+            if (qreal vRef = mConfig->getSensorSupplyVoltage(); !SensorUtils::isValid(volts, vRef)) {
                 value = 0;
             }
 
