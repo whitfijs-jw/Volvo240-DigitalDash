@@ -436,7 +436,7 @@ void Dash::initDashLights() {
         [&config = mConfig, obj = this] (uint8_t n) {
             if (n <= 3) {
                 qDebug() << "Key Press: " << n;
-                QKeyEvent* event = new QKeyEvent(
+                auto* event = new QKeyEvent(
                     QKeyEvent::KeyPress,
                     config.geUserInputConfig().value(n, Qt::Key::Key_Left),
                     Qt::NoModifier);

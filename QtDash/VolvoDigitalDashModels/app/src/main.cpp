@@ -19,10 +19,6 @@
 #include <dash_host.h>
 #endif
 
-Q_DECLARE_METATYPE(std::shared_ptr<QKeyEvent>)
-// qRegisterMetaType<std::shared_ptr<QKeyEvent>>("std::shared_ptr<QKeyEvent>");
-
-
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -51,7 +47,8 @@ int main(int argc, char *argv[])
 
     // Initialize Dash
 #ifdef RASPBERRY_PI
-    std::unique_ptr<Dash> dash(new Dash(&app, ctxt)); // new scheme with sensor source -> sensor -> gauge -> model
+    auto dash = std::make_unique<Dash>(&app, ctxt); // new scheme with sensor source -> sensor -> gauge -> model
+
     ctxt->setContextProperty("RASPBERRY_PI", QVariant(true));
 
     QObject::connect(

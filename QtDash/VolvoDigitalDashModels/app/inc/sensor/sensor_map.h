@@ -23,12 +23,16 @@ public:
     Map_Sensor(QObject * parent, Config * config,
                AdcSource * source, int channel) :
         Sensor(parent, config, source, channel),
-        mMapSensor(new MapSensor(
-              mConfig->getMapSensorConfig().p0V,
-              mConfig->getMapSensorConfig().p5V,
-              mConfig->getSensorSupplyVoltage(), // vref from source
-              mConfig->getMapSensorConfig().units
-              )) {
+        mMapSensor(
+            std::make_unique<MapSensor>(
+                MapSensor(
+                    mConfig->getMapSensorConfig().p0V,
+                    mConfig->getMapSensorConfig().p5V,
+                    mConfig->getSensorSupplyVoltage(), // vref from source
+                    mConfig->getMapSensorConfig().units
+                )
+            )
+        ) {
         // check that a valid atm pressure is available
         if (mConfig->getMapSensorConfig().pAtm > 0) {
             // convert atm pressure to PSI to be used internally

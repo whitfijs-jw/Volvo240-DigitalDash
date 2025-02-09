@@ -24,13 +24,13 @@ public:
         int activeInput = -1; //!< ACtive input pin
         bool active = false; //!< is the pin active
         bool longPressed = false; //!< is a long press active
-        std::unique_ptr<QElapsedTimer> activeTimer; //!< timer to time active period
+        std::unique_ptr<QElapsedTimer> activeTimer = std::make_unique<QElapsedTimer>(QElapsedTimer()); //!< timer to time active period
         int longPressDuration; //!< long press duration
 
         /**
          * @brief Active input constructor
          */
-        ActiveInput() : activeTimer(new QElapsedTimer()) {
+        ActiveInput() {
         }
 
         /**
