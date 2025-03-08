@@ -1,0 +1,17 @@
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c:239:19:HAL_DMA_Init	35
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c:319:19:HAL_DMA_DeInit	14
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c:459:19:HAL_DMA_Start	4
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c:514:19:HAL_DMA_Start_IT	6
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c:586:19:HAL_DMA_Abort	7
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c:678:19:HAL_DMA_Abort_IT	3
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c:714:19:HAL_DMA_PollForTransfer	18
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c:886:6:HAL_DMA_IRQHandler	29
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c:1122:19:HAL_DMA_RegisterCallback	8
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c:1201:19:HAL_DMA_UnRegisterCallback	9
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c:1309:22:HAL_DMA_GetState	1
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c:1321:10:HAL_DMA_GetError	1
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c:1365:19:HAL_DMA_ConfigChannelAttributes	4
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c:1453:19:HAL_DMA_GetConfigChannelAttributes	7
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c:1530:19:HAL_DMA_GetLockChannelAttributes	3
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c:1577:13:DMA_SetConfig	1
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma.c:1602:13:DMA_Init	78

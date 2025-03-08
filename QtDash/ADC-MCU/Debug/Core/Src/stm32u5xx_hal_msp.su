@@ -1,0 +1,3 @@
+../Core/Src/stm32u5xx_hal_msp.c:63:6:HAL_MspInit	16	static
+../Core/Src/stm32u5xx_hal_msp.c:87:6:HAL_DCACHE_MspInit	24	static
+../Core/Src/stm32u5xx_hal_msp.c:110:6:HAL_DCACHE_MspDeInit	16	static

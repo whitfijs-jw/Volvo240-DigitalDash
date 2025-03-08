@@ -1,0 +1,13 @@
+../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/port.c:752:32:vPortSetupTimerInterrupt	4	static
+../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/port.c:773:13:prvTaskExitError	16	static
+../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/port.c:910:17:prvSetupFPU	4	static
+../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/port.c:934:6:vPortYield	4	static,ignoring_inline_asm
+../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/port.c:946:6:vPortEnterCritical	8	static,ignoring_inline_asm
+../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/port.c:958:6:vPortExitCritical	8	static
+../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/port.c:970:6:xPortSysTickHandler	16	static
+../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/port.c:987:6:vPortSVCHandler_C	24	static
+../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/port.c:1477:19:pxPortInitialiseStack	24	static
+../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/port.c:1560:12:xPortStartScheduler	24	static
+../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/port.c:1686:6:vPortEndScheduler	8	static
+../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/port.c:1866:12:xPortIsInsideInterrupt	16	static,ignoring_inline_asm
+../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM33_NTZ/non_secure/port.c:1891:10:vPortValidateInterruptPriority	16	static,ignoring_inline_asm

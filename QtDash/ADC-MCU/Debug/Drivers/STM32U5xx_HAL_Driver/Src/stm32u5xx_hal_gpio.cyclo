@@ -1,0 +1,12 @@
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.c:200:6:HAL_GPIO_Init	16
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.c:372:6:HAL_GPIO_DeInit	5
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.c:474:15:HAL_GPIO_ReadPin	2
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.c:508:6:HAL_GPIO_WritePin	2
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.c:539:6:HAL_GPIO_WriteMultipleStatePin	1
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.c:560:6:HAL_GPIO_TogglePin	1
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.c:586:19:HAL_GPIO_LockPin	5
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.c:670:6:HAL_GPIO_EnableHighSPeedLowVoltage	5
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.c:728:6:HAL_GPIO_DisableHighSPeedLowVoltage	5
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.c:779:6:HAL_GPIO_EXTI_IRQHandler	3
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.c:800:13:HAL_GPIO_EXTI_Rising_Callback	1
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpio.c:815:13:HAL_GPIO_EXTI_Falling_Callback	1

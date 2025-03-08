@@ -1,0 +1,12 @@
+../Core/Inc/Tasks/Task.hpp:21:13:Tasks::Task::~Task()	1
+../Core/Inc/Tasks/Task.hpp:21:13:virtual Tasks::Task::~Task()	1
+../Core/Src/Drivers/Adc.cpp:12:1:Drivers::Adc::Adc(size_t, uint32_t)	1
+../Core/Src/Drivers/Adc.cpp:19:8:virtual Drivers::Return Drivers::Adc::setup()	5
+../Core/Src/Drivers/Adc.cpp:39:8:virtual Drivers::Return Drivers::Adc::loop()	1
+../Core/Src/Drivers/Adc.cpp:42:8:Drivers::Return Drivers::Adc::initGpios()	1
+../Core/Src/Drivers/Adc.cpp:62:8:Drivers::Return Drivers::Adc::initTimer(uint32_t)	1
+../Core/Src/Drivers/Adc.cpp:65:8:Drivers::Return Drivers::Adc::initAdc(size_t)	2
+../Core/Src/Drivers/Adc.cpp:99:8:Drivers::Return Drivers::Adc::initAdcChannels()	1
+../Core/Src/Drivers/Adc.cpp:102:8:Drivers::Return Drivers::Adc::initDma()	3
+../Core/Inc/Drivers/Adc.hpp:16:7:Drivers::Adc::~Adc()	1
+../Core/Inc/Drivers/Adc.hpp:16:7:virtual Drivers::Adc::~Adc()	1

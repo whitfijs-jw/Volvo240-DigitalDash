@@ -1,0 +1,11 @@
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.c:138:19:HAL_EXTI_SetConfigLine	9
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.c:260:19:HAL_EXTI_GetConfigLine	9
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.c:354:19:HAL_EXTI_ClearConfigLine	4
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.c:420:19:HAL_EXTI_RegisterCallback	5
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.c:456:19:HAL_EXTI_GetHandle	2
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.c:497:6:HAL_EXTI_IRQHandler	5
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.c:551:10:HAL_EXTI_GetPending	2
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.c:595:6:HAL_EXTI_ClearPending	2
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.c:631:6:HAL_EXTI_GenerateSWI	1
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.c:682:6:HAL_EXTI_ConfigLineAttributes	3
+../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_exti.c:755:19:HAL_EXTI_GetConfigLineAttributes	3
