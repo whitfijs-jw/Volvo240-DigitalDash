@@ -1,12 +1,23 @@
+../Core/Inc/Tasks/Task.hpp:32:18:void* Tasks::Task::getThreadHandle()	16	static
+../Core/Inc/Drivers/Adc.hpp:34:12:Drivers::Return Drivers::Adc::setIntsance(Drivers::Adc&) const	16	static
+../Core/Inc/Drivers/Adc.hpp:39:17:static Drivers::Adc* Drivers::Adc::getInstance()	4	static
+../Core/Inc/Drivers/Adc.hpp:43:24:ADC_HandleTypeDef* Drivers::Adc::getAdcHandle()	16	static
+../Core/Inc/Drivers/Adc.hpp:47:24:DMA_HandleTypeDef* Drivers::Adc::getDmaHandle()	16	static
 ../Core/Inc/Tasks/Task.hpp:21:13:Tasks::Task::~Task()	16	static
 ../Core/Inc/Tasks/Task.hpp:21:13:virtual Tasks::Task::~Task()	16	static
-../Core/Src/Drivers/Adc.cpp:12:1:Drivers::Adc::Adc(size_t, uint32_t)	24	static
-../Core/Src/Drivers/Adc.cpp:19:8:virtual Drivers::Return Drivers::Adc::setup()	32	static
-../Core/Src/Drivers/Adc.cpp:39:8:virtual Drivers::Return Drivers::Adc::loop()	16	static
-../Core/Src/Drivers/Adc.cpp:42:8:Drivers::Return Drivers::Adc::initGpios()	48	static
-../Core/Src/Drivers/Adc.cpp:62:8:Drivers::Return Drivers::Adc::initTimer(uint32_t)	16	static
-../Core/Src/Drivers/Adc.cpp:65:8:Drivers::Return Drivers::Adc::initAdc(size_t)	24	static
-../Core/Src/Drivers/Adc.cpp:99:8:Drivers::Return Drivers::Adc::initAdcChannels()	16	static
-../Core/Src/Drivers/Adc.cpp:102:8:Drivers::Return Drivers::Adc::initDma()	24	static
-../Core/Inc/Drivers/Adc.hpp:16:7:Drivers::Adc::~Adc()	16	static
-../Core/Inc/Drivers/Adc.hpp:16:7:virtual Drivers::Adc::~Adc()	16	static
+../Core/Src/Drivers/Adc.cpp:14:1:Drivers::Adc::Adc(uint32_t)	16	static
+../Core/Src/Drivers/Adc.cpp:20:8:virtual Drivers::Return Drivers::Adc::setup()	32	static
+../Core/Src/Drivers/Adc.cpp:42:6:virtual void Drivers::Adc::loop()	24	static
+../Core/Src/Drivers/Adc.cpp:57:8:Drivers::Return Drivers::Adc::enableSampling(std::array<long unsigned int, 16>&)	32	static
+../Core/Src/Drivers/Adc.cpp:77:8:Drivers::Return Drivers::Adc::disableSampling()	16	static
+../Core/Src/Drivers/Adc.cpp:89:8:Drivers::Return Drivers::Adc::initGpios()	48	static
+../Core/Src/Drivers/Adc.cpp:111:8:Drivers::Return Drivers::Adc::initTimer(uint32_t)	96	static
+../Core/Src/Drivers/Adc.cpp:168:8:Drivers::Return Drivers::Adc::initAdc()	24	static
+../Core/Src/Drivers/Adc.cpp:204:8:Drivers::Return Drivers::Adc::initAdcChannels()	56	static
+../Core/Src/Drivers/Adc.cpp:225:8:Drivers::Return Drivers::Adc::initDma()	24	static
+../Core/Src/Drivers/Adc.cpp:257:17:void ADC1_IRQHandler()	16	static
+../Core/Src/Drivers/Adc.cpp:264:17:void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef*)	24	static
+../Core/Src/Drivers/Adc.cpp:270:17:void GPDMA1_Channel0_IRQHandler()	16	static
+/opt/st/stm32cubeide_1.18.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.linux64_1.0.0.202410170706/tools/arm-none-eabi/include/c++/13.3.1/array:208:7:constexpr const std::array<_Tp, _Nm>::value_type& std::array<_Tp, _Nm>::operator[](size_type) const [with _Tp = long unsigned int; unsigned int _Nm = 16]	16	static
+../Core/Inc/Drivers/Adc.hpp:19:7:Drivers::Adc::~Adc()	16	static
+../Core/Inc/Drivers/Adc.hpp:19:7:virtual Drivers::Adc::~Adc()	16	static

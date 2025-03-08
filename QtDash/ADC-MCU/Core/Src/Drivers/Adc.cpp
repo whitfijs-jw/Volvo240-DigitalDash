@@ -9,19 +9,22 @@
 
 using namespace Drivers;
 
-Adc::Adc(size_t numChannels, uint32_t samplingRate) :
-        Tasks::Task("adc_driver", TaskPriorities::ADC_TASK_PRIORITY, 512),
-        mNumChannels(numChannels),
-        mSamplingRate(samplingRate) {
+Adc* Adc::mInstance = nullptr;
 
+Adc::Adc(uint32_t samplingRate) :
+        Tasks::Task("adc_driver", TaskPriorities::ADC_TASK_PRIORITY, 512),
+        mSamplingRate(samplingRate) {
+	setIntsance(*this);
 }
 
-Return Drivers::Adc::setup() {
+Return Adc::setup() {
+	mDataQueue = osMessageQueueNew(1, Adc::NUM_CHANNELS*sizeof(uint32_t), nullptr);
+
     if (auto ret = initGpios(); ret != Return::OK) {
         return ret;
     }
 
-    if (auto ret = initAdc(mNumChannels); ret != Return::OK) {
+    if (auto ret = initAdc(); ret != Return::OK) {
         return ret;
     }
 
@@ -36,10 +39,54 @@ Return Drivers::Adc::setup() {
     return Return::OK;
 }
 
-Return Drivers::Adc::loop() {
+void Adc::loop() {
+	while(true) {
+		auto flags = osThreadFlagsWait(Adc::SAMPLE_READY_FLAG, osFlagsWaitAny, 5000);
+
+		if ((flags & osFlagsErrorTimeout) == osFlagsErrorTimeout) {
+			// we're not running skip the remainder of the loop
+			continue;
+		}
+
+		if ((flags & Adc::SAMPLE_READY_FLAG) == Adc::SAMPLE_READY_FLAG) {
+			osMessageQueuePut(mDataQueue, mData, 0, 0);
+		}
+	}
 }
 
-Return Drivers::Adc::initGpios() {
+Return Adc::enableSampling(std::array<uint32_t, Adc::NUM_CHANNELS>& data) {
+	mData = &data;
+
+	//stop everything
+	if (auto ret = disableSampling(); ret != Return::OK) {
+		return ret;
+	}
+
+	//reset member variables
+
+	// restart
+	if (HAL_TIM_Base_Start(&mSampleRateTimer) != HAL_OK) {
+		return Return::HAL_TIM_ERROR;
+	}
+	if (HAL_ADC_Start_DMA(&mAdcHandle, data.data(), data.size()) != HAL_OK) {
+		return Return::HAL_TIM_ERROR;
+	}
+    return Return::OK;
+}
+
+Return Adc::disableSampling() {
+    // stop everything
+    if (HAL_TIM_Base_Stop(&mSampleRateTimer) != HAL_OK) {
+        return Return::HAL_TIM_ERROR;
+    }
+    if (HAL_ADC_Stop_DMA(&mAdcHandle) != HAL_OK) {
+        return Return::HAL_TIM_ERROR;
+    }
+
+    return Return::OK;
+}
+
+Return Adc::initGpios() {
     // enable clocks
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
@@ -55,14 +102,70 @@ Return Drivers::Adc::initGpios() {
             |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
     HAL_GPIO_Init(GPIOA, &gpioInit);
 
-    gpioInit.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2;
+    gpioInit.Pin = GPIO_PIN_0|GPIO_PIN_1;
     HAL_GPIO_Init(GPIOB, &gpioInit);
+
+    return Return::OK;
 }
 
 Return Drivers::Adc::initTimer(uint32_t samplingRate) {
+    uint32_t period = 0;
+    uint32_t prescaler = 0;
+    RCC_ClkInitTypeDef clkconfig;
+    uint32_t timBaseClock;
+    uint32_t timApbPrescaler;
+    uint32_t pFLatency;
+
+    HAL_RCC_GetClockConfig(&clkconfig, &pFLatency);
+    /* Get APB1 prescaler */
+    timApbPrescaler = clkconfig.APB1CLKDivider;
+
+    /* Compute TIM6 clock */
+    if (timApbPrescaler == RCC_HCLK_DIV1)
+    {
+        timBaseClock = HAL_RCC_GetPCLK1Freq();
+    }
+    else
+    {
+        timBaseClock = 2UL * HAL_RCC_GetPCLK1Freq();
+    }
+     /* Compute the prescaler value to have TIM6 counter clock equal to 100KHz */
+    prescaler = ((timBaseClock / 100000U) - 1U);
+    period = (100000U / samplingRate) - 1U;
+
+    __HAL_RCC_TIM4_CLK_ENABLE();
+
+    mSampleRateTimer.Instance = TIM4;
+    mSampleRateTimer.Init.Prescaler = prescaler;
+    mSampleRateTimer.Init.Period = period;
+    mSampleRateTimer.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+    mSampleRateTimer.Init.CounterMode = TIM_COUNTERMODE_UP;
+    mSampleRateTimer.Init.RepetitionCounter = 0;
+    mSampleRateTimer.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+
+    if (HAL_TIM_Base_Init(&mSampleRateTimer) != HAL_OK) {
+        return Return::HAL_TIM_ERROR;
+    }
+
+    // Clock source:
+    TIM_ClockConfigTypeDef sClockSourceConfig = {};
+    sClockSourceConfig.ClockSource  = TIM_CLOCKSOURCE_INTERNAL;
+
+    if (HAL_TIM_ConfigClockSource(&mSampleRateTimer, &sClockSourceConfig) != HAL_OK) {
+        return Return::HAL_TIM_ERROR;
+    }
+
+    TIM_MasterConfigTypeDef sMasterConfig = {};
+    sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
+    sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+    if (HAL_TIMEx_MasterConfigSynchronization(&mSampleRateTimer, &sMasterConfig) != HAL_OK){
+        return Return::HAL_TIM_ERROR;
+    }
+
+    return Return::OK;
 }
 
-Return Drivers::Adc::initAdc(size_t numChannels) {
+Return Drivers::Adc::initAdc() {
     __HAL_RCC_ADC12_CLK_ENABLE();
 
     mAdcHandle.Instance = ADC1;
@@ -74,7 +177,7 @@ Return Drivers::Adc::initAdc(size_t numChannels) {
     mAdcHandle.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
     mAdcHandle.Init.LowPowerAutoWait = DISABLE;
     mAdcHandle.Init.ContinuousConvMode = DISABLE;
-    mAdcHandle.Init.NbrOfConversion = numChannels;
+    mAdcHandle.Init.NbrOfConversion = Adc::NUM_CHANNELS;
     mAdcHandle.Init.DiscontinuousConvMode = DISABLE;
     mAdcHandle.Init.ExternalTrigConv = ADC_EXTERNALTRIG_T4_TRGO;
     mAdcHandle.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
@@ -94,9 +197,29 @@ Return Drivers::Adc::initAdc(size_t numChannels) {
     HAL_NVIC_EnableIRQ(ADC1_IRQn);
 
     HAL_ADC_Stop(&mAdcHandle);
+
+    return Return::OK;
 }
 
 Return Drivers::Adc::initAdcChannels() {
+	ADC_ChannelConfTypeDef channelConfig = {};
+	channelConfig.SamplingTime = ADC_SAMPLETIME_68CYCLES;
+	channelConfig.OffsetNumber = ADC_OFFSET_NONE;
+	channelConfig.Offset = 0;
+	channelConfig.SingleDiff = ADC_SINGLE_ENDED;
+
+	for (uint32_t i = 0; i < Adc::NUM_CHANNELS; i++) {
+		channelConfig.Channel = ADC_CHANNELS[i];
+		channelConfig.Rank = ADC_CHANNEL_RANKS[i];
+
+		HAL_ADC_ConfigChannel(&mAdcHandle, &channelConfig);
+	}
+
+	if (auto ret = HAL_ADCEx_Calibration_Start(&mAdcHandle, ADC_CALIB_OFFSET, ADC_SINGLE_ENDED); ret != HAL_OK) {
+		return Return::HAL_ADC_ERROR;
+	}
+
+	return Return::OK;
 }
 
 Return Drivers::Adc::initDma() {
@@ -127,29 +250,27 @@ Return Drivers::Adc::initDma() {
     if (HAL_DMA_ConfigChannelAttributes(&mAdcDmaHandle, DMA_CHANNEL_NPRIV) != HAL_OK) {
         return Return::HAL_DMA_ERROR;
     }
+
+    return Return::OK;
 }
 
 extern "C" void ADC1_IRQHandler(void) {
     auto * instance = Adc::getInstance();
     if (instance != nullptr) {
-        HAL_ADC_IRQHandler(instance->getHandle());
+        HAL_ADC_IRQHandler(instance->getAdcHandle());
     }
 }
 
-extern "C" void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *AdcHandle) {
-    auto * instance = AdcLL::getInstance();
-    osThreadFlagsSet(
-        instance->getThreadHandle(),
-        to_underlying(AdcLL::NotificationsType::SampleReady));
+extern "C" void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef * AdcHandle) {
+	(void) AdcHandle;
+    auto * instance = Adc::getInstance();
+    osThreadFlagsSet(instance->getThreadHandle(), Adc::SAMPLE_READY_FLAG);
 }
 
-/**
- * @brief This function handles GPDMA1 Channel 0 global interrupt.
- */
 extern "C" void GPDMA1_Channel0_IRQHandler(void) {
-    auto* instance = AdcLL::getInstance(AdcLL::Adc_t::ADC_1);
+    auto* instance = Adc::getInstance();
     if (instance) {
-        HAL_DMA_IRQHandler(instance->getDMAHandle());
+        HAL_DMA_IRQHandler(instance->getDmaHandle());
     }
 }
 

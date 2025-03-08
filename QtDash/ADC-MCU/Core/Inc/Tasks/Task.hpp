@@ -27,7 +27,7 @@ public:
 
     virtual Return init();
     virtual Return setup() = 0;
-    virtual Return loop() = 0;
+    virtual void loop() = 0;
 
     osThreadId_t getThreadHandle() {
         return mHandle;
