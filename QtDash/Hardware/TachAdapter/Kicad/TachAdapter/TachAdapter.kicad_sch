@@ -2590,7 +2590,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "54204ad7-f595-4faa-bd26-1b82527580d4")
 		(property "Reference" "C2"
