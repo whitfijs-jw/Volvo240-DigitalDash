@@ -1,7 +1,7 @@
 #include <base_gauge_model.h>
 #include <utils.h>
 
-BaseGaugeModel::BaseGaugeModel(QObject * parent) : QAbstractListModel(parent) {
+BaseGaugeModel::BaseGaugeModel(QObject * parent) : QAbstractItemModel(parent) {
 
 }
 

@@ -77,6 +77,7 @@ public:
      */
     QHash<int, QByteArray> roleNames() const override;
 
+
     qreal lowAlarm() const;
     qreal highAlarm() const;
 

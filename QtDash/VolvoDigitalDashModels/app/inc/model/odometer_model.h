@@ -1,10 +1,10 @@
 #ifndef ODOMETER_MODEL_H
 #define ODOMETER_MODEL_H
 
-#include <QAbstractListModel>
+#include <QAbstractItemModel>
 #include <QObject>
 
-class OdometerModel : public QAbstractListModel
+class OdometerModel : public QAbstractItemModel
 {
     Q_OBJECT
     Q_PROPERTY(qreal odometerValue READ odometerValue WRITE setOdometerValue NOTIFY odometerValueChanged)
@@ -73,6 +73,23 @@ public:
      * @return hash map of role (int) -> name
      */
     QHash<int, QByteArray> roleNames() const override;
+
+    QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override {
+        (void)row;
+        (void)column;
+        (void)parent;
+        return createIndex(0,0);
+    };
+
+    QModelIndex parent(const QModelIndex& = QModelIndex()) const override {
+        return QModelIndex();
+    }
+
+    int columnCount(const QModelIndex &parent = QModelIndex()) const override {
+        (void)parent;
+        return 1;
+    }
+
 
     qreal odometerValue() const;
     qreal tripAValue() const;

@@ -48,7 +48,7 @@
 /**
  * @brief A class to run the digital dash
  */
-class Dash : public QObject {
+class Dash final : public QObject {
     Q_OBJECT
 public:
     static constexpr char COOLANT_TEMP_MODEL_NAME[] = "coolantTempModel"; //!< coolant temp model name

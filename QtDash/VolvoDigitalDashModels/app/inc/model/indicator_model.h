@@ -2,9 +2,9 @@
 #define INDICATOR_MODEL_H
 
 #include <QObject>
-#include <QAbstractListModel>
+#include <QAbstractItemModel>
 
-class IndicatorModel : public QAbstractListModel
+class IndicatorModel : public QAbstractItemModel
 {
     Q_OBJECT
     Q_PROPERTY(bool on READ on WRITE setOn NOTIFY onChanged)
@@ -35,6 +35,7 @@ public:
      * @return
      */
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+
 
     /**
      * Provides the data found at given index and role.
@@ -69,6 +70,23 @@ public:
      * @return hash map of role (int) -> name
      */
     QHash<int, QByteArray> roleNames() const override;
+
+    QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override {
+        (void)row;
+        (void)column;
+        (void)parent;
+        return createIndex(0,0);
+    };
+
+    QModelIndex parent(const QModelIndex& = QModelIndex()) const override {
+        return createIndex(0,0);
+    }
+
+    int columnCount(const QModelIndex &parent = QModelIndex()) const override {
+        (void)parent;
+        return 1;
+    }
+
 
     bool on() const;
     bool flipped() const;

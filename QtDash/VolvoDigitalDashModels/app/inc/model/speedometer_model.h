@@ -73,6 +73,23 @@ public:
      */
     QHash<int, QByteArray> roleNames() const override;
 
+    QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override {
+        (void)row;
+        (void)column;
+        (void)parent;
+        return createIndex(0,0);
+    };
+
+    QModelIndex parent(const QModelIndex& = QModelIndex()) const override {
+        return QModelIndex();
+    }
+
+    int columnCount(const QModelIndex &parent = QModelIndex()) const override {
+        (void)parent;
+        return 1;
+    }
+
+
     qreal topValue() const;
     QString topUnits() const;
 

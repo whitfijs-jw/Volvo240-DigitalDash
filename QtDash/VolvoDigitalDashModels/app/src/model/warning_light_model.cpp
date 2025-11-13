@@ -3,7 +3,7 @@
 
 
 WarningLightModel::WarningLightModel(QObject *parent) :
-    QAbstractListModel(parent)
+    QAbstractItemModel(parent)
 {
 }
 

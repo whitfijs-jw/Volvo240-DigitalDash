@@ -2,7 +2,7 @@
 #include <utils.h>
 
 TempAndFuelGaugeModel::TempAndFuelGaugeModel(QObject *parent) :
-    QAbstractListModel(parent)
+    QAbstractItemModel(parent)
 {
 
 }

@@ -2,7 +2,7 @@
 #include <utils.h>
 
 TachometerModel::TachometerModel(QObject *parent) :
-    QAbstractListModel(parent)
+    QAbstractItemModel(parent)
 {
 
 }

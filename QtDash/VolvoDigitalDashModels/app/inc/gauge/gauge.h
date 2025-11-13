@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <QQmlContext>
-#include <QAbstractListModel>
+#include <QAbstractItemModel>
 
 #include <accessory_gauge_model.h>
 #include <speedometer_model.h>
@@ -32,7 +32,7 @@ public:
      * @param context: QML context in which the gauge will be registered
      */
     Gauge(QObject * parent, Config * config, QList<const Sensor *> sensors,
-          QAbstractListModel * model, QString modelName, QQmlContext * context) :
+          QAbstractItemModel * model, QString modelName, QQmlContext * context) :
           QObject(parent), mConfig(config), mSensors(sensors), mModel(model) {
 
         // register the gauge model in the QML Context
@@ -41,7 +41,7 @@ public:
 
     Config * mConfig; //!< Dash config
     QList<const Sensor *> mSensors; //!< sensor list
-    QAbstractListModel * mModel; //!< gauge model
+    QAbstractItemModel * mModel; //!< gauge model
 };
 
 #endif // GAUGE_H

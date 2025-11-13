@@ -2,7 +2,7 @@
 #include <utils.h>
 
 IndicatorModel::IndicatorModel(QObject *parent) :
-    QAbstractListModel(parent)
+    QAbstractItemModel(parent)
 {
 
 }
@@ -35,6 +35,7 @@ int IndicatorModel::rowCount(const QModelIndex &parent) const
     (void)parent;
     return 1;
 }
+
 
 QVariant IndicatorModel::data(const QModelIndex &index, int role) const
 {

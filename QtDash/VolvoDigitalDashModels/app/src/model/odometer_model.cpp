@@ -1,7 +1,7 @@
 #include "odometer_model.h"
 #include <utils.h>
 
-OdometerModel::OdometerModel(QObject *parent) : QAbstractListModel{parent}
+OdometerModel::OdometerModel(QObject *parent) : QAbstractItemModel{parent}
 {
 
 }
