@@ -1,31 +1,54 @@
 import QtQuick 2.15
 
-Item {
-
+Item {  
     Rectangle {
-        width: 1280
-        height: 480
+        id: container
+        width: parent.width
+        height: parent.height
         color: "transparent"
 
+        property real speedometerSize: parent.height * 0.925
+        property real tachometerSize: parent.height / 1.2
+        property real tempFuelSize: tachometerSize
+
+        property bool speedoMph: speedoModel.units === "mph"
+
         Rectangle {
+            TachometerDelegate {
+                id: tachometerDelegate
+            }
+
             id: tachContainer
-            width: tachSize
-            height: tachSize
+            width: container.tachometerSize
+            height: container.tachometerSize
             color: "transparent"
             anchors.right: speedoContainer.left
             anchors.verticalCenter: speedoContainer.verticalCenter
             /* Rpm: */
             ListView {
                 model: rpmModel
-                delegate: rpmDelegate
+                delegate: tachometerDelegate.component
             }
 
         }
 
         Rectangle {
+            SpeedoDelegate {
+                id: speedoDelegate
+
+                initialValueOffset: container.speedoMph ? 5 : 20
+
+                minAngle: container.speedoMph ? -238 : -254
+                maxAngle: container.speedoMph ? 44 : 45
+
+                imageSource: container.speedoMph ?
+                                 "qrc:/mainCluster/later-240-speedo.png" :
+                                 "qrc:/mainCluster/later-240-speedo-kph.png"
+            }
+
             id: speedoContainer
-            width: speedoSize
-            height: speedoSize
+            width: container.speedometerSize
+            height: container.speedometerSize
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset: 0
@@ -34,15 +57,19 @@ Item {
             /* Rpm: */
             ListView {
                 model: speedoModel
-                delegate: speedoDelegate
+                delegate: speedoDelegate.component
             }
 
         }
 
         Rectangle {
+            TempAndFuelDelegate240Style {
+                id: tempFuelDelegate
+            }
+
             id: tempFuelContainer
-            width: tempFuelSize
-            height: tempFuelSize
+            width: container.tempFuelSize
+            height: container.tempFuelSize
             anchors.left: speedoContainer.right
             anchors.verticalCenter: speedoContainer.verticalCenter
             color: "transparent"
@@ -50,7 +77,7 @@ Item {
             /* Rpm: */
             ListView {
                 model: tempFuelModel
-                delegate: tempFuelDelegate
+                delegate: tempFuelDelegate.component
             }
 
         }

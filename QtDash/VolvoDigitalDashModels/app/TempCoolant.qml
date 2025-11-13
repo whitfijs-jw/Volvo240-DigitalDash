@@ -17,14 +17,32 @@ Item
 
     property string units
 
+    property string overlayImageSource: "qrc:/mainCluster/later-240-temp-fuel-overlay.png"
+    property string gaugeImageResource: "qrc:/mainCluster/later-240-temp-fuel.png"
+
+    property real needleLength: 0.4
+    property real needleWidth: 0.02
+    property real needleOffset: 0
+    property string needleResource: "qrc:/needles/needle-240.png"
+
+    property real offsetX: 0
+
+    property real textXOffset: 0
+    property real textOffset : 1 / 4.5
+    property real textSize: 1 / 16.0
+
+    property bool enableFuelText: false
+
     Image {
         z: 0;
-        source: "qrc:mainCluster/temp_coolant_overlay_small.png"
+        id: overlay
+        source: overlayImageSource
         anchors.fill: parent
     }
 
     Image {
         z: 1;
+        id: warningLight
         source: "qrc:mainCluster/temp_coolant_gas_can.png"
         anchors.fill: parent
         visible: fuelLevel < lowAlarm ? true : false
@@ -47,15 +65,19 @@ Item
         minAngle: -205
         maxAngle: -155
 
-        units: "F"
-        needleLength: parent.height * 0.4
-        needleWidth: parent.height * 0.02
+        offsetX: tempCoolant.offsetX
+
+        units: tempCoolant.units
+        needleResource: tempCoolant.needleResource
+        needleLength: tempCoolant.needleLength
+        needleWidth: tempCoolant.needleWidth
         needleOffset: 0
 
-        imageResource: "qrc:mainCluster/temp_coolant.png"
+        imageResource: gaugeImageResource
 
-        textOffset: parent.height / 5
-        textSize: parent.height / 16
+        textOffset: tempCoolant.textOffset
+        textXOffset: -tempCoolant.textXOffset
+        textSize: tempCoolant.textSize
 
     }
 
@@ -64,8 +86,10 @@ Item
         z: -1
         anchors.fill: parent
 
-        value: tempCoolant.maxFuel - tempCoolant.fuelLevel
-        units: ""
+        clockwise: false
+
+        value: tempCoolant.fuelLevel
+        units: "%"
 
         minValue: tempCoolant.minFuel
         maxValue: tempCoolant.maxFuel
@@ -73,16 +97,22 @@ Item
         highAlarm: tempCoolant.maxFuel
         lowAlarm: tempCoolant.lowAlarm
 
+        offsetX: -tempCoolant.offsetX
+
         minAngle: -27
         maxAngle: 25
 
-        needleLength: parent.height * 0.40
-        needleWidth: parent.height * 0.02
+        needleResource: tempCoolant.needleResource
+        needleLength: tempCoolant.needleLength
+        needleWidth: tempCoolant.needleWidth
         needleOffset: 0
 
         imageResource: ""
 
-        textEnabled: false
+        textEnabled: tempCoolant.enableFuelText
+        textOffset: tempCoolant.textOffset
+        textXOffset: tempCoolant.textXOffset
+        textSize: tempCoolant.textSize
     }
 }
 

@@ -4,28 +4,31 @@ import QtQuick.Controls 2.15
 Item {
     id: gauge
 
+    width: parent.width
+    height: parent.height
+
     property bool clockwise: true
-    property int maxValue: 100
-    property int minValue: 0
+    property real maxValue: 100
+    property real minValue: 0
     property real value: 0
     property real internalValue: clockwise ? value : (maxValue - (value - minValue))
     property real angle: (internalValue <= initialValueOffset) ?
                            (initialValueOffset - minValue) / (maxValue - minValue) * (maxAngle - minAngle) + minAngle :
                            (internalValue - minValue) / (maxValue - minValue) * (maxAngle - minAngle) + minAngle;
     property string units: "F"
-    property int lowAlarm: 0
-    property int highAlarm: 0
-    property int offset: 0
-    property int offsetX: 0
-    property int initialValueOffset: 0
+    property real lowAlarm: 0
+    property real highAlarm: 0
+    property real offset: 0
+    property real offsetX: 0
+    property real initialValueOffset: 0
 
     property int minAngle: -235
     property int maxAngle: 45
 
-    property real needleWidth: parent.height * 0.03
-    property real needleLength: parent.width * 0.6
+    property real needleWidth: 0.03
+    property real needleLength: 0.6
     property real needleTipRadius: needleWidth
-    property real needleOffset: parent.height * .20
+    property real needleOffset: .20
 
     property real needleCenterRadius: 0.15
     property bool needleCenterUseImage: false
@@ -37,21 +40,19 @@ Item {
 
     property color needleColor: "orange"
 
-    property real textOffset:  parent.height / 2.0
-    property real textSize: parent.height / 8
+    property real textOffset:  0.5
+    property real textXOffset: 0
+    property real textSize: 1 / 8.0
     property bool textEnabled: true
     property int significantDigits: 1
 
     property string topUnits: "F"
     property real topValue: 0
-    property real topTextSize: parent.height / 16.0
-    property real topTextOffset: parent.height / 4.0
+    property real topTextSize: 1 / 16.0
+    property real topTextOffset: 1 / 4.0
     property bool topValueEnabled: false
 
     property real dir: RotationAnimation.Numerical
-
-    width: smallGaugeSize
-    height: smallGaugeSize
 
     function boundedAngle(angle, min, max) {
         if (angle > max) {
@@ -62,12 +63,6 @@ Item {
 
         return angle;
     }
-
-//    Behavior on angle {
-//        RotationAnimation {
-//            duration: 150
-//        }
-//    }
 
     Rectangle {
         anchors.fill: parent
@@ -85,8 +80,8 @@ Item {
         NeedleCenter {
             id: needleCenter
             size: needleCenterRadius * parent.width
-            x: parent.width / 2 + offsetX
-            y: parent.height / 2 + offset
+            x: parent.width * 0.5 + parent.width * gauge.offsetX
+            y: parent.width * 0.5 + parent.width * gauge.offset
             antialiasing: true
             smooth: true
             visible: !gauge.needleCenterUseImage
@@ -111,10 +106,10 @@ Item {
 
         Image {
             id: needleCenterImage
-            height: needleCenterImageSize
-            width: needleCenterImageSize
-            x: parent.width / 2 + offsetX
-            y: parent.height / 2 + offset
+            height: parent.height * needleCenterImageSize
+            width: parent.height * needleCenterImageSize
+            x: parent.width * 0.5 + parent.width * gauge.offsetX
+            y: parent.width * 0.5 + parent.width * gauge.offset
             visible: gauge.needleCenterUseImage
 
             antialiasing: true
@@ -123,8 +118,8 @@ Item {
 
             transform: [
                 Translate {
-                    y: -needleCenterImageSize / 2
-                    x: -needleCenterImageSize / 2
+                    y: -needleCenterImage.height * 0.5
+                    x: -needleCenterImage.width * 0.5
                 },
                 Rotation {
                     angle: gauge.angle > gauge.maxAngle ?
@@ -146,10 +141,10 @@ Item {
         Image {
             id: needle
 
-            x: parent.width / 2 + offsetX
-            y: parent.height / 2 + offset
-            width: gauge.needleLength
-            height: gauge.needleWidth
+            x: parent.width * 0.5 + parent.width * gauge.offsetX
+            y: parent.width * 0.5 + parent.width * gauge.offset
+            width: parent.height * gauge.needleLength
+            height: parent.height * gauge.needleWidth
 
             antialiasing: true
             smooth: true
@@ -158,7 +153,7 @@ Item {
             transform: [
                 Translate {
                     y: -needle.height / 2
-                    x: -needleOffset
+                    x: -parent.height * needleOffset
                 },
 
                 Rotation {
@@ -178,24 +173,22 @@ Item {
             ]
         }
 
-
-
         Text {
 
             id: valueText
-
+            z: 10
             visible: textEnabled
 
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            anchors.horizontalCenterOffset: 0
 
             anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset: parent.height * gauge.textXOffset
             anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: gauge.textOffset
+            anchors.verticalCenterOffset: parent.height * gauge.textOffset
 
             fontSizeMode: Text.Fit
-            font.pixelSize: gauge.textSize
+            font.pixelSize: parent.height * gauge.textSize
 
             text: Number(gauge.value).toFixed(significantDigits).toLocaleString(Qt.locale("en_US")) + " " + units
             color: ( (gauge.value < gauge.lowAlarm)  || (gauge.value > gauge.highAlarm))
@@ -214,10 +207,10 @@ Item {
 
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: gauge.topTextOffset
+            anchors.verticalCenterOffset: parent.height * gauge.topTextOffset
 
             fontSizeMode: Text.Fit
-            font.pixelSize: gauge.topTextSize
+            font.pixelSize: parent.height * gauge.topTextSize
 
             text: Number(gauge.topValue).toFixed(1).toLocaleString(Qt.locale("en_US")) + " " + gauge.topUnits
             color: "white"

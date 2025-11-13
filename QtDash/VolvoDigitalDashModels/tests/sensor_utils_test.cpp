@@ -99,7 +99,7 @@ void SensorUtilsTest::test_toMeters() {
     QFETCH(qint32, units);
     QFETCH(qreal, meters);
 
-    Config::DistanceUnits unit = static_cast<Config::DistanceUnits>(units);
+    Units::DistanceUnits unit = static_cast<Units::DistanceUnits>(units);
 
     COMPARE_F(SensorUtils::toMeters(distance, unit), meters, 1e-3);
 }
@@ -109,21 +109,21 @@ void SensorUtilsTest::test_toMeters_data() {
     QTest::addColumn<qreal>("meters");
 
     QTest::addRow("1000 mm | 1 m ")
-        << 1000.0 << static_cast<qint32>(Config::DistanceUnits::MILLIMETER) << 1.0;
+        << 1000.0 << static_cast<qint32>(Units::DistanceUnits::MILLIMETER) << 1.0;
     QTest::addRow("10 cm | .1 m ")
-        << 10.0 << static_cast<qint32>(Config::DistanceUnits::CENTIMETER) << 0.1;
+        << 10.0 << static_cast<qint32>(Units::DistanceUnits::CENTIMETER) << 0.1;
     QTest::addRow("10 m | 10 m ")
-        << 10.0 << static_cast<qint32>(Config::DistanceUnits::METER) << 10.0;
+        << 10.0 << static_cast<qint32>(Units::DistanceUnits::METER) << 10.0;
     QTest::addRow("10 km | 10000 m ")
-        << 10.0 << static_cast<qint32>(Config::DistanceUnits::KILOMETER) << 10000.0;
+        << 10.0 << static_cast<qint32>(Units::DistanceUnits::KILOMETER) << 10000.0;
     QTest::addRow("10 inch | 0.254 m ")
-        << 10.0 << static_cast<qint32>(Config::DistanceUnits::INCH) << 0.254;
+        << 10.0 << static_cast<qint32>(Units::DistanceUnits::INCH) << 0.254;
     QTest::addRow("1 foot | 0.3048 m ")
-        << 1.0 << static_cast<qint32>(Config::DistanceUnits::FOOT) << 0.3048;
+        << 1.0 << static_cast<qint32>(Units::DistanceUnits::FOOT) << 0.3048;
     QTest::addRow("12 yard | 10.9728 m ")
-        << 12.0 << static_cast<qint32>(Config::DistanceUnits::YARD) << 10.9728;
+        << 12.0 << static_cast<qint32>(Units::DistanceUnits::YARD) << 10.9728;
     QTest::addRow("12 miles | 19312.1 m ")
-        << 12.0 << static_cast<qint32>(Config::DistanceUnits::MILE) << 19312.1280;
+        << 12.0 << static_cast<qint32>(Units::DistanceUnits::MILE) << 19312.1280;
 
 }
 
@@ -132,7 +132,7 @@ void SensorUtilsTest::test_toMiles() {
     QFETCH(qint32, units);
     QFETCH(qreal, miles);
 
-    Config::DistanceUnits unit = static_cast<Config::DistanceUnits>(units);
+    Units::DistanceUnits unit = static_cast<Units::DistanceUnits>(units);
 
     COMPARE_F(SensorUtils::toMiles(distance, unit), miles, 1e-3);
 }
@@ -142,21 +142,21 @@ void SensorUtilsTest::test_toMiles_data() {
     QTest::addColumn<qreal>("miles");
 
     QTest::addRow("1000 mm | 0.000621371 miles ")
-        << 1000.0 << static_cast<qint32>(Config::DistanceUnits::MILLIMETER) << 0.000621371;
+        << 1000.0 << static_cast<qint32>(Units::DistanceUnits::MILLIMETER) << 0.000621371;
     QTest::addRow("10 cm | 6.2137e-5 miles ")
-        << 10.0 << static_cast<qint32>(Config::DistanceUnits::CENTIMETER) << 6.2137e-5;
+        << 10.0 << static_cast<qint32>(Units::DistanceUnits::CENTIMETER) << 6.2137e-5;
     QTest::addRow("46 m | 0.0285831 miles ")
-        << 46.0 << static_cast<qint32>(Config::DistanceUnits::METER) << 0.0285831;
+        << 46.0 << static_cast<qint32>(Units::DistanceUnits::METER) << 0.0285831;
     QTest::addRow("13 km | 8.07783 miles ")
-        << 13.0 << static_cast<qint32>(Config::DistanceUnits::KILOMETER) << 8.07783;
+        << 13.0 << static_cast<qint32>(Units::DistanceUnits::KILOMETER) << 8.07783;
     QTest::addRow("5028 inch | 0.07935606 miles ")
-        << 5028.0 << static_cast<qint32>(Config::DistanceUnits::INCH) << 0.07935606;
+        << 5028.0 << static_cast<qint32>(Units::DistanceUnits::INCH) << 0.07935606;
     QTest::addRow("1000 feet | 0.189394 miles ")
-        << 1000.0 << static_cast<qint32>(Config::DistanceUnits::FOOT) << 0.189394;
+        << 1000.0 << static_cast<qint32>(Units::DistanceUnits::FOOT) << 0.189394;
     QTest::addRow("1200 yard | 0.6818182 miles ")
-        << 1200.0 << static_cast<qint32>(Config::DistanceUnits::YARD) << 0.6818182;
+        << 1200.0 << static_cast<qint32>(Units::DistanceUnits::YARD) << 0.6818182;
     QTest::addRow("12 miles | 12 miles ")
-        << 12.0 << static_cast<qint32>(Config::DistanceUnits::MILE) << 12.0;
+        << 12.0 << static_cast<qint32>(Units::DistanceUnits::MILE) << 12.0;
 }
 
 void SensorUtilsTest::test_toFeet() {
@@ -164,7 +164,7 @@ void SensorUtilsTest::test_toFeet() {
     QFETCH(qint32, units);
     QFETCH(qreal, feet);
 
-    Config::DistanceUnits unit = static_cast<Config::DistanceUnits>(units);
+    Units::DistanceUnits unit = static_cast<Units::DistanceUnits>(units);
 
     COMPARE_F(SensorUtils::toFeet(distance, unit), feet, 1e-3);
 }
@@ -174,21 +174,21 @@ void SensorUtilsTest::test_toFeet_data() {
     QTest::addColumn<qreal>("feet");
 
     QTest::addRow("1000 mm | 3.28084 feet ")
-        << 1000.0 << static_cast<qint32>(Config::DistanceUnits::MILLIMETER) << 3.28084;
+        << 1000.0 << static_cast<qint32>(Units::DistanceUnits::MILLIMETER) << 3.28084;
     QTest::addRow("56 cm | 1.83727 feet ")
-        << 56.0 << static_cast<qint32>(Config::DistanceUnits::CENTIMETER) << 1.83727;
+        << 56.0 << static_cast<qint32>(Units::DistanceUnits::CENTIMETER) << 1.83727;
     QTest::addRow("46 m | 150.919 feet ")
-        << 46.0 << static_cast<qint32>(Config::DistanceUnits::METER) << 150.919;
+        << 46.0 << static_cast<qint32>(Units::DistanceUnits::METER) << 150.919;
     QTest::addRow(".5028 km | 1649.6063 feet ")
-        << 0.5028 << static_cast<qint32>(Config::DistanceUnits::KILOMETER) << 1649.6063;
+        << 0.5028 << static_cast<qint32>(Units::DistanceUnits::KILOMETER) << 1649.6063;
     QTest::addRow("5028 inch | 419 feet ")
-        << 5028.0 << static_cast<qint32>(Config::DistanceUnits::INCH) << 419.0;
+        << 5028.0 << static_cast<qint32>(Units::DistanceUnits::INCH) << 419.0;
     QTest::addRow("28 feet | 28 feet ")
-        << 28.0 << static_cast<qint32>(Config::DistanceUnits::FOOT) << 28.0;
+        << 28.0 << static_cast<qint32>(Units::DistanceUnits::FOOT) << 28.0;
     QTest::addRow("13 yard | 39 feet ")
-        << 13.0 << static_cast<qint32>(Config::DistanceUnits::YARD) << 39.0;
+        << 13.0 << static_cast<qint32>(Units::DistanceUnits::YARD) << 39.0;
     QTest::addRow("1.25 miles | 6600 feet ")
-        << 1.250 << static_cast<qint32>(Config::DistanceUnits::MILE) << 6600.0;
+        << 1.250 << static_cast<qint32>(Units::DistanceUnits::MILE) << 6600.0;
 }
 
 void SensorUtilsTest::test_convertDistance() {
@@ -197,8 +197,8 @@ void SensorUtilsTest::test_convertDistance() {
     QFETCH(qint32, from);
     QFETCH(qreal, convertedDistance);
 
-    Config::DistanceUnits toUnits = static_cast<Config::DistanceUnits>(to);
-    Config::DistanceUnits fromUnits = static_cast<Config::DistanceUnits>(from);
+    Units::DistanceUnits toUnits = static_cast<Units::DistanceUnits>(to);
+    Units::DistanceUnits fromUnits = static_cast<Units::DistanceUnits>(from);
 
     COMPARE_F(SensorUtils::convertDistance(distance, toUnits, fromUnits), convertedDistance, 1e-3);
 }
@@ -210,23 +210,23 @@ void SensorUtilsTest::test_convertDistance_data() {
 
     QTest::addRow("12 yards to meter | 10.9728 m ")
         << 12.0
-        << static_cast<qint32>(Config::DistanceUnits::METER)
-        << static_cast<qint32>(Config::DistanceUnits::YARD)
+        << static_cast<qint32>(Units::DistanceUnits::METER)
+        << static_cast<qint32>(Units::DistanceUnits::YARD)
         << 10.9728;
     QTest::addRow("1.25 miles to feet | 6600 feet ")
         << 1.250
-        << static_cast<qint32>(Config::DistanceUnits::FOOT)
-        << static_cast<qint32>(Config::DistanceUnits::MILE)
+        << static_cast<qint32>(Units::DistanceUnits::FOOT)
+        << static_cast<qint32>(Units::DistanceUnits::MILE)
         << 6600.0;
     QTest::addRow("13 km to miles | 8.07783 miles ")
         << 13.0
-        << static_cast<qint32>(Config::DistanceUnits::MILE)
-        << static_cast<qint32>(Config::DistanceUnits::KILOMETER)
+        << static_cast<qint32>(Units::DistanceUnits::MILE)
+        << static_cast<qint32>(Units::DistanceUnits::KILOMETER)
         << 8.07783;
     QTest::addRow("5028 inch to inch | 419 feet ")
         << 5028.0
-        << static_cast<qint32>(Config::DistanceUnits::FOOT)
-        << static_cast<qint32>(Config::DistanceUnits::INCH)
+        << static_cast<qint32>(Units::DistanceUnits::FOOT)
+        << static_cast<qint32>(Units::DistanceUnits::INCH)
         << 419.0;
 }
 
@@ -235,7 +235,7 @@ void SensorUtilsTest::test_toKelvin() {
     QFETCH(qint32, units);
     QFETCH(qreal, kelvin);
 
-    Config::TemperatureUnits unit = static_cast<Config::TemperatureUnits>(units);
+    Units::TemperatureUnits unit = static_cast<Units::TemperatureUnits>(units);
 
     COMPARE_F(SensorUtils::toKelvin(temp, unit), kelvin, 1e-3);
 }
@@ -246,15 +246,15 @@ void SensorUtilsTest::test_toKelvin_data() {
 
     QTest::addRow("100F | 310.928K ")
         << 100.0
-        << static_cast<qint32>(Config::TemperatureUnits::FAHRENHEIT)
+        << static_cast<qint32>(Units::TemperatureUnits::FAHRENHEIT)
         << 310.928;
     QTest::addRow("100K | 100K ")
         << 100.0
-        << static_cast<qint32>(Config::TemperatureUnits::KELVIN)
+        << static_cast<qint32>(Units::TemperatureUnits::KELVIN)
         << 100.0;
     QTest::addRow("76C | 349.15K ")
         << 76.0
-        << static_cast<qint32>(Config::TemperatureUnits::CELSIUS)
+        << static_cast<qint32>(Units::TemperatureUnits::CELSIUS)
         << 349.15;
 }
 
@@ -263,7 +263,7 @@ void SensorUtilsTest::test_toFahrenheit() {
     QFETCH(qint32, units);
     QFETCH(qreal, fahrenheit);
 
-    Config::TemperatureUnits unit = static_cast<Config::TemperatureUnits>(units);
+    Units::TemperatureUnits unit = static_cast<Units::TemperatureUnits>(units);
 
     COMPARE_F(SensorUtils::toFahrenheit(temp, unit), fahrenheit, 1e-3);
 }
@@ -274,15 +274,15 @@ void SensorUtilsTest::test_toFahrenheit_data() {
 
     QTest::addRow("100F | 100F ")
         << 100.0
-        << static_cast<qint32>(Config::TemperatureUnits::FAHRENHEIT)
+        << static_cast<qint32>(Units::TemperatureUnits::FAHRENHEIT)
         << 100.0;
     QTest::addRow("57K | -357.07F ")
         << 57.0
-        << static_cast<qint32>(Config::TemperatureUnits::KELVIN)
+        << static_cast<qint32>(Units::TemperatureUnits::KELVIN)
         << -357.07;
     QTest::addRow("38C | 100.4F ")
         << 38.0
-        << static_cast<qint32>(Config::TemperatureUnits::CELSIUS)
+        << static_cast<qint32>(Units::TemperatureUnits::CELSIUS)
         << 100.4;
 }
 
@@ -291,7 +291,7 @@ void SensorUtilsTest::test_toCelsius() {
     QFETCH(qint32, units);
     QFETCH(qreal, celsius);
 
-    Config::TemperatureUnits unit = static_cast<Config::TemperatureUnits>(units);
+    Units::TemperatureUnits unit = static_cast<Units::TemperatureUnits>(units);
 
     COMPARE_F(SensorUtils::toCelsius(temp, unit), celsius, 1e-3);
 }
@@ -302,15 +302,15 @@ void SensorUtilsTest::test_toCelsius_data() {
 
     QTest::addRow("183F | 83.8889C ")
         << 183.0
-        << static_cast<qint32>(Config::TemperatureUnits::FAHRENHEIT)
+        << static_cast<qint32>(Units::TemperatureUnits::FAHRENHEIT)
         << 83.8889;
     QTest::addRow("380K | 106.85C ")
         << 380.0
-        << static_cast<qint32>(Config::TemperatureUnits::KELVIN)
+        << static_cast<qint32>(Units::TemperatureUnits::KELVIN)
         << 106.85;
     QTest::addRow("38C | 38C ")
         << 38.0
-        << static_cast<qint32>(Config::TemperatureUnits::CELSIUS)
+        << static_cast<qint32>(Units::TemperatureUnits::CELSIUS)
         << 38.0;
 }
 
@@ -320,8 +320,8 @@ void SensorUtilsTest::test_convertTemperature() {
     QFETCH(qint32, from);
     QFETCH(qreal, convertedTemperature);
 
-    Config::TemperatureUnits toUnits = static_cast<Config::TemperatureUnits>(to);
-    Config::TemperatureUnits fromUnits = static_cast<Config::TemperatureUnits>(from);
+    Units::TemperatureUnits toUnits = static_cast<Units::TemperatureUnits>(to);
+    Units::TemperatureUnits fromUnits = static_cast<Units::TemperatureUnits>(from);
 
     COMPARE_F(SensorUtils::convertTemperature(temp, toUnits, fromUnits), convertedTemperature, 1e-3);
 }
@@ -333,18 +333,18 @@ void SensorUtilsTest::test_convertTemperature_data() {
 
     QTest::addRow("183F to C | 83.8889C ")
         << 183.0
-        << static_cast<qint32>(Config::TemperatureUnits::CELSIUS)
-        << static_cast<qint32>(Config::TemperatureUnits::FAHRENHEIT)
+        << static_cast<qint32>(Units::TemperatureUnits::CELSIUS)
+        << static_cast<qint32>(Units::TemperatureUnits::FAHRENHEIT)
         << 83.8889;
     QTest::addRow("57K to F | -357.07F ")
         << 57.0
-        << static_cast<qint32>(Config::TemperatureUnits::FAHRENHEIT)
-        << static_cast<qint32>(Config::TemperatureUnits::KELVIN)
+        << static_cast<qint32>(Units::TemperatureUnits::FAHRENHEIT)
+        << static_cast<qint32>(Units::TemperatureUnits::KELVIN)
         << -357.07;
     QTest::addRow("380K to C | 106.85C ")
         << 380.0
-        << static_cast<qint32>(Config::TemperatureUnits::CELSIUS)
-        << static_cast<qint32>(Config::TemperatureUnits::KELVIN)
+        << static_cast<qint32>(Units::TemperatureUnits::CELSIUS)
+        << static_cast<qint32>(Units::TemperatureUnits::KELVIN)
         << 106.85;
 }
 
@@ -353,7 +353,7 @@ void SensorUtilsTest::test_toKpa() {
     QFETCH(qint32, units);
     QFETCH(qreal, kpa);
 
-    Config::PressureUnits unit = static_cast<Config::PressureUnits>(units);
+    Units::PressureUnits unit = static_cast<Units::PressureUnits>(units);
 
     COMPARE_F(SensorUtils::toKpa(pressure, unit), kpa, 1e-3);
 }
@@ -363,11 +363,11 @@ void SensorUtilsTest::test_toKpa_data() {
     QTest::addColumn<qreal>("kpa");
 
     QTest::addRow("14 psi | 96.5266 kPa")
-        << 14.0 << static_cast<qint32>(Config::PressureUnits::PSI) << 96.5266;
+        << 14.0 << static_cast<qint32>(Units::PressureUnits::PSI) << 96.5266;
     QTest::addRow("2 bar | 200 kPa")
-        << 2.0 << static_cast<qint32>(Config::PressureUnits::BAR) << 200.0;
+        << 2.0 << static_cast<qint32>(Units::PressureUnits::BAR) << 200.0;
     QTest::addRow("300 kPa | 300 kPa")
-        << 300.0 << static_cast<qint32>(Config::PressureUnits::KPA) << 300.0;
+        << 300.0 << static_cast<qint32>(Units::PressureUnits::KPA) << 300.0;
 }
 
 void SensorUtilsTest::test_toPsi() {
@@ -375,7 +375,7 @@ void SensorUtilsTest::test_toPsi() {
     QFETCH(qint32, units);
     QFETCH(qreal, psi);
 
-    Config::PressureUnits unit = static_cast<Config::PressureUnits>(units);
+    Units::PressureUnits unit = static_cast<Units::PressureUnits>(units);
 
     COMPARE_F(SensorUtils::toPsi(pressure, unit), psi, 1e-3);
 }
@@ -385,11 +385,11 @@ void SensorUtilsTest::test_toPsi_data() {
     QTest::addColumn<qreal>("psi");
 
     QTest::addRow("14 psi | 14 psi")
-        << 14.0 << static_cast<qint32>(Config::PressureUnits::PSI) << 14.0;
+        << 14.0 << static_cast<qint32>(Units::PressureUnits::PSI) << 14.0;
     QTest::addRow("1.5 bar | 21.7557 psi")
-        << 1.5 << static_cast<qint32>(Config::PressureUnits::BAR) << 21.7557;
+        << 1.5 << static_cast<qint32>(Units::PressureUnits::BAR) << 21.7557;
     QTest::addRow("48 kPa | 6.96181 psi")
-        << 48.0 << static_cast<qint32>(Config::PressureUnits::KPA) << 6.96181;
+        << 48.0 << static_cast<qint32>(Units::PressureUnits::KPA) << 6.96181;
 }
 
 void SensorUtilsTest::test_toBar() {
@@ -397,7 +397,7 @@ void SensorUtilsTest::test_toBar() {
     QFETCH(qint32, units);
     QFETCH(qreal, bar);
 
-    Config::PressureUnits unit = static_cast<Config::PressureUnits>(units);
+    Units::PressureUnits unit = static_cast<Units::PressureUnits>(units);
 
     COMPARE_F(SensorUtils::toBar(pressure, unit), bar, 1e-3);
 }
@@ -407,11 +407,11 @@ void SensorUtilsTest::test_toBar_data() {
     QTest::addColumn<qreal>("bar");
 
     QTest::addRow("10 psi | 0.689476 bar")
-        << 10.0 << static_cast<qint32>(Config::PressureUnits::PSI) << 0.689476;
+        << 10.0 << static_cast<qint32>(Units::PressureUnits::PSI) << 0.689476;
     QTest::addRow("1.5 bar | 1.5 bar")
-        << 1.5 << static_cast<qint32>(Config::PressureUnits::BAR) << 1.5;
+        << 1.5 << static_cast<qint32>(Units::PressureUnits::BAR) << 1.5;
     QTest::addRow("57 kPa | .57 bar")
-        << 57.0 << static_cast<qint32>(Config::PressureUnits::KPA) << 0.57;
+        << 57.0 << static_cast<qint32>(Units::PressureUnits::KPA) << 0.57;
 }
 
 void SensorUtilsTest::test_convertPressure() {
@@ -420,8 +420,8 @@ void SensorUtilsTest::test_convertPressure() {
     QFETCH(qint32, from);
     QFETCH(qreal, convertedPressure);
 
-    Config::PressureUnits toUnits = static_cast<Config::PressureUnits>(to);
-    Config::PressureUnits fromUnits = static_cast<Config::PressureUnits>(from);
+    Units::PressureUnits toUnits = static_cast<Units::PressureUnits>(to);
+    Units::PressureUnits fromUnits = static_cast<Units::PressureUnits>(from);
 
     COMPARE_F(SensorUtils::convertPressure(pressure, toUnits, fromUnits), convertedPressure, 1e-3);
 }
@@ -433,18 +433,18 @@ void SensorUtilsTest::test_convertPressure_data() {
 
     QTest::addRow("48 kPa to psi| 6.96181 psi")
         << 48.0
-        << static_cast<qint32>(Config::PressureUnits::PSI)
-        << static_cast<qint32>(Config::PressureUnits::KPA)
+        << static_cast<qint32>(Units::PressureUnits::PSI)
+        << static_cast<qint32>(Units::PressureUnits::KPA)
         << 6.96181;
     QTest::addRow("2 bar to kPa | 200 kPa")
         << 2.0
-        << static_cast<qint32>(Config::PressureUnits::KPA)
-        << static_cast<qint32>(Config::PressureUnits::BAR)
+        << static_cast<qint32>(Units::PressureUnits::KPA)
+        << static_cast<qint32>(Units::PressureUnits::BAR)
         << 200.0;
     QTest::addRow("10 psi to bar | 0.689476 bar")
         << 10.0
-        << static_cast<qint32>(Config::PressureUnits::BAR)
-        << static_cast<qint32>(Config::PressureUnits::PSI)
+        << static_cast<qint32>(Units::PressureUnits::BAR)
+        << static_cast<qint32>(Units::PressureUnits::PSI)
         << 0.689476;
 }
 
@@ -453,7 +453,7 @@ void SensorUtilsTest::test_toMph() {
     QFETCH(qint32, units);
     QFETCH(qreal, mph);
 
-    Config::SpeedUnits unit = static_cast<Config::SpeedUnits>(units);
+    Units::SpeedUnits unit = static_cast<Units::SpeedUnits>(units);
 
     COMPARE_F(SensorUtils::toMph(speed, unit), mph, 1.0e-3);
 }
@@ -463,11 +463,11 @@ void SensorUtilsTest::test_toMph_data() {
     QTest::addColumn<qreal>("mph");
 
     QTest::addRow("100 kph | 62mph ")
-        << 100.0 << static_cast<qint32>(Config::SpeedUnits::KPH) << 62.137;
+        << 100.0 << static_cast<qint32>(Units::SpeedUnits::KPH) << 62.137;
     QTest::addRow("14 m/s | 31.3171 mph ")
-        << 14.0 << static_cast<qint32>(Config::SpeedUnits::METER_PER_SECOND) << 31.3171;
+        << 14.0 << static_cast<qint32>(Units::SpeedUnits::METER_PER_SECOND) << 31.3171;
     QTest::addRow("34 mph | 34 mph ")
-        << 34.0 << static_cast<qint32>(Config::SpeedUnits::MPH) << 34.0;
+        << 34.0 << static_cast<qint32>(Units::SpeedUnits::MPH) << 34.0;
 }
 
 void SensorUtilsTest::test_toKph() {
@@ -475,7 +475,7 @@ void SensorUtilsTest::test_toKph() {
     QFETCH(qint32, units);
     QFETCH(qreal, kph);
 
-    Config::SpeedUnits unit = static_cast<Config::SpeedUnits>(units);
+    Units::SpeedUnits unit = static_cast<Units::SpeedUnits>(units);
 
     COMPARE_F(SensorUtils::toKph(speed, unit), kph, 1.0e-3);
 }
@@ -485,11 +485,11 @@ void SensorUtilsTest::test_toKph_data() {
     QTest::addColumn<qreal>("kph");
 
     QTest::addRow("100 kph | 100 kph ")
-        << 100.0 << static_cast<qint32>(Config::SpeedUnits::KPH) << 100.0;
+        << 100.0 << static_cast<qint32>(Units::SpeedUnits::KPH) << 100.0;
     QTest::addRow("18.1 m/s | 65.16 kph ")
-        << 18.1 << static_cast<qint32>(Config::SpeedUnits::METER_PER_SECOND) << 65.16;
+        << 18.1 << static_cast<qint32>(Units::SpeedUnits::METER_PER_SECOND) << 65.16;
     QTest::addRow("34 mph | 54.7177 kph ")
-        << 34.0 << static_cast<qint32>(Config::SpeedUnits::MPH) << 54.7177;
+        << 34.0 << static_cast<qint32>(Units::SpeedUnits::MPH) << 54.7177;
 }
 
 void SensorUtilsTest::test_toMetersPerSecond() {
@@ -497,7 +497,7 @@ void SensorUtilsTest::test_toMetersPerSecond() {
     QFETCH(qint32, units);
     QFETCH(qreal, mps);
 
-    Config::SpeedUnits unit = static_cast<Config::SpeedUnits>(units);
+    Units::SpeedUnits unit = static_cast<Units::SpeedUnits>(units);
 
     COMPARE_F(SensorUtils::toMetersPerSecond(speed, unit), mps, 1.0e-3);
 }
@@ -507,11 +507,11 @@ void SensorUtilsTest::test_toMetersPerSecond_data() {
     QTest::addColumn<qreal>("mps");
 
     QTest::addRow("25.6 kph | 7.111111 m/s ")
-        << 25.6 << static_cast<qint32>(Config::SpeedUnits::KPH) << 7.111111;
+        << 25.6 << static_cast<qint32>(Units::SpeedUnits::KPH) << 7.111111;
     QTest::addRow("18.1 m/s | 18.1 m/s ")
-        << 18.1 << static_cast<qint32>(Config::SpeedUnits::METER_PER_SECOND) << 18.1;
+        << 18.1 << static_cast<qint32>(Units::SpeedUnits::METER_PER_SECOND) << 18.1;
     QTest::addRow("24 mph | 10.729 m/s ")
-        << 24.0 << static_cast<qint32>(Config::SpeedUnits::MPH) << 10.729;
+        << 24.0 << static_cast<qint32>(Units::SpeedUnits::MPH) << 10.729;
 }
 
 void SensorUtilsTest::test_convertSpeed() {
@@ -520,8 +520,8 @@ void SensorUtilsTest::test_convertSpeed() {
     QFETCH(qint32, from);
     QFETCH(qreal, convertedSpeed);
 
-    Config::SpeedUnits toUnits = static_cast<Config::SpeedUnits>(to);
-    Config::SpeedUnits fromUnits = static_cast<Config::SpeedUnits>(from);
+    Units::SpeedUnits toUnits = static_cast<Units::SpeedUnits>(to);
+    Units::SpeedUnits fromUnits = static_cast<Units::SpeedUnits>(from);
 
     COMPARE_F(SensorUtils::convertSpeed(speed, toUnits, fromUnits), convertedSpeed, 1.0e-3);
 }
@@ -533,18 +533,18 @@ void SensorUtilsTest::test_convertSpeed_data() {
 
     QTest::addRow("25.6 kph to m/s | 7.111111 m/s ")
         << 25.6
-        << static_cast<qint32>(Config::SpeedUnits::METER_PER_SECOND)
-        << static_cast<qint32>(Config::SpeedUnits::KPH)
+        << static_cast<qint32>(Units::SpeedUnits::METER_PER_SECOND)
+        << static_cast<qint32>(Units::SpeedUnits::KPH)
         << 7.111111;
     QTest::addRow("34 mph to kph| 54.7177 kph ")
         << 34.0
-        << static_cast<qint32>(Config::SpeedUnits::KPH)
-        << static_cast<qint32>(Config::SpeedUnits::MPH)
+        << static_cast<qint32>(Units::SpeedUnits::KPH)
+        << static_cast<qint32>(Units::SpeedUnits::MPH)
         << 54.7177;
     QTest::addRow("18.1 m/s to kph | 65.16 kph ")
         << 18.1
-        << static_cast<qint32>(Config::SpeedUnits::KPH)
-        << static_cast<qint32>(Config::SpeedUnits::METER_PER_SECOND)
+        << static_cast<qint32>(Units::SpeedUnits::KPH)
+        << static_cast<qint32>(Units::SpeedUnits::METER_PER_SECOND)
         << 65.16;
 }
 
@@ -565,48 +565,48 @@ void SensorUtilsTest::test_convert_data() {
     // Pressure
     QTest::addRow("14 psi to kPa | 96.5266 kPa")
         << 14.0
-        << Config::UNITS_KPA
-        << Config::UNITS_PSI
+        << Units::UNITS_KPA
+        << Units::UNITS_PSI
         << 96.5266;
     // change case of inputs
     QTest::addRow("14 psi to kPa (case change) | 96.5266 kPa")
         << 14.0
-        << QString(Config::UNITS_KPA).toUpper()
-        << QString(Config::UNITS_PSI).toLower()
+        << QString(Units::UNITS_KPA).toUpper()
+        << QString(Units::UNITS_PSI).toLower()
         << 96.5266;
     QTest::addRow("10 psi to bar | 0.689476 bar")
         << 10.0
-        << Config::UNITS_BAR
-        << Config::UNITS_PSI
+        << Units::UNITS_BAR
+        << Units::UNITS_PSI
         << 0.689476;
     QTest::addRow("10 psi to bar (case change) | 0.689476 bar")
         << 10.0
-        << QString(Config::UNITS_BAR).toUpper()
-        << QString(Config::UNITS_PSI).toUpper()
+        << QString(Units::UNITS_BAR).toUpper()
+        << QString(Units::UNITS_PSI).toUpper()
         << 0.689476;
 
     // Temperature
     QTest::addRow("183F to C | 83.8889C ")
         << 183.0
-        << QString(Config::UNITS_C).toLower()
-        << QString(Config::UNITS_F).toUpper()
+        << QString(Units::UNITS_C).toLower()
+        << QString(Units::UNITS_F).toUpper()
         << 83.8889;
     QTest::addRow("57K to F | -357.07F ")
         << 57.0
-        << QString(Config::UNITS_F).toLower()
-        << QString(Config::UNITS_K).toUpper()
+        << QString(Units::UNITS_F).toLower()
+        << QString(Units::UNITS_K).toUpper()
         << -357.07;
     QTest::addRow("380K to C | 106.85C ")
         << 380.0
-        << QString(Config::UNITS_C).toUpper()
-        << QString(Config::UNITS_K).toUpper()
+        << QString(Units::UNITS_C).toUpper()
+        << QString(Units::UNITS_K).toUpper()
         << 106.85;
 
     // Distance
     QTest::addRow("12 yards to meter | 10.9728 m ")
         << 12.0
-        << QString(Config::UNITS_METER)
-        << QString(Config::UNITS_YARD)
+        << QString(Units::UNITS_METER)
+        << QString(Units::UNITS_YARD)
         << 10.9728;
 }
 

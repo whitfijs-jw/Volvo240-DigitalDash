@@ -3,120 +3,181 @@ import QtQuick 2.15
 Item {
 
     Rectangle {
-        width: 1280
-        height: 480
+        id: container
+
+        width: parent.width
+        height: parent.height
         color: "transparent"
 
+        property real tachometerSize: parent.height * 0.925
+        property real smallGaugeSize: parent.height / 3
+        property real speedometerSize: (tachometerSize - smallGaugeSize)
+        property real tempFuelSize: (tachometerSize - smallGaugeSize)
+        property real smallGaugeXOffset: parent.height * (50/480)
+
+        property bool speedoMph: speedoModel.units === "mph"
+        property bool oilTempF: oilTModel.units === "F"
+        property bool oilPressureBar: oilPModel.units === "bar"
+
         Rectangle {
+            TachometerDelegate {
+                id: tachometerDelegate
+            }
+
             id: tachContainer
-            width: tachSize
-            height: tachSize
+            width: container.tachometerSize
+            height: container.tachometerSize
             color: "transparent"
-            anchors.right: speedoContainer.left
-            anchors.bottom: speedoContainer.bottom
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset: -container.tachometerSize * 0.9
 
             /* Rpm: */
             ListView {
                 model: rpmModel
-                delegate: rpmDelegate
+                delegate: tachometerDelegate.component
             }
 
         }
 
         Rectangle {
+            SpeedoDelegate {
+                id: speedoDelegate
+
+                initialValueOffset: container.speedoMph ? 5 : 20
+
+                minAngle: container.speedoMph ? -238 : -254
+                maxAngle: container.speedoMph ? 44 : 45
+
+                imageSource: container.speedoMph ?
+                                 "qrc:/mainCluster/later-240-speedo.png" :
+                                 "qrc:/mainCluster/later-240-speedo-kph.png"
+            }
+
             id: speedoContainer
-            width: speedoSize
-            height: speedoSize
+            width: container.speedometerSize
+            height: container.speedometerSize
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: 70
+            anchors.bottom: tachContainer.bottom
             anchors.topMargin: 0
             color: "transparent"
 
             /* Rpm: */
             ListView {
                 model: speedoModel
-                delegate: speedoDelegate
+                delegate: speedoDelegate.component
             }
 
         }
 
         Rectangle {
+            TempAndFuelDelegate240Style {
+                id: tempFuelDelegate
+            }
+
+
             id: tempFuelContainer
-            width: tempFuelSize
-            height: tempFuelSize
+            width: container.tempFuelSize
+            height: container.tempFuelSize
             anchors.left: speedoContainer.right
             anchors.verticalCenter: speedoContainer.verticalCenter
             anchors.verticalCenterOffset: -20
             anchors.leftMargin: 50
-//            anchors.top: boostContainer.bottom
-//            anchors.topMargin: 10
             color: "transparent"
 
             /* Rpm: */
             ListView {
                 model: tempFuelModel
-                delegate: tempFuelDelegate
+                delegate: tempFuelDelegate.component
             }
 
         }
 
 
         Rectangle {
+            AccessoryGaugeDelegate {
+                id: boostDelegate
+                imageSource: "qrc:/accCluster/boost_black_no_numbers.png"
+
+                minAngle: -227
+                maxAngle: 48
+
+                needleLength: 0.525
+
+                yOffset: 0.0
+            }
+
             id: boostContainer
             anchors.left: tachContainer.right
             anchors.bottom: speedoContainer.top
             anchors.bottomMargin: 10
             anchors.leftMargin: -50
-            height: smallGaugeSize
-            width: smallGaugeSize
+            height: container.smallGaugeSize
+            width: container.smallGaugeSize
             color: "transparent"
 
             ListView {
                 model: boostModel
-                delegate: boostDelegate
+                delegate: boostDelegate.component
             }
         }
         Rectangle {
+            AccessoryGaugeDelegate {
+                id: oilPressureDelegate
+                imageSource: container.oilPressureBar ?
+                                 "qrc:/accCluster/later-240-oil-pressure.png" :
+                                 "qrc:/accCluster/later-240-oil-pressure-psi.png"
+            }
+
             id: oilPContainer
             anchors.left: boostContainer.right
             anchors.verticalCenter: boostContainer.verticalCenter
-            height: smallGaugeSize
-            width: smallGaugeSize
+            height: container.smallGaugeSize
+            width: container.smallGaugeSize
             color: "transparent"
 
             ListView {
                 model: oilPModel
-                delegate: oilPressureDelegate
+                delegate: oilPressureDelegate.component
             }
         }
 
         Rectangle {
+            AccessoryGaugeDelegate {
+                id: oilTempDelegate
+                imageSource: container.oilTempF ?
+                                 "qrc:/accCluster/later-240-oil-temp.png" :
+                                 "qrc:/accCluster/later-240-oil-temp-c.png"
+            }
+
             id: oilTContainer
             anchors.left: oilPContainer.right
             anchors.verticalCenter: boostContainer.verticalCenter
-            height: smallGaugeSize
-            width: smallGaugeSize
+            height: container.smallGaugeSize
+            width: container.smallGaugeSize
             color: "transparent"
 
             ListView {
                 model: oilTModel
-                delegate: oilTemperatureDelegate
+                delegate: oilTempDelegate.component
             }
         }
 
         Rectangle {
+            AccessoryGaugeDelegate {
+                id: voltMeterDelegate
+            }
+
             id: voltContainer
             anchors.left: oilTContainer.right
             anchors.verticalCenter: boostContainer.verticalCenter
-            height: smallGaugeSize
-            width: smallGaugeSize
+            height: container.smallGaugeSize
+            width: container.smallGaugeSize
             color: "transparent"
 
             ListView {
-                id: gaugeVolt
                 model: voltMeterModel
-                delegate: voltMeterDelegate
+                delegate: voltMeterDelegate.component
             }
         }
 
@@ -124,8 +185,8 @@ Item {
             id: clockContainer
             anchors.left: voltContainer.right
             anchors.verticalCenter: boostContainer.verticalCenter
-            height: smallGaugeSize
-            width: smallGaugeSize
+            height: container.smallGaugeSize
+            width: container.smallGaugeSize
             color: "transparent"
 
             Clock {

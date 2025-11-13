@@ -1,55 +1,64 @@
 import QtQuick 2.15
 
-Component {
-    id: rpmDelegate544
 
-    Loader {
-        source: "qrc:/LinearGauge.qml"
-        asynchronous: true
-        onLoaded: {
-            item.minValue = 0
-            item.maxValue = maxRpm
-            item.units = "rpm"
-            item.highAlarm = redLine
-            item.lowAlarm = 0
+Item {
+    id: tach
 
-            item.height = 64
-            item.width = 600
+    anchors.fill: parent
 
-            item.imageResource = "qrc:/gauge-faces-544/tachometer-544.png"
+    property Component component: component
 
-            item.needleColor = "red"
+    Component {
+        id: component
 
-            item.needleWidth = item.height * 0.4
-            item.needleLength = item.width * 0.775
+        Loader {
+            source: "qrc:/LinearGauge.qml"
+            asynchronous: true
+            onLoaded: {
+                item.minValue = 0
+                item.maxValue = maxRpm
+                item.units = "rpm"
+                item.highAlarm = redLine
+                item.lowAlarm = 0
 
-            item.offset = item.height * .625
-            item.offsetX = item.width * 0.15
+                item.height = tach.height
+                item.width = tach.width
 
-            item.textSize = speedoSize * .15 / 2
-            item.textOffset = - speedoSize / 8
-            item.significantDigits = 0
+                item.imageResource = "qrc:/gauge-faces-544/tachometer-544.png"
 
-            item.blockWidth = item.width * 0.15
+                item.needleColor = "red"
 
-        }
+                item.needleWidth = 0.4
+                item.needleLength = 0.775
 
-        Binding {
-            target: item
-            property: "value"
-            value: rpm
-        }
+                item.offset = 0.625
+                item.offsetX = 0.15
 
-        Binding {
-            target: item
-            property: "width"
-            value: 600
-        }
+                item.textSize = 0.5
+                item.textOffset = -0.8
+                item.significantDigits = 0
 
-        Binding {
-            target: item
-            property: "height"
-            value: 64
+                item.blockWidth = 0.15
+
+            }
+
+            Binding {
+                target: item
+                property: "value"
+                value: rpm
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: tach.width
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: tach.height
+            }
         }
     }
 }

@@ -10,29 +10,18 @@ Window {
 
     title: qsTr("Lolvo")
 
+    property url initialScreen: "qrc:/Original240Layout.qml"
+    property real initialScreenSpeedoMaxMph: 120
+    property real initialScreenSpeedoMaxKph: 220
+
     SideAccessoryScreen {
         id: accessoryScreen
         objectName: "accessoryScreen"
         currentStyle: "240"
     }
-
-    property int smallGaugeSize: 140
-    property int tachSize: 400
-    property int speedoSize: 440
-    property int tempFuelSize: 400
-    property int blinkerSize: 50;
-    property int linearSpeedoWidth: 1100
-    property int linearSpeedoHeight: 65
-
-    property int warningLightHeight: 50;
-    property int warningLightWidth: 70;
-    property int warningLightWideWidth: 100;
-    property int warningLightVerticalMargin: 5;
-    property int warningLightHorizontalMargin: 8
-
-    property int speedoMax: 120;
-
-    property int smallGaugeNeedleWidth240: smallGaugeSize * 0.04
+    // default blinker size
+    property int blinkerSize: rootWindow.height * (50/480)
+    property int blinkerTopMargin: rootWindow.height / 48
 
     property var msg: [
         "You thought this\nwas going to work?",
@@ -49,26 +38,6 @@ Window {
         "Highway speeds\nmight not be\nan option for you",
     ]
 
-    function setSmallGaugeSize(size) {
-        smallGaugeSize = size;
-    }
-
-    function setTachSize(size) {
-        tachSize = size;
-    }
-
-    function setSpeedoSize(size) {
-        speedoSize = size;
-    }
-
-    function setTempFuelSize(size) {
-        tempFuelSize = size;
-    }
-
-    function setSpeedoMax(max) {
-        speedoMax = max;
-    }
-
     function boundedAngle(angle, min, max) {
         if (angle > max) {
             angle = max;
@@ -81,172 +50,6 @@ Window {
 
     function advance(forward) {
         gaugeItem.advanceScreen(forward);
-    }
-
-    OdometerDelegate {
-        id: odometerDelegate
-    }
-
-    // 240 style delegates
-    BoostDelegate240Style {
-        id: boostDelegate
-    }
-
-    OilPressureDelegate240Style {
-        id: oilPressureDelegate
-    }
-
-    OilTempereatureDelegate240Style {
-        id: oilTemperatureDelegate
-    }
-
-    VoltmeterDelegate240Style {
-        id: voltMeterDelegate
-    }
-
-    ClockDelegate240Style {
-        id: clockDelegate
-    }
-
-    TachometerDelegate240Style {
-        id: rpmDelegate
-    }
-
-    SpeedoDelegate240Style {
-        id: speedoDelegate
-    }
-
-    TempAndFuelDelegate240Style {
-        id: tempFuelDelegate
-    }
-
-    // 740 style delegates
-    BoostDelegate740Style {
-        id: boostDelegate740
-    }
-
-    TachometerDelegate740Style {
-        id: rpmDelegate740
-    }
-
-    SpeedoDelegate740Style {
-        id: speedoDelegate740
-    }
-
-    CoolantTempDelegate740Style {
-        id: coolant740Delegate
-    }
-
-    FuelLevelDelegate740Style {
-        id: fuelLevel740Delegate
-    }
-
-    VoltmeterDelegate740Style {
-        id: voltMeterDelegate740
-    }
-
-    // 850 style delegates
-    BoostDelegate850Style {
-        id: boostDelegate850
-    }
-
-    CoolantTempDelegate850Style {
-        id: coolantDelegate850
-    }
-
-    FuelLevelDelegate850Style {
-        id: fuelLevelDelegate850
-    }
-
-    // rsport style delegates
-    FuelLevelDelegateRSportStyle {
-        id: fuelLevelDelegateRSport
-    }
-
-    CoolantTempDelegateRSportStyle {
-        id: coolantDelegateRSport
-    }
-
-    OilPressureDelegateRSportStyle {
-        id: oilPressureDelegateRSport
-    }
-
-    VoltmeterDelegateRSportStyle {
-        id: voltMeterDelegateRSport
-    }
-
-    SpeedoDelegateRSportStyle {
-        id: speedoDelegateRSport
-    }
-
-    TachoDelegateRSportStyle {
-        id: rpmDelegateRSport
-    }
-
-    // 544 style delegates
-    SpeedoDelegate544Style {
-        id: speedoDelegate544
-    }
-
-    TachoDelegate544Style {
-        id: rpmDelegate544
-    }
-
-    VoltmeterDelegate544Style {
-        id: voltMeterDelegate544
-    }
-
-    FuelLevelDelegate544Style {
-        id: fuelLevelDelegate544
-    }
-
-    CoolantTempDelegate544Style {
-        id: coolantTempDelegate544
-    }
-
-    OilPressureDelegate544Style {
-        id: oilPressureDelegate544
-    }
-
-    // p1800 style delegates
-    SpeedoDelegateP1800Style {
-        id: speedoDelegateP1800
-    }
-
-    TachoDelegateP1800Style {
-        id: rpmDelegateP1800
-    }
-
-    CoolantTempDelegateP1800Style {
-        id: coolantTempDelegateP1800
-    }
-
-    OilTempDelegateP1800Style {
-        id: oilTempDelegateP1800
-    }
-
-    OilPressureDelegateP1800Style {
-        id: oilPressureDelegateP1800
-    }
-
-    FuelLevelDelegateP1800Style {
-        id: fuelLevelDelegateP1800
-    }
-
-    SpeedoDelegateS60RStyle {
-        id: speedoDelegateS60R
-    }
-
-    TachoDelegateS60RStyle {
-        id: rpmDelegateS60R
-    }
-
-    FuelLevelDelegateS60RStyle {
-        id: fuelLevelS60RDelegate
-    }
-
-    CoolantTempDelegateS60RStyle {
-        id: coolantS60RDelegate
     }
 
     Component {
@@ -313,230 +116,6 @@ Window {
         }
     }
 
-    Component {
-        id: parkingBrakeLightDelegate
-
-        Loader {
-            source: "qrc:/WarningLight.qml"
-            asynchronous: true
-            onLoaded: {
-                item.warningText = warningLightText
-                item.lightColor = "red"
-                item.width = warningLightWideWidth
-            }
-
-            Binding {
-                target: item
-                property: "on"
-                value: warningLightOn
-            }
-        }
-    }
-
-    Component {
-        id: brakeFailureLightDelegate
-
-        Loader {
-            source: "qrc:/WarningLight.qml"
-            asynchronous: true
-            onLoaded: {
-                item.warningText = warningLightText
-                item.lightColor = "red"
-                item.width = warningLightWideWidth
-            }
-
-            Binding {
-                target: item
-                property: "on"
-                value: warningLightOn
-            }
-        }
-    }
-
-    Component {
-        id: bulbFailureLightDelegate
-
-        Loader {
-            source: "qrc:/WarningLight.qml"
-            asynchronous: true
-            onLoaded: {
-                item.warningText = warningLightText
-                item.lightColor = "orange"
-                item.width = warningLightWidth
-                item.imageSource = "qrc:/warningLights/Bulb_failure_icon_no_background.png"
-            }
-
-            Binding {
-                target: item
-                property: "on"
-                value: warningLightOn
-            }
-        }
-    }
-
-    Component {
-        id: shiftUpLightDelegate
-
-        Loader {
-            source: "qrc:/WarningLight.qml"
-            asynchronous: true
-            onLoaded: {
-                item.warningText = warningLightText
-                item.lightColor = "orange"
-                item.width = warningLightWidth
-            }
-
-            Binding {
-                target: item
-                property: "on"
-                value: warningLightOn
-            }
-        }
-    }
-
-    Component {
-        id: highBeamLightDelegate
-
-        Loader {
-            source: "qrc:/WarningLight.qml"
-            asynchronous: true
-            onLoaded: {
-                item.warningText = warningLightText
-                item.lightColor = "lightcyan"
-                item.width = warningLightWidth
-                item.imageSource = "qrc:/warningLights/high_beam_icon.png"
-            }
-
-            Binding {
-                target: item
-                property: "on"
-                value: warningLightOn
-            }
-        }
-    }
-
-    Component {
-        id: srsWarningLightDelegate
-
-        Loader {
-            source: "qrc:/WarningLight.qml"
-            asynchronous: true
-            onLoaded: {
-                item.warningText = warningLightText
-                item.lightColor = "red"
-                item.width = warningLightWidth
-            }
-
-            Binding {
-                target: item
-                property: "on"
-                value: warningLightOn
-            }
-        }
-    }
-
-    Component {
-        id: oilWarningLightDelegate
-
-        Loader {
-            source: "qrc:/WarningLight.qml"
-            asynchronous: true
-            onLoaded: {
-                item.warningText = warningLightText
-                item.lightColor = "red"
-                item.width = warningLightWidth
-                item.imageSource = "qrc:warningLights/oil_icon_no_background.png"
-            }
-
-            Binding {
-                target: item
-                property: "on"
-                value: warningLightOn
-            }
-        }
-    }
-
-    Component {
-        id: batteryWarningLightDelegate
-
-        Loader {
-            source: "qrc:/WarningLight.qml"
-            asynchronous: true
-            onLoaded: {
-                item.warningText = warningLightText
-                item.lightColor = "red"
-                item.width = warningLightWidth
-                item.imageSource = "qrc:warningLights/battery_charge_icon_no_background.png"
-            }
-
-            Binding {
-                target: item
-                property: "on"
-                value: warningLightOn
-            }
-        }
-    }
-
-    Component {
-        id: absWarningLightDelegate
-
-        Loader {
-            source: "qrc:/WarningLight.qml"
-            asynchronous: true
-            onLoaded: {
-                item.warningText = warningLightText
-                item.lightColor = "red"
-                item.width = warningLightWidth
-            }
-
-            Binding {
-                target: item
-                property: "on"
-                value: warningLightOn
-            }
-        }
-    }
-
-    Component {
-        id: checkEngineLightDelegate
-
-        Loader {
-            source: "qrc:/WarningLight.qml"
-            asynchronous: true
-            onLoaded: {
-                item.warningText = warningLightText
-                item.lightColor = "orange"
-                item.width = warningLightWidth
-            }
-
-            Binding {
-                target: item
-                property: "on"
-                value: warningLightOn
-            }
-        }
-    }
-
-    Component {
-        id: serviceLightDelegate
-
-        Loader {
-            source: "qrc:/WarningLight.qml"
-            asynchronous: true
-            onLoaded: {
-                item.warningText = warningLightText
-                item.lightColor = "orange"
-                item.width = warningLightWidth
-            }
-
-            Binding {
-                target: item
-                property: "on"
-                value: warningLightOn
-            }
-        }
-    }
-
     Item {
         id: loading
         anchors.fill: parent
@@ -592,7 +171,7 @@ Window {
         Loader {
             id: currentGauge
             anchors.fill: parent
-            source: "qrc:/Original240Layout.qml"
+            source: rootWindow.initialScreen
             asynchronous: true
             visible: false
             onStatusChanged: {
@@ -604,12 +183,29 @@ Window {
                     } else {
                         bootTimer.start();
                         gaugeItem.initialLoad = false
+
+                        // setup the speedometer for the initial screen
+                        if (speedoModel.units === "mph") {
+                            speedoModel.setMaxValue(rootWindow.initialScreenSpeedoMaxMph);
+                        } else {
+                            speedoModel.setMaxValue(rootWindow.initialScreenSpeedoMaxKph)
+                        }
                     }
                 } else if (status == Loader.Loading) {
                     currentGauge.visible = false;
                     loadText.visible = true;
                     console.log("Loader Loading")
                 }
+            }
+            Binding {
+                target: item
+                property: "width"
+                value: rootWindow.width
+            }
+            Binding {
+                target: item
+                property: "height"
+                value: rootWindow.height
             }
         }
 
@@ -626,108 +222,181 @@ Window {
 
         function advanceScreen(forward) {
             if (forward) {
-                if (++screen > 9) {
+                if (++screen > 11) {
                     screen = 0;
                 }
             } else {
                 if (--screen < 0) {
-                    screen = 9;
+                    screen = 11;
                 }
             }
 
             switch (screen) {
                 case 0:
-                    //currentGauge.source = "";
                     currentGauge.source = "qrc:/BigTachCenter.qml";
-                    setSmallGaugeSize(140);
-                    setTachSize(440);
-                    setSpeedoSize(tachSize - smallGaugeSize - 10);
-                    setSpeedoMax(120);
-                    setTempFuelSize(tachSize - smallGaugeSize - 10);
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(120);
+                    } else {
+                        speedoModel.setMaxValue(220)
+                    }
+
+                    rpmModel.setMaxRpm(7000);
+                    rpmModel.setRedLine(6000);
+
                     accessoryScreen.currentStyle = "240";
+                    warningLightBar.item.showLights = true;
+
                     break;
                 case 1:
-                    //currentGauge.source = "";
                     currentGauge.source = "qrc:/BigTachLeft.qml";
-                    setSmallGaugeSize(140);
-                    setTachSize(440);
-                    setSpeedoSize(tachSize - smallGaugeSize - 10);
-                    setSpeedoMax(120);
-                    setTempFuelSize(tachSize - smallGaugeSize - 10);
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(120);
+                    } else {
+                        speedoModel.setMaxValue(220)
+                    }
+
+                    rpmModel.setMaxRpm(7000);
+                    rpmModel.setRedLine(6000);
+
                     accessoryScreen.currentStyle = "240";
+                    warningLightBar.item.showLights = true;
                     break;
                 case 2:
-                    //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original240Layout.qml";
-                    setSmallGaugeSize(140);
-                    setTachSize(400);
-                    setSpeedoSize(440);
-                    setSpeedoMax(120);
-                    setTempFuelSize(400);
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(120);
+                    } else {
+                        speedoModel.setMaxValue(220)
+                    }
+
+                    rpmModel.setMaxRpm(7000);
+                    rpmModel.setRedLine(6000);
+
                     accessoryScreen.currentStyle = "240";
+                    warningLightBar.item.showLights = true;
                     break;
                 case 3:
-                    //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original740Layout.qml"
-                    setSmallGaugeSize(140);
-                    setTachSize(275);
-                    setSpeedoSize(350);
-                    setSpeedoMax(140);
-                    setTempFuelSize(300);
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(140);
+                    } else {
+                        speedoModel.setMaxValue(225.308)
+                    }
+
+                    rpmModel.setMaxRpm(7000);
+                    rpmModel.setRedLine(5500);
+
                     accessoryScreen.currentStyle = "740";
+                    warningLightBar.item.showLights = true;
                     break;
                 case 4:
-                    //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original240LayoutClock.qml";
-                    setSmallGaugeSize(140);
-                    setTachSize(400);
-                    setSpeedoSize(440);
-                    setSpeedoMax(120);
-                    setTempFuelSize(400);
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(120);
+                    } else {
+                        speedoModel.setMaxValue(220)
+                    }
+
+                    rpmModel.setMaxRpm(7000);
+                    rpmModel.setRedLine(6000);
+
                     accessoryScreen.currentStyle = "240";
+                    warningLightBar.item.showLights = true;
                     break;
                 case 5:
-                    //currentGauge.source = "";
                     currentGauge.source = "qrc:/Original850R.qml"
-                    setSmallGaugeSize(200);
-                    setTachSize(350);
-                    setSpeedoSize(440);
-                    setSpeedoMax(140);
-                    //setTempFuelSize(300);
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(140);
+                    } else {
+                        speedoModel.setMaxValue(225.308)
+                    }
+
+                    rpmModel.setMaxRpm(7000);
+                    rpmModel.setRedLine(5500);
+
                     accessoryScreen.currentStyle = "740";
+                    warningLightBar.item.showLights = true;
                     break;
                 case 6:
                     currentGauge.source = "qrc:/OriginalRSportLayout.qml"
-                    setSmallGaugeSize(200);
-                    setTachSize(350);
-                    setSpeedoSize(350);
-                    setSpeedoMax(130);
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(130);
+                    } else {
+                        speedoModel.setMaxValue(200)
+                    }
+
+                    rpmModel.setMaxRpm(8000);
+                    rpmModel.setRedLine(6500);
+
                     accessoryScreen.currentStyle = "rSport";
+                    warningLightBar.item.showLights = true;
                     break;
                 case 7:
                     currentGauge.source = "qrc:/Original544Layout.qml"
-                    setSmallGaugeSize(140);
-                    setTachSize(400);
-                    setSpeedoSize(440);
-                    setSpeedoMax(120);
-                    setTempFuelSize(400);
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(120);
+                    } else {
+                        speedoModel.setMaxValue(193.121)
+                    }
                     accessoryScreen.currentStyle = "240";
+                    warningLightBar.item.showLights = true;
                     break;
                 case 8:
                     currentGauge.source = "qrc:/OriginalP1800Layout.qml"
-                    setSmallGaugeSize(200);
-                    setTachSize(350);
-                    setSpeedoSize(440);
-                    setSpeedoMax(120);
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(120);
+                    } else {
+                        speedoModel.setMaxValue(200)
+                    }
+
+                    rpmModel.setMaxRpm(7000);
+                    rpmModel.setRedLine(6000);
+
                     accessoryScreen.currentStyle = "p1800";
+                    warningLightBar.item.showLights = true;
                     break;
                 case 9:
+                    currentGauge.source = "qrc:/OriginalEarly240Layout.qml"
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(130);
+                    } else {
+                        speedoModel.setMaxValue(200)
+                    }
+
+                    rpmModel.setMaxRpm(7000);
+                    rpmModel.setRedLine(5500);
+
+                    accessoryScreen.currentStyle = "240";
+                    warningLightBar.item.showLights = false;
+                    break;
+                case 10:
+                    currentGauge.source = "qrc:/Original140RallyeLayout.qml"
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(130);
+                    } else {
+                        speedoModel.setMaxValue(200)
+                    }
+
+                    rpmModel.setMaxRpm(8000);
+                    rpmModel.setRedLine(6500);
+
+                    accessoryScreen.currentStyle = "140rallye";
+                    warningLightBar.item.showLights = true;
+                    break;
+                case 11:
                     currentGauge.source = "qrc:/OriginalS60RLayout.qml"
-                    setSmallGaugeSize(200);
-                    setTachSize(350);
-                    setSpeedoSize(350);
-                    setSpeedoMax(160);
+
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(160);
+                    } else {
+                        speedoModel.setMaxValue(320);
+                    }
+
+                    rpmModel.setMaxRpm(8000);
+                    rpmModel.setRedLine(7000);
+
                     accessoryScreen.currentStyle = "s60r";
+                    warningLightBar.item.showLights = true;
                     break;
                 default:
                     break;
@@ -750,8 +419,10 @@ Window {
         }
 
         Loader {
+            id: warningLightBar
             source: "WarningLightBar.qml"
             asynchronous: true
+            anchors.fill: parent
         }
     }
 }

@@ -1,25 +1,36 @@
 import QtQuick 2.15
 
-Component {
-    id: clockDelegate
-    Loader {
-        source: "qrc:/Clock.qml"
-        asynchronous: true
-        onLoaded: {
-            item.height = smallGaugeSize
-            item.width = smallGaugeSize
-        }
+Item {
+    id: clock
 
-        Binding {
-            target: item
-            property: "width"
-            value: smallGaugeSize
-        }
+    implicitWidth: 333
+    implicitHeight: 333
 
-        Binding {
-            target: item
-            property: "height"
-            value: smallGaugeSize
+    anchors.fill: parent
+
+    property Component component: component
+
+    Component {
+        id: component
+        Loader {
+            source: "qrc:/Clock.qml"
+            asynchronous: true
+            onLoaded: {
+                item.height = clock.height
+                item.width = clock.width
+            }
+
+            Binding {
+                target: item
+                property: "width"
+                value: clock.width
+            }
+
+            Binding {
+                target: item
+                property: "height"
+                value: clock.height
+            }
         }
     }
 }

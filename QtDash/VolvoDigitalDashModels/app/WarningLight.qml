@@ -12,7 +12,8 @@ Item {
     property url imageSource
 
     opacity: (on == true) ? 1.0 : 0.0
-    height: warningLightHeight
+    height: parent.height
+    width: parent.width
     visible: true
 
     Behavior on opacity {
@@ -44,11 +45,12 @@ Item {
     Image {
         id: warning_symbol
         source: warning_light.imageSource
-        //smooth: true
-        //mipmap: true
-        //asynchronous: true
 
-        anchors.fill: parent
+        fillMode: Image.PreserveAspectFit
+        width: parent.width
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+
         z: 3
         asynchronous: true
     }

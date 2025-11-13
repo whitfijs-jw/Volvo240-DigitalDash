@@ -9,24 +9,24 @@ void MapTest::testGetAbsolutePressure()
     QFETCH(qreal, expected_kpa);
     QFETCH(qreal, expected_psi);
 
-    MapSensor * sensor = new MapSensor(pressure0V, pressure5V, 5.0, (Config::PressureUnits)units);
+    MapSensor * sensor = new MapSensor(pressure0V, pressure5V, 5.0, (Units::PressureUnits)units);
 
     // kpa values
-    qreal actual = sensor->getAbsolutePressure(volts, Config::PressureUnits::KPA);
+    qreal actual = sensor->getAbsolutePressure(volts, Units::PressureUnits::KPA);
     qreal expected = expected_kpa;
     qreal delta = MapTest::DELTA;
     qDebug() << "Actual: " << actual << " Expected: " << expected;
     QVERIFY(actual-delta <= expected && actual+delta >=expected);
 
     // psi values
-    actual = sensor->getAbsolutePressure(volts, Config::PressureUnits::PSI);
+    actual = sensor->getAbsolutePressure(volts, Units::PressureUnits::PSI);
     expected = expected_psi;
     delta = MapTest::DELTA * .145038;
     qDebug() << "Actual: " << actual << " Expected: " << expected;
     QVERIFY(actual-delta <= expected && actual+delta >=expected);
 
     // bar values (kPa / 100)
-    actual = sensor->getAbsolutePressure(volts, Config::PressureUnits::BAR);
+    actual = sensor->getAbsolutePressure(volts, Units::PressureUnits::BAR);
     expected = expected_kpa / 100.0;
     delta = MapTest::DELTA / 100.0;
     qDebug() << "Actual: " << actual << " Expected: " << expected;
@@ -84,7 +84,7 @@ void MapTest::testGetAbsolutePressure_data() {
         QTest::newRow(rowName.toStdString().c_str())
                 << 10.0
                 << 105.0
-                << (int) Config::PressureUnits::KPA
+                << (int) Units::PressureUnits::KPA
                 << iter.key()
                 << iter.value().oneBar
                 << iter.value().oneBar * .145038;
@@ -94,7 +94,7 @@ void MapTest::testGetAbsolutePressure_data() {
         QTest::newRow(rowName.toStdString().c_str())
                 << 8.8
                 << 208.0
-                << (int) Config::PressureUnits::KPA
+                << (int) Units::PressureUnits::KPA
                 << iter.key()
                 << iter.value().twoBar
                 << iter.value().twoBar * .145038;
@@ -104,7 +104,7 @@ void MapTest::testGetAbsolutePressure_data() {
         QTest::newRow(rowName.toStdString().c_str())
                 << 3.6
                 << 315.0
-                << (int) Config::PressureUnits::KPA
+                << (int) Units::PressureUnits::KPA
                 << iter.key()
                 << iter.value().threeBar
                 << iter.value().threeBar * .145038;
@@ -115,7 +115,7 @@ void MapTest::testGetAbsolutePressure_data() {
         QTest::newRow(rowName.toStdString().c_str())
                 << 10.0 * .145038
                 << 105.0 * .145038
-                << (int) Config::PressureUnits::PSI
+                << (int) Units::PressureUnits::PSI
                 << iter.key()
                 << iter.value().oneBar
                 << iter.value().oneBar * .145038;
@@ -125,7 +125,7 @@ void MapTest::testGetAbsolutePressure_data() {
         QTest::newRow(rowName.toStdString().c_str())
                 << 8.8 * .145038
                 << 208.0 * .145038
-                << (int) Config::PressureUnits::PSI
+                << (int) Units::PressureUnits::PSI
                 << iter.key()
                 << iter.value().twoBar
                 << iter.value().twoBar * .145038;
@@ -135,7 +135,7 @@ void MapTest::testGetAbsolutePressure_data() {
         QTest::newRow(rowName.toStdString().c_str())
                 << 3.6 * .145038
                 << 315.0 * .145038
-                << (int) Config::PressureUnits::PSI
+                << (int) Units::PressureUnits::PSI
                 << iter.key()
                 << iter.value().threeBar
                 << iter.value().threeBar * .145038;

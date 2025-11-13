@@ -36,17 +36,19 @@ Item {
     function getDelegate(style, index) {
         switch (style) {
         case "240":
-            return delegates240[index];
+            return delegates240[index].component;
         case "740":
-            return delegates740[index];
+            return delegates740[index].component;
         case "p1800":
-            return delegatesP1800[index];
+            return delegatesP1800[index].component;
         case "rSport":
-            return delegatesRSport[index];
+            return delegatesRSport[index].component;
+        case "140rallye":
+            return delegates140Rallye[index].component;
         case "s60r":
-            return delegatesS60r[index];
+            return delegatesS60r[index].component;
         default:
-            return delegates240[index];
+            return delegates240[index].component;
         }
     }
 
@@ -62,6 +64,8 @@ Item {
             return delegatesRSport.length;
         case "s60r":
             return delegatesS60r.length;
+        case "140rallye":
+            return delegates140Rallye.length
         default:
             return delegates240.length;
         }
