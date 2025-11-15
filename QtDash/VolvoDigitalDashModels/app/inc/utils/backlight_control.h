@@ -29,7 +29,7 @@ public:
                      VoltmeterSensor * voltmeter,
                      VoltmeterSensor * dimmerVoltage);
 
-    virtual ~BackLightControl() {}
+    ~BackLightControl() final = default;
 
 signals:
 
@@ -53,7 +53,7 @@ private slots:
     void dimmerVoltageUpdate(QVariant voltage);
 
 private:
-    Config::BacklightControlConfig_t mBacklightConfig;
+    SensorConfig::BacklightControlConfig_t mBacklightConfig;
     qreal mCurrentBatteryVoltage = 0.0;
     qreal mCurrentDimmerVoltage = 0.0;
     Pwm * mPwm = nullptr;

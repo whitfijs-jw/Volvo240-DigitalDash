@@ -21,6 +21,8 @@ public:
     // pressure constants
     static constexpr qreal PSI_PER_KPA = .145038; //!< psi per kpa
     static constexpr qreal BAR_PER_KPA = .01; //!< bar per kpa
+    static constexpr qreal INHG_PER_KPA = 0.2953;
+    static constexpr qreal MMHG_PER_KPA = 7.50062;
 
     // distance constants
     static constexpr qreal METER_PER_IN = .0254; //!< meters per in
@@ -284,6 +286,10 @@ public:
             return pressure / PSI_PER_KPA;
         } else if (units == Units::PressureUnits::BAR) {
             return pressure / BAR_PER_KPA;
+        } else if (units == Units::PressureUnits::INHG) {
+            return pressure / INHG_PER_KPA;
+        } else if (units == Units::PressureUnits::MMHG) {
+            return pressure / MMHG_PER_KPA;
         } else {
             // kPA
             return pressure;
@@ -301,6 +307,10 @@ public:
             return pressure;
         } else if (units == Units::PressureUnits::BAR) {
             return (pressure / BAR_PER_KPA) * PSI_PER_KPA;
+        } else if (units == Units::PressureUnits::INHG) {
+            return (pressure / INHG_PER_KPA) * PSI_PER_KPA;
+        } else if (units == Units::PressureUnits::MMHG) {
+            return (pressure / MMHG_PER_KPA) * PSI_PER_KPA;
         } else {
             // kPA
             return pressure * PSI_PER_KPA;
@@ -318,9 +328,43 @@ public:
             return (pressure / PSI_PER_KPA) * BAR_PER_KPA;
         } else if (units == Units::PressureUnits::BAR) {
             return pressure;
+        } else if (units == Units::PressureUnits::INHG) {
+            return (pressure / INHG_PER_KPA) * BAR_PER_KPA;
+        } else if (units == Units::PressureUnits::MMHG) {
+            return (pressure / MMHG_PER_KPA) * BAR_PER_KPA;
         } else {
             // kPA
             return pressure * BAR_PER_KPA;
+        }
+    }
+
+    static constexpr qreal toInHg(qreal pressure, Units::PressureUnits units) {
+        if (units == Units::PressureUnits::PSI) {
+            return (pressure / PSI_PER_KPA) * INHG_PER_KPA;
+        } else if (units == Units::PressureUnits::BAR) {
+            return (pressure / BAR_PER_KPA) * INHG_PER_KPA;
+        } else if (units == Units::PressureUnits::INHG) {
+            return pressure;
+        } else if (units == Units::PressureUnits::MMHG) {
+            return (pressure / MMHG_PER_KPA) * INHG_PER_KPA;
+        } else {
+            // kPA
+            return pressure * INHG_PER_KPA;
+        }
+    }
+
+    static constexpr qreal toMmHg(qreal pressure, Units::PressureUnits units) {
+        if (units == Units::PressureUnits::PSI) {
+            return (pressure / PSI_PER_KPA) * MMHG_PER_KPA;
+        } else if (units == Units::PressureUnits::BAR) {
+            return (pressure / BAR_PER_KPA) * MMHG_PER_KPA;
+        } else if (units == Units::PressureUnits::INHG) {
+            return (pressure / INHG_PER_KPA) * MMHG_PER_KPA;
+        } else if (units == Units::PressureUnits::MMHG) {
+            return pressure;
+        } else {
+            // kPA
+            return pressure * MMHG_PER_KPA;
         }
     }
 
@@ -344,6 +388,10 @@ public:
         case Units::PressureUnits::KPA:
             return toKpa(pressure, from);
             break;
+        case Units::PressureUnits::INHG:
+            return toInHg(pressure, from);
+        case Units::PressureUnits::MMHG:
+            return toMmHg(pressure, from);
         default:
             return 0;
         }

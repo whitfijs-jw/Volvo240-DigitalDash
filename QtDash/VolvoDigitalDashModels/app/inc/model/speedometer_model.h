@@ -2,15 +2,12 @@
 #define SPEEDOMETER_MODEL_H
 
 #include <QObject>
-#include <QAbstractListModel>
+#include <base_gauge_model.h>
+#include <QDebug>
 
-class SpeedometerModel : public QAbstractListModel
+class SpeedometerModel : public BaseGaugeModel
 {
     Q_OBJECT
-    Q_PROPERTY(qreal minValue READ minValue WRITE setMinValue NOTIFY minValueChanged)
-    Q_PROPERTY(qreal maxValue READ maxValue WRITE setMaxValue NOTIFY maxValueChanged)
-    Q_PROPERTY(qreal currentValue READ currentValue WRITE setCurrentValue NOTIFY currentValueChanged)
-    Q_PROPERTY(QString units READ units WRITE setUnits NOTIFY unitsChanged)
     Q_PROPERTY(qreal topValue READ topValue WRITE setTopValue NOTIFY topValueChanged)
     Q_PROPERTY(QString topUnits READ topUnits WRITE setTopUnits NOTIFY topUnitsChanged)
     Q_PROPERTY(int currentGear READ currentGear WRITE setCurrentGear NOTIFY currentGearChanged)
@@ -18,11 +15,7 @@ class SpeedometerModel : public QAbstractListModel
 public:
     static constexpr char SPEEDO_MODEL_NAME[] = "speedoModel";
 
-    enum SpeedometerModelRoles{
-        MinValueRole        = Qt::UserRole + 1,
-        MaxValueRole        = Qt::UserRole + 2,
-        CurrentValueRole    = Qt::UserRole + 3,
-        UnitsRole           = Qt::UserRole + 4,
+    enum class SpeedometerModelRoles{
         TopValueRole        = Qt::UserRole + 5,
         TopUnitsRole        = Qt::UserRole + 6,
         CurrentGearRole     = Qt::UserRole + 7,
@@ -82,39 +75,20 @@ public:
      */
     QHash<int, QByteArray> roleNames() const override;
 
-
-    qreal minValue();
-    qreal maxValue();
-    qreal currentValue();
-    QString units();
-
-    qreal topValue();
-    QString topUnits();
-
-    int currentGear();
+    qreal topValue() const;
+    QString topUnits() const;
+    int currentGear() const;
 
 private:
-    qreal mMinValue;
-    qreal mMaxValue;
-    qreal mCurrentValue;
-    QString mUnits;
-    qreal mTopValue;
-    QString mTopUnits;
+    qreal mTopValue {0.0};
+    QString mTopUnits {""};
     int mCurrentGear = 0;
 
 signals:
-    void minValueChanged();
-    void maxValueChanged();
-    void currentValueChanged();
-    void unitsChanged();
     void topValueChanged();
     void topUnitsChanged();
     void currentGearChanged();
 public slots:
-    void setMinValue(qreal minValue);
-    void setMaxValue(qreal maxValue);
-    void setCurrentValue(qreal currentValue);
-    void setUnits(QString units);
     void setTopValue(qreal topValue);
     void setTopUnits(QString topUnits);
     void setCurrentGear(int gear);

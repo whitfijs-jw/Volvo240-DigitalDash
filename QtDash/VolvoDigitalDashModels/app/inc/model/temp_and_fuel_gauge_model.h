@@ -18,7 +18,7 @@ class TempAndFuelGaugeModel : public QAbstractListModel
 public:
     static constexpr char TEMP_FUEL_CLUSTER_MODEL_NAME[] = "tempFuelModel";
 
-    enum TempAndFuelGaugeModelRoles {
+    enum class TempAndFuelGaugeModelRoles {
         MaxTempRole         = Qt::UserRole + 1,
         MinTempRole         = Qt::UserRole + 2,
         CurrentTempRole     = Qt::UserRole + 3,
@@ -82,22 +82,22 @@ public:
      */
     QHash<int, QByteArray> roleNames() const override;
 
-    qreal maxTemp();
-    qreal minTemp();
-    qreal currentTemp();
-    QString tempUnits();
-    qreal fuelLevel();
-    qreal highTempAlarm();
-    qreal lowFuelAlarm();
+    qreal maxTemp() const;
+    qreal minTemp() const;
+    qreal currentTemp() const;
+    QString tempUnits() const;
+    qreal fuelLevel() const;
+    qreal highTempAlarm() const;
+    qreal lowFuelAlarm() const;
 
 private:
-    qreal mMaxTemp;
-    qreal mMinTemp;
-    qreal mCurrentTemp;
-    QString mTempUnits;
-    qreal mFuelLevel;
-    qreal mHighTempAlarm;
-    qreal mLowFuelAlarm;
+    qreal mMaxTemp {1.0};
+    qreal mMinTemp {0.0};
+    qreal mCurrentTemp {1.0};
+    QString mTempUnits {""};
+    qreal mFuelLevel {1.0};
+    qreal mHighTempAlarm {1.0};
+    qreal mLowFuelAlarm {0.0};
 
 signals:
     void maxTempChanged();

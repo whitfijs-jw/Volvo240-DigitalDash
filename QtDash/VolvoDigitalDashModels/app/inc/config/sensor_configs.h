@@ -34,14 +34,16 @@ namespace SensorConfig {
         qreal rBalance; //!< balance resistor value in ohms
         QString units; //!< calibration data units
         qreal lag; //!< filtering value (0-1)
+        qreal lagStart; //!< start lag value
+        qreal lagDecay; //!< lag decay constant
         qreal vSupply; //!< supply voltage
 
         /**
          * @brief isValid
          * @return is config valid
          */
-        bool isValid() {
-            return true; //TODO: yea
+        bool isValid() const {
+            return true;
         }
     };
 
@@ -58,7 +60,7 @@ namespace SensorConfig {
          * @brief Check if calibration is valid
          * @return true if valid
          */
-        bool isValid() {
+        bool isValid() const {
             // we're assuming absolute pressure.
             return (p0V >= 0) && (p5V != p0V);
         }
@@ -83,7 +85,7 @@ namespace SensorConfig {
          * @brief Check if configuration is valid
          * @return true if valid
          */
-        bool isValid() {
+        bool isValid() const {
             return (t1 >= INVALID_TEMP) &&
                    (t2 >= INVALID_TEMP) &&
                    (t3 >= INVALID_TEMP) &&
@@ -138,6 +140,20 @@ namespace SensorConfig {
         qreal idleHighRpm; //!< high idle rpm
         qreal idleLowRpm; //!< low idle rpm
     };
+    /**
+     * @struct BacklightControlConfig
+     */
+    using BacklightControlConfig_t = struct BACKLIGHTCONTROLCONFIG {
+        qreal minDutyCycle;
+        qreal maxDutyCycle;
+        qreal lightsOffDutyCycle;
+        qreal lightsOnDutyCycle;
+        qreal minDimmerRatio;
+        qreal maxDimmerRatio;
+        bool useDimmer;
+        bool activeLow;
+    };
+
 }
 
 #endif // SENSOR_CONFIGS_H

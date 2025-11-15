@@ -35,8 +35,8 @@ public:
          * @brief isValid
          * @return is config valid
          */
-        bool isValid() {
-            return true; //TODO: yea
+        bool isValid() const {
+            return true;
         }
     };
 
@@ -44,14 +44,14 @@ public:
      * @brief Constructor
      * @param conf: 12V Analog input config
      */
-    Analog12VInput(Analog12VInputConfig conf);
+    explicit Analog12VInput(const Analog12VInputConfig& conf);
 
     /**
      * @brief Get current voltage
      * @param volts: voltage measured at ADC (0-Vref)
      * @return: measured voltage
      */
-    qreal getVoltage(qreal volts);
+    qreal getVoltage(qreal volts) const;
 private:
     Analog12VInputConfig mConfig; //!< 12V input config
 };

@@ -43,11 +43,11 @@ Item {
             source: "qrc:/Gauge.qml"
             asynchronous: true
             onLoaded: {
-                item.minValue = minValue
-                item.maxValue = maxValue
-                item.units = speedUnits
-                item.lowAlarm = minValue
-                item.highAlarm = maxValue
+                item.minValue = gaugeMin
+                item.maxValue = gaugeMax
+                item.units = gaugeUnits
+                item.lowAlarm = gaugeMin
+                item.highAlarm = gaugeMax
 
                 item.initialValueOffset = speedometer.initialValueOffset
 

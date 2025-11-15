@@ -63,12 +63,12 @@ public:
 
     }
 
-    QString getUnits() override {
+    QString getUnits() const override {
         return Units::UNITS_INCH;
     }
 
 public slots:
-    void transform(QVariant data, int channel) override {
+    void transform(const QVariant& data, int channel) override {
         if (channel == getChannel()) {
             emit sensorDataReady(SensorUtils::convert(data.toReal(), getUnits(), mSource->getUnits(channel)));
         }
@@ -83,12 +83,12 @@ public:
 
     }
 
-    QString getUnits() override {
+    QString getUnits() const override {
         return Units::UNITS_FOOT;
     }
 
 public slots:
-    void transform(QVariant data, int channel) override {
+    void transform(const QVariant& data, int channel) override {
         if (channel == getChannel()) {
             emit sensorDataReady(SensorUtils::convert(data.toReal(), getUnits(), mSource->getUnits(channel)));
         }
@@ -106,8 +106,8 @@ private slots:
     void initTestCase();
 
     void test_sensorSourceConstructor();
-    void test_sensorConstructor();
-    void test_sensor1Constructor();
+    void test_sensorConstructor() const;
+    void test_sensor1Constructor() const;
     void test_channelUpdate();
 
     void cleanupTestCase();

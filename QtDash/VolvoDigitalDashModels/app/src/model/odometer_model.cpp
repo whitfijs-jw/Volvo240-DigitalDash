@@ -1,4 +1,5 @@
 #include "odometer_model.h"
+#include <utils.h>
 
 OdometerModel::OdometerModel(QObject *parent) : QAbstractListModel{parent}
 {
@@ -8,9 +9,9 @@ OdometerModel::OdometerModel(QObject *parent) : QAbstractListModel{parent}
 QHash<int, QByteArray> OdometerModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
-    roles[OdometerModelRoles::OdoValueRole] = "odometerValue";
-    roles[OdometerModelRoles::TripAValueRole] = "tripAValue";
-    roles[OdometerModelRoles::TripBValueRole] = "tripBValue";
+    roles[DashUtils::to_underlying(OdometerModelRoles::OdoValueRole)] = "odometerValue";
+    roles[DashUtils::to_underlying(OdometerModelRoles::TripAValueRole)] = "tripAValue";
+    roles[DashUtils::to_underlying(OdometerModelRoles::TripBValueRole)] = "tripBValue";
     return roles;
 }
 
@@ -18,15 +19,15 @@ QVariant OdometerModel::headerData(int section, Qt::Orientation orientation, int
 {
     (void)section;
     (void)orientation;
-    if (role == OdometerModelRoles::OdoValueRole)
+    if (role == DashUtils::to_underlying(OdometerModelRoles::OdoValueRole))
     {
         return QVariant("odometerValue");
     }
-    else if(role == OdometerModelRoles::TripAValueRole)
+    else if(role == DashUtils::to_underlying(OdometerModelRoles::TripAValueRole))
     {
         return QVariant("tripAValue");
     }
-    else if(role == OdometerModelRoles::TripBValueRole)
+    else if(role == DashUtils::to_underlying(OdometerModelRoles::TripBValueRole))
     {
         return QVariant("tripBValue");
     }
@@ -42,11 +43,11 @@ int OdometerModel::rowCount(const QModelIndex &parent) const
 QVariant OdometerModel::data(const QModelIndex &index, int role) const
 {
     (void)index;
-    if (role == OdometerModelRoles::OdoValueRole) {
+    if (role == DashUtils::to_underlying(OdometerModelRoles::OdoValueRole)) {
         return mOdometerValue;
-    } else if(role == OdometerModelRoles::TripAValueRole) {
+    } else if(role == DashUtils::to_underlying(OdometerModelRoles::TripAValueRole)) {
         return mTripAValue;
-    } else if(role == OdometerModelRoles::TripBValueRole) {
+    } else if(role == DashUtils::to_underlying(OdometerModelRoles::TripBValueRole)) {
         return mTripBValue;
     }
     return mOdometerValue;
@@ -55,11 +56,11 @@ QVariant OdometerModel::data(const QModelIndex &index, int role) const
 bool OdometerModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     (void)index;
-    if (role == OdometerModelRoles::OdoValueRole) {
+    if (role == DashUtils::to_underlying(OdometerModelRoles::OdoValueRole)) {
         setOdometerValue(value.toReal());
-    } else if(role == OdometerModelRoles::TripAValueRole) {
+    } else if(role == DashUtils::to_underlying(OdometerModelRoles::TripAValueRole)) {
         setTripAValue(value.toReal());
-    } else if(role == OdometerModelRoles::TripBValueRole) {
+    } else if(role == DashUtils::to_underlying(OdometerModelRoles::TripBValueRole)) {
         setTripBValue(value.toReal());
     } else {
         emit layoutChanged();
@@ -72,15 +73,15 @@ Qt::ItemFlags OdometerModel::flags(const QModelIndex &index) const {
     return Qt::ItemIsEditable;
 }
 
-qreal OdometerModel::odometerValue() {
+qreal OdometerModel::odometerValue() const {
     return mOdometerValue;
 }
 
-qreal OdometerModel::tripAValue() {
+qreal OdometerModel::tripAValue() const{
     return mTripAValue;
 }
 
-qreal OdometerModel::tripBValue() {
+qreal OdometerModel::tripBValue() const {
     return mTripBValue;
 }
 
@@ -88,7 +89,7 @@ void OdometerModel::setOdometerValue(qreal odoValue) {
     mOdometerValue = odoValue;
     emit dataChanged(createIndex(0,0),
                      createIndex(1, 0),
-                     QVector<int>() << OdometerModelRoles::OdoValueRole);
+                     QVector<int>() << DashUtils::to_underlying(OdometerModelRoles::OdoValueRole));
     emit odometerValueChanged();
 }
 
@@ -96,7 +97,7 @@ void OdometerModel::setTripAValue(qreal tripAValue) {
     mTripAValue = tripAValue;
     emit dataChanged(createIndex(0,0),
                      createIndex(1, 0),
-                     QVector<int>() << OdometerModelRoles::TripAValueRole);
+                     QVector<int>() << DashUtils::to_underlying(OdometerModelRoles::TripAValueRole));
     emit tripAValueChanged();
 }
 
@@ -104,6 +105,6 @@ void OdometerModel::setTripBValue(qreal tripBValue) {
     mTripBValue = tripBValue;
     emit dataChanged(createIndex(0,0),
                      createIndex(1, 0),
-                     QVector<int>() << OdometerModelRoles::TripBValueRole);
+                     QVector<int>() << DashUtils::to_underlying(OdometerModelRoles::TripBValueRole));
     emit tripBValueChanged();
 }

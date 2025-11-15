@@ -20,13 +20,11 @@ public:
      * @param context: QML context to register model
      */
     AccessoryGauge(QObject * parent, Config * config,
-                   QList<Sensor *> sensors, AccessoryGaugeModel * model,
+                   QList<const Sensor *> sensors, AccessoryGaugeModel * model,
                    QString modelName, QQmlContext * context);
 
-public slots:
-
 private:
-
+    GaugeConfig::GaugeConfig mGaugeConfig;
 };
 
 #endif // GAUGE_ACCESSORY_H

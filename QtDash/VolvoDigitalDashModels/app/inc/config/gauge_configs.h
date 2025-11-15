@@ -1,7 +1,28 @@
 #ifndef GAUGE_CONFIGS_H
 #define GAUGE_CONFIGS_H
 
+#include <qtypeinfo.h>
+#include <QString>
+
 namespace GaugeConfig {
+
+    /**
+     * @ Struc AltDisplayUnits
+     */
+    using AltDisplayUnits = struct altDisplayUnits {
+        bool use = false;
+        bool aboveCutoff = false;
+        qreal cutoff;
+        QString displayUnits;
+
+        bool checkCutoff(qreal val) const {
+            if (aboveCutoff) {
+                return val > cutoff;
+            } else {
+                return val < cutoff;
+            }
+        }
+    };
 
     /**
      * @struct GaugeConfig
@@ -12,6 +33,7 @@ namespace GaugeConfig {
         qreal lowAlarm; //!< low alarm
         qreal highAlarm; //!< high alarm
         QString displayUnits; //!< display units
+        AltDisplayUnits altDisplayUnits;
     };
 
     /**

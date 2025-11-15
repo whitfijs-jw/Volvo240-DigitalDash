@@ -24,7 +24,7 @@ public:
      * @brief Ntc constructor
      * @param config: sensor config
      */
-    Ntc(SensorConfig::TempSensorConfig config);
+    explicit Ntc(const SensorConfig::TempSensorConfig& config);
 
     /**
      * @brief Calculate temp from ADC voltage
@@ -32,13 +32,13 @@ public:
      * @param units: temperature units
      * @return calculate temperature in desired units
      */
-    qreal calculateTemp(qreal volts, Units::TemperatureUnits units);
+    qreal calculateTemp(qreal volts, Units::TemperatureUnits units) const;
 
     /**
      * @brief Get calibration curve coefficients
      * @return current coefficients
      */
-    SteinhartHartCoefficients_t getCoefficients() {
+    SteinhartHartCoefficients_t getCoefficients() const {
         return mCoeff;
     }
 

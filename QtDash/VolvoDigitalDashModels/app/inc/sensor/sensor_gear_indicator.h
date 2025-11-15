@@ -30,7 +30,7 @@ public:
      * @brief Get sensor units
      * @return units string
      */
-    QString getUnits() override {
+    QString getUnits() const override {
         return "gear";
     }
 
@@ -49,14 +49,14 @@ public slots:
      * @param data: data from source
      * @param channel: source channel
      */
-    void transform(QVariant data, int channel) override;
+    void transform(const QVariant& data, int channel) override;
 
     /**
      * @brief Transform incoming VSS data to estimate the current gear
      * @param data from VSS source
      * @param channel VSS source channel
      */
-    void transformVssData(QVariant data, int channel);
+    void transformVssData(const QVariant& data, int channel);
 
 private:
     static constexpr qreal SIGMA_MAX = 0.25; //!< pseudo-normal distribution sigma max value

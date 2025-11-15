@@ -91,9 +91,9 @@ public:
      * @param reg
      * @return
      */
-    uint8_t read(RegisterAddr reg);
+    uint8_t read(RegisterAddr reg) const ;
 
-    int getNumChannels() {
+    int getNumChannels() const{
         return 16;
     }
 private:

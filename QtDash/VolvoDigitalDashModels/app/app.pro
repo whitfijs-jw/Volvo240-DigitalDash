@@ -28,6 +28,7 @@ SOURCES += src/main.cpp \
     src/ll/pulse_counter.cpp \
     src/ll/pwm.cpp \
     src/model/accessory_gauge_model.cpp \
+    src/model/base_gauge_model.cpp \
     src/model/indicator_model.cpp \
     src/model/odometer_model.cpp \
     src/model/speedometer_model.cpp \
@@ -427,6 +428,7 @@ HEADERS += \
     ../../eigen/Eigen/src/plugins/ReshapedMethods.h \
     inc/config/can_frame_config.h \
     inc/config/config.h \
+    inc/config/config_keys.h \
     inc/config/gauge_configs.h \
     inc/config/sensor_configs.h \
     inc/dash/dash.h \
@@ -445,6 +447,7 @@ HEADERS += \
     inc/ll/tach_input.h \
     inc/ll/vss_input.h \
     inc/model/accessory_gauge_model.h \
+    inc/model/base_gauge_model.h \
     inc/model/indicator_model.h \
     inc/model/odometer_model.h \
     inc/model/speedometer_model.h \
@@ -476,7 +479,8 @@ HEADERS += \
     inc/utils/gps_helper.h \
     inc/utils/key_press_emitter.h \
     inc/utils/sensor_utils.h \
-    inc/utils/units.h
+    inc/utils/units.h \
+    inc/utils/utils.h
 
 INCLUDEPATH += \
     Headers \

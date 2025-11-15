@@ -6,6 +6,9 @@
 #include <QMap>
 #include <QKeyEvent>
 
+#include <vector>
+#include <memory>
+
 #include <tachometer_model.h>
 #include <accessory_gauge_model.h>
 #include <speedometer_model.h>
@@ -66,6 +69,8 @@ public:
      * @param context: qml context to link the gauge models to their respective c++ model
      */
     Dash(QObject * parent, QQmlContext * context);
+
+    ~Dash() final = default;
     /**
      * @brief Initialize everything
      */
@@ -86,7 +91,7 @@ public:
     }
 
 signals:
-    void keyPress(QKeyEvent * event);
+    void keyPress(QKeyEvent* event);
 
 public slots:
     void odoTripReset(int trip);
@@ -96,29 +101,30 @@ private:
     EventTimers mEventTiming; //!< Event Timer
     Config mConfig; //!< Dash Config
 
-    DashLights * mDashLights; //!< Dash lights
+    std::unique_ptr<DashLights> mDashLights; //!< Dash lights
 
-    AdcSource * mAdcSource; //!< ADC source
-    GpsSource * mGpsSource; //!< GPS speed/position/heading source
-    TachSource * mTachSource; //!< tach source (pulse counter)
-    VssSource * mVssSource; //!< vehicle speed sensor source (pulse counter)
-    CanSource * mCanSource; //!< can data source
+    AdcSource mAdcSource; //!< ADC source
+    GpsSource mGpsSource; //!< GPS speed/position/heading source
+    TachSource mTachSource; //!< tach source (pulse counter)
+    VssSource mVssSource; //!< vehicle speed sensor source (pulse counter)
+    CanSource mCanSource; //!< can data source
 
-    Map_Sensor * mMapSensor; //!< map sensor
-    NtcSensor * mCoolantTempSensor; //!< coolant temp sensor
-    NtcSensor * mAmbientTempSensor; //!< ambient temp sensor
-    NtcSensor * mOilTempSensor; //!< oil temp sensor
-    VoltmeterSensor * mVoltmeterSensor; //!< voltmeter sensor
-    VoltmeterSensor * mDimmerVoltageSensor; //!< rheostat dimmer voltage
-    ResistiveSensor * mOilPressureSensor; //!< oil pressure sensor
-    ResistiveSensor * mFuelLevelSensor; //!< fuel level sensor
-    SpeedometerSensor<GpsSource> * mGpsSpeedoSensor; //!< speedometer w/ gps input
-    SpeedometerSensor<VssSource> * mSpeedoSensor; //!< speedometer w/ vss input
-    TachSensor * mTachSensor; //!< tachometer sensor
-    OdometerSensor * mOdoSensor; //!< odometer
-    OdometerSensor * mTripAOdoSensor; //!< trip a counter
-    OdometerSensor * mTripBOdoSensor; //!< trip b counter
-    GearSensor * mGearSensor;
+    Map_Sensor mMapSensor; //!< map sensor
+    NtcSensor mCoolantTempSensor; //!< coolant temp sensor
+    NtcSensor mAmbientTempSensor; //!< ambient temp sensor
+    NtcSensor mOilTempSensor; //!< oil temp sensor
+    VoltmeterSensor mVoltmeterSensor; //!< voltmeter sensor
+    VoltmeterSensor mDimmerVoltageSensor; //!< rheostat dimmer voltage
+    ResistiveSensor mOilPressureSensor; //!< oil pressure sensor
+    ResistiveSensor mFuelLevelSensor; //!< fuel level sensor
+    SpeedometerSensor<GpsSource> mGpsSpeedoSensor; //!< speedometer w/ gps input
+    SpeedometerSensor<VssSource> mSpeedoSensor; //!< speedometer w/ vss input
+    TachSensor mTachSensor; //!< tachometer sensor
+    OdometerSensor mOdoSensor; //!< odometer
+    OdometerSensor mTripAOdoSensor; //!< trip a counter
+    OdometerSensor mTripBOdoSensor; //!< trip b counter
+    GearSensor mGearSensor;
+
 
     AccessoryGaugeModel mBoostModel; //!< boost pressure QML model
     AccessoryGaugeModel mOilTemperatureModel; //!< oil temperature QML model
@@ -132,21 +138,21 @@ private:
     SpeedometerModel mSpeedoModel; //!< speedometer QML model
     TachometerModel mTachoModel; //!< Tachometer QML model
 
-    AccessoryGauge * mBoostGauge; //!< boost pressure gauge
-    AccessoryGauge * mCoolantTempGauge; //!< coolant temp gauge
-    AccessoryGauge * mOilTempGauge; //!< oil temp gauge
-    AccessoryGauge * mVoltmeterGauge; //!< voltmeter gauge
-    AccessoryGauge * mOilPressureGauge; //!< oil pressure gauge
-    AccessoryGauge * mFuelLevelGauge; //!< fuel level gauge
-    TempFuelClusterGauge * mTempFuelClusterGauge; //!< 240 combined temp/fuel gauge
+    std::unique_ptr<AccessoryGauge> mBoostGauge;
+    std::unique_ptr<AccessoryGauge> mCoolantTempGauge; //!< coolant temp gauge
+    std::unique_ptr<AccessoryGauge> mOilTempGauge; //!< oil temp gauge
+    std::unique_ptr<AccessoryGauge> mVoltmeterGauge; //!< voltmeter gauge
+    std::unique_ptr<AccessoryGauge> mOilPressureGauge; //!< oil pressure gauge
+    std::unique_ptr<AccessoryGauge> mFuelLevelGauge; //!< fuel level gauge
+    std::unique_ptr<TempFuelClusterGauge> mTempFuelClusterGauge; //!< 240 combined temp/fuel gauge
 
-    SpeedometerGauge * mSpeedoGauge; //!< speedometer gauge
-    TachometerGauge * mTachoGauge; //!< tachometer gauge
-    OdometerGauge * mOdoGauge; //!< odometer gauge
+    std::unique_ptr<SpeedometerGauge> mSpeedoGauge; //!< speedometer gauge
+    std::unique_ptr<TachometerGauge> mTachoGauge; //!< tachometer gauge
+    std::unique_ptr<OdometerGauge> mOdoGauge; //!< odometer gauge
 
-    BackLightControl * mBacklightControl;
+    std::unique_ptr<BackLightControl> mBacklightControl;
 
-    QVector<CanSensor *> mCanSensors;
+    std::vector<std::unique_ptr<CanSensor>> mCanSensors;
 
     /**
      * @brief Initialize sensor sources
@@ -163,7 +169,7 @@ private:
      * @param gaugeName Gauge name
      * @return pointer to the CAN sensor or nullptr
      */
-    CanSensor * getCanSensor(QString gaugeName);
+    const CanSensor * getCanSensor(QString gaugeName);
 
     /**
      * @brief Initialize sensors and connect the sensor sources

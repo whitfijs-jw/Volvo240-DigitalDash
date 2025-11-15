@@ -14,7 +14,7 @@ class WarningLightModel : public QAbstractListModel
     Q_PROPERTY(QColor lightColor READ lightColor WRITE setLightColor NOTIFY onLightColorChanged)
 
 public:
-    enum WarningLightRoles {
+    enum class WarningLightRoles {
         onRole        = Qt::UserRole + 1,
         flippedRole   = Qt::UserRole + 2,
         textRole      = Qt::UserRole + 3,
@@ -75,16 +75,16 @@ public:
      */
     QHash<int, QByteArray> roleNames() const override;
 
-    bool on();
-    bool flipped();
-    QString warningText();
-    QColor lightColor();
+    bool on() const;
+    bool flipped() const;
+    QString warningText() const;
+    QColor lightColor() const;
 
 private:
-    bool mOn;
-    bool mFlipped;
-    QString mWarningText;
-    QColor mLightColor;
+    bool mOn {false};
+    bool mFlipped {false};
+    QString mWarningText {""};
+    QColor mLightColor {0,0,0};
 
 signals:
     void onChanged();

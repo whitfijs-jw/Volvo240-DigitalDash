@@ -1,6 +1,6 @@
 #include <map_sensor.h>
 
-MapSensor::MapSensor(SensorConfig::MapSensorConfig config, qreal vRef) {
+MapSensor::MapSensor(const SensorConfig::MapSensorConfig& config, qreal vRef) {
     setVoltages(config.p0V, config.p5V, vRef, config.units);
 }
 
@@ -9,7 +9,7 @@ MapSensor::MapSensor(qreal pressure0V, qreal pressure5V,
     setVoltages(pressure0V, pressure5V, vRef, units);
 }
 
-qreal MapSensor::getAbsolutePressure(qreal volts, Units::PressureUnits units) {
+qreal MapSensor::getAbsolutePressure(qreal volts, Units::PressureUnits units) const {
     // pressure in kPa
     qreal p = (volts * mSlope) + mOffset;
 

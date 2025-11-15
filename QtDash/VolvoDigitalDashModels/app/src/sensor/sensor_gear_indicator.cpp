@@ -78,13 +78,13 @@ int GearSensor::estimateGear(qreal rpm,
     return gearEstDist;
 }
 
-void GearSensor::transform(QVariant data, int channel) {
+void GearSensor::transform(const QVariant& data, int channel) {
     if (channel == getChannel()) {
         mCurrentRpm = data.toReal();
     }
 }
 
-void GearSensor::transformVssData(QVariant data, int channel) {
+void GearSensor::transformVssData(const QVariant& data, int channel) {
     if (channel == mVssChannel) {
         mCurrentSpeed = data.toReal();
 

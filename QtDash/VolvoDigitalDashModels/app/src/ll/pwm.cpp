@@ -1,6 +1,7 @@
 #include <pwm.h>
 
-Pwm::Pwm(std::string path, std::string dev,
+Pwm::Pwm(const std::string& path,
+         const std::string& dev,
          int periodNsec, float dutyCycle,
          bool activeLow) :
     mPath(path), mDev(dev), mPeriod(periodNsec),
@@ -29,12 +30,12 @@ Pwm::Pwm(std::string path, std::string dev,
 }
 
 
-int Pwm::enable(bool enable){
+int Pwm::enable(bool enable) const {
     return writeAttribute(ENABLE, enable);
 }
 
 int Pwm::setFrequency(float frequency) {
-    int nsecPeriod = (int) std::round(1.0 / frequency * 1.0e9);
+    auto nsecPeriod = static_cast<int>(std::round(1.0 / frequency * 1.0e9));
     return setPeriod(nsecPeriod);
 }
 
@@ -62,7 +63,6 @@ int Pwm::setDutyCycle(float dutyCycle) {
     int dc = std::round((float) mPeriod * dutyCycle);
 
     if (dc == mDutyCycle) {
-        //std::cout << "duty cycle already set" << std::endl;
         return dc;
     }
 
@@ -75,7 +75,7 @@ int Pwm::setDutyCycle(float dutyCycle) {
     return -1;
 }
 
-int Pwm::writeAttribute(std::string attr, int value) {
+int Pwm::writeAttribute(const std::string& attr, int value) const {
     // read the nano second spacing variable
     std::string fullPath = mPath + attr;
     std::ofstream ofs(fullPath, std::ofstream::out);
@@ -90,7 +90,7 @@ int Pwm::writeAttribute(std::string attr, int value) {
     return value;
 }
 
-bool Pwm::writeAttribute(std::string attr, std::string value) {
+bool Pwm::writeAttribute(const std::string& attr, const std::string& value) const {
     // read variable
     std::string fullPath = mPath + attr;
     std::ofstream ofs(fullPath, std::ofstream::out);

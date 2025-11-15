@@ -70,7 +70,8 @@ public:
                     // name exists within default mapping
                     mCanMap.insert(mDefaultChannelMap.value(conf.getName()), conf.getName());
                 } else {
-                    mCanMap.insert(mOtherChannels++, conf.getName());
+                    mCanMap.insert(mOtherChannels, conf.getName());
+                    mOtherChannels++;
                 }
             }
 
@@ -111,7 +112,7 @@ public:
         return 20;
     }
 
-    bool addCanFrameConfig(CanFrameConfig * frameConfig, CanDataChannel channel) {
+    bool addCanFrameConfig(const CanFrameConfig * frameConfig, CanDataChannel channel) {
         mCanMap.insert((int)channel, frameConfig->getName());
         return true;
     }
@@ -198,27 +199,13 @@ public slots:
     void updateAll() override {
         while(mDevice->framesAvailable()) {
             QCanBusFrame frame = mDevice->readFrame();
-//            /*** test frame start ***/
-//            qDebug() << "Frame type: " << frame.frameType();
-//            qDebug() << "*** Begin Frame ID: " << frame.frameId();
-//            qDebug() << "Frame Data: " << frame.payload();
-//            qDebug() << "*** End Frame ID: " << frame.frameId();
-
-//            CanFrameConfig * tpsConfig = new CanFrameConfig(1512, 6, 2, false, "tps", "%");
-//            tpsConfig->addOperation(CanFrameConfig::OperationType::DIVIDE, 10.0);
-
-//            if (frame.frameId() == tpsConfig->getFrameId()) {
-//                qreal tps = tpsConfig->getValue(frame.payload());
-//                qDebug() << "TPS: " << tps;
-//            }
-//            /*** test frame end ***/
 
             for (int channel : mCanMap.keys()) {
                 auto frameConfig = mConfig->getCanFrameConfig(mCanMap.value(channel));
                 if (frameConfig != nullptr &&
                     (frameConfig->getFrameId() == frame.frameId())) {
                     qreal value = frameConfig->getValue(frame.payload());
-                    emit dataReady(value, (int) channel);
+                    emit dataReady(value, channel);
                 }
             }
         }

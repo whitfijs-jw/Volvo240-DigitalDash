@@ -3,7 +3,8 @@
 
 #include <sensor.h>
 #include <sensor_source_vss.h>
-
+#include <config.h>
+#include <config_keys.h>
 /**
  * @brief Odometer Sensor
  */
@@ -19,21 +20,21 @@ public:
      */
     OdometerSensor(QObject * parent, Config * config,
                    VssSource * source, int channel,
-                   SensorConfig::OdometerConfig * odoConfig = nullptr) :
+                   const SensorConfig::OdometerConfig& odoConfig) :
            Sensor(parent, config, source, channel) {
 
         // Check if the optional input
-        if (odoConfig != nullptr) {
+        if (odoConfig.name != ConfigKeys::ODO_NAME_ODOMETER) {
             // this has its own config -- likely a trip counter
-            mOdoConfig = *odoConfig;
+            mOdoConfig = odoConfig;
         } else {
             // use the odo values from the config file
-            mOdoConfig = mConfig->getOdometerConfig(Config::ODO_NAME_ODOMETER);
+            mOdoConfig = mConfig->getOdometerConfig(ConfigKeys::ODO_NAME_ODOMETER);
             mCanReset = false;
         }
     }
 
-    QString getUnits() override {
+    QString getUnits() const override {
         Units::DistanceUnits units = mOdoConfig.units;
 
         switch ((int) units) {
@@ -66,7 +67,7 @@ public slots:
      * @param data: data from source
      * @param channel: source channel
      */
-    void transform(QVariant data, int channel) override {
+    void transform(const QVariant& data, int channel) override {
         if (channel == getChannel()) {
             // Calculate distance traveled
             int pulseCount = data.toInt();

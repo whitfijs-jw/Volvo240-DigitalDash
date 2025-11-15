@@ -1,22 +1,26 @@
-#ifndef INDICATOR_MODEL_H
-#define INDICATOR_MODEL_H
+#ifndef BASE_GAUGE_MODEL_H
+#define BASE_GAUGE_MODEL_H
 
 #include <QObject>
 #include <QAbstractListModel>
 
-class IndicatorModel : public QAbstractListModel
+class BaseGaugeModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(bool on READ on WRITE setOn NOTIFY onChanged)
-    Q_PROPERTY(bool flipped READ flipped WRITE setFlipped NOTIFY onFlipped)
+    Q_PROPERTY(qreal minValue READ minValue WRITE setMinValue NOTIFY minValueChanged)
+    Q_PROPERTY(qreal maxValue READ maxValue WRITE setMaxValue NOTIFY maxValueChanged)
+    Q_PROPERTY(qreal currentValue READ currentValue WRITE setCurrentValue NOTIFY currentValueChanged)
+    Q_PROPERTY(QString units READ units WRITE setUnits NOTIFY unitsChanged)
 
 public:
-    enum class IndicatorRoles {
-        onRole        = Qt::UserRole + 1,
-        flippedRole   = Qt::UserRole + 2,
+    enum class BaseGaugeRoles {
+        MinValueRole        = Qt::UserRole + 1,
+        MaxValueRole        = Qt::UserRole + 2,
+        CurrentValueRole    = Qt::UserRole + 3,
+        UnitsRole           = Qt::UserRole + 4,
     };
 
-    explicit IndicatorModel(QObject *parent = nullptr);
+    explicit BaseGaugeModel(QObject * parent = nullptr);
 
     /**
      * Provides the header data for given params.
@@ -70,20 +74,28 @@ public:
      */
     QHash<int, QByteArray> roleNames() const override;
 
-    bool on() const;
-    bool flipped() const;
-
-private:
-    bool mOn {false};
-    bool mFlipped {false};
+    qreal minValue() const;
+    qreal maxValue() const;
+    qreal currentValue() const;
+    QString units() const;
 
 signals:
-    void onChanged();
-    void onFlipped();
+    void minValueChanged();
+    void maxValueChanged();
+    void currentValueChanged();
+    void unitsChanged();
 
 public slots:
-    void setOn(bool on);
-    void setFlipped(bool flipped);
+    void setMinValue(qreal minValue);
+    void setMaxValue(qreal maxValue);
+    void setCurrentValue(qreal currentValue);
+    void setUnits(QString units);
+
+private:
+    qreal mMinValue {0.0};
+    qreal mMaxValue {0.0};
+    qreal mCurrentValue {0.0};
+    QString mUnits {""};
 };
 
-#endif // INDICATOR_MODEL_H
+#endif // BASE_GAUGE_MODEL_H

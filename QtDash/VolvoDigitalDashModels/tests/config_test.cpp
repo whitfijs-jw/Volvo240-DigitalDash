@@ -19,15 +19,15 @@ void ConfigTest::testLoadSensorChannelConfig_data() {
 
     QSettings * dummyConfig = new QSettings("emptyConfig.ini", QSettings::IniFormat);
 
-    dummyConfig->beginGroup(Config::SENSOR_CHANNEL_GROUP);
-    dummyConfig->setValue(Config::COOLANT_TEMP_KEY, "");
-    dummyConfig->setValue(Config::FUEL_LEVEL_KEY, "");
-    dummyConfig->setValue(Config::OIL_PRESSURE_KEY, "");
-    dummyConfig->setValue(Config::OIL_TEMP_KEY, "");
-    dummyConfig->setValue(Config::MAP_SENSOR_KEY, "");
-    dummyConfig->setValue(Config::AMBIENT_TEMP_KEY, "");
-    dummyConfig->setValue(Config::DIMMER_VOLTAGE_KEY, "");
-    dummyConfig->setValue(Config::FUSE8_12V_KEY, "");
+    dummyConfig->beginGroup(ConfigKeys::SENSOR_CHANNEL_GROUP);
+    dummyConfig->setValue(ConfigKeys::COOLANT_TEMP_KEY, "");
+    dummyConfig->setValue(ConfigKeys::FUEL_LEVEL_KEY, "");
+    dummyConfig->setValue(ConfigKeys::OIL_PRESSURE_KEY, "");
+    dummyConfig->setValue(ConfigKeys::OIL_TEMP_KEY, "");
+    dummyConfig->setValue(ConfigKeys::MAP_SENSOR_KEY, "");
+    dummyConfig->setValue(ConfigKeys::AMBIENT_TEMP_KEY, "");
+    dummyConfig->setValue(ConfigKeys::DIMMER_VOLTAGE_KEY, "");
+    dummyConfig->setValue(ConfigKeys::FUSE8_12V_KEY, "");
     dummyConfig->endGroup();
 
     QTest::addRow("empty_config") << "emptyConfig.ini" << false;
@@ -35,15 +35,15 @@ void ConfigTest::testLoadSensorChannelConfig_data() {
 
     QSettings * validConfig = new QSettings("validConfig.ini", QSettings::IniFormat);
 
-    validConfig->beginGroup(Config::SENSOR_CHANNEL_GROUP);
-    validConfig->setValue(Config::COOLANT_TEMP_KEY, 0);
-    validConfig->setValue(Config::FUEL_LEVEL_KEY, 1);
-    validConfig->setValue(Config::OIL_PRESSURE_KEY, 2);
-    validConfig->setValue(Config::OIL_TEMP_KEY, 3);
-    validConfig->setValue(Config::MAP_SENSOR_KEY, 4);
-    validConfig->setValue(Config::AMBIENT_TEMP_KEY, 5);
-    validConfig->setValue(Config::DIMMER_VOLTAGE_KEY, 6);
-    validConfig->setValue(Config::FUSE8_12V_KEY, 7);
+    validConfig->beginGroup(ConfigKeys::SENSOR_CHANNEL_GROUP);
+    validConfig->setValue(ConfigKeys::COOLANT_TEMP_KEY, 0);
+    validConfig->setValue(ConfigKeys::FUEL_LEVEL_KEY, 1);
+    validConfig->setValue(ConfigKeys::OIL_PRESSURE_KEY, 2);
+    validConfig->setValue(ConfigKeys::OIL_TEMP_KEY, 3);
+    validConfig->setValue(ConfigKeys::MAP_SENSOR_KEY, 4);
+    validConfig->setValue(ConfigKeys::AMBIENT_TEMP_KEY, 5);
+    validConfig->setValue(ConfigKeys::DIMMER_VOLTAGE_KEY, 6);
+    validConfig->setValue(ConfigKeys::FUSE8_12V_KEY, 7);
     validConfig->endGroup();
 
     QTest::addRow("valid_config") << "validConfig.ini" << true;
@@ -54,15 +54,15 @@ void ConfigTest::testLoadSensorChannelConfig_data() {
         QTextStream(&configName) << "invalidValueConfig" << i << ".ini";
         QSettings * invalidValueConfig = new QSettings(configName, QSettings::IniFormat);
 
-        invalidValueConfig->beginGroup(Config::SENSOR_CHANNEL_GROUP);
-        invalidValueConfig->setValue(Config::COOLANT_TEMP_KEY, i == 0 ? -1 : 0);
-        invalidValueConfig->setValue(Config::FUEL_LEVEL_KEY,i == 1 ? -1 : 1);
-        invalidValueConfig->setValue(Config::OIL_PRESSURE_KEY, i == 2 ? -1 : 2);
-        invalidValueConfig->setValue(Config::OIL_TEMP_KEY, i == 3 ? -1 : 3);
-        invalidValueConfig->setValue(Config::MAP_SENSOR_KEY, i == 4 ? -1 : 4);
-        invalidValueConfig->setValue(Config::AMBIENT_TEMP_KEY, i == 5 ? -1 : 5);
-        invalidValueConfig->setValue(Config::DIMMER_VOLTAGE_KEY, i == 6 ? -1 : 6);
-        invalidValueConfig->setValue(Config::FUSE8_12V_KEY, i == 7 ? -1 : 7);
+        invalidValueConfig->beginGroup(ConfigKeys::SENSOR_CHANNEL_GROUP);
+        invalidValueConfig->setValue(ConfigKeys::COOLANT_TEMP_KEY, i == 0 ? -1 : 0);
+        invalidValueConfig->setValue(ConfigKeys::FUEL_LEVEL_KEY,i == 1 ? -1 : 1);
+        invalidValueConfig->setValue(ConfigKeys::OIL_PRESSURE_KEY, i == 2 ? -1 : 2);
+        invalidValueConfig->setValue(ConfigKeys::OIL_TEMP_KEY, i == 3 ? -1 : 3);
+        invalidValueConfig->setValue(ConfigKeys::MAP_SENSOR_KEY, i == 4 ? -1 : 4);
+        invalidValueConfig->setValue(ConfigKeys::AMBIENT_TEMP_KEY, i == 5 ? -1 : 5);
+        invalidValueConfig->setValue(ConfigKeys::DIMMER_VOLTAGE_KEY, i == 6 ? -1 : 6);
+        invalidValueConfig->setValue(ConfigKeys::FUSE8_12V_KEY, i == 7 ? -1 : 7);
         invalidValueConfig->endGroup();
 
         QTest::addRow(configName.toStdString().c_str()) << configName << false;
@@ -86,18 +86,18 @@ void ConfigTest::testLoadDashLightsConfig_data() {
 
     QSettings * emptyConfig = new QSettings("emptyConfig.ini", QSettings::IniFormat);
 
-    emptyConfig->beginGroup(Config::DASH_LIGHT_GROUP);
-    emptyConfig->setValue(Config::OIL_PRESSURE_SW_KEY, "");
-    emptyConfig->setValue(Config::OD_LAMP_KEY, "");
-    emptyConfig->setValue(Config::HIGH_BEAM_KEY, "");
-    emptyConfig->setValue(Config::BRAKE_FAILURE_KEY, "");
-    emptyConfig->setValue(Config::BULB_FAILURE_KEY, "");
-    emptyConfig->setValue(Config::CHARGING_LIGHT_KEY, "");
-    emptyConfig->setValue(Config::BLINKER_LEFT_KEY, "");
-    emptyConfig->setValue(Config::BLINKER_RIGHT_KEY, "");
-    emptyConfig->setValue(Config::OD_LAMP_AUTO, "");
-    emptyConfig->setValue(Config::CHECK_ENGINE_KEY, "");
-    emptyConfig->setValue(Config::CONN_32_PIN3, "");
+    emptyConfig->beginGroup(ConfigKeys::DASH_LIGHT_GROUP);
+    emptyConfig->setValue(ConfigKeys::OIL_PRESSURE_SW_KEY, "");
+    emptyConfig->setValue(ConfigKeys::OD_LAMP_KEY, "");
+    emptyConfig->setValue(ConfigKeys::HIGH_BEAM_KEY, "");
+    emptyConfig->setValue(ConfigKeys::BRAKE_FAILURE_KEY, "");
+    emptyConfig->setValue(ConfigKeys::BULB_FAILURE_KEY, "");
+    emptyConfig->setValue(ConfigKeys::CHARGING_LIGHT_KEY, "");
+    emptyConfig->setValue(ConfigKeys::BLINKER_LEFT_KEY, "");
+    emptyConfig->setValue(ConfigKeys::BLINKER_RIGHT_KEY, "");
+    emptyConfig->setValue(ConfigKeys::OD_LAMP_AUTO, "");
+    emptyConfig->setValue(ConfigKeys::CHECK_ENGINE_KEY, "");
+    emptyConfig->setValue(ConfigKeys::CONN_32_PIN3, "");
     emptyConfig->endGroup();
 
     QTest::addRow("empty_config") << "emptyConfig.ini" << false;
@@ -105,18 +105,18 @@ void ConfigTest::testLoadDashLightsConfig_data() {
 
     QSettings * validConfig = new QSettings("validConfig.ini", QSettings::IniFormat);
 
-    validConfig->beginGroup(Config::DASH_LIGHT_GROUP);
-    validConfig->setValue(Config::OIL_PRESSURE_SW_KEY, 0);
-    validConfig->setValue(Config::OD_LAMP_KEY, 1);
-    validConfig->setValue(Config::HIGH_BEAM_KEY, 2);
-    validConfig->setValue(Config::BRAKE_FAILURE_KEY, 3);
-    validConfig->setValue(Config::BULB_FAILURE_KEY, 4);
-    validConfig->setValue(Config::CHARGING_LIGHT_KEY, 5);
-    validConfig->setValue(Config::BLINKER_LEFT_KEY, 6);
-    validConfig->setValue(Config::BLINKER_RIGHT_KEY, 7);
-    validConfig->setValue(Config::OD_LAMP_AUTO, 8);
-    validConfig->setValue(Config::CHECK_ENGINE_KEY, 9);
-    validConfig->setValue(Config::CONN_32_PIN3, 10);
+    validConfig->beginGroup(ConfigKeys::DASH_LIGHT_GROUP);
+    validConfig->setValue(ConfigKeys::OIL_PRESSURE_SW_KEY, 0);
+    validConfig->setValue(ConfigKeys::OD_LAMP_KEY, 1);
+    validConfig->setValue(ConfigKeys::HIGH_BEAM_KEY, 2);
+    validConfig->setValue(ConfigKeys::BRAKE_FAILURE_KEY, 3);
+    validConfig->setValue(ConfigKeys::BULB_FAILURE_KEY, 4);
+    validConfig->setValue(ConfigKeys::CHARGING_LIGHT_KEY, 5);
+    validConfig->setValue(ConfigKeys::BLINKER_LEFT_KEY, 6);
+    validConfig->setValue(ConfigKeys::BLINKER_RIGHT_KEY, 7);
+    validConfig->setValue(ConfigKeys::OD_LAMP_AUTO, 8);
+    validConfig->setValue(ConfigKeys::CHECK_ENGINE_KEY, 9);
+    validConfig->setValue(ConfigKeys::CONN_32_PIN3, 10);
     validConfig->endGroup();
 
     QTest::addRow("valid_config") << "validConfig.ini" << true;
@@ -127,19 +127,19 @@ void ConfigTest::testLoadDashLightsConfig_data() {
         QTextStream(&configName) << "invalidValueConfig" << i << ".ini";
         QSettings * invalidValueConfig = new QSettings(configName, QSettings::IniFormat);
 
-        invalidValueConfig->beginGroup(Config::DASH_LIGHT_GROUP);
+        invalidValueConfig->beginGroup(ConfigKeys::DASH_LIGHT_GROUP);
 
-        invalidValueConfig->setValue(Config::OIL_PRESSURE_SW_KEY, i == 0 ? -1 : 0);
-        invalidValueConfig->setValue(Config::OD_LAMP_KEY, i == 1 ? -1 : 1);
-        invalidValueConfig->setValue(Config::HIGH_BEAM_KEY, i == 2 ? -1 : 2);
-        invalidValueConfig->setValue(Config::BRAKE_FAILURE_KEY, i == 3 ? -1 : 3);
-        invalidValueConfig->setValue(Config::BULB_FAILURE_KEY, i == 4 ? -1 : 4);
-        invalidValueConfig->setValue(Config::CHARGING_LIGHT_KEY, i == 5 ? -1 : 5);
-        invalidValueConfig->setValue(Config::BLINKER_LEFT_KEY, i == 6 ? -1 : 6);
-        invalidValueConfig->setValue(Config::BLINKER_RIGHT_KEY, i == 7 ? -1 : 7);
-        invalidValueConfig->setValue(Config::OD_LAMP_AUTO, i == 8 ? -1 : 8);
-        invalidValueConfig->setValue(Config::CHECK_ENGINE_KEY, i == 9 ? -1 : 9);
-        invalidValueConfig->setValue(Config::CONN_32_PIN3, i == 10 ? -1 : 10);
+        invalidValueConfig->setValue(ConfigKeys::OIL_PRESSURE_SW_KEY, i == 0 ? -1 : 0);
+        invalidValueConfig->setValue(ConfigKeys::OD_LAMP_KEY, i == 1 ? -1 : 1);
+        invalidValueConfig->setValue(ConfigKeys::HIGH_BEAM_KEY, i == 2 ? -1 : 2);
+        invalidValueConfig->setValue(ConfigKeys::BRAKE_FAILURE_KEY, i == 3 ? -1 : 3);
+        invalidValueConfig->setValue(ConfigKeys::BULB_FAILURE_KEY, i == 4 ? -1 : 4);
+        invalidValueConfig->setValue(ConfigKeys::CHARGING_LIGHT_KEY, i == 5 ? -1 : 5);
+        invalidValueConfig->setValue(ConfigKeys::BLINKER_LEFT_KEY, i == 6 ? -1 : 6);
+        invalidValueConfig->setValue(ConfigKeys::BLINKER_RIGHT_KEY, i == 7 ? -1 : 7);
+        invalidValueConfig->setValue(ConfigKeys::OD_LAMP_AUTO, i == 8 ? -1 : 8);
+        invalidValueConfig->setValue(ConfigKeys::CHECK_ENGINE_KEY, i == 9 ? -1 : 9);
+        invalidValueConfig->setValue(ConfigKeys::CONN_32_PIN3, i == 10 ? -1 : 10);
 
         invalidValueConfig->endGroup();
 
@@ -192,10 +192,10 @@ void ConfigTest::testLoadMapConfig_data() {
     // try an empty config
     QSettings * emptyConfig = new QSettings("emptyConfig.ini", QSettings::IniFormat);
 
-    emptyConfig->beginGroup(Config::MAP_SENSOR_GROUP);
-    emptyConfig->setValue(Config::PRESSURE_AT_0V, "");
-    emptyConfig->setValue(Config::PRESSURE_AT_5V, "");
-    emptyConfig->setValue(Config::PRESSURE_UNITS, "");
+    emptyConfig->beginGroup(ConfigKeys::MAP_SENSOR_GROUP);
+    emptyConfig->setValue(ConfigKeys::PRESSURE_AT_0V, "");
+    emptyConfig->setValue(ConfigKeys::PRESSURE_AT_5V, "");
+    emptyConfig->setValue(ConfigKeys::PRESSURE_UNITS, "");
     emptyConfig->endGroup();
 
     QTest::addRow("empty_config") << "emptyConfig.ini" << false << 0.0 << 0.0 << "kpa";
@@ -207,10 +207,10 @@ void ConfigTest::testLoadMapConfig_data() {
     qreal p5v = 315.0;
     QString units = "kpa";
 
-    validConfig->beginGroup(Config::MAP_SENSOR_GROUP);
-    validConfig->setValue(Config::PRESSURE_AT_0V, p0v);
-    validConfig->setValue(Config::PRESSURE_AT_5V, p5v);
-    validConfig->setValue(Config::PRESSURE_UNITS, units);
+    validConfig->beginGroup(ConfigKeys::MAP_SENSOR_GROUP);
+    validConfig->setValue(ConfigKeys::PRESSURE_AT_0V, p0v);
+    validConfig->setValue(ConfigKeys::PRESSURE_AT_5V, p5v);
+    validConfig->setValue(ConfigKeys::PRESSURE_UNITS, units);
     validConfig->endGroup();
 
     QTest::addRow("valid_config") << "validConfig.ini" << true << p0v << p5v << units;
@@ -222,10 +222,10 @@ void ConfigTest::testLoadMapConfig_data() {
     p5v = 105.0;
     units = "kPa"; // try different case
 
-    validConfig1->beginGroup(Config::MAP_SENSOR_GROUP);
-    validConfig1->setValue(Config::PRESSURE_AT_0V, p0v);
-    validConfig1->setValue(Config::PRESSURE_AT_5V, p5v);
-    validConfig1->setValue(Config::PRESSURE_UNITS, units);
+    validConfig1->beginGroup(ConfigKeys::MAP_SENSOR_GROUP);
+    validConfig1->setValue(ConfigKeys::PRESSURE_AT_0V, p0v);
+    validConfig1->setValue(ConfigKeys::PRESSURE_AT_5V, p5v);
+    validConfig1->setValue(ConfigKeys::PRESSURE_UNITS, units);
     validConfig1->endGroup();
 
     QTest::addRow("valid_config1") << "validConfig1.ini" << true << p0v << p5v << units;
@@ -237,10 +237,10 @@ void ConfigTest::testLoadMapConfig_data() {
     p5v = 105.0;
     units = "kpa"; // try different case
 
-    invalidConfig->beginGroup(Config::MAP_SENSOR_GROUP);
-    invalidConfig->setValue(Config::PRESSURE_AT_0V, p0v);
-    invalidConfig->setValue(Config::PRESSURE_AT_5V, p5v);
-    invalidConfig->setValue(Config::PRESSURE_UNITS, units);
+    invalidConfig->beginGroup(ConfigKeys::MAP_SENSOR_GROUP);
+    invalidConfig->setValue(ConfigKeys::PRESSURE_AT_0V, p0v);
+    invalidConfig->setValue(ConfigKeys::PRESSURE_AT_5V, p5v);
+    invalidConfig->setValue(ConfigKeys::PRESSURE_UNITS, units);
     invalidConfig->endGroup();
 
     QTest::addRow("invalid_config") << "invalidConfig.ini" << false << p0v << p5v << units;
@@ -306,23 +306,23 @@ void ConfigTest::testLoadTempSensorConfig_data() {
     // try an empty config
     QSettings * emptyConfig = new QSettings("emptyConfig.ini", QSettings::IniFormat);
 
-    emptyConfig->beginWriteArray(Config::TEMP_SENSOR_GROUP);
+    emptyConfig->beginWriteArray(ConfigKeys::TEMP_SENSOR_GROUP);
     emptyConfig->setArrayIndex(0);
-    emptyConfig->setValue(Config::TEMP_TYPE, "");
-    emptyConfig->setValue(Config::TEMP_R_BALANCE, "");
-    emptyConfig->setValue(Config::T1_TEMP, "");
-    emptyConfig->setValue(Config::T1_RES, "");
-    emptyConfig->setValue(Config::T2_TEMP, "");
-    emptyConfig->setValue(Config::T2_RES, "");
-    emptyConfig->setValue(Config::T3_TEMP, "");
-    emptyConfig->setValue(Config::T3_RES, "");
-    emptyConfig->setValue(Config::TEMP_UNITS, "");
+    emptyConfig->setValue(ConfigKeys::TEMP_TYPE, "");
+    emptyConfig->setValue(ConfigKeys::TEMP_R_BALANCE, "");
+    emptyConfig->setValue(ConfigKeys::T1_TEMP, "");
+    emptyConfig->setValue(ConfigKeys::T1_RES, "");
+    emptyConfig->setValue(ConfigKeys::T2_TEMP, "");
+    emptyConfig->setValue(ConfigKeys::T2_RES, "");
+    emptyConfig->setValue(ConfigKeys::T3_TEMP, "");
+    emptyConfig->setValue(ConfigKeys::T3_RES, "");
+    emptyConfig->setValue(ConfigKeys::TEMP_UNITS, "");
     emptyConfig->endArray();
 
     QTest::addRow("empty_config")
             << "emptyConfig.ini"
             << false
-            << Config::TEMP_TYPE_COOLANT
+            << ConfigKeys::TEMP_TYPE_COOLANT
             << 1000.0
             << -1.0
             << -1.0
@@ -336,23 +336,23 @@ void ConfigTest::testLoadTempSensorConfig_data() {
     // try an valid config
     QSettings * validConfig = new QSettings("validConfig.ini", QSettings::IniFormat);
 
-    validConfig->beginWriteArray(Config::TEMP_SENSOR_GROUP);
+    validConfig->beginWriteArray(ConfigKeys::TEMP_SENSOR_GROUP);
     validConfig->setArrayIndex(0);
-    validConfig->setValue(Config::TEMP_TYPE, "coolant");
-    validConfig->setValue(Config::TEMP_R_BALANCE, "470");
-    validConfig->setValue(Config::T1_TEMP, "60");
-    validConfig->setValue(Config::T1_RES, "217");
-    validConfig->setValue(Config::T2_TEMP, "90");
-    validConfig->setValue(Config::T2_RES, "87");
-    validConfig->setValue(Config::T3_TEMP, "100");
-    validConfig->setValue(Config::T3_RES, "67");
-    validConfig->setValue(Config::TEMP_UNITS, "C");
+    validConfig->setValue(ConfigKeys::TEMP_TYPE, "coolant");
+    validConfig->setValue(ConfigKeys::TEMP_R_BALANCE, "470");
+    validConfig->setValue(ConfigKeys::T1_TEMP, "60");
+    validConfig->setValue(ConfigKeys::T1_RES, "217");
+    validConfig->setValue(ConfigKeys::T2_TEMP, "90");
+    validConfig->setValue(ConfigKeys::T2_RES, "87");
+    validConfig->setValue(ConfigKeys::T3_TEMP, "100");
+    validConfig->setValue(ConfigKeys::T3_RES, "67");
+    validConfig->setValue(ConfigKeys::TEMP_UNITS, "C");
     validConfig->endArray();
 
     QTest::addRow("validConfig")
             << "validConfig.ini"
             << true
-            << Config::TEMP_TYPE_COOLANT
+            << ConfigKeys::TEMP_TYPE_COOLANT
             << 470.0
             << 60.0
             << 217.0

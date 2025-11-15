@@ -11,7 +11,7 @@ EventTimers::EventTimers(QObject *parent) : QObject(parent) {
 
 bool EventTimers::addTimer(int timerId, int timeoutMSec, bool start) {
     if (!mTimers.contains(timerId)) {
-        QTimer * timer = new QTimer(this->parent());
+        auto* timer = new QTimer(this->parent());
         timer->setInterval(timeoutMSec);
 
         mTimers.insert(timerId, timer);

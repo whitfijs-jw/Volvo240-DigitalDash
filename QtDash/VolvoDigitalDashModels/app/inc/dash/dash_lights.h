@@ -8,6 +8,7 @@
 #include <QMap>
 #include <mcp23017.h>
 #include <QElapsedTimer>
+#include <memory>
 
 /**
  * @brief Input handling for on/off dash light inputs
@@ -23,15 +24,18 @@ public:
         int activeInput = -1; //!< ACtive input pin
         bool active = false; //!< is the pin active
         bool longPressed = false; //!< is a long press active
-        QElapsedTimer * activeTimer; //!< timer to time active period
+        std::unique_ptr<QElapsedTimer> activeTimer = std::make_unique<QElapsedTimer>(QElapsedTimer()); //!< timer to time active period
         int longPressDuration; //!< long press duration
 
         /**
          * @brief Active input constructor
          */
-        ActiveInput() {
-            activeTimer = new QElapsedTimer();
-        }
+        ActiveInput() = default;
+
+        /**
+         * @brief destructor
+         */
+        ~ActiveInput() = default;
 
         /**
          * @brief Activate the input timer
@@ -107,7 +111,7 @@ public slots:
      * @param activeLow true if inputs are active low
      * @return true is active
      */
-    bool readPin(int pin, uint16_t inputs, bool activeLow);
+    bool readPin(int pin, uint16_t inputs, bool activeLow) const;
 
 private:
     static constexpr char LEFT_BLINKER_MODEL_NAME[] = "leftBlinkerModel"; //!< left blinker model name

@@ -3,6 +3,8 @@
 
 #include <gauge.h>
 #include <temp_and_fuel_gauge_model.h>
+#include <config.h>
+#include <config_keys.h>
 
 /**
  * @brief The TempFuelClusterGauge class
@@ -18,50 +20,59 @@ public:
      * @param modelName: model name
      * @param context: QML context to register model
      */
-    TempFuelClusterGauge(QObject * parent, Config * config, QList<Sensor *> sensors,
+    TempFuelClusterGauge(QObject * parent, Config * config, QList<const Sensor *> sensors,
                          TempAndFuelGaugeModel * model, QString modelName, QQmlContext * context) :
           Gauge(parent, config, sensors, model, modelName, context) {
         // get coolant temp config
-        GaugeConfig::GaugeConfig coolantConfig = mConfig->getGaugeConfig(Config::COOLANT_TEMP_GAUGE_GROUP);
+        mCoolantConfig = mConfig->getGaugeConfig(ConfigKeys::COOLANT_TEMP_GAUGE_GROUP);
 
-        ((TempAndFuelGaugeModel*) mModel)->setMinTemp(coolantConfig.min);
-        ((TempAndFuelGaugeModel*) mModel)->setMaxTemp(coolantConfig.max);
-        ((TempAndFuelGaugeModel*) mModel)->setHighTempAlarm(coolantConfig.highAlarm);
-        ((TempAndFuelGaugeModel*) mModel)->setTempUnits(coolantConfig.displayUnits);
-        ((TempAndFuelGaugeModel*) mModel)->setCurrentTemp(0.0);
+        // setup model
+        auto tempFuelModel = static_cast<TempAndFuelGaugeModel*>(mModel);
+        tempFuelModel->setMinTemp(mCoolantConfig.min);
+        tempFuelModel->setMaxTemp(mCoolantConfig.max);
+        tempFuelModel->setHighTempAlarm(mCoolantConfig.highAlarm);
+        tempFuelModel->setTempUnits(mCoolantConfig.displayUnits);
+        tempFuelModel->setCurrentTemp(0.0);
 
         // fuel gauge config
-        GaugeConfig::GaugeConfig fuelLevelConfig = mConfig->getGaugeConfig(Config::FUEL_GAUGE_GROUP);
+        GaugeConfig::GaugeConfig fuelLevelConfig = mConfig->getGaugeConfig(ConfigKeys::FUEL_GAUGE_GROUP);
 
-        ((TempAndFuelGaugeModel*) mModel)->setLowFuelAlarm(fuelLevelConfig.lowAlarm);
-        ((TempAndFuelGaugeModel*) mModel)->setFuelLevel(0.0);
+        tempFuelModel->setLowFuelAlarm(fuelLevelConfig.lowAlarm);
+        tempFuelModel->setFuelLevel(0.0);
 
         //hook it up
         QObject::connect(
-                    sensors.at(0), &Sensor::sensorDataReady,
-                    this, [=](QVariant data) {
-
+                    mSensors.at(0),
+                    &Sensor::sensorDataReady,
+                    [&gaugeSensors = mSensors, &coolantConfig = mCoolantConfig, &gaugeModel = mModel](const QVariant& data) {
             // get raw value
             qreal val = data.toReal();
-            Sensor * sensor = sensors.at(0);
 
-            // get units
-            QString units = sensor->getUnits();
-            QString displayUnits = coolantConfig.displayUnits;
+            if (!gaugeSensors.isEmpty()) {
+                auto sensor = gaugeSensors.at(0);
 
-            val = SensorUtils::convert(val, displayUnits, units);
+                // get units
+                QString units = sensor->getUnits();
+                QString displayUnits = coolantConfig.displayUnits;
 
-            ((TempAndFuelGaugeModel *)mModel)->setCurrentTemp(val);
+                val = SensorUtils::convert(val, displayUnits, units);
+
+                static_cast<TempAndFuelGaugeModel*>(gaugeModel)->setCurrentTemp(val);
+            }
         });
 
         // connect the secondary values
         QObject::connect(
-                    sensors.at(1), &Sensor::sensorDataReady,
-                    [=](QVariant data) {
-            ((TempAndFuelGaugeModel *)mModel)->setFuelLevel(data.toReal());
+                    mSensors.at(1),
+                    &Sensor::sensorDataReady,
+                    [&gaugeModel = mModel](const QVariant& data) {
+            static_cast<TempAndFuelGaugeModel*>(gaugeModel)->setFuelLevel(data.toReal());
         });
 
     }
+
+private:
+    GaugeConfig::GaugeConfig mCoolantConfig; //!< coolant temp config
 };
 
 

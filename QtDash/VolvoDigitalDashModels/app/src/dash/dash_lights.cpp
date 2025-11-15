@@ -1,11 +1,11 @@
 #include <dash_lights.h>
-
+#include <config_keys.h>
 
 DashLights::DashLights(QObject *parent, Config *config) :
     QObject(parent), mConfig(config), mLightsConfig(config->getDashLightConfig()) {
     mActiveInput.longPressDuration =
         mConfig->getUserInputPinConfig().value(
-            Config::USER_INPUT_LONG_PRESS_DURATION, Config::DEFAULT_LONG_PRESS_DURATION_MSEC);
+            ConfigKeys::USER_INPUT_LONG_PRESS_DURATION, ConfigKeys::DEFAULT_LONG_PRESS_DURATION_MSEC);
 }
 
 void DashLights::init() {
@@ -55,33 +55,33 @@ void DashLights::update() {
     uint16_t inputs = (portB << 8) | portA;
 
     auto lightConf = mLightsConfig;
-    bool activeLow = mLightsConfig.value(Config::ACTIVE_LOW, true);
+    bool activeLow = mLightsConfig.value(ConfigKeys::ACTIVE_LOW, true);
 
     // set em
-    mLeftBlinkerModel.setOn(readPin(lightConf.value(Config::BLINKER_LEFT_KEY), inputs, activeLow));
-    mRightBlinkerModel.setOn(readPin(lightConf.value(Config::BLINKER_RIGHT_KEY), inputs, activeLow));
-    mHighBeamLightModel.setOn(readPin(lightConf.value(Config::HIGH_BEAM_KEY), inputs, activeLow));
-    mParkingBrakeLightModel.setOn(readPin(lightConf.value(Config::PARKING_BRAKE_KEY), inputs, activeLow));
-    mBrakeFailureLightModel.setOn(readPin(lightConf.value(Config::BRAKE_FAILURE_KEY), inputs, activeLow));
-    mBulbFailureLightModel.setOn(readPin(lightConf.value(Config::BULB_FAILURE_KEY), inputs, activeLow));;
-    mSrsWarningLightModel.setOn(readPin(lightConf.value(Config::OD_LAMP_KEY), inputs, activeLow));
-    mOilWarningLightModel.setOn(readPin(lightConf.value(Config::OIL_PRESSURE_SW_KEY), inputs, activeLow));
-    mBatteryWarningLightModel.setOn(readPin(lightConf.value(Config::CHARGING_LIGHT_KEY), inputs, activeLow));
-    mAbsWarningLightModel.setOn(readPin(lightConf.value(Config::CONN_32_PIN3), inputs, activeLow));
-    mCheckEngineLightModel.setOn(readPin(lightConf.value(Config::CHECK_ENGINE_KEY), inputs, activeLow));
+    mLeftBlinkerModel.setOn(readPin(lightConf.value(ConfigKeys::BLINKER_LEFT_KEY), inputs, activeLow));
+    mRightBlinkerModel.setOn(readPin(lightConf.value(ConfigKeys::BLINKER_RIGHT_KEY), inputs, activeLow));
+    mHighBeamLightModel.setOn(readPin(lightConf.value(ConfigKeys::HIGH_BEAM_KEY), inputs, activeLow));
+    mParkingBrakeLightModel.setOn(readPin(lightConf.value(ConfigKeys::PARKING_BRAKE_KEY), inputs, activeLow));
+    mBrakeFailureLightModel.setOn(readPin(lightConf.value(ConfigKeys::BRAKE_FAILURE_KEY), inputs, activeLow));
+    mBulbFailureLightModel.setOn(readPin(lightConf.value(ConfigKeys::BULB_FAILURE_KEY), inputs, activeLow));
+    mSrsWarningLightModel.setOn(readPin(lightConf.value(ConfigKeys::OD_LAMP_KEY), inputs, activeLow));
+    mOilWarningLightModel.setOn(readPin(lightConf.value(ConfigKeys::OIL_PRESSURE_SW_KEY), inputs, activeLow));
+    mBatteryWarningLightModel.setOn(readPin(lightConf.value(ConfigKeys::CHARGING_LIGHT_KEY), inputs, activeLow));
+    mAbsWarningLightModel.setOn(readPin(lightConf.value(ConfigKeys::CONN_32_PIN3), inputs, activeLow));
+    mCheckEngineLightModel.setOn(readPin(lightConf.value(ConfigKeys::CHECK_ENGINE_KEY), inputs, activeLow));
 
     // not used at the moment?
-    mShiftUpLightModel.setOn(0);
-    mServiceLightModel.setOn(0);
+    mShiftUpLightModel.setOn(false);
+    mServiceLightModel.setOn(false);
 
     // deal with user inputs here
     auto userInputPinConfig = mConfig->getUserInputPinConfig();
     auto userInputConfig = mConfig->geUserInputConfig();
 
-    bool userInput1 = readPin(userInputPinConfig.value(Config::USER_INPUT1, 12), inputs, activeLow);
-    bool userInput2 = readPin(userInputPinConfig.value(Config::USER_INPUT2, 13), inputs, activeLow);
-    bool userInput3 = readPin(userInputPinConfig.value(Config::USER_INPUT3, 14), inputs, activeLow);
-    bool userInput4 = readPin(userInputPinConfig.value(Config::USER_INPUT4, 15), inputs, activeLow);
+    bool userInput1 = readPin(userInputPinConfig.value(ConfigKeys::USER_INPUT1, 12), inputs, activeLow);
+    bool userInput2 = readPin(userInputPinConfig.value(ConfigKeys::USER_INPUT2, 13), inputs, activeLow);
+    bool userInput3 = readPin(userInputPinConfig.value(ConfigKeys::USER_INPUT3, 14), inputs, activeLow);
+    bool userInput4 = readPin(userInputPinConfig.value(ConfigKeys::USER_INPUT4, 15), inputs, activeLow);
 
     // check if any of the inputs are active
     bool active = (userInput1 || userInput2 || userInput3 || userInput4);
@@ -131,7 +131,7 @@ void DashLights::update() {
 #endif
 }
 
-bool DashLights::readPin(int pin, uint16_t inputs, bool activeLow) {
+bool DashLights::readPin(int pin, uint16_t inputs, bool activeLow) const {
     bool val = inputs & (1 << pin);
 
     if (activeLow) {

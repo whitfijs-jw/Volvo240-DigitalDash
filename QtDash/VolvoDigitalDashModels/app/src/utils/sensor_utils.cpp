@@ -17,7 +17,9 @@ qreal SensorUtils::convert(qreal value, QString to, QString from) {
 
     } else if (from.compare(Units::UNITS_PSI, Qt::CaseInsensitive) == 0 ||
                from.compare(Units::UNITS_BAR, Qt::CaseInsensitive) == 0 ||
-               from.compare(Units::UNITS_KPA, Qt::CaseInsensitive) == 0 ) {
+               from.compare(Units::UNITS_KPA, Qt::CaseInsensitive) == 0 ||
+               from.compare(Units::UNITS_INHG, Qt::CaseInsensitive) == 0 ||
+               from.compare(Units::UNITS_MMHG, Qt::CaseInsensitive) == 0) {
         // pressure sensor
         val = SensorUtils::convertPressure(value,
                                            Units::getPressureUnits(to),

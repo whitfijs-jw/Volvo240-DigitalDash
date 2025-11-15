@@ -20,11 +20,12 @@ public:
      */
     VoltmeterSensor(QObject * parent, Config * config,
                     AdcSource * source, int channel,
-                    Analog12VInput::Analog12VInputConfig analogConfig) :
-        Sensor(parent, config, source, channel), m12VInput(analogConfig) {
+                    const Analog12VInput::Analog12VInputConfig& analogConfig) :
+        Sensor(parent, config, source, channel),
+        m12VInput(analogConfig) {
     }
 
-    QString getUnits() override {
+    QString getUnits() const override {
         return "V";
     }
 
@@ -34,11 +35,11 @@ public slots:
      * @param data: data from source
      * @param channel: source channel
      */
-    void transform(QVariant data, int channel) override {
+    void transform(const QVariant& data, int channel) override {
         if (channel == getChannel()) {
             // these are true 3.3V inputs -- remove correction factor
             qreal adcVolts = data.toReal();
-            adcVolts *= (3.3 / ((AdcSource *)mSource)->getVRef()); // convert to 3.3V vref
+            adcVolts *= (3.3 / mConfig->getSensorSupplyVoltage()); // convert to 3.3V vref
             qreal volts = m12VInput.getVoltage(adcVolts);
             emit sensorDataReady(volts);
         }

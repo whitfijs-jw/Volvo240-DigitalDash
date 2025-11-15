@@ -34,7 +34,7 @@ public:
      * @brief get the channel that we should be waiting on from the source
      * @return: channel
      */
-    int getChannel() {
+    int getChannel() const {
         return mChannel;
     }
 
@@ -42,14 +42,14 @@ public:
      * @brief getUnits
      * @return Expected units
      */
-    virtual QString getUnits() = 0;
+    virtual QString getUnits() const = 0;
 
 signals:
     /**
      * @brief Signal to emit when the data has been transformed -- picked up by the gauge
      * @param data: data that has been transformed
      */
-    void sensorDataReady(QVariant data);
+    void sensorDataReady(const QVariant& data);
 public slots:
     /**
      * @brief Transform the raw data from the sensor source to the desired units.
@@ -59,13 +59,13 @@ public slots:
      * @param data: data from the sensor source
      * @param channel: channel that has been read
      */
-    virtual void transform(QVariant data, int channel) {
+    virtual void transform(const QVariant& data, int channel) {
         if (channel == mChannel) {
             emit sensorDataReady(data);
         }
     }
 
-protected:
+public:
     Config * mConfig; //!< Dash config
     SensorSource * mSource; //!< Sensor source
     int mChannel; //!< Channel from the sensor source

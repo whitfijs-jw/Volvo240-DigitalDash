@@ -21,7 +21,7 @@ public:
     Sensor(parent, config, source, channel) {
     }
 
-    QString getUnits() override {
+    QString getUnits() const override {
         return mSource->getUnits(mChannel);
     }
 
@@ -40,7 +40,7 @@ public slots:
      * @param data: data from CAN source
      * @param channel: adc channel
      */
-    void transform(QVariant data, int channel) override {
+    void transform(const QVariant& data, int channel) override {
         if (channel == getChannel()) {
             qreal value = data.toReal();
             emit sensorDataReady(value);

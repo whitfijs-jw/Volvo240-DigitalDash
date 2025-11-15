@@ -14,7 +14,7 @@ class OdometerModel : public QAbstractListModel
 public:
     static constexpr char ODOMETER_MODEL_NAME[] = "odometerModel";
 
-    enum OdometerModelRoles{
+    enum class OdometerModelRoles{
         OdoValueRole      = Qt::UserRole + 1,
         TripAValueRole    = Qt::UserRole + 2,
         TripBValueRole    = Qt::UserRole + 3,
@@ -74,14 +74,14 @@ public:
      */
     QHash<int, QByteArray> roleNames() const override;
 
-    qreal odometerValue();
-    qreal tripAValue();
-    qreal tripBValue();
+    qreal odometerValue() const;
+    qreal tripAValue() const;
+    qreal tripBValue() const;
 
 private:
-    qreal mOdometerValue;
-    qreal mTripAValue;
-    qreal mTripBValue;
+    qreal mOdometerValue {0.0};
+    qreal mTripAValue {0.0};
+    qreal mTripBValue {0.0};
 
 signals:
     void odometerValueChanged();

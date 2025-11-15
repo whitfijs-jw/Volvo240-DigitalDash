@@ -21,16 +21,18 @@ public:
      */
     ResistiveSensor(QObject * parent, Config * config,
                     AdcSource * source, int channel,
-                    SensorConfig::ResistiveSensorConfig sensorConfig) :
-        Sensor(parent, config, source, channel), mSensorConfig(sensorConfig) {
+                    const SensorConfig::ResistiveSensorConfig& sensorConfig) :
+        Sensor(parent, config, source, channel),
+        mSensorConfig(sensorConfig) {
         // calculate curve
         mSensorConfig.coeff = SensorUtils::polynomialRegression(
                     mSensorConfig.x, mSensorConfig.y, mSensorConfig.order);
         // use vref from adc source
-        mSensorConfig.vSupply = ((AdcSource *)mSource)->getVRef();
+        mSensorConfig.vSupply = mConfig->getSensorSupplyVoltage();
+        mCurrentLag = mSensorConfig.lagStart;
     }
 
-    QString getUnits() override {
+    QString getUnits() const override{
         return mSensorConfig.units;
     }
 
@@ -40,8 +42,9 @@ public slots:
      * @param data: adc source data
      * @param channel: adc source channel
      */
-    void transform(QVariant data, int channel) override {
+    void transform(const QVariant& data, int channel) override {
         if (channel == getChannel()) {
+
             qreal volts = data.toReal();
 
             qreal resistance = SensorUtils::getResistance(
@@ -50,17 +53,26 @@ public slots:
                         resistance, mSensorConfig.coeff);
 
             // check for nan
-            if (value != value) {
+            if (std::isnan(value)) {
                 value = 0;
             }
 
             // Check that we're not shorted to ground or VDD (could be disconnected)
-            qreal vRef = ((AdcSource *)mSource)->getVRef();
-            if (!SensorUtils::isValid(volts, vRef)) {
+            if (qreal vRef = mConfig->getSensorSupplyVoltage(); !SensorUtils::isValid(volts, vRef)) {
                 value = 0;
             }
 
-            value = (mSensorConfig.lag * value) + (1 - mSensorConfig.lag) * mPreviousValue;
+            if (!mSteadyState && mSensorConfig.lag != 1.0) {
+                mCurrentLag = mSensorConfig.lagStart * qPow(1.0 - mSensorConfig.lagDecay, mDecayCount);
+                mDecayCount++;
+
+                if (mCurrentLag < mSensorConfig.lag) {
+                    mCurrentLag = mSensorConfig.lag;
+                    mSteadyState = true;
+                }
+            }
+
+            value = (mCurrentLag * value) + (1 - mCurrentLag) * mPreviousValue;
 
             mPreviousValue = value;
 
@@ -71,6 +83,9 @@ public slots:
 private:
     SensorConfig::ResistiveSensorConfig mSensorConfig; //!< resistive sensor config
     qreal mPreviousValue = 0; //!< previous value (used for filtering)
+    qreal mCurrentLag = 1.0;
+    bool mSteadyState = false;
+    uint32_t mDecayCount = 0;
 };
 
 #endif // SENSOR_RESISTIVE_H

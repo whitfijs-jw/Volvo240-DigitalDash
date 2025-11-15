@@ -2,15 +2,11 @@
 #define ACCESSORY_GAUGE_MODEL_H
 
 #include <QObject>
-#include <QAbstractListModel>
+#include <base_gauge_model.h>
 
-class AccessoryGaugeModel : public QAbstractListModel
+class AccessoryGaugeModel : public BaseGaugeModel
 {
     Q_OBJECT
-    Q_PROPERTY(qreal minValue READ minValue WRITE setMinValue NOTIFY minValueChanged)
-    Q_PROPERTY(qreal maxValue READ maxValue WRITE setMaxValue NOTIFY maxValueChanged)
-    Q_PROPERTY(qreal currentValue READ currentValue WRITE setCurrentValue NOTIFY currentValueChanged)
-    Q_PROPERTY(QString units READ units WRITE setUnits NOTIFY unitsChanged)
     Q_PROPERTY(qreal lowAlarm READ lowAlarm WRITE setLowAlarm NOTIFY lowAlarmChanged)
     Q_PROPERTY(qreal highAlarm READ highAlarm WRITE setHighAlarm NOTIFY highAlarmChanged)
 
@@ -22,11 +18,7 @@ public:
     static constexpr char BOOST_GAUGE_MODEL_NAME[] = "boostModel";
     static constexpr char VOLT_METER_MODEL_NAME[] = "voltMeterModel";
 
-    enum AccessoryGaugeRoles {
-        MinValueRole        = Qt::UserRole + 1,
-        MaxValueRole        = Qt::UserRole + 2,
-        CurrentValueRole    = Qt::UserRole + 3,
-        UnitsRole           = Qt::UserRole + 4,
+    enum class AccessoryGaugeRoles {
         LowAlarmRole        = Qt::UserRole + 5,
         HighAlarmRole       = Qt::UserRole + 6,
     };
@@ -85,34 +77,18 @@ public:
      */
     QHash<int, QByteArray> roleNames() const override;
 
-    qreal minValue();
-    qreal maxValue();
-    qreal currentValue();
-    QString units();
-    qreal lowAlarm();
-    qreal highAlarm();
+    qreal lowAlarm() const;
+    qreal highAlarm() const;
 
 private:
-    qreal mMinValue;
-    qreal mMaxValue;
-    qreal mCurrentValue;
-    QString mUnits;
-    qreal mLowAlarm;
-    qreal mHighAlarm;
+    qreal mLowAlarm {0.0};
+    qreal mHighAlarm {0.0};
 
 signals:
-    void minValueChanged();
-    void maxValueChanged();
-    void currentValueChanged();
-    void unitsChanged();
     void lowAlarmChanged();
     void highAlarmChanged();
 
 public slots:
-    void setMinValue(qreal minValue);
-    void setMaxValue(qreal maxValue);
-    void setCurrentValue(qreal currentValue);
-    void setUnits(QString units);
     void setLowAlarm(qreal lowAlarm);
     void setHighAlarm(qreal highAlarm);
 

@@ -1,5 +1,6 @@
 #include "gear_indicator_test.h"
 
+using namespace ConfigKeys;
 
 void GearIndicatorTest::init() {
 
@@ -37,26 +38,26 @@ void GearIndicatorTest::initTestCase() {
 void GearIndicatorTest::initTestCase_data() {
     QSettings * gearConfig = new QSettings("gearConfig.ini", QSettings::IniFormat);
 
-    gearConfig->beginGroup(Config::VSS_INPUT_GROUP);
-    gearConfig->setValue(Config::VSS_PULSES_PER_ROTATION, 12);
-    gearConfig->setValue(Config::VSS_TIRE_DIAMETER, 24.9);
-    gearConfig->setValue(Config::VSS_TIRE_DIAMETER_UNITS, "inch");
-    gearConfig->setValue(Config::VSS_PULSES_PER_DISTANCE, 9720);
-    gearConfig->setValue(Config::VSS_DISTANCE_UNITS, "mile");
-    gearConfig->setValue(Config::VSS_MAX_SPEED, 185);
-    gearConfig->setValue(Config::VSS_USE_GPS, false);
+    gearConfig->beginGroup(VSS_INPUT_GROUP);
+    gearConfig->setValue(VSS_PULSES_PER_ROTATION, 12);
+    gearConfig->setValue(VSS_TIRE_DIAMETER, 24.9);
+    gearConfig->setValue(VSS_TIRE_DIAMETER_UNITS, "inch");
+    gearConfig->setValue(VSS_PULSES_PER_DISTANCE, 9720);
+    gearConfig->setValue(VSS_DISTANCE_UNITS, "mile");
+    gearConfig->setValue(VSS_MAX_SPEED, 185);
+    gearConfig->setValue(VSS_USE_GPS, false);
     gearConfig->endGroup();
 
     QVariantList gearRatios = {4.03, 2.16, 1.37, 1.00, 0.82};
-    gearConfig->beginGroup(Config::GEAR_INDICATOR_GROUP);
-    gearConfig->setValue(Config::GEAR_INDICATOR_GEAR_RATIOS,
+    gearConfig->beginGroup(GEAR_INDICATOR_GROUP);
+    gearConfig->setValue(GEAR_INDICATOR_GEAR_RATIOS,
                          gearRatios);
-    gearConfig->setValue(Config::GEAR_INDICATOR_REAR_END_RATIO, 3.31);
-    gearConfig->setValue(Config::GEAR_INDICATOR_DELTA, 0.25);
-    gearConfig->setValue(Config::GEAR_INDICATOR_SPEED_DROPOUT, 5);
-    gearConfig->setValue(Config::GEAR_INDICATOR_SPEED_DROPOUT_UNITS, "mph");
-    gearConfig->setValue(Config::GEAR_INDICATOR_HIGH_IDLE, 1100);
-    gearConfig->setValue(Config::GEAR_INDICATOR_LOW_IDLE, 500);
+    gearConfig->setValue(GEAR_INDICATOR_REAR_END_RATIO, 3.31);
+    gearConfig->setValue(GEAR_INDICATOR_DELTA, 0.25);
+    gearConfig->setValue(GEAR_INDICATOR_SPEED_DROPOUT, 5);
+    gearConfig->setValue(GEAR_INDICATOR_SPEED_DROPOUT_UNITS, "mph");
+    gearConfig->setValue(GEAR_INDICATOR_HIGH_IDLE, 1100);
+    gearConfig->setValue(GEAR_INDICATOR_LOW_IDLE, 500);
     gearConfig->endGroup();
 
     delete gearConfig;

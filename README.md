@@ -142,37 +142,7 @@ This directory contains the outputs of the buildroot compilation process. After 
 
 Buildroot will build the custom linux image.  The image being build is based on the raspberry-piX 32-bit images provided from the buildroot project.  Right now there is only support for raspberry pi 3 and pi 4/400.  Things are still a bit of a mess here and depending on your flavor of Linux you might have to setup your system a little differently than others.  You can find a lot of good information here on host packages that are absolutely necessary: [Buildroot System Requirements](https://buildroot.org/downloads/manual/manual.html#requirement)
 
-
-1. To get things started:
-
-From within the main project directory:
-
-`cd buildroot`
-
-For Raspberry Pi 3B/3B+:
-
-`make volvodash_defconfig`
-
-For Raspberry Pi 4 or Pi 400:
-
-`make volvodash_rpi4_defconfig`
-
-
-This will get buildroot configured to build the linux image. 
-
-
-2. Start the build:
-
-`make` 
-
-This will take a while, go get a coffee or if you're on a laptop run it before going to bed. You might be missing packages dependencies here and there. Check the output and use your package manager to install what's missing. This will also build the host tools for building the qt app that actually runs the dash. As one of the last steps of this process the Qt App, called VolvoDigitalDashModels, is built and copied to the target /opt directory along with the config files.
-
-
-3. Flash Image onto
-
-At the end of the build that completed in the last step there should be a file called "sdcard.img" in the `buildroot/output/images` directory. The easiest way to flash this image onto an SD card for use on a pi is a utility like the [Raspberry Pi Imager](https://www.raspberrypi.com/software/). In the imager utility select the "Choose OS" option, scroll all the way down and select the "Use Custom" option. Navigate to where the repository is cloned then to `buildroot/output/images`.  There should be a file named `sdcard.img`.  After selecting the image file, select your sdcard using the "Choose Storage" option. Hit write and wait. 
-
-After writing has completed you can plug the SD card into the pi and boot. The dash should start up after boot and using the numpad on a keyboard you should be able to switch between dash screens.
+Detailed instructions for setting up a virtual machine and the build environment are found [here](SetupBuildEnv.md)
 
 ## Remote Access
 
@@ -423,7 +393,8 @@ An array of resistive sensor configurations. Calibration values can be interpola
 | *r* | Calibration resistance values.|
 | *y* | Calibration y values |
 | *units* | Units of calibration y values |
-| *lag* | Lag factor (0-1).  Used to filter values with the difference equation: **y[n] = lag \* x[n] + (1 - lag) \* y[n-1]** |
+| *lag* | Lag factor (0-1).  Used to filter values with the difference equation: **y[n] = lag \* x[n] + (1 - lag) \* y[n-1]** Default value is 1.0. |
+|*lag_decay*| Lag decay factor.  If set to a non-zero value the following equation will dictate the lag factor value used above: **lagStart=1-*lag*, lag[n] = lagStart \* (1 - *lag_decay*)^(n)** and saturates at the value set by *lag*. Large values will decay quickly, small values slowly.  Default value is 0.0.  |
 
 The default configuration is designed for a VDO 360-028 Oil pressure sender and a 240-33Ohm Volvo 240 Fuel level sender.
 
@@ -587,11 +558,15 @@ active_low=1
 There are a few options in setting up the gauge units and high/low warning indications.  There settings are found within the file config_gauges.ini.  The app will parse this file and will set the various gauge units, min/max values, and high/low warnings.
 
 #### Gauge Config Parameters
-| Parameter | Description |
+| Parameter | Description | Default Value |
 |---|---|
-|*units*| Gauge Display Units |
-|*low_alarm*| Value below which gauge will indicate a warning |
-|*high_alarm*| Value above which gauge will indicate a warning |
+|*units*| Gauge Display Units ||
+|*low_alarm*| Value below which gauge will indicate a warning ||
+|*high_alarm*| Value above which gauge will indicate a warning ||
+|*alt_units_enable*| Enable alternate units|*false*|
+|*alt_units*|Alternate units|\"\"|
+|*alt_units_thres*|Threshold value to switch units|*0.0*|
+|*alt_units_above*|If true, use alternate units above threshold.  Otherwise the alternate units are used below the threshold|*false*|
 
 ##### Example:
 This example sets the units for coolant temperature gauges, in all screens, to celsius.  The gauge will indicate an alarm when the temperature exceeds 100C.
@@ -607,14 +582,14 @@ Below are the available units for each gauge type
 
 | Gauge Type | Available Units |
 |---|---|
-|**[boost]**|```"bar"``` ```"psi"```|
+|**[boost]**|```"bar"``` ```"psi"``` ```"inHg"```|
 |**[coolant_temp]**|```"C"``` ```"F"```|
 |**[fuel_level]**|```"%"```|
 |**[oil_pressure]**|```"bar"``` ```"psi"```|
 |**[oil_temperature]**|```"C"``` ```"F"```|
 |**[voltmeter]**|```"V"```|
 |**[speedo]**|```"mph"``` ```"kph"``` ```"km/h"```|
-|**[techo]**|*none*|
+|**[tacho]**|*none*|
 
 #### Default Gauge Ranges
 

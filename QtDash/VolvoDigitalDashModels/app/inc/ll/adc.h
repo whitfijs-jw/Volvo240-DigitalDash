@@ -30,7 +30,7 @@ public:
     static constexpr double DEFAULT_VREF_VOLTAGE = 5.0;
     static constexpr double REFERENCE_VOLTAGE_DIVIDER = (15.0e3 / (15.0e3 + 8.2e3));
     static constexpr double INPUT_VOLTAGE_DIVIDER = (15.0e3 / (15.0e3 + 8.2e3));
-    static constexpr double VOLTAGE_CONVERSION_CORRECTION_FACTOR = 3.3 / (INPUT_VOLTAGE_DIVIDER);
+    static constexpr double VOLTAGE_CONVERSION_CORRECTION_FACTOR = 3.3 / INPUT_VOLTAGE_DIVIDER;
 
     /**
      * @brief Constructor
@@ -38,8 +38,8 @@ public:
      * @param path: iio device path to search defaults to "/sys/bus/iio/devices/"
      * @param vRef: reference voltage
      */
-    Adc(std::string name = "mcp3208",
-                std::string path = IIO_DEVICE_PATH,
+    Adc(const std::string& name = "mcp3208",
+                const std::string& path = IIO_DEVICE_PATH,
                 double vRef = DEFAULT_VREF_VOLTAGE,
                 int referenceChannel = -1);
 
@@ -67,7 +67,7 @@ public:
      * @brief Get number of channels
      * @return number of channels
      */
-    int getNumChannels() {
+    int getNumChannels() const {
         return mNumChannels;
     }
 
@@ -75,11 +75,11 @@ public:
      * @brief Get device name
      * @return Device name.  MCP3208, ADS1115, etc
      */
-    std::string getDeviceName() {
+    std::string getDeviceName() const {
         return mDeviceName;
     }
 
-    double getVRef() {
+    double getVRef() const {
         return mVref;
     }
 
@@ -91,10 +91,10 @@ private:
      * @param name: name of the iio device
      * @return path to the device if found. empty string if not found
      */
-    std::string findDevicePath(std::string& path, std::string name);
+    std::string findDevicePath(const std::string& path, std::string_view name) const;
 
-    std::string mDeviceName; //!< Device name
-    std::string mPath; //!< iio device path
+    std::string mDeviceName {""}; //!< Device name
+    std::string mPath {""}; //!< iio device path
     int mNumChannels = 0; //!< Number of channels that can be read
     double mVref = 0.0f; //!< voltage reference
     int mMaxVal = 0; //!< max adc value

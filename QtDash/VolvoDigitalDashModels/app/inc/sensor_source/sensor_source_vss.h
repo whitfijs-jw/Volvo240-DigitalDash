@@ -91,6 +91,10 @@ public slots:
             break;
         case (int) VssDataChannel::PULSE_COUNT:
             emit dataReady(mVssInput.getPulseCount(), channel);
+            break;
+        default:
+            //empty
+            break;
         }
     }
 

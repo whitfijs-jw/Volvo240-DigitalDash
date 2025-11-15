@@ -14,7 +14,7 @@ class TachometerModel : public QAbstractListModel
 public:
     static constexpr char TACH_MODEL_NAME[] = "rpmModel";
 
-    enum TachometerRoles {
+    enum class TachometerRoles {
         RpmRole     = Qt::UserRole + 1,
         RedLineRole = Qt::UserRole + 2,
         MaxRpmRole  = Qt::UserRole + 3,
@@ -74,11 +74,11 @@ public:
      */
     QHash<int, QByteArray> roleNames() const override;
 
-    int rpm();
+    int rpm() const;
 
-    int redLine();
+    int redLine() const;
 
-    int maxRpm();
+    int maxRpm() const;
 
 
 public slots:
@@ -94,9 +94,9 @@ signals:
     void maxRpmChanged();
 
 private:
-    int mRpm;
-    int mRedLine;
-    int mMaxRpm;
+    int mRpm {0};
+    int mRedLine {1};
+    int mMaxRpm {1};
 
 };
 
