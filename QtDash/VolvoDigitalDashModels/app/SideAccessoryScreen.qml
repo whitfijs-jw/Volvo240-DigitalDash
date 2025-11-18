@@ -589,7 +589,12 @@ Window {
 
             minAngle: -270
             maxAngle: 0
+
+            gaugeMin: -15
+            gaugeMax: 30
+
             yOffset: 0
+
             needleLength: 0.55
             needleWidth: s60RNeedleWidth
             needleOffset: s60RNeedleOffset
