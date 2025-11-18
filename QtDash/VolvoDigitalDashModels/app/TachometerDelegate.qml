@@ -16,7 +16,11 @@ Item {
     property real needleWidth: .02
     property real needleLength: 0.45
     property real needleOffset: 0.075
+
     property real needleCenterRadius: 0.1
+    property url needleCenterImageSource: ""
+    property real needleCenterImageSize: 0
+    property bool needleCenterUseImage: false
 
     property real yOffset: 0
 
@@ -60,6 +64,9 @@ Item {
                 item.needleOffset = tachometer.needleOffset
 
                 item.needleCenterRadius = tachometer.needleCenterRadius
+                item.needleCenterImageSize = tachometer.needleCenterImageSize
+                item.needleCenterUseImage = tachometer.needleCenterUseImage
+                item.needleCenterImageResource = tachometer.needleCenterImageSource
 
                 item.textSize = tachometer.textSize
                 item.textOffset = tachometer.textOffset

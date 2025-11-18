@@ -31,6 +31,9 @@ Item {
     property real needleOffset: .20
 
     property real needleCenterRadius: 0.15
+    property bool needleCenterUseImage: false
+    property string needleCenterImageResource
+    property real needleCenterImageSize: 0
 
     property string imageResource
     property string needleResource: "qrc:/needles/needle-240.png"
@@ -81,8 +84,43 @@ Item {
             y: parent.width * 0.5 + parent.width * gauge.offset
             antialiasing: true
             smooth: true
+            visible: !gauge.needleCenterUseImage
 
             transform: [
+                Rotation {
+                    angle: gauge.angle > gauge.maxAngle ?
+                               gauge.maxAngle : (gauge.angle < minAngle) ?
+                                   gauge.minAngle : gauge.angle
+                    origin.x: 0
+                    origin.y: 0
+
+                    Behavior on angle {
+                        RotationAnimation {
+                            duration: 150
+                            direction: gauge.dir
+                        }
+                    }
+                }
+            ]
+        }
+
+        Image {
+            id: needleCenterImage
+            height: parent.height * needleCenterImageSize
+            width: parent.height * needleCenterImageSize
+            x: parent.width * 0.5 + parent.width * gauge.offsetX
+            y: parent.width * 0.5 + parent.width * gauge.offset
+            visible: gauge.needleCenterUseImage
+
+            antialiasing: true
+            smooth: true
+            source: needleCenterImageResource
+
+            transform: [
+                Translate {
+                    y: -needleCenterImage.height * 0.5
+                    x: -needleCenterImage.width * 0.5
+                },
                 Rotation {
                     angle: gauge.angle > gauge.maxAngle ?
                                gauge.maxAngle : (gauge.angle < minAngle) ?

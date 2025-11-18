@@ -30,6 +30,8 @@ Window {
             return availableP1800Gauges;
         case "rSport":
             return availableRSportGauges;
+        case "s60r":
+            return availableS60RGauges
         case "140rallye":
             return available140RallyeGauges;
         default:
@@ -553,6 +555,147 @@ Window {
 
     ListModel {
         id: available140RallyeGauges
+        ListElement {
+            name: "boost"
+        }
+        ListElement {
+            name: "oil temp"
+        }
+        ListElement {
+            name: "oil pressure"
+        }
+        ListElement {
+            name: "coolant temp"
+        }
+        ListElement {
+            name: "voltmeter"
+        }
+    }
+
+
+    // S60R gauges
+    property real s60RNeedleLength: 0.7
+    property real s60RNeedleWidth: 0.05;
+    property real s60RNeedleOffset: 0.175
+    property real s60RMinAngle: -130
+    property real s60RMaxAngle: -50
+    property real s60RYOffset: 0.25
+    property real s60RNeedleCenterRadius: 0.35
+    property real s60RGaugeTextOffset: 0.575
+
+    property list<Item> delegatesS60r: [
+        AccessoryGaugeDelegate {
+            id: boostDelegateS60RStyle
+
+            minAngle: -270
+            maxAngle: 0
+
+            gaugeMin: -15
+            gaugeMax: 30
+
+            yOffset: 0
+
+            needleLength: 0.55
+            needleWidth: s60RNeedleWidth
+            needleOffset: s60RNeedleOffset
+
+            significatDigits: 1
+
+            imageSource: "qrc:/gauge-faces-s60r/s60r_boost.png"
+            needleResource: "qrc:/needles/needle_s60r.png"
+
+            needleCenterImageSize: s60RNeedleCenterRadius
+            needleCenterUseImage: true
+            needleCenterImageSource: "qrc:/needles/needle_center_s60r.png"
+        },
+        AccessoryGaugeDelegate {
+            id: oilTempDelegateS60RStyle
+
+            minAngle: -130
+            maxAngle: -50
+
+            imageSource: "qrc:/gauge-faces-s60r/s60r_oil_temp.png"
+            needleResource: "qrc:/needles/needle_s60r.png"
+
+            needleWidth: s60RNeedleWidth
+            needleLength: s60RNeedleLength
+            needleOffset: s60RNeedleOffset
+            needleCenterRadius: s60RNeedleCenterRadius
+            needleCenterImageSize: s60RNeedleCenterRadius
+            needleCenterUseImage: true
+            needleCenterImageSource: "qrc:/needles/needle_center_s60r.png"
+
+            yOffset: s60RYOffset
+
+            significatDigits: 1
+        },
+        AccessoryGaugeDelegate {
+            id: oilPressureDelegateS60RStyle
+
+            minAngle: -130
+            maxAngle: -50
+
+            imageSource: "qrc:/gauge-faces-s60r/s60r_oil_pressure.png"
+            needleResource: "qrc:/needles/needle_s60r.png"
+
+            needleWidth: s60RNeedleWidth
+            needleLength: s60RNeedleLength
+            needleOffset: s60RNeedleOffset
+            needleCenterRadius: s60RNeedleCenterRadius
+            needleCenterImageSize: s60RNeedleCenterRadius
+            needleCenterUseImage: true
+            needleCenterImageSource: "qrc:/needles/needle_center_s60r.png"
+
+            yOffset: s60RYOffset
+
+            significatDigits: 1
+        },
+        AccessoryGaugeDelegate {
+            id: coolantTempDelegateS60RStyle
+
+            minAngle: -130
+            maxAngle: -50
+
+            imageSource: "qrc:/gauge-faces-s60r/s60r_coolant_temp.png"
+            needleResource: "qrc:/needles/needle_s60r.png"
+
+            needleWidth: s60RNeedleWidth
+            needleLength: s60RNeedleLength
+            needleOffset: s60RNeedleOffset
+            needleCenterRadius: s60RNeedleCenterRadius
+            needleCenterImageSize: s60RNeedleCenterRadius
+            needleCenterUseImage: true
+            needleCenterImageSource: "qrc:/needles/needle_center_s60r.png"
+
+            yOffset: s60RYOffset
+
+            significatDigits: 1
+        },
+        AccessoryGaugeDelegate {
+            id: voltmeterDelegateS60RStyle
+
+            minAngle: -130
+            maxAngle: -50
+
+            imageSource: "qrc:/gauge-faces-s60r/s60r_voltmeter.png"
+            needleResource: "qrc:/needles/needle_s60r.png"
+
+            needleWidth: s60RNeedleWidth
+            needleLength: s60RNeedleLength
+            needleOffset: s60RNeedleOffset
+            needleCenterRadius: s60RNeedleCenterRadius
+            needleCenterImageSize: s60RNeedleCenterRadius
+            needleCenterUseImage: true
+            needleCenterImageSource: "qrc:/needles/needle_center_s60r.png"
+
+            yOffset: s60RYOffset
+
+            significatDigits: 1
+        }
+    ]
+
+    ListModel {
+        id: availableS60RGauges
         ListElement {
             name: "boost"
         }

@@ -222,12 +222,12 @@ Window {
 
         function advanceScreen(forward) {
             if (forward) {
-                if (++screen > 10) {
+                if (++screen > 11) {
                     screen = 0;
                 }
             } else {
                 if (--screen < 0) {
-                    screen = 10;
+                    screen = 11;
                 }
             }
 
@@ -381,6 +381,21 @@ Window {
                     rpmModel.setRedLine(6500);
 
                     accessoryScreen.currentStyle = "140rallye";
+                    warningLightBar.item.showLights = true;
+                    break;
+                case 11:
+                    currentGauge.source = "qrc:/OriginalS60RLayout.qml"
+
+                    if (speedoModel.units === "mph") {
+                        speedoModel.setMaxValue(160);
+                    } else {
+                        speedoModel.setMaxValue(320);
+                    }
+
+                    rpmModel.setMaxRpm(8000);
+                    rpmModel.setRedLine(7000);
+
+                    accessoryScreen.currentStyle = "s60r";
                     warningLightBar.item.showLights = true;
                     break;
                 default:

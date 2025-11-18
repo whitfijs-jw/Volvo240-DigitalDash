@@ -35,6 +35,7 @@
         <file>SideAccessoryScreenControl.qml</file>
         <file>SideAccessoryGauge.qml</file>
         <file>ClockDelegateP1800Style.qml</file>
+        <file>OriginalS60RLayout.qml</file>
         <file>OriginalEarly240Layout.qml</file>
         <file>BlinkerEarly240.qml</file>
         <file>BlinkerDelegateEarly240Style.qml</file>
@@ -135,6 +136,8 @@
         <file>needle-740-940.png</file>
         <file>needle-rsport.png</file>
         <file>needle-544-140.png</file>
+        <file>needle_s60r.png</file>
+        <file>needle_center_s60r.png</file>
     </qresource>
     <qresource prefix="/gauge-faces-544">
         <file>speedo-544.png</file>
@@ -197,5 +200,16 @@
         <file>140-rallye-voltmeter.png</file>
         <file>140-rallye-speedo-kph.png</file>
         <file>140-rallye-oil-temp-c.png</file>
+    </qresource>
+    <qresource prefix="/gauge-faces-s60r">
+        <file>s60r_tach.png</file>
+        <file>s60r_speedo.png</file>
+        <file>s60r_fuel_level.png</file>
+        <file>s60r_coolant_temp.png</file>
+        <file>s60r_oil_pressure.png</file>
+        <file>s60r_oil_temp.png</file>
+        <file>s60r_boost.png</file>
+        <file>s60r_voltmeter.png</file>
+        <file>s60r_speedo_kmh.png</file>
     </qresource>
 </RCC>

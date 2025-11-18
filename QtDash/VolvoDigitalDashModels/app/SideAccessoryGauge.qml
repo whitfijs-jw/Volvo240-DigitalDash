@@ -45,6 +45,8 @@ Item {
             return delegatesRSport[index].component;
         case "140rallye":
             return delegates140Rallye[index].component;
+        case "s60r":
+            return delegatesS60r[index].component;
         default:
             return delegates240[index].component;
         }
@@ -60,6 +62,8 @@ Item {
             return delegatesP1800.length;
         case "rSport":
             return delegatesRSport.length;
+        case "s60r":
+            return delegatesS60r.length;
         case "140rallye":
             return delegates140Rallye.length
         default:
