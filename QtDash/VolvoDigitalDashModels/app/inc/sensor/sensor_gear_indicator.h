@@ -6,8 +6,6 @@
 #include <sensor_source_vss.h>
 #include <sensor_configs.h>
 
-#include <random>
-
 /**
  * @brief Gear Indicator Sensor
  */

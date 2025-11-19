@@ -607,7 +607,9 @@ bool Config::loadConfig() {
         return ret;
     }
 
-
+    if (auto ret = loadGearSensorConfig(mConfig.get(), mGearIndicatorConfig); ret != true) {
+        return ret;
+    }
 
     return keys.size() > 0;
 }

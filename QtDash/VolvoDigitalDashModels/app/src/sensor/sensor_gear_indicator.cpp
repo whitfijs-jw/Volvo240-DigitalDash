@@ -23,6 +23,8 @@ GearSensor::GearSensor(QObject *parent, Config *config,
         if (i + 1 < mGearIndicatorConfig.gearRatios.size()) {
             qreal ratioNext = mGearIndicatorConfig.gearRatios.at(i+1);
             sigma = qMin(ratio - ratioNext, SIGMA_MAX);
+        } else {
+            sigma = mDistSigma.at(i-1);
         }
         mDistSigma.push_back(sigma);
     }
@@ -88,7 +90,7 @@ void GearSensor::transformVssData(const QVariant& data, int channel) {
     if (channel == mVssChannel) {
         mCurrentSpeed = data.toReal();
 
-        //estimte the current gear
+        //estimate the current gear
         int gear = estimateGear(
             mCurrentRpm,
             mCurrentSpeed,

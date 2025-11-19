@@ -99,6 +99,7 @@ bool SpeedometerModel::setData(const QModelIndex &index, const QVariant &value, 
                          createIndex(1, 0),
                          QVector<int>() << DashUtils::to_underlying(SpeedometerModelRoles::CurrentGearRole));
         emit currentGearChanged();
+        return true;
     }
     else
     {

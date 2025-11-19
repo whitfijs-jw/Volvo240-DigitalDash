@@ -45,7 +45,7 @@ Item {
                                  "qrc:/mainCluster/later-240-speedo.png" :
                                  "qrc:/mainCluster/later-240-speedo-kph.png"
 
-                gearInidcatorEnabled: true
+                gearIndicatorEnabled: true
             }
 
             id: speedoContainer

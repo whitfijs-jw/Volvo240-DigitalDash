@@ -1,6 +1,11 @@
 #ifndef SENSOR_CONFIGS_H
 #define SENSOR_CONFIGS_H
 
+#include <QPointF>
+#include <QString>
+#include <QList>
+#include <units.h>
+
 namespace SensorConfig {
     static constexpr qreal INVALID_TEMP = -459.67; // value if temp could not be read
 
