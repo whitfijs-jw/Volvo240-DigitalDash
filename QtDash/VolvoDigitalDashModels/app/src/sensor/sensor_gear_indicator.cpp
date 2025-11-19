@@ -16,23 +16,29 @@ GearSensor::GearSensor(QObject *parent, Config *config,
     // get a copy of the config
     mGearIndicatorConfig = config->getGearIndicatorConfig();
 
-    // Calculate some stuff for gear estimation distributions
-    for (int i = 0; i < mGearIndicatorConfig.gearRatios.size(); i++) {
-        qreal ratio = mGearIndicatorConfig.gearRatios.at(i);
-        qreal sigma = SIGMA_MIN;
-        if (i + 1 < mGearIndicatorConfig.gearRatios.size()) {
-            qreal ratioNext = mGearIndicatorConfig.gearRatios.at(i+1);
-            sigma = qMin(ratio - ratioNext, SIGMA_MAX);
-        } else {
-            sigma = mDistSigma.at(i-1);
+    if (auto count = mGearIndicatorConfig.gearRatios.size(); count > 1) {
+        // Calculate some stuff for gear estimation distributions
+        for (int i = 0; i < count; i++) {
+            qreal ratio = mGearIndicatorConfig.gearRatios.at(i);
+            qreal sigma = SIGMA_MIN;
+            if (i + 1 < count) {
+                qreal ratioNext = mGearIndicatorConfig.gearRatios.at(i+1);
+                sigma = qMin(ratio - ratioNext, SIGMA_MAX);
+            } else {
+                sigma = mDistSigma.last();
+            }
+            mDistSigma.push_back(sigma);
         }
-        mDistSigma.push_back(sigma);
     }
 }
 
 int GearSensor::estimateGear(qreal rpm,
                              qreal speed,
                              Units::SpeedUnits speedUnits) {
+    if (auto count = mGearIndicatorConfig.gearRatios.size(); count == 0) {
+        return -1;
+    }
+
     // Get units to agree
     qreal diameterMile = SensorUtils::convertDistance(
         mGearIndicatorConfig.tireDiameter,

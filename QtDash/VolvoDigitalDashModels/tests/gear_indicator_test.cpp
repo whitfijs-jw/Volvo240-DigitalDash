@@ -10,12 +10,8 @@ void GearIndicatorTest::cleanup() {
 
 }
 
-void GearIndicatorTest::initTestCase() {
-}
-
-
 /**
- * @brief GearIndicatorTest::initTestCase_data
+ * @brief GearIndicatorTest::initTestCase
  *
  * [vss_input]
     pulse_per_rot=12
@@ -35,7 +31,7 @@ void GearIndicatorTest::initTestCase() {
     idle_high_rpm=1100
     idle_low_rpm=500
  */
-void GearIndicatorTest::initTestCase_data() {
+void GearIndicatorTest::initTestCase() {
     QSettings * gearConfig = new QSettings("gearConfig.ini", QSettings::IniFormat);
 
     gearConfig->beginGroup(VSS_INPUT_GROUP);
@@ -73,6 +69,10 @@ void GearIndicatorTest::initTestCase_data() {
                                  static_cast<int>(VssSource::VssDataChannel::MPH));
 }
 
+void GearIndicatorTest::initTestCase_data() {
+
+}
+
 void GearIndicatorTest::cleanupTestCase() {
     delete mGearSensor;
     delete mVssSource;
@@ -89,7 +89,7 @@ void GearIndicatorTest::testEstimateGear() {
     QFETCH(int, expectedGear);
 
     for (float dRpm = -rpmDelta; dRpm <= rpmDelta; dRpm += (rpmDelta / 1.0)) {
-        for(float dSpeed = -speedDelta; dSpeed < speedDelta; dSpeed += (speedDelta / 1.0)) {
+        for(float dSpeed = -speedDelta; dSpeed <= speedDelta; dSpeed += (speedDelta / 1.0)) {
             qreal currentSpeed = speed + dSpeed;
             qreal currentRpm = rpm + dRpm;
 
