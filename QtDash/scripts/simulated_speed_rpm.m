@@ -24,7 +24,7 @@ function [time, obs_speed obs_rpm obs_ratio true_gear] = simulated_speed_rpm()
   time = linspace(0, T, num_samples);
 
   % Noise Parameters
-  speed_noise_std = 1.5;  % MPH noise
+  speed_noise_std = 0.5;  % MPH noise
   rpm_noise_std = 40.0;   % RPM noise
 
   % Driver/Car Logic Parameters
