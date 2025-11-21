@@ -24,6 +24,11 @@ public:
     static constexpr uint32_t SAMPLE_READY_FLAG = 1 << 0;
 
     explicit Adc(uint32_t sampleRate = DEFAULT_SAMPLING_RATE);
+    ~Adc() final = default;
+    Adc& operator=(const Adc& src) = delete;
+    Adc(const Adc& src) = delete;
+    Adc& operator=(const Adc&& src) = delete;
+    Adc(Task& src) = delete;
 
     Return setup() final;
     void loop() final;
@@ -48,6 +53,8 @@ public:
     	return &mAdcDmaHandle;
     }
 
+    osStatus_t waitForSample(uint32_t timeout);
+
 private:
     Return initGpios();
     Return initTimer(uint32_t samplingRate);
@@ -59,7 +66,7 @@ private:
     DMA_HandleTypeDef mAdcDmaHandle = {};
     TIM_HandleTypeDef mSampleRateTimer = {};
 
-    osMessageQueueId_t mDataQueue {nullptr};
+    osSemaphoreId_t mDataSemaphore {nullptr};
     std::array<uint32_t, NUM_CHANNELS>* mData;
     uint32_t mSamplingRate {DEFAULT_SAMPLING_RATE};
 

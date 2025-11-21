@@ -19,7 +19,8 @@ static constexpr uint32_t ADC_PRIO = configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORIT
 }
 
 namespace TaskPriorities {
-static constexpr osPriority_t ADC_TASK_PRIORITY = osPriorityAboveNormal;
+static constexpr osPriority_t ADC_DRIVER_PRIORITY = osPriorityAboveNormal;
+static constexpr osPriority_t ADC_TASK_PRIORITY = osPriorityAboveNormal1;
 }
 
 

@@ -1,3 +1,0 @@
-../Core/Src/Tasks/Task.cpp:12:1:Tasks::Task::Task(const char*, osPriority_t, uint32_t)	24	static
-../Core/Src/Tasks/Task.cpp:18:8:virtual Tasks::Return Tasks::Task::init()	16	static
-../Core/Src/Tasks/Task.cpp:28:6:static void Tasks::Task::runner(void*)	24	static

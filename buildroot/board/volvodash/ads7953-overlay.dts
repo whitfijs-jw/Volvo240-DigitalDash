@@ -1,0 +1,205 @@
+/*
+ * Device tree overlay for TI ADS795x A/D Converters
+ */
+
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "brcm,bcm2835";
+
+	fragment@0 {
+		target = <&spidev0>;
+		__dormant__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@1 {
+		target = <&spidev1>;
+		__dormant__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@2 {
+		target-path = "spi1/spidev@0";
+		__dormant__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@3 {
+		target-path = "spi1/spidev@1";
+		__dormant__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@4 {
+		target-path = "spi1/spidev@2";
+		__dormant__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@5 {
+		target-path = "spi2/spidev@0";
+		__dormant__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@6 {
+		target-path = "spi2/spidev@1";
+		__dormant__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@7 {
+		target-path = "spi2/spidev@2";
+		__dormant__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@8 {
+		target = <&spi0>;
+		__dormant__ {
+			status = "okay";
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			ads7953_00: ads7953@0 {
+				compatible = "ti,ads7953";
+				reg = <0>;
+				spi-max-frequency = <10000000>;
+			};
+		};
+	};
+
+	fragment@9 {
+		target = <&spi0>;
+		__dormant__ {
+			status = "okay";
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			ads7953_01: ads7953@1 {
+				compatible = "ti,ads7953";
+				reg = <1>;
+				spi-max-frequency = <10000000>;
+			};
+		};
+	};
+
+	fragment@10 {
+		target = <&spi1>;
+		__dormant__ {
+			status = "okay";
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			ads7953_10: ads7953@0 {
+				compatible = "ti,ads7953";
+				reg = <0>;
+				spi-max-frequency = <10000000>;
+			};
+		};
+	};
+
+	fragment@11 {
+		target = <&spi1>;
+		__dormant__ {
+			status = "okay";
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			ads7953_11: ads7953@1 {
+				compatible = "ti,ads7953";
+				reg = <1>;
+				spi-max-frequency = <10000000>;
+			};
+		};
+	};
+
+	fragment@12 {
+		target = <&spi1>;
+		__dormant__ {
+			status = "okay";
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			ads7953_12: ads7953@2 {
+				compatible = "ti,ads7953";
+				reg = <2>;
+				spi-max-frequency = <10000000>;
+			};
+		};
+	};
+
+	fragment@13 {
+		target = <&spi2>;
+		__dormant__ {
+			status = "okay";
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			ads7953_20: ads7953@0 {
+				compatible = "ti,ads7953";
+				reg = <0>;
+				spi-max-frequency = <10000000>;
+			};
+		};
+	};
+
+	fragment@14 {
+		target = <&spi2>;
+		__dormant__ {
+			status = "okay";
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			ads7953_21: ads7953@1 {
+				compatible = "ti,ads7953";
+				reg = <1>;
+				spi-max-frequency = <10000000>;
+			};
+		};
+	};
+
+	fragment@15 {
+		target = <&spi2>;
+		__dormant__ {
+			status = "okay";
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			ads7953_22: ads7953@2 {
+				compatible = "ti,ads7953";
+				reg = <2>;
+				spi-max-frequency = <10000000>;
+			};
+		};
+	};
+
+	__overrides__ {
+		spi0-0-present = <0>, "+0+8";
+		spi0-1-present = <0>, "+1+9";
+		spi1-0-present = <0>, "+2+10";
+		spi1-1-present = <0>, "+3+11";
+		spi1-2-present = <0>, "+4+12";
+		spi2-0-present = <0>, "+5+13";
+		spi2-1-present = <0>, "+6+14";
+		spi2-2-present = <0>, "+7+15";
+		spi0-0-speed = <&ads7953_00>, "spi-max-frequency:0";
+		spi0-1-speed = <&ads7953_01>, "spi-max-frequency:0";
+		spi1-0-speed = <&ads7953_10>, "spi-max-frequency:0";
+		spi1-1-speed = <&ads7953_11>, "spi-max-frequency:0";
+		spi1-2-speed = <&ads7953_12>, "spi-max-frequency:0";
+		spi2-0-speed = <&ads7953_20>, "spi-max-frequency:0";
+		spi2-1-speed = <&ads7953_21>, "spi-max-frequency:0";
+		spi2-2-speed = <&ads7953_22>, "spi-max-frequency:0";
+	};
+};

@@ -12,13 +12,16 @@ using namespace Drivers;
 Adc* Adc::mInstance = nullptr;
 
 Adc::Adc(uint32_t samplingRate) :
-        Tasks::Task("adc_driver", TaskPriorities::ADC_TASK_PRIORITY, 512),
+        Tasks::Task("adc_driver", TaskPriorities::ADC_DRIVER_PRIORITY, 512),
         mSamplingRate(samplingRate) {
 	setIntsance(*this);
 }
 
 Return Adc::setup() {
-	mDataQueue = osMessageQueueNew(1, Adc::NUM_CHANNELS*sizeof(uint32_t), nullptr);
+	mDataSemaphore = osSemaphoreNew(1, 0, nullptr);
+	if (mData == nullptr) {
+		return Return::ERROR;
+	}
 
     if (auto ret = initGpios(); ret != Return::OK) {
         return ret;
@@ -49,9 +52,17 @@ void Adc::loop() {
 		}
 
 		if ((flags & Adc::SAMPLE_READY_FLAG) == Adc::SAMPLE_READY_FLAG) {
-			osMessageQueuePut(mDataQueue, mData, 0, 0);
+			osSemaphoreRelease(mDataSemaphore);
 		}
 	}
+}
+
+osStatus_t Adc::waitForSample(uint32_t timeout) {
+	if (mDataSemaphore == nullptr) {
+		return osErrorResource;
+	}
+
+	return osSemaphoreAcquire(mDataSemaphore, timeout);
 }
 
 Return Adc::enableSampling(std::array<uint32_t, Adc::NUM_CHANNELS>& data) {
