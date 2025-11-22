@@ -475,7 +475,9 @@ HEADERS += \
     inc/sensor_source/sensor_source_tach.h \
     inc/sensor_source/sensor_source_vss.h \
     inc/utils/backlight_control.h \
+    inc/utils/discrete_bayes_filter.h \
     inc/utils/event_timers.h \
+    inc/utils/gear_predictive_filter.h \
     inc/utils/gps_helper.h \
     inc/utils/key_press_emitter.h \
     inc/utils/sensor_utils.h \

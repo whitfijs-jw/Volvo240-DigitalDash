@@ -56,6 +56,7 @@ function TMat = calculateTransitionMatrix2(prob)
   
   for ii = 2:length(prob)
     TMat(ii,:) = prob_skip; # small likelihood that we can end up anywhere
+    TMat(ii,1) = prob_neutral;
     TMat(ii,ii) = prob_stay; # very likely to stay in the current gear
     
     if ii < 6 # not top gear

@@ -35,8 +35,11 @@ public:
      * @brief Constructor
      * @param parent: Parent QObject
      * @param configPath: path to config.ini file (default is /opt/config.ini)
+     * @param gaugeConfigPath: path to config_gauge.ini
+     * @param odoConfigPath: path to config_odo.ini
+     * @param canConfigPath: path to config_can.ini
      */
-    Config(QObject * parent,
+    explicit Config(QObject * parent,
            QString configPath = DEFAULT_CONFIG_PATH,
            QString gaugeConfigPath = DEFAULT_GAUGE_CONFIG_PATH,
            QString odoConfigPath = DEFAULT_ODO_CONFIG_PATH,
@@ -288,7 +291,7 @@ public:
         return mSensorSupplyVoltage;
     }
 
-    SensorConfig::GearIndicatorConfig_t getGearIndicatorConfig() {
+    SensorConfig::GearIndicatorConfig_t getGearIndicatorConfig() const {
         return mGearIndicatorConfig;
     }
 private:

@@ -75,7 +75,7 @@ public:
         if (mSensors.length() > 2) {
             QObject::connect(
                         mSensors.at(2), &Sensor::sensorDataReady,
-                        [&gaugeModel = mModel](QVariant data) {
+                        [&gaugeModel = mModel](const QVariant& data) {
                 int gear = data.toInt();
                 static_cast<SpeedometerModel*>(gaugeModel)->setCurrentGear(gear);
             });

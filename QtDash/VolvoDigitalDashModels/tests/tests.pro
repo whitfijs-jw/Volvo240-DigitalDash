@@ -52,4 +52,5 @@ HEADERS += \
     config_test.h \
     ntc_test.h \
     sensor_test.h \
-    sensor_utils_test.h
+    sensor_utils_test.h \
+    gear_predictive_filter.h

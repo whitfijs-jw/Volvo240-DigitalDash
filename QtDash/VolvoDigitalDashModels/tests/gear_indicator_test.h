@@ -5,6 +5,7 @@
 #include <QTest>
 
 #include <sensor_gear_indicator.h>
+#include <gear_predictive_filter.h>
 
 class GearIndicatorTest : public QObject
 {
@@ -17,6 +18,8 @@ private:
     TachSource * mTachSource;
     VssSource * mVssSource;
 
+    GearPredictiveFilter * filter = nullptr;
+
 private slots:
     void init();
     void cleanup();
@@ -28,6 +31,8 @@ private slots:
     void testEstimateGear();
     void testEstimateGear_data();
 
+    void testGenerateTransformationMatrix();
+    void testGenerateTransformationMatrix_data();
 };
 
 #endif // GEAR_INDICATOR_TEST_H

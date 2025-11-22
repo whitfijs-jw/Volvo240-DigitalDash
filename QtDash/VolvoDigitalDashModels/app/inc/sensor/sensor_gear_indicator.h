@@ -39,7 +39,7 @@ public:
      * @param speedUnits Speed units (mph, kmh, m/s)
      * @return the estimated gear
      */
-    int estimateGear(qreal rpm, qreal speed, Units::SpeedUnits speedUnits);
+    int estimateGear(qreal rpm, qreal speed, Units::SpeedUnits speedUnits) const;
 
 public slots:
     /**

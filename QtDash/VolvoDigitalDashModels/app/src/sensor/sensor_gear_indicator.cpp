@@ -3,10 +3,8 @@
 GearSensor::GearSensor(QObject *parent, Config *config,
            TachSource *tachSource, int channel,
            VssSource *vssSource, int vssChannel) :
-    Sensor(parent, config, tachSource, channel) {
+    Sensor(parent, config, tachSource, channel), mVssSource(vssSource), mVssChannel(vssChannel), mGearIndicatorConfig(config->getGearIndicatorConfig()){
     // setup additional vss source
-    mVssSource = vssSource;
-    mVssChannel = vssChannel;
 
     // connect vss to transform
     QObject::connect(
@@ -14,7 +12,7 @@ GearSensor::GearSensor(QObject *parent, Config *config,
         this, &GearSensor::transformVssData);
 
     // get a copy of the config
-    mGearIndicatorConfig = config->getGearIndicatorConfig();
+    // mGearIndicatorConfig = config->getGearIndicatorConfig();
 
     if (auto count = mGearIndicatorConfig.gearRatios.size(); count > 1) {
         // Calculate some stuff for gear estimation distributions
@@ -34,7 +32,7 @@ GearSensor::GearSensor(QObject *parent, Config *config,
 
 int GearSensor::estimateGear(qreal rpm,
                              qreal speed,
-                             Units::SpeedUnits speedUnits) {
+                             Units::SpeedUnits speedUnits) const {
     if (auto count = mGearIndicatorConfig.gearRatios.size(); count == 0) {
         return -1;
     }

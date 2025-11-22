@@ -148,3 +148,36 @@ void GearIndicatorTest::testEstimateGear_data() {
     QTest::addRow("3500_5th_gear") << 3500.0 << 95.52 << "mph" << 50.0 << 2.0 << 5;
     QTest::addRow("4000_5th_gear") << 4000.0 << 109.17 << "mph" << 50.0 << 2.0 << 5;
 }
+
+void GearIndicatorTest::testGenerateTransformationMatrix() {
+    QFETCH(size_t, numGears);
+    QFETCH(qreal, stay);
+    QFETCH(qreal, adjacent);
+    QFETCH(qreal, neutral);
+    QFETCH(qreal, skip);
+
+    GearPredictiveFilter::TransitionProbabilities probs = {
+        stay, adjacent, neutral, skip, numGears
+    };
+
+    Eigen::MatrixXd TMat(numGears, numGears);
+    GearPredictiveFilter::generateTransitionMatrix(probs, TMat);
+
+    for (size_t row = 0; row < numGears; row++) {
+        auto rowSum = 0.0;
+        for (size_t col = 0; col < numGears; col++) {
+            rowSum += TMat(row, col);
+        }
+        QCOMPARE(rowSum, 1.0);
+    }
+}
+
+void GearIndicatorTest::testGenerateTransformationMatrix_data() {
+    QTest::addColumn<size_t>("numGears");
+    QTest::addColumn<qreal>("stay");
+    QTest::addColumn<qreal>("adjacent");
+    QTest::addColumn<qreal>("neutral");
+    QTest::addColumn<qreal>("skip");
+
+    QTest::addRow("5_speed_0.9_0.04_0.015_0.001") << static_cast<size_t>(6) << 0.9 << 0.04 << 0.015 << 0.001;
+}
