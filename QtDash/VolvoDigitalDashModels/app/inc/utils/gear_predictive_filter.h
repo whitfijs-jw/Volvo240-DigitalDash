@@ -1,8 +1,11 @@
 #ifndef GEAR_PREDICTIVE_FILTER_H
 #define GEAR_PREDICTIVE_FILTER_H
 
-#include <vector>
 #include <../../eigen/Eigen/Dense>
+#include <cmath>
+
+#include "sensor_configs.h"
+#include "sensor_utils.h"
 
 class GearPredictiveFilter {
 public:
@@ -13,12 +16,87 @@ public:
         double skip = 0.001; //!< probability of skipping a gear
         size_t numStates = 6; //!< number of states (default -> 5 gears + neutral)
     };
+    static constexpr double FIXED_NEUTRAL_LIKELIHOOD = 1.0e-6;
+    static constexpr double DEFAULT_INITIAL_NEUTRAL_PROB = 0.9;
+    static constexpr double DEFAULT_SIGMA_PCT = 0.03;
+
     using TransitionMatrix = Eigen::MatrixXd;
+    using ProbabilityVector = Eigen::VectorXd;
+    using LikelihoodVector = Eigen::VectorXd;
+    using ValueVector = Eigen::VectorXd;
+    using NoiseSigmaVector = Eigen::VectorXd;
 
-    GearPredictiveFilter(size_t N) {}
+    using MovingAvgFilter = struct MovingAvgFilter_t {
+        MovingAvgFilter_t(size_t N) : buffer(N) {
+        }
 
+        Eigen::VectorXd buffer;
+        int count = 0;
+        size_t totalCount;
 
-    static int generateTransitionMatrix(TransitionProbabilities prob, TransitionMatrix& transitionMatrix) {
+        double update(double val) {
+            buffer(count) = val;
+            count++;
+            totalCount++;
+
+            if (count >= buffer.size()) {
+                count = 0;
+            }
+
+            auto sum = 0.0;
+            for (const auto& val : buffer) {
+                sum += val;
+            }
+
+            return sum / static_cast<double>(buffer.size());
+        }
+    };
+
+    GearPredictiveFilter(const TransitionProbabilities& prob, const SensorConfig::GearIndicatorConfig_t& gearConfig) :
+        mTransitionMatrix(prob.numStates, prob.numStates),
+        mGearIndicatorConfig(gearConfig),
+        mSpeedFilter(gearConfig.smoothingFilterN),
+        mRpmFilter(gearConfig.smoothingFilterN) {
+        generateTransitionMatrix(prob, mTransitionMatrix);
+    }
+
+    bool isValidInput(double observedSpeed, double observedRpm) {
+        return (observedSpeed > mGearIndicatorConfig.speedDropOut && observedRpm > mGearIndicatorConfig.idleHighRpm);
+    }
+
+    int fallbackProbability(Eigen::VectorXd& prob) {
+        if (prob.size() != mTransitionMatrix.cols()) {
+            return -1;
+        }
+
+        prob(0) = 1.0;
+        for (auto i = 1; i < prob.size(); i++) {
+            prob(i) = 0.0;
+        }
+
+        return 0;
+    }
+
+    static constexpr int calculateLikelihood(double observed, double mean, double sigmaNoise) {
+        auto norm = 1 / std::sqrt( 2 * M_PI * sigmaNoise * sigmaNoise );
+        auto exponent = -0.5 * (observed - mean) * (observed - mean) / (sigmaNoise * sigmaNoise);
+
+        return norm * std::exp(exponent);
+    }
+
+    int flattenLikelihood(LikelihoodVector& likelihoods, double offset = 0.1) {
+        if (likelihoods.size() < mTransitionMatrix.cols()) {
+            return -1;
+        }
+
+        for (auto& val : likelihoods) {
+            val = (val * 0.5) + offset;
+        }
+
+        return 0;
+    }
+
+    static constexpr int generateTransitionMatrix(TransitionProbabilities prob, TransitionMatrix& transitionMatrix) {
         for (size_t row = 0; row < prob.numStates; row++) {
             if (row == 0) {
                 for (size_t col = 0; col < prob.numStates; col++) {
@@ -59,6 +137,58 @@ public:
         return 0;
     }
 
+    static int generateExpectedValues(const SensorConfig::GearIndicatorConfig_t& gearConfig, ValueVector& expectedValues) {
+        if (expectedValues.size() != gearConfig.gearRatios.size()) {
+            return -1;
+        }
+
+        auto rearEnd = gearConfig.rearEndRatio;
+        auto tireDiameterMiles = SensorUtils::toMiles(gearConfig.tireDiameter, gearConfig.tireDiameterUnits);
+
+        for (int i = 0; i < gearConfig.gearRatios.size(); i++) {
+            expectedValues(i) = (gearConfig.gearRatios[i] * rearEnd) / (60.0 * tireDiameterMiles * M_PI);
+        }
+
+        return 0;
+    }
+
+    static int generateInitialProbablilities(
+        const SensorConfig::GearIndicatorConfig_t& gearConfig,
+        ProbabilityVector& prob,
+        double neutralProb = DEFAULT_INITIAL_NEUTRAL_PROB) {
+
+        if (prob.size() != gearConfig.gearRatios.size() + 1) {
+            return -1;
+        }
+
+        auto numGears = gearConfig.gearRatios.size();
+
+        prob(0) = neutralProb;
+        for (int i = 1; i < prob.size(); i++) {
+            prob(i) = (1 - prob(0)) / numGears;
+        }
+
+        return 0;
+    }
+
+    static int generateSigmaNoiseVector(const ValueVector& expectedValues, double noisePct, NoiseSigmaVector& noiseVector) {
+        if (expectedValues.size() != noiseVector.size()) {
+            return -1;
+        }
+
+        for (int i = 0; i < expectedValues.size(); i++) {
+            noiseVector(i) = expectedValues(i) * noisePct;
+        }
+
+        return 0;
+    }
+
+
+private:
+    TransitionMatrix mTransitionMatrix;
+    const SensorConfig::GearIndicatorConfig_t& mGearIndicatorConfig;
+    MovingAvgFilter mSpeedFilter;
+    MovingAvgFilter mRpmFilter;
 };
 
 #endif // GEAR_PREDICTIVE_FILTER_H

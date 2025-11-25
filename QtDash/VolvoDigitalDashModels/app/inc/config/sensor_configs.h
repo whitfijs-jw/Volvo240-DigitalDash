@@ -144,6 +144,7 @@ namespace SensorConfig {
         Units::DistanceUnits speedDropOutUnits; //!< dropout speed units
         qreal idleHighRpm; //!< high idle rpm
         qreal idleLowRpm; //!< low idle rpm
+        qreal smoothingFilterN = 4; //!< smoothing filter order (simple moving average)
     };
     /**
      * @struct BacklightControlConfig
