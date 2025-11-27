@@ -537,7 +537,7 @@ bool Config::loadGearSensorConfig(QSettings * config, SensorConfig::GearIndicato
     gearIndicatorConfig.idleLowRpm = config->value(GEAR_INDICATOR_LOW_IDLE, 500.0).toReal();
     gearIndicatorConfig.speedDropOut = config->value(GEAR_INDICATOR_SPEED_DROPOUT, 5).toReal();
     QString dropoutUnits = config->value(GEAR_INDICATOR_SPEED_DROPOUT_UNITS, "mph").toString().toLower();
-    gearIndicatorConfig.speedDropOutUnits = Units::getDistanceUnits(dropoutUnits);
+    gearIndicatorConfig.speedDropOutUnits = Units::getSpeedUnits(dropoutUnits);
     gearIndicatorConfig.tireDiameter = mVssInputConfig.tireDiameter;
     gearIndicatorConfig.tireDiameterUnits = mVssInputConfig.tireDiameterUnits;
 

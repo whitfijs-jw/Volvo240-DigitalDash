@@ -16,6 +16,13 @@ public:
         double skip = 0.001; //!< probability of skipping a gear
         size_t numStates = 6; //!< number of states (default -> 5 gears + neutral)
     };
+
+    using EstimatedGear = struct EstimatedGear_t {
+        int index = 0;
+        double confidence = 0;
+        int neutralIndex = 0;
+    };
+
     static constexpr double FIXED_NEUTRAL_LIKELIHOOD = 1.0e-6;
     static constexpr double DEFAULT_INITIAL_NEUTRAL_PROB = 0.9;
     static constexpr double DEFAULT_SIGMA_PCT = 0.03;
@@ -56,8 +63,21 @@ public:
         mTransitionMatrix(prob.numStates, prob.numStates),
         mGearIndicatorConfig(gearConfig),
         mSpeedFilter(gearConfig.smoothingFilterN),
-        mRpmFilter(gearConfig.smoothingFilterN) {
+        mRpmFilter(gearConfig.smoothingFilterN),
+        mNoiseSigmaVector(gearConfig.gearRatios.size()),
+        mExpectedVector(gearConfig.gearRatios.size()),
+        mProbVector(gearConfig.gearRatios.size() + 1) {
+        // generate transition matrix
         generateTransitionMatrix(prob, mTransitionMatrix);
+
+        // generate expected values
+        generateExpectedValues(gearConfig, mExpectedVector);
+
+        //generate noise sigma vector
+        generateSigmaNoiseVector(mExpectedVector, DEFAULT_SIGMA_PCT, mNoiseSigmaVector);
+
+        //generate initial probabilities
+        generateInitialProbablilities(gearConfig, mProbVector);
     }
 
     bool isValidInput(double observedSpeed, double observedRpm) {
@@ -77,11 +97,28 @@ public:
         return 0;
     }
 
-    static constexpr int calculateLikelihood(double observed, double mean, double sigmaNoise) {
+    static constexpr double calculateLikelihood(double observed, double mean, double sigmaNoise) {
         auto norm = 1 / std::sqrt( 2 * M_PI * sigmaNoise * sigmaNoise );
         auto exponent = -0.5 * (observed - mean) * (observed - mean) / (sigmaNoise * sigmaNoise);
 
         return norm * std::exp(exponent);
+    }
+
+    static int generateLikelihoodVector(double observed, const ValueVector& expectedValues, const NoiseSigmaVector& sigmaNoiseVector, LikelihoodVector& likelihood) {
+        if (expectedValues.size() != sigmaNoiseVector.size()) {
+            return -1;
+        }
+
+        if (likelihood.size() != expectedValues.size() + 1) {
+            return -1;
+        }
+
+        likelihood(0) = FIXED_NEUTRAL_LIKELIHOOD;
+        for (int i = 1; i < likelihood.size(); i++) {
+            likelihood(i) = calculateLikelihood(observed, expectedValues(i-1), sigmaNoiseVector(i-1));
+        }
+
+        return 0;
     }
 
     int flattenLikelihood(LikelihoodVector& likelihoods, double offset = 0.1) {
@@ -183,12 +220,66 @@ public:
         return 0;
     }
 
+    EstimatedGear update(double observedSpeedMph, double observedRpm) {
+        auto filteredSpeed = mSpeedFilter.update(observedSpeedMph);
+        auto filteredRpm = mRpmFilter.update(observedRpm);
+        auto speedDropOutMph = SensorUtils::toMph(mGearIndicatorConfig.speedDropOut, mGearIndicatorConfig.speedDropOutUnits);
+        auto observedRatio = 0.0;
+
+        // make sure we're going fast enough to even estimate
+        if (filteredSpeed < speedDropOutMph || filteredRpm < mGearIndicatorConfig.idleHighRpm) {
+            fallbackProbability(mProbVector);
+        }
+
+        // make sure that we're not trying to divide by a very small number
+        if (filteredSpeed > 0.1) {
+            observedRatio = filteredRpm / filteredSpeed;
+        }
+
+        // calculate likelihoods
+        LikelihoodVector likelihood = LikelihoodVector(mProbVector.size());
+        generateLikelihoodVector(observedRatio, mExpectedVector, mNoiseSigmaVector, likelihood);
+        if (filteredSpeed < speedDropOutMph) {
+            flattenLikelihood(likelihood);
+        }
+
+        // calculate posterior probabilities
+        ProbabilityVector posterior = ProbabilityVector(mProbVector.size());
+        posterior = likelihood.cwiseProduct(mProbVector);
+
+        // make sure we don't try to divide by zero when making the posterior PDF
+        if (posterior.sum() == 0) {
+            fallbackProbability(posterior);
+        } else {
+            posterior = posterior / posterior.sum();
+        }
+
+        // estimate gear
+        Eigen::Index maxIndex;
+        double confidence = posterior.maxCoeff(&maxIndex);
+
+        EstimatedGear ret = {
+            .index = static_cast<int>(maxIndex - 1),
+            .confidence = confidence,
+            .neutralIndex = 0
+        };
+
+        //predict next state
+        mProbVector = posterior * mTransitionMatrix;
+        mProbVector = mProbVector / mProbVector.sum();
+
+        return ret;
+    }
+
 
 private:
     TransitionMatrix mTransitionMatrix;
-    const SensorConfig::GearIndicatorConfig_t& mGearIndicatorConfig;
+    const SensorConfig::GearIndicatorConfig_t mGearIndicatorConfig;
     MovingAvgFilter mSpeedFilter;
     MovingAvgFilter mRpmFilter;
+    NoiseSigmaVector mNoiseSigmaVector;
+    ValueVector mExpectedVector;
+    ProbabilityVector mProbVector;
 };
 
 #endif // GEAR_PREDICTIVE_FILTER_H

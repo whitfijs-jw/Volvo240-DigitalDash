@@ -141,7 +141,7 @@ namespace SensorConfig {
         QList<qreal> gearRatios; //!< list of transmission gear ratios
         qreal rearEndRatio; //!< rear end gear ratio
         qreal speedDropOut; //!< speed at which gear estimation drops out
-        Units::DistanceUnits speedDropOutUnits; //!< dropout speed units
+        Units::SpeedUnits speedDropOutUnits; //!< dropout speed units
         qreal idleHighRpm; //!< high idle rpm
         qreal idleLowRpm; //!< low idle rpm
         qreal smoothingFilterN = 4; //!< smoothing filter order (simple moving average)
