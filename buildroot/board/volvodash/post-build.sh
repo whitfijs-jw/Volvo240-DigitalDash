@@ -34,7 +34,7 @@ echo "Building Qt App (qmake + make)"
 cd "${QT_BUILD_DIR}"
 ${QMAKE_CMD} ../subdirs.pro -spec devices/linux-buildroot-g++ CONFIG+=debug CONFIG+=qml_debug CONFIG+=RPI && /usr/bin/make qmake_all
 
-make -j
+make
 
 echo "Copying QtDash executable to /opt"
 cd "${BUILDROOT_DIR}"
