@@ -34,6 +34,8 @@ Item {
     property real textSize: 0.075
     property real textOffset: .175
 
+    property bool gearIndicatorEnabled: false
+
     Component {
         id: component
 
@@ -74,6 +76,8 @@ Item {
                 item.textSize = speedometer.textSize
                 item.textOffset = speedometer.textOffset
                 item.significantDigits = speedometer.significatDigits
+
+                item.gearValueEnabled = speedometer.gearIndicatorEnabled
             }
 
             Binding {
@@ -98,6 +102,12 @@ Item {
                 target: item
                 property: "height"
                 value: speedometer.width
+            }
+
+            Binding {
+                target: item
+                property: "gearValue"
+                value: currentGear
             }
         }
     }

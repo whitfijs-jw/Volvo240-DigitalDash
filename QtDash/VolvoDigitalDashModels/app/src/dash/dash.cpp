@@ -24,7 +24,8 @@ Dash::Dash(QObject *parent, QQmlContext *context) :
     mTachSensor(parent, &mConfig, &mTachSource, DashUtils::to_underlying(TachSource::TachDataChannel::RPM_CHANNEL)),
     mOdoSensor(parent, &mConfig, &mVssSource, DashUtils::to_underlying(VssSource::VssDataChannel::PULSE_COUNT), mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_ODOMETER)),
     mTripAOdoSensor(parent, &mConfig, &mVssSource, DashUtils::to_underlying(VssSource::VssDataChannel::PULSE_COUNT), mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_TRIPA)),
-    mTripBOdoSensor(parent, &mConfig, &mVssSource, DashUtils::to_underlying(VssSource::VssDataChannel::PULSE_COUNT), mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_TRIPB))
+    mTripBOdoSensor(parent, &mConfig, &mVssSource, DashUtils::to_underlying(VssSource::VssDataChannel::PULSE_COUNT), mConfig.getOdometerConfig(ConfigKeys::ODO_NAME_TRIPB)),
+    mGearSensor(parent, &mConfig, &mTachSource, DashUtils::to_underlying(TachSource::TachDataChannel::RPM_CHANNEL), &mVssSource, DashUtils::to_underlying(VssSource::VssDataChannel::MPH))
 {}
 
 void Dash::init() {
@@ -368,6 +369,8 @@ void Dash::initSpeedo() {
         speedoSensors.append(&mAmbientTempSensor);
     }
 
+    // append the gear indicator sensor
+    speedoSensors.append(&mGearSensor);
     mSpeedoGauge.reset(
         new SpeedometerGauge(
             this->parent(),

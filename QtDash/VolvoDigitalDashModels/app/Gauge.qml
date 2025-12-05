@@ -49,6 +49,11 @@ Item {
     property real topTextOffset: 1 / 4.0
     property bool topValueEnabled: false
 
+    property real gearValue: 0
+    property real gearTextSize: topTextSize
+    property real gearTextOffset: -1 / 10.0
+    property bool gearValueEnabled: false
+
     property real dir: RotationAnimation.Numerical
 
     function boundedAngle(angle, min, max) {
@@ -175,6 +180,27 @@ Item {
             font.pixelSize: parent.height * gauge.topTextSize
 
             text: Number(gauge.topValue).toFixed(1).toLocaleString(Qt.locale("en_US")) + " " + gauge.topUnits
+            color: "white"
+        }
+
+        Text {
+
+            id: gearText
+
+            visible: gearValueEnabled
+
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            anchors.horizontalCenterOffset: 0
+
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenterOffset: parent.height * gauge.gearTextOffset
+
+            fontSizeMode: Text.Fit
+            font.pixelSize: parent.height * gauge.gearTextSize
+
+            text: gauge.gearValue
             color: "white"
         }
     }

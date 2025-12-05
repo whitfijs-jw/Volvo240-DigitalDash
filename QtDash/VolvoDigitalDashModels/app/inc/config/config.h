@@ -35,8 +35,11 @@ public:
      * @brief Constructor
      * @param parent: Parent QObject
      * @param configPath: path to config.ini file (default is /opt/config.ini)
+     * @param gaugeConfigPath: path to config_gauge.ini
+     * @param odoConfigPath: path to config_odo.ini
+     * @param canConfigPath: path to config_can.ini
      */
-    Config(QObject * parent,
+    explicit Config(QObject * parent,
            QString configPath = DEFAULT_CONFIG_PATH,
            QString gaugeConfigPath = DEFAULT_GAUGE_CONFIG_PATH,
            QString odoConfigPath = DEFAULT_ODO_CONFIG_PATH,
@@ -90,6 +93,7 @@ public:
     bool load12VAnalogConfig(QSettings * config, QMap<QString, Analog12VInput::Analog12VInputConfig>& analog12VInputConfig) const;
     bool loadVssInputConfig(QSettings * config, SensorConfig::VssInputConfig& vssInputConfig) const;
     bool loadBacklighConfig(QSettings * config, SensorConfig::BacklightControlConfig_t& backlightConfig) const;
+    bool loadGearSensorConfig(QSettings * config, SensorConfig::GearIndicatorConfig_t& gearIndicatorConfig) const;
 
     /**
      * @brief Load config from config.ini file
@@ -287,6 +291,9 @@ public:
         return mSensorSupplyVoltage;
     }
 
+    SensorConfig::GearIndicatorConfig_t getGearIndicatorConfig() const {
+        return mGearIndicatorConfig;
+    }
 private:
     std::unique_ptr<QSettings> mConfig = nullptr;  //!< QSettings for reading config.ini file
     QMap<QString, int> mSensorChannelConfig; //!< sensor channel configuration
@@ -305,6 +312,7 @@ private:
     GaugeConfig::SpeedoConfig mSpeedoGaugeConfig; //!< speedo gauge config
     GaugeConfig::TachoConfig mTachGaugeConfig; //!< tacho gauge config
     SensorConfig::VssInputConfig mVssInputConfig; //!< vehicle speed sensor config
+    SensorConfig::GearIndicatorConfig_t mGearIndicatorConfig; //!< Gear indicator config
 
     std::unique_ptr<QSettings> mOdometerConfig = nullptr; //!< odometer configration QSettings
     QList<SensorConfig::OdometerConfig> mOdoConfig; //!< odometer config

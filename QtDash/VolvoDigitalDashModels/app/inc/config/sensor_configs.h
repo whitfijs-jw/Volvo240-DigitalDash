@@ -1,6 +1,11 @@
 #ifndef SENSOR_CONFIGS_H
 #define SENSOR_CONFIGS_H
 
+#include <QPointF>
+#include <QString>
+#include <QList>
+#include <units.h>
+
 namespace SensorConfig {
     static constexpr qreal INVALID_TEMP = -459.67; // value if temp could not be read
 
@@ -130,6 +135,17 @@ namespace SensorConfig {
         QString name;
     };
 
+    using GearIndicatorConfig_t = struct GearIndicatorConfig {
+        qreal tireDiameter; //!< Tire diameter
+        Units::DistanceUnits tireDiameterUnits; //!< Tire diameter units
+        QList<qreal> gearRatios; //!< list of transmission gear ratios
+        qreal rearEndRatio; //!< rear end gear ratio
+        qreal speedDropOut; //!< speed at which gear estimation drops out
+        Units::SpeedUnits speedDropOutUnits; //!< dropout speed units
+        qreal idleHighRpm; //!< high idle rpm
+        qreal idleLowRpm; //!< low idle rpm
+        qreal smoothingFilterN = 4; //!< smoothing filter order (simple moving average)
+    };
     /**
      * @struct BacklightControlConfig
      */

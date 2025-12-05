@@ -35,6 +35,7 @@
 #include <sensor_speedo.h>
 #include <sensor_tach.h>
 #include <sensor_odometer.h>
+#include <sensor_gear_indicator.h>
 
 #include <gauge_accessory.h>
 #include <gauge_speedo.h>
@@ -122,6 +123,8 @@ private:
     OdometerSensor mOdoSensor; //!< odometer
     OdometerSensor mTripAOdoSensor; //!< trip a counter
     OdometerSensor mTripBOdoSensor; //!< trip b counter
+    GearSensor mGearSensor;
+
 
     AccessoryGaugeModel mBoostModel; //!< boost pressure QML model
     AccessoryGaugeModel mOilTemperatureModel; //!< oil temperature QML model

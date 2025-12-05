@@ -10,6 +10,7 @@ class SpeedometerModel : public BaseGaugeModel
     Q_OBJECT
     Q_PROPERTY(qreal topValue READ topValue WRITE setTopValue NOTIFY topValueChanged)
     Q_PROPERTY(QString topUnits READ topUnits WRITE setTopUnits NOTIFY topUnitsChanged)
+    Q_PROPERTY(int currentGear READ currentGear WRITE setCurrentGear NOTIFY currentGearChanged)
 
 public:
     static constexpr char SPEEDO_MODEL_NAME[] = "speedoModel";
@@ -17,6 +18,7 @@ public:
     enum class SpeedometerModelRoles{
         TopValueRole        = Qt::UserRole + 5,
         TopUnitsRole        = Qt::UserRole + 6,
+        CurrentGearRole     = Qt::UserRole + 7,
     };
 
     explicit SpeedometerModel(QObject *parent = nullptr);
@@ -75,18 +77,21 @@ public:
 
     qreal topValue() const;
     QString topUnits() const;
+    int currentGear() const;
 
 private:
     qreal mTopValue {0.0};
     QString mTopUnits {""};
+    int mCurrentGear = 0;
 
 signals:
     void topValueChanged();
     void topUnitsChanged();
-
+    void currentGearChanged();
 public slots:
     void setTopValue(qreal topValue);
     void setTopUnits(QString topUnits);
+    void setCurrentGear(int gear);
 };
 
 #endif // SPEEDOMETER_MODEL_H
