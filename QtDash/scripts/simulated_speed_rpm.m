@@ -19,20 +19,20 @@ function [time, obs_speed obs_rpm obs_ratio true_gear] = simulated_speed_rpm()
   % Simulation Setup
   % ---------------------------------------------------------
   dt = 50e-3; % 50ms sample time
-  T = 60;     % 40 seconds duration
+  T = 50;     % 40 seconds duration
   num_samples = floor(T/dt);
   time = linspace(0, T, num_samples);
 
   % Noise Parameters
-  speed_noise_std = 0.5;  % MPH noise
-  rpm_noise_std = 40.0;   % RPM noise
+  speed_noise_std = 0.75;  % MPH noise
+  rpm_noise_std = 120.0;   % RPM noise
 
   % Driver/Car Logic Parameters
   idle_rpm = 850;
-  shift_point_rpm = 3500; % Driver shifts when RPM hits this
+  shift_point_rpm = 4000; % Driver shifts when RPM hits this
   accel_rate = 3.5;       % MPH per second
   brake_rate = 8.0;       % MPH per second decel
-  max_speed = 65;
+  max_speed = 120;
 
   % Initialize Arrays
   true_speed_mph = zeros(1, num_samples);
@@ -56,7 +56,7 @@ function [time, obs_speed obs_rpm obs_ratio true_gear] = simulated_speed_rpm()
           state = 'IDLE';
       elseif current_speed < max_speed && strcmp(state, 'BRAKE') == 0
           state = 'ACCEL';
-      elseif t > 25
+      elseif t > 45
           state = 'BRAKE';
           clutch_is_pressed = true; % Clutch in for braking
       else

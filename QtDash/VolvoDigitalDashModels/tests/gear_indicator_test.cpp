@@ -181,3 +181,110 @@ void GearIndicatorTest::testGenerateTransformationMatrix_data() {
 
     QTest::addRow("5_speed_0.9_0.04_0.015_0.001") << static_cast<size_t>(6) << 0.9 << 0.04 << 0.015 << 0.001;
 }
+
+
+void GearIndicatorTest::testMovingAverageFilter() {
+
+}
+void GearIndicatorTest::testMovingAverageFilter_data() {
+
+}
+
+void GearIndicatorTest::testCalculateLikelihood() {
+    QFETCH(qreal, observed);
+    QFETCH(qreal, mean);
+    QFETCH(qreal, sigma);
+    QFETCH(qreal, expected);
+
+    auto val = GearPredictiveFilter::calculateLikelihood(observed, mean, sigma);
+    QCOMPARE(val, expected);
+}
+void GearIndicatorTest::testCalculateLikelihood_data() {
+    QTest::addColumn<qreal>("observed");
+    QTest::addColumn<qreal>("mean");
+    QTest::addColumn<qreal>("sigma");
+    QTest::addColumn<qreal>("expected");
+
+    QTest::addRow("10.0_9.0_0.4") << 10.0 << 9.0 << 0.4 << 0.04382075123392136;
+    QTest::addRow("0.4_0.0_0.4") << 0.4 << 0.0 << 0.4 << 0.604926811297858;
+}
+
+void GearIndicatorTest::testGenerateLikelihoodVector() {
+    QFETCH(qreal, observed);
+    QFETCH(QList<qreal>, expected);
+    QFETCH(QList<qreal>, sigma);
+    QFETCH(QList<qreal>, output);
+    QFETCH(int, ret);
+
+    // make vectors
+    GearPredictiveFilter::ValueVector expectedValues(expected.size());
+    GearPredictiveFilter::NoiseSigmaVector sigmaNoiseVector(sigma.size());
+    GearPredictiveFilter::LikelihoodVector expectedLikelihood(output.size());
+    GearPredictiveFilter::LikelihoodVector likelihoodVector(output.size());
+
+    for(int i = 0; i < expected.size(); i++) {
+        expectedValues(i) = expected.at(i);
+    }
+
+    for (int i = 0; i < sigma.size(); i++) {
+        sigmaNoiseVector(i) = sigma.at(i);
+    }
+
+    for (int i = 0; i < output.size(); i++) {
+        expectedLikelihood(i) = output.at(i);
+    }
+
+    auto retVal = GearPredictiveFilter::generateLikelihoodVector(
+        observed,
+        expectedValues,
+        sigmaNoiseVector,
+        likelihoodVector
+    );
+
+    QCOMPARE(retVal, ret);
+    for (int i = 0; i < expectedLikelihood.size(); i++) {
+        QCOMPARE(likelihoodVector(i), expectedLikelihood(i));
+    }
+}
+
+void GearIndicatorTest::testGenerateLikelihoodVector_data() {
+    QTest::addColumn<qreal>("observed");
+    QTest::addColumn<QList<qreal>>("expected");
+    QTest::addColumn<QList<qreal>>("sigma");
+    QTest::addColumn<QList<qreal>>("output");
+    QTest::addColumn<int>("ret");
+
+    QList<qreal> expectedM47 = {1.800726538550296e2, 9.651536782304315e1, 6.121576570257830e1, 4.468304065881627e1, 3.664009334022934e1};
+    QList<qreal> sigmaM47 = {5.402179615650887, 2.895461034691294, 1.836472971077349, 1.340491219764488, 1.099202800206880};
+    QList<qreal> outputValues = {
+        GearPredictiveFilter::FIXED_NEUTRAL_LIKELIHOOD, 7.276829916651464e-2, 0.0, 0.0, 0.0, 0.0};
+    QTest::addRow("5speed_M47_1st_gear") << 181.0 << expectedM47 << sigmaM47 << outputValues << 0;
+}
+
+void GearIndicatorTest::testFlattenLikelihood() {
+
+}
+void GearIndicatorTest::testFlattenLikelihood_data() {
+
+}
+
+void GearIndicatorTest::testGenerateExpectedValues() {
+
+}
+void GearIndicatorTest::testGenerateExpectedValues_data() {
+
+}
+
+void GearIndicatorTest::testGenerateInitialProbabilities() {
+
+}
+void GearIndicatorTest::testGenerateInitialProbabilities_data() {
+
+}
+
+void GearIndicatorTest::testGenerateSigmaNoiseVector() {
+
+}
+void GearIndicatorTest::testGenerateSigmaNoiseVector_data() {
+
+}

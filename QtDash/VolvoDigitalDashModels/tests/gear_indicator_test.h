@@ -33,6 +33,28 @@ private slots:
 
     void testGenerateTransformationMatrix();
     void testGenerateTransformationMatrix_data();
+
+    void testMovingAverageFilter();
+    void testMovingAverageFilter_data();
+
+    void testCalculateLikelihood();
+    void testCalculateLikelihood_data();
+
+    void testGenerateLikelihoodVector();
+    void testGenerateLikelihoodVector_data();
+
+    void testFlattenLikelihood();
+    void testFlattenLikelihood_data();
+
+    void testGenerateExpectedValues();
+    void testGenerateExpectedValues_data();
+
+    void testGenerateInitialProbabilities();
+    void testGenerateInitialProbabilities_data();
+
+    void testGenerateSigmaNoiseVector();
+    void testGenerateSigmaNoiseVector_data();
+
 };
 
 #endif // GEAR_INDICATOR_TEST_H

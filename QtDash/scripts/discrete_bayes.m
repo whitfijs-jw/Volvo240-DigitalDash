@@ -12,6 +12,7 @@ tire_diameter_in = 24.9;
 Tg = (60 * (tire_diameter_miles * pi) ./ (gear_ratios .* rear_end_ratio)) .^ -1
 
 [time, observed_speed_mph observed_rpm observed_ratio true_gear] = simulated_speed_rpm();
+observed_rpm = round(observed_rpm / 30) * 30;
 
 probs = [0.9, 0.02, 0.02, 0.02, 0.02, 0.02];
 ##sigma_noise = 4.0; # single sigma
@@ -117,7 +118,7 @@ for ii = 1:length(observed_speed_mph)
   norm = 1 ./ (sqrt(2*pi.*sigma_noise.^2));
   exponent = -0.5 * (T_observed(ii) - Tg).^2 ./ sigma_noise.^2;
 
-  likelihood(ii,1) = 1e-6;
+  likelihood(ii,1) = 1e-4;
   likelihood(ii,2:6) = norm .* exp(exponent);
   likelihood(ii,2:6) = likelihood(ii,2:6) .* stability_penalty(ii);
 
