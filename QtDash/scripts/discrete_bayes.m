@@ -6,7 +6,7 @@ speed_drop_out=5
 speed_drop_out_units="mph"
 idle_high_rpm=1000
 idle_low_rpm=500
-tire_diameter_miles = 0.0003929924
+tire_diameter_miles = 0.0003929924242424242;#0.0003929924
 tire_diameter_in = 24.9;
 
 Tg = (60 * (tire_diameter_miles * pi) ./ (gear_ratios .* rear_end_ratio)) .^ -1
@@ -27,13 +27,13 @@ function TMat = calculateTransitionMatrix(prob)
   for ii = 2:length(prob)
     TMat(ii,:) = [0.01, 0.01, 0.01, 0.01, 0.01, 0.01]; # small likelihood that we can end up anywhere
     TMat(ii,ii) = 0.90; # very likely to stay in the current gear
-    
+
     if ii < 6 # not top gear
       TMat(ii, ii+1) += 0.025; # more probable to end up in next gear
     else
       TMat(ii, ii) += 0.025 # top gear, more likely to stay here
     endif
-    
+
     if ii > 2 #not bottom gear
       TMat(ii, ii-1) += 0.025; # more probable to end up down a gear
     else
@@ -44,34 +44,34 @@ endfunction
 
 function TMat = calculateTransitionMatrix2(prob)
   TMat = zeros(length(prob), length(prob));
-  
+
   prob_stay      = 0.90;   # More likely to stay in current gear
   prob_adjacent  = 0.04;   # Normal shifting (Up/Down)
   prob_neutral   = 0.015;  # Probability of clutching in from gear
   prob_skip      = 0.001;  # Probability of skipping a gear
-  
+
   # neutral row
   TMat(1,1) = 0.90;
   remaining = 1.0 - 0.90;
   TMat(1, 2:end) = remaining / 5; # Distribute evenly among gears
-  
+
   for ii = 2:length(prob)
     TMat(ii,:) = prob_skip; # small likelihood that we can end up anywhere
     TMat(ii,1) = prob_neutral;
     TMat(ii,ii) = prob_stay; # very likely to stay in the current gear
-    
+
     if ii < 6 # not top gear
       TMat(ii, ii+1) = prob_adjacent; # more probable to end up in next gear
     else
       TMat(ii, ii) += prob_adjacent # top gear, more likely to stay here
     endif
-    
+
     if ii > 2 #not bottom gear
       TMat(ii, ii-1) = prob_adjacent; # more probable to end up down a gear
     else
       TMat(ii,ii) += prob_adjacent; # more likely to stay where we're at
     endif
-    
+
     # normalize row
     TMat(ii,:) = TMat(ii,:) / sum(TMat(ii,:));
   endfor
@@ -125,7 +125,7 @@ for ii = 1:length(observed_speed_mph)
   if filtered_speed_mph(ii) < speed_drop_out
     likelihood  = likelihood * 0.5 + 0.1;  # flatten likelihood
   endif
-  
+
   posterior = likelihood(ii,:) .* probs(ii,:);
 
   if sum(posterior) == 0

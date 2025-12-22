@@ -39,12 +39,10 @@ public:
 
         Eigen::VectorXd buffer;
         int count = 0;
-        size_t totalCount;
 
         double update(double val) {
             buffer(count) = val;
             count++;
-            totalCount++;
 
             if (count >= buffer.size()) {
                 count = 0;
@@ -121,11 +119,7 @@ public:
         return 0;
     }
 
-    int flattenLikelihood(LikelihoodVector& likelihoods, double offset = 0.1) {
-        if (likelihoods.size() < mTransitionMatrix.cols()) {
-            return -1;
-        }
-
+    static int flattenLikelihood(LikelihoodVector& likelihoods, double offset = 0.1) {
         for (auto& val : likelihoods) {
             val = (val * 0.5) + offset;
         }
@@ -133,7 +127,7 @@ public:
         return 0;
     }
 
-    static constexpr int generateTransitionMatrix(TransitionProbabilities prob, TransitionMatrix& transitionMatrix) {
+    static int generateTransitionMatrix(TransitionProbabilities prob, TransitionMatrix& transitionMatrix) {
         for (size_t row = 0; row < prob.numStates; row++) {
             if (row == 0) {
                 for (size_t col = 0; col < prob.numStates; col++) {
