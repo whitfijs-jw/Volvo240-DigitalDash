@@ -363,6 +363,10 @@ void GearIndicatorTest::testGenerateInitialProbabilities() {
 
     auto ret = GearPredictiveFilter::generateInitialProbablilities(gearConfig, initial_probs, neutral_prob);
     QCOMPARE(ret_val, ret);
+
+    for (int i = 0; i < initial_probs.size(); i++) {
+        QCOMPARE(initial_probs(i), expected_probs.at(i));
+    }
 }
 void GearIndicatorTest::testGenerateInitialProbabilities_data() {
     QTest::addColumn<QList<qreal>>("gear_ratios");
@@ -414,4 +418,77 @@ void GearIndicatorTest::testGenerateSigmaNoiseVector_data() {
     QList<qreal> sigmaM47 = {5.402179615650887, 2.895461034691294, 1.836472971077349, 1.340491219764488, 1.099202800206880};
 
     QTest::addRow("m47_0.03sigma_pct") << expectedM47 << GearPredictiveFilter::DEFAULT_SIGMA_PCT << sigmaM47 << 0;
+}
+
+void GearIndicatorTest::testUpdate() {
+    QFETCH(QList<qreal>, observed_mph);
+    QFETCH(QList<qreal>, observed_rpm);
+    QFETCH(QList<int>, true_gear);
+    QFETCH(QList<qreal>, gear_ratios);
+    QFETCH(qreal, speed_drop_out);
+    QFETCH(QString, speed_dropout_units);
+    QFETCH(qreal, idle_high_rpm);
+    QFETCH(qreal, rear_end_ratio);
+    QFETCH(qreal, tire_diameter_inch);
+    QFETCH(int, tire_diameter_units);
+
+
+    SensorConfig::GearIndicatorConfig_t gearConfig;
+
+    gearConfig.gearRatios = gear_ratios;
+    gearConfig.idleHighRpm = idle_high_rpm;
+    gearConfig.smoothingFilterN = 4;
+    gearConfig.speedDropOut = speed_drop_out;
+    gearConfig.speedDropOutUnits = Units::getSpeedUnits(speed_dropout_units);
+    gearConfig.rearEndRatio = rear_end_ratio;
+    gearConfig.tireDiameter = tire_diameter_inch;
+    gearConfig.tireDiameterUnits = static_cast<Units::DistanceUnits>(tire_diameter_units);
+
+    GearPredictiveFilter::TransitionProbabilities transition;
+    transition.numStates = gear_ratios.size() + 1;
+
+    GearPredictiveFilter filter(transition, gearConfig);
+    size_t gear_lag_cnt = 0;
+    for (int i = 0; i < observed_mph.size(); i++) {
+        auto gear = filter.update(observed_mph.at(i), observed_rpm.at(i));
+        if (gear.index == true_gear.at(i)) {
+            QCOMPARE(1, 1);
+            gear_lag_cnt = 0;
+        } else {
+            QVERIFY(gear_lag_cnt++ <= 40);
+        }
+    }
+}
+
+void GearIndicatorTest::testUpdate_data() {
+    QTest::addColumn<QList<qreal>>("observed_mph");
+    QTest::addColumn<QList<qreal>>("observed_rpm");
+    QTest::addColumn<QList<int>>("true_gear");
+    QTest::addColumn<QList<qreal>>("gear_ratios");
+    QTest::addColumn<qreal>("speed_drop_out");
+    QTest::addColumn<QString>("speed_dropout_units");
+    QTest::addColumn<qreal>("idle_high_rpm");
+    QTest::addColumn<qreal>("rear_end_ratio");
+    QTest::addColumn<qreal>("tire_diameter_inch");
+    QTest::addColumn<int>("tire_diameter_units");
+
+    QList<qreal> mph_starting_in_neutral = {0.000000, 0.025755, 0.000000, 0.000000, 0.000000, 1.429299, 1.744138, 0.828147, 0.000000, 0.302617, 1.010646, 0.000000, 0.000000, 0.696111, 0.000000, 1.536641, 0.000000, 0.000000, 0.589113, 0.000000, 0.000000, 0.192444, 0.000000, 0.000000, 0.000000, 0.943767, 0.000000, 0.000000, 0.615805, 0.000000, 0.731145, 0.271250, 0.000000, 0.213418, 0.550131, 1.632934, 0.935081, 0.388145, 0.000000, 0.535274, 0.370644, 0.521625, 0.183784, 0.364368, 0.000000, 0.584547, 2.342637, 2.753731, 0.963125, 1.082728, 2.685108, 1.539264, 2.822271, 2.054132, 3.323658, 2.985075, 1.565958, 3.559517, 2.278816, 3.361473, 3.256897, 3.470576, 4.006734, 5.461341, 4.583368, 4.809392, 5.094714, 5.128214, 3.798144, 4.607459, 6.080229, 4.925616, 5.616077, 5.779595, 6.352517, 7.262382, 5.897716, 6.208054, 7.050551, 7.430915, 8.641213, 7.863815, 6.760459, 8.264037, 9.604442, 7.285779, 8.591251, 7.922247, 7.292376, 10.038525, 9.345098, 9.453449, 10.432754, 8.601492, 11.534672, 9.742284, 10.774549, 10.664633, 10.280280, 10.020907, 10.608590, 11.618005, 11.905841, 10.714878, 11.916187, 12.747111, 10.396923, 12.664474, 11.349710, 13.327954, 12.379418, 12.039313, 13.687457, 13.609002, 13.511241, 14.410349, 13.980144, 14.979917, 12.909831, 13.920070, 13.431254, 13.957509, 15.187452, 13.341955, 15.613182, 14.747085, 15.722127, 14.864467, 16.488515, 15.201824, 14.838422, 16.507514, 16.935069, 15.916600, 18.214687, 16.004136, 17.475808, 17.593393, 17.938705, 17.341910, 17.678041, 18.327167, 17.883146, 17.646788, 18.166949, 18.505970, 20.155855, 18.470603, 18.208091, 19.414721};
+    QList<qreal> rpm_starting_in_neutral = {840.000000, 930.000000, 870.000000, 720.000000, 660.000000, 810.000000, 930.000000, 840.000000, 840.000000, 780.000000, 840.000000, 930.000000, 900.000000, 810.000000, 810.000000, 690.000000, 930.000000, 870.000000, 870.000000, 840.000000, 750.000000, 900.000000, 660.000000, 690.000000, 840.000000, 810.000000, 1140.000000, 870.000000, 780.000000, 870.000000, 720.000000, 870.000000, 810.000000, 960.000000, 810.000000, 930.000000, 780.000000, 930.000000, 840.000000, 720.000000, 720.000000, 930.000000, 960.000000, 630.000000, 840.000000, 900.000000, 990.000000, 780.000000, 840.000000, 750.000000, 900.000000, 810.000000, 840.000000, 1050.000000, 870.000000, 720.000000, 900.000000, 810.000000, 630.000000, 600.000000, 660.000000, 960.000000, 960.000000, 690.000000, 990.000000, 630.000000, 990.000000, 900.000000, 900.000000, 810.000000, 1020.000000, 1110.000000, 1140.000000, 960.000000, 1230.000000, 1290.000000, 1050.000000, 1080.000000, 1140.000000, 1170.000000, 1350.000000, 1320.000000, 1110.000000, 1200.000000, 1290.000000, 1560.000000, 1560.000000, 1680.000000, 1470.000000, 1800.000000, 1590.000000, 1740.000000, 1680.000000, 1650.000000, 1950.000000, 1620.000000, 1800.000000, 1980.000000, 1830.000000, 2070.000000, 2250.000000, 2220.000000, 1950.000000, 1950.000000, 2370.000000, 1950.000000, 2160.000000, 2010.000000, 2250.000000, 2280.000000, 2370.000000, 2190.000000, 2190.000000, 2310.000000, 2520.000000, 2460.000000, 2580.000000, 2670.000000, 2640.000000, 2610.000000, 2460.000000, 2520.000000, 2520.000000, 2610.000000, 2880.000000, 2670.000000, 2730.000000, 2760.000000, 3000.000000, 2760.000000, 2940.000000, 2640.000000, 3000.000000, 3090.000000, 3090.000000, 3000.000000, 2970.000000, 3150.000000, 3150.000000, 3120.000000, 2970.000000, 3240.000000, 3330.000000, 3150.000000, 3300.000000, 3270.000000, 3480.000000, 3120.000000, 3510.000000, 3420.000000};
+    QList<int> true_gear_starting_in_neutral = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    QList<qreal> m47_ratios = {4.03, 2.16, 1.37, 1.00, 0.82};
+    qreal rear_end_ratio = 3.31;
+    qreal tire_diameter_inch = 24.9;
+    auto tire_diameter_units = Units::DistanceUnits::INCH;
+
+    QTest::addRow("starting_in_neutral") <<
+        mph_starting_in_neutral <<
+        rpm_starting_in_neutral <<
+        true_gear_starting_in_neutral <<
+        m47_ratios <<
+        5.0 <<
+        "mph" <<
+        1000.0 <<
+        rear_end_ratio <<
+        tire_diameter_inch <<
+        static_cast<int>(tire_diameter_units);
 }

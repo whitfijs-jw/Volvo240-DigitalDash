@@ -253,13 +253,13 @@ public:
         double confidence = posterior.maxCoeff(&maxIndex);
 
         EstimatedGear ret = {
-            .index = static_cast<int>(maxIndex - 1),
+            .index = static_cast<int>(maxIndex),
             .confidence = confidence,
             .neutralIndex = 0
         };
 
         //predict next state
-        mProbVector = posterior * mTransitionMatrix;
+        mProbVector = mTransitionMatrix.transpose() * posterior;
         mProbVector = mProbVector / mProbVector.sum();
 
         return ret;

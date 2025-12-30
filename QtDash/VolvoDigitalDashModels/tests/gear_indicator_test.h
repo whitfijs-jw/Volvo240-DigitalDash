@@ -55,6 +55,8 @@ private slots:
     void testGenerateSigmaNoiseVector();
     void testGenerateSigmaNoiseVector_data();
 
+    void testUpdate();
+    void testUpdate_data();
 };
 
 #endif // GEAR_INDICATOR_TEST_H
