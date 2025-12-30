@@ -38,6 +38,7 @@ SOURCES += src/main.cpp \
     src/sensor/ntc.cpp \
     src/sensor/analog_12v_input.cpp \
     src/sensor/map_sensor.cpp \
+    src/sensor/sensor_gear_indicator.cpp \
     src/sensor_source/sensor_source_gps.cpp \
     src/utils/backlight_control.cpp \
     src/utils/event_timers.cpp \
@@ -458,6 +459,7 @@ HEADERS += \
     inc/sensor/ntc.h \
     inc/sensor/sensor.h \
     inc/sensor/sensor_can.h \
+    inc/sensor/sensor_gear_indicator.h \
     inc/sensor/sensor_map.h \
     inc/sensor/sensor_ntc.h \
     inc/sensor/sensor_odometer.h \
@@ -473,13 +475,14 @@ HEADERS += \
     inc/sensor_source/sensor_source_tach.h \
     inc/sensor_source/sensor_source_vss.h \
     inc/utils/backlight_control.h \
+    inc/utils/discrete_bayes_filter.h \
     inc/utils/event_timers.h \
+    inc/utils/gear_predictive_filter.h \
     inc/utils/gps_helper.h \
     inc/utils/key_press_emitter.h \
     inc/utils/sensor_utils.h \
     inc/utils/units.h \
     inc/utils/utils.h
-
 
 INCLUDEPATH += \
     Headers \

@@ -528,6 +528,32 @@ bool Config::loadBacklighConfig(QSettings *config, SensorConfig::BacklightContro
     return true;
 }
 
+bool Config::loadGearSensorConfig(QSettings * config, SensorConfig::GearIndicatorConfig_t& gearIndicatorConfig) const {
+    // gear indicator group
+    config->beginGroup(GEAR_INDICATOR_GROUP);
+
+    gearIndicatorConfig.rearEndRatio = config->value(GEAR_INDICATOR_REAR_END_RATIO, 3.31).toReal();
+    gearIndicatorConfig.idleHighRpm = config->value(GEAR_INDICATOR_HIGH_IDLE, 1100.0).toReal();
+    gearIndicatorConfig.idleLowRpm = config->value(GEAR_INDICATOR_LOW_IDLE, 500.0).toReal();
+    gearIndicatorConfig.speedDropOut = config->value(GEAR_INDICATOR_SPEED_DROPOUT, 5).toReal();
+    QString dropoutUnits = config->value(GEAR_INDICATOR_SPEED_DROPOUT_UNITS, "mph").toString().toLower();
+    gearIndicatorConfig.speedDropOutUnits = Units::getSpeedUnits(dropoutUnits);
+    gearIndicatorConfig.tireDiameter = mVssInputConfig.tireDiameter;
+    gearIndicatorConfig.tireDiameterUnits = mVssInputConfig.tireDiameterUnits;
+
+    // get the gear ratios
+    QList ratios = config->value(GEAR_INDICATOR_GEAR_RATIOS, "").toList();
+    for (QVariant val : ratios) {
+        gearIndicatorConfig.gearRatios.push_back(val.toReal());
+    }
+
+    printKeys("Gear Indicator Input: ", config);
+
+    config->endGroup();
+
+    return true;
+}
+
 bool Config::loadConfig() {
     QStringList keys = mConfig->allKeys();
 
@@ -578,6 +604,10 @@ bool Config::loadConfig() {
 
     // Backlight Config
     if (auto ret = loadBacklighConfig(mConfig.get(), mBacklightConfig); ret != true) {
+        return ret;
+    }
+
+    if (auto ret = loadGearSensorConfig(mConfig.get(), mGearIndicatorConfig); ret != true) {
         return ret;
     }
 

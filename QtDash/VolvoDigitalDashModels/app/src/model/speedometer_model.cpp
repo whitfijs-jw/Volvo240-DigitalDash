@@ -15,6 +15,7 @@ QHash<int, QByteArray> SpeedometerModel::roleNames() const
 
     roles[DashUtils::to_underlying(SpeedometerModelRoles::TopValueRole)] = "valueTop";
     roles[DashUtils::to_underlying(SpeedometerModelRoles::TopUnitsRole)] = "valueTopUnits";
+    roles[DashUtils::to_underlying(SpeedometerModelRoles::CurrentGearRole)] = "currentGear";
     return roles;
 }
 
@@ -31,6 +32,10 @@ QVariant SpeedometerModel::headerData(int section, Qt::Orientation orientation, 
     else if(role == DashUtils::to_underlying(SpeedometerModelRoles::TopUnitsRole))
     {
         return QVariant("valueTopUnits");
+    }
+    else if (role == DashUtils::to_underlying(SpeedometerModelRoles::CurrentGearRole))
+    {
+        return QVariant("currentGear");
     }
     return QVariant("");
 }
@@ -54,6 +59,10 @@ QVariant SpeedometerModel::data(const QModelIndex &index, int role) const
     else if(role == DashUtils::to_underlying(SpeedometerModelRoles::TopUnitsRole))
     {
         return mTopUnits;
+    }
+    else if (role == DashUtils::to_underlying(SpeedometerModelRoles::CurrentGearRole))
+    {
+        return mCurrentGear;
     }
     // Default return:
     return QVariant::fromValue(nullptr);
@@ -83,6 +92,15 @@ bool SpeedometerModel::setData(const QModelIndex &index, const QVariant &value, 
         emit topUnitsChanged();
         return true;
     }
+    else if (role == DashUtils::to_underlying(SpeedometerModelRoles::CurrentGearRole))
+    {
+        mCurrentGear = value.toInt();
+        emit dataChanged(createIndex(0,0),
+                         createIndex(1, 0),
+                         QVector<int>() << DashUtils::to_underlying(SpeedometerModelRoles::CurrentGearRole));
+        emit currentGearChanged();
+        return true;
+    }
     else
     {
         emit layoutChanged();
@@ -106,6 +124,11 @@ QString SpeedometerModel::topUnits() const
     return mTopUnits;
 }
 
+int SpeedometerModel::currentGear() const
+{
+    return mCurrentGear;
+}
+
 void SpeedometerModel::setTopValue(qreal topValue)
 {
     mTopValue = topValue;
@@ -122,4 +145,12 @@ void SpeedometerModel::setTopUnits(QString topUnits)
                      createIndex(1, 0),
                      QVector<int>() << DashUtils::to_underlying(SpeedometerModelRoles::TopUnitsRole));
     emit topUnitsChanged();
+}
+
+void SpeedometerModel::setCurrentGear(int gear) {
+    mCurrentGear = gear;
+    emit dataChanged(createIndex(0,0),
+                     createIndex(1, 0),
+                     QVector<int>() << DashUtils::to_underlying(SpeedometerModelRoles::CurrentGearRole));
+    emit currentGearChanged();
 }

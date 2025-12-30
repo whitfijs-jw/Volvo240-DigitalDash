@@ -14,6 +14,7 @@ namespace ConfigKeys {
     static constexpr char ODOMETER_GROUP[] = "odometer";
     static constexpr char BACKLIGHT_GROUP[] = "backlight";
     static constexpr char USER_INPUT_GROUP[] = "user_inputs";
+    static constexpr char GEAR_INDICATOR_GROUP[] = "gear_indicator";
 
     // expected sensor keys
     static constexpr char COOLANT_TEMP_KEY[] = "coolant_temp";
@@ -139,6 +140,15 @@ namespace ConfigKeys {
     static constexpr char BACKLIGHT_MAX_DIMMER_RATIO[] = "max_dimmer_ratio";
     static constexpr char BACKLIGHT_USE_DIMMER[] = "use_dimmer";
     static constexpr char BACKLIGHT_ACTIVE_LOW[] = "active_low";
+
+    //expected keys for gear indicator input
+    static constexpr char GEAR_INDICATOR_GEAR_RATIOS[] = "gear_ratios";
+    static constexpr char GEAR_INDICATOR_REAR_END_RATIO[] = "rear_end_ratio";
+    static constexpr char GEAR_INDICATOR_DELTA[] = "ratio_delta";
+    static constexpr char GEAR_INDICATOR_SPEED_DROPOUT[] = "speed_drop_out";
+    static constexpr char GEAR_INDICATOR_SPEED_DROPOUT_UNITS[] = "speed_drop_out_units";
+    static constexpr char GEAR_INDICATOR_HIGH_IDLE[] = "idle_high_rpm";
+    static constexpr char GEAR_INDICATOR_LOW_IDLE[] = "idle_low_rpm";
 
     //gauge config groups
     // boost gauge configs

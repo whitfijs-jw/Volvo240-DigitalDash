@@ -5,6 +5,7 @@
 #include <ntc_test.h>
 #include <sensor_utils_test.h>
 #include <sensor_test.h>
+#include <gear_indicator_test.h>
 #include <can_frame_config_test.h>
 
 int main(int argc, char *argv[])
@@ -20,5 +21,6 @@ int main(int argc, char *argv[])
     ASSERT_TEST(new NtcTest());
     ASSERT_TEST(new SensorUtilsTest);
     ASSERT_TEST(new SensorTest);
+    ASSERT_TEST(new GearIndicatorTest);
     ASSERT_TEST(new CanFrameConfigTest);
 }
