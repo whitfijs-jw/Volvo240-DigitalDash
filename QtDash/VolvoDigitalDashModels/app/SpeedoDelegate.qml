@@ -16,7 +16,11 @@ Item {
     property real needleWidth: .02
     property real needleLength: 0.45
     property real needleOffset: 0.075
+
     property real needleCenterRadius: 0.1
+    property url needleCenterImageSource: ""
+    property real needleCenterImageSize: 0
+    property bool needleCenterUseImage: false
 
     property real yOffset: 0
 
@@ -70,6 +74,9 @@ Item {
                 item.needleOffset = speedometer.needleOffset
 
                 item.needleCenterRadius = speedometer.needleCenterRadius
+                item.needleCenterImageSize = speedometer.needleCenterImageSize
+                item.needleCenterUseImage = speedometer.needleCenterUseImage
+                item.needleCenterImageResource = speedometer.needleCenterImageSource
 
                 item.textSize = speedometer.textSize
                 item.textOffset = speedometer.textOffset

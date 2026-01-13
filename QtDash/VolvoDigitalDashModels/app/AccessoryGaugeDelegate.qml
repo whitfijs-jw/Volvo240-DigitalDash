@@ -15,7 +15,12 @@ Item {
     property real needleOffset: 0.1
     property real needleLength: 0.65
     property real needleWidth: .04
+
     property real needleCenterRadius: 0.15
+    property url needleCenterImageSource: ""
+    property real needleCenterImageSize: 0
+    property bool needleCenterUseImage: false
+
     property real yOffset: 0.25
     property real xOffset: 0
 
@@ -60,7 +65,11 @@ Item {
                 item.needleWidth = accGauge.needleWidth
                 item.needleLength = accGauge.needleLength
                 item.needleOffset = accGauge.needleOffset
+
                 item.needleCenterRadius = accGauge.needleCenterRadius
+                item.needleCenterImageSize = accGauge.needleCenterImageSize
+                item.needleCenterUseImage = accGauge.needleCenterUseImage
+                item.needleCenterImageResource = accGauge.needleCenterImageSource
 
                 item.offset = accGauge.yOffset
                 item.offsetX = accGauge.xOffset
