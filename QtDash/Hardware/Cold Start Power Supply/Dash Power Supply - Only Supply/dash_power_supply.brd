@@ -683,7 +683,7 @@ Note, that not all DRC settings must be set by the manufacturer. Several can be 
 <attribute name="NAME" x="17.145" y="35.179" size="0.6096" layer="25" font="vector" ratio="20" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="15.621" y="34.417" size="0.6096" layer="27" font="vector" ratio="20" rot="R270" align="top-center"/>
 </element>
-<element name="Q4" library="dash_power_supply" package="TDSON" value="BSC027N04LSG" x="20.447" y="32.131" smashed="yes" rot="R270"/>
+<element name="Q4" library="dash_power_supply" package="TDSON" value="DMTH6002LPS-13" x="20.447" y="32.131" smashed="yes" rot="R270"/>
 <element name="C13" library="digital_dash" package="0603" value=".68u" x="5.715" y="33.401" smashed="yes" rot="R180">
 <attribute name="VOLTAGE" value="16V" x="5.715" y="33.401" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="NAME" x="7.4295" y="33.401" size="0.6096" layer="25" font="vector" ratio="20" rot="R270" align="bottom-center"/>

@@ -567,7 +567,7 @@ TS-005</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="BSC027N04LSG" prefix="Q">
+<deviceset name="DMTH6002LPS-13" prefix="Q">
 <gates>
 <gate name="G$1" symbol="N-MOSFET" x="-2.54" y="0"/>
 </gates>
@@ -2092,7 +2092,7 @@ part number 2062-2P from STA</description>
 <part name="GND14" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
 <part name="SUPPLY1" library="SparkFun-PowerSymbols" deviceset="5V" device=""/>
 <part name="R17" library="SparkFun-Resistors" deviceset="0OHM" device="-0603-1/10W" value="0"/>
-<part name="Q4" library="dash_power_supply" deviceset="BSC027N04LSG" device=""/>
+<part name="Q4" library="dash_power_supply" deviceset="DMTH6002LPS-13" device=""/>
 <part name="C13" library="digital_dash" deviceset="CL" device="" technology="10B684KO8NFNC" value=".68u"/>
 <part name="C14" library="digital_dash" deviceset="CL" device="" technology="10B102KB8NNWC" value="1n"/>
 <part name="GND15" library="SparkFun-PowerSymbols" deviceset="GND" device=""/>
